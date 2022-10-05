@@ -1,0 +1,134 @@
+.admin{
+    font-family: "Roboto2";
+    overflow-x: hidden;
+    /* font-family: "Robotocondensed"; */
+}
+.dash_card{
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 150px;
+    cursor: pointer;
+}
+.dash_card.color1{
+    background-color: #fee7c1;
+}
+.dash_card.color2{
+    background-color: #fedfc6;
+}
+.dash_card.color3{
+    background-color: #fcd0cd;
+}
+.dash_card.color4{
+    background-color: #fabfd7;
+}
+.myBtn{
+    border: 2px solid black;
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 5px 10px;
+    /* width: 100%; */
+    min-width: 80px;
+    max-width: 250px;
+    font-weight: bold;
+}
+.myBtn.sm{
+    max-height: 30px;
+}
+.myBtn.active{
+    border: 2px solid black;
+    background-color: black;
+    color: white;
+}
+.myBtn.dark{
+    border: 2px solid white;
+    background-color: white;
+    color: black;
+}
+.textField{
+    border: 2px solid black;
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 8px 15px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.textField.dark{
+    border: 2px solid white;
+    color: white;
+}
+.subNavBar{
+    border-bottom: 2px solid rgb(230,230,230);
+    width: 100%;
+}
+.subNavBar>.btn{
+    border-bottom: 2px solid rgb(230,230,230);
+    background-color:white;
+    color: rgb(230,230,230);
+    padding: 5px 10px;
+    border-radius: 0;
+    margin-bottom: -2px;
+}
+.subNavBar>button:active,.subNavBar>button{
+    outline: 0 !important;
+}
+.subNavBar>.btn:hover{
+    border-bottom: 2px solid grey;
+    color: grey;
+    outline: 0;
+}
+.subNavBar>.btn.active{
+    border-bottom: 2px solid black;
+    color: black;
+}
+
+.btn1{
+    background-color: transparent;
+    margin: 5px 10px;
+    
+}
+.btn1 > img{
+    height: 15px;
+    margin-top: -5px;
+}
+.scrollerOn{
+    overflow-y: auto;
+    max-height: calc(100vh - 270px);
+}
+.banners .artistcard{
+    height: 100px;
+    width: 300px;
+}
+.banners .artistcard.half{
+    width: 150px;
+}
+.column-2{
+    column-count: 2;
+    column-gap: 10px;
+    -moz-column-count: 2;
+    -moz-column-gap: 10px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 10px;
+}
+.column-3{
+    column-count: 3;
+    column-gap: 10px;
+    -moz-column-count: 3;
+    -moz-column-gap: 10px;
+    -webkit-column-count: 3;
+    -webkit-column-gap: 10px;
+}
+.quill{
+    height: 300px;
+}
+.ql-snow{
+    border: 1px solid black !important;
+}
+.ql-toolbar.ql-snow{
+    border-radius: 8px 8px 0 0;
+}
+.ql-container.ql-snow{
+    border-top: 0px solid black !important;
+    border-radius: 0px 0px 8px 8px;
+}

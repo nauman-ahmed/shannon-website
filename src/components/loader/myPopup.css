@@ -1,0 +1,57 @@
+.myPopupLoader{
+    position: fixed;
+    background-color: transparent;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+.myPopupLoader>.closeBack{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.myPopupLoader>.myPopupCard{
+    position: relative;
+    background-color: transparent;
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+    z-index: 1;
+    font-weight: bold;
+    font-family: "Roboto2";
+}
+.myPopupLoader>.myPopupCard>.closeBtn{
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+.myPopupLoader>.myPopupCard>.closeBtn:hover::after,.myPopupLoader>.myPopupCard>.closeBtn:hover::before{
+    border-color: red;
+}
+.myPopupLoader>.myPopupCard>.closeBtn::after,.myPopupLoader>.myPopupCard>.closeBtn::before{
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: solid white;
+    border-width: 2px 2px 0px 0px;
+    top: 5px;
+}
+.myPopupLoader>.myPopupCard>.closeBtn::before{
+    transform: rotate(45deg);
+    left: -7.5px;
+}
+.myPopupLoader>.myPopupCard>.closeBtn::after{
+    transform: rotate(-135deg);
+    right: -7.5px;
+}
