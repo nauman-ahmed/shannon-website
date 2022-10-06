@@ -175,7 +175,6 @@ function Image_uploading(props) {
         imageCreate.append('mainId',props.images._id)
 
         changeArtistImageDetails(imageCreate).then((res)=>{
-            console.log('SUBMIT',res)
             dispatch(updateOpen(true));
             dispatch(updateMessage(res.msg));
             history.push('/admin/artists');
