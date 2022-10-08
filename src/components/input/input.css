@@ -1,0 +1,59 @@
+.myInput{
+    padding: 15px 0;
+    width: 100%;
+}
+.myInput > input, .myInput > select{
+    border: 0;
+    border-bottom: 2px solid rgb(233, 232, 232);
+    background-color: transparent;
+    padding: 8px 0;
+    transition: border 0.5s;
+    width: 100%;
+}
+.myInput:hover > input, .myInput:hover > select{
+    border-bottom: 2px solid grey;
+}
+.myInput > input:focus, .myInput > select:focus{
+    border-bottom: 2px solid black;
+    outline: 0;
+}
+.myInput > .label{
+    margin-bottom: -27px;
+    position: relative;
+    z-index: 1;
+    font-size: 12px;
+    cursor: text;
+    transform-origin: 0 50%;
+    transition: transform 0.5s;
+    -webkit-user-select: none; 
+    -ms-user-select: none;
+    user-select: none;
+    width: 100%;
+}
+.myInput > .label.active{
+    transform: scale(0.9) translateY(-25px);
+}
+
+.searchField{
+    background-color: rgb(230,230,230);
+    border-radius: 20px;
+    display: flex;
+    cursor: text !important;
+}
+.searchField>input{
+    align-self: center;
+    border: 0px;
+    margin-right: 5px;
+    background-color: transparent;
+}
+.searchField>input:active,.searchField>input:focus{
+outline: 0;
+}
+.searchField>button{
+    border-radius: 20px;
+    background-color: transparent;
+}
+.searchField>button>img{
+    height: 15px;
+    align-self: center;
+}

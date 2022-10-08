@@ -1,0 +1,55 @@
+.loginPage{
+    position: relative;
+    min-height: 100vh;
+}
+.loginPage .backAsset1,.loginPage .backAsset2{
+    width: 35%;
+    max-width: 500px;
+    min-width: 200px;
+    position: absolute;
+}
+.loginPage .backAsset1{
+    right: 0;
+    top: 0;
+}
+.loginPage .backAsset2{
+    left: 0;
+    bottom: 0;
+    transform: translateX(-50%) rotate(180deg);
+    /* bottom: 0; */
+}
+.loginPage>.myForm{
+    align-self: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.loginPage>.myForm>.myLogo{
+    width: 250px;
+}
+.loginPage>.myForm>h5{
+    text-align: center;
+}
+.loginPage>.myForm>a{
+    font-size: 12px;
+    font-weight: bold;
+}
+.loginPage>.myForm>.myButton{
+    border: 2px solid #FEAC23;
+    border-radius: 5px;
+    background-color: transparent;
+    padding: 5px 20px;
+    min-width: 120px;
+    font-weight: bold;
+    font-size: 12px;
+    transition: all 0.3s;
+}
+.loginPage>.myForm>.myButton:hover{
+    border: 2px solid #FEAC23;
+    background-color: #FEAC23;
+    color: white;
+}
+.loginPage>.myForm>.myButton:active{
+    transform: scale(0.9);
+    transition: all 0s;
+}

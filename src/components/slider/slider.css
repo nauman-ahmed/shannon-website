@@ -1,0 +1,74 @@
+
+.slider {
+    background-color: white;
+    position: relative;
+}
+.slider .arrow {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    background-color: transparent;
+    padding: 10px;
+    line-height: 15px;
+    border-radius: 50px;
+    /* box-shadow: 0px 5px 10px rgba(0,0,0,0.1); */
+}
+.slider .arrow2 {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    background-color: transparent;
+    padding: 10px;
+    line-height: 15px;
+    border-radius: 50px;
+    /* box-shadow: 0px 5px 10px rgba(0,0,0,0.1); */
+}
+.slider .arrow i{
+    font-size: 18px !important;
+}
+.slider .arrow2 i{
+    font-size: 21px !important;
+    color: black; 
+}
+.slider .arrow.left {
+    left: 0px;
+}
+.slider .arrow.right {
+    right: 20px;
+}
+.slider .arrow2.left {
+    left: 20px;
+}
+.slider .arrow2.right {
+    right: 20px;
+}
+@media (min-width: 768px) {
+    .slider .arrow2.left {
+        left: -25px;
+    }
+    .slider .arrow2.right {
+        right: -44px;
+    }
+}
+.slider .arrow:active,.slider .arrow2:active {
+    transform: translateY(-50%) scale(0.9);
+}
+.slider .slideScroller {
+    overflow: hidden;
+    width: 100%;
+    scroll-behavior: smooth;
+}
+.slider .slideScroller .slideContent {
+    display: flex;
+}
+.slider .slideScroller .slideContent .slideItem>img {
+    height: 100%;
+    width: 90%;
+    /* -o-object-fit: cover;
+    object-fit: cover; */
+    transition: all 1s;
+}
+/* .slider .slideScroller .slideContent .slideItem img:hover {
+    transition: all 0.3s;
+    transform: scale(1.1);
+} */
