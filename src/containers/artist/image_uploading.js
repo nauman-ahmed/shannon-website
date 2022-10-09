@@ -296,7 +296,6 @@ function Image_uploading() {
                 setShowLoader(true)
                 dispatch(artistImageCreateApi(imageCreate)).then(res => {
                     if(res.payload.msg == 'Add Artist Image'){
-                        console.log('Running Inside Image',)
                         setShowLoader(false)
                         setIsPopupShow(true)
                     }
@@ -304,7 +303,6 @@ function Image_uploading() {
             }
         }
         catch(e){
-            console.log('Error',e)
             dispatch(updateOpen(true))
             dispatch(updateMessage("Error Occured"))
             history.push('/artist')

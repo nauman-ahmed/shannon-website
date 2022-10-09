@@ -107,7 +107,9 @@ function Admin(props) {
 
     }, [])
 
-
+    const reorderArtistHandler = (data) => {
+        setArtistUsers(data)
+    }
 
     return (
         <>
@@ -162,6 +164,7 @@ function Admin(props) {
                     approveArtistUser = {approveArtistUser}
                     formNo = {formNo}
                     setFormNo={setFormNo} 
+                    reorderArtistHandler={reorderArtistHandler}
                     />
                 :pageName === "banners"?
                 <Banners history={props.history}/>

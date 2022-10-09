@@ -159,7 +159,9 @@ function Artists(props) {
             holder = {holder}
             artistUsers={props.artistUsers}
             deleteArtistUser={props.deleteArtistUser}
-             formChangeEvent={(e)=>formChangeEvent(e)}/>
+            formChangeEvent={(e)=>formChangeEvent(e)}
+            reorderArtistHandler={props.reorderArtistHandler}
+             />
         }
         </div>
     </div>

@@ -11,7 +11,7 @@ import {setAuthToken} from '../../AxiosFunctions/setCommonHeader';
 import SnackbarCustom from '../../components/snackBar/SnackbarCustom';
 import { updateMessage, updateOpen } from '../../redux/message'
 import loading from '../../assets/loading.gif'; 
-import { cityGetter, stateGetter } from '../../redux/StateCity'
+import { cityGetter, stateGetter, allCityGetter } from '../../redux/StateCity'
 import { decodeToken } from "react-jwt";
 
 const Logo = window.location.origin+"/assets/images/Frame.svg"
@@ -23,12 +23,12 @@ function Login() {
   const hash = (window.location.hash).split("/")
   const accountType = hash[1]
   const pageType = hash[2]
-  const city = cityGetter()
   const state = stateGetter()
 
   //sign in
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [city, setCity] = useState("")
   const [msg, setMsg] = useState("")
  
 //sign up
@@ -41,7 +41,13 @@ function Login() {
   // const [openSnackbar, closeSnackbar] = useSnackbar()
   
 
+  const getAllTheCity = async () => {
+    setCity(await cityGetter())
+  }
 
+  useEffect(()=>{
+    getAllTheCity()
+  },[])
 
   const onChangeHandlerEmail = (e) => {
     setEmail(e.target.value);
@@ -124,6 +130,10 @@ function Login() {
     }
   }
   
+  const searchCity = async (val) => {
+    console.log('Search',await allCityGetter(val))
+  }
+
   return (
     <div className='loginPage d-flex justify-content-center'>
       <img className='backAsset1' alt='' src={back}/>
@@ -177,7 +187,7 @@ function Login() {
                   label="City"
                   option={city}
                   value={cityUp}
-                  onChange={(e)=>setCityUp(e.target.value)}
+                  onChange={(e)=>searchCity(e.target.value)}
                   />
               </div>
               <div className='col-md-6'>

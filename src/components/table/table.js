@@ -13,14 +13,25 @@ export default function Table(props) {
     if("minHeight" in props){
         style["minHeight"] = props.minHeight
     }
-    return (
+    if(props.provided){
+        return(
+            <div className="myTable" style={style} {...props.provided.droppableProps} ref={props.provided.innerRef}>
+                <table>
+                    {props.children}
+                </table>
+            </div>
+        )
+
+    }
+    return(
         <div className="myTable" style={style}>
             <table>
                 {props.children}
             </table>
         </div>
-    );
+    )
 }
+
 export function THead(props) {
     return (
         <thead>
@@ -58,6 +69,13 @@ export function Th(props) {
     );
 }
 export function Tr(props) {
+    if(props.provided){
+        return (
+            <tr  {...props.provided.draggableProps} {...props.provided.dragHandleProps} ref={props.provided.innerRef} >
+                {props.children}
+            </tr>
+        );
+    }
     return (
         <tr>
             {props.children}

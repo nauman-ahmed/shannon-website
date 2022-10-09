@@ -30,6 +30,16 @@ export const getImageBaseURL = async (data) => {
 }
 
 
+export const getWorldData = async (data) => {
+    try {
+        const response = await axios.post(BASE_URL + 'worldData/getStateCity', data);
+        return response.data;
+    } catch (error) {
+        logouter();
+    }
+}
+
+
 export const getBipocBlack = async (data) => {
     try {
         const response = await axios.get(BASE_URL + 'bipoc/getAllBlack', data);
@@ -249,7 +259,23 @@ export const addCategory = async (data) => {
     }
 }
 
+export const orderArtist = async (data) => {
+    try {
+        const response = await axios.post(BASE_URL + 'artistUser/orderArtist', data);
+        return response.data;
+    } catch (error) {
+        logouter();
+    }
+}
 
+export const artistPortfolioOrder = async (data) => {
+    try {
+        const response = await axios.post(BASE_URL + 'artistImage/orderPortfolio', data);
+        return response.data;
+    } catch (error) {
+        logouter();
+    }
+}
 
 
 export const artistDataId = async (data) => {
@@ -322,7 +348,6 @@ export const LoginAdmin = async (data) => {
 
 export const changeArtistImageDetails = async (data) => {
     try {
-        console.log('AXIOS',data)
         const response = await axios.post(BASE_URL + 'artistImage/updateData', data);
         return response.data;
     } catch (error) {

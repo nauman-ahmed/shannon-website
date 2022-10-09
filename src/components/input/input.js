@@ -69,22 +69,7 @@ function Input(props) {
         :<label id={"input_"+(uniqueId)} className='myInput' htmlFor={state.type+"_"+(uniqueId)}>
             <div className={'label '+(active?"active":"")}>{state.label}</div>
             {state.type === "select"?
-            <select id={state.type+"_"+(uniqueId)} onFocus={()=>setActive(true)}  onBlur={()=>onBlurHandler()} value={value} type={state.type} name={state.name} onChange={(e)=>{onChangeHandler(e)}}>
-                <option value=""></option>
-                {state.option.length?
-                    state.option.map((opt,key) =>
-                        <option key={key} value={opt.value}>{opt.label}</option>
-                    )
-                :
-                    <>
-                        <option value="" style={{color: "red"}}>Please add option attr. with this formate:</option>
-                        <option value="" style={{color: "red"}}>{"["}</option>
-                        <option value="" style={{color: "red"}}>{'{label:"Option 1",value:"1"}'}</option>
-                        <option value="" style={{color: "red"}}>{'{label:"Option 2",value:"2"}'}</option>
-                        <option value="" style={{color: "red"}}>{"]"}</option>
-                    </>
-                }
-            </select>
+            <input id={state.type+"_"+(uniqueId)} onFocus={()=>setActive(true)}  onBlur={()=>onBlurHandler()} value={value} type={state.type} name={state.name} onChange={(e)=>{onChangeHandler(e)}}/>
             :<input id={state.type+"_"+(uniqueId)} onFocus={()=>setActive(true)}  onBlur={()=>onBlurHandler()} value={value} type={state.type} name={state.name} onChange={(e)=>{onChangeHandler(e)}}/>}
         </label>
   )

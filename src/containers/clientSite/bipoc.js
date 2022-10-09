@@ -22,19 +22,19 @@ function Bipoc() {
     })
   
     getBipocAsian().then((res)=>{
-      setAsianArtist(res.slice(13,23))
+      setAsianArtist(res)
     })
     
     getBipocLatino().then((res)=>{
-      setLatinoArtist(res.slice(25,40))
+      setLatinoArtist(res)
     })
     
     getBipocCentralAsia().then((res)=>{
-      setCentralAsianArtist(res.slice(41,54))
+      setCentralAsianArtist(res)
     })
     
     getBipocIndigenous().then((res)=>{
-      setIndegiousArtist(res.slice(54,64))
+      setIndegiousArtist(res)
     })
   
   },[])

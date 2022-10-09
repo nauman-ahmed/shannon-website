@@ -187,7 +187,6 @@ function Contact() {
   return (
     <>
     <h2 className="contacth2 h2">CONTACT</h2>
-    {/* {console.log('Artist',artistData,artistImages)} */}
     <div className="_3cols">
       <div id="w-node-_5057f7a3-8aa5-6180-66c7-59cfff8172a6-85f2d07d" className="div-block-9">
         <h2 className="contacth2 hide">CONTACT</h2>
@@ -200,7 +199,6 @@ function Contact() {
             {
               return (
                 <div style={{padding: "10px"}}>
-                  {/* {console.log('a',AddToCart.cartInfo[oneKey].id)} */}
                   <img src={artistImages[AddToCart.cartInfo[oneKey].id]} loading="lazy" alt=""/>
                     {/* <h5>{ AddToCart.cartInfo[oneKey].Name.toUpperCase()}</h5> */}
                     {/* <button onClick={()=>{removeKey( AddToCart.cartInfo[oneKey].id)}}>Remove Artist</button> */}
