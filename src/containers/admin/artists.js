@@ -78,7 +78,12 @@ function Artists(props) {
     }
 
     useEffect(()=>{
-
+        const curr = JSON.parse(localStorage.getItem("currentArtist"));
+        if(curr){
+            populateImageArtist(curr);
+            setSelectedArtist(curr);
+            setSelectedBio(curr.bio);
+        }
         // console.log('USE EFFECT',JSON.parse(localStorage.getItem('selectedImages')).selectedArtist)
         // setSelectedImages(JSON.parse(localStorage.getItem('selectedImages')).selectedImages)
         // setSelectedArtist(JSON.parse(localStorage.getItem('selectedImages')).selectedArtist)
@@ -94,9 +99,9 @@ function Artists(props) {
                 <h4>
                     {selectedArtist.firstname} {selectedArtist.lastname}
                 </h4>
-                <p className='text-center'>
+                {/* <p className='text-center'>
                     {selectedArtist.address}
-                </p>
+                </p> */}
                 <div className='col-6 p-0 subNavBar d-flex justify-content-between'>
                     <button onClick={()=>setFormNo2(0)} className={'btn'+(formNo2 === 0? " active": "")}>Bio</button>
                     <button onClick={()=>setFormNo2(1)} className={'btn'+(formNo2 === 1? " active": "")}>Image Submissions</button>

@@ -6,7 +6,7 @@ export const ArtistDataAPI = createAsyncThunk(
     'artist/ArtistDataAPI',
     async (payload) => {
         return axios
-        .post(BASE_URL+"artistUser/getAll")
+        .post(BASE_URL+"artistUser/getAllClient")
         .then((response) => response.data)
     } 
 )

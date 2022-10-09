@@ -38,15 +38,15 @@ function  Artists(props) {
               <div className="artistnametext-v2">{val.artistId.firstname} {val.artistId.lastname}</div>
             </div>
           </Link>
-          {ind===11 ?bannerImages.bannerData && 
+          {ind===11 ?bannerImages.bannerData.length > 0? 
             <Link id="w-node-a284be2a-4b91-3177-03eb-6614b24879ea-4bf2d022" to="#" className="banner _1 v2 w-inline-block">
             <div className="bannerletters _1 v2" style={{backgroundImage: "url(" + images +"/BIPOC.png)"}}></div>
             {/* <img id="w-node-a284be2a-4b91-3177-03eb-6614b24879ec-4bf2d022" alt="banner " src={IMAGE_ROUTE+bannerImages.bannerData[0].imagePath}  className="bannerletters _1 v2"/> */}
             <div id="w-node-a284be2a-4b91-3177-03eb-6614b24879ec-4bf2d022" className="bannerhome _1 v2"  style={{backgroundImage: "url(" + setImageRoute(bannerImages.bannerData[0].imagePath) + ")"}} ></div>
           </Link>         
           :
-          ""}
-          {ind===29 ?bannerImages.bannerData && 
+          "":""}
+          {ind===29 ?bannerImages.bannerData.length > 0? 
             <>
             <Link id="w-node-a284be2a-4b91-3177-03eb-6614b2487a29-4bf2d022" to="http://www.shannonassociates.com/kidshannon/" className="banner _2 v2 w-inline-block">
               <div className="bannerletters _2 v2"></div>
@@ -58,16 +58,16 @@ function  Artists(props) {
             </Link>
             </>
           :
-          ""}
-          {ind===41 ?bannerImages.bannerData && 
+          "":""}
+          {ind===41 ?bannerImages.bannerData.length > 0? 
             <Link id="w-node-a284be2a-4b91-3177-03eb-6614b24879ea-4bf2d022" to="#" className="banner _1 v2 w-inline-block">
               <div className="bannerletters _4 v2"></div>
               <div id="w-node-a284be2a-4b91-3177-03eb-6614b24879ec-4bf2d022" className="bannerhome _1 v2"  style={{backgroundImage: "url(" + setImageRoute(bannerImages.bannerData[3].imagePath) + ")"}} ></div>
             </Link>         
           :
-          ""
+          "":""
           }
-          {ind===53 ?bannerImages.bannerData && 
+          {ind===53 ?bannerImages.bannerData.length > 0? 
             <>
             <Link id="w-node-a284be2a-4b91-3177-03eb-6614b2487a29-4bf2d022" to="#" className="banner _2 v2 w-inline-block">
             <div className="bannerletters _5 v2"></div>
@@ -79,7 +79,7 @@ function  Artists(props) {
             </Link>
             </>
           :
-          ""}
+          "":""}
         </>
         )
         :

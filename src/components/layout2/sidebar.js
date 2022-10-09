@@ -35,12 +35,11 @@ function Sidebar(props) {
         <button onClick={()=>sidebar_display()} className='sideBar_menubtn d-md-none d-inline'>|||</button>
         <div className='sideBar d-md-inline d-none'>
             <div className='sidebar_header px-5 py-4'>
-                <div className='profilePic'></div>
                 <div className='profileDet'>
                     <h5>
-                        {adminDetails ? adminDetails.firstname : "...loading"}
+                        {adminDetails ? adminDetails.firstname.toUpperCase() : "...loading"}
                     </h5>
-                    <small>Administrator</small>
+                    <small>ADMINISTRATOR</small>
                 </div>
             </div>
             <div className='sidebar_body pl-5 pt-4'>

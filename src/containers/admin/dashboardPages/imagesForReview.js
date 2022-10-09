@@ -21,13 +21,14 @@ function ImagesForReview(props) {
         </THead>
         <TBody>
             {props.artistImages.map((item,key)=>( 
+                findStatusCount(item)>0?
             <Tr key={key}>
                 <Td>{item.artistId !== null?item.artistId.firstname:""}</Td>
                 <Td>{findStatusCount(item)}</Td>
                 <Td className="d-flex">
                     <button className='mx-1 myBtn active' style={{width: 130}} type="text">VIEW PROFILE</button>
                 </Td>
-            </Tr>
+            </Tr>:""
             )
             ) 
             }

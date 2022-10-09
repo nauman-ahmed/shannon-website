@@ -96,8 +96,14 @@ function Admin(props) {
         }
     }
 
-    const contactViewMore = (id) => {
-
+    const getContantCount = (contacts) => {
+        let count=0;
+        contacts.forEach((item,key)=>{
+            if(item.status === 0 ){
+                count++;
+            }
+        })
+        return count;
     }
     
     useEffect(() => {
@@ -122,7 +128,7 @@ function Admin(props) {
                 <Dashboard 
                 history={props.history}
                 //Counts And small Stuff
-                contactCount = {Contacts !== undefined ? Contacts.length:0}
+                contactCount = {Contacts !== undefined ? getContantCount(Contacts):0}
                 reviewImagesCount = {reviewImagesCount}
                 reviewArtistCount = {reviewArtistCount}
                 //All Mandatory Data
@@ -130,7 +136,7 @@ function Admin(props) {
                 artistImages = {artistImages !== undefined ? artistImages:[]}
                 artistUsers = {artistUsers !== undefined ? artistUsers:[]}
                 //functions for contact
-                contactViewMore = {contactViewMore}
+                // contactViewMore = {contactViewMore}
                 //populate artist users
                 populateArtistUsers={populateArtistUsers}
                 //artist functionalities

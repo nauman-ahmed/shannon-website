@@ -21,6 +21,13 @@ function CFSViewMore(props) {
             });
         }
     }
+    const extractArtist=(item)=>{
+        let combine = "";
+        item.artistId.forEach((artist,key)=>{
+            combine += artist.lastname+" "+artist.firstname+",";
+        })
+        return combine;
+    }
     useEffect(() => {
         let singleContact = findSingleContact(props.contacts,props.contactId);
         setSingleContact(singleContact);
@@ -58,6 +65,10 @@ function CFSViewMore(props) {
                 <label className='col-md-6 d-flex'>
                     <span className='py-2' style={{ minWidth: 70 }}>State:</span>
                     <input className='textField' value={singleContact.state} readOnly/>
+                </label>
+                <label className='col-md-12 d-flex'>
+                    <span className='py-2' style={{ minWidth: 100 }}>Intrested In:</span>
+                    <input className='textField' value={extractArtist(singleContact)} readOnly/>
                 </label>
                 <label className='col-md-6 d-flex'>
                     <span className='py-2' style={{ minWidth: 150 }}>How did you find us?:</span>
