@@ -1,6 +1,9 @@
 import React from 'react'
 import Table, { TBody, Td, Th, THead, Tr } from '../../../components/table/table'
+import { useHistory } from 'react-router-dom'
+
 function ImagesForReview(props) {
+    const historyCurrent = useHistory()
     const findStatusCount = (item)=>{
         var count = 0;
         item.mainImage.forEach((item,key)=>{
@@ -10,6 +13,15 @@ function ImagesForReview(props) {
         })
         return count;
     }
+
+    const redirectToArtistSubmission = (data) => {
+        console.log('redirectToArtistSubmission',data)   
+        historyCurrent.push({
+            pathname:"/admin/artists",
+            state:data
+        })
+    }
+
   return (
     <div className='col'>
     <Table height="calc(100vh - 350px)">
@@ -26,7 +38,11 @@ function ImagesForReview(props) {
                 <Td>{item.artistId !== null?item.artistId.firstname:""}</Td>
                 <Td>{findStatusCount(item)}</Td>
                 <Td className="d-flex">
-                    <button className='mx-1 myBtn active' style={{width: 130}} type="text">VIEW PROFILE</button>
+                    <button 
+                        className='mx-1 myBtn active' 
+                        style={{width: 130}} type="text"
+                        onClick={()=>redirectToArtistSubmission(item.artistId)}
+                        >VIEW PROFILE</button>
                 </Td>
             </Tr>:""
             )

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom'
 import { artistDataId, updateArtistBio, updateArtistData } from '../../AxiosFunctions/Axiosfunctionality';
 import Input from '../../components/input/input'
 import { updateMessage, updateOpen } from '../../redux/message';
@@ -13,6 +14,9 @@ import Portfolio from './artistsPages/portfolio';
 import loading from './../../assets/loading.gif';
 
 function Artists(props) {
+
+    const historyCurrent = useHistory()
+
     const dispatch = useDispatch();
     const [formNo2, setFormNo2] = useState(0)
     const [search, setSearch] = useState("")
@@ -33,14 +37,16 @@ function Artists(props) {
             }
         })
     }
-    const formChangeEvent = (data) => {
+    const formChangeEvent = (data,state=false) => {
         props.setFormNo(1)
-        setFormNo2(0)
+        if(state){
+            setFormNo2(1)
+        }else{
+            setFormNo2(0)
+        }
         populateImageArtist(data);
         setSelectedArtist(data);
         setSelectedBio(data.bio);
-        
-
     }
     const updateArtistBioData = (e,data)=>{
         setHolder(true)
@@ -78,6 +84,12 @@ function Artists(props) {
     }
 
     useEffect(()=>{
+
+        console.log('History',historyCurrent.location)
+        if(historyCurrent.location.state){
+            formChangeEvent(historyCurrent.location.state,true)           
+            return
+        }
         const curr = JSON.parse(localStorage.getItem("currentArtist"));
         if(curr){
             populateImageArtist(curr);
