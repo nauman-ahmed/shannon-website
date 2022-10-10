@@ -15,7 +15,6 @@ function ImagesForReview(props) {
     }
 
     const redirectToArtistSubmission = (data) => {
-        console.log('redirectToArtistSubmission',data)   
         historyCurrent.push({
             pathname:"/admin/artists",
             state:data
@@ -35,7 +34,7 @@ function ImagesForReview(props) {
             {props.artistImages.map((item,key)=>( 
                 findStatusCount(item)>0?
             <Tr key={key}>
-                <Td>{item.artistId !== null?item.artistId.firstname:""}</Td>
+                <Td>{item.artistId !== null?item.artistId.lastname+" "+item.artistId.firstname:""}</Td>
                 <Td>{findStatusCount(item)}</Td>
                 <Td className="d-flex">
                     <button 

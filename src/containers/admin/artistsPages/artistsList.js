@@ -49,7 +49,7 @@ function ArtistsList(props) {
                     {props.artistUsers.length>0    ?  props.search !== "" ? props.tempArtist.map((item,key)=>
                     (
                     <Tr key={key}>
-                        <Td>{item.firstname}</Td>
+                        <Td>{item.lastname} {item.firstname}</Td>
                         <Td className={item.status ===1?"text-success":"text-danger"}>{item.status ===1?"Active":"Inactive"}</Td>
                         <Td className="d-flex">
                             <button onClick={()=>props.formChangeEvent(item)} className='mx-1 myBtn' type="text">EDIT</button>
@@ -62,7 +62,7 @@ function ArtistsList(props) {
                         <Draggable key={item._id} draggableId={item._id} index={key}>
                         {(provided) => (
                             <Tr key={key} provided={provided}>
-                                <Td>{item.firstname}</Td>
+                                <Td>{item.lastname} {item.firstname}</Td>
                                 {/* <Td><p style={item.status ===1?{color:"green"}:{color:"red"}}>{item.status ===1?"Active":"Inactive"}</p> </Td> */}
                                 <Td className={item.status ===1?"text-success":"text-danger"}>{item.status ===1?"Active":"Inactive"}</Td>
                                 <Td className="d-flex">

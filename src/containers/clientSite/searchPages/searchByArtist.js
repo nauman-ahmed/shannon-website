@@ -25,6 +25,7 @@ function SearchByArtist(props) {
   const [data1,setData1] =  useState(null)
   const [dataViewed,setDataViewed] =  useState({})
   const [similarData,setSimilarData] =  useState({})
+
   const addToCartArtist=(id,firstname)=>{
     
     dispatch(addCart({key:id,data:{id:id,Name:firstname}}))
@@ -87,6 +88,7 @@ function SearchByArtist(props) {
               else{
                   dispatch(ArtistImageSliceData({})).then((res)=>{
                       if(res.payload !== undefined){
+                        console.log('USE EFFECT',res.payload)
                         let listData = [];
                         let tempData = {};
                         let subListData = [];
@@ -147,6 +149,7 @@ function SearchByArtist(props) {
 
     return (
       <div className="row" style={{maxWidth:"100%"}}>
+        {console.log('RENDEER',data1)}
         {data1 !== null ?
           <>
           <div className="col-md-5">

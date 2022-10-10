@@ -48,7 +48,6 @@ function Image_uploading(props) {
             while(n--){
                 u8arr[n] = bstr.charCodeAt(n);
             }
-            let temp = new File([u8arr], {type:mime})
             setTemp("data:image/jpeg;base64,"+res.data)
     
         }
@@ -171,12 +170,16 @@ function Image_uploading(props) {
         imageCreate.append('title',artistImageTemp.title)
         imageCreate.append('artistImage',artistImageTemp["1"])
         imageCreate.append('artistImage',artistImageTemp["2"])
-        imageCreate.append('EDIT',"True")
         imageCreate.append('mainId',props.images._id)
-
+ 
         changeArtistImageDetails(imageCreate).then((res)=>{
-            dispatch(updateOpen(true));
-            dispatch(updateMessage(res.msg));
+            if(res == 'successfully updated'){
+                dispatch(updateOpen(true));
+                dispatch(updateMessage(res));
+            }else{
+                dispatch(updateOpen(true))
+                dispatch(updateMessage("Error Occured"))
+            }
             history.push('/admin/artists');
         })
         setIsPopupShow(true)

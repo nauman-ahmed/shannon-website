@@ -6,6 +6,7 @@ import "./artist.css"
 import BackArrow from "../../assets/svgs/backArrow.svg"
 import { useDispatch,useSelector } from 'react-redux'
 import ReactCrop from 'react-image-crop'
+import { getImageBaseURL, changeArtistImageDetails} from '../../AxiosFunctions/Axiosfunctionality'
 import { artistImageCreateApi } from '../../redux/artistImageSlice'
 import { decodeToken } from "react-jwt";
 import { useHistory } from 'react-router-dom'
@@ -48,16 +49,34 @@ function Image_uploading() {
     const { keywordReducer,artistReducer } = useSelector( state => state )
     const [artistImageDetails,setArtistImageDetails] = useState(null)
 
+    
+    const getBase64FromUrl = async (dataurl) => {
+        if(dataurl){
+            let res = await getImageBaseURL({url:dataurl})
+            // var arr = res.data,
+            //     mime = "image/jpeg",
+            //     bstr = atob(arr), 
+            //     n = bstr.length, 
+            //     u8arr = new Uint8Array(n);
+                
+            // while(n--){
+            //     u8arr[n] = bstr.charCodeAt(n);
+            // }
+            let artistImageDetailsTemp = []
+            artistImageDetailsTemp.push({
+                img: "data:image/jpeg;base64,"+res.data,
+                title: "",
+            })
+            setArtistImageDetails(artistImageDetailsTemp)
+            // setTemp("data:image/jpeg;base64,"+res.data)
+    
+        }
+    } 
 
     useEffect(()=>{
 
         try{
-            let artistImageDetailsTemp = []
-            artistImageDetailsTemp.push({
-                img: artistReducer.uploadedImage,
-                title: "",
-            })
-            setArtistImageDetails(artistImageDetailsTemp)
+            getBase64FromUrl(artistReducer.uploadedImage.imageFile)
             paginationHandler(0)   
 
             let keywordTemp = []
@@ -274,33 +293,45 @@ function Image_uploading() {
         try{
             let storageData = localStorage.getItem("authorization")
             let details = decodeToken(storageData)
-    
-            if(artistImageDetails[3].keywordList.length > 8 || artistImageDetails[0].title ==""){
-                let message1 = artistImageDetails[3].keywordList.length > 8 ? "Keywords Must be 8 or Less" : null
-                let message2 = artistImageDetails[0].title =="" ? "Image Title Should not be Empty" : null
-                let message = message1 == null ? message2 : message2 == null ? message1 : message1 + " and " + message2
+            if(artistImageDetails[3] == undefined){
                 dispatch(updateOpen(true))
-                dispatch(updateMessage(message))
+                dispatch(updateMessage("Select Atleast One Keyword"))
+            }
+            if(artistImageDetails[3].keywordList.length == 0){
+                dispatch(updateOpen(true))
+                dispatch(updateMessage("Select Atleast One Keyword"))
+            }
+            if(artistImageDetails[3].keywordList.length > 8 || artistImageDetails[0].title ==""){
+                    let message1 = artistImageDetails[3].keywordList.length > 8 ? "Keywords Must be 8 or Less" : null
+                    let message2 = artistImageDetails[0].title =="" ? "Image Title Should not be Empty" : null
+                    let message = message1 == null ? message2 : message2 == null ? message1 : message1 + " and " + message2
+                    dispatch(updateOpen(true))
+                    dispatch(updateMessage(message))
             }else{
 
                 const imageCreate = new FormData()
                 imageCreate.append('k_id',artistImageDetails[3].keywordList)
                 imageCreate.append('_id',details._id)
+                imageCreate.append('mainId',artistReducer.uploadedImage._id)
                 imageCreate.append('title',artistImageDetails[0].title)
                 imageCreate.append('artistDir',details.artistDir)
                 imageCreate.append('artistImage_2',artistImageDetails[1].name)
                 imageCreate.append('artistImage_3',artistImageDetails[2].name)
-                imageCreate.append('artistImage',artistImageDetails[0].img)
                 imageCreate.append('artistImage',artistImageDetails[1].img)
                 imageCreate.append('artistImage',artistImageDetails[2].img)
                 setShowLoader(true)
-                dispatch(artistImageCreateApi(imageCreate)).then(res => {
-                    if(res.payload.msg == 'Add Artist Image'){
+                changeArtistImageDetails(imageCreate).then(res => {
+                    if(res == 'successfully updated'){
                         setShowLoader(false)
                         setIsPopupShow(true)
+                    }else{
+                        dispatch(updateOpen(true))
+                        dispatch(updateMessage("Error Occured"))
+                        history.push('/artist')
                     }
                 })
             }
+
         }
         catch(e){
             dispatch(updateOpen(true))
@@ -331,7 +362,7 @@ function Image_uploading() {
                     <div className='px-5 row m-0'>
                         <div className='col-xl-9 col-lg-8 d-flex justify-content-center'>
                         {artistImageDetails !== null && pageNo === 0 ? 
-                           <img alt='' src={URL.createObjectURL(artistImageDetails[0].img)}/>
+                           <img alt='' src={artistImageDetails[0].img}/>
                            : null
                         }
                         {artistImageDetails !== null ? 
@@ -345,7 +376,7 @@ function Image_uploading() {
                                     >
                                     <img
                                         alt="Crop me"
-                                        src={URL.createObjectURL(artistImageDetails[0].img)}
+                                        src={artistImageDetails[0].img}
                                         onLoad={onImageLoad}
                                     />
                                 </ReactCrop>

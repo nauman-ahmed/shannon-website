@@ -10,7 +10,6 @@ const images = window.location.origin + "/assets/images"
 
 function Divisions(props) {
 
-
   const dispatch = useDispatch();
   const  {artistImageKeywordDataSlice} = useSelector(state=>state);
   function randomIntFromInterval(min, max) { // min and max included 
@@ -25,6 +24,7 @@ function Divisions(props) {
   return (
     <div className="_2cols">
       {props.children}
+      {console.log(artistImageKeywordDataSlice)}
       <div id="w-node-_6f42e407-456f-5b2f-82e4-417072db3669-84f2d081" className="divisionscolumn">
         <div className="form-block-2 divisions w-form">
           <form id="email-form" name="email-form" data-name="Email Form" method="get" className="form-2">
@@ -56,7 +56,7 @@ function Divisions(props) {
                     {key1<=7?(<>
                       <Link key={key1} id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081" to="#" className="artistcard bipoc w-inline-block"><img src={String(item1.mainImage[0].subImage[0].path)} loading="lazy" alt="" className="image" />
                         <div className="artistnamediv">
-                          <div className="artistnametext">{item1.artistId.firstname}</div>
+                          <div className="artistnametext">{item1.artistId.lastname} {item1.artistId.firstname}</div>
                         </div>
                       </Link>
                     </>):(<></>)}
@@ -85,7 +85,7 @@ function Divisions(props) {
                     {key1<=7?(<>
                       <Link key={key1} id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081" to="#" className="artistcard bipoc w-inline-block"><img src={String(item1.mainImage[0].path)} loading="lazy" alt="" className="image" />
                         <div className="artistnamediv">
-                          <div className="artistnametext">{item1.artistId.firstname}</div>
+                          <div className="artistnametext">{item1.artistId.lastname} {item1.artistId.firstname}</div>
                         </div>
                       </Link>
                     </>):(<></>)}

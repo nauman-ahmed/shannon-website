@@ -83,7 +83,7 @@ function Banners(props) {
         </label>
     </div>
     <div className='d-flex flex-column scrollerOn pt-2 mx-5'>
-      <p className='mb-3'><b>BIPOC</b> ({banners[0].aspectRatio.width+"X"+banners[0].aspectRatio.height})</p>
+      <p className='mb-3'><b>BIPOC</b> ({banners.length>0?banners[0].aspectRatio.width+"X"+banners[0].aspectRatio.height:null})</p>
       <div className='d-flex mb-4'>
         <div className='artistcard'>
             <img alt='first' src={(banners.length>0?banners[0].imagePath:"")} className="image"/>
@@ -91,7 +91,7 @@ function Banners(props) {
         <button onClick={onBtnClick1} className='myBtn align-self-end m-3'>UPLOAD</button>
         <input ref={inputFileRef1} hidden onChange={(e)=>{uploadImage(e,banners.length>0?banners[0]._id:"")}} type="file"/>
       </div>
-      <p className='mb-3'><b>KIDSHANNON</b> ({banners[1].aspectRatio.width+"X"+banners[1].aspectRatio.height})</p>
+      <p className='mb-3'><b>KIDSHANNON</b> ({banners.length>0?banners[1].aspectRatio.width+"X"+banners[1].aspectRatio.height:null})</p>
       <div className='d-flex mb-4'>
         <div className='artistcard half'>
             <img alt='second' src={(banners.length>0?banners[1].imagePath:"")} className="image"/>
@@ -99,7 +99,7 @@ function Banners(props) {
         <button onClick={onBtnClick2} className='myBtn align-self-end m-3'>UPLOAD</button>
         <input ref={inputFileRef2} hidden onChange={(e)=>{uploadImage(e,banners.length>0?banners[1]._id:"")}} type="file"/>
       </div>
-      <p className='mb-3'><b>MEDICAL</b> ({banners[2].aspectRatio.width+"X"+banners[2].aspectRatio.height})</p>
+      <p className='mb-3'><b>MEDICAL</b> ({banners.length>0?banners[2].aspectRatio.width+"X"+banners[2].aspectRatio.height:null})</p>
       <div className='d-flex mb-4'>
         <div className='artistcard'>
             <img alt='third' src={(banners.length>0?banners[2].imagePath:"")} className="image"/>
@@ -107,7 +107,7 @@ function Banners(props) {
         <button onClick={onBtnClick3} className='myBtn align-self-end m-3'>UPLOAD</button>
         <input ref={inputFileRef3} hidden onChange={(e)=>{uploadImage(e,banners.length>0?banners[2]._id:"")}} type="file"/>
       </div>
-      <p className='mb-3'><b>NEWS</b> (({banners[3].aspectRatio.width+"X"+banners[3].aspectRatio.height}))</p>
+      <p className='mb-3'><b>NEWS</b> (({banners.length>0?banners[3].aspectRatio.width+"X"+banners[3].aspectRatio.height:null}))</p>
       <div className='d-flex mb-4'>
         <div className='artistcard half'>
             <img alt='forth' src={(banners.length>0?banners[3].imagePath:"")} className="image"/>
@@ -115,7 +115,7 @@ function Banners(props) {
         <button onClick={onBtnClick4} className='myBtn align-self-end m-3'>UPLOAD</button>
         <input ref={inputFileRef4} hidden onChange={(e)=>{uploadImage(e,banners.length>0?banners[3]._id:"")}} type="file"/>
       </div>
-      <p className='mb-3'><b>MOTION</b> (({banners[4].aspectRatio.width+"X"+banners[4].aspectRatio.height}))</p>
+      <p className='mb-3'><b>MOTION</b> (({banners.length>0?banners[4].aspectRatio.width+"X"+banners[4].aspectRatio.height:null}))</p>
       <div className='d-flex mb-4'>
         <div className='artistcard half'>
             <img alt='forth' src={(banners.length>0?banners[4].imagePath:"")} className="image"/>
@@ -123,7 +123,7 @@ function Banners(props) {
         <button onClick={onBtnClick5} className='myBtn align-self-end m-3'>UPLOAD</button>
         <input ref={inputFileRef5} hidden onChange={(e)=>{uploadImage(e,banners.length>0?banners[4]._id:"")}} type="file"/>
       </div>
-      <p className='mb-3'><b>ABOUT</b> (({banners[5].aspectRatio.width+"X"+banners[5].aspectRatio.height}))</p>
+      <p className='mb-3'><b>ABOUT</b> (({banners.length>0?banners[5].aspectRatio.width+"X"+banners[5].aspectRatio.height:null}))</p>
       <div className='d-flex mb-4'>
         <div className='artistcard half'>
             <img alt='forth' src={(banners.length>0?banners[5].imagePath:"")} className="image"/>

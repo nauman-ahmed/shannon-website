@@ -39,8 +39,13 @@ function Input(props) {
 
     const onChangeHandler = (e) => {
         if("onChange" in props){
-            setValue(e.target.value)
-            props.onChange(e)
+            if(e.target){
+                setValue(e.target.value)
+                props.onChange(e)
+            }
+            else{
+                props.onChange(e)
+            }
         }else{
             console.error("please add onChange attr. to get event")
         }
@@ -69,7 +74,16 @@ function Input(props) {
         :<label id={"input_"+(uniqueId)} className='myInput' htmlFor={state.type+"_"+(uniqueId)}>
             <div className={'label '+(active?"active":"")}>{state.label}</div>
             {state.type === "select"?
-            <input id={state.type+"_"+(uniqueId)} onFocus={()=>setActive(true)}  onBlur={()=>onBlurHandler()} value={value} type={state.type} name={state.name} onChange={(e)=>{onChangeHandler(e)}}/>
+                <>
+                    <input id={state.type+"_"+(uniqueId)} onFocus={()=>setActive(true)}  onBlur={()=>onBlurHandler()} value={value} type={state.type} name={state.name} onChange={(e)=>{onChangeHandler(e)}}/>
+                    {props.searchList ?
+                        props.searchList.map((val,ind)=>
+                        <a onClick={()=>{onChangeHandler(val.value)}}>{val.value}</a>
+                        )
+                        :
+                        <a>No Item to Show</a>
+                    }
+                </>
             :<input id={state.type+"_"+(uniqueId)} onFocus={()=>setActive(true)}  onBlur={()=>onBlurHandler()} value={value} type={state.type} name={state.name} onChange={(e)=>{onChangeHandler(e)}}/>}
         </label>
   )

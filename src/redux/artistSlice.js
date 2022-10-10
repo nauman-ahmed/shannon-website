@@ -26,21 +26,32 @@ const artistImageSlice = createSlice({
     name: "artistImage",
     initialState,
     reducers: {
-        storeUploadedImage: (state, param) => {
+        updateUploadedImage: (state, param) => {
             state = {...initialState}
-            state["uploadedImage"] = param.payload.value
+            state["uploadedImage"] = param.payload
+            return state
+        },
+        storeUploadedImages: (state, param) => {
+            state = {...initialState}
+            if(state.savedImages){
+                state.savedImages = [...state.savedImages,param.payload]
+            }else{
+                state.savedImages = param.payload
+            }
             return state
         },
     },
     extraReducers: (builder) => {
         builder.addCase(artistImageDataApi.fulfilled, (action,state) => {
-            state = state.payload
-            return state
+            if(state.payload !== 'ERROR'){
+                state.savedImages = state.payload[0].mainImage
+                return state
+            }
         })
     },
 });
 
 
 const { actions, reducer } = artistImageSlice
-export const { storeUploadedImage } = actions;
+export const { storeUploadedImages,updateUploadedImage } = actions;
 export default reducer;

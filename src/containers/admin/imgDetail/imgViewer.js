@@ -6,12 +6,16 @@ import { changeArtistImageStatus, getByImageId, IMAGE_ROUTE } from '../../../Axi
 import { updateMessage, updateOpen } from '../../../redux/message'
 import Admin_image from '../Image_uploading'
 import loading from './../../../assets/loading.gif'; 
+import MyPopup from '../../../components/myPopup/myPopup'
 
 
 function ImgViewer(props) {
   const dispatch = useDispatch();
+
   let {imageId} = useParams()
   let history = useHistory()
+
+  const [isPopupShow, setIsPopupShow] = useState(false)
   const [imageData,setImageData]  = useState({});
   const [holder,setHolder] = useState(false);
   const getArtistImage = () =>{
@@ -24,6 +28,10 @@ function ImgViewer(props) {
     })
   }
   const changeStatus = (e)=>{
+    if(imageData.subImage.length === 0){
+      setIsPopupShow(true)
+      return
+    }
     let params = {
       _id:imageId
     }
@@ -68,18 +76,37 @@ function ImgViewer(props) {
             <h5 className='mb-4'>Thumbnails</h5>
           </div>
           <div className='col-md-8'>
+            {Object.keys(imageData).length !== 0 &&
+            imageData.subImage.length > 0 ? 
             <img alt='' src={String(Object.keys(imageData).length > 0 ? imageData.subImage[0].path:"")} />
+            :null
+            }
           </div>
           <div className='col-md-4'>
+            {Object.keys(imageData).length !== 0 && imageData.subImage.length > 0 ?
             <img alt='' src={String(Object.keys(imageData).length > 0 ? imageData.subImage[1].path:"")} />
+            :null
+            }
           </div>
         </div>
       </div>
       <div className='col-md-6'>
         <h5 className='mb-4'>Keywords</h5>
-          {Object.keys(imageData).length > 0 ? imageData.keywordID.map((item,key)=>(<p key={key}>{item.keyword}</p>)):""}
+        {Object.keys(imageData).length !== 0 && imageData.keywordID.length > 0 ?
+          Object.keys(imageData).length > 0 ? imageData.keywordID.map((item,key)=>(<p key={key}>{item.keyword}</p>)):""
+          : 
+          null
+        }
       </div>
     </div>
+    {isPopupShow ?
+      <MyPopup BackClose onClose={()=>{setIsPopupShow(false)}}>
+          <div className='mx-5 my-4'>
+              You Dont have Sub Images
+          </div>
+      </MyPopup>
+    :null
+    }
   </div>
   )
 }

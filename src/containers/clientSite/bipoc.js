@@ -18,7 +18,7 @@ function Bipoc() {
   useEffect(()=>{
     
     getBipocBlack().then((res)=>{
-      setBlackArtist(res.slice(0,12))
+      setBlackArtist(res)
     })
   
     getBipocAsian().then((res)=>{
@@ -78,8 +78,10 @@ function Bipoc() {
             <div className='slider w-slider my-3'>
               <Slider disableAutoPlay controllEnabled="outside-dark">
                 {blackArtist.map((val,ind)=>
-                  <SliderItem label={val.artistData.firstname +" " + val.artistData.lastname} col="col-lg-4 col-md-6 col-12 px-md-4" src={val.ImageData[0].subImage[1].path}/>
-                )}
+                  val.ImageData.length > 0 ? 
+                  <SliderItem label={val.artistData.lastname +" " + val.artistData.firstname} col="col-lg-4 col-md-6 col-12 px-md-4" src={val.ImageData[0].subImage[1].path}/>
+                  :null
+                  )}
               </Slider>
             </div>
             :
@@ -112,7 +114,9 @@ function Bipoc() {
             <div className='slider w-slider my-3'>
               <Slider disableAutoPlay controllEnabled="outside-dark">
                 {asianArtist.map((val,ind)=>
-                  <SliderItem label={val.artistData.firstname +" " + val.artistData.lastname} col="col-lg-4 col-md-6 col-12 px-md-4" src={val.ImageData[0].subImage[1].path}/>
+                  val.ImageData.length > 0 ? 
+                  <SliderItem label={val.artistData.lastname +" " + val.artistData.firstname} col="col-lg-4 col-md-6 col-12 px-md-4" src={val.ImageData[0].subImage[1].path}/>
+                  :null
                 )}
               </Slider>
             </div>
@@ -144,7 +148,9 @@ function Bipoc() {
             <div className='slider w-slider my-3'>
               <Slider disableAutoPlay controllEnabled="outside-dark">
                 {latinoArtist.map((val,ind)=>
-                  <SliderItem label={val.artistData.firstname +" " + val.artistData.lastname} col="col-lg-4 col-md-6 col-12 px-md-4" src={val.ImageData[0].subImage[1].path}/>
+                  val.ImageData.length > 0 ? 
+                  <SliderItem label={val.artistData.lastname +" " + val.artistData.firstname} col="col-lg-4 col-md-6 col-12 px-md-4" src={val.ImageData[0].subImage[1].path}/>
+                  :null
                 )}
               </Slider>
             </div>
@@ -176,7 +182,9 @@ function Bipoc() {
             <div className='slider w-slider my-3'>
               <Slider disableAutoPlay controllEnabled="outside-dark">
                 {centralAsianArtist.map((val,ind)=>
-                  <SliderItem label={val.artistData.firstname +" " + val.artistData.lastname} col="col-lg-4 col-md-6 col-12 px-md-4" src={val.ImageData[0].subImage[1].path}/>
+                  val.ImageData.length > 0 ? 
+                  <SliderItem label={val.artistData.lastname +" " + val.artistData.firstname} col="col-lg-4 col-md-6 col-12 px-md-4" src={val.ImageData[0].subImage[1].path}/>
+                  :null
                 )}
               </Slider>
             </div>
@@ -208,7 +216,9 @@ function Bipoc() {
             <div className='slider w-slider my-3'>
               <Slider disableAutoPlay controllEnabled="outside-dark">
                 {indegiousArtist.map((val,ind)=>
-                  <SliderItem label={val.artistData.firstname +" " + val.artistData.lastname} col="col-lg-4 col-md-6 col-12 px-md-4" src={val.ImageData[0].subImage[1].path}/>
+                  val.ImageData.length > 0 ? 
+                  <SliderItem label={val.artistData.lastname +" " + val.artistData.firstname} col="col-lg-4 col-md-6 col-12 px-md-4" src={val.ImageData[0].subImage[1].path}/>
+                  :null
                 )}
               </Slider>
             </div>

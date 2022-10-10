@@ -3,7 +3,7 @@ import axios from 'axios'
 import { BASE_URL } from '../AxiosFunctions/Axiosfunctionality';
 
 export const artistKeyword = createAsyncThunk(
-    'artist/ArtistKeywordData',
+    'artist/ArtistKeywordData', 
     async (payload) => {
         return axios
         .post(BASE_URL+"artistImage/getAllKeyword")

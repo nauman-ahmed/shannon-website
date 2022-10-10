@@ -100,7 +100,6 @@ function App() {
             // component={Index}
             render={(props) => 
               {
-                console.log(props)
                 if (props.match.params.pages !== "admin" || props.match.params.pages !== "artist") {
                   return <Index/>
                 }

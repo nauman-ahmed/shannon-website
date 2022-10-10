@@ -35,7 +35,7 @@ function  Artists(props) {
           <Link id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022" data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7" to={"/artists/"+val.artistId.firstname} className="artistcard w-inline-block">
             <img src={String(val.mainImage[0].subImage[0].path)} loading="lazy" alt="" className="image"/>
             <div className="artistnamediv">
-              <div className="artistnametext-v2">{val.artistId.firstname} {val.artistId.lastname}</div>
+              <div className="artistnametext-v2">{val.artistId.lastname} {val.artistId.firstname}</div>
             </div>
           </Link>
           {ind===11 ?bannerImages.bannerData.length > 0? 
@@ -87,7 +87,7 @@ function  Artists(props) {
           <Link id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022" data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7" to={"/artists/"+val.artistId.firstname} className="artistcard w-inline-block">
             <img src={String(val.mainImage[0].subImage[0].path)} loading="lazy" alt="" className="image"/>
             <div className="artistnamediv">
-              <div className="artistnametext-v2">{val.artistId.firstname} {val.artistId.lastname}</div>
+              <div className="artistnametext-v2">{val.artistId.lastname} {val.artistId.firstname}</div>
             </div>
           </Link>
         ))

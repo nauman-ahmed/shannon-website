@@ -277,6 +277,14 @@ export const artistPortfolioOrder = async (data) => {
     }
 }
 
+export const artistImageCreate = async (data) => {
+    try {
+        const response = await axios.post(BASE_URL + 'artistImage/CreateAll', data);
+        return response.data;
+    } catch (error) {
+        logouter();
+    }
+}
 
 export const artistDataId = async (data) => {
     try {
@@ -285,7 +293,7 @@ export const artistDataId = async (data) => {
     } catch (error) {
         logouter();
     }
-}
+} 
 
 export const updateArtistBio = async (data) => {
     try {
@@ -357,6 +365,7 @@ export const changeArtistImageDetails = async (data) => {
 
 export const getAllBanner = async (data) => {
     try {
+        console.log('AXIOS',data)
         const response = await axios.post(BASE_URL + 'banner/getAll', data);
         return response.data;
     } catch (error) {
@@ -380,8 +389,3 @@ export const updateBannerImage = async (data) => {
         logouter();
     }
 }
-
-
-//client Side
-
-

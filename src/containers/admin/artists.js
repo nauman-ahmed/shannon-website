@@ -85,7 +85,6 @@ function Artists(props) {
 
     useEffect(()=>{
 
-        console.log('History',historyCurrent.location)
         if(historyCurrent.location.state){
             formChangeEvent(historyCurrent.location.state,true)           
             return
@@ -109,7 +108,7 @@ function Artists(props) {
             props.formNo === 1?
             <>
                 <h4>
-                    {selectedArtist.firstname} {selectedArtist.lastname}
+                    {selectedArtist.lastname} {selectedArtist.firstname}
                 </h4>
                 {/* <p className='text-center'>
                     {selectedArtist.address}

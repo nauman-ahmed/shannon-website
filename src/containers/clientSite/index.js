@@ -47,7 +47,7 @@ function Index(props) {
         setTempArtist( artistImageDataSlice !== undefined ?artistImageDataSlice.artistImages.filter(function (element) {
             return element.artistId.firstname.toLowerCase().includes(searchvalue);
         }):[]);
-
+ 
     }
     const updateTempDivision = (e)=>{
         setSearchDivision(e.target.value);

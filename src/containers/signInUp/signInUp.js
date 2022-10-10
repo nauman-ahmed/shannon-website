@@ -11,7 +11,7 @@ import {setAuthToken} from '../../AxiosFunctions/setCommonHeader';
 import SnackbarCustom from '../../components/snackBar/SnackbarCustom';
 import { updateMessage, updateOpen } from '../../redux/message'
 import loading from '../../assets/loading.gif'; 
-import { cityGetter, stateGetter, allCityGetter } from '../../redux/StateCity'
+import { cityGetter, stateGetter, allCityGetter,allStateGetter } from '../../redux/StateCity'
 import { decodeToken } from "react-jwt";
 
 const Logo = window.location.origin+"/assets/images/Frame.svg"
@@ -30,6 +30,8 @@ function Login() {
   const [password, setPassword] = useState("")
   const [city, setCity] = useState("")
   const [msg, setMsg] = useState("")
+  const [searchListCity, setSearchListCity] = useState([])
+  const [searchListState, setSearchListState] = useState([])
  
 //sign up
   const [name,setName] = useState("");
@@ -90,7 +92,6 @@ function Login() {
     }else{
       // for artist login
       if(pageType === "signin"){
-        // for admin login
         setShowLoader(false);
         dispatch(userLoginApi({
           email:email,
@@ -113,25 +114,49 @@ function Login() {
           city:cityUp,
           address:address
         }
-        if(emailUp == " " || name == " " || lastName == " "){
-          dispatch(updateOpen(true))
-          dispatch(updateMessage("Email And Names Required"))
-          return
-        }
-        setShowLoader(false);
-        dispatch(userRegisterApi(data)).then((res)=>{
-          dispatch(updateOpen(true))
-          setShowLoader(true)
-          dispatch(updateMessage(res.payload))
-          window.location.href = '/#/artist'
-        }); 
+        // if(emailUp == " " || name == " " || lastName == " "){
+        //   dispatch(updateOpen(true))
+        //   dispatch(updateMessage("Email And Names Required"))
+        //   return
+        // }
+        // setShowLoader(false);
+        // dispatch(userRegisterApi(data)).then((res)=>{
+        //   dispatch(updateOpen(true))
+        //   setShowLoader(true)
+        //   dispatch(updateMessage(res.payload))
+        //   window.location.href = '/#/artist'
+        // }); 
       }
       
     }
   }
   
-  const searchCity = async (val) => {
-    console.log('Search',await allCityGetter(val))
+  const searchCity = async (val,selection) => {
+    setCityUp(val)      
+    if(selection){
+      setCityUp(val)      
+      setSearchListCity([])
+      return
+    }
+    if(val == ""){
+      setSearchListCity([])
+      return
+    }
+    setSearchListCity(await allCityGetter(val))
+  }
+
+  const searchState = async (val,selection) => {
+    setStateUp(val)      
+    if(selection){
+      setStateUp(val)      
+      setSearchListState([])
+      return
+    }
+    if(val == ""){
+      setSearchListState([])
+      return
+    }
+    setSearchListState(await allStateGetter(val))
   }
 
   return (
@@ -187,7 +212,8 @@ function Login() {
                   label="City"
                   option={city}
                   value={cityUp}
-                  onChange={(e)=>searchCity(e.target.value)}
+                  onChange={(e)=>e.target?searchCity(e.target.value):searchCity(e,true)}
+                  searchList = {searchListCity}
                   />
               </div>
               <div className='col-md-6'>
@@ -197,7 +223,8 @@ function Login() {
                   label="State"
                   option={state}
                   value={stateUp}
-                  onChange={(e)=>setStateUp(e.target.value)}
+                  onChange={(e)=>e.target?searchState(e.target.value):searchState(e,true)}
+                  searchList = {searchListState}
                 />
               </div>
             </div>

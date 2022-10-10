@@ -30,7 +30,7 @@ function IllustrationArtists(props) {
             <Link id="w-node-_4a165d69-02be-f2c1-10f5-69fa49464049-576fcec6" to={"/artists/"+val.artistId.firstname} className="artistcard bipoc w-inline-block">
               <img src={String(val.ImageData[0].mainImage[0].subImage[0].path)} loading="lazy" alt="" className="image"/>
               <div className="artistnamediv">
-                <div className="artistnametext">{val.artistId.firstname} {val.artistId.lastname}</div>
+                <div className="artistnametext">{val.artistId.lastname} {val.artistId.firstname}</div>
               </div>
             </Link>
             )

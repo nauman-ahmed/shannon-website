@@ -22,6 +22,28 @@ export const allCityGetter  = async (letter) => {
 
 }
 
+export const allStateGetter  = async (letter) => {
+  let allStateGetter = await getWorldData('ABD').then(res=> res.data.state)
+  let tenTopState = []
+  let count = 0
+  allStateGetter.map((val,ind)=>{
+    if(val.toLowerCase().match(letter.toLowerCase())){
+        if(count < 7){
+          tenTopState.push({
+            label:val,
+            value:val
+          })
+          count++
+        }else{
+          return
+        }
+    }
+  })
+
+  return tenTopState
+
+}
+
 export  const cityGetter = async () => {
   return [
       {label: "Oaxaca de Juárez",value: "Oaxaca de Juárez"},
