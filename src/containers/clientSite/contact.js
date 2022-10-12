@@ -10,6 +10,7 @@ import SnackbarCustom from '../../components/snackBar/SnackbarCustom';
 import { ArtistDataAPI } from '../../redux/artistDataSlice';
 import  { ArtistImageSliceData } from '../../redux/artistImageDataSlice'
 import { IMAGE_ROUTE } from '../../AxiosFunctions/Axiosfunctionality';
+import MyPopup from '../../components/myPopup/myPopup'
 
 const images = window.location.origin+"/assets/images"
 
@@ -17,6 +18,8 @@ function Contact() {
   const number = [1,2,3,4,5,,6,7,78,99,0,0,]
   let history = useHistory();
   const dispatch = useDispatch()
+
+  const [isPopupShow, setIsPopupShow] = useState(false)
   const [artistImages,setArtistImages] = useState("");
   const [Name,setName] = useState("");
   const [company,setCompany] = useState("");
@@ -32,6 +35,7 @@ function Contact() {
   const [dataViewed,setDataViewed] = useState({});
   const [isChecked,setIsChecked] = useState({});
   const [artistData,setArtistData] = useState({});
+  const [msg,setMsg] = useState("");
   const [isCheckedArtist,setIsCheckedArtist] = useState({});
   
   // const [artistId,setArtistId] = useState([]);
@@ -47,8 +51,10 @@ function Contact() {
     })
     if(Id.length >0 ){
       if( email == "" || Name == ""){
-        dispatch(updateOpen(true))
-        dispatch(updateMessage("Please Fill Required Fields"));
+        setIsPopupShow(true)
+        setMsg("Please Fill Required Fields")
+        // dispatch(updateOpen(true))
+        // dispatch(updateMessage("Please Fill Required Fields"));
       }else{
         let data = {
           Name:Name,
@@ -66,15 +72,18 @@ function Contact() {
         setHolder(true);
         createContact(data).then((res)=>{
           setHolder(false);
-          dispatch(updateOpen(true))
-        dispatch(updateMessage(res));
-        history.push('/')
+          // dispatch(updateOpen(true))
+          setIsPopupShow(true)
+          setMsg("Thank you! Your submission has been received!")
+          // dispatch(updateMessage(res));
         })
       }
     }
     else{
-      dispatch(updateOpen(true))
-      dispatch(updateMessage("select atleast one artist"));
+      setIsPopupShow(true)
+      setMsg("select atleast one artist")
+      // dispatch(updateOpen(true))
+      // dispatch(updateMessage("select atleast one artist"));
     }
   }
   const removeKey = (id)=>{
@@ -168,9 +177,10 @@ function Contact() {
 
       //For Images     
       let tempArtistImagesData = {};
+      let tempLocalData = JSON.parse(localStorage.getItem("artistViewed"))      
       dispatch(ArtistImageSliceData()).then((res)=>{
         res.payload.map((val,ind)=>{
-          if(temp[val.artistId._id]){
+          if(temp[val.artistId._id] || tempLocalData[val.artistId._id]){
             tempArtistImagesData[val.artistId._id]  = val.mainImage[0].subImage[1].path
           }
         })
@@ -200,8 +210,8 @@ function Contact() {
               return (
                 <div style={{padding: "10px"}}>
                   <img src={artistImages[AddToCart.cartInfo[oneKey].id]} loading="lazy" alt=""/>
-                    {/* <h5>{ AddToCart.cartInfo[oneKey].Name.toUpperCase()}</h5> */}
-                    {/* <button onClick={()=>{removeKey( AddToCart.cartInfo[oneKey].id)}}>Remove Artist</button> */}
+                    {/* <h5>{ AddToCart.cartInfo[oneKey].Name.toUpperCase()}</h5> 
+                    <button onClick={()=>{removeKey( AddToCart.cartInfo[oneKey].id)}}>Remove Artist</button> */}
                     </div>
             )}))
           }
@@ -323,9 +333,15 @@ function Contact() {
           </div>
         </div>
       </div>
+      {isPopupShow?
+      <MyPopup BackClose onClose={()=>{setIsPopupShow(false);}}>
+          <div className='mx-5 my-4'>
+              {msg}
+          </div>
+      </MyPopup>
+      :null
+    }
     </div>
-    <SnackbarCustom  />
-
     </>
   )
 }

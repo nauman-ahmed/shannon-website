@@ -35,7 +35,8 @@ function Portfolio(props) {
   if(enabled){
     return (
       <>
-      <button onClick={enableHandler}>{enabled?"Submit":"Enable"}</button>
+      <button className='m-2 myBtn active' type="text" onClick={enableHandler}>SUBMIT</button>
+      {/* <button onClick={enableHandler}>{enabled?"Submit":"Enable"}</button> */}
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <Droppable droppableId='characters'>
             {(provided)=>(
@@ -66,7 +67,8 @@ function Portfolio(props) {
 
   return (
     <>
-      <button onClick={enableHandler}>Enable</button>
+      <button className='m-2 myBtn active' type="text" onClick={enableHandler}>ORDER PORTFOLIO</button>
+      {/* <button onClick={enableHandler}>Enable</button> */}
       <div className='row m-0'>
         {
         Object.keys(props.selectedImages).length > 0 ? characters.map((item,key)=>(

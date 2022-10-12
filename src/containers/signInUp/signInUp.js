@@ -19,13 +19,14 @@ function Login() {
   const dispatch = useDispatch();
   const [showLoader,setShowLoader] = useState(true);
 
-
+  const history = useHistory()
   const hash = (window.location.hash).split("/")
   const accountType = hash[1]
   const pageType = hash[2]
   const state = stateGetter()
 
   //sign in
+  const [isPopupShow,setIsPopupShow] = useState(false)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [city, setCity] = useState("")
@@ -114,18 +115,23 @@ function Login() {
           city:cityUp,
           address:address
         }
-        // if(emailUp == " " || name == " " || lastName == " "){
-        //   dispatch(updateOpen(true))
-        //   dispatch(updateMessage("Email And Names Required"))
-        //   return
-        // }
-        // setShowLoader(false);
-        // dispatch(userRegisterApi(data)).then((res)=>{
-        //   dispatch(updateOpen(true))
-        //   setShowLoader(true)
-        //   dispatch(updateMessage(res.payload))
-        //   window.location.href = '/#/artist'
-        // }); 
+        if(emailUp == "" || name == "" || lastName == ""){
+          setIsPopupShow(true)
+          setMsg("Email And Names Required")
+          // dispatch(updateOpen(true))
+          // dispatch(updateMessage("Email And Names Required"))
+          return
+        }
+        setShowLoader(false);
+        dispatch(userRegisterApi(data)).then((res)=>{
+          console.log('WOrking',accountType,pageType)
+          setIsPopupShow(true)
+          setMsg("WE'RE RECEIVED YOUR ACCOUNT CREATION")
+          // dispatch(updateOpen(true))
+          // setShowLoader(true)
+          // dispatch(updateMessage(res.payload))
+          // window.location.href = '/#/artist'
+        }); 
       }
       
     }
@@ -157,6 +163,13 @@ function Login() {
       return
     }
     setSearchListState(await allStateGetter(val))
+  }
+
+  const popupCloseHandler = () => {
+    setIsPopupShow(false); 
+    setShowLoader(true)
+    setMsg("")
+    history.push('/artist/signin')
   }
 
   return (
@@ -263,14 +276,14 @@ function Login() {
           </>
           :null}
       </div>
-      <SnackbarCustom  />
-      {/* {isPopupShow?
-        <MyPopup BackClose CloseBtn onClose={()=>setIsPopupShow(false)}>
+      {isPopupShow?
+        <MyPopup BackClose CloseBtn onClose={popupCloseHandler}>
           <div className='m-3'>
-            WE'RE RECEIVED YOUR ACCOUNT CREATION
+            {msg}
           </div>
         </MyPopup>
-      :null} */}
+      :null}
+      <SnackbarCustom  />
     </div>
   )
 }

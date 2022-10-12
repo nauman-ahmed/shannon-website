@@ -34,7 +34,8 @@ function ArtistsList(props) {
 
     return (
     <>
-      <button className='m-2' onClick={onSubmitHandler}>Submit</button>
+    <button className='m-2 myBtn active' type="text" onClick={onSubmitHandler}>ORDER ARTIST</button>
+      {/* <button className='m-2' onClick={onSubmitHandler}>Submit</button> */}
     {props.holder?<div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"50vh"}}><img className="mb-3" alt="loading" src={loading} style={{width:"50px"}}/></div>:
         <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId='charactersStuff'>

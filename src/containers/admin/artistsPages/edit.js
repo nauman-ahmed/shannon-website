@@ -11,6 +11,7 @@ function Edit(props) {
     const [state,setState] = useState("");
     const [status,setStatus] = useState("0");
     const [type,setType] = useState("");
+    const [passsword,setPassword] = useState("");
     const [searchListCity, setSearchListCity] = useState([])
     const [searchListState, setSearchListState] = useState([])
 
@@ -23,6 +24,7 @@ function Edit(props) {
         setState(props.selectedArtist.state);
         setStatus(String(props.selectedArtist.status));
         setType(props.selectedArtist.type)
+        setPassword(props.selectedArtist.raw_password)
     }, []) 
 
 
@@ -73,9 +75,13 @@ function Edit(props) {
                 <div>Last Name</div>
                 <input className='textField' value={lastname} onChange={(e)=>{setLastname(e.target.value)}}/>
             </label>
-            <label className='col-md-12'>
+            <label className='col-md-6'>
                 <div>Email</div>
                 <input type="email" className='textField' value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
+            </label>
+            <label className='col-md-6'>
+                <div>Password</div>
+                <input type="email" className='textField' value={passsword} onChange={(e)=>{setPassword(e.target.value)}}/>
             </label>
             <label className='col-md-12'>
                 <div>Address</div>
@@ -142,7 +148,8 @@ function Edit(props) {
                     state:state,
                     city:city,
                     status:status,
-                    type:type
+                    type:type,
+                    raw_password:passsword
                     }); }}>SAVE</button>}
             </div>
         </div>
