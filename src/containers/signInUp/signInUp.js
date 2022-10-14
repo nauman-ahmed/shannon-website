@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import "./signInUp.css"
 import back from "../../assets/svgs/back_asset.svg"
+import down from "../../assets/img/down.png"
 import Input from '../../components/input/input'
 import MyPopup from '../../components/myPopup/myPopup'
 import { LoginAdmin } from '../../AxiosFunctions/Axiosfunctionality'
@@ -122,9 +123,9 @@ function Login() {
           // dispatch(updateMessage("Email And Names Required"))
           return
         }
+        console.log(data)
         setShowLoader(false);
         dispatch(userRegisterApi(data)).then((res)=>{
-          console.log('WOrking',accountType,pageType)
           setIsPopupShow(true)
           setMsg("WE'RE RECEIVED YOUR ACCOUNT CREATION")
           // dispatch(updateOpen(true))
@@ -218,7 +219,8 @@ function Login() {
                   onChange={(e)=>setAddress(e.target.value)}
                   />
               </div>
-              <div className='col-md-6'>
+              <div className='col-md-6' >
+                <div className='d-flex align-items-center'>
                 <Input
                   type="select"
                   name="city"
@@ -228,6 +230,8 @@ function Login() {
                   onChange={(e)=>e.target?searchCity(e.target.value):searchCity(e,true)}
                   searchList = {searchListCity}
                   />
+                <img src='./images/down.png' width="13" height="13" style={{marginTop: 10,position: 'absolute',top: 0,right: 20}}/>
+                </div>
               </div>
               <div className='col-md-6'>
                 <Input
@@ -239,6 +243,7 @@ function Login() {
                   onChange={(e)=>e.target?searchState(e.target.value):searchState(e,true)}
                   searchList = {searchListState}
                 />
+                <img src='./images/down.png' width="13" height="13" style={{marginTop: 10,position: 'absolute',top: 0,right: 20}}/>
               </div>
             </div>
             {showLoader?<button className='myButton my-md-5 mb-5 mt-1' onClick={()=>signInFunc()}>REQUEST ACCOUNT CREATION</button>:<img className="mt-4" alt="loading" src={loading} style={{width:"30px"}}/>}
@@ -280,7 +285,7 @@ function Login() {
         <MyPopup BackClose CloseBtn onClose={popupCloseHandler}>
           <div className='m-3'>
             {msg}
-          </div>
+          </div> 
         </MyPopup>
       :null}
       <SnackbarCustom  />
