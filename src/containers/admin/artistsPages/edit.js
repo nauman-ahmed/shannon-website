@@ -12,9 +12,14 @@ function Edit(props) {
     const [status,setStatus] = useState("0");
     const [type,setType] = useState("");
     const [passsword,setPassword] = useState("");
+    const [value, setValue] = useState("")
+    const [showList, setShow] = useState(false)
+
     const [searchListCity, setSearchListCity] = useState([])
     const [searchListState, setSearchListState] = useState([])
+    const [searchList, setSearchList] = useState([{id:'1',value:'abc'},{id:'1',value:'abc123'},{id:'1',value:'abc12345'}])
 
+    
     useEffect(() => {
         setFirstname(props.selectedArtist.firstname);
         setLastname(props.selectedArtist.lastname);
@@ -26,36 +31,7 @@ function Edit(props) {
         setType(props.selectedArtist.type)
         setPassword(props.selectedArtist.raw_password)
     }, []) 
-
-
-    // const searchCity = async (val,selection) => {
-    //     setCityUp(val)      
-    //     if(selection){
-    //       setCityUp(val)      
-    //       setSearchListCity([])
-    //       return
-    //     }
-    //     if(val == ""){
-    //       setSearchListCity([])
-    //       return
-    //     }
-    //     setSearchListCity(await allCityGetter(val))
-    //   }
-    
-    //   const searchState = async (val,selection) => {
-    //     setStateUp(val)      
-    //     if(selection){
-    //       setStateUp(val)      
-    //       setSearchListState([])
-    //       return
-    //     }
-    //     if(val == ""){
-    //       setSearchListState([])
-    //       return
-    //     }
-    //     setSearchListState(await allStateGetter(val))
-    //   }
-    
+  
     const changeArtistType = (e) => {
         if(e.target.value == type){
             setType("None")
@@ -65,8 +41,54 @@ function Edit(props) {
         }
     }
     
+    const onChangeHandler = async(e) => {
+            if(e.target){
+               await setShow(true)
+               await setValue(e.target.value)
+            }
+    }
+    const onSelect  = async (value) => {
+            await setShow(false)
+            await setValue(value)
+    }
+    const onBlurHandler = async () => {
+        await setShow(false)
+    }
+
+
+    const searchCity = async (e,selection) => {
+        if(selection){
+          setCity(e)      
+          setSearchListCity([])
+          return
+        }
+        setCity(e.target.value)      
+        if(e.target.value == ""){
+          setSearchListCity([])
+          return
+        }
+        setSearchListCity(await allCityGetter(e.target.value))
+    }
+    
+    const searchState = async (e,selection) => {
+        if(selection){
+            setState(e)      
+            setSearchListState([])
+            return
+        }
+        setState(e.target.value)      
+        if(e.target.value == ""){
+            setSearchListState([])
+            return
+        }
+        setSearchListState(await allStateGetter(e.target.value))
+    }
+
+
+
     return (
         <div className='row px-5 mx-5'>
+            {console.log(searchListCity)}
             <label className='col-md-6'>
                 <div>Name</div>
                 <input className='textField' value={firstname} onChange={(e)=>{setFirstname(e.target.value)}} />
@@ -90,23 +112,44 @@ function Edit(props) {
             <label className='col-md-6'>
                 <div>City</div>
                 <>
-                <input className='textField' />
-                <select className='textField d-none'>
-                <option >{city}</option>
-                    <option value="karachi">karachi</option>
-                    <option value="islamabad">islamabad</option>
-                    <option value="lahore">lahore</option>
-                </select>
+                <div className='d-flex align-items-center' style={{border:'2px solid black',borderRadius: 5,padding: '8px 15px'}}>
+                  <input id='1' type='text' value={city} name='city'  onChange={searchCity} style={{border:'none',width: '90%',height: '100%',textDecoration: 'none',outline: 'none',border: 'none'}}/>
+                  <img src='./images/down.png' width="13" height="13" style={{position: 'absolute',top: 25,right: 24}}/>
+                 </div>
+                  {searchListCity.length > 0 ?
+                  <div style={{boxShadow: '0 3px 10px rgb(0 0 0 / 0.1)',padding:15,borderRadius:5}}>
+                    {searchListCity.length > 0 ?
+                        searchListCity.map((val,ind)=>
+                        <><a onClick={()=>{searchCity(val.value,true)}} style={{cursor:'pointer',fontFamily:'inherit',fontSize:14}}>{val.value}</a><br /><br /></>
+                        )
+                        :
+                        <a>No Item to Show</a>
+                    }
+                    </div>
+                    :''
+                 } 
                 </>
             </label>
             <label className='col-md-6'>
                 <div>State</div>
-                <select className='textField' value={state} onChange={(e)=>{setState(e.target.value)}}>
-                    <option>{state}</option>
-                    <option value="sindh">sindh</option>
-                    <option value="balochistan">balochistan</option>
-                    <option value="punjab">punjab</option>
-                </select>
+                <>
+                <div className='d-flex align-items-center' style={{border:'2px solid black',borderRadius: 5,padding: '8px 15px'}}>
+                  <input id='1' type='text' value={state} name='city'  onChange={searchState} style={{border:'none',width: '90%',height: '100%',textDecoration: 'none',outline: 'none',border: 'none'}}/>
+                  <img src='./images/down.png' width="13" height="13" style={{position: 'absolute',top: 25,right: 24}}/>
+                 </div>
+                  {searchListState.length > 0 ?
+                  <div style={{boxShadow: '0 3px 10px rgb(0 0 0 / 0.1)',padding:15,borderRadius:5}}>
+                    {searchListState.length > 0 ?
+                        searchListState.map((val,ind)=>
+                        <><a onClick={()=>{searchState(val.value,true)}} style={{cursor:'pointer',fontFamily:'inherit',fontSize:14}}>{val.value}</a><br /><br /></>
+                        )
+                        :
+                        <a>No Item to Show</a>
+                    }
+                    </div>
+                    :''
+                 } 
+                </>
             </label>
             <label className='col-12'>Status</label>
             <label className='px-3'>
@@ -154,6 +197,6 @@ function Edit(props) {
             </div>
         </div>
     )
-}
+} 
 
 export default Edit
