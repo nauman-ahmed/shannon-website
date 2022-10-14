@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./input.css"
 import SearchIcon from "../../assets/svgs/searchImage.svg"
+
 function Input(props) {
     const uniqueId = new Date().getTime()
     const [state, setState] = useState({
@@ -71,21 +72,30 @@ function Input(props) {
                 <img alt="" src={SearchIcon}/>
             </button>
         </label>
-        :<label id={"input_"+(uniqueId)} className='myInput' htmlFor={state.type+"_"+(uniqueId)}>
+        :
+        <label id={"input_"+(uniqueId)} className='myInput' htmlFor={state.type+"_"+(uniqueId)}>
             <div className={'label '+(active?"active":"")}>{state.label}</div>
             {state.type === "select"?
-                <>
-                    <input id={state.type+"_"+(uniqueId)} onFocus={()=>setActive(true)}  onBlur={()=>onBlurHandler()} value={value} type={state.type} name={state.name} onChange={(e)=>{onChangeHandler(e)}}/>
+              <>
+                    <input id={state.type+"_"+(uniqueId)} onFocus={()=>setActive(true)}  onBlur={()=>onBlurHandler()} value={value} type={state.type}  name={state.name} onChange={(e)=>{onChangeHandler(e)}}/>
+                    {props.searchList.length>0 ?
+                    <div style={{  boxShadow: '0 3px 10px rgb(0 0 0 / 0.1)',padding:15}}>
                     {props.searchList ?
                         props.searchList.map((val,ind)=>
-                        <a onClick={()=>{onChangeHandler(val.value)}}>{val.value}</a>
+                        <><a onClick={()=>{onChangeHandler(val.value)}} style={{cursor:'pointer',fontFamily:'inherit',fontSize:14}}>{val.value}</a><br /><br /></>
                         )
                         :
                         <a>No Item to Show</a>
                     }
-                </>
-            :<input id={state.type+"_"+(uniqueId)} onFocus={()=>setActive(true)}  onBlur={()=>onBlurHandler()} value={value} type={state.type} name={state.name} onChange={(e)=>{onChangeHandler(e)}}/>}
+                    </div>
+                    :''
+                    }
+               </>
+                
+            :
+            <input id={state.type+"_"+(uniqueId)} onFocus={()=>setActive(true)}  onBlur={()=>onBlurHandler()} value={value} type={state.type} name={state.name} onChange={(e)=>{onChangeHandler(e)}}/>}
         </label>
+        
   )
 }
 
