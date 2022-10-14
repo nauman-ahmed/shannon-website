@@ -73,8 +73,8 @@ function Input(props) {
             </button>
         </label>
         :
-        <label id={"input_"+(uniqueId)} className='myInput' htmlFor={state.type+"_"+(uniqueId)}>
-            <div className={'label '+(active?"active":"")}>{state.label}</div>
+        <label id={"input_"+(uniqueId)} className='myInput' htmlFor={state.type+"_"+(uniqueId)} >
+            <div className={'label '+(active?"active":"")} onClick={()=>setActive(true)}  onBlur={()=>onBlurHandler()}>{state.label}</div>
             {state.type === "select"?
               <>
                     <input id={state.type+"_"+(uniqueId)} onFocus={()=>setActive(true)}  onBlur={()=>onBlurHandler()} value={value} type={state.type}  name={state.name} onChange={(e)=>{onChangeHandler(e)}}/>
