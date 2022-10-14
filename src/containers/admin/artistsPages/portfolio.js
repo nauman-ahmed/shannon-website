@@ -67,7 +67,10 @@ function Portfolio(props) {
 
   return (
     <>
+      {Object.keys(props.selectedImages).length > 0 ?
       <button className='m-2 myBtn active' type="text" onClick={enableHandler}>ORDER PORTFOLIO</button>
+      :
+      null}
       {/* <button onClick={enableHandler}>Enable</button> */}
       <div className='row m-0'>
         {

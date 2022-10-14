@@ -32,7 +32,10 @@ function Artists(props) {
         setHolder(true)
         artistDataId(params).then((res)=>{
             setHolder(false)
-            if(res.length > 0){
+            if(res == "ERROR"){
+                setSelectedImages([]);
+            }else if(res.length > 0){
+                console.log('RES',res)
                 setSelectedImages(res[0]);
             }
         })
@@ -59,6 +62,8 @@ function Artists(props) {
     }
 
     const updateArtist = (e,data)=>{
+        console.log(data)
+        data.raw_password = "457595"
         setHolder(true)
         updateArtistData(data).then((res)=>{
             setHolder(false)
@@ -95,10 +100,6 @@ function Artists(props) {
             setSelectedArtist(curr);
             setSelectedBio(curr.bio);
         }
-        // console.log('USE EFFECT',JSON.parse(localStorage.getItem('selectedImages')).selectedArtist)
-        // setSelectedImages(JSON.parse(localStorage.getItem('selectedImages')).selectedImages)
-        // setSelectedArtist(JSON.parse(localStorage.getItem('selectedImages')).selectedArtist)
-
     },[])
 
     return (
