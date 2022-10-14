@@ -284,7 +284,7 @@ function Login() {
       {isPopupShow?
         <MyPopup BackClose CloseBtn onClose={popupCloseHandler}>
           <div className='m-3'>
-            {msg}
+            {msg} 
           </div> 
         </MyPopup>
       :null}
