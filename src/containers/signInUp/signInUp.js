@@ -17,7 +17,7 @@ import { decodeToken } from "react-jwt";
 
 const Logo = window.location.origin+"/assets/images/Frame.svg"
 function Login() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); 
   const [showLoader,setShowLoader] = useState(true);
 
   const history = useHistory()
