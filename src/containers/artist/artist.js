@@ -65,12 +65,12 @@ function Artist() {
 
     }
     return (
-    <>
+    <>  
         <Header/>
         <div className='px-1 px-md-5 artist'>
             <div className='profile'>
                 <div className='profilePic'></div>
-                <h3 className='mb-5'>{artistDetails ?  artistDetails.lastname+" "+artistDetails.firstname : "...loading"}</h3>
+                <h3 className='mb-5'>{artistDetails ?  artistDetails.firstname : "...loading"}</h3>
                 <h6 className='mt-5'>SUBMIT IMAGES</h6>
             </div>
             <div className='row m-0'>
@@ -87,7 +87,7 @@ function Artist() {
                 }
                 {showLoader?
                     <MyPopupLoading >
-                        <img className="mt-4" alt="loading" src={loading} style={{width:"30px"}}/>
+                        <img className="mt-4" alt="loading" src={loading} style={{width:"100px"}}/>
                     </MyPopupLoading>
                     :
                     null                
