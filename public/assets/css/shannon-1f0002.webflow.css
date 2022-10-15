@@ -164,7 +164,7 @@ a {
 
 ._4cols.divisions {
   -ms-grid-rows: auto auto;
-  grid-template-rows: auto auto;
+  grid-template-rows: 270px ;
 }
 
 .artistcard {
@@ -287,7 +287,7 @@ a {
 }
 
 .menuinfo.v2 {
-  font-size: 0.6vw;
+  font-size: 0.7vw;
 }
 
 .allartist {
@@ -623,7 +623,7 @@ a {
   background-color: #fff;
   font-family: 'Roboto Condensed', sans-serif;
   color: #000;
-  font-size: 1vw !important;
+  font-size: 0.7vw !important;
   font-weight: 400;
   text-align: center;
 }
@@ -2827,6 +2827,8 @@ a {
 
 .navmenu {
   padding-top: 20px;
+  text-align: right;
+  margin-right: -30px;
 }
 
 .bannerletters {
@@ -2953,8 +2955,8 @@ a {
 }
 
 .banner._1.v2 {
-  max-height: 16vw;
-  min-height: 16vw;
+  max-height: 10vw;
+  min-height: 10vw;
   -ms-grid-columns: 3.9vw 1fr;
   grid-template-columns: 3.9vw 1fr;
 }
@@ -3025,8 +3027,8 @@ a {
   display: -ms-grid;
   display: grid;
   grid-auto-columns: 1fr;
-  grid-column-gap: 16px;
-  grid-row-gap: 1.28vh;
+  grid-column-gap: 13px;
+  grid-row-gap: 6px;
   grid-template-areas: ".";
   -ms-grid-columns: 1fr 16px 1fr 16px 1fr 16px 1fr 16px 1fr 16px 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -3056,6 +3058,7 @@ a {
   align-items: center;
   background-color: hsla(0, 0%, 100%, 0.67);
   font-family: Robotocondensed, sans-serif;
+  text-transform: uppercase;
   color: #000;
   font-size: 0.74vw;
   line-height: 1;
@@ -3343,7 +3346,7 @@ a {
 .divisiondivider.grad {
   position: -webkit-sticky;
   position: sticky;
-  width: 110%;
+  width: 100%;
   margin-bottom: 20px;
   background-image: linear-gradient(260deg, #ffb71b, #feac23 25%, #fa8e37 43%, #f7734a 66%, #f35e57 78%, #ec297b);
 }
@@ -3741,6 +3744,7 @@ a {
   border-color: #f1f1f1;
   border-radius: 21px;
   background-color: #f1f1f1;
+  font-size: 0.7vw;
 }
 
 .form-block-2 {
@@ -4192,7 +4196,6 @@ a {
 
   .menuinfo.v2 {
     margin-top: 10px;
-    font-size: 11px;
     text-align: center;
   }
 
@@ -4204,7 +4207,7 @@ a {
   }
 
   .containerhome.home {
-    width: 95%;
+    width: 90%;
   }
 
   .containerhome.f {
@@ -4277,7 +4280,7 @@ a {
   }
 
   .talentbutton {
-    font-size: 12px;
+    font-size: 8px !important;
   }
 
   .talentbutton.division {
@@ -4650,7 +4653,7 @@ a {
   .artistnametext-v2 {
     padding-top: 1vh;
     padding-bottom: 1vh;
-    font-size: 11px;
+    font-size: 15px;
   }
 
   .artistnametext-v2.big {
@@ -4758,6 +4761,7 @@ a {
     display: flex;
     margin-bottom: 20px;
     padding-left: 15px;
+    padding-right: 10px;
     -webkit-box-pack: start;
     -webkit-justify-content: flex-start;
     -ms-flex-pack: start;
@@ -4837,6 +4841,7 @@ a {
     grid-row-gap: 25px;
     -ms-grid-columns: 1fr;
     grid-template-columns: 1fr;
+    margin-top: 15px;
   }
 
   .bipoc2cols.category {
@@ -11187,6 +11192,9 @@ a {
 }
 
 @media screen and (max-width: 479px) {
+  .hide_detail{
+    display: none !important;
+  }
   #w-node-a284be2a-4b91-3177-03eb-6614b24879ea-4bf2d022 {
     -ms-grid-row: span 1;
     grid-row-start: span 1;

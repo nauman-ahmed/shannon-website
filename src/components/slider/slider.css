@@ -63,7 +63,7 @@
 }
 .slider .slideScroller .slideContent .slideItem>img {
     height: 100%;
-    width: 90%;
+    width: 100%;
     /* -o-object-fit: cover;
     object-fit: cover; */
     transition: all 1s;
