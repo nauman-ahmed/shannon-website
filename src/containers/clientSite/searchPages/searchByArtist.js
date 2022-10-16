@@ -35,7 +35,7 @@ function SearchByArtist(props) {
 
   const dataLocalArtist = (key, _id, firstname, bio, listData, subListData) => {
     let tempData = localStorage.getItem("artistViewed");
-
+    
     tempData = JSON.parse(tempData);
     if (tempData === null) {
       tempData = {};

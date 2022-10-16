@@ -142,7 +142,7 @@ a {
 
 .navlink.v2 {
   font-family: 'Roboto Condensed', sans-serif;
-  font-size: 0.8vw;
+  font-size: 0.85vw;
 }
 
 .navlink.v2.w--current {
@@ -153,7 +153,7 @@ a {
   display: -ms-grid;
   display: grid;
   grid-auto-columns: 1fr;
-  grid-column-gap: 10px;
+  grid-column-gap: 0px;
   grid-row-gap: 10px;
   grid-template-areas: ".";
   -ms-grid-columns: 1fr 10px 1fr 10px 1fr 10px 1fr;
@@ -287,7 +287,7 @@ a {
 }
 
 .menuinfo.v2 {
-  font-size: 0.7vw;
+  font-size: 0.85vw;
 }
 
 .allartist {
@@ -613,7 +613,7 @@ a {
 
 .talentbutton {
   margin:10px 0px 20px;
-  width: 7vw;
+  width: 120px;
   margin-right: 25px;
   /* margin-right: 25px !important; */
   padding-top: 1.1vh;
@@ -3060,8 +3060,8 @@ a {
   font-family: Robotocondensed, sans-serif;
   text-transform: uppercase;
   color: #000;
-  font-size: 0.74vw;
-  line-height: 1;
+  font-size: 0.9vw;
+  line-height: 2;
   font-weight: 400;
   text-align: center;
 }
@@ -3415,7 +3415,7 @@ a {
   margin-top: 10px;
   font-family: Montserrat, sans-serif;
   color: #fff;
-  font-size: 1.55vw;
+  font-size: 1.25vw;
   line-height: 1;
   font-weight: 800;
 }
@@ -3744,11 +3744,11 @@ a {
   border-color: #f1f1f1;
   border-radius: 21px;
   background-color: #f1f1f1;
-  font-size: 0.7vw;
+  font-size: 0.85vw;
 }
 
 .form-block-2 {
-  width: 21%;
+  width: 21.4vw;
   height: 2vw;
   margin-bottom: 0px;
   -webkit-align-self: flex-start;
@@ -4117,6 +4117,7 @@ a {
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
+
   }
 
   .searchbarhome {
@@ -4188,7 +4189,7 @@ a {
   }
 
   .filterhomelink.v2 {
-    width: 31vw;
+    /* width: 30vw; */
     margin-top: 15px;
     margin-right: 0px;
     font-size: 16px;
@@ -4661,8 +4662,10 @@ a {
   }
 
   .logov2 {
-    width: 100%;
-    margin-top: 0px;
+    width: 80%;
+    margin-top: 15px;
+    margin-left: 10px;
+
   }
 
   .brand.w--current {
@@ -4705,6 +4708,8 @@ a {
   .contactp {
     margin-top: 25px;
     font-size: 15px;
+    width: 95%;
+    margin-left: 2.5%;
   }
 
   .text-field {
@@ -4926,6 +4931,7 @@ a {
 
   .menu-button {
     width: 20%;
+    margin-right: -35px;
   }
 
   .menu-button.w--open {
@@ -11311,6 +11317,8 @@ a {
     -webkit-order: 9999;
     -ms-flex-order: 9999;
     order: 9999;
+    width: 95%;
+    margin-left: 2.5%;
   }
 
   #artistCont.w-node-_3ea1885f-5610-a267-b100-5eb12e177818-85f2d07d {
@@ -11326,6 +11334,8 @@ a {
     -webkit-order: 0;
     -ms-flex-order: 0;
     order: 0;
+    width: 95%;
+    margin-left: 2.5%;
   }
 }
 
