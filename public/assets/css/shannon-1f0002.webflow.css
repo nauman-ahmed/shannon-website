@@ -287,7 +287,7 @@ a {
 }
 
 .menuinfo.v2 {
-  font-size: 0.85vw;
+  font-size: 0.7vw;
 }
 
 .allartist {
@@ -3415,7 +3415,7 @@ a {
   margin-top: 10px;
   font-family: Montserrat, sans-serif;
   color: #fff;
-  font-size: 1.25vw;
+  font-size: 1.55vw;
   line-height: 1;
   font-weight: 800;
 }
@@ -3744,7 +3744,7 @@ a {
   border-color: #f1f1f1;
   border-radius: 21px;
   background-color: #f1f1f1;
-  font-size: 0.85vw;
+  font-size: 0.7vw;
 }
 
 .form-block-2 {
@@ -3850,6 +3850,15 @@ a {
   display: grid;
   grid-template-columns: 80px 80px 80px 80px 80px 80px;
   grid-auto-rows: 80px;
+}
+
+
+.fullViewNavbar{
+  display: block;
+}
+.mobileViewNavbar{
+  display: none;
+  width: auto;
 }
 
 @media screen and (max-width: 830px){
@@ -4187,7 +4196,14 @@ a {
     padding-bottom: 5px;
     font-size: 11px;
   }
-
+.fullViewNavbar{
+  display: none;
+}
+.mobileViewNavbar{
+  display: block;
+  width: 100%;
+    margin-bottom: 25px;
+}
   .filterhomelink.v2 {
     /* width: 30vw; */
     margin-top: 15px;
