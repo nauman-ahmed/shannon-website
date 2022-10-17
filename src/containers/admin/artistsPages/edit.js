@@ -88,7 +88,6 @@ function Edit(props) {
 
     return (
         <div className='row px-5 mx-5'>
-            {console.log(searchListCity)}
             <label className='col-md-6'>
                 <div>Name</div>
                 <input className='textField' value={firstname} onChange={(e)=>{setFirstname(e.target.value)}} />
@@ -160,6 +159,19 @@ function Edit(props) {
                 <input className='mr-2' name="status" type="radio" value={"0"} checked={status === "0"}  onChange={(e)=>{setStatus(e.target.value);}}/>
                 {"Inactive"}
             </label>
+
+            
+            <label className='col-12'>KIDSHANON</label>
+            <label className='px-3'>
+                <input className='mr-2' name="kidshannon" type="radio" value={"kidshannon"}  checked={type === "kidshannon"} onChange={(e)=>{changeArtistType(e);}}/>
+                Yes
+            </label>
+            <label className='px-3'>
+                <input className='mr-2' name="kidshannon" type="radio" value={"None"} checked={type !== "kidshannon"}  onChange={(e)=>{changeArtistType(e);}}/>
+                No
+            </label>
+            
+            
             <label className='col-12 my-2'>BIPOC</label>
             <label className='px-3'>
                 <input className='mr-2' name="Black" type="radio" value={"Black"}  checked={type === "Black"} onClick={(e)=>changeArtistType(e)}/>

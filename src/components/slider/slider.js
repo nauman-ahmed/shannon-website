@@ -149,6 +149,7 @@ export default function Slider(props) {
     </div>
   );
 } 
+
 export function SliderItem(props) {
   return "src" in props ? (
     <div

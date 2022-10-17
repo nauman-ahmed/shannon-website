@@ -11471,3 +11471,6 @@ a {
 .text-black{
   color: #000;
 }
+.non_active{
+  color:#d4d4d4;
+}

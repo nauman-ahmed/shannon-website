@@ -3,12 +3,12 @@ import axios from "axios";
 //for Contacts Functionality
 
 
-export const BASE_URL = "http://127.0.0.1:5000/api/"
-export const IMAGE_ROUTE = "http://127.0.0.1:5000/";
+// export const BASE_URL = "http://127.0.0.1:5000/api/"
+// export const IMAGE_ROUTE = "http://127.0.0.1:5000/";
 
 
-// export const BASE_URL = "https://shannon-nodejsart.herokuapp.com/api/"
-// export const IMAGE_ROUTE = "https://shannon-nodejsart.herokuapp.com/";
+export const BASE_URL = "https://shannon-nodejsart.herokuapp.com/api/"
+export const IMAGE_ROUTE = "https://shannon-nodejsart.herokuapp.com/";
 
 export const logouter = () => {
     localStorage.removeItem('authorization');
@@ -29,6 +29,14 @@ export const getImageBaseURL = async (data) => {
     }
 }
 
+export const getTypeTwoKeyword = async (data) => {
+    try {
+        const response = await axios.post(BASE_URL + 'keywordKid/getTypeTwoKeywords', data);
+        return response.data;
+    } catch (error) {
+        logouter();
+    }
+}
 
 export const getWorldData = async (data) => {
     try {

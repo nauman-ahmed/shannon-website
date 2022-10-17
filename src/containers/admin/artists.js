@@ -35,7 +35,6 @@ function Artists(props) {
             if(res == "ERROR"){
                 setSelectedImages([]);
             }else if(res.length > 0){
-                console.log('RES',res)
                 setSelectedImages(res[0]);
             }
         })
@@ -62,9 +61,8 @@ function Artists(props) {
     }
 
     const updateArtist = (e,data)=>{
-        console.log(data)
-        data.raw_password = "457595"
         setHolder(true)
+        console.log('DATA',data)
         updateArtistData(data).then((res)=>{
             setHolder(false)
             dispatch(updateOpen(true))
@@ -146,7 +144,6 @@ function Artists(props) {
                 />
                 :formNo2 === 2?
                 <Portfolio 
-                
                     history={props.history}
                     selectedArtist = {selectedArtist}
                     selectedImages = {selectedImages}

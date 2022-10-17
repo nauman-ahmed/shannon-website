@@ -7,6 +7,10 @@ import loading from '../../../assets/loading.gif';
 function ArtistsList(props) {
 
     const [characters,updateCharacters] = useState([])
+    const [filterArtist,setFilterArtist] = useState([]);
+    const [typeOneArtist,setTypeOneArtist] = useState([]);
+    const [typeTwoArtist,setTypeTwoArtist] = useState([]);
+    const [formNo,setFormNo] = useState(0);
   
     const handleOnDragEnd = (result) => {
       if(!result.destination) return;
@@ -18,24 +22,59 @@ function ArtistsList(props) {
     
     useEffect(()=>{
         if(characters.length == 0){
-            updateCharacters(props.artistUsers)
+            updateList()
         }
     },[props.artistUsers])
 
+   
+
+    const updateList = (payload)=>{
+        let temp = [];
+        let typeOther = []
+        let typeKid = []
+
+        if(props.artistUsers.length>0){
+            props.artistUsers.forEach((item,key)=>{
+                if(item.type === "kidshannon"){
+                    typeKid.push(item);
+                }
+                else{
+                    typeOther.push(item);
+                }
+            })
+            setTypeOneArtist(typeOther)
+            setTypeTwoArtist(typeKid)
+            
+            updateCharacters(typeOther)
+
+        }
+    }
+
     const onSubmitHandler = () => {
+        let sortedImages = []
         
         for(let i = 0; i < characters.length; i++){
             characters[i].orderArtist = i
         };
-        orderArtist(characters)
-             
-        props.reorderArtistHandler(characters)
+
+        if(formNo == 0){
+            setTypeOneArtist(characters)
+            sortedImages = [...characters,...typeTwoArtist]
+        }else{
+            setTypeTwoArtist(characters)
+            sortedImages = [...typeOneArtist,...characters]
+        }
+        // console.log(sortedImages)
+        orderArtist(sortedImages)
+        props.reorderArtistHandler(sortedImages)
     }
 
     return (
     <>
-    <button className='m-2 myBtn active' type="text" onClick={onSubmitHandler}>ORDER ARTIST</button>
-      {/* <button className='m-2' onClick={onSubmitHandler}>Submit</button> */}
+    <button className='m-2 myBtn active' type="text" onClick={onSubmitHandler}>SUBMIT ORDER</button>
+    <button className='m-2 myBtn active' type="text" onClick={()=>{updateCharacters(typeOneArtist); setFormNo(0);}}>ALL ARTISTS</button>
+    <button className='m-2 myBtn active' type="text" onClick={()=>{updateCharacters(typeTwoArtist);setFormNo(1)}}>KIDSHANON ARTISTS</button>
+    {/* <button className='m-2' onClick={onSubmitHandler}>Submit</button> */}
     {props.holder?<div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"50vh"}}><img className="mb-3" alt="loading" src={loading} style={{width:"50px"}}/></div>:
         <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId='charactersStuff'>

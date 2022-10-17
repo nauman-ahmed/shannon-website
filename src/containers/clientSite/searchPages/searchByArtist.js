@@ -35,7 +35,7 @@ function SearchByArtist(props) {
 
   const dataLocalArtist = (key, _id, firstname, bio, listData, subListData) => {
     let tempData = localStorage.getItem("artistViewed");
-    
+
     tempData = JSON.parse(tempData);
     if (tempData === null) {
       tempData = {};
@@ -235,7 +235,7 @@ function SearchByArtist(props) {
             </div>
           </div>
           <div
-            className="col-md-7"
+            className="col-md-7 hide_detail"
             style={
               fullscreen.screen
                 ? {
