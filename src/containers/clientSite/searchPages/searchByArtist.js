@@ -26,6 +26,28 @@ function SearchByArtist(props) {
   const [data1, setData1] = useState(null);
   const [dataViewed, setDataViewed] = useState({});
   const [similarData, setSimilarData] = useState({});
+  const [windowSize, setWindowSize] = useState(getWindowSize());
+  const [artistImages, setArtistImages] = useState(7);
+  const [artistSimilar, setArtistSimilar] = useState(7);
+
+  function getWindowSize() {
+    const {innerWidth, innerHeight} = window;
+    return {innerWidth, innerHeight};
+  }
+  function handleWindowResize() {
+    console.log(getWindowSize() )
+    setWindowSize(getWindowSize());
+  }
+  
+  useEffect(() => {
+    
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, []);
 
   const addToCartArtist = (id, firstname) => {
     dispatch(addCart({ key: id, data: { id: id, Name: firstname } }));
@@ -112,7 +134,6 @@ function SearchByArtist(props) {
         } else {
           dispatch(ArtistImageSliceData({})).then((res) => {
             if (res.payload !== undefined) {
-              console.log("USE EFFECT", res.payload);
               let listData = [];
               let tempData = {};
               let subListData = [];
@@ -168,6 +189,7 @@ function SearchByArtist(props) {
         setDataViewed(JSON.parse(localStorage.getItem("artistViewed")));
       }
     }
+    handleWindowResize()
     getLocalStorage();
     dataLoader();
   }, []);
@@ -213,14 +235,14 @@ function SearchByArtist(props) {
               <Link
                 to="#"
                 style={{ fontSize: "16px" }}
-                className="talentbutton col-3 mr-1"
+                className={windowSize.innerWidth < 335 ? "talentbuttonArtistSearch  col-3 mr-1" : "talentbutton col-3 mr-1"}
               >
                 CALL
               </Link>
               <Link
                 to="/contact"
                 style={{ fontSize: "16px" }}
-                className="talentbutton col-3 mr-1"
+                className={windowSize.innerWidth < 335 ? "talentbuttonArtistSearch  col-3 mr-1" : "talentbutton col-3 mr-1"}
               >
                 GET ESTIMATE
               </Link>
@@ -298,17 +320,50 @@ function SearchByArtist(props) {
                 >
                   <div>SIMILAR ILLUSTRATORS</div>
                 </div>
+                {windowSize.innerWidth < 335 ?
                 <div
-                  onClick={() => setTab(2)}
-                  className={
-                    "tabs py-3 w-inline-block w-tab-link " +
-                    (tab === 2 ? "bg-white  text-black" : null)
-                  }
-                >
-                  <div>ALREADY VIEWED</div>
-                </div>
+                onClick={() => setTab(2)}
+                className={
+                  "tabs py-3 w-inline-block w-tab-link " +
+                  (tab === 2 ? "bg-white  text-black" : null)
+                }
+              >
+                <div>ALREADY VIEWED</div>
+              </div>:null
+
+                }
+                
               </div>
-              {tab === 0 ? (
+              {tab === 0 ? 
+                windowSize.innerWidth < 335 ?
+                <div>
+                <div
+                  className="imagecont"
+                  style={{marginTop:10}}
+                >
+                  {data1[search].subListData.map((item, keys) => 
+                      (<div className="talentthumbslide resp">
+                        <img
+                          src={item}
+                          loading="lazy"
+                          alt=""
+                          className="image"
+                        />
+                      </div>)
+                    )
+                  }
+                </div>
+                  <div style={{textAlign: "center",margin:"10px"}}>
+                    <Link
+                      to="#"
+                      style={{ fontSize: "16px" }}
+                      className="talentbuttonArtistSearch col-3 mr-1"
+                    >
+                      See More
+                    </Link>
+                  </div>
+                </div>
+                :(
                 <div className="col-12 my-2">
                   <Slider disableAutoPlay controllEnabled="outside-dark">
                     {data1[search].subListData.map((item, keys) => (
@@ -321,6 +376,26 @@ function SearchByArtist(props) {
                 </div>
               ) : null}
               {tab === 1 ? (
+                windowSize.innerWidth < 335 ?
+                <div
+                className="imagecont"
+                style={{marginTop:10}}
+              >
+                {Object.keys(similarData).length > 0
+                      ? Object.keys(similarData).map((key, i) => (
+                        <div className="talentthumbslide resp">
+                        <img
+                          src={similarData[key].mainImage}
+                          loading="lazy"
+                          alt=""
+                          className="image"
+                        />
+                      </div>
+                                
+                        ))
+                      : "NO SIMILAR IMAGES FOUND"}
+              </div>
+                :
                 <div className="col-12 my-2">
                   <Slider disableAutoPlay controllEnabled="outside-dark">
                     {Object.keys(similarData).length > 0
@@ -334,7 +409,10 @@ function SearchByArtist(props) {
                   </Slider>
                 </div>
               ) : null}
-              {tab === 2 ? (
+              {tab === 2 ? 
+                windowSize.innerWidth < 335 ?
+                null:
+              (
                 <div className="col-12 my-2">
                   <Slider disableAutoPlay controllEnabled="outside-dark">
                     {Object.keys(dataViewed).length > 0
