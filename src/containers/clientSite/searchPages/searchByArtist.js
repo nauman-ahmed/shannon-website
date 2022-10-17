@@ -27,11 +27,11 @@ function SearchByArtist(props) {
   const [dataViewed, setDataViewed] = useState({});
   const [similarData, setSimilarData] = useState({});
   const [windowSize, setWindowSize] = useState(getWindowSize());
-  const [artistImages, setArtistImages] = useState(7);
-  const [artistSimilar, setArtistSimilar] = useState(7);
+  const [artistImages, setArtistImages] = useState(8);
+  const [artistSimilar, setArtistSimilar] = useState(8);
 
   function getWindowSize() {
-    const {innerWidth, innerHeight} = window;
+    const {innerWidth, innerHeight} = window
     return {innerWidth, innerHeight};
   }
   function handleWindowResize() {
@@ -342,14 +342,15 @@ function SearchByArtist(props) {
                   style={{marginTop:10}}
                 >
                   {data1[search].subListData.map((item, keys) => 
-                      (<div className="talentthumbslide resp">
+                      keys < artistImages ?
+                      <div className="talentthumbslide resp">
                         <img
                           src={item}
                           loading="lazy"
                           alt=""
                           className="image"
                         />
-                      </div>)
+                      </div>:null
                     )
                   }
                 </div>
@@ -358,6 +359,7 @@ function SearchByArtist(props) {
                       to="#"
                       style={{ fontSize: "16px" }}
                       className="talentbuttonArtistSearch col-3 mr-1"
+                      onClick={()=>setArtistImages(artistImages + 8)}
                     >
                       See More
                     </Link>
@@ -377,23 +379,37 @@ function SearchByArtist(props) {
               ) : null}
               {tab === 1 ? (
                 windowSize.innerWidth < 335 ?
+                <div>
                 <div
                 className="imagecont"
                 style={{marginTop:10}}
               >
-                {Object.keys(similarData).length > 0
-                      ? Object.keys(similarData).map((key, i) => (
-                        <div className="talentthumbslide resp">
+                {Object.keys(similarData).length > 0 ?
+                  Object.keys(similarData).map((key, i) => 
+                    i < artistSimilar ? 
+                      <div className="talentthumbslide resp">
                         <img
                           src={similarData[key].mainImage}
                           loading="lazy"
                           alt=""
                           className="image"
                         />
-                      </div>
-                                
-                        ))
-                      : "NO SIMILAR IMAGES FOUND"}
+                      </div> 
+                      : null
+                    )
+                  : "NO SIMILAR IMAGES FOUND"
+                }
+                </div>
+                  <div style={{textAlign: "center",margin:"10px"}}>
+                    <Link
+                      to="#"
+                      style={{ fontSize: "16px" }}
+                      className="talentbuttonArtistSearch col-3 mr-1"
+                      onClick={()=>setArtistSimilar(artistSimilar + 8)}
+                    >
+                      See More
+                    </Link>
+                  </div>
               </div>
                 :
                 <div className="col-12 my-2">
@@ -405,7 +421,8 @@ function SearchByArtist(props) {
                             src={similarData[key].mainImage}
                           />
                         ))
-                      : "NO SIMILAR IMAGES FOUND"}
+                      : "NO SIMILAR IMAGES FOUND"
+                    }
                   </Slider>
                 </div>
               ) : null}
@@ -422,7 +439,8 @@ function SearchByArtist(props) {
                             src={dataViewed[key].slideList[0]}
                           />
                         ))
-                      : ""}
+                      : ""
+                    }
                     <SliderItem
                       col="col-lg-1 col-md-3 col-6 px-md-2"
                       src={images + "/Rectangle-171.png"}
