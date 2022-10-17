@@ -98,7 +98,7 @@ function Artists(props) {
                   <>
                     <Link
                       id="w-node-a284be2a-4b91-3177-03eb-6614b2487a29-4bf2d022"
-                      to="http://www.shannonassociates.com/kidshannon/"
+                      to="http://shannon-kidshannon.herokuapp.com/#/"
                       className="banner _2 v2 w-inline-block"
                     >
                       <div className="bannerletters _2 v2"></div>
