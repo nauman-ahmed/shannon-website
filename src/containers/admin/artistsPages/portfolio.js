@@ -120,7 +120,7 @@ function Portfolio(props) {
                   item.status === 1?
                   <Draggable key={item._id} draggableId={item._id} index={key}>
                     {(provided) => (
-                    <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} className='col-12 col-md-12 col-sm-12 artistcard w-inline-block'>
+                    <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} className='col-12 col-md-12 col-sm-12 artistcardAdmin w-inline-block'>
                       <img alt='' src={item.path} className="image"/>
                     </div>
                     )}
@@ -157,7 +157,7 @@ function Portfolio(props) {
       <div className='row m-0'>
         {
         characters.length > 0 ? characters.map((item,key)=>(
-          item.status === 1?<div key={key} className='col-6 col-md-3 col-sm-4 artistcard w-inline-block'>
+          item.status === 1?<div key={key} className='col-6 col-md-3 col-sm-4 artistcardAdmin w-inline-block'>
               <img alt='' src={item.path} className="image"/>
           </div>:""
         )):""

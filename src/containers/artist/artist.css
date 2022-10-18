@@ -13,23 +13,23 @@
     background-image: linear-gradient(#FFB71B,#EC297B);
     border-radius: 100px;
 }
-.artistcard{
+.artistcardAdmin{
     margin-bottom: 10px;
 }
-.artistcard>.image{
+.artistcardAdmin>.image{
     object-fit: cover;
     width: 100%;
 }
-.artistcard.addImageBtn{
+.artistcardAdmin.addImageBtn{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.artistcard.addImageBtn:hover{
+.artistcardAdmin.addImageBtn:hover{
     background-color: #fafafa;
     cursor: pointer;
 }
-.artistcard.addImageBtn>.addImage{
+.artistcardAdmin.addImageBtn>.addImage{
     width: 35% !important;
 }
 .imageUploader{

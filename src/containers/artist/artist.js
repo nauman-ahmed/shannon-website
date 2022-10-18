@@ -74,13 +74,13 @@ function Artist() {
                 <h6 className='mt-5'>SUBMIT IMAGES</h6>
             </div>
             <div className='row m-0'>
-                <label className='col-6 col-lg-2 col-md-3 col-sm-4 m-0 artistcard w-inline-block addImageBtn'>
+                <label className='col-6 col-lg-2 col-md-3 col-sm-4 m-0 artistcardAdmin w-inline-block addImageBtn'>
                     <img alt='' src={AddImage} className="addImage"/>
                     <input hidden multiple type="file" onChange={(e)=>changePageHandler(e)}/>
                 </label>
                 {artistReducer.savedImages !== null && 
                     artistReducer.savedImages.map((val,ind)=>
-                        <div onClick={()=>updateImageDetails(val)} className='col-6 col-lg-2 col-md-3 col-sm-4 artistcard' key={ind}>
+                        <div onClick={()=>updateImageDetails(val)} className='col-6 col-lg-2 col-md-3 col-sm-4 artistcardAdmin' key={ind}>
                             <img alt='' src={val.path} className="image"/>
                         </div>
                     )

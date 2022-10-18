@@ -85,7 +85,7 @@ function Banners(props) {
     <div className='d-flex flex-column scrollerOn pt-2 mx-5'>
       <p className='mb-3'><b>BIPOC</b> ({banners.length>0?banners[0].aspectRatio.width+"X"+banners[0].aspectRatio.height:null})</p>
       <div className='d-flex mb-4'>
-        <div className='artistcard'>
+        <div className='artistcardAdmin'>
             <img alt='first' src={(banners.length>0?banners[0].imagePath:"")} className="image"/>
         </div>
         <button onClick={onBtnClick1} className='myBtn align-self-end m-3'>UPLOAD</button>
@@ -93,7 +93,7 @@ function Banners(props) {
       </div>
       <p className='mb-3'><b>KIDSHANNON</b> ({banners.length>0?banners[1].aspectRatio.width+"X"+banners[1].aspectRatio.height:null})</p>
       <div className='d-flex mb-4'>
-        <div className='artistcard half'>
+        <div className='artistcardAdmin half'>
             <img alt='second' src={(banners.length>0?banners[1].imagePath:"")} className="image"/>
         </div>
         <button onClick={onBtnClick2} className='myBtn align-self-end m-3'>UPLOAD</button>
@@ -101,7 +101,7 @@ function Banners(props) {
       </div>
       <p className='mb-3'><b>MEDICAL</b> ({banners.length>0?banners[2].aspectRatio.width+"X"+banners[2].aspectRatio.height:null})</p>
       <div className='d-flex mb-4'>
-        <div className='artistcard'>
+        <div className='artistcardAdmin'>
             <img alt='third' src={(banners.length>0?banners[2].imagePath:"")} className="image"/>
         </div>
         <button onClick={onBtnClick3} className='myBtn align-self-end m-3'>UPLOAD</button>
@@ -109,7 +109,7 @@ function Banners(props) {
       </div>
       <p className='mb-3'><b>NEWS</b> (({banners.length>0?banners[3].aspectRatio.width+"X"+banners[3].aspectRatio.height:null}))</p>
       <div className='d-flex mb-4'>
-        <div className='artistcard half'>
+        <div className='artistcardAdmin half'>
             <img alt='forth' src={(banners.length>0?banners[3].imagePath:"")} className="image"/>
         </div>
         <button onClick={onBtnClick4} className='myBtn align-self-end m-3'>UPLOAD</button>
@@ -117,7 +117,7 @@ function Banners(props) {
       </div>
       <p className='mb-3'><b>MOTION</b> (({banners.length>0?banners[4].aspectRatio.width+"X"+banners[4].aspectRatio.height:null}))</p>
       <div className='d-flex mb-4'>
-        <div className='artistcard half'>
+        <div className='artistcardAdmin half'>
             <img alt='forth' src={(banners.length>0?banners[4].imagePath:"")} className="image"/>
         </div>
         <button onClick={onBtnClick5} className='myBtn align-self-end m-3'>UPLOAD</button>
@@ -125,7 +125,7 @@ function Banners(props) {
       </div>
       <p className='mb-3'><b>ABOUT</b> (({banners.length>0?banners[5].aspectRatio.width+"X"+banners[5].aspectRatio.height:null}))</p>
       <div className='d-flex mb-4'>
-        <div className='artistcard half'>
+        <div className='artistcardAdmin half'>
             <img alt='forth' src={(banners.length>0?banners[5].imagePath:"")} className="image"/>
         </div>
         <button onClick={onBtnClick6} className='myBtn align-self-end m-3'>UPLOAD</button>
