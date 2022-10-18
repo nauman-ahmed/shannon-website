@@ -4229,6 +4229,15 @@ a {
     font-size: 16px;
   }
 
+  @media screen and (max-width: 479px)
+{
+  .menuinfo.v2 {
+    margin-top: 10px;
+    font-size: 11px;
+    text-align: center;
+}
+}
+
   .menuinfo.v2 {
     margin-top: 10px;
     text-align: center;

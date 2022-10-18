@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 function Navbar(props) {
     return (
          <div className="div-block-11 w-100 ">
-             {/* <div className="filterhomebox div-block-5"> */}
              <div className='mobileViewNavbar'>
                <div className='w-100 d-flex align-items-center justify-content-between flex-wrap'>
                 <Link to="/illustration-artists" className={"filterhomelink v2 "+(props.aciveBtn === "illustration-artists"?"w--current":"")}>ILLUSTRATION</Link>

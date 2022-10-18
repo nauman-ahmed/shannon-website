@@ -159,7 +159,7 @@ function Contact() {
       if (keyChecker) {
         res.payload.forEach((item, key1) => {
           if (key1 <= 12) {
-            temp[item._id] = item.firstname;
+            temp[item._id] = item.firstname+" "+item.lastname;
             tempchecked[item._id] = false;
           }
         });

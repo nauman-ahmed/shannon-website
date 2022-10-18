@@ -34,6 +34,7 @@ function SearchByArtist(props) {
     const {innerWidth, innerHeight} = window
     return {innerWidth, innerHeight};
   }
+  
   function handleWindowResize() {
     console.log(getWindowSize() )
     setWindowSize(getWindowSize());
@@ -235,14 +236,14 @@ function SearchByArtist(props) {
               <Link
                 to="#"
                 style={{ fontSize: "16px" }}
-                className={windowSize.innerWidth < 335 ? "talentbuttonArtistSearch  col-3 mr-1" : "talentbutton col-3 mr-1"}
+                className={windowSize.innerWidth < 400 ? "talentbuttonArtistSearch  col-3 mr-1" : "talentbutton col-3 mr-1"}
               >
                 CALL
               </Link>
               <Link
                 to="/contact"
                 style={{ fontSize: "16px" }}
-                className={windowSize.innerWidth < 335 ? "talentbuttonArtistSearch  col-3 mr-1" : "talentbutton col-3 mr-1"}
+                className={windowSize.innerWidth < 400 ? "talentbuttonArtistSearch  col-3 mr-1" : "talentbutton col-3 mr-1"}
               >
                 GET ESTIMATE
               </Link>
@@ -320,7 +321,7 @@ function SearchByArtist(props) {
                 >
                   <div>SIMILAR ILLUSTRATORS</div>
                 </div>
-                {windowSize.innerWidth < 335 ?
+                {windowSize.innerWidth > 400 ?
                 <div
                 onClick={() => setTab(2)}
                 className={
@@ -335,7 +336,7 @@ function SearchByArtist(props) {
                 
               </div>
               {tab === 0 ? 
-                windowSize.innerWidth < 335 ?
+                windowSize.innerWidth < 400 ?
                 <div>
                 <div
                   className="imagecont"
@@ -378,7 +379,7 @@ function SearchByArtist(props) {
                 </div>
               ) : null}
               {tab === 1 ? (
-                windowSize.innerWidth < 335 ?
+                windowSize.innerWidth < 400 ?
                 <div>
                 <div
                 className="imagecont"
@@ -427,7 +428,7 @@ function SearchByArtist(props) {
                 </div>
               ) : null}
               {tab === 2 ? 
-                windowSize.innerWidth < 335 ?
+                windowSize.innerWidth < 400 ?
                 null:
               (
                 <div className="col-12 my-2">
