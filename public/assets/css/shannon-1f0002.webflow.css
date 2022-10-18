@@ -2973,8 +2973,8 @@ a {
 }
 
 .banner._1.v2 {
-  max-height: 10vw;
-  min-height: 10vw;
+  max-height: 16vw;
+  min-height: 16vw;
   -ms-grid-columns: 3.9vw 1fr;
   grid-template-columns: 3.9vw 1fr;
 }
@@ -3078,7 +3078,7 @@ a {
   font-family: Robotocondensed, sans-serif;
   text-transform: uppercase;
   color: #000;
-  font-size: 0.9vw;
+  font-size: 1vw;
   line-height: 2;
   font-weight: 400;
   text-align: center;

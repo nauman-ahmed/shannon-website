@@ -71,7 +71,7 @@ function Artists(props) {
                       style={{
                         backgroundImage: "url(" + images + "/BIPOC.png)",
                         marginLeft: "-0.5vw",
-                        marginTop: -5,
+                        marginTop: "0.8vh",
                       }}
                     ></div>
                     {/* <img id="w-node-a284be2a-4b91-3177-03eb-6614b24879ec-4bf2d022" alt="banner " src={IMAGE_ROUTE+bannerImages.bannerData[0].imagePath}  className="bannerletters _1 v2"/> */}
@@ -83,7 +83,7 @@ function Artists(props) {
                           "url(" +
                           setImageRoute(bannerImages.bannerData[0].imagePath) +
                           ")",
-                        height: "97%",
+                        height: "100%",
                       }}
                     ></div>
                   </Link>
