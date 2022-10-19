@@ -22,7 +22,7 @@ function DivisionSideBar(props) {
         <span className="sidebarlink"><br /></span>
         <span className="sidebarlink">KIDSHANNON<br /></span>
         <span className="sidebarlink">MOTION<br /></span>
-        <span className="sidebarlink spacing">MEDICAL</span>
+        <span className="sidebarlink">MEDICAL</span>
 
        {keywordReducer.keyword!==null?keywordReducer.map((item,key)=>(
           <div key={key}>
@@ -30,7 +30,7 @@ function DivisionSideBar(props) {
           
           </div>
        )):""}
-        <span className="sidebarlink spacing"><br /></span>
+        
         {keywordReducer.keyword!==null?keywordReducer.map((item,key)=>(
           <div key={key}>
           {item.type === 1?(<Link to={"/divisions/"+item.keyword} className={"divisionslink"+(props.activeBtn === item.keyword?" w--current":"")}><span className="sidebarlink">{item.keyword.toUpperCase()}<br /></span></Link>):""}

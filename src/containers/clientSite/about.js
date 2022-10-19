@@ -27,7 +27,7 @@ function About() {
           className="bipocinfo"
         >
           <h1 className="newsh2 h">ABOUT SHANNON</h1>
-          <p className="paragraph">
+          <p className="paragraph1">
             Shannon Associates is the premier agency in the fields of
             illustration, animation, photography and various areas of the visual
             arts. We have been serving the needs of creative professionals in

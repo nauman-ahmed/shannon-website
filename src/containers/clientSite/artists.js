@@ -54,7 +54,7 @@ function Artists(props) {
                   className="image"
                 />
                 <div className="artistnamediv">
-                  <div className="artistnametext-v2">
+                  <div className="artistnametext-v3">
                     {val.artistId.lastname} {val.artistId.firstname}
                   </div>
                 </div>
@@ -231,7 +231,7 @@ function Artists(props) {
                 className="image"
               />
               <div className="artistnamediv">
-                <div className="artistnametext-v2">
+                <div className="artistnametext-v3">
                   {val.artistId.lastname} {val.artistId.firstname}
                 </div>
               </div>
