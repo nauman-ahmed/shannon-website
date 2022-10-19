@@ -19,7 +19,7 @@ function About() {
             className="image bipoc "
           />
           <div className="artistnamediv">
-            <div className="artistnametext-v2">ANNA &amp; ELENA BALBUSSO</div>
+            <div className="artistnametext-v2" style={{ lineHeight: '1', fontSize: '0.74vw' }}>ANNA &amp; ELENA BALBUSSO</div>
           </div>
         </Link>
         <div
@@ -27,7 +27,7 @@ function About() {
           className="bipocinfo"
         >
           <h1 className="newsh2 h">ABOUT SHANNON</h1>
-          <p className="paragraph1">
+          <p className="paragraph">
             Shannon Associates is the premier agency in the fields of
             illustration, animation, photography and various areas of the visual
             arts. We have been serving the needs of creative professionals in

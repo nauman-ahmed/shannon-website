@@ -173,11 +173,11 @@ export function SliderItem(props) {
       />
       {"label" in props ? (
         <div
-          className="w-100 text-center position-relative py-3"
+          className="w-100 text-center position-absolute artistnametext-v2"
           style={{
             textTransform:'uppercase',
-            margin: "-40px 0 30px 0",
-            backgroundColor: "rgba(255,255,255,0.8)",
+            lineHeight: '1',
+            fontSize: '0.74vw',
           }}
         >
           {props.label}

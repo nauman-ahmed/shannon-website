@@ -335,6 +335,7 @@ label {
   vertical-align: middle;
   background-color: #ffffff;
   border: 1px solid #cccccc;
+  font-size: 14px !important;
 }
 .w-input:-moz-placeholder,
 .w-select:-moz-placeholder {
@@ -1639,7 +1640,7 @@ textarea.w-select {
   text-decoration: none;
   color: #222222;
   padding: 0.77vw;
-  padding-top: 2.55vw;
+  /* padding-top: 2.55vw; */
   text-align: left;
   margin-left: auto;
   margin-right: auto;
