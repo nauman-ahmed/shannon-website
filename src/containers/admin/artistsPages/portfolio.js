@@ -23,7 +23,7 @@ function Portfolio(props) {
   }
 
   useEffect(() => {
-    if(props.selectedImages){
+    if(props.selectedImages.mainImage !== undefined){
       getKeywordsAndSeperate()
     }
   }, [])
