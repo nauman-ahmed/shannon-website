@@ -11,6 +11,7 @@ function Edit(props) {
     const [state,setState] = useState("");
     const [status,setStatus] = useState("0");
     const [type,setType] = useState("");
+    const [bipocType,setBipocType] = useState("");
     const [passsword,setPassword] = useState("");
     const [value, setValue] = useState("")
     const [showList, setShow] = useState(false)
@@ -29,10 +30,19 @@ function Edit(props) {
         setState(props.selectedArtist.state);
         setStatus(String(props.selectedArtist.status));
         setType(props.selectedArtist.type)
+        setBipocType(props.selectedArtist.bipocType)
         setPassword(props.selectedArtist.raw_password)
     }, []) 
   
-    const changeArtistType = (e) => {
+    const changeArtistBipocType = (e) => {
+        if(e.target.value == type){
+            setBipocType("None")
+            return
+        }else{
+            setBipocType(e.target.value)
+        }
+    }
+    const changeArtistKidType = (e) => {
         if(e.target.value == type){
             setType("None")
             return
@@ -159,38 +169,38 @@ function Edit(props) {
                 <input className='mr-2' name="status" type="radio" value={"0"} checked={status === "0"}  onChange={(e)=>{setStatus(e.target.value);}}/>
                 {"Inactive"}
             </label>
-
+                 {console.log(type)}
             
             <label className='col-12'>KIDSHANON</label>
             <label className='px-3'>
-                <input className='mr-2' name="kidshannon" type="radio" value={"kidshannon"}  checked={type === "kidshannon"} onChange={(e)=>{changeArtistType(e);}}/>
+                <input className='mr-2' name="kidshannon" type="radio" value={"kidshannon"}  checked={type === "kidshannon"} onChange={(e)=>{changeArtistKidType(e);}}/>
                 Yes
             </label>
             <label className='px-3'>
-                <input className='mr-2' name="kidshannon" type="radio" value={"None"} checked={type !== "kidshannon"}  onChange={(e)=>{changeArtistType(e);}}/>
+                <input className='mr-2' name="kidshannon" type="radio" value={"None"} checked={type !== "kidshannon"}  onChange={(e)=>{changeArtistKidType(e);}}/>
                 No
             </label>
             
             
             <label className='col-12 my-2'>BIPOC</label>
             <label className='px-3'>
-                <input className='mr-2' name="Black" type="radio" value={"Black"}  checked={type === "Black"} onClick={(e)=>changeArtistType(e)}/>
+                <input className='mr-2' name="Black" type="radio" value={"Black"}  checked={bipocType === "Black"} onClick={(e)=>changeArtistBipocType(e)}/>
                 Black
             </label>
             <label className='px-3'>
-                <input className='mr-2' name="Asian" type="radio" value={"Asian"} checked={type === "Asian"}  onClick={(e)=>changeArtistType(e)}/>
+                <input className='mr-2' name="Asian" type="radio" value={"Asian"} checked={bipocType === "Asian"}  onClick={(e)=>changeArtistBipocType(e)}/>
                 Asian
             </label>
             <label className='px-3'>
-                <input className='mr-2' name="Latino" type="radio" value={"Latino"} checked={type === "Latino"}  onClick={(e)=>changeArtistType(e)}/>
+                <input className='mr-2' name="Latino" type="radio" value={"Latino"} checked={bipocType === "Latino"}  onClick={(e)=>changeArtistBipocType(e)}/>
                 Latino
             </label>
             <label className='px-3'>
-                <input className='mr-2' name="Central Asia" type="radio" value={"Central Asia"} checked={type === "Central Asia"}  onClick={(e)=>changeArtistType(e)}/>
+                <input className='mr-2' name="Central Asia" type="radio" value={"Central Asia"} checked={bipocType === "Central Asia"}  onClick={(e)=>changeArtistBipocType(e)}/>
                 Central Asia
             </label>
             <label className='px-3'>
-                <input className='mr-2' name="Indigenous" type="radio" value={"Indigenous"} checked={type === "Indigenous"}  onClick={(e)=>changeArtistType(e)}/>
+                <input className='mr-2' name="Indigenous" type="radio" value={"Indigenous"} checked={bipocType === "Indigenous"}  onClick={(e)=>changeArtistBipocType(e)}/>
                 Indigenous
             </label>
             <div className='col-12 d-flex justify-content-end'>
@@ -204,6 +214,7 @@ function Edit(props) {
                     city:city,
                     status:status,
                     type:type,
+                    bipocType:bipocType,
                     raw_password:passsword
                     }); }}>SAVE</button>}
             </div>

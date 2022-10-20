@@ -1,5 +1,6 @@
 import React from 'react'
 import Table, { TBody, Td, Th, THead, Tr } from '../../../components/table/table'
+import { changeArtistImageViewed } from '../../../AxiosFunctions/Axiosfunctionality'
 import { useHistory } from 'react-router-dom'
 
 function ImagesForReview(props) {
@@ -7,7 +8,7 @@ function ImagesForReview(props) {
     const findStatusCount = (item)=>{
         var count = 0;
         item.mainImage.forEach((item,key)=>{
-            if(item.status === 0) {
+            if(item.statusSubmit === 1 && item.statusViewed === 0) {
                 count++;
             }
         })
@@ -15,6 +16,7 @@ function ImagesForReview(props) {
     }
 
     const redirectToArtistSubmission = (data) => {
+        changeArtistImageViewed(data)
         historyCurrent.push({
             pathname:"/admin/artists",
             state:data
