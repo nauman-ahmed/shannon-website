@@ -3,12 +3,12 @@ import axios from "axios";
 //for Contacts Functionality
 
 
-// export const BASE_URL = "http://127.0.0.1:5000/api/"
-// export const IMAGE_ROUTE = "http://127.0.0.1:5000/";
+export const BASE_URL = "http://127.0.0.1:5000/api/"
+export const IMAGE_ROUTE = "http://127.0.0.1:5000/";
 
 
-export const BASE_URL = "https://shannon-nodejsart.herokuapp.com/api/"
-export const IMAGE_ROUTE = "https://shannon-nodejsart.herokuapp.com/";
+// export const BASE_URL = "https://shannon-nodejsart.herokuapp.com/api/"
+// export const IMAGE_ROUTE = "https://shannon-nodejsart.herokuapp.com/";
 
 export const logouter = () => {
     localStorage.removeItem('authorization');
@@ -345,7 +345,7 @@ export const changeArtistImageStatus = async (data) => {
 
 
 export const updateArtistData = async (data) => {
-    try {
+    try { 
         const response = await axios.post(BASE_URL + 'artistUser/updateArtist', data);
         return response.data;
     } catch (error) {
@@ -365,6 +365,15 @@ export const LoginAdmin = async (data) => {
 export const changeArtistImageDetails = async (data) => {
     try {
         const response = await axios.post(BASE_URL + 'artistImage/updateData', data);
+        return response.data;
+    } catch (error) {
+        logouter();
+    }
+}
+
+export const changeArtistImageViewed = async (data) => {
+    try {
+        const response = await axios.post(BASE_URL + 'artistImage/changeViewedData', data);
         return response.data;
     } catch (error) {
         logouter();
