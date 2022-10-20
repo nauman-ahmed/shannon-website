@@ -19,7 +19,7 @@ function About() {
             className="image bipoc "
           />
           <div className="artistnamediv">
-            <div className="artistnametext-v2">ANNA &amp; ELENA BALBUSSO</div>
+            <div className="artistnametext-v2" style={{ lineHeight: '1', fontSize: '0.74vw' }}>ANNA &amp; ELENA BALBUSSO</div>
           </div>
         </Link>
         <div

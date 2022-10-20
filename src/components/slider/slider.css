@@ -59,6 +59,7 @@
     scroll-behavior: smooth;
 }
 .slider .slideScroller .slideContent {
+    margin-left: 18px;
     display: flex;
 }
 .slider .slideScroller .slideContent .slideItem>img {

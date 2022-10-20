@@ -29,7 +29,7 @@ function Header(props) {
               />
             </Link>
             <nav role="navigation" className="navmenu w-nav-menu">
-              <span style={{ marginRight: -20 }}>
+              <span>
                 <Link
                   to="/"
                   aria-current="page"

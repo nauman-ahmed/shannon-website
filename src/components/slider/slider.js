@@ -173,10 +173,11 @@ export function SliderItem(props) {
       />
       {"label" in props ? (
         <div
-          className="w-100 text-center position-relative py-2"
+          className="w-100 text-center position-absolute artistnametext-v2"
           style={{
-            margin: "-30px 0 30px 0",
-            backgroundColor: "rgba(255,255,255,0.8)",
+            textTransform:'uppercase',
+            lineHeight: '1',
+            fontSize: '0.74vw',
           }}
         >
           {props.label}
@@ -231,10 +232,10 @@ export function FullScreenSliderItem(props) {
             paddingLeft: "140px",
           }}
         >
-          <h2 className="" style={{ borderBottom: "3px solid black" }}>
+          <h2 className="h2talent" style={{ marginBottom:'5px', width:'70%' }} >
             {props.currentData.title}
           </h2>
-          <small>Baby Alpaca Children's Book</small>
+          <p >Baby Alpaca Children's Book</p>
 
           <p
             style={{ fontSize: "22px", fontWeight: 700 }}
@@ -247,13 +248,13 @@ export function FullScreenSliderItem(props) {
               <div className="row">
                 {props.currentData.keywordId.map((item, key) => (
                   <div className="col-4 mb-2">
-                    <p className="mb-0">{item.keyword}</p>
+                    <p className="mb-0" style={{lineHeight:'1.5', textTransform:'lowercase'}}>{item.keyword}</p>
                   </div>
                 ))}
               </div>
             </div>
           </div>
-          <div className="d-flex align-items-center mt-3">
+          <div className="d-flex align-items-center mt-5">
             <div>
               <button
                 className="px-3 py-2 text-uppercase"
@@ -285,8 +286,8 @@ export function FullScreenSliderItem(props) {
           </div>
 
           <p
-            style={{ fontSize: "18px", fontWeight: 500 }}
-            className="mb-0 mt-5"
+            style={{ fontSize: "18px", fontWeight: 500 , marginTop:'30vh'  }}
+            className="mb-0"
           >
             Want to commission this artist?
           </p>

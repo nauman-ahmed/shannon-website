@@ -220,12 +220,12 @@ function SearchByArtist(props) {
     <div className="row" style={{ maxWidth: "100%" }}>
       {data1 !== null ? (
         <>
-          <div className="col-md-5">
+          <div className="col-md-5 mt-5 pt-5">
             <h2 className="h2talent">{data1[search].title}</h2>
             <div
               className="talentp large d-block hide_detail"
               style={{
-                fontSize: "18px",
+                fontSize: "16px",
                 paddingTop: "50px",
               }}
             >
@@ -236,14 +236,14 @@ function SearchByArtist(props) {
               <Link
                 to="#"
                 style={{ fontSize: "16px" }}
-                className={windowSize.innerWidth < 400 ? "talentbuttonArtistSearch  col-3 mr-1" : "talentbutton col-3 mr-1"}
+                className={windowSize.innerWidth < 400 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-1"}
               >
                 CALL
               </Link>
               <Link
                 to="/contact"
                 style={{ fontSize: "16px" }}
-                className={windowSize.innerWidth < 400 ? "talentbuttonArtistSearch  col-3 mr-1" : "talentbutton col-3 mr-1"}
+                className={windowSize.innerWidth < 400 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-1"}
               >
                 GET ESTIMATE
               </Link>

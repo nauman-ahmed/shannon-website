@@ -91,7 +91,7 @@ function Bipoc() {
           </p>
         </div>
       </div>
-      <div className="row category mt-5" style={{ maxWidth: "100%" }}>
+      <div className="row category mt-5 pt-5" style={{ maxWidth: "100%" }}>
         <div className="col-sm-4 col-12 d-sm-inline d-none">
           <h1 className="newsh2 h">BLACK ARTISTS</h1>
           <div className="w-dyn-list">
@@ -119,7 +119,7 @@ function Bipoc() {
                       label={
                         val.artistData.lastname + " " + val.artistData.firstname
                       }
-                      col="col-lg-4 col-md-6 col-12 px-md-4"
+                      col="col-lg-4 col-md-6 col-12 px-md-1"
                       src={val.ImageData[0].subImage[1].path}
                     />
                   ) : null
