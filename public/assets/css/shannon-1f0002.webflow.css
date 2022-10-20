@@ -153,7 +153,7 @@ a {
   display: -ms-grid;
   display: grid;
   grid-auto-columns: 1fr;
-  grid-column-gap: 0px;
+  grid-column-gap: 10px;
   grid-row-gap: 10px;
   grid-template-areas: ".";
   -ms-grid-columns: 1fr 10px 1fr 10px 1fr 10px 1fr;
@@ -164,7 +164,7 @@ a {
 
 ._4cols.divisions {
   -ms-grid-rows: auto auto;
-  grid-template-rows: 270px ;
+  grid-template-rows: auto auto ;
 }
 
 .artistcard {
@@ -172,7 +172,11 @@ a {
   overflow: hidden;
   height: 14vw;
 }
-
+.artistcard.division {
+  position: relative;
+  overflow: hidden;
+  height: 21.41vw;
+}
 /* .artistcard img:hover{
   transition: 0.5s ease-in-out;
   transform: scale(1.5);
@@ -195,7 +199,8 @@ a {
 }
 
 .artistcard.bipocslider {
-  height: auto;
+  /* height: auto; */
+  height: 21.41vw;
 }
 
 .artistnamediv {
@@ -623,7 +628,8 @@ a {
 
 .talentbutton {
   margin:10px 0px 20px;
-  width: 120px;
+  /* width: 120px; */
+  width: 7vw;
   margin-right: 25px;
   /* margin-right: 25px !important; */
   padding-top: 1.1vh;
@@ -2656,7 +2662,7 @@ a {
 }
 
 .thumb {
-  width: 4vw;
+  max-width: 4vw;
   height: 4vw;
   margin-right: 13px;
   cursor: pointer;
@@ -3055,8 +3061,8 @@ a {
   display: -ms-grid;
   display: grid;
   grid-auto-columns: 1fr;
-  grid-column-gap: 13px;
-  grid-row-gap: 6px;
+  grid-column-gap: 16px;
+  grid-row-gap: 1.28vh;
   grid-template-areas: ".";
   -ms-grid-columns: 1fr 16px 1fr 16px 1fr 16px 1fr 16px 1fr 16px 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -3404,7 +3410,7 @@ a {
 .divisiondivider.grad {
   position: -webkit-sticky;
   position: sticky;
-  width: 100%;
+  width: 110%;
   margin-bottom: 20px;
   background-image: linear-gradient(260deg, #ffb71b, #feac23 25%, #fa8e37 43%, #f7734a 66%, #f35e57 78%, #ec297b);
 }
@@ -3610,14 +3616,16 @@ a {
 }
 
 .card {
-  width: 29.5%;
-  margin-left: 4%;
+  border:none;
+  max-width: 29.1%;
+  margin-left: 5%;
   padding-right: 0px;
   padding-bottom: 0px;
 }
 
 .card._1 {
-  width: 29.5%;
+  border:none;
+  max-width: 29.1%;
   margin-left: 0%;
 }
 
@@ -3832,7 +3840,7 @@ a {
   top: 0%;
   right: 0%;
   bottom: 0%;
-  width: 25%;
+  width: 23%;
   height: 2vw;
   border-radius: 21px;
   background-image: url('../images/Frame_1.svg');
@@ -4251,6 +4259,9 @@ a {
   }
 
   .artistcard {
+    height: 50vw;
+  }
+  .artistcard.division {
     height: 50vw;
   }
 
@@ -4750,7 +4761,7 @@ a {
   }
 
   .logov2 {
-    width: 80%;
+    width: 100%;
     margin-top: 15px;
     margin-left: 10px;
 
@@ -11156,6 +11167,20 @@ a {
   grid-row-end: span 1;
 }
 
+element.style {
+    margin-right: 10px;
+}
+#w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081 {
+    -ms-grid-column: span 1;
+    grid-column-start: span 1;
+    -ms-grid-column-span: 1;
+    grid-column-end: span 1;
+    -ms-grid-row: span 1;
+    grid-row-start: span 1;
+    -ms-grid-row-span: 1;
+    grid-row-end: span 1;
+}
+
 @media screen and (max-width: 991px) {
   #w-node-a284be2a-4b91-3177-03eb-6614b24879ea-4bf2d022 {
     -ms-grid-row: span 1;
@@ -11550,6 +11575,25 @@ a {
 }
 
 @media screen and (max-width: 479px){
+  .slider .arrow2.left{
+    display: none;
+  }
+  .slider .arrow2.right{
+    display: none;
+  }
+  .card._1 {
+    border: none;
+    max-width: 100%;
+    margin-left: 0%;
+}
+.card {
+  border: none;
+  max-width: 100%;
+  margin-left: 0%;
+}
+  .talentbutton{
+    width: 20vw;
+  }
 .artistnametext-v3 {
     padding-top: 1vh;
     padding-bottom: 1vh;
@@ -11563,5 +11607,11 @@ a {
 .slideContent{
   justify-content: center;
   margin-left: 0px !important;
+}
+}
+@media screen and (max-width: 830px){
+.talentbutton.contactbutton {
+    font-size: 4.4vw !important;
+    width: 24.2vw;
 }
 }

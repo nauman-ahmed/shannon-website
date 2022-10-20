@@ -371,7 +371,7 @@ function SearchByArtist(props) {
                   <Slider disableAutoPlay controllEnabled="outside-dark">
                     {data1[search].subListData.map((item, keys) => (
                       <SliderItem
-                        col="col-lg-1 col-md-3 col-6 px-md-1"
+                        col="col-lg-1 col-md-3 col-6 px-md-1 thumb"
                         src={item}
                       />
                     ))}

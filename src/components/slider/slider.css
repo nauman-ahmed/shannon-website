@@ -23,8 +23,22 @@
     border-radius: 50px;
     /* box-shadow: 0px 5px 10px rgba(0,0,0,0.1); */
 }
+.slider .arrow3 {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    background-color: transparent;
+    padding: 10px;
+    line-height: 15px;
+    border-radius: 50px;
+    /* box-shadow: 0px 5px 10px rgba(0,0,0,0.1); */
+}
 .slider .arrow i{
     font-size: 18px !important;
+}
+.slider .arrow3 i{
+    font-size: 21px !important;
+    color: black; 
 }
 .slider .arrow2 i{
     font-size: 21px !important;
@@ -37,17 +51,37 @@
     right: 20px;
 }
 .slider .arrow2.left {
-    left: 20px;
+    /* left: 20px; */
+    left: -4.5vw;
 }
 .slider .arrow2.right {
     right: 20px;
 }
 @media (min-width: 768px) {
     .slider .arrow2.left {
-        left: -25px;
+        /* left: -25px; */
+        left: -4.5vw;
     }
     .slider .arrow2.right {
-        right: -44px;
+        /* right: -44px; */
+        right:-2.7vw;
+    }
+}
+.slider .arrow3.left {
+    /* left: 20px; */
+    left: -2.7vw;
+}
+.slider .arrow3.right {
+    right: 20px;
+}
+@media (min-width: 768px) {
+    .slider .arrow3.left {
+        /* left: -25px; */
+        left: -2.7vw;
+    }
+    .slider .arrow3.right {
+        /* right: -44px; */
+        right:-2.7vw;
     }
 }
 .slider .arrow:active,.slider .arrow2:active {
@@ -59,7 +93,7 @@
     scroll-behavior: smooth;
 }
 .slider .slideScroller .slideContent {
-    margin-left: 18px;
+    /* margin-left: 18px; */
     display: flex;
 }
 .slider .slideScroller .slideContent .slideItem>img {

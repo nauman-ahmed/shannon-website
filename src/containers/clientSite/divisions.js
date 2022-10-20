@@ -96,10 +96,8 @@ function Divisions(props) {
                                     key={key1}
                                     id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
                                     to="#"
-                                    className="artistcard bipoc w-inline-block"
-                                    style={{
-                                      marginRight: "10px",
-                                    }}
+                                    className="artistcard division w-inline-block"
+                                   
                                   >
                                     <img
                                       src={String(
@@ -169,9 +167,7 @@ function Divisions(props) {
                                   id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
                                   to="#"
                                   className="artistcard bipoc w-inline-block"
-                                  style={{
-                                    marginRight: "10px",
-                                  }}
+                                  
                                 >
                                   <img
                                     src={String(item1.mainImage[0].path)}
