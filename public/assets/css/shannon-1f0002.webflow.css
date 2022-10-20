@@ -7,6 +7,11 @@
   margin-bottom: 5px;
   padding-left: 20px;
 }
+input#Search-2::placeholder {
+  font-size: 13px;
+  font-family: 'Roboto Condensed', sans-serif;
+  letter-spacing: 0.7px;
+}
 
 .w-checkbox::before {
   content: ' ';
@@ -3819,7 +3824,7 @@ a {
 }
 
 .form-block-2 {
-  width: 21.4vw;
+  width: 21%;
   height: 2vw;
   margin-bottom: 0px;
   -webkit-align-self: flex-start;
@@ -3840,7 +3845,7 @@ a {
   top: 0%;
   right: 0%;
   bottom: 0%;
-  width: 23%;
+  width: 25%;
   height: 2vw;
   border-radius: 21px;
   background-image: url('../images/Frame_1.svg');
@@ -3933,6 +3938,11 @@ a {
 }
 
 @media screen and (max-width: 830px){
+  input#Search-2::placeholder {
+    font-size: 16px;
+    font-family: 'Roboto Condensed', sans-serif;
+    letter-spacing: 0.7px;
+  }
 .talentbutton.contactbutton {
     font-size: 4.4vw !important;
     width: 24.2vw;
