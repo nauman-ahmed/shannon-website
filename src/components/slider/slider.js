@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import "./slider.css";
 import { setImageRoute } from "../../UserServices/Services";
@@ -106,7 +106,9 @@ export default function Slider(props) {
       </div>
       {"controllEnabled" in props ? (
         <>
-          <button
+          
+            {location.pathname == "/bipoc" ? (
+              <button
             id={"left" + id}
             className={
               props.controllEnabled === "outside-dark"
@@ -114,17 +116,27 @@ export default function Slider(props) {
                 : "arrow left"
             }
           >
-            {location.pathname == "/bipoc" ? (
               <img
                 src={images + "/bi_arrow-down-right-circle-fill2.svg"}
                 loading="lazy"
                 alt=""
                 class="image-3"
               />
+               </button>
             ) : (
+              
+              <button
+            id={"left" + id}
+            className={
+              props.controllEnabled === "outside-dark"
+                ? "arrow3 left"
+                : "arrow left"
+            }
+          >
               <i className={"icon w-icon-slider-left"}></i>
+              </button>
             )}
-          </button>
+         
           <button
             id={"right" + id}
             className={
@@ -168,7 +180,7 @@ export function SliderItem(props) {
                 OObjectFit: props.fillMode,
                 objectFit: props.fillMode,
               }
-            : { OObjectFit: "cover", objectFit: "cover", width: "95%" }
+            : { OObjectFit: "cover", objectFit: "cover", width: "100%" }
         }
       />
       {"label" in props ? (
@@ -202,28 +214,7 @@ export function FullScreenSliderItem(props) {
           justifyContent: "center",
         }}
       >
-        <div
-          onClick={() => props.onClick()}
-          style={{
-            position: "absolute",
-            right: "10px",
-            top: "23%",
-            cursor: "pointer",
-            zIndex: 1,
-          }}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20px"
-            height="20px"
-            viewBox="0 0 352 512"
-          >
-            <path
-              fill="grey"
-              d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-            />
-          </svg>
-        </div>
+       
         <div
           className="col-6 mt-5 pl-md-3 ml-md-5"
           style={{
@@ -323,6 +314,28 @@ export function FullScreenSliderItem(props) {
           </div>
         </div>
         <div className="col-6">
+        <div
+          onClick={() => props.onClick()}
+          style={{
+            position: "absolute",
+            right: "10vw",
+            top: "0%",
+            cursor: "pointer",
+            zIndex: 1,
+          }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30px"
+            height="30px"
+            viewBox="0 0 352 512"
+          >
+            <path
+              fill="grey"
+              d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+            />
+          </svg>
+        </div>
           <div
             className={
               "col" in props ? props.col + " slideItem" : "col-12 p-0 slideItem"

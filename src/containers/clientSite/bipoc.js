@@ -57,7 +57,7 @@ function Bipoc() {
             className="image bipoc"
           />
           <div className="artistnamediv">
-            <div className="artistnametext-v2">LONNIE OLLIVIERRE</div>
+            <div className="artistnametext-v3">LONNIE OLLIVIERRE</div>
           </div>
         </Link>
         <div
@@ -91,8 +91,8 @@ function Bipoc() {
           </p>
         </div>
       </div>
-      <div className="row category mt-5 pt-5" style={{ maxWidth: "100%" }}>
-        <div className="col-sm-4 col-12 d-sm-inline d-none">
+      <div className="bipoc2cols category" style={{ maxWidth: "100%" }}>
+        <div className="categoryinfo">
           <h1 className="newsh2 h">BLACK ARTISTS</h1>
           <div className="w-dyn-list">
             <div role="list" className="collection-list-4 w-dyn-items">
@@ -105,7 +105,7 @@ function Bipoc() {
             </div>
           </div>
         </div>
-        <div className="col-sm-8 col-12">
+        <div className="sliderbipoc">
           <div className="divisiondivider grad">
             <h2 className="newsinstah2 h">PORTFOLIOS</h2>
             <h1 className="newsh2 hide">BLACK ARTISTS</h1>
@@ -119,7 +119,7 @@ function Bipoc() {
                       label={
                         val.artistData.lastname + " " + val.artistData.firstname
                       }
-                      col="col-lg-4 col-md-6 col-12 px-md-1"
+                      col={ind===0?"col-lg-4 col-md-6 col-12 card _1":"col-lg-4 col-md-6 col-12 card "}
                       src={val.ImageData[0].subImage[1].path}
                     />
                   ) : null
@@ -143,8 +143,8 @@ function Bipoc() {
           ></div>
         </div>
       </div>
-      <div className="row category" style={{ maxWidth: "100%" }}>
-        <div className="col-sm-4 col-12 d-sm-inline d-none">
+      <div className="bipoc2cols category" style={{ maxWidth: "100%" }}>
+        <div className="categoryinfo">
           <h1 className="newsh2 h">ASIAN ARTISTS</h1>
           <div className="w-dyn-list">
             <div role="list" className="collection-list-4 w-dyn-items">
@@ -157,7 +157,7 @@ function Bipoc() {
             </div>
           </div>
         </div>
-        <div className="col-sm-8 col-12">
+        <div className="sliderbipoc">
           <div className="divisiondivider grad">
             <h2 className="newsinstah2 h">PORTFOLIOS</h2>
             <h1 className="newsh2 hide">ASIAN ARTISTS</h1>
@@ -171,7 +171,7 @@ function Bipoc() {
                       label={
                         val.artistData.lastname + " " + val.artistData.firstname
                       }
-                      col="col-lg-4 col-md-6 col-12 px-md-4"
+                      col={ind===0?"col-lg-4 col-md-6 col-12 card _1":"col-lg-4 col-md-6 col-12 card "}
                       src={val.ImageData[0].subImage[1].path}
                     />
                   ) : null
@@ -181,8 +181,8 @@ function Bipoc() {
           ) : null}
         </div>
       </div>
-      <div className="row category" style={{ maxWidth: "100%" }}>
-        <div className="col-sm-4 col-12 d-sm-inline d-none">
+      <div className="bipoc2cols category" style={{ maxWidth: "100%" }}>
+        <div className="categoryinfo">
           <h1 className="newsh2 h">LATINO/LATINA ARTISTS</h1>
           <div className="w-dyn-list">
             <div role="list" className="collection-list-4 w-dyn-items">
@@ -195,7 +195,7 @@ function Bipoc() {
             </div>
           </div>
         </div>
-        <div className="col-sm-8 col-12">
+        <div className="sliderbipoc">
           <div className="divisiondivider grad">
             <h2 className="newsinstah2 h">PORTFOLIOS</h2>
             <h1 className="newsh2 hide">LATINO/LATINA ARTISTS</h1>
@@ -209,7 +209,7 @@ function Bipoc() {
                       label={
                         val.artistData.lastname + " " + val.artistData.firstname
                       }
-                      col="col-lg-4 col-md-6 col-12 px-md-4"
+                      col={ind===0?"col-lg-4 col-md-6 col-12 card _1":"col-lg-4 col-md-6 col-12 card "}
                       src={val.ImageData[0].subImage[1].path}
                     />
                   ) : null
@@ -219,8 +219,8 @@ function Bipoc() {
           ) : null}
         </div>
       </div>
-      <div className="row category" style={{ maxWidth: "100%" }}>
-        <div className="col-sm-4 col-12 d-sm-inline d-none">
+      <div className="bipoc2cols category" style={{ maxWidth: "100%" }}>
+        <div className="categoryinfo">
           <h1 className="newsh2 h">CENTRAL ASIAN ARTISTS</h1>
           <div className="w-dyn-list">
             <div role="list" className="collection-list-4 w-dyn-items">
@@ -233,7 +233,7 @@ function Bipoc() {
             </div>
           </div>
         </div>
-        <div className="col-sm-8 col-12">
+        <div className="sliderbipoc">
           <div className="divisiondivider grad">
             <h2 className="newsinstah2 h">PORTFOLIOS</h2>
             <h1 className="newsh2 hide">CENTRAL ASIAN ARTISTS</h1>
@@ -247,7 +247,7 @@ function Bipoc() {
                       label={
                         val.artistData.lastname + " " + val.artistData.firstname
                       }
-                      col="col-lg-4 col-md-6 col-12 px-md-4"
+                      col={ind===0?"col-lg-4 col-md-6 col-12 card _1":"col-lg-4 col-md-6 col-12 card "}
                       src={val.ImageData[0].subImage[1].path}
                     />
                   ) : null
@@ -257,8 +257,8 @@ function Bipoc() {
           ) : null}
         </div>
       </div>
-      <div className="row category" style={{ maxWidth: "100%" }}>
-        <div className="col-sm-4 col-12 d-sm-inline d-none">
+      <div className="bipoc2cols category" style={{ maxWidth: "100%" }}>
+        <div className="categoryinfo">
           <h1 className="newsh2 h">INDIGENOUS ARTISTS</h1>
           <div className="w-dyn-list">
             <div role="list" className="collection-list-4 w-dyn-items">
@@ -271,7 +271,7 @@ function Bipoc() {
             </div>
           </div>
         </div>
-        <div className="col-sm-8 col-12">
+        <div className="sliderbipoc">
           <div className="divisiondivider grad">
             <h2 className="newsinstah2 h">PORTFOLIOS</h2>
             <h1 className="newsh2 hide">INDIGENOUS ARTISTS</h1>
@@ -285,7 +285,7 @@ function Bipoc() {
                       label={
                         val.artistData.lastname + " " + val.artistData.firstname
                       }
-                      col="col-lg-4 col-md-6 col-12 px-md-4"
+                      col={ind===0?"col-lg-4 col-md-6 col-12 card _1":"col-lg-4 col-md-6 col-12 card "}
                       src={val.ImageData[0].subImage[1].path}
                     />
                   ) : null

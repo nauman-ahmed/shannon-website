@@ -203,11 +203,7 @@ function Contact() {
         >
           <h2 className="contacth2 hide">CONTACT</h2>
           <p
-            className="contactp"
-            style={{
-              marginBottom: "50px",
-            }}
-          >
+            className="contactp">
             <strong>
               Shannon Associates - USA
               <br />
@@ -515,7 +511,7 @@ function Contact() {
                       contactCreate();
                     }}
                     data-wait="Please wait..."
-                    className="talentbutton contactbutton w-button btnwidth"
+                    className="talentbutton contactbutton w-button "
                     style={{ fontSize: "0.62vw" }}
                   />
                 )}
