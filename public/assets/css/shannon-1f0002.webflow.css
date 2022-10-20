@@ -4742,7 +4742,7 @@ a {
   .artistnametext-v2 {
     padding-top: 1vh;
     padding-bottom: 1vh;
-    font-size: 15px;
+    font-size: 11px;
   }
 
   .artistnametext-v2.big {
@@ -11547,4 +11547,21 @@ a {
 }
 .non_active{
   color:#d4d4d4;
+}
+
+@media screen and (max-width: 479px){
+.artistnametext-v3 {
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    font-size: 11px;
+}
+.artistnametext-v2 {
+  padding-top: 1vh !important;
+  padding-bottom: 1vh !important;
+  font-size: 11px !important;
+}
+.slideContent{
+  justify-content: center;
+  margin-left: 0px !important;
+}
 }
