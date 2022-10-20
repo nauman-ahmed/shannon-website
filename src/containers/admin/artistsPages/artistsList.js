@@ -13,11 +13,18 @@ function ArtistsList(props) {
     const [formNo,setFormNo] = useState(0);
   
     const handleOnDragEnd = (result) => {
-      if(!result.destination) return;
-      const items = Array.from(characters)
-      const [reorderedItem] = items.splice(result.source.index,1)
-      items.splice(result.destination.index,0,reorderedItem)
-      updateCharacters(items)
+        if(!result.destination) return;
+        const items = Array.from(characters)
+        const [reorderedItem] = items.splice(result.source.index,1)
+        items.splice(result.destination.index,0,reorderedItem)
+
+        if(formNo == 0){
+            setTypeOneArtist(items)
+        }else{
+            setTypeTwoArtist(items)
+        }
+
+        updateCharacters(items)
     }
     
     useEffect(()=>{
@@ -25,9 +32,7 @@ function ArtistsList(props) {
             updateList()
         }
     },[props.artistUsers])
-
    
-
     const updateList = (payload)=>{
         let temp = [];
         let typeOther = []
@@ -38,35 +43,30 @@ function ArtistsList(props) {
                 if(item.type === "kidshannon"){
                     typeKid.push(item);
                 }
-                else{
-                    typeOther.push(item);
-                }
+                typeOther.push(item);
             })
+
             setTypeOneArtist(typeOther)
             setTypeTwoArtist(typeKid)
-            
             updateCharacters(typeOther)
 
         }
     }
 
     const onSubmitHandler = () => {
-        let sortedImages = []
-        
-        for(let i = 0; i < characters.length; i++){
-            characters[i].orderArtist = i
+        let tempTypeTwo = [...typeTwoArtist]
+        let tempTypeOne = [...typeOneArtist]
+
+        for(let i = 0; i < tempTypeOne.length; i++){
+            tempTypeOne[i].orderArtist = i
+        };
+        for(let i = 0; i < tempTypeTwo.length; i++){
+            tempTypeTwo[i].orderKidArtist = i
         };
 
-        if(formNo == 0){
-            setTypeOneArtist(characters)
-            sortedImages = [...characters,...typeTwoArtist]
-        }else{
-            setTypeTwoArtist(characters)
-            sortedImages = [...typeOneArtist,...characters]
-        }
-        // console.log(sortedImages)
-        orderArtist(sortedImages)
-        props.reorderArtistHandler(sortedImages)
+        
+        orderArtist(tempTypeOne)
+        props.reorderArtistHandler(tempTypeOne)
     }
 
     return (
