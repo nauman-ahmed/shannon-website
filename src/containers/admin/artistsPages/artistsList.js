@@ -28,9 +28,7 @@ function ArtistsList(props) {
     }
     
     useEffect(()=>{
-        if(characters.length == 0){
-            updateList()
-        }
+        updateList()
     },[props.artistUsers])
    
     const updateList = (payload)=>{

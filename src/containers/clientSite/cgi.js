@@ -26,6 +26,14 @@ function CGI(props) {
         <div className="divisiondivider grad">
           <h2 className="divisionh2">CGI</h2>
         </div>
+        <div class="sortingcont">
+          <a sort-by=".order" href="#" class="filter-button w-inline-block">
+            <div>DEFAULT</div>
+          </a>
+          <a sort-by=".name" href="#" class="filter-button w-inline-block">
+            <div>ALPHABETICAL A-Z</div>
+          </a>
+        </div>
         <div id="w-node-_4a165d69-02be-f2c1-10f5-69fa49464043-576fcec6" className="_4cols divisions">
           {data?
             data.map((val,ind)=>

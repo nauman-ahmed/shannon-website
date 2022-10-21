@@ -62,7 +62,6 @@ function Artists(props) {
 
     const updateArtist = (e,data)=>{
         setHolder(true)
-        console.log('DATA',data)
         updateArtistData(data).then((res)=>{
             setHolder(false)
             dispatch(updateOpen(true))
@@ -87,7 +86,6 @@ function Artists(props) {
     }
 
     useEffect(()=>{
-
         if(historyCurrent.location.state){
             formChangeEvent(historyCurrent.location.state,true)           
             return
@@ -102,6 +100,7 @@ function Artists(props) {
 
     return (
         <div className='px-xl-5 mx-xl-5'>
+            
         <div className={'mx-lg-5 px-lg-3 py-4 mt-3 ml-5 d-flex flex-column'+(props.formNo === 1?" align-items-center":"")}>
             {
             props.formNo === 1?

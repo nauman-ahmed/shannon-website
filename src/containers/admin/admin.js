@@ -111,7 +111,7 @@ function Admin(props) {
         populateArtistImages();
         populateArtistUsers();
 
-    }, [])
+    }, [formNo])
 
     const reorderArtistHandler = (data) => {
         setArtistUsers(data)
