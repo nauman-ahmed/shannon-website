@@ -257,6 +257,14 @@ export const getCategory = async (data) => {
     }
 }
 
+export const getCategoryTypeOne = async (data) => {
+    try {
+        const response = await axios.post(BASE_URL + 'keyword/getAllTypeOne', data);
+        return response.data;
+    } catch (error) {
+        logouter();
+    }
+}
 
 export const addCategory = async (data) => {
     try {
