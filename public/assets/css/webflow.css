@@ -69,6 +69,10 @@ html.w-mod-touch * {
   max-width: 98.4%;
   display: inline-block;
 }
+.w-inline-block-banner {
+  max-width: 100%;
+  display: inline-block;
+}
 .w-clearfix:before,
 .w-clearfix:after {
   content: " ";

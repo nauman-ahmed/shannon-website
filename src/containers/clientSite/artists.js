@@ -64,7 +64,7 @@ function Artists(props) {
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879ea-4bf2d022"
                     to="#"
-                    className="banner _1 v2 w-inline-block"
+                    className="banner _1 v2 w-inline-block-banner"
                   >
                     <div
                       className="bannerletters _1 v2"
@@ -146,7 +146,7 @@ function Artists(props) {
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879ea-4bf2d022"
                     to="#"
-                    className="banner _1 v2 w-inline-block"
+                    className="banner _1 v2 w-inline-block-banner"
                   >
                     <div className="bannerletters _4 v2"></div>
                     <div
