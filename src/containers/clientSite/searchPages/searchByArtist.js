@@ -36,7 +36,6 @@ function SearchByArtist(props) {
   }
   
   function handleWindowResize() {
-    console.log(getWindowSize() )
     setWindowSize(getWindowSize());
   }
   

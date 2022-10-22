@@ -123,7 +123,6 @@ function Login() {
           // dispatch(updateMessage("Email And Names Required"))
           return
         }
-        console.log(data)
         setShowLoader(false);
         dispatch(userRegisterApi(data)).then((res)=>{
           setIsPopupShow(true)

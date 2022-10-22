@@ -169,7 +169,6 @@ function Edit(props) {
                 <input className='mr-2' name="status" type="radio" value={"0"} checked={status === "0"}  onChange={(e)=>{setStatus(e.target.value);}}/>
                 {"Inactive"}
             </label>
-                 {console.log(type)}
             
             <label className='col-12'>KIDSHANON</label>
             <label className='px-3'>

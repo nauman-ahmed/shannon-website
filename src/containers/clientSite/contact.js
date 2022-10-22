@@ -149,7 +149,6 @@ function Contact() {
       res.payload.forEach((item, key1) => {
         if (key1 <= 12) {
           if (tempval && tempval[item._id] === undefined) {
-            console.log(item)
             temp[item._id] = item.firstname+" "+item.lastname;
             tempchecked[item._id] = false;
             keyChecker = false;
@@ -565,7 +564,6 @@ function Contact() {
                     className="w-checkbox artistcheckbox"
                     style={{ textTransform: "uppercase" }}
                   >
-                    {console.log(artistData[key])}
                     <input
                       type="checkbox"
                       checked={isCheckedArtist[key]}

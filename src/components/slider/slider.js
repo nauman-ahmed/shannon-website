@@ -200,7 +200,6 @@ export function SliderItem(props) {
 }
 
 export function FullScreenSliderItem(props) {
-  console.log(props)
   const { pages } = useParams();
 
   return (
@@ -370,8 +369,6 @@ export function FullScreenSliderItem(props) {
           </div>
         </div>
       </div>
-      {/* </div>
-      </div> */}
     </>
   );
 }

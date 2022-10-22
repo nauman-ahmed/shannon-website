@@ -40,6 +40,16 @@ const artistImageSlice = createSlice({
             }
             return state
         },
+        resetUploadedImages: (state, param) => {
+            console.log('REDUCER',param)
+            state = {...initialState}
+            state.savedImages = param.payload
+            // if(state.savedImages){
+            //     state.savedImages = [...state.savedImages,param.payload]
+            // }else{
+            // }
+            return state
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(artistImageDataApi.fulfilled, (action,state) => {
@@ -53,5 +63,5 @@ const artistImageSlice = createSlice({
 
 
 const { actions, reducer } = artistImageSlice
-export const { storeUploadedImages,updateUploadedImage } = actions;
+export const { storeUploadedImages,updateUploadedImage,resetUploadedImages } = actions;
 export default reducer;

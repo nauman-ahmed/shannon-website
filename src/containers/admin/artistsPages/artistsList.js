@@ -69,9 +69,9 @@ function ArtistsList(props) {
 
     return (
     <>
-    <button className='m-2 myBtn active' type="text" onClick={onSubmitHandler}>SUBMIT ORDER</button>
-    <button className='m-2 myBtn active' type="text" onClick={()=>{updateCharacters(typeOneArtist); setFormNo(0);}}>ALL ARTISTS</button>
-    <button className='m-2 myBtn active' type="text" onClick={()=>{updateCharacters(typeTwoArtist);setFormNo(1)}}>KIDSHANON ARTISTS</button>
+    <button className='mr-3 mb-3 myBtn active' type="text" onClick={onSubmitHandler}>SUBMIT ORDER</button>
+    <button className='mx-3 mb-3 myBtn active' type="text" onClick={()=>{updateCharacters(typeOneArtist); setFormNo(0);}}>ALL ARTISTS</button>
+    <button className='mx-3 mb-3 myBtn active' type="text" onClick={()=>{updateCharacters(typeTwoArtist);setFormNo(1)}}>KIDSHANON ARTISTS</button>
     {/* <button className='m-2' onClick={onSubmitHandler}>Submit</button> */}
     {props.holder?<div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"50vh"}}><img className="mb-3" alt="loading" src={loading} style={{width:"50px"}}/></div>:
         <DragDropContext onDragEnd={handleOnDragEnd}>

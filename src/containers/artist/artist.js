@@ -4,10 +4,10 @@ import "./artist.css"
 import Header from '../../components/layout2/header'
 import AddImage from "../../assets/svgs/addImage.svg"
 import { useDispatch,useSelector } from 'react-redux'
-import { artistImageDataApi, updateUploadedImage, storeUploadedImages } from '../../redux/artistSlice' 
+import { artistImageDataApi, updateUploadedImage, storeUploadedImages,resetUploadedImages } from '../../redux/artistSlice' 
 import { keywordDataApi } from '../../redux/keywordSlice' 
 import { decodeToken } from "react-jwt";
-import { artistImageCreate } from '../../AxiosFunctions/Axiosfunctionality'
+import { artistImageCreate,artistImagedelete } from '../../AxiosFunctions/Axiosfunctionality'
 import MyPopupLoading from '../../components/loader/myPopup'
 import loading from '../../assets/loading.gif'; 
 
@@ -64,6 +64,23 @@ function Artist() {
         })
 
     }
+
+    const deleteImageHandler = async (val) => {
+        let storageData = localStorage.getItem("authorization")
+        let details = decodeToken(storageData)
+        let response = await artistImagedelete({
+            artistId:details._id,
+            imageData:val
+        })
+
+        if(response){
+            console.log('RESPONSE',response)
+            dispatch(await resetUploadedImages(response.data))
+        }
+
+    }
+
+
     return (
     <>  
         <Header/>
@@ -80,8 +97,24 @@ function Artist() {
                 </label>
                 {artistReducer.savedImages !== null && 
                     artistReducer.savedImages.map((val,ind)=>
-                        <div onClick={()=>updateImageDetails(val)} className='col-6 col-lg-2 col-md-3 col-sm-4 artistcardAdmin' key={ind}>
-                            <img alt='' src={val.path} className="image"/>
+                        <div className='col-6 col-lg-2 col-md-3 col-sm-4 artistcardAdmin' style={{cursor: "pointer"}} key={ind}>
+                            <div
+                                onClick={() => deleteImageHandler(val)}
+                                className="crossSection"
+                                >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="12px"
+                                    height="12px"
+                                    viewBox="0 0 352 512"
+                                >
+                                    <path
+                                    fill="grey"
+                                    d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                                    />
+                                </svg>
+                            </div>
+                            <img onClick={()=>updateImageDetails(val)}  alt='' src={val.path} className="image"/>
                         </div>
                     )
                 }

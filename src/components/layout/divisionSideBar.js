@@ -15,7 +15,6 @@ function DivisionSideBar(props) {
 
   return (
     <div id="w-node-_783b3b4a-9daa-ecbf-356e-d84dbb36f4cc-bb36f4cc" className="respdivhide">
-      {console.log(keywordReducer)}
       <h3 className="homeh3">DIVISIONS</h3>
       <div className="allartist v2">
         <Link to="/illustration-artists" className={"divisionslink"+(props.activeBtn === "illustration-artists"?" w--current":"")}><span className="sidebarlink">ILLUSTRATION<br /></span></Link>
@@ -25,7 +24,7 @@ function DivisionSideBar(props) {
         <span className="sidebarlink">KIDSHANNON<br /></span>
         <span className="sidebarlink">MOTION<br /></span>
         <span className="sidebarlink">MEDICAL</span>
-
+        <br /><br /><br /><br />
        {keywordReducer.length > 0 ? keywordReducer.map((item,key)=>(
           <div key={key}>
           {item.type === 2?(<Link to={"/divisions/"+item.keyword}  className={"divisionslink"+(props.activeBtn === item.keyword?" w--current":"")}><span className="sidebarlink">{item.keyword.toUpperCase()}<br /></span></Link>):""}

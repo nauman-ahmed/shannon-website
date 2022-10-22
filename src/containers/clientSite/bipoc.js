@@ -96,12 +96,18 @@ function Bipoc() {
           <h1 className="newsh2 h">BLACK ARTISTS</h1>
           <div className="w-dyn-list">
             <div role="list" className="collection-list-4 w-dyn-items">
-              <div role="listitem" className="w-dyn-item">
-                <div className="text-block-5"></div>
-              </div>
             </div>
-            <div className="w-dyn-empty">
-              <div>No items found.</div>
+            <div role="list" className="collection-list-4 w-dyn-items">
+              {blackArtist?
+                blackArtist.map((val, ind) =>
+                  (<div role="listitem" className="w-dyn-item">
+                    <div className="text-block-5">{val.artistData.lastname + " " + val.artistData.firstname}</div>
+                  </div>))
+                :
+                  <div role="listitem" className="w-dyn-item">
+                    <div className="text-block-5"></div>
+                  </div>
+              }
             </div>
           </div>
         </div>
@@ -147,13 +153,17 @@ function Bipoc() {
         <div className="categoryinfo">
           <h1 className="newsh2 h">ASIAN ARTISTS</h1>
           <div className="w-dyn-list">
-            <div role="list" className="collection-list-4 w-dyn-items">
-              <div role="listitem" className="w-dyn-item">
-                <div className="text-block-5"></div>
-              </div>
-            </div>
-            <div className="w-dyn-empty">
-              <div>No items found.</div>
+          <div role="list" className="collection-list-4 w-dyn-items">
+              {asianArtist?
+                asianArtist.map((val, ind) =>
+                  (<div role="listitem" className="w-dyn-item">
+                    <div className="text-block-5">{val.artistData.lastname + " " + val.artistData.firstname}</div>
+                  </div>))
+                :
+                  <div role="listitem" className="w-dyn-item">
+                    <div className="text-block-5"></div>
+                  </div>
+              }
             </div>
           </div>
         </div>
@@ -185,13 +195,17 @@ function Bipoc() {
         <div className="categoryinfo">
           <h1 className="newsh2 h">LATINO/LATINA ARTISTS</h1>
           <div className="w-dyn-list">
-            <div role="list" className="collection-list-4 w-dyn-items">
-              <div role="listitem" className="w-dyn-item">
-                <div className="text-block-5"></div>
-              </div>
-            </div>
-            <div className="w-dyn-empty">
-              <div>No items found.</div>
+          <div role="list" className="collection-list-4 w-dyn-items">
+              {latinoArtist?
+                latinoArtist.map((val, ind) =>
+                  (<div role="listitem" className="w-dyn-item">
+                    <div className="text-block-5">{val.artistData.lastname + " " + val.artistData.firstname}</div>
+                  </div>))
+                :
+                  <div role="listitem" className="w-dyn-item">
+                    <div className="text-block-5"></div>
+                  </div>
+              }
             </div>
           </div>
         </div>
@@ -223,13 +237,17 @@ function Bipoc() {
         <div className="categoryinfo">
           <h1 className="newsh2 h">CENTRAL ASIAN ARTISTS</h1>
           <div className="w-dyn-list">
-            <div role="list" className="collection-list-4 w-dyn-items">
-              <div role="listitem" className="w-dyn-item">
-                <div className="text-block-5"></div>
-              </div>
-            </div>
-            <div className="w-dyn-empty">
-              <div>No items found.</div>
+          <div role="list" className="collection-list-4 w-dyn-items">
+              {centralAsianArtist?
+                centralAsianArtist.map((val, ind) =>
+                  (<div role="listitem" className="w-dyn-item">
+                    <div className="text-block-5">{val.artistData.lastname + " " + val.artistData.firstname}</div>
+                  </div>))
+                :
+                  <div role="listitem" className="w-dyn-item">
+                    <div className="text-block-5"></div>
+                  </div>
+              }
             </div>
           </div>
         </div>
@@ -261,13 +279,17 @@ function Bipoc() {
         <div className="categoryinfo">
           <h1 className="newsh2 h">INDIGENOUS ARTISTS</h1>
           <div className="w-dyn-list">
-            <div role="list" className="collection-list-4 w-dyn-items">
-              <div role="listitem" className="w-dyn-item">
-                <div className="text-block-5"></div>
-              </div>
-            </div>
-            <div className="w-dyn-empty">
-              <div>No items found.</div>
+          <div role="list" className="collection-list-4 w-dyn-items">
+              {indegiousArtist?
+                indegiousArtist.map((val, ind) =>
+                  (<div role="listitem" className="w-dyn-item">
+                    <div className="text-block-5">{val.artistData.lastname + " " + val.artistData.firstname}</div>
+                  </div>))
+                :
+                  <div role="listitem" className="w-dyn-item">
+                    <div className="text-block-5"></div>
+                  </div>
+              }
             </div>
           </div>
         </div>
