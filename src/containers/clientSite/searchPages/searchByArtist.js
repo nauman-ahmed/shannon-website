@@ -220,7 +220,7 @@ function SearchByArtist(props) {
     <div className="row" style={{ maxWidth: "100%" }}>
       {data1 !== null ? (
         <>
-          <div className="col-md-5 mt-5 pt-5">
+          <div className="col-md-5 ">
             <h2 className="h2talent">{data1[search].title}</h2>
             <div
               className="talentp large d-block hide_detail"
@@ -235,22 +235,22 @@ function SearchByArtist(props) {
             <div className="d-flex">
               <Link
                 to="#"
-                style={{ fontSize: "16px" }}
-                className={windowSize.innerWidth < 400 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-1"}
+                style={{ fontSize: "16px", fontWeight:'600' }}
+                className={windowSize.innerWidth < 400 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
               >
                 CALL
               </Link>
               <Link
                 to="/contact"
-                style={{ fontSize: "16px" }}
-                className={windowSize.innerWidth < 400 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-1"}
+                style={{ fontSize: "16px",fontWeight:'600' }}
+                className={windowSize.innerWidth < 400 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
               >
                 GET ESTIMATE
               </Link>
               <Link
                 data-w-id="e04f643e-f302-16e2-74ee-4bc7e85391d8"
                 to="#"
-                style={{ fontSize: "16px" }}
+                style={{ fontSize: "16px",fontWeight:'600' }}
                 className="talentbutton hide col-3"
               >
                 ADD TO MY LIST
@@ -306,30 +306,30 @@ function SearchByArtist(props) {
                 <div
                   onClick={() => setTab(0)}
                   className={
-                    "tabs py-3 w-inline-block w-tab-link " +
+                    "tabs py-2 w-inline-block w-tab-link " +
                     (tab === 0 ? "bg-white text-black" : null)
                   }
                 >
-                  <div>PORTFOLIO</div>
+                  <div style={{fontWeight:'600'}}>PORTFOLIO</div>
                 </div>
                 <div
                   onClick={() => setTab(1)}
                   className={
-                    "tabs py-3 w-inline-block w-tab-link " +
+                    "tabs py-2 w-inline-block w-tab-link " +
                     (tab === 1 ? "bg-white  text-black" : null)
                   }
                 >
-                  <div>SIMILAR ILLUSTRATORS</div>
+                  <div style={{fontWeight:'600'}}>SIMILAR ILLUSTRATORS</div>
                 </div>
                 {windowSize.innerWidth > 400 ?
                 <div
                 onClick={() => setTab(2)}
                 className={
-                  "tabs py-3 w-inline-block w-tab-link " +
+                  "tabs py-2 w-inline-block w-tab-link " +
                   (tab === 2 ? "bg-white  text-black" : null)
                 }
               >
-                <div>ALREADY VIEWED</div>
+                <div style={{fontWeight:'600'}}>ALREADY VIEWED</div>
               </div>:null
 
                 }
@@ -418,7 +418,7 @@ function SearchByArtist(props) {
                     {Object.keys(similarData).length > 0
                       ? Object.keys(similarData).map((key, i) => (
                           <SliderItem
-                            col="col-lg-1 col-md-3 col-6 px-md-2"
+                            col="col-lg-1 col-md-3 col-6 px-md-2 thumb"
                             src={similarData[key].mainImage}
                           />
                         ))
@@ -436,14 +436,14 @@ function SearchByArtist(props) {
                     {Object.keys(dataViewed).length > 0
                       ? Object.keys(dataViewed).map((key, i) => (
                           <SliderItem
-                            col="col-lg-1 col-md-3 col-6 px-md-2"
+                            col="col-lg-1 col-md-3 col-6 px-md-2 thumb"
                             src={dataViewed[key].slideList[0]}
                           />
                         ))
                       : ""
                     }
                     <SliderItem
-                      col="col-lg-1 col-md-3 col-6 px-md-2"
+                      col="col-lg-1 col-md-3 col-6 px-md-2 thumb"
                       src={images + "/Rectangle-171.png"}
                     />
                   </Slider>

@@ -216,21 +216,17 @@ export function FullScreenSliderItem(props) {
       >
        
         <div
-          className="col-6 mt-5 pl-md-3 ml-md-5"
-          style={{
-            paddingTop: "80px",
-            marginRight: "40px",
-            paddingLeft: "140px",
-          }}
+          className="col-5 mt-4 "
+          
         >
           <h2 className="h2talent" style={{ marginBottom:'5px', width:'70%' }} >
             {props.currentData.title}
           </h2>
-          <p >Baby Alpaca Children's Book</p>
+          <p className="mb-5">Baby Alpaca Children's Book</p>
 
           <p
             style={{ fontSize: "22px", fontWeight: 700 }}
-            className="mb-0 mt-5"
+            className="mb-0 pt-5"
           >
             Tabs
           </p>
@@ -248,13 +244,17 @@ export function FullScreenSliderItem(props) {
           <div className="d-flex align-items-center mt-5">
             <div>
               <button
-                className="px-3 py-2 text-uppercase"
+                className="text-uppercase"
                 style={{
+                  width:'7vw',
+                  fontFamily:"'Roboto Condensed', sans-serif",
+                  paddingTop:'1.1vh',
+                  paddingBottom:'1.1vh',
                   borderRadius: "5px",
                   backgroundColor: "black",
                   color: "white",
-                  fontSize: "18px",
-                  fontWeight: 400,
+                  fontSize: "0.7vw",
+                  fontWeight: 600,
                 }}
               >
                 Learn More
@@ -262,16 +262,18 @@ export function FullScreenSliderItem(props) {
             </div>
             <div className="mx-3">
               <button
-                className="px-3 py-2 text-uppercase"
+                className=" text-uppercase"
                 style={{
                   borderRadius: "5px",
                   backgroundColor: "black",
                   color: "white",
                   fontSize: "18px",
                   fontWeight: 400,
+                  paddingTop:'0.5vh',
+                 paddingBottom:'0.5vh'
                 }}
               >
-                <img className="w-75" src={images + "/Vector.svg"} alt="" />
+                <img style={{width:'50%'}} src={images + "/Vector.svg"} alt="" />
               </button>
             </div>
           </div>
@@ -285,13 +287,17 @@ export function FullScreenSliderItem(props) {
           <div className="d-flex align-items-center mt-3">
             <div>
               <button
-                className="px-3 py-2 text-uppercase"
+                className=" text-uppercase"
                 style={{
+                  width:'7vw',
+                  fontFamily:"'Roboto Condensed', sans-serif",
+                  paddingTop:'1.1vh',
+                  paddingBottom:'1.1vh',
                   borderRadius: "5px",
                   backgroundColor: "black",
                   color: "white",
-                  fontSize: "18px",
-                  fontWeight: 400,
+                  fontSize: "0.7vw",
+                  fontWeight: 600,
                 }}
               >
                 call
@@ -299,13 +305,17 @@ export function FullScreenSliderItem(props) {
             </div>
             <div className="mx-3">
               <button
-                className="px-3 py-2 text-uppercase"
+                className="text-uppercase"
                 style={{
+                  width:'7vw',
+                  fontFamily:"'Roboto Condensed', sans-serif",
+                  paddingTop:'1.1vh',
+                  paddingBottom:'1.1vh',
                   borderRadius: "5px",
                   backgroundColor: "black",
                   color: "white",
-                  fontSize: "18px",
-                  fontWeight: 400,
+                  fontSize: "0.7vw",
+                  fontWeight: 600,
                 }}
               >
                 Get estimated
@@ -313,12 +323,12 @@ export function FullScreenSliderItem(props) {
             </div>
           </div>
         </div>
-        <div className="col-6">
+        <div className="col-7">
         <div
           onClick={() => props.onClick()}
           style={{
             position: "absolute",
-            right: "10vw",
+            right: "2vw",
             top: "0%",
             cursor: "pointer",
             zIndex: 1,
@@ -351,7 +361,7 @@ export function FullScreenSliderItem(props) {
                   : {
                       OObjectFit: "cover",
                       objectFit: "cover",
-                      width: "60%",
+                      width: "90%",
                       marginTop: "20px",
                     }
               }
