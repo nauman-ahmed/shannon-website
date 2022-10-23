@@ -13,6 +13,23 @@ input#Search-2::placeholder {
   letter-spacing: 0.7px;
 }
 
+.artistcardAdmin:hover .crossSection{
+  display: block;
+}
+
+.artistcardAdmin .crossSection{
+  display: none;
+}
+
+.crossSection{
+  position: absolute;
+  right: 5vw;
+  top: 0%;
+  cursor: pointer;
+  z-index: 1;
+}
+
+
 .w-checkbox::before {
   content: ' ';
   display: table;

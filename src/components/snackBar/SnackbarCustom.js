@@ -15,8 +15,9 @@ const SnackbarCustom = (props) => {
         show={message.open}                    
         timer={4000}                          
         >
+          {console.log('SNACKBAR',message.message.toUpperCase())}
             <div >
-              <label>{message.message}</label>
+              <label>{message.message.toUpperCase()}</label>
         </div>
         
        

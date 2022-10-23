@@ -302,6 +302,15 @@ export const artistImageCreate = async (data) => {
     }
 }
 
+export const artistImagedelete = async (data) => {
+    try {
+        const response = await axios.post(BASE_URL + 'artistImage/deleteOne', data);
+        return response.data;
+    } catch (error) {
+        logouter();
+    }
+}
+
 export const artistDataId = async (data) => {
     try {
         const response = await axios.post(BASE_URL + 'artistImage/findId', data);
@@ -390,7 +399,6 @@ export const changeArtistImageViewed = async (data) => {
 
 export const getAllBanner = async (data) => {
     try {
-        console.log('AXIOS',data)
         const response = await axios.post(BASE_URL + 'banner/getAll', data);
         return response.data;
     } catch (error) {

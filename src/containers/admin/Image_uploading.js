@@ -70,7 +70,6 @@ function Image_uploading(props) {
                 })
         
             }
-            console.log(keywordList)
             if(keywordList){
                 let keywordTemp = []
                 let keywordKidsTemp = []

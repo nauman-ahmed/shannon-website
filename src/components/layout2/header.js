@@ -13,14 +13,14 @@ function Header(props) {
 
   const logout = ()=>{
     localStorage.removeItem("authorization")
+    dispatch(updateOpen(true))
     if(window.location.href.includes("/artist") && !window.location.href.includes("/admin")){
-      dispatch(updateMessage("Successfully Logged Out"))
       history.push('/artist/signin/')
     }
     else{
-      dispatch(updateMessage("Successfully Logged Out"))
       history.push('/admin/signin/')
     }
+    dispatch(updateMessage("Successfully Logged Out"))
     
   }
 

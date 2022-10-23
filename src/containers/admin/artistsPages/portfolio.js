@@ -25,8 +25,8 @@ function Portfolio(props) {
   useEffect(() => {
     if(props.selectedImages.mainImage !== undefined){
       getKeywordsAndSeperate()
-    }
-  }, [])
+    } 
+  }, [props.selectedImages])
 
   const filterImages = (keywordsList)=>{
     
@@ -47,19 +47,23 @@ function Portfolio(props) {
       }
     })
 
+
+    for (let i = 0; i < tempData.length; i++) {
+      for (let j = 0; j < tempData.length - i - 1; j++) {
+
+          if (tempData[j + 1].orderKidPortfolio < tempData[j].orderKidPortfolio) {
+              [tempData[j + 1], tempData[j]] = [tempData[j], tempData[j + 1]]
+          }
+
+      }
+  };
+
+
     setTypeTwoData(tempData)
     let tempDataOne = [];
 
-    tempDataOne = props.selectedImages.mainImage.filter((item,key)=>{
-      let checkerOne = false;
-      for(var i=0;i<item.keywordID.length;i++){
-        console.log(!keywordsList.includes(item.keywordID[i]))
-        if(!keywordsList.includes(item.keywordID[i])){
-          checkerOne = true;
-        }
-      }
-      return checkerOne
-    })
+    tempDataOne = props.selectedImages.mainImage
+
 
     setTypeOneData(tempDataOne)
     updateCharacters(tempDataOne)
@@ -70,22 +74,20 @@ function Portfolio(props) {
 
     if(enabled){
       let sortedImages = []
+      let tempTypeTwo = [...typeOneData]
+      let tempTypeOne = [...typeTwoData]
 
-      for(let i = 0; i < characters.length; i++){
-        characters[i].orderPortfolio = i
+      for(let i = 0; i < tempTypeOne.length; i++){
+        tempTypeOne[i].orderKidPortfolio = i
+      };
+      for(let i = 0; i < tempTypeTwo.length; i++){
+          tempTypeTwo[i].orderPortfolio = i
       };
 
-      if(formNo2 == 0){
-        sortedImages = [...typeTwoData,...characters]
-      }else{
-        sortedImages = [...typeOneData,...characters]
-      }
-      
-      console.log(sortedImages)
 
       artistPortfolioOrder({
         id:props.selectedArtist._id,
-        images:sortedImages
+        images:tempTypeTwo
       }).then(res=>{
         console.log('ENABELED',res)      
       })

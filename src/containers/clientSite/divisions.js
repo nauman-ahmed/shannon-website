@@ -23,7 +23,6 @@ function Divisions(props) {
   return (
     <div className="_2cols">
       {props.children}
-      {console.log(artistImageKeywordDataSlice)}
       <div
         id="w-node-_6f42e407-456f-5b2f-82e4-417072db3669-84f2d081"
         className="divisionscolumn"
