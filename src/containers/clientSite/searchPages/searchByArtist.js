@@ -241,7 +241,9 @@ function SearchByArtist(props) {
                 
               }}
             >
-              {data1[search].detail}
+            <div dangerouslySetInnerHTML={{__html: data1[search].detail}}>
+            </div>
+              {/* {data1[search].detail} */}
             </div>
             <div className="talenttext">Want to commission this artist?</div>
             <div className="d-flex">
