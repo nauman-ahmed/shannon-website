@@ -74,7 +74,6 @@ function Artist() {
         })
 
         if(response){
-            console.log('RESPONSE',response)
             dispatch(await resetUploadedImages(response.data))
         }
 

@@ -45,9 +45,13 @@ function Index(props) {
         setSearchArtist(e.target.value);
         const searchvalue = e.target.value.toLowerCase();
         setTempArtist( artistImageDataSlice !== undefined ?artistImageDataSlice.artistImages.filter(function (element) {
-            return element.artistId.firstname.toLowerCase().includes(searchvalue);
+            let checker = false
+            if(element.artistId.firstname.toLowerCase().includes(searchvalue) || element.artistId.lastname.toLowerCase().includes(searchvalue)){
+                checker = true
+            }
+            return checker;
+
         }):[]);
- 
     }
     const updateTempDivision = (e)=>{
         setSearchDivision(e.target.value);

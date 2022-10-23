@@ -2,10 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import Table, { TBody, Td, Th, THead, Tr } from '../../../components/table/table'
 import { orderArtist } from '../../../AxiosFunctions/Axiosfunctionality';
+import { updateMessage, updateOpen } from '../../../redux/message'
+import { useDispatch, useSelector } from 'react-redux'
+import SnackbarCustom from "../../../components/snackBar/SnackbarCustom";
 
 import loading from '../../../assets/loading.gif';
 function ArtistsList(props) {
 
+    const dispatch = useDispatch();
+
+    const [isLoader,setIsLoader] = useState(0)
     const [characters,updateCharacters] = useState([])
     const [filterArtist,setFilterArtist] = useState([]);
     const [typeOneArtist,setTypeOneArtist] = useState([]);
@@ -62,17 +68,28 @@ function ArtistsList(props) {
             tempTypeTwo[i].orderKidArtist = i
         };
 
-        
-        orderArtist(tempTypeOne)
+        setIsLoader(true)
+        orderArtist(tempTypeOne).then(res=>{
+            dispatch(updateOpen(true))
+            if(res=="Recieved"){
+                dispatch(updateMessage("Successfully Updated"));
+            }else{
+                dispatch(updateMessage(res));
+            }
+            setIsLoader(false)
+        })
         props.reorderArtistHandler(tempTypeOne)
     }
-
+ 
     return (
     <>
-    <button className='mr-3 mb-3 myBtn active' type="text" onClick={onSubmitHandler}>SUBMIT ORDER</button>
+    {isLoader?
+        <img className='mt-1' alt="loading" src={loading} style={{width:"30px"}}/>
+    :
+        <button className='mr-3 mb-3 myBtn active' type="text" onClick={onSubmitHandler}>SUBMIT ORDER</button>
+    }
     <button className='mx-3 mb-3 myBtn active' type="text" onClick={()=>{updateCharacters(typeOneArtist); setFormNo(0);}}>ALL ARTISTS</button>
     <button className='mx-3 mb-3 myBtn active' type="text" onClick={()=>{updateCharacters(typeTwoArtist);setFormNo(1)}}>KIDSHANON ARTISTS</button>
-    {/* <button className='m-2' onClick={onSubmitHandler}>Submit</button> */}
     {props.holder?<div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"50vh"}}><img className="mb-3" alt="loading" src={loading} style={{width:"50px"}}/></div>:
         <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId='charactersStuff'>
@@ -119,8 +136,10 @@ function ArtistsList(props) {
             )}
             </Droppable>
             </DragDropContext>
-                        }
-                    </>
+        }
+        <SnackbarCustom  />
+
+    </>
   )
 }
 

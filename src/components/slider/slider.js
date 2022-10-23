@@ -7,7 +7,6 @@ import Navbar from "../layout/navbar";
 
 const images = window.location.origin + "/assets/images";
 export default function Slider(props) {
-  console.log("props.sliderIndex: ", props.sliderIndex);
   const { location } = useHistory();
   const sm = "576";
   const md = "768";
@@ -297,7 +296,7 @@ export function FullScreenSliderItem(props) {
             style={{ fontSize: "22px", fontWeight: 700 }}
             className="mb-0 pt-5"
           >
-            Tabs
+            Keywords
           </p>
           <div className="row mt-2">
             <div className="col-6">

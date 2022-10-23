@@ -101,7 +101,14 @@ function Bipoc() {
               {blackArtist?
                 blackArtist.map((val, ind) =>
                   (<div role="listitem" className="w-dyn-item">
+                    <Link
+                      id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                      data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                      to={"/artists/" + val.artistData.firstname}
+                      className="bipocLink"
+                    >
                     <div className="text-block-5">{val.artistData.lastname + " " + val.artistData.firstname}</div>
+                    </Link>
                   </div>))
                 :
                   <div role="listitem" className="w-dyn-item">

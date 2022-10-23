@@ -2,6 +2,14 @@
   margin-bottom: 8px;
 }
 
+.bipocLink:hover {
+  color: #ffb71b;
+}
+
+.bipocLink{
+  cursor: pointer;
+}
+
 .w-checkbox {
   display: block;
   margin-bottom: 5px;
