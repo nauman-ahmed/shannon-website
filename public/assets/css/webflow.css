@@ -70,7 +70,7 @@ html.w-mod-touch * {
   display: inline-block;
 }
 .w-inline-block-banner {
-  max-width: 100%;
+  max-width: 99.8%;
   display: inline-block;
 }
 .w-clearfix:before,
