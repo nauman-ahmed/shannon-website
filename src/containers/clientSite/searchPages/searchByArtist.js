@@ -16,6 +16,7 @@ import { updateMessage, updateOpen } from "../../../redux/message";
 const images = window.location.origin + "/assets/images";
 
 function SearchByArtist(props) {
+
   const [keyword, setKeyword] = useState(0); 
   const [tab, setTab] = useState(0);
   const [fullscreen, setFullscreen] = useState({ screen: false, route: null });
@@ -39,7 +40,8 @@ function SearchByArtist(props) {
     console.log(getWindowSize() )
     setWindowSize(getWindowSize());
   }
-  
+  const [sliderImages, setSliderImages]=useState();
+
   useEffect(() => {
     
 
@@ -128,6 +130,8 @@ function SearchByArtist(props) {
                     };
                   }
                 }
+              
+                
               });
             }
           });
@@ -145,6 +149,9 @@ function SearchByArtist(props) {
                 subListData = [];
                 item.mainImage.forEach((item1, key1) => {
                   listData.push(String(item1.path));
+
+                 
+                  
                   subListData.push(String(item1.subImage[1].path));
                 });
                 tempData[item.artistId.firstname] = {
@@ -173,7 +180,9 @@ function SearchByArtist(props) {
                           mainImage: item1.mainImage[0].subImage[1].path,
                         };
                       }
+                    
                     }
+                    
                   });
                 }
               });
@@ -181,7 +190,10 @@ function SearchByArtist(props) {
               setSimilarData(tempSimilarData);
               setData1(tempData);
             }
+
           });
+         
+
         }
       }
     }
@@ -205,6 +217,8 @@ function SearchByArtist(props) {
     temp.screen = !temp.screen;
     setFullscreen(temp);
     setFullScreenData(data1[search])
+    
+
   };
 
   if(fullscreen.screen){
@@ -282,14 +296,21 @@ function SearchByArtist(props) {
               />
             ) : (
               <Slider controllEnabled interval={3000}>
-                {data1[search].slideList.map((item, keys) => (
-                  <SliderItem
-                    onClick={setFullScreenHandler}
-                    key={keys}
-                    fillMode="contain"
-                    src={item}
-                  />
-                ))}
+                {/* {data1[search].slideList.map((item, keys) => (
+                  console.log('data',data1[search].slideList[0]
+                  )
+                  
+                  
+                ))} */}
+                {()=> setSliderImages(data1[search].slideList[0])}
+                
+                <SliderItem
+               
+
+                  src={sliderImages}
+                />
+                
+
               </Slider>
             )}
           </div>
@@ -369,11 +390,16 @@ function SearchByArtist(props) {
                 :(
                 <div className="col-12 my-2">
                   <Slider disableAutoPlay controllEnabled="outside-dark">
-                    {data1[search].subListData.map((item, keys) => (
+                    
+                    {data1[search].subListData.map((item, keys) => (    
+                      console.log(data1[search].subListData.length),                 
+                      <span onClick={()=> setSliderImages(item)}>
                       <SliderItem
                         col="col-lg-1 col-md-3 col-6 px-md-1 thumb"
                         src={item}
+                        
                       />
+                      </span>
                     ))}
                   </Slider>
                 </div>

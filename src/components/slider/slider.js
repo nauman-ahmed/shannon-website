@@ -17,30 +17,38 @@ export default function Slider(props) {
     let slider = document.querySelector("#slideScroller" + id);
     let slideTotalAmount = 0;
     let slideDetail = getSliderSize(slider);
-    let backBtn = document.querySelector("#left" + id);
-    let nextBtn = document.querySelector("#right" + id);
+    let backBtn = document.querySelector("#left" + id) ;
+    let nextBtn = document.querySelector("#right" + id) ;
     if (backBtn) {
       backBtn.addEventListener("click", () => {
         if (slideTotalAmount > 0) {
-          slideTotalAmount -= slideDetail.slideAmount;
+          
+          slideTotalAmount -= slideDetail.slideAmount; 
+          
         } else {
           slideTotalAmount = slideDetail.frameWidth - slideDetail.slideWidth;
+         
         }
+        
         slider.scrollLeft = slideTotalAmount;
       });
+     
     }
     if (nextBtn) {
       nextBtn.addEventListener("click", () => {
+       
         if (
           slideDetail.frameWidth <=
           slideTotalAmount + slideDetail.slideWidth
         ) {
+         
           slideTotalAmount = 0;
         } else {
           slideTotalAmount += slideDetail.slideAmount;
         }
-        slider.scrollLeft = slideTotalAmount;
+        slider.scrollLeft = slideTotalAmount;   
       });
+      
     }
     let slider1 = null;
     if (!"disableAutoPlay" in props) {
@@ -166,7 +174,10 @@ export function SliderItem(props) {
   return "src" in props ? (
     <div
       className={
-        "col" in props ? props.col + " slideItem" : "col-12 p-0 slideItem"
+        "col" in props ? props.col + " slideItem" : "col-12 p-0 slideItem slde"
+      }
+      id={
+        "id" in props ? props.id + "" : '1'
       }
       style={{padding:1}}
     >
