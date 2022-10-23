@@ -124,9 +124,15 @@ function Login() {
           return
         }
         setShowLoader(false);
+         setIsPopupShow(true)
+         
         dispatch(userRegisterApi(data)).then((res)=>{
-          setIsPopupShow(true)
-          setMsg("WE'RE RECEIVED YOUR ACCOUNT CREATION")
+          setMsg(
+            <>
+            <p style={{textAlign:'center'}}>We've received your account creation request.<br></br>You will receive your credentials via email within the next 24 hours.</p>
+            </>
+            )
+          // setMsg("WE'RE RECEIVED YOUR ACCOUNT CREATION")
           // dispatch(updateOpen(true))
           // setShowLoader(true)
           // dispatch(updateMessage(res.payload))
