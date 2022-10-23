@@ -7,7 +7,7 @@ import Navbar from "../layout/navbar";
 
 const images = window.location.origin + "/assets/images";
 export default function Slider(props) {
-  console.log('props.sliderIndex: ', props.sliderIndex)
+  console.log("props.sliderIndex: ", props.sliderIndex);
   const { location } = useHistory();
   const sm = "576";
   const md = "768";
@@ -24,53 +24,46 @@ export default function Slider(props) {
     if (backBtn) {
       backBtn.addEventListener("click", () => {
         if (slideTotalAmount > 0) {
-
           slideTotalAmount -= slideDetail.slideAmount;
-
         } else {
           slideTotalAmount = slideDetail.frameWidth - slideDetail.slideWidth;
-
         }
         slider.scrollLeft = slideTotalAmount;
       });
-
     }
     if (nextBtn) {
       nextBtn.addEventListener("click", () => {
-
         if (
           slideDetail.frameWidth <=
           slideTotalAmount + slideDetail.slideWidth
         ) {
-
           slideTotalAmount = 0;
         } else {
           slideTotalAmount += slideDetail.slideAmount;
         }
-        console.log("slideTotalAmount-right", slideTotalAmount)
+        console.log("slideTotalAmount-right", slideTotalAmount);
         slider.scrollLeft = slideTotalAmount;
       });
-
     }
     let slider1 = null;
     if (!"disableAutoPlay" in props) {
       window.addEventListener(
         "focus",
         () =>
-        (slider1 = setInterval(
-          () => {
-            if (
-              slideDetail.frameWidth <=
-              slideTotalAmount + slideDetail.slideWidth
-            ) {
-              slideTotalAmount = 0;
-            } else {
-              slideTotalAmount += slideDetail.slideAmount;
-            }
-            slider.scrollLeft = slideTotalAmount;
-          },
-          "interval" in props ? props.interval : 2000
-        ))
+          (slider1 = setInterval(
+            () => {
+              if (
+                slideDetail.frameWidth <=
+                slideTotalAmount + slideDetail.slideWidth
+              ) {
+                slideTotalAmount = 0;
+              } else {
+                slideTotalAmount += slideDetail.slideAmount;
+              }
+              slider.scrollLeft = slideTotalAmount;
+            },
+            "interval" in props ? props.interval : 2000
+          ))
       );
       window.addEventListener("blur", () => clearInterval(slider1));
     }
@@ -116,7 +109,6 @@ export default function Slider(props) {
       </div>
       {"controllEnabled" in props ? (
         <>
-
           {location.pathname == "/bipoc" ? (
             <button
               className={
@@ -133,42 +125,107 @@ export default function Slider(props) {
               />
             </button>
           ) : (
-
+            <>
+              {props.show && (
+                <button
+                  id={"left" + id}
+                  className={
+                    props.controllEnabled === "outside-dark"
+                      ? "arrow3 left"
+                      : "arrow left"
+                  }
+                >
+                  <i
+                    id={"left" + id}
+                    onClick={() => {
+                      props.setSliderIndex(
+                        props.sliderIndex === 0 || props.sliderIndex === null
+                          ? 0
+                          : props.sliderIndex - 1
+                      );
+                      props.setSliderImages(
+                        props.images[
+                          props.sliderIndex === 0 ? 0 : props.sliderIndex - 1
+                        ]
+                      );
+                    }}
+                    className={"icon w-icon-slider-left"}
+                  ></i>
+                </button>
+              )}
+              {!props.show && (
+                <button
+                  id={"left" + id}
+                  className={
+                    props.controllEnabled === "outside-dark"
+                      ? "arrow3 left"
+                      : "arrow left"
+                  }
+                >
+                  <i id={"left" + id} className={"icon w-icon-slider-left"}></i>
+                </button>
+              )}
+            </>
+          )}
+          {props.show && (
             <button
-              id={"left" + id}
+              id={"right" + id}
               className={
                 props.controllEnabled === "outside-dark"
-                  ? "arrow3 left"
-                  : "arrow left"
+                  ? "arrow2 right"
+                  : "arrow right"
               }
             >
-              <i
-                id={"left" + id}
-                onClick={() => { props.setSliderIndex(props.sliderIndex === 0 || props.sliderIndex === null ? 0 : props.sliderIndex - 1); props.setSliderImages(props.images[props.sliderIndex === 0 ? 0 : props.sliderIndex - 1]) }} className={"icon w-icon-slider-left"}></i>
+              {location.pathname == "/bipoc" ? (
+                <img
+                  src={images + "/bi_arrow-down-right-circle-fill.svg"}
+                  loading="lazy"
+                  alt=""
+                  class="image-3"
+                />
+              ) : (
+                <i
+                  id={"left" + id}
+                  onClick={() => {
+                    props.setSliderIndex(
+                      props.sliderIndex === props.length
+                        ? props.sliderIndex
+                        : props.sliderIndex + 1
+                    );
+                    props.setSliderImages(
+                      props.images[
+                        props.sliderIndex === props.length
+                          ? props.sliderIndex
+                          : props.sliderIndex + 1
+                      ]
+                    );
+                  }}
+                  className={"icon w-icon-slider-right"}
+                ></i>
+              )}
             </button>
           )}
-
-          <button
-            id={"right" + id}
-            className={
-              props.controllEnabled === "outside-dark"
-                ? "arrow2 right"
-                : "arrow right"
-            }
-          >
-            {location.pathname == "/bipoc" ? (
-              <img
-                src={images + "/bi_arrow-down-right-circle-fill.svg"}
-                loading="lazy"
-                alt=""
-                class="image-3"
-              />
-            ) : (
-              <i
-                id={"left" + id}
-                onClick={() => { props.setSliderIndex(props.sliderIndex === props.length ? props.sliderIndex : props.sliderIndex + 1); props.setSliderImages(props.images[props.sliderIndex === props.length ? props.sliderIndex : props.sliderIndex + 1]) }} className={"icon w-icon-slider-right"}></i>
-            )}
-          </button>
+          {!props.show && (
+            <button
+              id={"right" + id}
+              className={
+                props.controllEnabled === "outside-dark"
+                  ? "arrow2 right"
+                  : "arrow right"
+              }
+            >
+              {location.pathname == "/bipoc" ? (
+                <img
+                  src={images + "/bi_arrow-down-right-circle-fill.svg"}
+                  loading="lazy"
+                  alt=""
+                  class="image-3"
+                />
+              ) : (
+                <i id={"left" + id} className={"icon w-icon-slider-right"}></i>
+              )}
+            </button>
+          )}
         </>
       ) : null}
     </div>
@@ -181,9 +238,7 @@ export function SliderItem(props) {
       className={
         "col" in props ? props.col + " slideItem" : "col-12 p-0 slideItem slde"
       }
-      id={
-        "id" in props ? props.id + "" : '1'
-      }
+      id={"id" in props ? props.id + "" : "1"}
       style={{ padding: 1 }}
     >
       <img
@@ -193,9 +248,9 @@ export function SliderItem(props) {
         style={
           "fillMode" in props
             ? {
-              OObjectFit: props.fillMode,
-              objectFit: props.fillMode,
-            }
+                OObjectFit: props.fillMode,
+                objectFit: props.fillMode,
+              }
             : { OObjectFit: "cover", objectFit: "cover", width: "100%" }
         }
       />
@@ -203,9 +258,9 @@ export function SliderItem(props) {
         <div
           className="w-100 text-center position-absolute artistnametext-v2"
           style={{
-            textTransform: 'uppercase',
-            lineHeight: '1',
-            fontSize: '0.74vw',
+            textTransform: "uppercase",
+            lineHeight: "1",
+            fontSize: "0.74vw",
           }}
         >
           {props.label}
@@ -229,12 +284,11 @@ export function FullScreenSliderItem(props) {
           justifyContent: "center",
         }}
       >
-
-        <div
-          className="col-5 mt-4 "
-
-        >
-          <h2 className="h2talent" style={{ marginBottom: '5px', width: '70%' }} >
+        <div className="col-5 mt-4 ">
+          <h2
+            className="h2talent"
+            style={{ marginBottom: "5px", width: "70%" }}
+          >
             {props.currentData.title}
           </h2>
           <p className="mb-5">Baby Alpaca Children's Book</p>
@@ -250,7 +304,12 @@ export function FullScreenSliderItem(props) {
               <div className="row">
                 {props.currentData.keywordId.map((item, key) => (
                   <div className="col-4 mb-2">
-                    <p className="mb-0" style={{ lineHeight: '1.5', textTransform: 'lowercase' }}>{item.keyword}</p>
+                    <p
+                      className="mb-0"
+                      style={{ lineHeight: "1.5", textTransform: "lowercase" }}
+                    >
+                      {item.keyword}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -261,10 +320,10 @@ export function FullScreenSliderItem(props) {
               <button
                 className="text-uppercase"
                 style={{
-                  width: '7vw',
+                  width: "7vw",
                   fontFamily: "'Roboto Condensed', sans-serif",
-                  paddingTop: '1.1vh',
-                  paddingBottom: '1.1vh',
+                  paddingTop: "1.1vh",
+                  paddingBottom: "1.1vh",
                   borderRadius: "5px",
                   backgroundColor: "black",
                   color: "white",
@@ -284,17 +343,21 @@ export function FullScreenSliderItem(props) {
                   color: "white",
                   fontSize: "18px",
                   fontWeight: 400,
-                  paddingTop: '0.5vh',
-                  paddingBottom: '0.5vh'
+                  paddingTop: "0.5vh",
+                  paddingBottom: "0.5vh",
                 }}
               >
-                <img style={{ width: '50%' }} src={images + "/Vector.svg"} alt="" />
+                <img
+                  style={{ width: "50%" }}
+                  src={images + "/Vector.svg"}
+                  alt=""
+                />
               </button>
             </div>
           </div>
 
           <p
-            style={{ fontSize: "18px", fontWeight: 500, marginTop: '30vh' }}
+            style={{ fontSize: "18px", fontWeight: 500, marginTop: "30vh" }}
             className="mb-0"
           >
             Want to commission this artist?
@@ -304,10 +367,10 @@ export function FullScreenSliderItem(props) {
               <button
                 className=" text-uppercase"
                 style={{
-                  width: '7vw',
+                  width: "7vw",
                   fontFamily: "'Roboto Condensed', sans-serif",
-                  paddingTop: '1.1vh',
-                  paddingBottom: '1.1vh',
+                  paddingTop: "1.1vh",
+                  paddingBottom: "1.1vh",
                   borderRadius: "5px",
                   backgroundColor: "black",
                   color: "white",
@@ -322,10 +385,10 @@ export function FullScreenSliderItem(props) {
               <button
                 className="text-uppercase"
                 style={{
-                  width: '7vw',
+                  width: "7vw",
                   fontFamily: "'Roboto Condensed', sans-serif",
-                  paddingTop: '1.1vh',
-                  paddingBottom: '1.1vh',
+                  paddingTop: "1.1vh",
+                  paddingBottom: "1.1vh",
                   borderRadius: "5px",
                   backgroundColor: "black",
                   color: "white",
@@ -374,11 +437,11 @@ export function FullScreenSliderItem(props) {
                 "fillMode" in props
                   ? { OObjectFit: props.fillMode, objectFit: props.fillMode }
                   : {
-                    OObjectFit: "cover",
-                    objectFit: "cover",
-                    width: "90%",
-                    marginTop: "20px",
-                  }
+                      OObjectFit: "cover",
+                      objectFit: "cover",
+                      width: "90%",
+                      marginTop: "20px",
+                    }
               }
             />
             {"label" in props ? (

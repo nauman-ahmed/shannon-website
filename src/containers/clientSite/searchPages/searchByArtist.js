@@ -30,7 +30,8 @@ function SearchByArtist(props) {
   const [windowSize, setWindowSize] = useState(getWindowSize());
   const [artistImages, setArtistImages] = useState(8);
   const [artistSimilar, setArtistSimilar] = useState(8);
-
+  const [sliderImages, setSliderImages] = useState(null);
+  const [sliderIndex, setSliderIndex] = useState(null);
   function getWindowSize() {
     const { innerWidth, innerHeight } = window
     return { innerWidth, innerHeight };
@@ -225,8 +226,7 @@ function SearchByArtist(props) {
       />)
   }
 
-  const [sliderImages, setSliderImages] = useState(null);
-  const [sliderIndex, setSliderIndex] = useState(null);
+  
 
   return (
     <div className="row" style={{ maxWidth: "100%" }}>
@@ -238,7 +238,7 @@ function SearchByArtist(props) {
               className="talentp large d-block hide_detail"
               style={{
                 fontSize: "16px",
-                paddingTop: "50px",
+                
               }}
             >
               {data1[search].detail}
@@ -302,6 +302,7 @@ function SearchByArtist(props) {
               images={data1[search].slideList}
               sliderIndex={sliderIndex}
               length={data1[search].slideList.length - 1}
+              show={true}
               >
                 {data1[search].slideList.map((item, keys) => (
                   <>
@@ -409,6 +410,7 @@ function SearchByArtist(props) {
                       setSliderIndex={setSliderIndex}
                       images={data1[search].slideList}
                       sliderIndex={sliderIndex}
+                      show={false}
                       >
 
                         {data1[search].subListData.map((item, keys) => (
