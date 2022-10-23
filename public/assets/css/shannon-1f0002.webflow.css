@@ -3642,6 +3642,7 @@ a {
   max-width: 29.1%;
   margin-left: 5%;
   padding-right: 0px;
+  min-height: 548px;
   padding-bottom: 0px;
 }
 
@@ -11641,4 +11642,20 @@ element.style {
     font-size: 4.4vw !important;
     width: 24.2vw;
 }
+}
+@media screen and (max-width:1366px){
+  .card {
+    border:none;
+    max-width: 29.5%;
+    margin-left: 5%;
+    padding-right: 0px;
+    min-height: 292px ;
+    padding-bottom: 0px;
+  }
+  .card._1 {
+    border:none;
+    max-width: 29.5%;
+    margin-left: 0%;
+  }
+  
 }
