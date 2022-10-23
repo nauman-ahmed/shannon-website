@@ -53,7 +53,7 @@ function Categories() {
         <h4 className='mb-4 text-center'>KEYWORD LISTING</h4>
         <div className='column-3'>
         {categories.length >0?categories.map((item,key)=>(
-          item.type === 1? <div key={key}>{item.keyword}</div>:""
+          item.type === 1? <p key={key}>{item.keyword}</p>:""
         )):""}
         </div>
         <button onClick={()=>{setIsPopupOpen(true);setType(1)}} className='myBtn mt-5 float-right'>ADD KEYWORD</button>
@@ -62,7 +62,7 @@ function Categories() {
         <h4 className='mb-4 text-center'>KEYWORD LISTING KIDS</h4>
         <div className='column-2'>
         {categories.length >0?categories.map((item,key)=>(
-          item.type === 2? <div key={key}>{item.keyword}</div>:""
+          item.type === 2? <p key={key}>{item.keyword}</p>:""
         )):""}
         </div>
         <button onClick={()=>{setIsPopupOpen(true);setType(2);}} className='myBtn mt-5 float-right'>ADD KEYWORD</button>

@@ -260,7 +260,7 @@ function Image_uploading(props) {
 
     return (
         <> 
-            <div className='px-5 mx-5 imageUploader'>
+            <div className=' mx-5 imageUploader'>
                 <div className='px-5 row m-0'>
                 <button className='btn1 mt-3 mb-5'
                         onClick={()=>history.push('/admin/artists')}
@@ -328,14 +328,14 @@ function Image_uploading(props) {
                         :null}
                     </div>
                 :
-                    <div className='px-5 row m-0'>
+                    <div className='px-0 row m-0'>
                         <div className='col-12 border-bottom'>
                             <p>
                                 Please choose up to 8 keywords in each section (if your work is applicable for both sections).<br/>
                                 Please be sure to keyword for the SPECIFIC IMAGE and not your body of work.
                             </p>
                         </div>
-                        <div className='col-md-6 col-12 px-5 py-5 border-right border-md-0'>
+                        <div className='col-md-6 col-12 px-0 py-5 border-right border-md-0'>
                             <div className='row m-0'>
                                 <h4 className='col-12 mb-5'>KEYWORD LISTING</h4>
                                 {keyword !== null &&
@@ -355,7 +355,7 @@ function Image_uploading(props) {
                                 }
                             </div>
                         </div>
-                        <div className='col-md-6 col-12 px-5 py-5'>
+                        <div className='col-md-6 col-12 px-0 py-5'>
                             <div className='row m-0'>
                                 <h4 className='col-12 mb-5'>KEYWORD LISTING KIDS</h4>
 
