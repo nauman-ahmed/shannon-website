@@ -86,7 +86,7 @@ function ArtistsList(props) {
     {isLoader?
         <img className='mt-1' alt="loading" src={loading} style={{width:"30px"}}/>
     :
-        <button className='mr-3 mb-3 myBtn active' type="text" onClick={onSubmitHandler}>SUBMIT ORDER</button>
+        <button className='mr-3 mb-3 myBtn active' type="text" onClick={onSubmitHandler}>CONFIRM ORDER</button>
     }
     <button className='mx-3 mb-3 myBtn active' type="text" onClick={()=>{updateCharacters(typeOneArtist); setFormNo(0);}}>ALL ARTISTS</button>
     <button className='mx-3 mb-3 myBtn active' type="text" onClick={()=>{updateCharacters(typeTwoArtist);setFormNo(1)}}>KIDSHANON ARTISTS</button>
