@@ -87,7 +87,7 @@ function Admin(props) {
         if(id){
             let data = {
                 id:id
-            }
+            } 
             UArtistUser(data).then((res)=>{
                 dispatch(updateOpen(true))
                 dispatch(updateMessage(res));
