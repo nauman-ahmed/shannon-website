@@ -412,7 +412,7 @@ function SearchByArtist(props) {
                       >
 
                         {data1[search].subListData.map((item, keys) => (
-                          <span onClick={() => {setSliderIndex(keys- 1); setSliderImages(data1[search].slideList[keys - 1])}}>
+                          <span onClick={() => {setSliderIndex(keys); setSliderImages(data1[search].slideList[keys])}}>
                             <SliderItem
                               col="col-lg-1 col-md-3 col-6 px-md-1 thumb"
                               src={item}
