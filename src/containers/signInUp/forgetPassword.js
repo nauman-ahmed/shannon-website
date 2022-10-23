@@ -8,11 +8,17 @@ import loading from '../../assets/loading.gif';
 import { useDispatch } from 'react-redux'
 import { updateMessage, updateOpen } from '../../redux/message'
 import { forgetAdmin, forgetArtist } from '../../AxiosFunctions/Axiosfunctionality'
+import MyPopup from '../../components/myPopup/myPopup'
 
 const Logo = window.location.origin+"/assets/images/Frame.svg"
 function ForgetPassword() {
+
+  const history = useHistory()
   const dispatch = useDispatch();
+
   const [showLoader,setShowLoader] = useState(true);
+  const [isPopupShow,setIsPopupShow] = useState(false)
+  const [msg, setMsg] = useState("")
 
 
   const hash = (window.location.hash).split("/")
@@ -35,10 +41,15 @@ function ForgetPassword() {
       setShowLoader(false)
       forgetAdmin(data).then( (res)=>{
         try{
-            dispatch(updateOpen(true))
-            setShowLoader(true)
-            dispatch(updateMessage(res))
-            window.location.href = '/#/admin/signin'
+          setIsPopupShow(true)
+          if(res == "Check your email"){
+            setMsg("Successfully Generate Password")
+          }else if("Email not exist"){
+            setMsg("Email not exist")
+          }
+          else{
+            setMsg("ERROR In Generating Passowrd")
+          }
         }
         catch(err){
           dispatch(updateMessage(err.message))
@@ -47,7 +58,7 @@ function ForgetPassword() {
       
       
     }else{
-      // for artist login
+      
       setShowLoader(false);
       let data = {
         email:email
@@ -56,20 +67,35 @@ function ForgetPassword() {
       setShowLoader(false)
       forgetArtist(data).then( (res)=>{
         try{
-            dispatch(updateOpen(true))
-            setShowLoader(true)
-            dispatch(updateMessage(res))
-            window.location.href = '/#/artist/signin'
+          setIsPopupShow(true)
+          if(res == "Check your email"){
+            setMsg("Successfully Generate Password")
+          }else if("Email not exist"){
+            setMsg("Email not exist")
+          }
+          else{
+            setMsg("ERROR In Generating Passowrd")
+          }
         }
         catch(err){
           dispatch(updateMessage(err.message))
         }
       })
-    
       
     }
   }
   
+  const popupCloseHandler = () => {
+    setIsPopupShow(false); 
+    setShowLoader(true)
+    setMsg("")
+    if(accountType === "forgetAdmin"){
+      history.push('/admin/signin')
+    }else{
+      history.push('/artist/signin')
+    }
+  }
+ 
   return (
     <div className='loginPage d-flex justify-content-center'>
       <img className='backAsset1' alt='' src={back}/>
@@ -97,7 +123,7 @@ function ForgetPassword() {
           </>
           :accountType === "forgetArtist"?
           <>
-              <h5 className='mb-md-5 mb-0'>FORGET ARTIST PASSWORD</h5>
+            <h5 className='mb-md-5 mb-0'>GENERATE PASSWORD</h5>
             <div className='row col-xl-3 col-md-5 col-sm-8'>
             <div className='col-12'>
                 <Input
@@ -107,16 +133,20 @@ function ForgetPassword() {
                   value={email}
                   onChange={(e)=>setEmail(e.target.value)}
                   />
-              </div>
-            
+            </div>
             </div>
             <Link to={"/artist/signin"}>Back to Login</Link>
-            
             {showLoader?<button className={'myButton '+(accountType === "admin"?'my-5':'mt-5')} onClick={()=>{signInFunc();}}>Forget Password</button>:<img className="mt-4" alt="loading" src={loading} style={{width:"30px"}}/>}
-          
           </>
           :null}
       </div>
+      {isPopupShow?
+        <MyPopup BackClose CloseBtn onClose={popupCloseHandler}>
+          <div className='m-3'>
+            {msg} 
+          </div> 
+        </MyPopup>
+      :null}
       <SnackbarCustom  />
 
     </div>

@@ -530,7 +530,7 @@ function Contact() {
         >
           <h3 className="artistconth">Interested in one of our Illustrators</h3>
           <div className="w-form">
-            <div className="contactpartist">Previosly Viewed Artists</div>
+            <div className="contactpartist">Previously Viewed Artists</div>
 
             {dataViewed !== null
               ? Object.keys(dataViewed).map((key) => (

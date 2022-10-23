@@ -63,10 +63,10 @@ function Artists(props) {
                 bannerImages.bannerData.length > 0 ? (
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879ea-4bf2d022"
-                    to="#"
+                    to="/bipoc"
                     className="banner _1 v2 w-inline-block-banner"
                   >
-                    <div
+                    <div 
                       className="bannerletters _1 v2"
                       style={{
                         backgroundImage: "url(" + images + "/BIPOC.png)",

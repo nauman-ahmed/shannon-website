@@ -41,7 +41,6 @@ const artistImageSlice = createSlice({
             return state
         },
         resetUploadedImages: (state, param) => {
-            console.log('REDUCER',param)
             state = {...initialState}
             state.savedImages = param.payload
             // if(state.savedImages){
