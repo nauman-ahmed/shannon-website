@@ -25,7 +25,7 @@ export const userLoginApi = createAsyncThunk(
 export const userRegisterApi = createAsyncThunk(
     'users/userRegisterApi',
     async (userData, thunkAPI) => {
-        return axios
+        return axios 
             .post(BASE_URL + "artistUser/register", userData)
             .then((response) => response.data)
             .catch((response) => logouterArtist())

@@ -9,7 +9,7 @@ import Input from '../../components/input/input'
 
 
 function Dashboard(props) {
-    
+     
     const [search, setSearch] = useState("")
     
 
@@ -54,7 +54,7 @@ function Dashboard(props) {
                 artistUsers = {props.artistUsers}
                 deleteArtistUser= {props.deleteArtistUser}
                 approveArtistUser= {props.approveArtistUser}
-                
+                loading = {props.loading}
             />:
             <>
                 <div className='col-md-6 mb-3'>

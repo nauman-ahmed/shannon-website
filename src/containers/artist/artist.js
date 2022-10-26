@@ -84,6 +84,7 @@ function Artist() {
     <>  
         <Header/>
         <div className='px-1 px-md-5 artist'>
+            {console.log(artistReducer.savedImages)}
             <div className='profile'>
                 <div className='profilePic'></div>
                 <h3 className='mb-5'>{artistDetails ?  artistDetails.firstname : "...loading"}</h3>
@@ -96,25 +97,28 @@ function Artist() {
                 </label>
                 {artistReducer.savedImages !== null && 
                     artistReducer.savedImages.map((val,ind)=>
-                        <div className='col-6 col-lg-2 col-md-3 col-sm-4 artistcardAdmin' style={{cursor: "pointer"}} key={ind}>
-                            <div
-                                onClick={() => deleteImageHandler(val)}
-                                className="crossSection"
-                                >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="12px"
-                                    height="12px"
-                                    viewBox="0 0 352 512"
-                                >
-                                    <path
-                                    fill="grey"
-                                    d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-                                    />
-                                </svg>
+                        artistReducer.savedImages.statusSubmit == 0 ?
+                            <div className='col-6 col-lg-2 col-md-3 col-sm-4 artistcardAdmin' style={{cursor: "pointer"}} key={ind}>
+                                <div
+                                    onClick={() => deleteImageHandler(val)}
+                                    className="crossSection"
+                                    >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="12px"
+                                        height="12px"
+                                        viewBox="0 0 352 512"
+                                    >
+                                        <path
+                                        fill="grey"
+                                        d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                                        />
+                                    </svg>
+                                </div>
+                                <img onClick={()=>updateImageDetails(val)}  alt='' src={val.path} className="image"/>
                             </div>
-                            <img onClick={()=>updateImageDetails(val)}  alt='' src={val.path} className="image"/>
-                        </div>
+                        :
+                        null
                     )
                 }
                 {showLoader?

@@ -24,8 +24,6 @@ function WebsiteAdmin(props) {
         if(Object.keys(item).length !== 0){
             let data = {
                 id:item.id,
-                name:item.name,
-                username:item.username,
                 email:item.email,
                 hash_password:item.password,
                 Role:item.Role,
@@ -44,8 +42,6 @@ function WebsiteAdmin(props) {
     const addUser = (e,item)=>{
         if(Object.keys(item).length !== 0){
             let data = {
-                name:item.name,
-                username:item.username,
                 email:item.email,
                 hash_password:item.password,
                 Role:item.Role
@@ -55,7 +51,7 @@ function WebsiteAdmin(props) {
                 props.setFormNo(0);
                 setHolder(false);
                 dispatch(updateOpen(true))
-                dispatch(updateMessage(res));
+                dispatch(updateMessage(res.msg));
                 populateAdminUsers();
             });
         }

@@ -27,7 +27,11 @@ function AccountCreationReq(props) {
                                 <Td>{item.state}</Td>
                                 <Td className="d-flex">
                                     <button className='mx-1 myBtn' type="text" onClick={(e)=>{props.deleteArtistUser(e,item._id)}}>DELETE</button>
+                                    {props.loading?
+                                        <img className='mt-1' alt="loading" src={loading} style={{width:"30px"}}/>
+                                    :
                                     <button className='mx-1 myBtn active' type="text" onClick={(e)=>{props.approveArtistUser(e,item._id)}}>{item.status === 1 ? "APPROVE":"APPROVE"}</button>
+                                    }
                                 </Td>
                             </Tr>
                          ):""}

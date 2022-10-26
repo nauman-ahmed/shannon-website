@@ -43,7 +43,7 @@ function ForgetPassword() {
         try{
           setIsPopupShow(true)
           if(res == "Check your email"){
-            setMsg("Successfully Generate Password")
+            setMsg("Your new password has been sent to your email.")
           }else if("Email not exist"){
             setMsg("Email not exist")
           }
@@ -136,7 +136,7 @@ function ForgetPassword() {
             </div>
             </div>
             <Link to={"/artist/signin"}>Back to Login</Link>
-            {showLoader?<button className={'myButton '+(accountType === "admin"?'my-5':'mt-5')} onClick={()=>{signInFunc();}}>Forget Password</button>:<img className="mt-4" alt="loading" src={loading} style={{width:"30px"}}/>}
+            {showLoader?<button className={'myButton '+(accountType === "admin"?'my-5':'mt-5')} onClick={()=>{signInFunc();}}>Generate New Password</button>:<img className="mt-4" alt="loading" src={loading} style={{width:"30px"}}/>}
           </>
           :null}
       </div>

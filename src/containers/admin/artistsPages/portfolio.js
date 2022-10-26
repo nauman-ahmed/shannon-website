@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { IMAGE_ROUTE,artistPortfolioOrder,getTypeTwoKeyword } from '../../../AxiosFunctions/Axiosfunctionality'
+import { IMAGE_ROUTE,artistPortfolioOrder,getTypeTwoKeyword,artistImagedelete } from '../../../AxiosFunctions/Axiosfunctionality'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 function Portfolio(props) {
@@ -23,7 +23,9 @@ function Portfolio(props) {
   }
 
   useEffect(() => {
+    console.log("USE EFFECT OUTSIDE")
     if(props.selectedImages.mainImage !== undefined){
+      console.log("USE EFFECT INSIDE",props.selectedImages)
       getKeywordsAndSeperate()
     } 
   }, [props.selectedImages])
@@ -140,6 +142,16 @@ function Portfolio(props) {
     )
   }
 
+  const deleteImageHandler = async (val) => {
+    console.log(val,props.selectedArtist)
+    let response = await artistImagedelete({
+        artistId:props.selectedArtist._id,
+        imageData:val
+    })
+    console.log("PORTFOLIO",response.data)
+    props.updateSelectedImagesArray(response.data)
+  }
+
   return (
     <>
     <div className='d-flex flex-column' style={{marginTop:-10,marginLeft:'25%'}}> 
@@ -156,11 +168,28 @@ function Portfolio(props) {
           : null
       :
       null}
-      <div className='row m-0'>
+      <div className='row m-0'> 
         {
         characters.length > 0 ? characters.map((item,key)=>(
-          item.status === 1?<div key={key} className='col-6 col-md-3 col-sm-4 artistcardAdmin w-inline-block'>
-              <img alt='' src={item.path} className="image"/>
+          item.status === 1?
+          <div key={key} className='col-6 col-md-3 col-sm-4 artistcardAdmin w-inline-block' >
+              <div
+                  onClick={() => deleteImageHandler(item)}
+                  className="crossSection"
+                  >
+                  <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="12px"
+                      height="12px"
+                      viewBox="0 0 352 512"
+                  >
+                      <path
+                      fill="grey"
+                      d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      />
+                  </svg>
+              </div>
+              <img style={{cursor: "pointer"}} onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})}  alt='' src={item.path} className="image"/>
           </div>:""
         )):""
       }

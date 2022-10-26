@@ -98,9 +98,27 @@ function Artists(props) {
         }
     },[])
 
+
+    const  modules = {
+        toolbar: [
+          [{ 'header': [1, 2, false] }],
+          ['bold', 'italic', 'underline'],
+          [{'list': 'ordered'}, {'list': 'bullet'},{'color':["black","red","blue","green"]}],
+          ['link'],
+          ['clean']
+        ],
+      }
+
+    const updateSelectedImagesArray = (data) => {
+        console.log("ARTIST",data.length)
+        let temp = {...selectedImages}
+        temp.mainImage = data
+        setSelectedImages(temp)
+    }
+
     return (
         <div className='px-xl-5 mx-xl-5'>
-            
+        {console.log("RENDER",selectedImages)}
         <div className={'mx-lg-5 px-lg-3 py-4 mt-3 ml-5 d-flex flex-column'+(props.formNo === 1?" align-items-center":"")}>
             {
             props.formNo === 1?
@@ -139,13 +157,13 @@ function Artists(props) {
                     history={props.history} 
                     selectedArtist = {selectedArtist}
                     selectedImages = {selectedImages}
-                    
                 />
                 :formNo2 === 2?
                 <Portfolio 
                     history={props.history}
                     selectedArtist = {selectedArtist}
                     selectedImages = {selectedImages}
+                    updateSelectedImagesArray = {updateSelectedImagesArray}
                     />
                 :formNo2 === 3?
                 <Edit
@@ -161,6 +179,7 @@ function Artists(props) {
                 <ReactQuill 
                     value={seletedBio} 
                     onChange={handleChangeText}
+                    modules={modules}
                     />
                     <div className='col-12 d-flex justify-content-end'>
                         {holder?<img className='my-5' alt="loading" src={loading} style={{width:"30px"}}/>:<button className='my-5 myBtn active' onClick={(e)=>{updateArtistBioData(e,{_id:selectedArtist._id,bio:seletedBio})}}>UPDATE</button>}

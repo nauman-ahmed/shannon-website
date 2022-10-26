@@ -104,7 +104,7 @@ function Login() {
           setAuthToken(res.token);
           dispatch(updateOpen(true))
           setShowLoader(true);
-          dispatch(updateMessage(res.payload.token !== undefined?"successfully login":"Invalid Credentials or Account Not Approved" ))
+          dispatch(updateMessage(res.payload.token !== undefined?"successfully login":"Invalid Credentials or In Active Account" ))
           window.location.href = '/#/artist'
         });;
       }else{
@@ -123,15 +123,15 @@ function Login() {
           // dispatch(updateMessage("Email And Names Required"))
           return
         }
+        
         setShowLoader(false);
-         setIsPopupShow(true)
-         
         dispatch(userRegisterApi(data)).then((res)=>{
           setMsg(
             <>
             <p style={{textAlign:'center'}}>We've received your account creation request.<br></br>You will receive your credentials via email within the next 24 hours.</p>
             </>
             )
+           setIsPopupShow(true)
           // setMsg("WE'RE RECEIVED YOUR ACCOUNT CREATION")
           // dispatch(updateOpen(true))
           // setShowLoader(true)

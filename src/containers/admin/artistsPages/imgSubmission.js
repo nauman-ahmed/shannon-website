@@ -3,7 +3,7 @@ import { IMAGE_ROUTE } from '../../../AxiosFunctions/Axiosfunctionality'
 const img1 = window.location.origin+"/assets/images/IMG1.png"
 const img2 = window.location.origin+"/assets/images/IMG2.png"
 const img3 = window.location.origin+"/assets/images/IMG3.png"
-const img4 = window.location.origin+"/assets/images/IMG4.png"
+const img4 = window.location.origin+"/assets/images/IMG4.png" 
 
 function ImgSubmission(props) {
   return (

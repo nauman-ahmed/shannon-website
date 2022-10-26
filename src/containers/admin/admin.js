@@ -23,6 +23,7 @@ function Admin(props) {
     const dispatch = useDispatch();
     let history = useHistory();
     const [formNo, setFormNo] = useState(0)
+    const [loading, setLoading] = useState(false)
     const {pageName} = useParams()
     const {imageId} = useParams()
     const [Contacts,setContacts] =useState([]); 
@@ -88,10 +89,12 @@ function Admin(props) {
             let data = {
                 id:id
             } 
+            setLoading(true)
             UArtistUser(data).then((res)=>{
                 dispatch(updateOpen(true))
                 dispatch(updateMessage(res));
                 populateArtistUsers();
+                setLoading(false)
             })
         }
     }
@@ -138,12 +141,12 @@ function Admin(props) {
                 //functions for contact
                 // contactViewMore = {contactViewMore}
                 //populate artist users
-                populateArtistUsers={populateArtistUsers}
+                populateArtistUsers={populateArtistUsers} 
                 //artist functionalities
                 addArtistUser= {addArtistUser}
                 deleteArtistUser = {deleteArtistUser}
                 approveArtistUser = {approveArtistUser}
-
+                loading = {loading}
                 holder={holder}
                 formNo = {formNo}
                 setFormNo={setFormNo} 

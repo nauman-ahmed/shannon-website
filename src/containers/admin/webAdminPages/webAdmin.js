@@ -9,8 +9,8 @@ function WebAdmin(props) {
     {props.holder?<div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"50vh"}}><img className="mb-3" alt="loading" src={loading} style={{width:"50px"}}/></div>:
     <Table height="calc(100vh - 350px)">
         <THead>
-            <Th minWidth="120">Name</Th>
-            <Th minWidth="120">Username</Th>
+            {/* <Th minWidth="120">Name</Th>
+            <Th minWidth="120">Username</Th> */}
             <Th>Email</Th>
             <Th minWidth="100">Role</Th>
             <Th width="110"></Th>
@@ -18,8 +18,8 @@ function WebAdmin(props) {
         <TBody>
             {props.adminUser.length > 0 ? props.adminUser.map((item,key)=>(
             <Tr key={key}>
-                <Td>{item.name}</Td>
-                <Td>{item.username}</Td>
+                {/* <Td>{item.name}</Td>
+                <Td>{item.username}</Td> */}
                 <Td>{item.email}</Td>
                 <Td>{item.Role === 1? "SuperAdmin" : "Admin"}</Td>
                 <Td className="d-flex">

@@ -37,7 +37,7 @@ function Sidebar(props) {
             <div className='sidebar_header px-5 py-4'>
                 <div className='profileDet'>
                     <h5>
-                        {adminDetails ? adminDetails.firstname.toUpperCase() : "...loading"}
+                        SUPER ADMIN
                     </h5>
                     <small>ADMINISTRATOR</small>
                 </div>
