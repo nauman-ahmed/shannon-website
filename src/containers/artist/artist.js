@@ -97,7 +97,7 @@ function Artist() {
                 </label>
                 {artistReducer.savedImages !== null && 
                     artistReducer.savedImages.map((val,ind)=>
-                        artistReducer.savedImages.statusSubmit == 0 ?
+                    val.statusSubmit == 0 ?
                             <div className='col-6 col-lg-2 col-md-3 col-sm-4 artistcardAdmin' style={{cursor: "pointer"}} key={ind}>
                                 <div
                                     onClick={() => deleteImageHandler(val)}
