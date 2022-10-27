@@ -10,7 +10,7 @@ function About() {
         <Link
           id="w-node-f29d90d7-09f6-7cad-9c63-f3e68a26341c-d6f2d062"
           to="#"
-          className="artistcard bipoc w-inline-block"
+          className="artistcard bipoc set_height w-inline-block"
         >
           <img
             src={images + "/IMG15.png"}

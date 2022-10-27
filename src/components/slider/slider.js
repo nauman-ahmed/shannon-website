@@ -74,6 +74,7 @@ export default function Slider(props) {
       clearInterval(slider1);
     };
   }, []);
+
   const getSliderSize = (slider) => {
     let slideAmount = 0;
     slider.scrollLeft = 0;
@@ -81,18 +82,7 @@ export default function Slider(props) {
     let frameWidth = slider.scrollWidth;
     let winSize = window.innerWidth;
     slideAmount = slideWidth;
-    // if(lg < winSize){
-    //     slideAmount = slideWidth/6
-    // }
-    // else if(md < winSize){
-    //     slideAmount = slideWidth/4
-    // }
-    // else if(sm < winSize){
-    //     slideAmount = slideWidth/3
-    // }
-    // else{
-    //     slideAmount = slideWidth/2
-    // }
+    
     return { slideAmount, frameWidth, slideWidth };
   };
   return (
@@ -283,6 +273,7 @@ export function FullScreenSliderItem(props) {
           justifyContent: "center",
         }}
       >
+        {console.log(props)}
         <div className="col-5 mt-4 ">
           <h2
             className="h2talent"

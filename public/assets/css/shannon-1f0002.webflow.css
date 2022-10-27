@@ -1,7 +1,11 @@
 .w-form-formrecaptcha {
   margin-bottom: 8px;
 }
-
+.flex_center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .bipocLink:hover {
   color: #ffb71b;
 }
@@ -225,7 +229,10 @@ a {
 }
 
 .artistcard.bipoc {
-  height: auto;
+  height: auto ;
+}
+.artistcard.bipoc.set_height{
+  height: auto  !important;
 }
 
 .artistcard.bipocslider {
@@ -303,7 +310,7 @@ a {
 
 .homesection {
   padding-top: 18px;
-  padding-bottom: 160px;
+  /* padding-bottom: 160px; */
 }
 
 .homesection.divisions {
@@ -686,7 +693,7 @@ a {
   background-color: #000;
   font-family: 'Roboto Condensed', sans-serif;
   color: #fff;
-  font-size: 8px !important;
+  font-size: 11px !important;
   font-weight: 400;
   text-align: center;
 }
@@ -3440,7 +3447,7 @@ a {
 .divisiondivider.grad {
   position: -webkit-sticky;
   position: sticky;
-  width: 110%;
+  width: 100%;
   margin-bottom: 20px;
   background-image: linear-gradient(260deg, #ffb71b, #feac23 25%, #fa8e37 43%, #f7734a 66%, #f35e57 78%, #ec297b);
 }
@@ -3812,7 +3819,7 @@ a {
   margin-top: 10px;
   font-family: Roboto, sans-serif;
   color: #ffb71b;
-  font-size: 0.75vw;
+  font-size: 10px;
   font-weight: 500;
 }
 
@@ -4228,12 +4235,11 @@ a {
   }
 
   .menu-button {
-    margin-top: 5px;
+    margin-top: 10px;
     -webkit-box-align: center;
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
-
   }
 
   .searchbarhome {
@@ -4295,7 +4301,7 @@ a {
   }
 
   .artistcard {
-    height: 50vw;
+    height: 50vw !important;
   }
   .artistcard.division {
     height: 50vw;
@@ -5067,7 +5073,7 @@ a {
   }
 
   .menu-button {
-    width: 20%;
+    width: auto;
     margin-right: -35px;
   }
 
@@ -11638,11 +11644,13 @@ element.style {
 .artistnametext-v2 {
   padding-top: 1vh !important;
   padding-bottom: 1vh !important;
-  font-size: 11px !important;
+  font-size: 16px !important;
 }
 .slideContent{
   justify-content: center;
   margin-left: 0px !important;
+  width: 600px;
+
 }
 }
 @media screen and (max-width: 830px){

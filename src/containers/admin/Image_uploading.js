@@ -301,7 +301,7 @@ function Image_uploading(props) {
                         } 
                         </div>
                         {pageNo === 0?
-                        <div className='col-xl-3 col-lg-4 mt-lg-0 mt-5 d-flex flex-column align-items-center justify-content-between'>
+                        <div className='col-xl-3 col-lg-4 mt-lg-0 mt-5 d-flex flex-column align-items-center'>
                             <div className='d-flex flex-column align-items-center w-100'>
                                 <b className='mb-4'>ORIGINAL</b>
                                 <input 
@@ -315,7 +315,7 @@ function Image_uploading(props) {
                             <button className='btn1 dark px-4 align-self-bottom' onClick={()=>setPageNo(pageNo + 1)}>NEXT</button>
                         </div>
                         :pageNo === 1 || pageNo === 2?
-                        <div className='col-xl-3 col-lg-4 mt-lg-0 mt-5 d-flex flex-column align-items-center justify-content-between'>
+                        <div className='col-xl-3 col-lg-4 mt-lg-0 mt-5 d-flex flex-column align-items-center'>
                             <div className='d-flex flex-column align-items-center w-100'>
                                 <b className='mb-4'>ORIGINAL</b>
                                 <label className='checkBox'>THUMBNAIL {pageNo}

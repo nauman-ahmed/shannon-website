@@ -84,7 +84,6 @@ function Artist() {
     <>  
         <Header/>
         <div className='px-1 px-md-5 artist'>
-            {console.log(artistReducer.savedImages)}
             <div className='profile'>
                 <div className='profilePic'></div>
                 <h3 className='mb-5'>{artistDetails ?  artistDetails.firstname : "...loading"}</h3>

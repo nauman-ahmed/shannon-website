@@ -245,7 +245,7 @@ function SearchByArtist(props) {
             </div>
               {/* {data1[search].detail} */}
             </div>
-            <div className="talenttext">Want to commission this artist?</div>
+            <div className="talenttext" style={{marginBottom:5}}>Want to commission this artist?</div>
             <div className="d-flex">
               <Link
                 to="#"
@@ -331,7 +331,7 @@ function SearchByArtist(props) {
             )}
           </div>
 
-          <div className="col-12 mt-5 ">
+          <div className="col-12 mt-3 ">
             <div
               data-current="Tab 3"
               data-easing="ease"
@@ -343,8 +343,8 @@ function SearchByArtist(props) {
                 <div
                   onClick={() => setTab(0)}
                   className={
-                    "tabs py-2 w-inline-block w-tab-link " +
-                    (tab === 0 ? "bg-white text-black" : null)
+                    "tabs py-2 w-inline-block w-tab-link flex_center " +
+                    (tab === 0 ? "bg-white text-black d-flex justify-content-center align-items-center" : null)
                   }
                 >
                   <div style={{ fontWeight: '600' }}>PORTFOLIO</div>
@@ -392,7 +392,7 @@ function SearchByArtist(props) {
                       )
                       }
                     </div>
-                    <div style={{ textAlign: "center", margin: "10px" }}>
+                    <div style={{ textAlign: "center", margin: "10px",marginTop: 25 }}>
                       <Link
                         to="#"
                         style={{ fontSize: "16px" }}
