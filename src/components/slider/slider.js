@@ -6,6 +6,8 @@ import Header from "../layout/header";
 import Navbar from "../layout/navbar";
 
 const images = window.location.origin + "/assets/images";
+
+
 export default function Slider(props) {
   const { location } = useHistory();
   const sm = "576";
@@ -20,6 +22,7 @@ export default function Slider(props) {
     let slideDetail = getSliderSize(slider);
     let backBtn = document.querySelector("#left" + id);
     let nextBtn = document.querySelector("#right" + id);
+
     if (backBtn) {
       backBtn.addEventListener("click", () => {
         if (slideTotalAmount > 0) {
@@ -32,15 +35,11 @@ export default function Slider(props) {
     }
     if (nextBtn) {
       nextBtn.addEventListener("click", () => {
-        if (
-          slideDetail.frameWidth <=
-          slideTotalAmount + slideDetail.slideWidth
-        ) {
+        if (slideDetail.frameWidth <= slideTotalAmount + slideDetail.slideWidth) {
           slideTotalAmount = 0;
         } else {
           slideTotalAmount += slideDetail.slideAmount;
         }
-        console.log("slideTotalAmount-right", slideTotalAmount);
         slider.scrollLeft = slideTotalAmount;
       });
     }
@@ -220,6 +219,7 @@ export default function Slider(props) {
     </div>
   );
 }
+
 
 export function SliderItem(props) {
   return "src" in props ? (
