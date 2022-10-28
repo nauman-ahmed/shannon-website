@@ -1,11 +1,7 @@
 .w-form-formrecaptcha {
   margin-bottom: 8px;
 }
-.flex_center{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 .bipocLink:hover {
   color: #ffb71b;
 }
@@ -3098,8 +3094,8 @@ a {
   display: -ms-grid;
   display: grid;
   grid-auto-columns: 1fr;
-  grid-column-gap: 16px;
-  grid-row-gap: 1.28vh;
+  grid-column-gap: 6px;
+  grid-row-gap: 6px;
   grid-template-areas: ".";
   -ms-grid-columns: 1fr 16px 1fr 16px 1fr 16px 1fr 16px 1fr 16px 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -4281,6 +4277,12 @@ a {
     -webkit-align-items: flex-end;
     -ms-flex-align: end;
     align-items: flex-end;
+  }
+
+  .flex_center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   ._2cols {
@@ -11617,12 +11619,17 @@ element.style {
 }
 
 @media screen and (max-width: 479px){
-  .slider .arrow2.left{
+  /* .slider .arrow2.left{
     display: none;
   }
   .slider .arrow2.right{
     display: none;
+  } */
+ 
+  .image-3{
+  width: 8vw;
   }
+
   .card._1 {
     border: none;
     max-width: 100%;

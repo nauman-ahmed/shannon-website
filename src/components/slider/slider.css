@@ -55,7 +55,12 @@
     left: -4.5vw;
 }
 .slider .arrow2.right {
-    right: 20px;
+    right: 10 !important;
+}
+@media screen and (max-width: 479px){
+    .slider .arrow2.right {
+        right: 10 !important;
+    }
 }
 @media (min-width: 768px) {
     .slider .arrow2.left {

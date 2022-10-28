@@ -344,7 +344,7 @@ function SearchByArtist(props) {
                   onClick={() => setTab(0)}
                   className={
                     "tabs py-2 w-inline-block w-tab-link flex_center " +
-                    (tab === 0 ? "bg-white text-black d-flex justify-content-center align-items-center" : null)
+                    (tab === 0 ? "bg-white text-black flex_center" : null)
                   }
                 >
                   <div style={{ fontWeight: '600' }}>PORTFOLIO</div>
