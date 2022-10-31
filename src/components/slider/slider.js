@@ -22,7 +22,6 @@ export default function Slider(props) {
     let slideDetail = getSliderSize(slider);
     let backBtn = document.querySelector("#left" + id);
     let nextBtn = document.querySelector("#right" + id);
-
     if (backBtn) {
       backBtn.addEventListener("click", () => {
         if (slideTotalAmount > 0) {
@@ -173,7 +172,7 @@ export default function Slider(props) {
                 />
               ) : (
                 <i
-                  id={"left" + id}
+                  id={"right" + id}
                   onClick={() => {
                     props.setSliderIndex(
                       props.sliderIndex === props.length
@@ -231,7 +230,7 @@ export function SliderItem(props) {
       style={{ padding: 1 }}
     >
       <img
-        onClick={() => ("onClick" in props ? props.onClick(props.src) : null)}
+        onClick={() => ("onClick" in props ? props.onClick(props.src,props.id) : null)}
         src={props.src}
         alt=""
         style={
@@ -261,6 +260,7 @@ export function SliderItem(props) {
 
 export function FullScreenSliderItem(props) {
   const { pages } = useParams();
+  const history = useHistory()
 
   return (
     <>
@@ -273,7 +273,6 @@ export function FullScreenSliderItem(props) {
           justifyContent: "center",
         }}
       >
-        {console.log(props)}
         <div className="col-5 mt-4 ">
           <h2
             className="h2talent"
@@ -281,7 +280,7 @@ export function FullScreenSliderItem(props) {
           >
             {props.currentData.title}
           </h2>
-          <p className="mb-5">Baby Alpaca Children's Book</p>
+          <p className="mb-5">{props.currentData.pictureTitle[props.fullscreen.key]}</p>
 
           <p
             style={{ fontSize: "22px", fontWeight: 700 }}
@@ -306,7 +305,7 @@ export function FullScreenSliderItem(props) {
             </div>
           </div>
           <div className="d-flex align-items-center mt-5">
-            <div>
+            {/* <div>
               <button
                 className="text-uppercase"
                 style={{
@@ -323,8 +322,8 @@ export function FullScreenSliderItem(props) {
               >
                 Learn More
               </button>
-            </div>
-            <div className="mx-3">
+            </div> */}
+            <div>
               <button
                 className=" text-uppercase"
                 style={{
@@ -385,8 +384,11 @@ export function FullScreenSliderItem(props) {
                   fontSize: "0.7vw",
                   fontWeight: 600,
                 }}
+                onClick = {()=>history.push("/contact")}
+                // href="http://localhost:3000/#/contact"
+                // href="http://shannon-kidshannon.herokuapp.com/#/contact"
               >
-                Get estimated
+                Get an estimated
               </button>
             </div>
           </div>

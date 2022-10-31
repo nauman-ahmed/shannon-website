@@ -69,7 +69,7 @@ function ForgetPassword() {
         try{
           setIsPopupShow(true)
           if(res == "Check your email"){
-            setMsg("Successfully Generate Password")
+            setMsg("Your new password has been sent to your email")
           }else if("Email not exist"){
             setMsg("Email not exist")
           }

@@ -31,7 +31,7 @@ function SearchByArtist(props) {
   const [artistImages, setArtistImages] = useState(8);
   const [artistSimilar, setArtistSimilar] = useState(8);
   const [sliderImages, setSliderImages] = useState(null);
-  const [sliderIndex, setSliderIndex] = useState(null);
+  const [sliderIndex, setSliderIndex] = useState(0);
   function getWindowSize() {
     const { innerWidth, innerHeight } = window
     return { innerWidth, innerHeight };
@@ -90,20 +90,24 @@ function SearchByArtist(props) {
     function dataLoader() {
       if (artistImageDataSlice.artistImages !== undefined) {
         if (artistImageDataSlice.artistImages.length > 0) {
+          let picturetitle = [];
           let listData = [];
           let subListData = [];
           let tempData = {};
           let tempSimilarData = {};
           let count = 0;
           artistImageDataSlice.artistImages.forEach((item, key) => {
+            picturetitle = [];
             listData = [];
             subListData = [];
             item.mainImage.forEach((item1, key1) => {
+              picturetitle.push(item1.title)
               listData.push(String(item1.path));
               subListData.push(String(item1.subImage[1].path));
             });
             tempData[item.artistId.firstname] = {
               id: item.artistId._id,
+              pictureTitle:picturetitle,
               title: item.artistId.firstname + " " + item.artistId.lastname,
               detail: item.artistId.bio,
               slideList: listData,
@@ -138,20 +142,24 @@ function SearchByArtist(props) {
         } else {
           dispatch(ArtistImageSliceData({})).then((res) => {
             if (res.payload !== undefined) {
+              let picturetitle = [];
               let listData = [];
               let tempData = {};
               let subListData = [];
               let tempSimilarData = {};
               let count = 0;
               res.payload.forEach((item, key) => {
+                picturetitle = [];
                 listData = [];
                 subListData = [];
                 item.mainImage.forEach((item1, key1) => {
+                  picturetitle.push(item1.title)
                   listData.push(String(item1.path));
                   subListData.push(String(item1.subImage[1].path));
                 });
                 tempData[item.artistId.firstname] = {
                   id: item.artistId._id,
+                  pictureTitle:picturetitle,
                   title: item.artistId.firstname + " " + item.artistId.lastname,
                   detail: item.artistId.bio,
                   slideList: listData,
@@ -203,13 +211,13 @@ function SearchByArtist(props) {
     dataLoader();
   }, []);
 
-  const setFullScreenHandler = (route) => {
+  const setFullScreenHandler = (route,key) => {
     let temp = { ...fullscreen };
 
     if (!temp.screen) {
       temp.route = route;
+      temp.key = key
     }
-
     temp.screen = !temp.screen;
     setFullscreen(temp);
     setFullScreenData(data1[search])
@@ -226,7 +234,6 @@ function SearchByArtist(props) {
       />)
   }
 
-  
 
   return (
     <div className="row" style={{ maxWidth: "100%" }}>
@@ -243,7 +250,6 @@ function SearchByArtist(props) {
             >
             <div dangerouslySetInnerHTML={{__html: data1[search].detail}}>
             </div>
-              {/* {data1[search].detail} */}
             </div>
             <div className="talenttext" style={{marginBottom:5}}>Want to commission this artist?</div>
             <div className="d-flex">
@@ -259,13 +265,14 @@ function SearchByArtist(props) {
                 style={{ fontSize: "16px", fontWeight: '600' }}
                 className={windowSize.innerWidth < 400 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
               >
-                GET ESTIMATE
+                GET AN ESTIMATE
               </Link>
               <Link
                 data-w-id="e04f643e-f302-16e2-74ee-4bc7e85391d8"
                 to="#"
                 style={{ fontSize: "16px", fontWeight: '600' }}
                 className="talentbutton hide col-3"
+                onClick={()=>addToCartArtist(data1[search].id,data1[search].title)}
               >
                 ADD TO MY LIST
               </Link>
@@ -297,35 +304,35 @@ function SearchByArtist(props) {
             ) : (
               <Slider 
               controllEnabled 
-              interval={3000}
-              setSliderImages={setSliderImages}
-              sliderImages={sliderImages}
+              interval={4000}
+              // setSliderImages={setSliderImages}
+              // sliderImages={sliderImages}
               setSliderIndex={setSliderIndex}
-              images={data1[search].slideList}
+              // images={data1[search].slideList}
               sliderIndex={sliderIndex}
-              length={data1[search].slideList.length - 1}
-              show={true}
+              // length={data1[search].slideList.length - 1}
+              // show={true}
               >
                 {data1[search].slideList.map((item, keys) => (
                   <>
                     <SliderItem
-                    index={sliderImages}
-                    images={data1[search].slideList}
                     onClick={setFullScreenHandler}
                     key={keys}
-                    id={sliderIndex !== null ? sliderIndex : keys}
-                    // id={keys}
                     fillMode="contain"
-                    src={sliderImages !== null ? sliderImages : item}
-                    // src={item}
-                    setSliderImages={setSliderImages}
-                    sliderImages={sliderImages}
-                    setSliderIndex={setSliderIndex}
-                    sliderIndex={sliderIndex}
-                    length={data1[search].slideList.length - 1}
+                    id={keys}
+                    src={item}
+                    // src={data1[search].slideList[sliderIndex]}
+                    // src={sliderImages !== null ? sliderImages : item}
+                    // index={sliderImages}
+                    // images={data1[search].slideList}
+                    // id={sliderIndex !== null ? sliderIndex : keys}
+                    // setSliderImages={setSliderImages}
+                    // sliderImages={sliderImages}
+                    // setSliderIndex={setSliderIndex}
+                    // sliderIndex={sliderIndex}
+                    // length={data1[search].slideList.length - 1}
                   />
                   </>
-
                 ))}
               </Slider>
             )}
@@ -416,7 +423,7 @@ function SearchByArtist(props) {
                       >
 
                         {data1[search].subListData.map((item, keys) => (
-                          <span onClick={() => {setSliderIndex(keys); setSliderImages(data1[search].slideList[keys])}}>
+                          <span onClick={() => {setSliderIndex(keys)}}>
                             <SliderItem
                               col="col-lg-1 col-md-3 col-6 px-md-1 thumb"
                               src={item}

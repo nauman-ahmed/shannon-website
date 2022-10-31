@@ -9,7 +9,26 @@ const images = window.location.origin + "/assets/images"
 function IllustrationArtists(props) {
 
   const [data,setData] = useState(null)
+  const [dataOriginal,setDataOriginal] = useState(null)
+  const [tempData,setTempData] = useState(null)
 
+  const filterChange= (filter) => {
+
+    let tempData = [...data];
+    setDataOriginal([...data])
+    if(filter==="A-Z"){
+      tempData = tempData.sort((a, b) => a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize()));
+    }
+    else if (dataOriginal){
+      tempData = [...dataOriginal];
+      // tempData = dataOriginal;
+    }
+
+    setData(tempData);
+
+  }
+
+ 
   useEffect(()=>{
     getIllustrations().then((res)=>{
       setData(res)
@@ -25,11 +44,11 @@ function IllustrationArtists(props) {
           <h2 className="divisionh2">ILLUSTRATION</h2>
         </div>
         <div class="sortingcont">
-          <a sort-by=".order" href="#" class="filter-button w-inline-block">
-            <div>DEFAULT</div>
+          <a class="filter-button w-inline-block" onClick={()=>filterChange("Default")}>
+            <div >DEFAULT</div>
           </a>
-          <a sort-by=".name" href="#" class="filter-button w-inline-block">
-            <div>ALPHABETICAL A-Z</div>
+          <a class="filter-button w-inline-block" onClick={()=>filterChange("A-Z")}>
+            <div >ALPHABETICAL A-Z</div>
           </a>
         </div>
         <div id="w-node-_4a165d69-02be-f2c1-10f5-69fa49464043-576fcec6" className="_4cols divisions">
