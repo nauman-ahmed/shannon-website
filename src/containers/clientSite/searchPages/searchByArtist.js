@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import Slider, {
-  SliderItem,
+import {
+  SliderShow,
+  SliderItems,
   FullScreenSliderItem,
 } from "../../../components/slider/slider";
 
@@ -10,6 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { ArtistImageSliceData } from "../../../redux/artistImageDataSlice";
 import { addCart } from "../../../redux/addToCart";
 import { updateMessage, updateOpen } from "../../../redux/message";
+// import { Carousel } from "react-responsive-carousel";
+// import { SliderItems, SliderShow } from "../../../components/slider/NewSlider";
 // import { setImageRoute } from '../../../UserServices/Services';
 
 // import downloadArrow from "../../images/download.png";
@@ -31,7 +34,7 @@ function SearchByArtist(props) {
   const [artistImages, setArtistImages] = useState(8);
   const [artistSimilar, setArtistSimilar] = useState(8);
   const [sliderImages, setSliderImages] = useState(null);
-  const [sliderIndex, setSliderIndex] = useState(0);
+  const [sliderIndex, setSliderIndex] = useState(null);
   function getWindowSize() {
     const { innerWidth, innerHeight } = window
     return { innerWidth, innerHeight };
@@ -84,6 +87,9 @@ function SearchByArtist(props) {
 
   function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
+  }
+  const changeIndex = (index)=>{
+    console.log(index)
   }
 
   useEffect(() => {
@@ -138,6 +144,7 @@ function SearchByArtist(props) {
               });
             }
           });
+          setSimilarData(tempSimilarData);
           setData1(tempData);
         } else {
           dispatch(ArtistImageSliceData({})).then((res) => {
@@ -211,6 +218,7 @@ function SearchByArtist(props) {
     dataLoader();
   }, []);
 
+
   const setFullScreenHandler = (route,key) => {
     let temp = { ...fullscreen };
 
@@ -218,6 +226,7 @@ function SearchByArtist(props) {
       temp.route = route;
       temp.key = key
     }
+
     temp.screen = !temp.screen;
     setFullscreen(temp);
     setFullScreenData(data1[search])
@@ -234,6 +243,7 @@ function SearchByArtist(props) {
       />)
   }
 
+  
 
   return (
     <div className="row" style={{ maxWidth: "100%" }}>
@@ -302,39 +312,63 @@ function SearchByArtist(props) {
                 fullscreen={fullscreen}
               />
             ) : (
-              <Slider 
-              controllEnabled 
-              interval={4000}
+              <>
+            <SliderShow
+              changeIndex = {changeIndex}
+              sliderIndex = {sliderIndex}
+              settings = {{
+                arrows:true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+              }}
+            >
+              {
+                data1[search].slideList.map((item, keys) => (
+                  <SliderItems
+                        key={keys}
+                        src={item}
+                        onClick={setFullScreenHandler}
+                  /> 
+                ))
+              }
+              
+            </SliderShow>
+            </>
+              // <Slider 
+              // controllEnabled 
+              // interval={3000}
               // setSliderImages={setSliderImages}
               // sliderImages={sliderImages}
-              setSliderIndex={setSliderIndex}
+              // setSliderIndex={setSliderIndex}
               // images={data1[search].slideList}
-              sliderIndex={sliderIndex}
+              // sliderIndex={sliderIndex}
               // length={data1[search].slideList.length - 1}
               // show={true}
-              >
-                {data1[search].slideList.map((item, keys) => (
-                  <>
-                    <SliderItem
-                    onClick={setFullScreenHandler}
-                    key={keys}
-                    fillMode="contain"
-                    id={keys}
-                    src={item}
-                    // src={data1[search].slideList[sliderIndex]}
-                    // src={sliderImages !== null ? sliderImages : item}
-                    // index={sliderImages}
-                    // images={data1[search].slideList}
-                    // id={sliderIndex !== null ? sliderIndex : keys}
-                    // setSliderImages={setSliderImages}
-                    // sliderImages={sliderImages}
-                    // setSliderIndex={setSliderIndex}
-                    // sliderIndex={sliderIndex}
-                    // length={data1[search].slideList.length - 1}
-                  />
-                  </>
-                ))}
-              </Slider>
+              // >
+              //   {data1[search].slideList.map((item, keys) => (
+              //     <>
+              //       <SliderItem
+              //       index={sliderImages}
+              //       images={data1[search].slideList}
+              //       onClick={setFullScreenHandler}
+              //       key={keys}
+              //       id={sliderIndex !== null ? sliderIndex : keys}
+              //       // id={keys}
+              //       fillMode="contain"
+              //       src={sliderImages !== null ? sliderImages : item}
+              //       // src={item}
+              //       setSliderImages={setSliderImages}
+              //       sliderImages={sliderImages}
+              //       setSliderIndex={setSliderIndex}
+              //       sliderIndex={sliderIndex}
+              //       length={data1[search].slideList.length - 1}
+              //     />
+              //     </>
+
+              //   ))}
+              // </Slider>
             )}
           </div>
 
@@ -412,7 +446,31 @@ function SearchByArtist(props) {
                   </div>
                   : (
                     <div className="col-12 my-2">
-                      <Slider disableAutoPlay controllEnabled="outside-dark" 
+                      <SliderShow
+                        changeIndex = {changeIndex}
+                        settings = {{
+                          arrows:true,
+                          infinite: true,
+                          speed: 500,
+                          slidesToShow: data1[search].subListData.length > 18 ? 18 : data1[search].subListData.length - 1,
+                          slidesToScroll: 2,
+                        }}
+                        thumbNail = "true"
+                      >
+                        {
+                          data1[search].subListData.map((item, keys) => (
+                            <span onClick={() => {setSliderIndex(keys)}}>
+                            <SliderItems
+                              col="thumb"
+                              key={keys}
+                              src={item}
+                            /> 
+                            </span>
+                          ))
+                        }
+                        
+                      </SliderShow>
+                      {/* <Slider disableAutoPlay controllEnabled="outside-dark" 
                       
                       setSliderImages={setSliderImages}
                       sliderImages={sliderImages}
@@ -423,7 +481,7 @@ function SearchByArtist(props) {
                       >
 
                         {data1[search].subListData.map((item, keys) => (
-                          <span onClick={() => {setSliderIndex(keys)}}>
+                          <span onClick={() => {setSliderIndex(keys); setSliderImages(data1[search].slideList[keys])}}>
                             <SliderItem
                               col="col-lg-1 col-md-3 col-6 px-md-1 thumb"
                               src={item}
@@ -437,7 +495,7 @@ function SearchByArtist(props) {
                             />
                           </span>
                         ))}
-                      </Slider>
+                      </Slider> */}
                     </div>
                   ) : null}
               {tab === 1 ? (
@@ -476,7 +534,27 @@ function SearchByArtist(props) {
                   </div>
                   :
                   <div className="col-12 my-2">
-                    <Slider disableAutoPlay controllEnabled="outside-dark">
+                    {console.log(similarData)}
+                    <SliderShow
+                      settings = {{
+                        arrows:true,
+                        infinite: true,
+                        speed: 500,
+                        slidesToShow: 5,
+                        slidesToScroll: 2,
+                      }}
+                    >
+                      {Object.keys(similarData).length > 0
+                        ? Object.keys(similarData).map((key, i) => (
+                          <SliderItems
+                            col="thumb"
+                            src={similarData[key].mainImage}
+                          /> 
+                        ))
+                        : "NO SIMILAR IMAGES FOUND"
+                      }
+                    </SliderShow>
+                    {/* <Slider disableAutoPlay controllEnabled="outside-dark">
                       {Object.keys(similarData).length > 0
                         ? Object.keys(similarData).map((key, i) => (
                           <SliderItem
@@ -486,7 +564,7 @@ function SearchByArtist(props) {
                         ))
                         : "NO SIMILAR IMAGES FOUND"
                       }
-                    </Slider>
+                    </Slider> */}
                   </div>
               ) : null}
               {tab === 2 ?
@@ -494,7 +572,28 @@ function SearchByArtist(props) {
                   null :
                   (
                     <div className="col-12 my-2">
-                      <Slider disableAutoPlay controllEnabled="outside-dark">
+                      <SliderShow
+                        changeIndex = {changeIndex}
+                        settings = {{
+                          arrows:true,
+                          infinite: true,
+                          speed: 500,
+                          slidesToShow: 5,
+                          slidesToScroll: 2,
+                        }}
+                      >
+                        {Object.keys(dataViewed).length > 0
+                          ? Object.keys(dataViewed).map((key, i) => (
+                            <SliderItems
+                              col="thumb"
+                              src={dataViewed[key].slideList[0]}
+                            /> 
+                          ))
+                          : ""
+                        }
+                        
+                      </SliderShow>
+                      {/* <Slider disableAutoPlay controllEnabled="outside-dark">
                         {Object.keys(dataViewed).length > 0
                           ? Object.keys(dataViewed).map((key, i) => (
                             <SliderItem
@@ -508,7 +607,7 @@ function SearchByArtist(props) {
                           col="col-lg-1 col-md-3 col-6 px-md-2 thumb"
                           src={images + "/Rectangle-171.png"}
                         />
-                      </Slider>
+                      </Slider> */}
                     </div>
                   ) : null}
             </div>

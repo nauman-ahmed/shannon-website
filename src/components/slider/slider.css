@@ -1,3 +1,30 @@
+.slideItem img{
+    height:600px;
+}
+
+.slick-prev {
+    background-image: url(../../assets/img/left.png) !important;
+    background-position: 50% !important;
+    background-repeat: no-repeat !important;
+    background-size: 24px !important;
+    /* left:25px !important; */
+    z-index: 999;
+}
+.slick-next {
+    background-image: url(../../assets/img/right.png) !important;
+    background-position: 50% !important;
+    background-repeat: no-repeat !important;
+    background-size: 24px !important;
+    /* right:25px !important; */
+    z-index: 999;
+}
+.slick-next::before ,.slick-prev::before{
+    font-size: 0px !important;
+}
+
+.control-dots{
+    display: none;
+}
 
 .slider {
     background-color: white;

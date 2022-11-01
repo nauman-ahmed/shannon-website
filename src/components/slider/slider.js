@@ -1,261 +1,62 @@
-import React, { useState, useEffect } from "react";
+import React, { Children, useEffect, useState } from 'react';
 import { Link, useHistory, useParams } from "react-router-dom";
+import Slider from "react-slick";
 import "./slider.css";
-import { setImageRoute } from "../../UserServices/Services";
-import Header from "../layout/header";
-import Navbar from "../layout/navbar";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const images = window.location.origin + "/assets/images";
 
 
-export default function Slider(props) {
-  const { location } = useHistory();
-  const sm = "576";
-  const md = "768";
-  const lg = "992";
-  const xl = "1200";
-  const id = new Date().getTime();
+export const SliderShow=  (props) => {
 
-  useEffect(() => {
-    let slider = document.querySelector("#slideScroller" + id);
-    let slideTotalAmount = 0;
-    let slideDetail = getSliderSize(slider);
-    let backBtn = document.querySelector("#left" + id);
-    let nextBtn = document.querySelector("#right" + id);
-    if (backBtn) {
-      backBtn.addEventListener("click", () => {
-        if (slideTotalAmount > 0) {
-          slideTotalAmount -= slideDetail.slideAmount;
-        } else {
-          slideTotalAmount = slideDetail.frameWidth - slideDetail.slideWidth;
-        }
-        slider.scrollLeft = slideTotalAmount;
-      });
-    }
-    if (nextBtn) {
-      nextBtn.addEventListener("click", () => {
-        if (slideDetail.frameWidth <= slideTotalAmount + slideDetail.slideWidth) {
-          slideTotalAmount = 0;
-        } else {
-          slideTotalAmount += slideDetail.slideAmount;
-        }
-        slider.scrollLeft = slideTotalAmount;
-      });
-    }
-    let slider1 = null;
-    if (!"disableAutoPlay" in props) {
-      window.addEventListener(
-        "focus",
-        () =>
-          (slider1 = setInterval(
-            () => {
-              if (
-                slideDetail.frameWidth <=
-                slideTotalAmount + slideDetail.slideWidth
-              ) {
-                slideTotalAmount = 0;
-              } else {
-                slideTotalAmount += slideDetail.slideAmount;
-              }
-              slider.scrollLeft = slideTotalAmount;
-            },
-            "interval" in props ? props.interval : 2000
-          ))
-      );
-      window.addEventListener("blur", () => clearInterval(slider1));
-    }
-    window.addEventListener("resize", () => {
-      slideDetail = getSliderSize(slider);
-      slideTotalAmount = 0;
-    });
-    return () => {
-      clearInterval(slider1);
-    };
-  }, []);
+    const [slider,setSlider] = useState(null)
 
-  const getSliderSize = (slider) => {
-    let slideAmount = 0;
-    slider.scrollLeft = 0;
-    let slideWidth = slider.clientWidth;
-    let frameWidth = slider.scrollWidth;
-    let winSize = window.innerWidth;
-    slideAmount = slideWidth;
-    
-    return { slideAmount, frameWidth, slideWidth };
-  };
-  return (
-    <div
-      className="slider"
-      style={{
-        width: "width" in props ? props.width : "100%",
-        height: "height" in props ? props.height : "100%",
-      }}
-    >
-      <div id={"slideScroller" + id} className="slideScroller h-100">
-        <div className="slideContent h-100">{props.children}</div>
-      </div>
-      {"controllEnabled" in props ? (
-        <>
-          {location.pathname == "/bipoc" ? (
-            <button
-              className={
-                props.controllEnabled === "outside-dark"
-                  ? "arrow2 left"
-                  : "arrow left"
-              }
-            >
-              <img
-                src={images + "/bi_arrow-down-right-circle-fill2.svg"}
-                loading="lazy"
-                alt=""
-                class="image-3"
-              />
-            </button>
-          ) : (
-            <>
-              {props.show && (
-                <button
-                  id={"left" + id}
-                  className={
-                    props.controllEnabled === "outside-dark"
-                      ? "arrow3 left"
-                      : "arrow left"
-                  }
-                >
-                  <i
-                    id={"left" + id}
-                    onClick={() => {
-                      props.setSliderIndex(
-                        props.sliderIndex === 0 || props.sliderIndex === null
-                          ? 0
-                          : props.sliderIndex - 1
-                      );
-                      props.setSliderImages(
-                        props.images[
-                          props.sliderIndex === 0 ? 0 : props.sliderIndex - 1
-                        ]
-                      );
-                    }}
-                    className={"icon w-icon-slider-left"}
-                  ></i>
-                </button>
-              )}
-              {!props.show && (
-                <button
-                  id={"left" + id}
-                  className={
-                    props.controllEnabled === "outside-dark"
-                      ? "arrow3 left"
-                      : "arrow left"
-                  }
-                >
-                  <i id={"left" + id} className={"icon w-icon-slider-left"}></i>
-                </button>
-              )}
-            </>
-          )}
-          {props.show && (
-            <button
-              id={"right" + id}
-              className={
-                props.controllEnabled === "outside-dark"
-                  ? "arrow2 right"
-                  : "arrow right"
-              }
-            >
-              {location.pathname == "/bipoc" ? (
-                <img
-                  src={images + "/bi_arrow-down-right-circle-fill.svg"}
-                  loading="lazy"
-                  alt=""
-                  class="image-3"
-                />
-              ) : (
-                <i
-                  id={"right" + id}
-                  onClick={() => {
-                    props.setSliderIndex(
-                      props.sliderIndex === props.length
-                        ? props.sliderIndex
-                        : props.sliderIndex + 1
-                    );
-                    props.setSliderImages(
-                      props.images[
-                        props.sliderIndex === props.length
-                          ? props.sliderIndex
-                          : props.sliderIndex + 1
-                      ]
-                    );
-                  }}
-                  className={"icon w-icon-slider-right"}
-                ></i>
-              )}
-            </button>
-          )}
-          {!props.show && (
-            <button
-              id={"right" + id}
-              className={
-                props.controllEnabled === "outside-dark"
-                  ? "arrow2 right"
-                  : "arrow right"
-              }
-            >
-              {location.pathname == "/bipoc" ? (
-                <img
-                  src={images + "/bi_arrow-down-right-circle-fill.svg"}
-                  loading="lazy"
-                  alt=""
-                  class="image-3"
-                />
-              ) : (
-                <i id={"left" + id} className={"icon w-icon-slider-right"}></i>
-              )}
-            </button>
-          )}
-        </>
-      ) : null}
-    </div>
-  );
-}
-
-
-export function SliderItem(props) {
-  return "src" in props ? (
-    <div
-      className={
-        "col" in props ? props.col + " slideItem" : "col-12 p-0 slideItem slde"
+    useEffect(()=>{
+      if(props.thumbNail){
+        let slider = document.querySelector(".slick-slide");
+        slider.minWidth = "auto !important"
+        slider.width = "auto !important"
+        console.log(props.thumbNail,slider)
       }
-      id={"id" in props ? props.id + "" : "1"}
-      style={{ padding: 1 }}
-    >
-      <img
-        onClick={() => ("onClick" in props ? props.onClick(props.src,props.id) : null)}
-        src={props.src}
-        alt=""
-        style={
-          "fillMode" in props
-            ? {
-                OObjectFit: props.fillMode,
-                objectFit: props.fillMode,
-              }
-            : { OObjectFit: "cover", objectFit: "cover", width: "100%" }
-        }
-      />
-      {"label" in props ? (
-        <div
-          className="w-100 text-center position-absolute artistnametext-v2"
-          style={{
-            textTransform: "uppercase",
-            lineHeight: "1",
-            fontSize: "0.74vw",
-          }}
+      if(props.sliderIndex){
+        slider.slickGoTo(props.sliderIndex)
+      }
+    },[props.sliderIndex])
+
+    return(
+        <Slider  className="slider"
+        style={{
+          width: "width" in props ? props.width : "100%",
+          height: "height" in props ? props.height : "100%",
+        }}
+        {...props.settings}
+        ref={slider => setSlider(slider)}
         >
-          {props.label}
+            {props.children}
+        </Slider>
+    )
+};
+
+export const SliderItems = (props)=>{
+    return(
+        <div  className={
+          "col" in props ? props.col + " slideItem" : "slideItem"
+        }
+          style={{ padding: 1 }}
+       >
+          <img 
+            onClick={() => ("onClick" in props ? props.onClick(props.src) : null)}
+            src={props.src}
+            alt=""
+            style={
+              "col" in props
+                ? { OObjectFit: "cover", objectFit: "cover", margin:"auto",width:"100%",height:"100%" }
+                : { OObjectFit: "cover", objectFit: "cover", margin:"auto" }
+            }
+          />
         </div>
-      ) : null}
-    </div>
-  ) : null;
+    )
 }
 
 export function FullScreenSliderItem(props) {

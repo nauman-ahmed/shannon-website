@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import Slider, { SliderItem } from "../../components/slider/slider";
+import {
+    SliderShow,
+    SliderItems
+  } from "../../components/slider/slider";
 import {
   getBipocAsian,
   getBipocBlack,
@@ -125,10 +128,19 @@ function Bipoc() {
           </div>
           {blackArtist ? (
             <div className="slider w-slider my-3">
-              <Slider disableAutoPlay controllEnabled="outside-dark">
+              <SliderShow 
+                disableAutoPlay 
+                controllEnabled="outside-dark"
+                settings = {{
+                    arrows:true,
+                    speed: 500,
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                  }}
+            >
                 {blackArtist.map((val, ind) =>
                   val.ImageData.length > 0 ? (
-                    <SliderItem
+                    <SliderItems
                       label={
                         val.artistData.lastname + " " + val.artistData.firstname
                       }
@@ -137,7 +149,7 @@ function Bipoc() {
                     />
                   ) : null
                 )}
-              </Slider>
+              </SliderShow>
             </div>
           ) : null}
           <div
@@ -181,10 +193,20 @@ function Bipoc() {
           </div>
           {asianArtist ? (
             <div className="slider w-slider my-3">
-              <Slider disableAutoPlay controllEnabled="outside-dark">
+                <SliderShow 
+                    disableAutoPlay 
+                    controllEnabled="outside-dark"
+                    settings = {{
+                        arrows:true,
+                        infinite: true,
+                        speed: 500,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                    }}
+                >
                 {asianArtist.map((val, ind) =>
                   val.ImageData.length > 0 ? (
-                    <SliderItem
+                    <SliderItems
                       label={
                         val.artistData.lastname + " " + val.artistData.firstname
                       }
@@ -193,7 +215,7 @@ function Bipoc() {
                     />
                   ) : null
                 )}
-              </Slider>
+              </SliderShow>
             </div>
           ) : null}
         </div>
@@ -223,10 +245,20 @@ function Bipoc() {
           </div>
           {latinoArtist ? (
             <div className="slider w-slider my-3">
-              <Slider disableAutoPlay controllEnabled="outside-dark">
+                <SliderShow 
+                    disableAutoPlay 
+                    controllEnabled="outside-dark"
+                    settings = {{
+                        arrows:true,
+                        infinite: true,
+                        speed: 500,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                    }}
+                >
                 {latinoArtist.map((val, ind) =>
                   val.ImageData.length > 0 ? (
-                    <SliderItem
+                    <SliderItems
                       label={
                         val.artistData.lastname + " " + val.artistData.firstname
                       }
@@ -235,7 +267,7 @@ function Bipoc() {
                     />
                   ) : null
                 )}
-              </Slider>
+              </SliderShow>
             </div>
           ) : null}
         </div>
@@ -265,10 +297,20 @@ function Bipoc() {
           </div>
           {centralAsianArtist ? (
             <div className="slider w-slider my-3">
-              <Slider disableAutoPlay controllEnabled="outside-dark">
+                <SliderShow 
+                    disableAutoPlay 
+                    controllEnabled="outside-dark"
+                    settings = {{
+                        arrows:true,
+                        infinite: true,
+                        speed: 500,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                    }}
+                >
                 {centralAsianArtist.map((val, ind) =>
                   val.ImageData.length > 0 ? (
-                    <SliderItem
+                    <SliderItems
                       label={
                         val.artistData.lastname + " " + val.artistData.firstname
                       }
@@ -277,7 +319,7 @@ function Bipoc() {
                     />
                   ) : null
                 )}
-              </Slider>
+              </SliderShow>
             </div>
           ) : null}
         </div>
@@ -307,10 +349,20 @@ function Bipoc() {
           </div>
           {indegiousArtist ? (
             <div className="slider w-slider my-3">
-              <Slider disableAutoPlay controllEnabled="outside-dark">
+                <SliderShow 
+                    disableAutoPlay 
+                    controllEnabled="outside-dark"
+                    settings = {{
+                        arrows:true,
+                        infinite: true,
+                        speed: 500,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                      }}
+                >
                 {indegiousArtist.map((val, ind) =>
                   val.ImageData.length > 0 ? (
-                    <SliderItem
+                    <SliderItems
                       label={
                         val.artistData.lastname + " " + val.artistData.firstname
                       }
@@ -319,7 +371,7 @@ function Bipoc() {
                     />
                   ) : null
                 )}
-              </Slider>
+              </SliderShow>
             </div>
           ) : null}
         </div>
