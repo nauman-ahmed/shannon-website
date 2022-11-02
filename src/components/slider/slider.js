@@ -15,9 +15,12 @@ export const SliderShow=  (props) => {
     useEffect(()=>{
       
       if(props.sliderIndex){
-        slider.slickGoTo(props.sliderIndex)
+        {console.log(props.sliderIndex,slider)}
+        if(slider){
+          slider.slickGoTo(props.sliderIndex)
+        }
       }
-    },[props.sliderIndex])
+    },[props.sliderIndex,slider])
 
     return(
         <Slider  className="slider"
@@ -36,7 +39,7 @@ export const SliderShow=  (props) => {
 export const SliderItems = (props)=>{
     return(
         <div  className={
-          "col" in props ? props.col + " slideItem" : "slideItem"
+          "col" in props ? props.col + " slideItemNew" : "slideItemNew"
         }
           style={{ padding: 1 }}
        >

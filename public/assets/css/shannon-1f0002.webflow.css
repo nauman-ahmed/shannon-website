@@ -11682,3 +11682,17 @@ element.style {
   }
   
 }
+
+@media screen and (min-width:1500px){
+  .slider {
+    height: 50%;
+    background-color: hsla(0, 0%, 100%, 0);
+  }
+  
+  .slider .slideScroller .slideContent .slideItem>img {
+    height: 57%;
+    width: 100%;
+    transition: all 1s;
+  }
+  
+}
