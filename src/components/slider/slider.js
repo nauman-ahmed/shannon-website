@@ -13,12 +13,7 @@ export const SliderShow=  (props) => {
     const [slider,setSlider] = useState(null)
 
     useEffect(()=>{
-      if(props.thumbNail){
-        let slider = document.querySelector(".slick-slide");
-        slider.minWidth = "auto !important"
-        slider.width = "auto !important"
-        console.log(props.thumbNail,slider)
-      }
+      
       if(props.sliderIndex){
         slider.slickGoTo(props.sliderIndex)
       }
@@ -33,7 +28,7 @@ export const SliderShow=  (props) => {
         {...props.settings}
         ref={slider => setSlider(slider)}
         >
-            {props.children}
+          {props.children}
         </Slider>
     )
 };

@@ -266,14 +266,14 @@ function SearchByArtist(props) {
               <Link
                 to="#"
                 style={{ fontSize: "16px", fontWeight: '600' }}
-                className={windowSize.innerWidth < 400 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
+                className={windowSize.innerWidth < 415 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
               >
                 CALL
               </Link>
               <Link
                 to="/contact"
                 style={{ fontSize: "16px", fontWeight: '600' }}
-                className={windowSize.innerWidth < 400 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
+                className={windowSize.innerWidth < 415 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
               >
                 GET AN ESTIMATE
               </Link>
@@ -399,7 +399,7 @@ function SearchByArtist(props) {
                 >
                   <div style={{ fontWeight: '600' }}>SIMILAR ILLUSTRATORS</div>
                 </div>
-                {windowSize.innerWidth > 400 ?
+                {windowSize.innerWidth > 415 ?
                   <div
                     onClick={() => setTab(2)}
                     className={
@@ -414,7 +414,7 @@ function SearchByArtist(props) {
 
               </div>
               {tab === 0 ?
-                windowSize.innerWidth < 400 ?
+                windowSize.innerWidth < 415 ?
                   <div>
                     <div
                       className="imagecont"
@@ -450,10 +450,11 @@ function SearchByArtist(props) {
                         changeIndex = {changeIndex}
                         settings = {{
                           arrows:true,
-                          infinite: true,
+                          infinite: false,
                           speed: 500,
-                          slidesToShow: data1[search].subListData.length > 18 ? 18 : data1[search].subListData.length - 1,
+                          slidesToShow: data1[search].subListData.length > 18 ? 18 : 10,
                           slidesToScroll: 2,
+                          variableWidth: true
                         }}
                         thumbNail = "true"
                       >
@@ -499,7 +500,7 @@ function SearchByArtist(props) {
                     </div>
                   ) : null}
               {tab === 1 ? (
-                windowSize.innerWidth < 400 ?
+                windowSize.innerWidth < 415 ?
                   <div>
                     <div
                       className="imagecont"
@@ -538,10 +539,11 @@ function SearchByArtist(props) {
                     <SliderShow
                       settings = {{
                         arrows:true,
-                        infinite: true,
+                        infinite: false,
                         speed: 500,
-                        slidesToShow: 5,
+                        slidesToShow: data1[search].subListData.length > 18 ? 18 : 10,
                         slidesToScroll: 2,
+                        variableWidth: true
                       }}
                     >
                       {Object.keys(similarData).length > 0
@@ -568,7 +570,7 @@ function SearchByArtist(props) {
                   </div>
               ) : null}
               {tab === 2 ?
-                windowSize.innerWidth < 400 ?
+                windowSize.innerWidth < 415 ?
                   null :
                   (
                     <div className="col-12 my-2">
@@ -576,10 +578,11 @@ function SearchByArtist(props) {
                         changeIndex = {changeIndex}
                         settings = {{
                           arrows:true,
-                          infinite: true,
+                          infinite: false,
                           speed: 500,
-                          slidesToShow: 5,
+                          slidesToShow: data1[search].subListData.length > 18 ? 18 : 10,
                           slidesToScroll: 2,
+                          variableWidth: true
                         }}
                       >
                         {Object.keys(dataViewed).length > 0
