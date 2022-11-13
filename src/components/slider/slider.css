@@ -87,6 +87,18 @@
         right: 10 !important;
     }
 }
+
+@media (max-width: 479px) {
+    .slider .arrow2 {
+        /* left: -25px; */
+        display: none;
+    }
+    .slider .arrow2 {
+        /* right: -44px; */
+        display: none;
+    }
+}
+
 @media (min-width: 768px) {
     .slider .arrow2.left {
         /* left: -25px; */

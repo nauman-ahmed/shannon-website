@@ -30,11 +30,12 @@ function SearchByArtist(props) {
   const [data1, setData1] = useState(null);
   const [dataViewed, setDataViewed] = useState({});
   const [similarData, setSimilarData] = useState({});
-  const [windowSize, setWindowSize] = useState(getWindowSize());
   const [artistImages, setArtistImages] = useState(8);
   const [artistSimilar, setArtistSimilar] = useState(8);
   const [sliderImages, setSliderImages] = useState(null);
   const [sliderIndex, setSliderIndex] = useState(null);
+  const [windowSize, setWindowSize] = useState(getWindowSize());
+  
   function getWindowSize() {
     const { innerWidth, innerHeight } = window
     return { innerWidth, innerHeight };

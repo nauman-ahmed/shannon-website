@@ -21,12 +21,49 @@ import { IMAGE_ROUTE } from "../../AxiosFunctions/Axiosfunctionality";
 const images = window.location.origin + "/assets/images";
 
 function Bipoc() {
+
+  const [gottenData, setGottenData] = useState(false);
+
   const [blackArtist, setBlackArtist] = useState(null);
   const [asianArtist, setAsianArtist] = useState(null);
   const [latinoArtist, setLatinoArtist] = useState(null);
   const [centralAsianArtist, setCentralAsianArtist] = useState(null);
   const [indegiousArtist, setIndegiousArtist] = useState(null);
+  const [windowSize, setWindowSize] = useState(getWindowSize());
+  
+  const idBlack = "BLACKBIPOC"
+  const idBlackSlider = "BLACKBIPOCSLIDER"
 
+  const idAsian = "ASIANBIPOC"
+  const idAsianSlider = "ASIANBIPOCSLIDER"
+
+  const idLatino = "LATINOBIPOC"
+  const idLatinoSlider = "LATINOBIPOCSLIDER"
+
+  const idCentral = "CENTRALBIPOC"
+  const idCentralSlider = "CENTRALBIPOCSLIDER"
+
+  const idIndegious = "INDEGIOUSBIPOC"
+  const idIndegiousSlider = "INDEGIOUSBIPOCSLIDER"
+
+  function getWindowSize() {
+    const { innerWidth, innerHeight } = window
+    return { innerWidth, innerHeight };
+  }
+
+  function handleWindowResize() {
+    setWindowSize(getWindowSize());
+  }
+
+  useEffect(() => {
+
+    window.addEventListener('resize', handleWindowResize);
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, []);
+
+  
   useEffect(() => {
     getBipocBlack().then((res) => {
       setBlackArtist(res);
@@ -47,7 +84,155 @@ function Bipoc() {
     getBipocIndigenous().then((res) => {
       setIndegiousArtist(res);
     });
+    setGottenData(true)
   }, []);
+
+  const checkDirectionIndegious  = (start,end) => {
+
+    let left = document.querySelector("#left" + idIndegiousSlider);
+    let right = document.querySelector("#right" + idIndegiousSlider);  
+
+    if(end < start){
+      right.click()
+    }
+    if(end > start){
+      left.click()
+    }
+
+  }
+
+  const checkDirectionCentral  = (start,end) => {
+
+    let left = document.querySelector("#left" + idCentralSlider);
+    let right = document.querySelector("#right" + idCentralSlider);  
+
+    if(end < start){
+      right.click()
+    }
+    if(end > start){
+      left.click()
+    }
+
+  }
+
+  const checkDirectionLatino  = (start,end) => {
+
+    let left = document.querySelector("#left" + idLatinoSlider);
+    let right = document.querySelector("#right" + idLatinoSlider);  
+
+    if(end < start){
+      right.click()
+    }
+    if(end > start){
+      left.click()
+    }
+
+  }
+
+  const checkDirectionBlack  = (start,end) => {
+
+    let left = document.querySelector("#left" + idBlackSlider);
+    let right = document.querySelector("#right" + idBlackSlider);  
+
+    if(end < start){
+      right.click()
+    }
+    if(end > start){
+      left.click()
+    }
+
+  }
+
+  const checkDirectionAsian  = (start,end) => {
+
+    let left = document.querySelector("#left" + idAsianSlider);
+    let right = document.querySelector("#right" + idAsianSlider);  
+
+    if(end < start){
+      right.click()
+    }
+    if(end > start){
+      left.click()
+    }
+
+  }
+
+  const implementAddListner = () => {
+
+      let black = document.querySelector("#"+idBlack)
+      let startB;
+      let endB;
+
+      black.addEventListener("touchstart",(e) => {
+        startB = e.changedTouches[0].screenX
+      })
+
+      black.addEventListener("touchend",(e) => {
+        endB = e.changedTouches[0].screenX
+        checkDirectionBlack(startB,endB)
+      })
+
+      let asian = document.querySelector("#"+idAsian)
+      let startA;
+      let endA;
+      asian.addEventListener("touchstart",(e) => {
+        startA = e.changedTouches[0].screenX
+      })
+
+      asian.addEventListener("touchend",(e) => {
+        endA = e.changedTouches[0].screenX
+        checkDirectionAsian(startA,endA)
+      })
+
+      let latino = document.querySelector("#"+idLatino)
+      let startL;
+      let endL;
+      latino.addEventListener("touchstart",(e) => {
+        startL = e.changedTouches[0].screenX
+      })
+
+      latino.addEventListener("touchend",(e) => {
+        endL = e.changedTouches[0].screenX
+        checkDirectionLatino(startL,endL)
+      })
+
+      let central = document.querySelector("#"+idCentral)
+      let startC;
+      let endC;
+      central.addEventListener("touchstart",(e) => {
+        startC = e.changedTouches[0].screenX
+      })
+
+      central.addEventListener("touchend",(e) => {
+        endC = e.changedTouches[0].screenX
+        checkDirectionCentral(startC,endC)
+      })
+
+      let indegious = document.querySelector("#"+idIndegious)
+      let startI;
+      let endI;
+      indegious.addEventListener("touchstart",(e) => {
+        startI = e.changedTouches[0].screenX
+      })
+
+      indegious.addEventListener("touchend",(e) => {
+        endI = e.changedTouches[0].screenX
+        checkDirectionIndegious(startI,endI)
+      })
+  }
+  
+
+  useEffect(()=>{
+    if(indegiousArtist){
+      const myTimeout = setTimeout(implementAddListner, 2000);
+      console.log("RUNNING")
+      function myStopFunction() {
+        clearTimeout(myTimeout);
+      }
+    }
+  },[indegiousArtist])
+
+  
 
   return (
     <>
@@ -126,22 +311,17 @@ function Bipoc() {
             </div>
           </div>
         </div>
-        <div className="sliderbipoc">
+        <div className= "sliderbipoc">
           <div className="divisiondivider grad">
             <h2 className="newsinstah2 h">PORTFOLIOS</h2>
             <h1 className="newsh2 hide">BLACK ARTISTS</h1>
           </div>
           {blackArtist ? (
-            <div className="slider w-slider my-3">
+            <div className="slider w-slider my-3" id={idBlack}>
               <Slider 
                 disableAutoPlay 
                 controllEnabled="outside-dark"
-                settings = {{
-                    arrows:true,
-                    speed: 500,
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                  }}
+                id = {idBlackSlider}
             >
                 {blackArtist.map((val, ind) =>
                   val.ImageData.length > 0 ? (
@@ -149,7 +329,7 @@ function Bipoc() {
                       label={
                         val.artistData.lastname + " " + val.artistData.firstname
                       }
-                      col={ind===0?"col-lg-4 col-md-6 col-12 card _1":"col-lg-4 col-md-6 col-12 card "}
+                      col={windowSize.innerWidth < 420 ? "MOBILE" :  ind===0?"col-lg-4 col-md-6 col-12 card _1":"col-lg-4 col-md-6 col-12 card "}
                       src={val.ImageData[0].subImage[1].path}
                     />
                   ) : null
@@ -197,17 +377,11 @@ function Bipoc() {
             <h1 className="newsh2 hide">ASIAN ARTISTS</h1>
           </div>
           {asianArtist ? (
-            <div className="slider w-slider my-3">
+            <div className="slider w-slider my-3" id={idAsian}>
                 <Slider 
                     disableAutoPlay 
                     controllEnabled="outside-dark"
-                    settings = {{
-                        arrows:true,
-                        infinite: true,
-                        speed: 500,
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                    }}
+                    id = {idAsianSlider}
                 >
                 {asianArtist.map((val, ind) =>
                   val.ImageData.length > 0 ? (
@@ -215,7 +389,7 @@ function Bipoc() {
                       label={
                         val.artistData.lastname + " " + val.artistData.firstname
                       }
-                      col={ind===0?"col-lg-4 col-md-6 col-12 card _1":"col-lg-4 col-md-6 col-12 card "}
+                      col={windowSize.innerWidth < 420 ? "MOBILE" :  ind===0?"col-lg-4 col-md-6 col-12 card _1":"col-lg-4 col-md-6 col-12 card "}
                       src={val.ImageData[0].subImage[1].path}
                     />
                   ) : null
@@ -249,17 +423,11 @@ function Bipoc() {
             <h1 className="newsh2 hide">LATINO/LATINA ARTISTS</h1>
           </div>
           {latinoArtist ? (
-            <div className="slider w-slider my-3">
+            <div className="slider w-slider my-3" id={idLatino}>
                 <Slider 
                     disableAutoPlay 
                     controllEnabled="outside-dark"
-                    settings = {{
-                        arrows:true,
-                        infinite: true,
-                        speed: 500,
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                    }}
+                    id = {idLatinoSlider}
                 >
                 {latinoArtist.map((val, ind) =>
                   val.ImageData.length > 0 ? (
@@ -267,7 +435,7 @@ function Bipoc() {
                       label={
                         val.artistData.lastname + " " + val.artistData.firstname
                       }
-                      col={ind===0?"col-lg-4 col-md-6 col-12 card _1":"col-lg-4 col-md-6 col-12 card "}
+                      col={windowSize.innerWidth < 420 ? "MOBILE" :  ind===0?"col-lg-4 col-md-6 col-12 card _1":"col-lg-4 col-md-6 col-12 card "}
                       src={val.ImageData[0].subImage[1].path}
                     />
                   ) : null
@@ -301,17 +469,11 @@ function Bipoc() {
             <h1 className="newsh2 hide">CENTRAL ASIAN ARTISTS</h1>
           </div>
           {centralAsianArtist ? (
-            <div className="slider w-slider my-3">
+            <div className="slider w-slider my-3" id={idCentral}>
                 <Slider 
                     disableAutoPlay 
                     controllEnabled="outside-dark"
-                    settings = {{
-                        arrows:true,
-                        infinite: true,
-                        speed: 500,
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                    }}
+                    id = {idCentralSlider}
                 >
                 {centralAsianArtist.map((val, ind) =>
                   val.ImageData.length > 0 ? (
@@ -319,7 +481,7 @@ function Bipoc() {
                       label={
                         val.artistData.lastname + " " + val.artistData.firstname
                       }
-                      col={ind===0?"col-lg-4 col-md-6 col-12 card _1":"col-lg-4 col-md-6 col-12 card "}
+                      col={windowSize.innerWidth < 420 ? "MOBILE" :  ind===0?"col-lg-4 col-md-6 col-12 card _1":"col-lg-4 col-md-6 col-12 card "}
                       src={val.ImageData[0].subImage[1].path}
                     />
                   ) : null
@@ -353,17 +515,11 @@ function Bipoc() {
             <h1 className="newsh2 hide">INDIGENOUS ARTISTS</h1>
           </div>
           {indegiousArtist ? (
-            <div className="slider w-slider my-3">
+            <div className="slider w-slider my-3" id={idIndegious}>
                 <Slider 
                     disableAutoPlay 
                     controllEnabled="outside-dark"
-                    settings = {{
-                        arrows:true,
-                        infinite: true,
-                        speed: 500,
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                      }}
+                    id = {idIndegiousSlider}
                 >
                 {indegiousArtist.map((val, ind) =>
                   val.ImageData.length > 0 ? (
@@ -371,7 +527,7 @@ function Bipoc() {
                       label={
                         val.artistData.lastname + " " + val.artistData.firstname
                       }
-                      col={ind===0?"col-lg-4 col-md-6 col-12 card _1":"col-lg-4 col-md-6 col-12 card "}
+                      col={windowSize.innerWidth < 420 ? "MOBILE" :  ind===0?"col-lg-4 col-md-6 col-12 card _1":"col-lg-4 col-md-6 col-12 card "}
                       src={val.ImageData[0].subImage[1].path}
                     />
                   ) : null

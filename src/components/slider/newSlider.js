@@ -19,8 +19,9 @@ export default function Slider(props) {
     let slider = document.querySelector("#slideScroller" + id);
     let slideTotalAmount = 0;
     let slideDetail = getSliderSize(slider);
-    let backBtn = document.querySelector("#left" + id);
-    let nextBtn = document.querySelector("#right" + id);
+    let backBtn = document.querySelector("#left" + props.id);
+    let nextBtn = document.querySelector("#right" + props.id);
+    console.log(slideDetail)
     if (backBtn) {
       backBtn.addEventListener("click", () => {
         if (slideTotalAmount > 0) {
@@ -31,6 +32,7 @@ export default function Slider(props) {
         slider.scrollLeft = slideTotalAmount;
       });
     }
+    
     if (nextBtn) {
       nextBtn.addEventListener("click", () => {
         if (
@@ -44,6 +46,7 @@ export default function Slider(props) {
         slider.scrollLeft = slideTotalAmount;
       });
     }
+    
     let slider1 = null;
     if (!"disableAutoPlay" in props) {
       window.addEventListener(
@@ -66,6 +69,7 @@ export default function Slider(props) {
       );
       window.addEventListener("blur", () => clearInterval(slider1));
     }
+    
     window.addEventListener("resize", () => {
       slideDetail = getSliderSize(slider);
       slideTotalAmount = 0;
@@ -74,6 +78,7 @@ export default function Slider(props) {
       clearInterval(slider1);
     };
   }, []);
+  
   const getSliderSize = (slider) => {
     let slideAmount = 0;
     slider.scrollLeft = 0;
@@ -95,6 +100,7 @@ export default function Slider(props) {
     // }
     return { slideAmount, frameWidth, slideWidth };
   };
+  
   return (
     <div
       className="slider"
@@ -109,7 +115,7 @@ export default function Slider(props) {
       {"controllEnabled" in props ? (
         <>
           <button
-            id={"left" + id}
+            id={"id" in props ? "left" + props.id :"left" + id}
             className={
               props.controllEnabled === "outside-dark"
                 ? "arrow2 left"
@@ -128,7 +134,7 @@ export default function Slider(props) {
             )}
           </button>
           <button
-            id={"right" + id}
+            id={"id" in props ? "right" + props.id :"right" + id}
             className={
               props.controllEnabled === "outside-dark"
                 ? "arrow2 right"
@@ -151,11 +157,12 @@ export default function Slider(props) {
     </div>
   );
 } 
+
 export function SliderItem(props) {
   return "src" in props ? (
     <div
       className={
-        "col" in props ? props.col + " slideItem" : "col-12 p-0 slideItem"
+        "col" in props ? props.col == "MOBILE" ? "col-12 p-0 slideItem" : props.col + " slideItem" : "col-12 p-0 slideItem"
       }
       style={{padding:1}}
     >

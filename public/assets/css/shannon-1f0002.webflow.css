@@ -11653,12 +11653,12 @@ element.style {
   padding-bottom: 1vh !important;
   font-size: 16px !important;
 }
-.slideContent{
+/* .slideContent{
   justify-content: center;
   margin-left: 0px !important;
   width: 600px;
 
-}
+} */
 }
 @media screen and (max-width: 830px){
 .talentbutton.contactbutton {
