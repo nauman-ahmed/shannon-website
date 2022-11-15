@@ -60,7 +60,10 @@ function ImgViewer(props) {
     <div className='mx-lg-5 px-lg-3 py-4 mt-3 ml-5 d-flex justify-content-between'>
         <h4>{imageData.title}</h4>
         <div>
-          <button className='btn1 mt-3 mb-5' onClick={()=>history.goBack()}>
+          <button className='btn1 mt-3 mb-5' onClick={()=>history.push({
+                pathname:'/admin/artists',
+                state:{Nauman:1}
+            })}>
               <img alt='' src={BackArrow}/>
           </button>
           <button onClick={()=>history.push("/admin/artists/updateImage")} className='mx-1 myBtn sm align-self-center px-4'>EDIT</button>

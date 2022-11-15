@@ -104,7 +104,10 @@ function Image_uploading(props) {
             }
 
     }catch(e){
-        history.push('/admin/artists')
+        history.push({
+            pathname:'/admin/artists',
+            state:{Nauman:1}
+        });
     }
 
     },[keywordList])
@@ -179,7 +182,10 @@ function Image_uploading(props) {
                 dispatch(updateOpen(true))
                 dispatch(updateMessage("Error Occured"))
             }
-            history.push('/admin/artists');
+            history.push({
+                pathname:'/admin/artists',
+                state:{Nauman:1}
+            });
         })
         setIsPopupShow(true)
     }
@@ -263,7 +269,10 @@ function Image_uploading(props) {
             <div className=' mx-5 imageUploader'>
                 <div className='px-5 row m-0'>
                 <button className='btn1 mt-3 mb-5'
-                        onClick={()=>history.push('/admin/artists')}
+                        onClick={()=>history.push({
+                            pathname:'/admin/artists',
+                            state:{Nauman:1}
+                        })}
                     >
                         CANCEL
                     </button>

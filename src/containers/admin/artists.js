@@ -40,11 +40,16 @@ function Artists(props) {
         })
     }
     const formChangeEvent = (data,state=false) => {
+        console.log('FORM CHANGE',data)
         props.setFormNo(1)
         if(state){
             setFormNo2(1)
         }else{
             setFormNo2(0)
+        }
+        if(!data._id){
+            checkCurrentUserLocalStorage()
+            return
         }
         populateImageArtist(data);
         setSelectedArtist(data);
@@ -85,17 +90,23 @@ function Artists(props) {
         setSelectedBio(text);
     }
 
-    useEffect(()=>{
-        if(historyCurrent.location.state){
-            formChangeEvent(historyCurrent.location.state,true)           
-            return
-        }
+    const checkCurrentUserLocalStorage = () => {
         const curr = JSON.parse(localStorage.getItem("currentArtist"));
+        console.log("Nauman",curr)
         if(curr){
             populateImageArtist(curr);
             setSelectedArtist(curr);
             setSelectedBio(curr.bio);
         }
+    }
+
+    useEffect(()=>{
+        if(historyCurrent.location.state){
+            checkCurrentUserLocalStorage()
+            formChangeEvent(historyCurrent.location.state,true)           
+            return
+        }
+        checkCurrentUserLocalStorage()
     },[])
 
 
@@ -110,7 +121,6 @@ function Artists(props) {
       }
 
     const updateSelectedImagesArray = (data) => {
-        console.log("ARTIST",data.length)
         let temp = {...selectedImages}
         temp.mainImage = data
         setSelectedImages(temp)
@@ -118,7 +128,6 @@ function Artists(props) {
 
     return (
         <div className='px-xl-5 mx-xl-5'>
-        {console.log("RENDER",selectedImages)}
         <div className={'mx-lg-5 px-lg-3 py-4 mt-3 ml-5 d-flex flex-column'+(props.formNo === 1?" align-items-center":"")}>
             {
             props.formNo === 1?

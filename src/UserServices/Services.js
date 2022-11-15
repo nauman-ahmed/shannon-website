@@ -3,7 +3,8 @@ export const findCountOfReviewArtist = (res) => {
     res.forEach((item, key) => {
         if (item.mainImage.length > 0) {
             item.mainImage.forEach((item1, key1) => {
-                if (item1["statusViewed"] === 0 && item1["statusSubmit"] === 1) {
+                if (item1["statusViewed"] === 0 && item1["statusSubmit"] === 1 && item.artistId) {
+                    console.log(item1,item)
                     Counter++;
                 }
             })

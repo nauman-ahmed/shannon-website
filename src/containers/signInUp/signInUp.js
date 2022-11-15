@@ -128,15 +128,10 @@ function Login() {
         dispatch(userRegisterApi(data)).then((res)=>{
           setMsg(
             <>
-            <p style={{textAlign:'center'}}>We've received your account creation request.<br></br>You will receive your credentials via email within the next 24 hours.</p>
+            <p style={{textAlign:'center'}}>We've received your account creation request.<br></br>You will receive your credentials via email within the next 24 hours.<br></br>If you need immediate access call us at 2222222</p>
             </>
             )
            setIsPopupShow(true)
-          // setMsg("WE'RE RECEIVED YOUR ACCOUNT CREATION")
-          // dispatch(updateOpen(true))
-          // setShowLoader(true)
-          // dispatch(updateMessage(res.payload))
-          // window.location.href = '/#/artist'
         }); 
       }
       
@@ -215,7 +210,7 @@ function Login() {
                   onChange={(e)=>setEmailUp(e.target.value)}
                   />
               </div>
-              <div className='col-12'>
+              {/* <div className='col-12'>
                 <Input
                   type="text"
                   name="address"
@@ -249,7 +244,7 @@ function Login() {
                   searchList = {searchListState}
                 />
                 <img src='./images/down.png' width="13" height="13" style={{marginTop: 10,position: 'absolute',top: 0,right: 20}}/>
-              </div>
+              </div> */}
             </div>
             {showLoader?<button className='myButton my-md-5 mb-5 mt-1' onClick={()=>signInFunc()}>REQUEST ACCOUNT CREATION</button>:<img className="mt-4" alt="loading" src={loading} style={{width:"30px"}}/>}
           </>

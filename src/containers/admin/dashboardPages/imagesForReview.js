@@ -7,13 +7,13 @@ function ImagesForReview(props) {
     const historyCurrent = useHistory()
     const findStatusCount = (item)=>{
         var count = 0;
-        item.mainImage.forEach((item,key)=>{
-            if(item.statusSubmit === 1 && item.statusViewed === 0) {
+        item.mainImage.forEach((item1,key)=>{
+            if(item1.statusSubmit === 1 && item1.statusViewed === 0 && item.artistId) {
                 count++;
             }
         })
         return count;
-    }
+    } 
 
     const redirectToArtistSubmission = (data) => {
         changeArtistImageViewed(data)

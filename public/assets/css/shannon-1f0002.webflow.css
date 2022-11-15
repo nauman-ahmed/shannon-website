@@ -225,7 +225,7 @@ a {
 }
 
 .artistcard.bipoc {
-  height: auto ;
+  height: 21.41vw ;
 }
 .artistcard.bipoc.set_height{
   height: auto  !important;
@@ -234,6 +234,28 @@ a {
 .artistcard.bipocslider {
   /* height: auto; */
   height: 21.41vw;
+}
+
+@media screen and (max-width: 479px) {
+
+  .artistnamedivBIPOC {
+    position: absolute;
+    left: 0%;
+    top: auto;
+    right: 0%;
+    z-index: 1;
+    background-color: hsla(0, 0%, 100%, 0.67);
+  }
+}
+
+.artistnamedivBIPOC {
+  position: relative;
+  left: 0%;
+  top: auto;
+  right: 0%;
+  bottom: 0%;
+  z-index: 1;
+  background-color: hsla(0, 0%, 100%, 0.67);
 }
 
 .artistnamediv {
@@ -3461,7 +3483,7 @@ a {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 80px;
+  margin-top: 50px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -4301,7 +4323,9 @@ a {
     -ms-grid-rows: auto auto auto auto;
     grid-template-rows: auto auto auto auto;
   }
-
+  .artistcardBIPOC {
+    height: 100% !important;
+  }
   .artistcard {
     height: 50vw !important;
   }
@@ -4927,7 +4951,7 @@ a {
   }
 
   .divisionbuttoncontainer {
-    margin-top: 40px;
+    margin-top: 35px;
   }
 
   .newsh2 {
@@ -4995,7 +5019,7 @@ a {
   }
 
   .bipoc2cols.category {
-    margin-top: 70px;
+    margin-top: 40px;
     -ms-grid-columns: 1fr;
     grid-template-columns: 1fr;
   }

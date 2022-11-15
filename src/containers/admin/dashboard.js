@@ -67,7 +67,7 @@ function Dashboard(props) {
                         <h1>{props.contactCount}</h1>
                     </div>
                 </div>
-                <div className='col-md-6 mb-3'>
+                <div className='col-md-6 mb-3'> 
                     <div onClick={()=>props.setFormNo(2)} className='dash_card color2 p-5'>
                         <h5>
                             IMAGES FOR <br/>

@@ -241,7 +241,7 @@ function Bipoc() {
         <Link
           id="w-node-d7c7bef6-bf4c-3929-b7f7-7a0cd0fdac21-58f2d07a"
           to="#"
-          className="artistcard bipoc w-inline-block"
+          className="artistcardBIPOC bipoc w-inline-block"
         >
           <img
             src={images + "/Rectangle-114.png"}
@@ -249,7 +249,7 @@ function Bipoc() {
             alt=""
             className="image bipoc"
           />
-          <div className="artistnamediv">
+          <div className="artistnamedivBIPOC">
             <div className="artistnametext-v3">LONNIE OLLIVIERRE</div>
           </div>
         </Link>
@@ -300,7 +300,7 @@ function Bipoc() {
                       to={"/artists/" + val.artistData.firstname}
                       className="bipocLink"
                     >
-                    <div className="text-block-5">{val.artistData.lastname + " " + val.artistData.firstname}</div>
+                    <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
                     </Link>
                   </div>))
                 :
@@ -361,7 +361,7 @@ function Bipoc() {
               {asianArtist?
                 asianArtist.map((val, ind) =>
                   (<div role="listitem" className="w-dyn-item">
-                    <div className="text-block-5">{val.artistData.lastname + " " + val.artistData.firstname}</div>
+                    <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
                   </div>))
                 :
                   <div role="listitem" className="w-dyn-item">
@@ -407,7 +407,7 @@ function Bipoc() {
               {latinoArtist?
                 latinoArtist.map((val, ind) =>
                   (<div role="listitem" className="w-dyn-item">
-                    <div className="text-block-5">{val.artistData.lastname + " " + val.artistData.firstname}</div>
+                    <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
                   </div>))
                 :
                   <div role="listitem" className="w-dyn-item">
@@ -453,7 +453,7 @@ function Bipoc() {
               {centralAsianArtist?
                 centralAsianArtist.map((val, ind) =>
                   (<div role="listitem" className="w-dyn-item">
-                    <div className="text-block-5">{val.artistData.lastname + " " + val.artistData.firstname}</div>
+                    <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
                   </div>))
                 :
                   <div role="listitem" className="w-dyn-item">
@@ -499,7 +499,7 @@ function Bipoc() {
               {indegiousArtist?
                 indegiousArtist.map((val, ind) =>
                   (<div role="listitem" className="w-dyn-item">
-                    <div className="text-block-5">{val.artistData.lastname + " " + val.artistData.firstname}</div>
+                    <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
                   </div>))
                 :
                   <div role="listitem" className="w-dyn-item">

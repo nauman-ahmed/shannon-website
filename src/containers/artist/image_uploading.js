@@ -101,9 +101,11 @@ function Image_uploading() {
 
 
     const paginationHandler = (num,prev=false) =>{
+        console.log("paginationHandler",prev)
         setPageNo(num)
         if(num === 0){
             if(prev){
+                artistImageDetails.pop()
                 let pag = {...pagination}
                 let prevPag = [...pagination.previous]
                 let currPag = prevPag.pop()
@@ -129,6 +131,7 @@ function Image_uploading() {
         }
         else if(num > 0){
             if(prev){
+                artistImageDetails.pop()
                 let pag = {...pagination}
                 let prevPag = [...pagination.previous]
                 let currPag = prevPag.pop()
@@ -211,7 +214,6 @@ function Image_uploading() {
         new Promise((resolve, reject) => {
           canvas.toBlob(
             (blob) => {
-
                 let artistImageDetailsTemp = [...artistImageDetails]
                 const reader = new FileReader()
                 reader.readAsDataURL(blob)
@@ -289,7 +291,6 @@ function Image_uploading() {
 
 
     const onSubmit = () => {
-
         try{
             let storageData = localStorage.getItem("authorization")
             let details = decodeToken(storageData)

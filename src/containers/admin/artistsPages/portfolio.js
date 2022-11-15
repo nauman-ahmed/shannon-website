@@ -23,7 +23,7 @@ function Portfolio(props) {
   }
 
   useEffect(() => {
-    console.log("USE EFFECT OUTSIDE")
+    localStorage.setItem('currentArtist',JSON.stringify(props.selectedArtist))
     if(props.selectedImages.mainImage !== undefined){
       console.log("USE EFFECT INSIDE",props.selectedImages)
       getKeywordsAndSeperate()
