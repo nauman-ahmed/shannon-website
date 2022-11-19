@@ -9,6 +9,23 @@ const images = window.location.origin+"/assets/images"
 function Photography(props) {
 
   const [data,setData] = useState(null)
+  const [dataOriginal,setDataOriginal] = useState(null)
+
+  const filterChange= (filter) => {
+
+    let tempData = [...data];
+    setDataOriginal([...data])
+    if(filter==="A-Z"){
+      tempData = tempData.sort((a, b) => a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize()));
+    }
+    else if (dataOriginal){
+      tempData = [...dataOriginal];
+      // tempData = dataOriginal;
+    }
+
+    setData(tempData);
+
+  }
 
   useEffect(()=>{
     getPhotography().then((res)=>{
@@ -26,10 +43,10 @@ function Photography(props) {
           <h2 className="divisionh2">PHOTOGRAPHY</h2>
         </div>
         <div class="sortingcont">
-          <a sort-by=".order" href="#" class="filter-button w-inline-block">
+          <a sort-by=".order" href="#" class="filter-button w-inline-block" onClick={()=>filterChange("Default")}>
             <div>DEFAULT</div>
           </a>
-          <a sort-by=".name" href="#" class="filter-button w-inline-block">
+          <a sort-by=".name" href="#" class="filter-button w-inline-block" onClick={()=>filterChange("A-Z")}>
             <div>ALPHABETICAL A-Z</div>
           </a>
         </div>

@@ -10,7 +10,6 @@ function IllustrationArtists(props) {
 
   const [data,setData] = useState(null)
   const [dataOriginal,setDataOriginal] = useState(null)
-  const [tempData,setTempData] = useState(null)
 
   const filterChange= (filter) => {
 
@@ -34,7 +33,7 @@ function IllustrationArtists(props) {
       setData(res)
     })
   },[])
-
+ 
   return (  
     <div className="_2cols">
     {props.children}

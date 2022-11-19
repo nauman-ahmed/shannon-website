@@ -5143,8 +5143,19 @@ a {
   }
 
   .form-block-2 {
-    display: none;
+    width: 50%;
+    height: 100%;
+    margin-bottom: 15px;
+    float: right;
   }
+
+  .link-block-3 {
+    height: auto;
+  }
+
+  .div-block-11 {
+    display: block;
+}
 
   .filter-button {
     font-size: 9px;
