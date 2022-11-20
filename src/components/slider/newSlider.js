@@ -176,7 +176,7 @@ export function SliderItem(props) {
                 OObjectFit: props.fillMode,
                 objectFit: props.fillMode,
               }
-            : { OObjectFit: "cover", objectFit: "cover", width: "95%" }
+            : { OObjectFit: "cover", objectFit: "cover" }
         }
       />
       {"label" in props ? (

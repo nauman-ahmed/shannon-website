@@ -3470,6 +3470,27 @@ a {
   background-image: linear-gradient(260deg, #ffb71b, #feac23 25%, #fa8e37 43%, #f7734a 66%, #f35e57 78%, #ec297b);
 }
 
+
+@media screen and (max-width: 479px){
+  .divisiondivider.gradBIPOC {
+    position: -webkit-sticky;
+    position: sticky;
+    width: 100% !important;
+    margin-bottom: 20px;
+    background-image: linear-gradient(260deg, #ffb71b, #feac23 25%, #fa8e37 43%, #f7734a 66%, #f35e57 78%, #ec297b);
+  }
+} 
+
+.divisiondivider.gradBIPOC {
+  position: -webkit-sticky;
+  position: sticky;
+  width: 200%;
+  margin-bottom: 20px;
+  background-image: linear-gradient(260deg, #ffb71b, #feac23 25%, #fa8e37 43%, #f7734a 66%, #f35e57 78%, #ec297b);
+}
+   
+
+
 .divisiondivider.grad.news {
   margin-top: 100px;
 }
@@ -3675,7 +3696,7 @@ a {
   max-width: 29.1%;
   margin-left: 5%;
   padding-right: 0px;
-  min-height: 548px;
+  min-height: 600px;
   padding-bottom: 0px;
 }
 

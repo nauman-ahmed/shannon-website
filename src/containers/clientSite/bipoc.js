@@ -24,6 +24,7 @@ function Bipoc() {
 
   const [gottenData, setGottenData] = useState(false);
 
+  const [styleSheet, setStyleSheet] = useState({ maxWidth: "100%"});
   const [blackArtist, setBlackArtist] = useState(null);
   const [asianArtist, setAsianArtist] = useState(null);
   const [latinoArtist, setLatinoArtist] = useState(null);
@@ -232,7 +233,19 @@ function Bipoc() {
     }
   },[indegiousArtist])
 
-  
+  useEffect(()=>{
+    if(window.innerWidth <= 479){
+      setStyleSheet({ maxWidth: "100%"})
+    }
+    else if(window.innerWidth >  479 && window.innerWidth <= 1200 ){
+      setStyleSheet({ maxWidth: "100%",maxHeight:"32.5vh"})
+    }
+    else if(window.innerWidth >= 1500 ){
+      setStyleSheet({ maxWidth: "100%",maxHeight:"40vh"})
+    }else{
+      setStyleSheet({ maxWidth: "100%",maxHeight:"32.5vh"})
+    }
+  },[window.innerWidth])
 
   return (
     <>
@@ -284,7 +297,7 @@ function Bipoc() {
           </p>
         </div>
       </div>
-      <div className="bipoc2cols category" style={{ maxWidth: "100%" }}>
+      <div className="bipoc2cols category" style={styleSheet}>
         <div className="categoryinfo">
           <h1 className="newsh2 h">BLACK ARTISTS</h1>
           <div className="w-dyn-list">
@@ -312,7 +325,7 @@ function Bipoc() {
           </div>
         </div>
         <div className= "sliderbipoc">
-          <div className="divisiondivider grad">
+          <div className="divisiondivider gradBIPOC">
             <h2 className="newsinstah2 h">PORTFOLIOS</h2>
             <h1 className="newsh2 hide">BLACK ARTISTS</h1>
           </div>
@@ -353,7 +366,7 @@ function Bipoc() {
           ></div>
         </div>
       </div>
-      <div className="bipoc2cols category" style={{ maxWidth: "100%" }}>
+      <div className="bipoc2cols category" style={styleSheet}>
         <div className="categoryinfo">
           <h1 className="newsh2 h">ASIAN ARTISTS</h1>
           <div className="w-dyn-list">
@@ -372,7 +385,7 @@ function Bipoc() {
           </div>
         </div>
         <div className="sliderbipoc">
-          <div className="divisiondivider grad">
+          <div className="divisiondivider gradBIPOC">
             <h2 className="newsinstah2 h">PORTFOLIOS</h2>
             <h1 className="newsh2 hide">ASIAN ARTISTS</h1>
           </div>
@@ -399,7 +412,7 @@ function Bipoc() {
           ) : null}
         </div>
       </div>
-      <div className="bipoc2cols category" style={{ maxWidth: "100%" }}>
+      <div className="bipoc2cols category" style={styleSheet}>
         <div className="categoryinfo">
           <h1 className="newsh2 h">LATINO/LATINA ARTISTS</h1>
           <div className="w-dyn-list">
@@ -418,7 +431,7 @@ function Bipoc() {
           </div>
         </div>
         <div className="sliderbipoc">
-          <div className="divisiondivider grad">
+          <div className="divisiondivider gradBIPOC">
             <h2 className="newsinstah2 h">PORTFOLIOS</h2>
             <h1 className="newsh2 hide">LATINO/LATINA ARTISTS</h1>
           </div>
@@ -445,7 +458,7 @@ function Bipoc() {
           ) : null}
         </div>
       </div>
-      <div className="bipoc2cols category" style={{ maxWidth: "100%" }}>
+      <div className="bipoc2cols category" style={styleSheet}>
         <div className="categoryinfo">
           <h1 className="newsh2 h">CENTRAL ASIAN ARTISTS</h1>
           <div className="w-dyn-list">
@@ -464,7 +477,7 @@ function Bipoc() {
           </div>
         </div>
         <div className="sliderbipoc">
-          <div className="divisiondivider grad">
+          <div className="divisiondivider gradBIPOC">
             <h2 className="newsinstah2 h">PORTFOLIOS</h2>
             <h1 className="newsh2 hide">CENTRAL ASIAN ARTISTS</h1>
           </div>
@@ -491,7 +504,7 @@ function Bipoc() {
           ) : null}
         </div>
       </div>
-      <div className="bipoc2cols category" style={{ maxWidth: "100%" }}>
+      <div className="bipoc2cols category" style={styleSheet}>
         <div className="categoryinfo">
           <h1 className="newsh2 h">INDIGENOUS ARTISTS</h1>
           <div className="w-dyn-list">
@@ -510,7 +523,7 @@ function Bipoc() {
           </div>
         </div>
         <div className="sliderbipoc">
-          <div className="divisiondivider grad">
+          <div className="divisiondivider gradBIPOC">
             <h2 className="newsinstah2 h">PORTFOLIOS</h2>
             <h1 className="newsh2 hide">INDIGENOUS ARTISTS</h1>
           </div>
