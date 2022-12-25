@@ -67,6 +67,7 @@ function Image_uploading() {
                 img: "data:image/jpeg;base64,"+res.data,
                 title: "",
             })
+            console.log("getBase64FromUrl")
             setArtistImageDetails(artistImageDetailsTemp)
             // setTemp("data:image/jpeg;base64,"+res.data)
     
@@ -101,11 +102,10 @@ function Image_uploading() {
 
 
     const paginationHandler = (num,prev=false) =>{
-        console.log("paginationHandler",prev)
         setPageNo(num)
         if(num === 0){
             if(prev){
-                artistImageDetails.pop()
+                setImage(null)
                 let pag = {...pagination}
                 let prevPag = [...pagination.previous]
                 let currPag = prevPag.pop()
@@ -146,12 +146,12 @@ function Image_uploading() {
 
             }
             else{
+                console.log("paginationHandler",num,artistImageDetails)
                 pagination.next.pop()
                 let prev = [...pagination.previous]
                 prev.push(pagination.current)
 
                 getCroppedImg()
-
 
                 setPagination({
                     ...pagination,
@@ -180,6 +180,7 @@ function Image_uploading() {
 
 
     const getCroppedImg = () => {
+        console.log("getCroppedImg",image)
         if(image == null){
             return
         }
@@ -223,6 +224,7 @@ function Image_uploading() {
                     name:"thumbnail_image_"+pageNo,
                     img:croppedFile
                     })
+                    console.log("PROMOISE")
                     setArtistImageDetails(artistImageDetailsTemp)
                 }
 
@@ -252,6 +254,8 @@ function Image_uploading() {
     const onChangeHandler = (e) => {
         let artistImageDetails1 = [...artistImageDetails]
         artistImageDetails1[0][e.target.name] = e.target.value
+        console.log("onChangeHandler")
+
         setArtistImageDetails(artistImageDetails1)
     }
 
@@ -270,6 +274,7 @@ function Image_uploading() {
             artistImageDetailsTemp.push({
                 keywordList: keywordListTemp              
             })
+        console.log("keywordSetter")
             setArtistImageDetails(artistImageDetailsTemp)
             return
         }
@@ -286,6 +291,7 @@ function Image_uploading() {
         }
 
         artistImageDetailsTemp[artistImageDetailsTemp.length-1].keywordList = keywordListTemp
+        console.log("keywordSetter")
         setArtistImageDetails(artistImageDetailsTemp)
     }
 
@@ -344,6 +350,7 @@ function Image_uploading() {
 
     return (
         <>
+            {console.log(artistImageDetails)}
             <Header/>
             <div className='px-0 mx-5 imageUploader'>
                 <div className='px-0 row m-0'>

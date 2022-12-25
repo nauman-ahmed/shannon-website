@@ -244,12 +244,21 @@ function SearchByArtist(props) {
       />)
   }
 
-  
+  if(data1 !== null){
+    if(Object.keys(data1).find(element => element == search) == undefined){
+      return (
+          <div>
+            "No Approved Images"
+          </div>
+        )
+    }
+  }
 
   return (
     <div className="row" style={{ maxWidth: "100%" }}>
       {data1 !== null ? (
-        <>
+          <>
+          {console.log(Object.keys(data1).find(element => element == search))}
           <div className="col-md-5 ">
             <h2 className="h2talent">{data1[search].title}</h2>
             <div
@@ -617,7 +626,7 @@ function SearchByArtist(props) {
             </div>
           </div>
         </>
-      ) : null}
+      ) : "Results Not Found"}
     </div>
   );
 }

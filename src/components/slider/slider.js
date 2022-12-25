@@ -14,8 +14,7 @@ export const SliderShow=  (props) => {
 
     useEffect(()=>{
       
-      if(props.sliderIndex){
-        {console.log(props.sliderIndex,slider)}
+      if(props.sliderIndex !== null){
         if(slider){
           slider.slickGoTo(props.sliderIndex)
         }
