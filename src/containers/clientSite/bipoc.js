@@ -344,6 +344,7 @@ function Bipoc() {
                       }
                       col={windowSize.innerWidth < 420 ? "MOBILE" :  ind===0?"col-lg-4 col-md-6 col-12 card _1":"col-lg-4 col-md-6 col-12 card "}
                       src={val.ImageData[0].subImage[1].path}
+                      val={val}
                     />
                   ) : null
                 )}
@@ -374,7 +375,14 @@ function Bipoc() {
               {asianArtist?
                 asianArtist.map((val, ind) =>
                   (<div role="listitem" className="w-dyn-item">
+                    <Link
+                      id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                      data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                      to={"/artists/" + val.artistData.firstname}
+                      className="bipocLink"
+                    >
                     <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
+                    </Link>
                   </div>))
                 :
                   <div role="listitem" className="w-dyn-item">
@@ -404,6 +412,7 @@ function Bipoc() {
                       }
                       col={windowSize.innerWidth < 420 ? "MOBILE" :  ind===0?"col-lg-4 col-md-6 col-12 card _1":"col-lg-4 col-md-6 col-12 card "}
                       src={val.ImageData[0].subImage[1].path}
+                      val={val}
                     />
                   ) : null
                 )}
@@ -419,9 +428,16 @@ function Bipoc() {
           <div role="list" className="collection-list-4 w-dyn-items">
               {latinoArtist?
                 latinoArtist.map((val, ind) =>
-                  (<div role="listitem" className="w-dyn-item">
-                    <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
-                  </div>))
+                (<div role="listitem" className="w-dyn-item">
+                <Link
+                  id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                  data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                  to={"/artists/" + val.artistData.firstname}
+                  className="bipocLink"
+                >
+                <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
+                </Link>
+              </div>))
                 :
                   <div role="listitem" className="w-dyn-item">
                     <div className="text-block-5"></div>
@@ -450,6 +466,7 @@ function Bipoc() {
                       }
                       col={windowSize.innerWidth < 420 ? "MOBILE" :  ind===0?"col-lg-4 col-md-6 col-12 card _1":"col-lg-4 col-md-6 col-12 card "}
                       src={val.ImageData[0].subImage[1].path}
+                      val={val}
                     />
                   ) : null
                 )}
@@ -465,9 +482,16 @@ function Bipoc() {
           <div role="list" className="collection-list-4 w-dyn-items">
               {centralAsianArtist?
                 centralAsianArtist.map((val, ind) =>
-                  (<div role="listitem" className="w-dyn-item">
-                    <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
-                  </div>))
+                (<div role="listitem" className="w-dyn-item">
+                <Link
+                  id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                  data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                  to={"/artists/" + val.artistData.firstname}
+                  className="bipocLink"
+                >
+                <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
+                </Link>
+              </div>))
                 :
                   <div role="listitem" className="w-dyn-item">
                     <div className="text-block-5"></div>
@@ -496,6 +520,7 @@ function Bipoc() {
                       }
                       col={windowSize.innerWidth < 420 ? "MOBILE" :  ind===0?"col-lg-4 col-md-6 col-12 card _1":"col-lg-4 col-md-6 col-12 card "}
                       src={val.ImageData[0].subImage[1].path}
+                      val={val}
                     />
                   ) : null
                 )}
@@ -511,9 +536,16 @@ function Bipoc() {
           <div role="list" className="collection-list-4 w-dyn-items">
               {indegiousArtist?
                 indegiousArtist.map((val, ind) =>
-                  (<div role="listitem" className="w-dyn-item">
-                    <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
-                  </div>))
+                (<div role="listitem" className="w-dyn-item">
+                <Link
+                  id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                  data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                  to={"/artists/" + val.artistData.firstname}
+                  className="bipocLink"
+                >
+                <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
+                </Link>
+              </div>))
                 :
                   <div role="listitem" className="w-dyn-item">
                     <div className="text-block-5"></div>
@@ -542,6 +574,7 @@ function Bipoc() {
                       }
                       col={windowSize.innerWidth < 420 ? "MOBILE" :  ind===0?"col-lg-4 col-md-6 col-12 card _1":"col-lg-4 col-md-6 col-12 card "}
                       src={val.ImageData[0].subImage[1].path}
+                      val={val}
                     />
                   ) : null
                 )}

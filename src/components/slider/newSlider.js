@@ -159,12 +159,15 @@ export default function Slider(props) {
 } 
 
 export function SliderItem(props) {
+  const history = useHistory();
+  
   return "src" in props ? (
     <div
       className={
         "col" in props ? props.col == "MOBILE" ? "col-12 p-0 slideItem" : props.col + " slideItem" : "col-12 p-0 slideItem"
       }
-      style={{padding:1}}
+      style={{padding:1, cursor:"pointer"}}
+      onClick={()=>history.push("/artists/" + props.val.artistData.firstname)}
     >
       <img
         onClick={() => ("onClick" in props ? props.onClick(props.src) : null)}
