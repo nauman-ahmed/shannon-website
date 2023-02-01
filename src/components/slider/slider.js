@@ -184,7 +184,7 @@ export function FullScreenSliderItem(props) {
                 }}
                 onClick = {()=>history.push("/contact")}
                 // href="http://localhost:3000/#/contact"
-                // href="http://shannon-kidshannon.herokuapp.com/#/contact"
+                // href="http://18.191.86.110/#/contact"
               >
                 Get an estimated
               </button>
