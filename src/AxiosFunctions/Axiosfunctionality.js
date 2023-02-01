@@ -3,12 +3,14 @@ import axios from "axios";
 //for Contacts Functionality
 
 
-export const BASE_URL = "http://3.21.186.101:5000/api/"
-export const IMAGE_ROUTE = "http://3.21.186.101:5000/";
+
+//export const BASE_URL = "http://localhost:5001/api/"
+//export const IMAGE_ROUTE = "http://localhost:5001/";
 
 
-//export const BASE_URL = "https://shannon-nodejsart.herokuapp.com/api/"
-//export const IMAGE_ROUTE = "https://shannon-nodejsart.herokuapp.com/";
+export const BASE_URL = "http://3.145.124.20:5000/api/"
+export const IMAGE_ROUTE = "http://3.145.124.20:5000/";
+
 
 export const logouter = () => {
     localStorage.removeItem('authorization');
@@ -110,6 +112,25 @@ export const getCgi = async (data) => {
         logouter();
     }
 }
+
+export const getMedical = async (data) => {
+    try {
+        const response = await axios.post(BASE_URL + 'keyword/getMedical');
+        return response.data;
+    } catch (error) {
+        logouter();
+    }
+}
+
+export const getMotion = async (data) => {
+    try {
+        const response = await axios.post(BASE_URL + 'keyword/getMotion');
+        return response.data;
+    } catch (error) {
+        logouter();
+    }
+}
+
 export const getPhotography = async (data) => {
     try {
         const response = await axios.post(BASE_URL + 'keyword/getPhotography');
@@ -287,6 +308,15 @@ export const getCategory = async (data) => {
 export const getCategoryTypeOne = async (data) => {
     try {
         const response = await axios.post(BASE_URL + 'keyword/getAllTypeOne', data);
+        return response.data;
+    } catch (error) {
+        logouter();
+    }
+}
+
+export const getArtistCategoryTypeOne = async (keyword) => {
+    try {
+        const response = await axios.post(BASE_URL + 'keyword/artistCategory',keyword);
         return response.data;
     } catch (error) {
         logouter();
