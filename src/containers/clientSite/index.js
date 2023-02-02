@@ -9,6 +9,8 @@ import About from './about'
 import Artists from './artists'
 import Bipoc from './bipoc'
 import CGI from './cgi'
+import MEDICAL from './medical'
+import MOTION from './motion'
 import Contact from './contact'
 import Divisions from './divisions'
 import IllustrationArtists from './illustration-artists'
@@ -99,6 +101,14 @@ function Index(props) {
                         <CGI>
                             <DivisionSideBar activeBtn={pages}/>
                         </CGI>
+                    :pages === "medical"?
+                        <MEDICAL>
+                            <DivisionSideBar activeBtn={pages}/>
+                        </MEDICAL>
+                    :pages === "motion"?
+                        <MOTION>
+                            <DivisionSideBar activeBtn={pages}/>
+                        </MOTION>                    
                     :pages === "photography"?
                         <Photography>
                             <DivisionSideBar activeBtn={pages}/>

@@ -10,6 +10,8 @@ function ArtistSideBar() {
   const [artistData, setArtistData]  = useState([])
   let alpha = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
   useEffect(() => {
+    {console.log(ArtistDataAPI.artistData)}
+
     setArtistData(sortAlphaOrder(ArtistDataAPI.artistData!==undefined?ArtistDataAPI.artistData.length>0?ArtistDataAPI.artistData:[]:[]))
   }, [ArtistDataAPI])
 
