@@ -6,11 +6,12 @@
 </g>
 <defs>
 <radialGradient id="paint0_radial_921_3142" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(-38.5) rotate(14.003) scale(208.702 100.254)">
-<stop stop-color="#FFB71B"/>
+<stop stop-color="#ce651e"/>
+<!-- <stop stop-color="#FFB71B"/>
 <stop offset="0.172741" stop-color="#FEAC23"/>
 <stop offset="0.339526" stop-color="#FA8E37"/>
 <stop offset="0.549209" stop-color="#F35E57"/>
-<stop offset="0.72" stop-color="#EC297B"/>
+<stop offset="0.72" stop-color="#EC297B"/> -->
 </radialGradient>
 <clipPath id="clip0_921_3142">
 <rect width="102" height="42" fill="white"/>

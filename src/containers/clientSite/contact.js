@@ -71,10 +71,10 @@ function Contact() {
         };
         setHolder(true);
         let tempMsg = "Thank you! Your submission has been received!"
-        if(data.purposeOfInquiry){
-          if(data.purposeOfInquiry == "Looking for representation"){
+        if (data.purposeOfInquiry) {
+          if (data.purposeOfInquiry == "Looking for representation") {
             tempMsg = `Thank you ${data.Name}. A Shannon Associates representative will be responding to your inquiry as soon as possible.`
-          }else{
+          } else {
             tempMsg = `Hi ${data.Name}, Thank you for your submission. We appreciate your interest in Shannon Associates. Due to the extremely high volume of applicants we receive, we are unfortunately unable to reply to all. Please feel free to try again if you have new samples to present. We hope you understand and wish you the best in all that is ahead. Your Friends at Shannon Associates`
           }
         }
@@ -157,7 +157,7 @@ function Contact() {
       res.payload.forEach((item, key1) => {
         if (key1 <= 12) {
           if (tempval && tempval[item._id] === undefined) {
-            temp[item._id] = item.firstname+" "+item.lastname;
+            temp[item._id] = item.firstname + " " + item.lastname;
             tempchecked[item._id] = false;
             keyChecker = false;
           }
@@ -166,7 +166,7 @@ function Contact() {
       if (keyChecker) {
         res.payload.forEach((item, key1) => {
           if (key1 <= 12) {
-            temp[item._id] = item.firstname+" "+item.lastname;
+            temp[item._id] = item.firstname + " " + item.lastname;
             tempchecked[item._id] = false;
           }
         });
@@ -202,32 +202,296 @@ function Contact() {
 
   return (
     <>
-      <h2 className="contacth2 h2">CONTACT</h2>
-      <div className="_3cols">
-        <div
-          id="w-node-_5057f7a3-8aa5-6180-66c7-59cfff8172a6-85f2d07d"
-          className="div-block-9"
-        >
+      {/* <h2 className="contacth2 h2">CONTACT</h2> */}
+      {/* <div className="_3cols"> */}
+      <div className="row" style={{ columnGap: "20px" }}>
+        {/*  <div id="w-node-_5057f7a3-8aa5-6180-66c7-59cfff8172a6-85f2d07d" className="div-block-9"> */}
+        <div className="col-xl-5 col-lg-6 col-md-7 col-sm-10 col-12 ">
           <h2 className="contacth2 hide">CONTACT</h2>
-          <p
-            className="contactp">
-            <strong>
-              Shannon Associates - USA
-              <br />
-            </strong>
-            333 West 57th Street
-            <br />
-            New York, NY 10019
-            <br />
-            info@shannonassociates.com
-          </p>
+          <div
+            id="w-node-_0fb692da-7bfd-42b2-746a-f1ed5ebdb01b-85f2d07d"
+            className="div-block-2">
+            <div className="form-block w-form">
+              <div
+                id="email-form"
+                name="email-form"
+                data-name="Email Form"
+                method="get"
+                className="form"
+              >
+                <div className="formdisplay inv2">
+                  <label htmlFor="name" className="contactformlabel col-xl-3 col-4 ">
+                    Name<span className="required">*</span>:
+                  </label>
+                  <input
+                    type="text"
+                    className="text-field col-xl-9 col-8 w-input"
+                    value={Name}
+                    onChange={(e) => {
+                      setName(e.target.value);
+                    }}
+                    maxLength="256"
+                    name="name"
+                    data-name="Name"
+                    placeholder=""
+                    id="name"
+                    required
+                  />
+                </div>
+                <div className="formdisplay inv2">
+                  <label htmlFor="Company" className="contactformlabel col-xl-3 col-4">
+                    Company:
+                  </label>
+                  <input
+                    type="text"
+                    className="text-field col-xl-9 col-8 w-input"
+                    maxLength="256"
+                    name="Company"
+                    value={company}
+                    onChange={(e) => {
+                      setCompany(e.target.value);
+                    }}
+                    data-name="Company"
+                    placeholder=""
+                    id="Company"
+                  />
+                </div>
+                <div className="formdisplay inv2">
+                  <label htmlFor="Email" className="contactformlabel col-xl-3 col-4">
+                    Email<span className="required">*</span>:
+                  </label>
+                  <input
+                    type="email"
+                    className="text-field col-xl-9 col-8 w-input"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
+                    maxLength="256"
+                    name="Email"
+                    data-name="Email"
+                    placeholder=""
+                    id="Email"
+                    required
+                  />
+                </div>
+                <div className="formdisplay inv2">
+                  <label htmlFor="Phone" className="contactformlabel col-xl-3 col-4">
+                    Phone:
+                  </label>
+                  <input
+                    type="text"
+                    className="text-field col-xl-9 col-8 w-input"
+                    maxLength="256"
+                    name="Phone"
+                    value={phone}
+                    onChange={(e) => {
+                      setPhone(e.target.value);
+                    }}
+                    data-name="Phone"
+                    placeholder=""
+                    id="Phone"
+                  />
+                </div>
+                <div className="formdisplay inv2">
+                  <label htmlFor="Address" className="contactformlabel col-xl-3 col-4">
+                    Address:
+                  </label>
+                  <input
+                    type="text"
+                    className="text-field col-xl-9 col-8 w-input"
+                    maxLength="256"
+                    name="Address"
+                    value={address}
+                    onChange={(e) => {
+                      setAddress(e.target.value);
+                    }}
+                    data-name="Address"
+                    placeholder=""
+                    id="Address"
+                  />
+                </div>
+                <div className="formdisplay inv2">
+                  <label htmlFor="City" className="contactformlabel col-xl-3 col-4">
+                    City:
+                  </label>
+                  <input
+                    type="text"
+                    className="text-field col-xl-9 col-8 w-input"
+                    maxLength="256"
+                    name="City"
+                    value={city}
+                    onChange={(e) => {
+                      setCity(e.target.value);
+                    }}
+                    data-name="City"
+                    placeholder=""
+                    id="City"
+                  />
+                </div>
+                <div className="formdisplay inv2">
+                  <label htmlFor="State" className="contactformlabel col-xl-3 col-4">
+                    State:
+                  </label>
+                  <select
+                    id="State"
+                    name="State"
+                    data-name="State"
+                    value={state}
+                    onChange={(e) => {
+                      setState(e.target.value);
+                    }}
+                    className="text-field col-xl-9 col-8 w-select"
+                  >
+                    <option value="">Select</option>
+                    <option value="Alabama">Alabama</option>
+                    <option value="Alaska">Alaska</option>
+                    <option value="Arizona">Arizona</option>
+                    <option value="Arkansas">Arkansas</option>
+                    <option value="California">California</option>
+                    <option value="Colorado">Colorado</option>
+                    <option value="Connecticut">Connecticut</option>
+                    <option value="Delaware">Delaware</option>
+                    <option value="District Of Columbia">
+                      District Of Columbia
+                    </option>
+                    <option value="Florida">Florida</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Hawaii">Hawaii</option>
+                    <option value="Idaho">Idaho</option>
+                    <option value="Illinois">Illinois</option>
+                    <option value="Indiana">Indiana</option>
+                    <option value="Iowa">Iowa</option>
+                    <option value="Kansas">Kansas</option>
+                    <option value="Kentucky">Kentucky</option>
+                    <option value="Louisiana">Louisiana</option>
+                    <option value="Maine">Maine</option>
+                    <option value="Maryland">Maryland</option>
+                  </select>
+                </div>
+                <div className="formdisplay inv2">
+                  <label
+                    htmlFor="Purpose-of-Inquiry"
+                    className="contactformlabel  col-xl-3 col-4"
+                  >
+                    Purpose of inquiry:
+                  </label>
+                  <select
+                    id="Purpose-of-Inquiry"
+                    name="Purpose-of-Inquiry"
+                    value={purposeOfInquiry}
+                    onChange={(e) => {
+                      setPurposeOfInquiry(e.target.value);
+                    }}
+                    data-name="Purpose of Inquiry"
+                    className="text-field col-xl-9 col-8 long w-select"
+                  >
+                    <option value="">Select</option>
+                    <option value="Get an estimate">Get an estimate</option>
+                    <option value="Commission an artist">
+                      Commission an artist
+                    </option>
+                    <option value="Looking for representation">
+                      Looking for representation
+                    </option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div className="formdisplay inv2">
+                  <label
+                    htmlFor="How-did-you-find-us"
+                    className="contactformlabel col-xl-3 col-4"
+                  >
+                    How did you find us:
+                  </label>
+                  <select
+                    id="How-did-you-find-us"
+                    name="How-did-you-find-us"
+                    value={findUs}
+                    onChange={(e) => {
+                      setFindUs(e.target.value);
+                    }}
+                    data-name="How did you find us"
+                    className="text-field col-xl-9 col-8 long w-select"
+                  >
+                    <option value="">Select</option>
+                    <option value="Google">Google</option>
+                    <option value="Workbook">Workbook</option>
+                    <option value="Directory of Illustration">
+                      Directory of Illustration
+                    </option>
+                    <option value="Contact">Contact</option>
+                    <option value="Picturebook">Picturebook</option>
+                    <option value="Folioplanet">Folioplanet</option>
+                    <option value="Award Book/Illustration Annual">
+                      Award Book/Illustration Annual
+                    </option>
+                    <option value="Postcard/promotional">
+                      Postcard/promotional
+                    </option>
+                    <option value="Referral">Referral</option>
+                    <option value="Previous Client">Previous Client</option>
+                    <option value="General Web">General Web</option>
+                    <option value="Email Promo">Email Promo</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div className="formdisplay message inv2">
+                  <label htmlFor="field" className="contactformlabel col-xl-3 col-4">
+                    Message:
+                  </label>
+                  <textarea
+                    placeholder=""
+                    value={message}
+                    onChange={(e) => {
+                      setMessage(e.target.value);
+                    }}
+                    maxLength="5000"
+                    id="field"
+                    name="field"
+                    data-name="field"
+                    className="textarea w-input"
+                  ></textarea>
+                </div>
+                <div className="formbuttonsbox">
+                  <div className="w-form-formrecaptcha g-recaptcha g-recaptcha-error g-recaptcha-disabled g-recaptcha-invalid-key"></div>
+                  {holder ? (
+                    <img
+                      className="mt-1"
+                      alt="loading"
+                      src={loading}
+                      style={{ width: "30px" }}
+                    />
+                  ) : (
+                    <input
+                      type="submit"
+                      value="SUBMIT"
+                      onClick={() => {
+                        contactCreate();
+                      }}
+                      data-wait="Please wait..."
+                      className="btn btn-outline-secondary"
+                      style={{ borderRadius: "18px"}}
+                    />
+                  )}
+                </div>
+              </div>
+              <div className="w-form-done">
+                <div>Thank you! Your submission has been received!</div>
+              </div>
+              <div className="w-form-fail">
+                <div>Oops! Something went wrong while submitting the form.</div>
+              </div>
+            </div>
+          </div>
+         
         </div>
-        <div
+        {/*  <div
           id="w-node-_8490408e-ad22-b194-846b-3bfd23bb2d1e-85f2d07d"
-          className="div-block-10"
-        >
-          <h2 className="contacth2 h">MY LIST</h2>
-          <div className="grid-area-contacts mt-3">
+          className="div-block-10"> */}
+        <div className="col-lg-5 col-sm-10 col-11 ">
+          <h2 className="contacth2 hide">MY LIST</h2>
+          <div className=" mt-3">
             {AddToCart.cartInfo &&
               Object.keys(AddToCart.cartInfo).map((oneKey, i) => {
                 return (
@@ -243,6 +507,71 @@ function Contact() {
                 );
               })}
           </div>
+          <div
+            id="artistCont"
+            className="artistcont w-node-_3ea1885f-5610-a267-b100-5eb12e177818-85f2d07d">
+            <h3 className="artistconth pt-2">Interested in one of our Illustrators</h3>
+            <div className="w-form">
+              <div className="contactpartist">Previously Viewed Artists</div>
+
+              {dataViewed !== null
+                ? Object.keys(dataViewed).map((key) => (
+                  <label
+                    className="w-checkbox artistcheckbox"
+                    style={{ textTransform: "uppercase" }}
+                  >
+                    <input
+                      type="checkbox"
+                      className="w-checkbox-input checkbox-2"
+                      checked={isChecked[key]}
+                      onChange={(e) => {
+                        handleChange(e, dataViewed[key]);
+                      }}
+                    />
+                    <span
+                      className="checkbox-label w-form-label"
+                      htmlFor="SHEYDA-ABVABI"
+                    >
+                      {dataViewed[key].title}
+                    </span>
+                  </label>
+                ))
+                : ""}
+
+              <div className="contactpartist">More Artists</div>
+
+              {artistData !== null
+                ? Object.keys(artistData).map((key) => (
+                  <label
+                    className="w-checkbox artistcheckbox"
+                    style={{ textTransform: "uppercase" }}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={isCheckedArtist[key]}
+                      onChange={(e) => {
+                        handleChangeArtist(e, artistData[key], key);
+                      }}
+                      className="w-checkbox-input checkbox-2"
+                    />
+                    <span
+                      className="checkbox-label w-form-label"
+                      htmlFor="NICK-APONTE"
+                    >
+                      {artistData[key]}
+                    </span>
+                  </label>
+                ))
+                : ""}
+
+              <div className="w-form-done">
+                <div>Thank you! Your submission has been received!</div>
+              </div>
+              <div className="w-form-fail">
+                <div>Oops! Something went wrong while submitting the form.</div>
+              </div>
+            </div>
+          </div>
           <div className="imagescontainer">
             <div className="w-dyn-list">
               <div role="list" className="collection-list w-dyn-items">
@@ -254,11 +583,21 @@ function Contact() {
             </div>
             <div id="cover" className="cover"></div>
           </div>
+
         </div>
-        <div
+        <p
+            className="contactp">
+            <strong>
+              Shannon Associates - USA
+              <br />
+            </strong>
+            333 West 57th Street New York, NY 10019
+            <br />
+            info@shannonassociates.com
+          </p>
+        {/* <div
           id="w-node-_0fb692da-7bfd-42b2-746a-f1ed5ebdb01b-85f2d07d"
-          className="div-block-2"
-        >
+          className="div-block-2">
           <div className="form-block w-form">
             <div
               id="email-form"
@@ -531,11 +870,10 @@ function Contact() {
               <div>Oops! Something went wrong while submitting the form.</div>
             </div>
           </div>
-        </div>
-        <div
+        </div> */}
+        {/* <div
           id="artistCont"
-          className="artistcont w-node-_3ea1885f-5610-a267-b100-5eb12e177818-85f2d07d"
-        >
+          className="artistcont w-node-_3ea1885f-5610-a267-b100-5eb12e177818-85f2d07d">
           <h3 className="artistconth pt-2">Interested in one of our Illustrators</h3>
           <div className="w-form">
             <div className="contactpartist">Previously Viewed Artists</div>
@@ -597,7 +935,7 @@ function Contact() {
               <div>Oops! Something went wrong while submitting the form.</div>
             </div>
           </div>
-        </div>
+        </div> */}
         {isPopupShow ? (
           <MyPopup
             BackClose

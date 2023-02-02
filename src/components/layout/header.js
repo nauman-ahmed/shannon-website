@@ -76,7 +76,7 @@ function Header(props) {
               <Link to="#" className="w-inline-block">
                 <img src={images + "/menu.svg"} loading="lazy" alt="" />
               </Link>
-            </div>
+            </div> 
           </div>
         </div>
       </div>
