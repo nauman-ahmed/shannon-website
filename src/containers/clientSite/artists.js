@@ -23,7 +23,16 @@ function Artists(props) {
   }, []);
 
   return (
-    <div className="_2cols">
+    <><div class="sortingcont right pt-0 mt-0 me-0 ">
+          <a class="filter-button w-inline-block  mt-0" >
+            <div >DEFAULT</div>
+          </a>
+          <a class="filter-button w-inline-block  mt-0" >
+            <div >ALPHABETICAL A-Z</div>
+          </a>
+        </div>
+    <div className="_2cols" style={{clear:"both"}}>
+      
       {props.children}
       <div
         id="w-node-a284be2a-4b91-3177-03eb-6614b24879c1-4bf2d022"
@@ -233,6 +242,7 @@ function Artists(props) {
         )}
       </div>
     </div>
+    </>
   );
 }
 

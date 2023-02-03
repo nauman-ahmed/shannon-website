@@ -35,14 +35,7 @@ function MOTION(props) {
 
 
   return (
-    <div className="_2cols">
-    {props.children}
-    <div id="w-node-_4a165d69-02be-f2c1-10f5-69fa4946403e-576fcec6" className="divisionscolumn">
-      <div id="w-node-_4a165d69-02be-f2c1-10f5-69fa4946403f-576fcec6" className="divisioncontainer">
-        <div className="divisiondivider grad">
-          <h2 className="divisionh2">MOTION</h2>
-        </div>
-        <div class="sortingcont">
+    <><div class="sortingcont right mt-0 me-0">
           <a sort-by=".order" href="#" class="filter-button w-inline-block" onClick={()=>filterChange("Default")}>
             <div>DEFAULT</div>
           </a>
@@ -50,6 +43,12 @@ function MOTION(props) {
             <div>ALPHABETICAL A-Z</div>
           </a>
         </div>
+    <div className="_2cols" style={{clear:'both'}}>
+    {props.children}
+    <div id="w-node-_4a165d69-02be-f2c1-10f5-69fa4946403e-576fcec6" className="divisionscolumn">
+      <div id="w-node-_4a165d69-02be-f2c1-10f5-69fa4946403f-576fcec6" className="divisioncontainer">
+        
+        
         <div id="w-node-_4a165d69-02be-f2c1-10f5-69fa49464043-576fcec6" className="_4cols divisions">
           {data?
             data.map((val,ind)=>
@@ -66,7 +65,7 @@ function MOTION(props) {
         </div>
       </div>
     </div>
-  </div>
+  </div></>
   )
 }
 

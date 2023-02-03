@@ -42,21 +42,20 @@ function IllustrationArtists(props) {
   }, []);
 
   return (  
-    <div className="_2cols">
-    {props.children}
-    <div id="w-node-_4a165d69-02be-f2c1-10f5-69fa4946403e-576fcec6" className="divisionscolumn">
-      <div id="w-node-_4a165d69-02be-f2c1-10f5-69fa4946403f-576fcec6" className="divisioncontainer">
-        <div className="divisiondivider grad">
-          <h2 className="divisionh2">ILLUSTRATION</h2>
-        </div>
-        <div class="sortingcont">
-          <a class="filter-button w-inline-block" onClick={()=>filterChange("Default")}>
+   <> 
+        <div class="sortingcont right pt-0 mt-0">
+          <a class="filter-button w-inline-block  mt-0" onClick={()=>filterChange("Default")}>
             <div >DEFAULT</div>
           </a>
-          <a class="filter-button w-inline-block" onClick={()=>filterChange("A-Z")}>
+          <a class="filter-button w-inline-block  mt-0" onClick={()=>filterChange("A-Z")}>
             <div >ALPHABETICAL A-Z</div>
           </a>
         </div>
+    <div className="_2cols" style={{clear:"both"}}>
+    {props.children}
+    <div id="w-node-_4a165d69-02be-f2c1-10f5-69fa4946403e-576fcec6" className="divisionscolumn">
+      <div id="w-node-_4a165d69-02be-f2c1-10f5-69fa4946403f-576fcec6" className="divisioncontainer">
+       
         <div id="w-node-_4a165d69-02be-f2c1-10f5-69fa49464043-576fcec6" className="_4cols divisions">
         {artistImageDataSlice.loading ? (
           <div style={{ position: "absolute", top: "50%", left: "50%" }}>
@@ -94,6 +93,7 @@ function IllustrationArtists(props) {
       </div>
     </div>
   </div>
+   </>
   )
 }
 

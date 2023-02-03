@@ -4,7 +4,7 @@ const images = window.location.origin+"/assets/images"
 
 function Footer() {
     return (
-        <div className="footersection wf-section">
+        <div className="footersection wf-section" >
             <div className="footerorange"></div>
             <div className="footer">
                 <div className="footerdiv">

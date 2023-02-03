@@ -6,6 +6,7 @@ import {
   FullScreenSliderItem,
 } from "../../../components/slider/slider";
 
+import Navbar from "../../../components/layout/navbar";
 import { useDispatch, useSelector } from "react-redux";
 // import { IMAGE_ROUTE } from '../../../AxiosFunctions/Axiosfunctionality';
 import { ArtistImageSliceData } from "../../../redux/artistImageDataSlice";
@@ -35,7 +36,7 @@ function SearchByArtist(props) {
   const [sliderImages, setSliderImages] = useState(null);
   const [sliderIndex, setSliderIndex] = useState(null);
   const [windowSize, setWindowSize] = useState(getWindowSize());
-  
+
   function getWindowSize() {
     const { innerWidth, innerHeight } = window
     return { innerWidth, innerHeight };
@@ -89,7 +90,7 @@ function SearchByArtist(props) {
   function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
   }
-  const changeIndex = (index)=>{
+  const changeIndex = (index) => {
     console.log(index)
   }
 
@@ -114,7 +115,7 @@ function SearchByArtist(props) {
             });
             tempData[item.artistId.firstname] = {
               id: item.artistId._id,
-              pictureTitle:picturetitle,
+              pictureTitle: picturetitle,
               title: item.artistId.firstname + " " + item.artistId.lastname,
               detail: item.artistId.bio,
               slideList: listData,
@@ -167,7 +168,7 @@ function SearchByArtist(props) {
                 });
                 tempData[item.artistId.firstname] = {
                   id: item.artistId._id,
-                  pictureTitle:picturetitle,
+                  pictureTitle: picturetitle,
                   title: item.artistId.firstname + " " + item.artistId.lastname,
                   detail: item.artistId.bio,
                   slideList: listData,
@@ -220,7 +221,7 @@ function SearchByArtist(props) {
   }, []);
 
 
-  const setFullScreenHandler = (route,key) => {
+  const setFullScreenHandler = (route, key) => {
     let temp = { ...fullscreen };
 
     if (!temp.screen) {
@@ -244,390 +245,416 @@ function SearchByArtist(props) {
       />)
   }
 
-  if(data1 !== null){
-    if(Object.keys(data1).find(element => element == search) == undefined){
+  if (data1 !== null) {
+    if (Object.keys(data1).find(element => element == search) == undefined) {
       return (
-          <div>
-            "No Approved Images"
-          </div>
-        )
+        <div>
+          "No Approved Images"
+        </div>
+      )
     }
   }
 
   return (
-    <div className="row" style={{ maxWidth: "100%" }}>
-      {data1 !== null ? (
+    <div>
+      <Navbar></Navbar>
+      <div className="row mt-0 pt-0" style={{
+        maxWidth: "100%",
+      }}>
+        {data1 !== null ? (
           <>
-          {console.log(Object.keys(data1).find(element => element == search))}
-          <div className="col-md-5 ">
-            <h2 className="h2talent">{data1[search].title}</h2>
-            <div
+            {console.log(Object.keys(data1).find(element => element == search))}
+            <div className="col-md-6 mt-2 pt-1">
+              <h2 className="h2talent">{data1[search].title}</h2>
+              {/* <div
               className="talentp large d-block hide_detail"
               style={{
                 fontSize: "16px",
-                
+
               }}
             >
-            <div dangerouslySetInnerHTML={{__html: data1[search].detail}}>
-            </div>
-            </div>
-            <div className="talenttext" style={{marginBottom:5}}>Want to commission this artist?</div>
-            <div className="d-flex">
-              <Link
-                to="#"
-                style={{ fontSize: "16px", fontWeight: '600' }}
-                className={windowSize.innerWidth < 415 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
-              >
-                CALL
-              </Link>
-              <Link
-                to="/contact"
-                style={{ fontSize: "16px", fontWeight: '600' }}
-                className={windowSize.innerWidth < 415 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
-              >
-                GET AN ESTIMATE
-              </Link>
-              <Link
-                data-w-id="e04f643e-f302-16e2-74ee-4bc7e85391d8"
-                to="#"
-                style={{ fontSize: "16px", fontWeight: '600' }}
-                className="talentbutton hide col-3"
-                onClick={()=>addToCartArtist(data1[search].id,data1[search].title)}
-              >
-                ADD TO MY LIST
-              </Link>
-            </div>
-          </div>
-          <div
-            className="col-md-7 hide_detail"
-            style={
-              fullscreen.screen
-                ? {
-                  position: "fixed",
-                  top: "0",
-                  left: "0",
-                  bottom: 0,
-                  right: 0,
-                  zIndex: 10000,
-                  maxWidth: "unset",
-                  backgroundColor: "white",
-                }
-                : { height: "600px" }
-            }
-          >
-            {fullscreen.screen ? (
-              <FullScreenSliderItem
-                onClick={setFullScreenHandler}
-                currentData={data1[search]}
-                fullscreen={fullscreen}
-              />
-            ) : (
-              <>
-            <SliderShow
-              changeIndex = {changeIndex}
-              sliderIndex = {sliderIndex}
-              settings = {{
-                arrows:true,
-                infinite: true,
-                speed: 500,
-                slidesToShow: 1,
-                slidesToScroll: 1,
-              }}
-            >
-              {
-                data1[search].slideList.map((item, keys) => (
-                  <SliderItems
-                        key={keys}
-                        src={item}
-                        onClick={setFullScreenHandler}
-                  /> 
-                ))
-              }
-              
-            </SliderShow>
-            </>
-              // <Slider 
-              // controllEnabled 
-              // interval={3000}
-              // setSliderImages={setSliderImages}
-              // sliderImages={sliderImages}
-              // setSliderIndex={setSliderIndex}
-              // images={data1[search].slideList}
-              // sliderIndex={sliderIndex}
-              // length={data1[search].slideList.length - 1}
-              // show={true}
-              // >
-              //   {data1[search].slideList.map((item, keys) => (
-              //     <>
-              //       <SliderItem
-              //       index={sliderImages}
-              //       images={data1[search].slideList}
-              //       onClick={setFullScreenHandler}
-              //       key={keys}
-              //       id={sliderIndex !== null ? sliderIndex : keys}
-              //       // id={keys}
-              //       fillMode="contain"
-              //       src={sliderImages !== null ? sliderImages : item}
-              //       // src={item}
-              //       setSliderImages={setSliderImages}
-              //       sliderImages={sliderImages}
-              //       setSliderIndex={setSliderIndex}
-              //       sliderIndex={sliderIndex}
-              //       length={data1[search].slideList.length - 1}
-              //     />
-              //     </>
-
-              //   ))}
-              // </Slider>
-            )}
-          </div>
-
-          <div className="col-12 mt-3 ">
-            <div
-              data-current="Tab 3"
-              data-easing="ease"
-              data-duration-in="300"
-              data-duration-out="100"
-              className="w-tabs"
-            >
-              <div className="tabs-menu w-tab-menu">
-                <div
-                  onClick={() => setTab(0)}
-                  className={
-                    "tabs py-2 w-inline-block w-tab-link flex_center " +
-                    (tab === 0 ? "bg-white text-black flex_center" : null)
-                  }
+              <div dangerouslySetInnerHTML={{ __html: data1[search].detail }}>
+              </div>
+            </div> */}
+              <div className="talenttext" style={{ marginBottom: 5 }}>Want to commission this artist?</div>
+              <div className="d-flex">
+                <Link
+                  to="#"
+                  style={{ fontSize: "16px", fontWeight: '600' , minWidth: "60px", maxWidth:"70px"}}
+                  className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
                 >
-                  <div style={{ fontWeight: '600' }}>PORTFOLIO</div>
-                </div>
-                <div
-                  onClick={() => setTab(1)}
-                  className={
-                    "tabs py-2 w-inline-block w-tab-link " +
-                    (tab === 1 ? "bg-white  text-black" : null)
-                  }
+                  CALL
+                </Link>
+                <Link
+                  to="/contact"
+                  style={{ fontSize: "16px", fontWeight: '600' , minWidth: "110px", maxWidth:"120px"}}
+                  className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
                 >
-                  <div style={{ fontWeight: '600' }}>SIMILAR ILLUSTRATORS</div>
-                </div>
-                {windowSize.innerWidth > 415 ?
+                  GET AN ESTIMATE
+                </Link>
+                <Link
+                  data-w-id="e04f643e-f302-16e2-74ee-4bc7e85391d8"
+                  to="#"
+                  style={{ fontSize: "16px", fontWeight: '600' , minWidth: "110px", maxWidth:"120px"}}
+                  className="talentbutton hide col-3"
+                  onClick={() => addToCartArtist(data1[search].id, data1[search].title)}
+                >
+                  ADD TO MY LIST
+                </Link>
+              </div>
+              <div
+                data-current="Tab 3"
+                data-easing="ease"
+                data-duration-in="300"
+                data-duration-out="100"
+                className="w-tabs"
+              >{windowSize.innerWidth < 479 ?
+                <div className="tabs-menu w-tab-menu">
                   <div
-                    onClick={() => setTab(2)}
+                    onClick={() => setTab(0)}
                     className={
-                      "tabs py-2 w-inline-block w-tab-link " +
-                      (tab === 2 ? "bg-white  text-black" : null)
+                      "tabs py-2 w-inline-block w-tab-link flex_center " +
+                      (tab === 0 ? "bg-white text-black flex_center" : null)
                     }
                   >
-                    <div style={{ fontWeight: '600' }}>ALREADY VIEWED</div>
-                  </div> : null
-
-                }
-
-              </div>
-              {tab === 0 ?
-                windowSize.innerWidth < 415 ?
-                  <div>
-                    <div
-                      className="imagecont"
-                      style={{ marginTop: 10 }}
-                    >
-                      {data1[search].subListData.map((item, keys) =>
-                        keys < artistImages ?
-                          <div className="talentthumbslide resp">
-                            <img
-                              src={item}
-                              loading="lazy"
-                              alt=""
-                              className="image"
-                            />
-                          </div> : null
-                      )
-                      }
-                    </div>
-                    <div style={{ textAlign: "center", margin: "10px",marginTop: 25 }}>
-                      <Link
-                        to="#"
-                        style={{ fontSize: "16px" }}
-                        className="talentbuttonArtistSearch col-3 mr-1"
-                        onClick={() => setArtistImages(artistImages + 8)}
-                      >
-                        See More
-                      </Link>
-                    </div>
+                    <div style={{ fontWeight: '600' }}>PORTFOLIO</div>
                   </div>
-                  : (
-                    <div className="col-12 my-2">
-                      <SliderShow
-                        changeIndex = {changeIndex}
-                        settings = {{
-                          arrows:true,
-                          infinite: false,
-                          speed: 500,
-                          slidesToShow: data1[search].subListData.length > 18 ? 18 : 10,
-                          slidesToScroll: 2,
-                          variableWidth: true
-                        }}
-                        thumbNail = "true"
-                      >
-                        {
-                          data1[search].subListData.map((item, keys) => (
-                            <span onClick={() => {setSliderIndex(keys)}}>
-                            <SliderItems
-                              col="thumb"
-                              key={keys}
-                              src={item}
-                            /> 
-                            </span>
-                          ))
-                        }
-                        
-                      </SliderShow>
-                      {/* <Slider disableAutoPlay controllEnabled="outside-dark" 
-                      
-                      setSliderImages={setSliderImages}
-                      sliderImages={sliderImages}
-                      setSliderIndex={setSliderIndex}
-                      images={data1[search].slideList}
-                      sliderIndex={sliderIndex}
-                      show={false}
-                      >
+                  <div
+                    onClick={() => setTab(1)}
+                    className={
+                      "tabs py-2 w-inline-block w-tab-link " +
+                      (tab === 1 ? "bg-white  text-black" : null)
+                    }
+                  >
+                    <div style={{ fontWeight: '600' }}>SIMILAR ILLUSTRATORS</div>
+                  </div>
 
-                        {data1[search].subListData.map((item, keys) => (
-                          <span onClick={() => {setSliderIndex(keys); setSliderImages(data1[search].slideList[keys])}}>
-                            <SliderItem
-                              col="col-lg-1 col-md-3 col-6 px-md-1 thumb"
-                              src={item}
-                              setSliderImages={setSliderImages}
-                              sliderImages={sliderImages}
-                              setSliderIndex={setSliderIndex}
-                              images={data1[search].slideList}
-                              sliderIndex={sliderIndex}
-                              length={data1[search].slideList.length - 1}
+                </div>
+                : null}
 
-                            />
-                          </span>
-                        ))}
-                      </Slider> */}
-                    </div>
-                  ) : null}
-              {tab === 1 ? (
-                windowSize.innerWidth < 415 ?
-                  <div>
-                    <div
-                      className="imagecont"
-                      style={{ marginTop: 10 }}
-                    >
-                      {Object.keys(similarData).length > 0 ?
-                        Object.keys(similarData).map((key, i) =>
-                          i < artistSimilar ?
+
+                {tab === 0 ?
+                  windowSize.innerWidth < 479 ?
+                    <div>
+                      <div
+                        className="imagecont"
+                        style={{ marginTop: 10 }}
+                      >
+                        {data1[search].subListData.map((item, keys) =>
+                          keys < artistImages ?
                             <div className="talentthumbslide resp">
                               <img
-                                src={similarData[key].mainImage}
+                                src={item}
                                 loading="lazy"
                                 alt=""
                                 className="image"
                               />
-                            </div>
-                            : null
+                            </div> : null
                         )
-                        : "NO SIMILAR IMAGES FOUND"
-                      }
+                        }
+                      </div>
+                      <div style={{ textAlign: "center", margin: "10px", marginTop: 25 }}>
+                        <Link
+                          to="#"
+                          style={{ fontSize: "16px" }}
+                          className="talentbuttonArtistSearch col-3 mr-1"
+                          onClick={() => setArtistImages(artistImages + 8)}
+                        >
+                          See More
+                        </Link>
+                      </div>
                     </div>
-                    <div style={{ textAlign: "center", margin: "10px" }}>
-                      <Link
-                        to="#"
-                        style={{ fontSize: "16px" }}
-                        className="talentbuttonArtistSearch col-3 mr-1"
-                        onClick={() => setArtistSimilar(artistSimilar + 8)}
+                    : (
+                      <div className="">
+                        <div className="cards_img">
+                          {/* <SliderShow
+                          changeIndex={changeIndex}
+                          settings={{
+                            arrows: true,
+                            infinite: false,
+                            speed: 500,
+                            slidesToShow: data1[search].subListData.length > 18 ? 18 : 10,
+                            slidesToScroll: 2,
+                            variableWidth: true
+                          }}
+                          thumbNail="true"
+                        > */}
+                          {
+                            data1[search].subListData.map((item, keys) => (
+                              <span onClick={() => { setSliderIndex(keys) }} >
+                                {/* <SliderItems
+                                  col="thumb"
+                                  key={keys}
+                                  src={item}
+                                /> */}
+                                <img src={item} className="" height={"120vh"} width={"120vh"} style={{ margin: "3px" }}></img>
+                              </span>
+                            ))
+                          }
+
+                          {/* </SliderShow> */}
+                        </div>
+                      </div>
+                    ) : null}
+                {windowSize.innerWidth > 479 ?
+                  <div>
+                    <div style={{
+                      fontWeight: '600',
+                      backgroundColor: "#ce651e",
+                      fontSize: "18px",
+                      color: "#fff",
+                      paddingLeft: "20px",
+                      marginTop: '8vh',
+                      marginBottom: "3vh",
+
+                    }} className="py-2 ">
+                      SIMILAR ARTIST</div>
+                  </div> : null
+                }
+
+                {
+                  // 
+                  windowSize.innerWidth < 479 ?
+                    tab === 1 ? (<div>
+                      <div
+                        className="imagecont"
+                        style={{ marginTop: 10 }}
                       >
-                        See More
-                      </Link>
-                    </div>
-                  </div>
-                  :
-                  <div className="col-12 my-2">
-                    {console.log(similarData)}
-                    <SliderShow
-                      settings = {{
-                        arrows:true,
-                        infinite: false,
-                        speed: 500,
-                        slidesToShow: data1[search].subListData.length > 18 ? 18 : 10,
-                        slidesToScroll: 2,
-                        variableWidth: true
-                      }}
-                    >
-                      {Object.keys(similarData).length > 0
-                        ? Object.keys(similarData).map((key, i) => (
-                          <SliderItems
-                            col="thumb"
-                            src={similarData[key].mainImage}
-                          /> 
-                        ))
-                        : "NO SIMILAR IMAGES FOUND"
-                      }
-                    </SliderShow>
-                    {/* <Slider disableAutoPlay controllEnabled="outside-dark">
-                      {Object.keys(similarData).length > 0
-                        ? Object.keys(similarData).map((key, i) => (
-                          <SliderItem
-                            col="col-lg-1 col-md-3 col-6 px-md-2 thumb"
-                            src={similarData[key].mainImage}
-                          />
-                        ))
-                        : "NO SIMILAR IMAGES FOUND"
-                      }
-                    </Slider> */}
-                  </div>
-              ) : null}
-              {tab === 2 ?
-                windowSize.innerWidth < 415 ?
-                  null :
-                  (
-                    <div className="col-12 my-2">
-                      <SliderShow
-                        changeIndex = {changeIndex}
-                        settings = {{
-                          arrows:true,
+                        {Object.keys(similarData).length > 0 ?
+                          Object.keys(similarData).map((key, i) =>
+                            i < artistSimilar ?
+                              <div className="talentthumbslide resp">
+                                <img
+                                  src={similarData[key].mainImage}
+                                  loading="lazy"
+                                  alt=""
+                                  className="image"
+                                />
+                              </div>
+                              : null
+                          )
+                          : "NO SIMILAR IMAGES FOUND"
+                        }
+                      </div>
+                      <div style={{ textAlign: "center", margin: "10px" }}>
+                        <Link
+                          to="#"
+                          style={{ fontSize: "16px" }}
+                          className="talentbuttonArtistSearch col-3 mr-1"
+                          onClick={() => setArtistSimilar(artistSimilar + 8)}
+                        >
+                          See More
+                        </Link>
+                      </div>
+                    </div>) : null
+                    :
+                    <div className="cards_img my-2">
+                      {console.log(similarData)}
+                      {/* <SliderShow
+                        settings={{
+                          arrows: true,
                           infinite: false,
                           speed: 500,
                           slidesToShow: data1[search].subListData.length > 18 ? 18 : 10,
                           slidesToScroll: 2,
                           variableWidth: true
                         }}
-                      >
-                        {Object.keys(dataViewed).length > 0
-                          ? Object.keys(dataViewed).map((key, i) => (
-                            <SliderItems
+                      > */}
+                      {Object.keys(similarData).length > 0
+                        ? Object.keys(similarData).map((key, i) => (
+
+                          <span> {/* <SliderItems
                               col="thumb"
-                              src={dataViewed[key].slideList[0]}
-                            /> 
-                          ))
-                          : ""
-                        }
-                        
-                      </SliderShow>
-                      {/* <Slider disableAutoPlay controllEnabled="outside-dark">
+                              src={similarData[key].mainImage}
+                            /> */}
+                            <img src={similarData[key].mainImage} width={"120vh"} height={"120vh"} style={{ margin: "3px 2px" }}></img>
+                          </span>
+                        ))
+                        : "NO SIMILAR IMAGES FOUND"
+                      }
+                      {/* </SliderShow> */}
+
+                    </div>
+                  // 
+                }
+                {windowSize.innerWidth > 479 ?
+                  <div>
+                    <div style={{
+                      fontWeight: '600',
+                      backgroundColor: "#ce651e",
+                      fontSize: "18px",
+                      color: "#fff",
+                      paddingLeft: "20px",
+                      marginTop: '8vh',
+                      marginBottom: "3vh",
+
+                    }} className="py-2 ">ALREADY VIEWED</div>
+                  </div> : null
+
+                }
+
+                {/* tab === 2 ? */
+                  windowSize.innerWidth < 479 ?
+                    null :
+                    (
+                      <div className="cards_img my-2">
+                        {/*  <SliderShow
+                          changeIndex={changeIndex}
+                          settings={{
+                            arrows: true,
+                            infinite: false,
+                            speed: 500,
+                            slidesToShow: data1[search].subListData.length > 18 ? 18 : 10,
+                            slidesToScroll: 2,
+                            variableWidth: true
+                          }}
+                        > */}
                         {Object.keys(dataViewed).length > 0
                           ? Object.keys(dataViewed).map((key, i) => (
-                            <SliderItem
-                              col="col-lg-1 col-md-3 col-6 px-md-2 thumb"
-                              src={dataViewed[key].slideList[0]}
-                            />
+                            <span>
+                              {/* <SliderItems
+                                col="thumb"
+                                src={dataViewed[key].slideList[0]}
+                              /> */}
+                              <img src={dataViewed[key].slideList[0]} width={"120vh"} height={"120vh"} style={{ margin: "3px" ,cursor:"pointer"}}></img>
+                            </span>
                           ))
                           : ""
                         }
-                        <SliderItem
-                          col="col-lg-1 col-md-3 col-6 px-md-2 thumb"
-                          src={images + "/Rectangle-171.png"}
-                        />
-                      </Slider> */}
-                    </div>
-                  ) : null}
+
+                        {/*  </SliderShow> */}
+
+                      </div>
+                    ) /* : null */}
+              </div>
             </div>
-          </div>
-        </>
-      ) : "Results Not Found"}
+            <div className="col-md-6 hide_detail">
+              <div className="" style={{marginTop:"18vh"}}>
+
+
+                {fullscreen.screen ? (
+                  <FullScreenSliderItem
+                    onClick={setFullScreenHandler}
+                    currentData={data1[search]}
+                    fullscreen={fullscreen}
+                  />
+                ) : (
+                  <>
+                    <SliderShow
+                      changeIndex={changeIndex}
+                      sliderIndex={sliderIndex}
+                      settings={{
+                        arrows: true,
+                        infinite: true,
+                        speed: 500,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                      }}
+                    >
+                      {
+                        data1[search].slideList.map((item, keys) => (
+                          <SliderItems
+                            key={keys}
+                            src={item}
+                            onClick={setFullScreenHandler}
+
+                          />
+                        ))
+                      }
+
+                    </SliderShow>
+
+                  </>
+
+                  // <Slider 
+                  // controllEnabled 
+                  // interval={3000}
+                  // setSliderImages={setSliderImages}
+                  // sliderImages={sliderImages}
+                  // setSliderIndex={setSliderIndex}
+                  // images={data1[search].slideList}
+                  // sliderIndex={sliderIndex}
+                  // length={data1[search].slideList.length - 1}
+                  // show={true}
+                  // >
+                  //   {data1[search].slideList.map((item, keys) => (
+                  //     <>
+                  //       <SliderItem
+                  //       index={sliderImages}
+                  //       images={data1[search].slideList}
+                  //       onClick={setFullScreenHandler}
+                  //       key={keys}
+                  //       id={sliderIndex !== null ? sliderIndex : keys}
+                  //       // id={keys}
+                  //       fillMode="contain"
+                  //       src={sliderImages !== null ? sliderImages : item}
+                  //       // src={item}
+                  //       setSliderImages={setSliderImages}
+                  //       sliderImages={sliderImages}
+                  //       setSliderIndex={setSliderIndex}
+                  //       sliderIndex={sliderIndex}
+                  //       length={data1[search].slideList.length - 1}
+                  //     />
+                  //     </>
+
+                  //   ))}
+                  // </Slider>
+                )}
+              </div>
+
+              <div className="hide_detail mb-1 mt-2 pt-3">
+                <h4 className="mb-1" style={{ fontWeight: "500",fontSize:"22px" }}>{data1[search].title}</h4>
+                <div
+                  className="F large hide_detail pt-2 mt-1"
+                  style={{
+                    fontSize: "14px",
+                    marginTop: "20px",
+                    lineHeight: "2"
+                  }}
+                >
+                  <div dangerouslySetInnerHTML={{ __html: data1[search].detail }}>
+
+                  </div>
+                </div>
+
+                <div className="d-flex" style={{
+                  position: "relative",
+                  paddingTop: "10px",
+                }}>
+                  <Link
+                    to="#"
+                    style={{ fontSize: "16px", fontWeight: '600', minWidth: "60px", maxWidth:"70px"}}
+                    className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
+                  >
+                    CALL
+                  </Link>
+                  <Link
+                    to="/contact"
+                    style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px" ,maxWidth:"120px"}}
+                    className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
+                  >
+                    GET AN ESTIMATE
+                  </Link>
+                  <Link
+                    data-w-id="e04f643e-f302-16e2-74ee-4bc7e85391d8"
+                    to="#"
+                    style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth:"120px"}}
+                    className="talentbutton hide col-3"
+                    onClick={() => addToCartArtist(data1[search].id, data1[search].title)}
+                  >
+                    ADD TO MY LIST
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+
+
+          </>
+        ) : "Results Not Found"}
+      </div>
     </div>
+
   );
 }
 

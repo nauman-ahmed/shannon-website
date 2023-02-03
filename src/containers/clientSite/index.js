@@ -30,7 +30,6 @@ function Index(props) {
     const { pages } = useParams()
     const { search } = useParams()
 
-
     const dispatch = useDispatch();
     const  {artistImageDataSlice} = useSelector(state=>state);
     const  {artistImageKeywordDataSlice} = useSelector(state=>state);
@@ -77,7 +76,8 @@ function Index(props) {
             <Header aciveBtn={pages} />
             <div className={(pages === "artists"?"talentsection":"homesection")+" wf-section "+(pages?"divisions":"")}>
                 <div className={"containerhome "+(pages !== "artists"?"home":"")}>
-                    {pages === "artists" && search?null: <Navbar aciveBtn={pages} searchBar={pages?false:true}  searchArtist={searchArtist} updateTempArtist={updateTempArtist}/>}
+                    {pages === "artists" && search?null: 
+                    <Navbar aciveBtn={pages} searchBar={true}  searchArtist={searchArtist}  updateTempArtist={updateTempArtist} />}
                     {pages?
                     pages === "divisions"?
                         search?

@@ -249,8 +249,8 @@ function Bipoc() {
 
   return (
     <>
-      <h1 className="newsh2 hide">BLACK + INDIGENOUS + PEOPLE OF COLOR</h1>
-      <div className="bipoc2cols">
+      <h1 className="newsh2 hide" >BLACK + INDIGENOUS + PEOPLE OF COLOR</h1>
+      <div className="bipoc2cols mt-5 pt-3">
         <Link
           id="w-node-d7c7bef6-bf4c-3929-b7f7-7a0cd0fdac21-58f2d07a"
           to="#"
