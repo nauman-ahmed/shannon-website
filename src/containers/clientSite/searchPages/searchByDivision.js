@@ -59,11 +59,11 @@ function SearchByDivision(props) {
                 <div className="divisiondivider grad">
                     <h2 className="divisionh2">{data[search].title}</h2>
                 </div> 
-                 <div id="w-node-_836ff364-6701-deed-80f1-e641575ae99b-3cf2d075" className="_4cols divisions">
+                 <div id="w-node-_836ff364-6701-deed-80f1-e641575ae99b-3cf2d075" className="_4cols-v2">
                     {
                         data[search].list.map((row,key)=>
                   
-                            <Link key={key} id="w-node-_836ff364-6701-deed-80f1-e641575ae99c-3cf2d075" to={row.href} className="artistcard bipoc w-inline-block"><img src={row.imgSrc} loading="lazy" alt="" className="image"/>
+                            <Link key={key} id="w-node-_836ff364-6701-deed-80f1-e641575ae99c-3cf2d075" to={row.href} className="artistcard w-inline-block"><img src={row.imgSrc} loading="lazy" alt="" className="image"/>
                                 <div className="artistnamediv">
                                     <div className="artistnametext">{row.title}</div>
                                 </div>

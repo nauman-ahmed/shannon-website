@@ -56,7 +56,7 @@ function IllustrationArtists(props) {
     <div id="w-node-_4a165d69-02be-f2c1-10f5-69fa4946403e-576fcec6" className="divisionscolumn">
       <div id="w-node-_4a165d69-02be-f2c1-10f5-69fa4946403f-576fcec6" className="divisioncontainer">
        
-        <div id="w-node-_4a165d69-02be-f2c1-10f5-69fa49464043-576fcec6" className="_4cols divisions">
+        <div id="w-node-_4a165d69-02be-f2c1-10f5-69fa49464043-576fcec6" className="_4cols-v2">
         {artistImageDataSlice.loading ? (
           <div style={{ position: "absolute", top: "50%", left: "50%" }}>
             <img
@@ -73,7 +73,7 @@ function IllustrationArtists(props) {
                 id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                 data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                 to={"/artists/" + val.artistId.firstname}
-                className="artistcard bipoc w-inline-block"
+                className="artistcard  w-inline-block"
               >
                 <img
                   src={String(val.mainImage[0].subImage[0].path)}

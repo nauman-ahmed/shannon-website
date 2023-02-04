@@ -81,7 +81,7 @@ function DivisionSideBar(props) {
         <Link to="/medical" className={"divisionslink"+(props.activeBtn === "medical"?" w--current":"")}><span className="sidebarlink">MEDICAL<br /></span></Link>
         <Link to="/motion" className={"divisionslink"+(props.activeBtn === "motion"?" w--current":"")}><span className="sidebarlink">MOTION</span></Link>
         <br /><br /><br /><br />
-       {keywordReducer.length > 0 ? keywordReducer.map((item,key)=>(
+       {keywordReducer?.length > 0 ? keywordReducer?.map((item,key)=>(
           <div key={key}>
           {item.type === 2?(<Link to={"/divisions/"+item.keyword}  className={"divisionslink"+(props.activeBtn === item.keyword?" w--current":"")}><span className="sidebarlink">{item.keyword.toUpperCase()}<br /></span></Link>):""}
           
