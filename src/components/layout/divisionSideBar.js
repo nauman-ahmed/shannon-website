@@ -25,7 +25,7 @@ function DivisionSideBar(props) {
       )
     }
     else if(props.activeBtn === "cgi"){
-      getArtistCategoryTypeOne({keyword:"3D Rendering",type:2}).then(res => {
+      getArtistCategoryTypeOne({keyword:"3D Rendering",type:1}).then(res => {
         console.log(res)
         setArtistData(
           sortAlphaOrder(res!==undefined?res.length>0?res:[]:[])
@@ -42,7 +42,7 @@ function DivisionSideBar(props) {
         }
       )
     }else if(props.activeBtn === "medical"){
-      getArtistCategoryTypeOne({keyword:"Medical",type:2}).then(res => {
+      getArtistCategoryTypeOne({keyword:"Medical",type:1}).then(res => {
         console.log(res)
         setArtistData(
           sortAlphaOrder(res!==undefined?res.length>0?res:[]:[])
@@ -50,7 +50,7 @@ function DivisionSideBar(props) {
         }
       )
     }else if(props.activeBtn === "motion"){
-      getArtistCategoryTypeOne({keyword:"3D Rendering",type:2}).then(res => {
+      getArtistCategoryTypeOne({keyword:"3D Rendering",type:1}).then(res => {
         console.log(res)
         setArtistData(
           sortAlphaOrder(res!==undefined?res.length>0?res:[]:[])
