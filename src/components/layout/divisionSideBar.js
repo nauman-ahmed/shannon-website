@@ -14,10 +14,9 @@ function DivisionSideBar(props) {
   let alpha = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
   
   useEffect(()=>{
-    
-    if(props.activeBtn === "illustration-artists"){
+    if(props.activeBtn === "illustration-artists" || props.activeBtn === "divisions"){
+      console.log(props.activeBtn)
       getArtistCategoryTypeOne({keyword:"ILLUSTRATION"}).then(res => {
-        console.log(res)
         setArtistData(
           sortAlphaOrder(res!==undefined?res.length>0?res:[]:[])
           )
@@ -58,20 +57,30 @@ function DivisionSideBar(props) {
         }
       )
     }
-    getCategoryTypeOne().then(res => setKeywordReducer(res))
+    getCategoryTypeOne().then(res => {
+      setKeywordReducer(res)})
   },[])
 
   return (
     <div id="w-node-_783b3b4a-9daa-ecbf-356e-d84dbb36f4cc-bb36f4cc" className="respdivhide">
-      {console.log(artistData)}
       <h3 className="homeh3">{
         props.activeBtn === "illustration-artists" ? "ILLUSTRATION" 
         : props.activeBtn === "cgi" ? "CGI" 
         : props.activeBtn === "photography" ? "PHOTOGRAPHY" 
         : props.activeBtn === "medical" ? "MEDICAL" 
         : props.activeBtn === "motion" ? "MOTION" 
+        : props.activeBtn === "categories" ? "CATEGORIES" 
         : "DIVISIONS"
         }</h3>
+      {props.activeBtn == "categories"? 
+      keywordReducer?.length > 0 ? keywordReducer?.map((item,key)=>(
+        <div key={key}>
+
+        {item.type === 1?(<Link to={"/divisions/"+item.keyword}  className={"divisionslink"+(props.activeBtn === item.keyword?" w--current":"")}><span className="sidebarlink">{item.keyword.toUpperCase()}<br /></span></Link>):""}
+        
+        </div>
+     )):"" 
+      :
       <div className="allartist v2">
         <Link to="/illustration-artists" className={"divisionslink"+(props.activeBtn === "illustration-artists"?" w--current":"")}><span className="sidebarlink">ILLUSTRATION<br /></span></Link>
         <Link to="/bipoc" className={"divisionslink"+(props.activeBtn === "bipoc"?" w--current":"")}><span className="sidebarlink">BIPOC<br /></span></Link>
@@ -88,7 +97,6 @@ function DivisionSideBar(props) {
           </div>
        )):""}
        <h3 className="homeh3" style={{textDecorationLine:"none"}}>SELECT BY ARTIST</h3>
-      
         {alpha.map((item,key)=>
        (
         <div key={key}>
@@ -108,6 +116,7 @@ function DivisionSideBar(props) {
       )}
         <br />
       </div>
+      }
     </div>
   )
 }

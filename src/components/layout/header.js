@@ -50,6 +50,15 @@ function Header(props) {
                   DIVISIONS
                 </Link>
                 <Link
+                  to="/categories"
+                  className={
+                    "navlink v2 w-nav-link " +
+                    (props.aciveBtn === "categories" ? "w--current" : "")
+                  }
+                >
+                  CATEGORIES
+                </Link>
+                <Link
                   to="/about"
                   className={
                     "navlink v2 w-nav-link " +

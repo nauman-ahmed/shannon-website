@@ -12,7 +12,7 @@ const images = window.location.origin + "/assets/images";
 
 
 
-function IllustrationArtists(props) {
+function IllustrationArtists(props) { 
 
   const [data,setData] = useState(null)
   const [dataOriginal,setDataOriginal] = useState(null)

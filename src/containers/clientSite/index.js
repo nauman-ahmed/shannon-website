@@ -13,10 +13,12 @@ import MEDICAL from './medical'
 import MOTION from './motion'
 import Contact from './contact'
 import Divisions from './divisions'
+import Categories from './categories'
 import IllustrationArtists from './illustration-artists'
 import Photography from './photography'
 import SearchByArtist from './searchPages/searchByArtist'
 import SearchByDivision from './searchPages/searchByDivision'
+import SearchByCategories from './searchPages/searchByCategories'
 
 
 import { useSelector } from 'react-redux'
@@ -79,14 +81,22 @@ function Index(props) {
                     {pages === "artists" && search?null: 
                     <Navbar aciveBtn={pages} searchBar={true}  searchArtist={searchArtist}  updateTempArtist={updateTempArtist} />}
                     {pages?
-                    pages === "divisions"?
+                    pages === "categories"?
                         search?
-                        <SearchByDivision>
+                        <SearchByCategories>
                             <DivisionSideBar activeBtn={search}/>
-                        </SearchByDivision>
-                        :<Divisions searchDivision={searchDivision} updateTempDivision={updateTempDivision} tempDivision={tempDivision}>
+                        </SearchByCategories>
+                        :<Categories searchDivision={searchDivision} updateTempDivision={updateTempDivision} tempDivision={tempDivision}>
                             <DivisionSideBar activeBtn={pages}/>
-                        </Divisions>
+                        </Categories>
+                    :pages === "divisions"?
+                    search?
+                    <SearchByDivision>
+                        <DivisionSideBar activeBtn={search}/>
+                    </SearchByDivision>
+                    :<Divisions searchDivision={searchDivision} updateTempDivision={updateTempDivision} tempDivision={tempDivision}>
+                        <DivisionSideBar activeBtn={pages}/>
+                    </Divisions>
                     :pages === "artists"?
                         search?
                         <SearchByArtist/>

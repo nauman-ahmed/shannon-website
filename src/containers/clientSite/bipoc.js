@@ -17,6 +17,7 @@ import Slider,{
   getBipocLatino,
 } from "../../AxiosFunctions/Axiosfunctionality";
 import { IMAGE_ROUTE } from "../../AxiosFunctions/Axiosfunctionality";
+import { getDummyData } from "./temp";
 
 const images = window.location.origin + "/assets/images";
 
@@ -66,25 +67,33 @@ function Bipoc() {
 
   
   useEffect(() => {
-    getBipocBlack().then((res) => {
-      setBlackArtist(res);
-    });
+    
+    console.log(getDummyData())
+    setBlackArtist(getDummyData());
+    setAsianArtist(getDummyData());
+    setLatinoArtist(getDummyData());
+    setCentralAsianArtist(getDummyData());
+    setIndegiousArtist(getDummyData());
 
-    getBipocAsian().then((res) => {
-      setAsianArtist(res);
-    });
+    // getBipocBlack().then((res) => {
+    //   setBlackArtist(res);
+    // });
 
-    getBipocLatino().then((res) => {
-      setLatinoArtist(res);
-    });
+    // getBipocAsian().then((res) => {
+    //   setAsianArtist(res);
+    // });
 
-    getBipocCentralAsia().then((res) => {
-      setCentralAsianArtist(res);
-    });
+    // getBipocLatino().then((res) => {
+    //   setLatinoArtist(res);
+    // });
 
-    getBipocIndigenous().then((res) => {
-      setIndegiousArtist(res);
-    });
+    // getBipocCentralAsia().then((res) => {
+    //   setCentralAsianArtist(res);
+    // });
+
+    // getBipocIndigenous().then((res) => {
+    //   setIndegiousArtist(res);
+    // });
     setGottenData(true)
   }, []);
 
@@ -325,6 +334,7 @@ function Bipoc() {
           </div>
         </div>
         <div className= "sliderbipoc">
+          {console.log(blackArtist)}
           <div className="divisiondivider gradBIPOC">
             <h2 className="newsinstah2 h">PORTFOLIOS</h2>
             <h1 className="newsh2 hide">BLACK ARTISTS</h1>
