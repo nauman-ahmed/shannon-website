@@ -17,6 +17,7 @@ import Slider,{
   getBipocLatino,
 } from "../../AxiosFunctions/Axiosfunctionality";
 import { IMAGE_ROUTE } from "../../AxiosFunctions/Axiosfunctionality";
+import { getDummyData } from "./temp";
 
 const images = window.location.origin + "/assets/images";
 
@@ -66,25 +67,32 @@ function Bipoc() {
 
   
   useEffect(() => {
-    getBipocBlack().then((res) => {
-      setBlackArtist(res);
-    });
+    
+    setBlackArtist(getDummyData());
+    setAsianArtist(getDummyData());
+    setLatinoArtist(getDummyData());
+    setCentralAsianArtist(getDummyData());
+    setIndegiousArtist(getDummyData());
 
-    getBipocAsian().then((res) => {
-      setAsianArtist(res);
-    });
+    // getBipocBlack().then((res) => {
+    //   setBlackArtist(res);
+    // });
 
-    getBipocLatino().then((res) => {
-      setLatinoArtist(res);
-    });
+    // getBipocAsian().then((res) => {
+    //   setAsianArtist(res);
+    // });
 
-    getBipocCentralAsia().then((res) => {
-      setCentralAsianArtist(res);
-    });
+    // getBipocLatino().then((res) => {
+    //   setLatinoArtist(res);
+    // });
 
-    getBipocIndigenous().then((res) => {
-      setIndegiousArtist(res);
-    });
+    // getBipocCentralAsia().then((res) => {
+    //   setCentralAsianArtist(res);
+    // });
+
+    // getBipocIndigenous().then((res) => {
+    //   setIndegiousArtist(res);
+    // });
     setGottenData(true)
   }, []);
 
@@ -226,7 +234,6 @@ function Bipoc() {
   useEffect(()=>{
     if(indegiousArtist){
       const myTimeout = setTimeout(implementAddListner, 2000);
-      console.log("RUNNING")
       function myStopFunction() {
         clearTimeout(myTimeout);
       }

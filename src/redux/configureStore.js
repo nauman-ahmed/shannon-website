@@ -7,6 +7,7 @@ import artistImageReducer from './artistImageSlice'
 import ArtistDataAPI from './artistDataSlice';
 import artistImageDataSlice from './artistImageDataSlice';
 import artistImageKeywordDataSlice from './artistImageKeywordDataSlice';
+import artistImageDivisionDataSlice from './artistImageDivisionDataSlice';
 import selectedDivision from './selectedDivision';
 import AddToCart from './addToCart';
 import bannerImages from './bannerImages';
@@ -24,6 +25,7 @@ export const store = configureStore({
     ArtistDataAPI,
     artistImageDataSlice,
     artistImageKeywordDataSlice,
+    artistImageDivisionDataSlice,
     selectedDivision,
     AddToCart,
     bannerImages

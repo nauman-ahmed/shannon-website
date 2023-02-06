@@ -20,8 +20,7 @@ import loading from '../../../assets/loading.gif';
 //         list: []
 //     }
 // }
-
-function SearchByDivision(props) {
+function SearchByCategories(props) {
     const {search} = useParams();
     const [data,setData] =  useState({})
     const [loader,setLoading] = useState(false);
@@ -80,4 +79,4 @@ function SearchByDivision(props) {
   )
 }
 
-export default SearchByDivision
+export default SearchByCategories

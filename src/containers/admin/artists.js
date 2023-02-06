@@ -40,7 +40,6 @@ function Artists(props) {
         })
     }
     const formChangeEvent = (data,state=false) => {
-        console.log('FORM CHANGE',data)
         props.setFormNo(1)
         if(state){
             setFormNo2(1)
@@ -92,7 +91,6 @@ function Artists(props) {
 
     const checkCurrentUserLocalStorage = () => {
         const curr = JSON.parse(localStorage.getItem("currentArtist"));
-        console.log("Nauman",curr)
         if(curr){
             populateImageArtist(curr);
             setSelectedArtist(curr);

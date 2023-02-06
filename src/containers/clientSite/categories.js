@@ -3,21 +3,21 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { IMAGE_ROUTE } from "../../AxiosFunctions/Axiosfunctionality";
-import { artistDivision } from "../../redux/artistImageDivisionDataSlice";
+import { artistKeyword } from "../../redux/artistImageKeywordDataSlice";
 import loading from "../../assets/loading.gif";
 
 const images = window.location.origin + "/assets/images";
 
-function Divisions(props) {
+function Categories(props) {
   const dispatch = useDispatch();
-  const { artistImageDivisionDataSlice } = useSelector((state) => state);
+  const { artistImageKeywordDataSlice } = useSelector((state) => state);
   function randomIntFromInterval(min, max) {
     // min and max included
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
   useEffect(() => {
-    dispatch(artistDivision({}));
+    dispatch(artistKeyword({}));
   }, []);
 
   return (
@@ -61,7 +61,7 @@ function Divisions(props) {
           id="w-node-_429c632c-0632-16be-f5b5-f2b7200da64a-84f2d081"
           className="divisioncontainer"
         >
-          {artistImageDivisionDataSlice.loading ? (
+          {artistImageKeywordDataSlice.loading? (
             <div style={{ position: "absolute", top: "50%", left: "50%" }}>
               <img
                 className="mb-3"
@@ -70,25 +70,21 @@ function Divisions(props) {
                 style={{ width: "50px" }}
               />
             </div>
-          ) : artistImageDivisionDataSlice.artistKeywordImages !== undefined ? (
+          ) : artistImageKeywordDataSlice.artistKeywordImages !== undefined ? (
             props.searchDivision === "" ? (
-              artistImageDivisionDataSlice.artistKeywordImages.map(
+              artistImageKeywordDataSlice.artistKeywordImages.map(
                 (item, key) => (
                   <>
                     {item.ImageData.length > 0 ? (
                       <>
-                        <div className="d-flex">
-                          <h4 className="" style={{color:"#ce651e", fontWeight:"500",}}>
-                            {
-                              item.keyword == '3D Rendering' ? "CGI" 
-                            :
-                              item.keyword.toUpperCase()
-                            } 
-                          </h4> <span style={{width:"100%", height:"1px", color:"#ce651e", border:"1px solid #ce651e", marginTop:"20px"}}></span>
+                        <div className="divisiondivider grad">
+                          <h2 className="divisionh2">
+                            {item.keyword.toUpperCase()} ARTISTS
+                          </h2>
                         </div>
                         <div
                           id="w-node-f734ee66-0b58-4c14-e08b-49ceded015c9-84f2d081"
-                          className="_2"
+                          className="_4cols divisions"
                           // style={{ paddingTop: "10px" }}
                         >
                           {item?.ImageData.map((item1, key1) => (
@@ -99,7 +95,7 @@ function Divisions(props) {
                                     key={key1}
                                     id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
                                     to="#"
-                                    className="artistcard w-inline-block"
+                                    className="artistcard division w-inline-block"
                                    
                                   >
                                     <img
@@ -109,15 +105,14 @@ function Divisions(props) {
                                       loading="lazy"
                                       alt=""
                                       className="image"
-                                      style={{width:"25vh",height:"28vh",margin:"5px"}}
                                     />
                                     <div className="artistnamediv">
                                       <div
-                                        className="artistnametext-v3"
-                                        /* style={{
+                                        className="artistnametext"
+                                        style={{
                                           paddingTop: "13px",
                                           paddingBottom: "13px",
-                                        }} */
+                                        }}
                                       >
                                         {item1.artistId.lastname}{" "}
                                         {item1.artistId.firstname}
@@ -152,7 +147,7 @@ function Divisions(props) {
                 <>
                   {item.ImageData.length > 0 ? (
                     <>
-                      <div className="">
+                      <div className="divisiondivider grad">
                         <h2 className="divisionh2">
                           {item.keyword.toUpperCase()}
                         </h2>
@@ -224,4 +219,4 @@ function Divisions(props) {
   );
 }
 
-export default Divisions;
+export default Categories;
