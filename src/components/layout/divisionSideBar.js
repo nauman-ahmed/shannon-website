@@ -15,7 +15,6 @@ function DivisionSideBar(props) {
   
   useEffect(()=>{
     if(props.activeBtn === "illustration-artists" || props.activeBtn === "divisions"){
-      console.log(props.activeBtn)
       getArtistCategoryTypeOne({keyword:"ILLUSTRATION"}).then(res => {
         setArtistData(
           sortAlphaOrder(res!==undefined?res.length>0?res:[]:[])
@@ -25,7 +24,6 @@ function DivisionSideBar(props) {
     }
     else if(props.activeBtn === "cgi"){
       getArtistCategoryTypeOne({keyword:"3D Rendering",type:1}).then(res => {
-        console.log(res)
         setArtistData(
           sortAlphaOrder(res!==undefined?res.length>0?res:[]:[])
           )
@@ -34,7 +32,6 @@ function DivisionSideBar(props) {
     }
     else if(props.activeBtn === "photography"){
       getArtistCategoryTypeOne({keyword:"Photography",type:1}).then(res => {
-        console.log(res)
         setArtistData(
           sortAlphaOrder(res!==undefined?res.length>0?res:[]:[])
           )
@@ -42,7 +39,6 @@ function DivisionSideBar(props) {
       )
     }else if(props.activeBtn === "medical"){
       getArtistCategoryTypeOne({keyword:"Medical",type:1}).then(res => {
-        console.log(res)
         setArtistData(
           sortAlphaOrder(res!==undefined?res.length>0?res:[]:[])
           )
@@ -50,7 +46,6 @@ function DivisionSideBar(props) {
       )
     }else if(props.activeBtn === "motion"){
       getArtistCategoryTypeOne({keyword:"3D Rendering",type:1}).then(res => {
-        console.log(res)
         setArtistData(
           sortAlphaOrder(res!==undefined?res.length>0?res:[]:[])
           )

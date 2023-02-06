@@ -67,7 +67,6 @@ function Image_uploading() {
                 img: "data:image/jpeg;base64,"+res.data,
                 title: "",
             })
-            console.log("getBase64FromUrl")
             setArtistImageDetails(artistImageDetailsTemp)
             // setTemp("data:image/jpeg;base64,"+res.data)
     

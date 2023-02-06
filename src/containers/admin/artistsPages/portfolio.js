@@ -25,7 +25,6 @@ function Portfolio(props) {
   useEffect(() => {
     localStorage.setItem('currentArtist',JSON.stringify(props.selectedArtist))
     if(props.selectedImages.mainImage !== undefined){
-      console.log("USE EFFECT INSIDE",props.selectedImages)
       getKeywordsAndSeperate()
     } 
   }, [props.selectedImages])
@@ -143,12 +142,10 @@ function Portfolio(props) {
   }
 
   const deleteImageHandler = async (val) => {
-    console.log(val,props.selectedArtist)
     let response = await artistImagedelete({
         artistId:props.selectedArtist._id,
         imageData:val
     })
-    console.log("PORTFOLIO",response.data)
     props.updateSelectedImagesArray(response.data)
   }
 

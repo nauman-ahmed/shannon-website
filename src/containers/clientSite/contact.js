@@ -539,7 +539,6 @@ function Contact() {
                 : ""}
 
               <div className="contactpartist">More Artists</div>
-
               {artistData !== null
                 ? Object.keys(artistData).map((key) => (
                   <label

@@ -4,8 +4,8 @@ import axios from "axios";
 
 
 
-//export const BASE_URL = "http://localhost:5001/api/"
-//export const IMAGE_ROUTE = "http://localhost:5001/";
+// export const BASE_URL = "http://localhost:5001/api/"
+// export const IMAGE_ROUTE = "http://localhost:5001/";
 
 
 export const BASE_URL = "http://3.132.94.46:5000/api/"
@@ -20,6 +20,15 @@ export const logouter = () => {
 export const logouterArtist = () => {
     localStorage.removeItem('authorization');
     // window.location.href = '/#/artist/signin/'
+}
+
+export const artistImageDetailedSliceData = async (data) => {
+    try {
+        const response = await axios.post(BASE_URL+"artistImage/getAllStatusOneDetailed",data);
+        return response.data;
+    } catch (error) {
+        logouter();
+    }
 }
 
 export const getImageBaseURL = async (data) => {

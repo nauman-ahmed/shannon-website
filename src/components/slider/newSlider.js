@@ -21,7 +21,6 @@ export default function Slider(props) {
     let slideDetail = getSliderSize(slider);
     let backBtn = document.querySelector("#left" + props.id);
     let nextBtn = document.querySelector("#right" + props.id);
-    console.log(slideDetail)
     if (backBtn) {
       backBtn.addEventListener("click", () => {
         if (slideTotalAmount > 0) {

@@ -68,7 +68,6 @@ function Bipoc() {
   
   useEffect(() => {
     
-    console.log(getDummyData())
     setBlackArtist(getDummyData());
     setAsianArtist(getDummyData());
     setLatinoArtist(getDummyData());
@@ -235,7 +234,6 @@ function Bipoc() {
   useEffect(()=>{
     if(indegiousArtist){
       const myTimeout = setTimeout(implementAddListner, 2000);
-      console.log("RUNNING")
       function myStopFunction() {
         clearTimeout(myTimeout);
       }
@@ -334,7 +332,6 @@ function Bipoc() {
           </div>
         </div>
         <div className= "sliderbipoc">
-          {console.log(blackArtist)}
           <div className="divisiondivider gradBIPOC">
             <h2 className="newsinstah2 h">PORTFOLIOS</h2>
             <h1 className="newsh2 hide">BLACK ARTISTS</h1>
