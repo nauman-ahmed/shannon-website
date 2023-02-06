@@ -7,7 +7,7 @@ function Navbar(props) {
       <div>
         <div className="div-block-11 w-100 ">
           <div className='mobileViewNavbar'>
-            <div className='w-100 d-flex align-items-center justify-content-center flex-wrap'>
+            <div className='w-100 d-flex flex-wrap justify-content-center '>
               <Link to="/illustration-artists" className={"filterhomelink v2 " + (props.aciveBtn === "illustration-artists" ? "w--current" : "")}>ILLUSTRATION</Link>
               <a href="http://18.191.86.110/#/" target="_blank" className={"filterhomelink v2 " + (props.aciveBtn === "kidshannon" ? "w--current" : "")}>KIDSHANNON</a>
               <Link to="/cgi" className={"filterhomelink v2 " + (props.aciveBtn === "cgi" ? "w--current" : "")}>CGI</Link>

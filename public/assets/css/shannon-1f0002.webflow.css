@@ -210,11 +210,10 @@ a {
   height: 21.41vw;
 }
 
-/* .artistcard img:hover{
+.artistcard img:hover{
   transition: 0.5s ease-in-out;
   transform: scale(1.5);
 }
- */
 
 
 .artistcard.news {
@@ -3569,10 +3568,11 @@ a {
 }
 
 .newsh2 {
+  color: #373530;
   margin-top: 0px;
   margin-bottom: 40px;
   font-family: Montserrat, sans-serif;
-  font-size: 1.74vw;
+  font-size: 1.6vw;
   line-height: 1;
   font-weight: 800;
 }
@@ -3643,7 +3643,7 @@ a {
   display: -ms-grid;
   display: grid;
   grid-auto-columns: 1fr;
-  grid-column-gap: 225px;
+  grid-column-gap: 180px;
   grid-row-gap: 225px;
   -ms-grid-columns: 0.5fr 1fr;
   grid-template-columns: 0.5fr 1fr;
@@ -3652,7 +3652,8 @@ a {
 }
 
 .bipoc2cols.category {
-  margin-top: 140px;
+  margin-top: 40px;
+  margin-bottom: 40px;
   grid-column-gap: 65px;
   grid-row-gap: 65px;
   -ms-grid-columns: 0.4fr 1fr;
@@ -3660,6 +3661,8 @@ a {
 }
 
 .paragraph {
+  font-weight: 400;
+  color: #373530;
   font-family: Roboto, sans-serif;
   font-size: 1vw;
   line-height: 1.5;
@@ -5072,13 +5075,15 @@ a {
   }
 
   .newsh2.hide {
+ 
     display: block;
     margin-top: 10px;
     margin-bottom: 10px;
-    -webkit-align-self: flex-start;
+    /* -webkit-align-self: flex-start;
     -ms-flex-item-align: start;
-    align-self: flex-start;
-    font-size: 23px;
+    align-self: flex-start; */
+    font-size: 20px;
+
   }
 
   .newsh2.h {
@@ -11517,7 +11522,9 @@ element.style {
   } */
 }
 .right{
-  float: right;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 .left{
   float: left;

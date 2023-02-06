@@ -24,10 +24,10 @@ function Artists(props) {
 
   return (
     <><div class="sortingcont right pt-0 mt-0 me-0 ">
-          <a class="filter-button w-inline-block  mt-0" >
+          <a class="filter-button  mt-0" >
             <div >DEFAULT</div>
           </a>
-          <a class="filter-button w-inline-block  mt-0" >
+          <a class="filter-button  mt-0 me-0" >
             <div >ALPHABETICAL A-Z</div>
           </a>
         </div>

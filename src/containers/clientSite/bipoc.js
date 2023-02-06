@@ -299,7 +299,7 @@ function Bipoc() {
       </div>
       <div className="bipoc2cols category" style={styleSheet}>
         <div className="categoryinfo">
-          <h1 className="newsh2 h">BLACK ARTISTS</h1>
+          <h2 className="newsh2 h" >BLACK ARTISTS</h2>
           <div className="w-dyn-list">
             <div role="list" className="collection-list-4 w-dyn-items">
             </div>
@@ -325,8 +325,8 @@ function Bipoc() {
           </div>
         </div>
         <div className= "sliderbipoc">
-          <div className="divisiondivider gradBIPOC">
-            <h2 className="newsinstah2 h">PORTFOLIOS</h2>
+          <div className="divisiondivider ">
+            {/* <h2 className="newsinstah2 h">PORTFOLIOS</h2> */}
             <h1 className="newsh2 hide">BLACK ARTISTS</h1>
           </div>
           {blackArtist ? (
@@ -393,8 +393,8 @@ function Bipoc() {
           </div>
         </div>
         <div className="sliderbipoc">
-          <div className="divisiondivider gradBIPOC">
-            <h2 className="newsinstah2 h">PORTFOLIOS</h2>
+          <div className="divisiondivider ">
+            {/* <h2 className="newsinstah2 h">PORTFOLIOS</h2> */}
             <h1 className="newsh2 hide">ASIAN ARTISTS</h1>
           </div>
           {asianArtist ? (
@@ -447,8 +447,8 @@ function Bipoc() {
           </div>
         </div>
         <div className="sliderbipoc">
-          <div className="divisiondivider gradBIPOC">
-            <h2 className="newsinstah2 h">PORTFOLIOS</h2>
+          <div className="divisiondivider ">
+            {/* <h2 className="newsinstah2 h">PORTFOLIOS</h2> */}
             <h1 className="newsh2 hide">LATINO/LATINA ARTISTS</h1>
           </div>
           {latinoArtist ? (
@@ -501,8 +501,8 @@ function Bipoc() {
           </div>
         </div>
         <div className="sliderbipoc">
-          <div className="divisiondivider gradBIPOC">
-            <h2 className="newsinstah2 h">PORTFOLIOS</h2>
+          <div className="divisiondivider ">
+            {/* <h2 className="newsinstah2 h">PORTFOLIOS</h2> */}
             <h1 className="newsh2 hide">CENTRAL ASIAN ARTISTS</h1>
           </div>
           {centralAsianArtist ? (
@@ -555,8 +555,8 @@ function Bipoc() {
           </div>
         </div>
         <div className="sliderbipoc">
-          <div className="divisiondivider gradBIPOC">
-            <h2 className="newsinstah2 h">PORTFOLIOS</h2>
+          <div className="divisiondivider ">
+            {/* <h2 className="newsinstah2 h">PORTFOLIOS</h2> */}
             <h1 className="newsh2 hide">INDIGENOUS ARTISTS</h1>
           </div>
           {indegiousArtist ? (
