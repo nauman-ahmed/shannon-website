@@ -166,7 +166,7 @@ function Categories(props) {
                                   <Link
                                     key={key1}
                                     id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
-                                    to="#"
+                                    to={"/artists/" + item1.artistId._id}
                                     className="artistcard division w-inline-block"
                                    
                                   >
@@ -200,7 +200,7 @@ function Categories(props) {
                         </div>
                         <div className="divisionbuttoncontainer mb-5">
                           <Link
-                            to={"/divisions/" + item.Id}
+                            to={"/categories/" + item.Id}
                             className="talentbutton w-button seemoreText"
                             style={{ textDecoration: "none" }}
                           >
@@ -240,7 +240,7 @@ function Categories(props) {
                                 <Link
                                   key={key1}
                                   id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
-                                  to="#"
+                                  to={"/artists/" + item1.artistId._id}
                                   className="artistcard bipoc w-inline-block"
                                   
                                 >
@@ -272,7 +272,7 @@ function Categories(props) {
                       </div>
                       <div className="divisionbuttoncontainer mb-5">
                         <Link
-                          to={"/divisions/" + item.keyword}
+                          to={"/categories/" + item.Id}
                           className="talentbutton w-button seemoreText"
                           style={{ textDecoration: "none" }}
                         >

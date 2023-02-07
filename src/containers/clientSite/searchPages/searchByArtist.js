@@ -5,6 +5,7 @@ import {
   SliderItems,
   FullScreenSliderItem,
 } from "../../../components/slider/slider";
+import loading from '../../../assets/loading.gif';
 
 import Navbar from "../../../components/layout/navbar";
 import { useDispatch, useSelector } from "react-redux";
@@ -674,7 +675,16 @@ function SearchByArtist(props) {
 
 
           </>
-        ) : "Results Not Found"}
+        ) : 
+        <div style={{ position: "absolute", top: "50%", left: "50%" }}>
+        <img
+          className="mb-3"
+          alt="loading"
+          src={loading}
+          style={{ width: "50px" }}
+        />
+      </div>
+        }
       </div>
     </div>
 

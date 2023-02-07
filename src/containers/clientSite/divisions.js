@@ -161,10 +161,11 @@ function Divisions(props) {
                             <>
                               {key1 <= 7 ? (
                                 <>
+                                {console.log(item1)}
                                   <Link
                                     key={key1}
                                     id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
-                                    to="#"
+                                    to={"/artists/" + item1.artistId._id}
                                     className="artistcard w-inline-block"
                                    
                                   >
@@ -198,8 +199,15 @@ function Divisions(props) {
                           ))}
                         </div>
                         <div className="divisionbuttoncontainer mb-5">
+                          {console.log(item)}
                           <Link
-                            to={"/divisions/" + item.Id}
+                            to={ 
+                              item.keyword == "Illustration" ? "illustration-artists"
+                              : item.keyword == "3D Rendering" ? "cgi"
+                              : item.keyword == "Photography" ? "photography"
+                              : item.keyword == "Medical" ? "medical"
+                              : null
+                            }
                             className="talentbutton w-button seemoreText"
                             style={{ textDecoration: "none" }}
                           >
@@ -240,7 +248,7 @@ function Divisions(props) {
                                 <Link
                                   key={key1}
                                   id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
-                                  to="#"
+                                  to={"/artists/" + item1.artistId._id}
                                   className="artistcard bipoc w-inline-block"
                                   
                                 >
@@ -272,7 +280,13 @@ function Divisions(props) {
                       </div>
                       <div className="divisionbuttoncontainer mb-5">
                         <Link
-                          to={"/divisions/" + item.keyword}
+                          to={ 
+                            item.keyword == "Illustration" ? "illustration-artists"
+                            : item.keyword == "3D Rendering" ? "cgi"
+                            : item.keyword == "Photography" ? "photography"
+                            : item.keyword == "Medical" ? "medical"
+                            : null
+                          }
                           className="talentbutton w-button seemoreText"
                           style={{ textDecoration: "none" }}
                         >

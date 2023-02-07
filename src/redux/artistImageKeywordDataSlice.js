@@ -6,7 +6,7 @@ export const artistKeyword = createAsyncThunk(
     'artist/ArtistKeywordData', 
     async (payload) => {
         return axios
-        .post(BASE_URL+"artistImage/getAllKeyword")
+        .post(BASE_URL+"artistImage/getAllKeyword",payload)
         .then((response) => response.data)
     } 
 )

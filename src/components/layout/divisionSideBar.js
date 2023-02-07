@@ -1,11 +1,14 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { getCategoryTypeOne, getArtistCategoryTypeOne } from '../../AxiosFunctions/Axiosfunctionality';
 import { sortAlphaOrder } from '../../UserServices/Services'
 
 function DivisionSideBar(props) {
+
+  const { pages } = useParams()
+  const { search } = useParams()
 
   const dispatch = useDispatch();
   // const  {keywordReducer} = useSelector(state=>state);
@@ -67,7 +70,7 @@ function DivisionSideBar(props) {
         : props.activeBtn === "categories" ? "CATEGORIES" 
         : "DIVISIONS"
         }</h3>
-      {props.activeBtn == "categories"? 
+      {pages == "categories"? 
       keywordReducer?.length > 0 ? keywordReducer?.map((item,key)=>(
         <div key={key}>
 
@@ -100,7 +103,7 @@ function DivisionSideBar(props) {
             {item}<br/>
             {artistData[item].map((item1,key1)=>(
               <div key={key1}>
-               <Link to={"/artists/"+item1.firstname} className="sidebarlink">{item1.lastname.toUpperCase()} {item1.firstname.toUpperCase()}<br/></Link>
+               <Link to={"/artists/"+item1._id} className="sidebarlink">{item1.lastname.toUpperCase()} {item1.firstname.toUpperCase()}<br/></Link>
               </div>
             ))}
             <br/>

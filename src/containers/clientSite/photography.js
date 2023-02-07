@@ -7,7 +7,7 @@ import { IMAGE_ROUTE } from '../../AxiosFunctions/Axiosfunctionality';
 const images = window.location.origin+"/assets/images"
 
 function Photography(props) {
-
+ 
   const [data,setData] = useState(null)
   const [dataOriginal,setDataOriginal] = useState(null)
   const [tempArtist,setTempArtist]= useState([]);
@@ -87,7 +87,7 @@ function Photography(props) {
               <Link
                 id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                 data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                to={"/artists/" + val.artistId.firstname}
+                to={"/artists/" + val.artistId._id}
                 className="artistcard  w-inline-block"
               >
                 <img
@@ -111,7 +111,7 @@ function Photography(props) {
               <Link
                 id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                 data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                to={"/artists/" + val.artistId.firstname}
+                to={"/artists/" + val.artistId._id}
                 className="artistcard  w-inline-block"
               >
                 <img
