@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import {
-    SliderShow,
-    SliderItems
-  } from "../../components/slider/slider";
+  SliderShow,
+  SliderItems
+} from "../../components/slider/slider";
 
-import Slider,{
+import Slider, {
   SliderItem,
-  } from "../../components/slider/newSlider";
+} from "../../components/slider/newSlider";
 
-  import {
+import {
   getBipocAsian,
   getBipocBlack,
   getBipocCentralAsia,
@@ -25,14 +25,14 @@ function Bipoc() {
 
   const [gottenData, setGottenData] = useState(false);
 
-  const [styleSheet, setStyleSheet] = useState({ maxWidth: "100%"});
+  const [styleSheet, setStyleSheet] = useState({ maxWidth: "100%" });
   const [blackArtist, setBlackArtist] = useState(null);
   const [asianArtist, setAsianArtist] = useState(null);
   const [latinoArtist, setLatinoArtist] = useState(null);
   const [centralAsianArtist, setCentralAsianArtist] = useState(null);
   const [indegiousArtist, setIndegiousArtist] = useState(null);
   const [windowSize, setWindowSize] = useState(getWindowSize());
-  
+
   const idBlack = "BLACKBIPOC"
   const idBlackSlider = "BLACKBIPOCSLIDER"
 
@@ -65,9 +65,9 @@ function Bipoc() {
     };
   }, []);
 
-  
+
   useEffect(() => {
-    
+
     setBlackArtist(getDummyData());
     setAsianArtist(getDummyData());
     setLatinoArtist(getDummyData());
@@ -96,71 +96,71 @@ function Bipoc() {
     setGottenData(true)
   }, []);
 
-  const checkDirectionIndegious  = (start,end) => {
+  const checkDirectionIndegious = (start, end) => {
 
     let left = document.querySelector("#left" + idIndegiousSlider);
-    let right = document.querySelector("#right" + idIndegiousSlider);  
+    let right = document.querySelector("#right" + idIndegiousSlider);
 
-    if(end < start){
+    if (end < start) {
       right.click()
     }
-    if(end > start){
+    if (end > start) {
       left.click()
     }
 
   }
 
-  const checkDirectionCentral  = (start,end) => {
+  const checkDirectionCentral = (start, end) => {
 
     let left = document.querySelector("#left" + idCentralSlider);
-    let right = document.querySelector("#right" + idCentralSlider);  
+    let right = document.querySelector("#right" + idCentralSlider);
 
-    if(end < start){
+    if (end < start) {
       right.click()
     }
-    if(end > start){
+    if (end > start) {
       left.click()
     }
 
   }
 
-  const checkDirectionLatino  = (start,end) => {
+  const checkDirectionLatino = (start, end) => {
 
     let left = document.querySelector("#left" + idLatinoSlider);
-    let right = document.querySelector("#right" + idLatinoSlider);  
+    let right = document.querySelector("#right" + idLatinoSlider);
 
-    if(end < start){
+    if (end < start) {
       right.click()
     }
-    if(end > start){
+    if (end > start) {
       left.click()
     }
 
   }
 
-  const checkDirectionBlack  = (start,end) => {
+  const checkDirectionBlack = (start, end) => {
 
     let left = document.querySelector("#left" + idBlackSlider);
-    let right = document.querySelector("#right" + idBlackSlider);  
+    let right = document.querySelector("#right" + idBlackSlider);
 
-    if(end < start){
+    if (end < start) {
       right.click()
     }
-    if(end > start){
+    if (end > start) {
       left.click()
     }
 
   }
 
-  const checkDirectionAsian  = (start,end) => {
+  const checkDirectionAsian = (start, end) => {
 
     let left = document.querySelector("#left" + idAsianSlider);
-    let right = document.querySelector("#right" + idAsianSlider);  
+    let right = document.querySelector("#right" + idAsianSlider);
 
-    if(end < start){
+    if (end < start) {
       right.click()
     }
-    if(end > start){
+    if (end > start) {
       left.click()
     }
 
@@ -168,91 +168,91 @@ function Bipoc() {
 
   const implementAddListner = () => {
 
-      let black = document.querySelector("#"+idBlack)
-      let startB;
-      let endB;
+    let black = document.querySelector("#" + idBlack)
+    let startB;
+    let endB;
 
-      black.addEventListener("touchstart",(e) => {
-        startB = e.changedTouches[0].screenX
-      })
+    black.addEventListener("touchstart", (e) => {
+      startB = e.changedTouches[0].screenX
+    })
 
-      black.addEventListener("touchend",(e) => {
-        endB = e.changedTouches[0].screenX
-        checkDirectionBlack(startB,endB)
-      })
+    black.addEventListener("touchend", (e) => {
+      endB = e.changedTouches[0].screenX
+      checkDirectionBlack(startB, endB)
+    })
 
-      let asian = document.querySelector("#"+idAsian)
-      let startA;
-      let endA;
-      asian.addEventListener("touchstart",(e) => {
-        startA = e.changedTouches[0].screenX
-      })
+    let asian = document.querySelector("#" + idAsian)
+    let startA;
+    let endA;
+    asian.addEventListener("touchstart", (e) => {
+      startA = e.changedTouches[0].screenX
+    })
 
-      asian.addEventListener("touchend",(e) => {
-        endA = e.changedTouches[0].screenX
-        checkDirectionAsian(startA,endA)
-      })
+    asian.addEventListener("touchend", (e) => {
+      endA = e.changedTouches[0].screenX
+      checkDirectionAsian(startA, endA)
+    })
 
-      let latino = document.querySelector("#"+idLatino)
-      let startL;
-      let endL;
-      latino.addEventListener("touchstart",(e) => {
-        startL = e.changedTouches[0].screenX
-      })
+    let latino = document.querySelector("#" + idLatino)
+    let startL;
+    let endL;
+    latino.addEventListener("touchstart", (e) => {
+      startL = e.changedTouches[0].screenX
+    })
 
-      latino.addEventListener("touchend",(e) => {
-        endL = e.changedTouches[0].screenX
-        checkDirectionLatino(startL,endL)
-      })
+    latino.addEventListener("touchend", (e) => {
+      endL = e.changedTouches[0].screenX
+      checkDirectionLatino(startL, endL)
+    })
 
-      let central = document.querySelector("#"+idCentral)
-      let startC;
-      let endC;
-      central.addEventListener("touchstart",(e) => {
-        startC = e.changedTouches[0].screenX
-      })
+    let central = document.querySelector("#" + idCentral)
+    let startC;
+    let endC;
+    central.addEventListener("touchstart", (e) => {
+      startC = e.changedTouches[0].screenX
+    })
 
-      central.addEventListener("touchend",(e) => {
-        endC = e.changedTouches[0].screenX
-        checkDirectionCentral(startC,endC)
-      })
+    central.addEventListener("touchend", (e) => {
+      endC = e.changedTouches[0].screenX
+      checkDirectionCentral(startC, endC)
+    })
 
-      let indegious = document.querySelector("#"+idIndegious)
-      let startI;
-      let endI;
-      indegious.addEventListener("touchstart",(e) => {
-        startI = e.changedTouches[0].screenX
-      })
+    let indegious = document.querySelector("#" + idIndegious)
+    let startI;
+    let endI;
+    indegious.addEventListener("touchstart", (e) => {
+      startI = e.changedTouches[0].screenX
+    })
 
-      indegious.addEventListener("touchend",(e) => {
-        endI = e.changedTouches[0].screenX
-        checkDirectionIndegious(startI,endI)
-      })
+    indegious.addEventListener("touchend", (e) => {
+      endI = e.changedTouches[0].screenX
+      checkDirectionIndegious(startI, endI)
+    })
   }
-  
 
-  useEffect(()=>{
-    if(indegiousArtist){
+
+  useEffect(() => {
+    if (indegiousArtist) {
       const myTimeout = setTimeout(implementAddListner, 2000);
       function myStopFunction() {
         clearTimeout(myTimeout);
       }
     }
-  },[indegiousArtist])
+  }, [indegiousArtist])
 
-  useEffect(()=>{
-    if(window.innerWidth <= 479){
-      setStyleSheet({ maxWidth: "100%"})
+  useEffect(() => {
+    if (window.innerWidth <= 479) {
+      setStyleSheet({ maxWidth: "100%" })
     }
-    else if(window.innerWidth >  479 && window.innerWidth <= 1200 ){
-      setStyleSheet({ maxWidth: "100%",maxHeight:"32.5vh"})
+    else if (window.innerWidth > 479 && window.innerWidth <= 1200) {
+      setStyleSheet({ maxWidth: "100%", maxHeight: "32.5vh" })
     }
-    else if(window.innerWidth >= 1500 ){
-      setStyleSheet({ maxWidth: "100%",maxHeight:"40vh"})
-    }else{
-      setStyleSheet({ maxWidth: "100%",maxHeight:"32.5vh"})
+    else if (window.innerWidth >= 1500) {
+      setStyleSheet({ maxWidth: "100%", maxHeight: "40vh" })
+    } else {
+      setStyleSheet({ maxWidth: "100%", maxHeight: "32.5vh" })
     }
-  },[window.innerWidth])
+  }, [window.innerWidth])
 
   return (
     <>
@@ -304,58 +304,82 @@ function Bipoc() {
           </p>
         </div>
       </div>
-      <div className="bipoc2cols category" style={styleSheet}>
+      <div className="bipoc2cols category" style={{ position: "relative" }}>
         <div className="categoryinfo">
           <h2 className="newsh2 h" >BLACK ARTISTS</h2>
           <div className="w-dyn-list">
             <div role="list" className="collection-list-4 w-dyn-items">
             </div>
             <div role="list" className="collection-list-4 w-dyn-items">
-              {blackArtist?
+              {blackArtist ?
                 blackArtist.map((val, ind) =>
-                  (<div role="listitem" className="w-dyn-item">
-                    <Link
-                      id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
-                      data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                      to={"/artists/" + val.artistData.firstname}
-                      className="bipocLink"
-                    >
+                (<div role="listitem" className="w-dyn-item">
+                  <Link
+                    id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                    data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                    to={"/artists/" + val.artistData.firstname}
+                    className="bipocLink"
+                  >
                     <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
-                    </Link>
-                  </div>))
+                  </Link>
+                </div>))
                 :
-                  <div role="listitem" className="w-dyn-item">
-                    <div className="text-block-5"></div>
-                  </div>
+                <div role="listitem" className="w-dyn-item">
+                  <div className="text-block-5"></div>
+                </div>
               }
             </div>
           </div>
         </div>
-        <div className= "sliderbipoc">
-          <div className="divisiondivider ">
+        <div className="sliderbipoc">
+          <div className=" ">
             {/* <h2 className="newsinstah2 h">PORTFOLIOS</h2> */}
             <h1 className="newsh2 hide">BLACK ARTISTS</h1>
           </div>
           {blackArtist ? (
-            <div className="slider w-slider my-3" id={idBlack}>
-              <Slider 
+            <div className=" my-3" id={idBlack}>
+              {/* <Slider 
                 disableAutoPlay 
                 controllEnabled="outside-dark"
                 id = {idBlackSlider}
-            >
-                {blackArtist.map((val, ind) =>
-                  val.ImageData.length > 0 ? (
-                    <SliderItem
-                      label={
-                        val.artistData.lastname + " " + val.artistData.firstname
-                      }
-                      col={windowSize.innerWidth < 420 ? "MOBILE" :  ind===0?"col-lg-4 col-md-6 col-12 card _1":"col-lg-4 col-md-6 col-12 card "}
-                      src={val.ImageData[0].subImage[1].path}
-                      val={val}
-                    />
-                  ) : null
-                )}
-              </Slider>
+            > */}
+              {blackArtist.map((val, ind) =>
+                val.ImageData.length > 0 ? (
+
+                  // <SliderItem
+                  //   label={
+                  //     val.artistData.lastname + " " + val.artistData.firstname
+                  //   }
+                  //   col={windowSize.innerWidth < 420 ? "MOBILE" :  ind===0?"col-lg-4 col-md-6 col-12 card _1":"col-lg-4 col-md-6 col-12 card "}
+                  //   src={val.ImageData[0].subImage[1].path}
+                  //   val={val}
+                  // />
+                  // (<div role="listitem">
+                  <Link
+                    id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                    data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                    to={"/artists/" + val.artistData.firstname}
+                    className="bipocLink"
+                  >
+                    <div className=" justify-content-center w-inline-block" style={{ position: "relative", height: "auto", overflow: "hidden" }}>
+                      <img src={val.ImageData[0].subImage[1].path} val={val} className="card_img m-1"></img>
+                      <p className="p-1 card_img_text" >{val.artistData.lastname + " " + val.artistData.firstname}</p>
+                    </div>
+                  </Link>
+                  // </div>)
+                  // <div className=" ">
+                  //   <div className={windowSize.innerWidth < 420 ? "MOBILE" :  "images"}>
+                  //     <img  src={val.ImageData[0].subImage[1].path} val={val} className=""></img>
+                  //     <div className="">
+                  //     <p className="">{val.artistData.lastname + " " + val.artistData.firstname}</p>
+
+                  //     </div>
+                  //     </div>
+                  // </div>
+                )
+                  : null
+              )}
+              {/* </Slider> */}
             </div>
           ) : null}
           <div
@@ -374,27 +398,28 @@ function Bipoc() {
           ></div>
         </div>
       </div>
-      <div className="bipoc2cols category" style={styleSheet}>
+      {/*  */}
+      <div className="bipoc2cols category" style={{ position: "relative" }}>
         <div className="categoryinfo">
           <h1 className="newsh2 h">ASIAN ARTISTS</h1>
           <div className="w-dyn-list">
-          <div role="list" className="collection-list-4 w-dyn-items">
-              {asianArtist?
+            <div role="list" className="collection-list-4 w-dyn-items">
+              {asianArtist ?
                 asianArtist.map((val, ind) =>
-                  (<div role="listitem" className="w-dyn-item">
-                    <Link
-                      id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
-                      data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                      to={"/artists/" + val.artistData.firstname}
-                      className="bipocLink"
-                    >
+                (<div role="listitem" className="w-dyn-item">
+                  <Link
+                    id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                    data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                    to={"/artists/" + val.artistData.firstname}
+                    className="bipocLink"
+                  >
                     <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
-                    </Link>
-                  </div>))
+                  </Link>
+                </div>))
                 :
-                  <div role="listitem" className="w-dyn-item">
-                    <div className="text-block-5"></div>
-                  </div>
+                <div role="listitem" className="w-dyn-item">
+                  <div className="text-block-5"></div>
+                </div>
               }
             </div>
           </div>
@@ -405,50 +430,63 @@ function Bipoc() {
             <h1 className="newsh2 hide">ASIAN ARTISTS</h1>
           </div>
           {asianArtist ? (
-            <div className="slider w-slider my-3" id={idAsian}>
-                <Slider 
-                    disableAutoPlay 
-                    controllEnabled="outside-dark"
-                    id = {idAsianSlider}
-                >
-                {asianArtist.map((val, ind) =>
-                  val.ImageData.length > 0 ? (
-                    <SliderItem
-                      label={
-                        val.artistData.lastname + " " + val.artistData.firstname
-                      }
-                      col={windowSize.innerWidth < 420 ? "MOBILE" :  ind===0?"col-lg-4 col-md-6 col-12 card _1":"col-lg-4 col-md-6 col-12 card "}
-                      src={val.ImageData[0].subImage[1].path}
-                      val={val}
-                    />
-                  ) : null
-                )}
-              </Slider>
+            <div className=" my-3" id={idAsian}>
+              {/* <Slider
+                disableAutoPlay
+                controllEnabled="outside-dark"
+                id={idAsianSlider}
+              > */}
+              {asianArtist.map((val, ind) =>
+                val.ImageData.length > 0 ? (
+                  // <SliderItem
+                  //   label={
+                  //     val.artistData.lastname + " " + val.artistData.firstname
+                  //   }
+                  //   col={windowSize.innerWidth < 420 ? "MOBILE" : ind === 0 ? "col-lg-4 col-md-6 col-12 card _1" : "col-lg-4 col-md-6 col-12 card "}
+                  //   src={val.ImageData[0].subImage[1].path}
+                  //   val={val}
+                  // />
+                  <Link
+                    id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                    data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                    to={"/artists/" + val.artistData.firstname}
+                    className="bipocLink"
+                  >
+                    <div className=" justify-content-center w-inline-block" style={{ position: "relative", height: "auto", overflow: "hidden" }}>
+                      <img src={val.ImageData[0].subImage[1].path} val={val} className="card_img m-1"></img>
+                      <p className="p-1 card_img_text" >{val.artistData.lastname + " " + val.artistData.firstname}</p>
+                    </div>
+
+                  </Link>
+                ) : null
+              )}
+              {/* </Slider> */}
             </div>
           ) : null}
         </div>
       </div>
-      <div className="bipoc2cols category" style={styleSheet}>
+      {/*  */}
+      <div className="bipoc2cols category" style={{ position: "relative" }}>
         <div className="categoryinfo">
           <h1 className="newsh2 h">LATINO/LATINA ARTISTS</h1>
           <div className="w-dyn-list">
-          <div role="list" className="collection-list-4 w-dyn-items">
-              {latinoArtist?
+            <div role="list" className="collection-list-4 w-dyn-items">
+              {latinoArtist ?
                 latinoArtist.map((val, ind) =>
                 (<div role="listitem" className="w-dyn-item">
-                <Link
-                  id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
-                  data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                  to={"/artists/" + val.artistData.firstname}
-                  className="bipocLink"
-                >
-                <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
-                </Link>
-              </div>))
+                  <Link
+                    id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                    data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                    to={"/artists/" + val.artistData.firstname}
+                    className="bipocLink"
+                  >
+                    <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
+                  </Link>
+                </div>))
                 :
-                  <div role="listitem" className="w-dyn-item">
-                    <div className="text-block-5"></div>
-                  </div>
+                <div role="listitem" className="w-dyn-item">
+                  <div className="text-block-5"></div>
+                </div>
               }
             </div>
           </div>
@@ -459,50 +497,62 @@ function Bipoc() {
             <h1 className="newsh2 hide">LATINO/LATINA ARTISTS</h1>
           </div>
           {latinoArtist ? (
-            <div className="slider w-slider my-3" id={idLatino}>
-                <Slider 
-                    disableAutoPlay 
-                    controllEnabled="outside-dark"
-                    id = {idLatinoSlider}
-                >
-                {latinoArtist.map((val, ind) =>
-                  val.ImageData.length > 0 ? (
-                    <SliderItem
-                      label={
-                        val.artistData.lastname + " " + val.artistData.firstname
-                      }
-                      col={windowSize.innerWidth < 420 ? "MOBILE" :  ind===0?"col-lg-4 col-md-6 col-12 card _1":"col-lg-4 col-md-6 col-12 card "}
-                      src={val.ImageData[0].subImage[1].path}
-                      val={val}
-                    />
-                  ) : null
-                )}
-              </Slider>
+            <div className=" my-3" id={idLatino}>
+              {/* <Slider
+                disableAutoPlay
+                controllEnabled="outside-dark"
+                id={idLatinoSlider}
+              > */}
+              {latinoArtist.map((val, ind) =>
+                val.ImageData.length > 0 ? (
+                  <Link
+                    id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                    data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                    to={"/artists/" + val.artistData.firstname}
+                    className="bipocLink"
+                  >
+                    <div className=" justify-content-center w-inline-block" style={{ position: "relative", height: "auto", overflow: "hidden" }}>
+                      <img src={val.ImageData[0].subImage[1].path} val={val} className="card_img m-1"></img>
+                      <p className="p-1 card_img_text" >{val.artistData.lastname + " " + val.artistData.firstname}</p>
+                    </div>
+                  </Link>
+                  // <SliderItem
+                  //   label={
+                  //     val.artistData.lastname + " " + val.artistData.firstname
+                  //   }
+                  //   col={windowSize.innerWidth < 420 ? "MOBILE" : ind === 0 ? "col-lg-4 col-md-6 col-12 card _1" : "col-lg-4 col-md-6 col-12 card "}
+                  //   src={val.ImageData[0].subImage[1].path}
+                  //   val={val}
+                  // />
+                ) : null
+              )}
+              {/* </Slider> */}
             </div>
           ) : null}
         </div>
       </div>
-      <div className="bipoc2cols category" style={styleSheet}>
+      {/*  */}
+      <div className="bipoc2cols category" style={{ position: "relative" }}>
         <div className="categoryinfo">
           <h1 className="newsh2 h">CENTRAL ASIAN ARTISTS</h1>
           <div className="w-dyn-list">
-          <div role="list" className="collection-list-4 w-dyn-items">
-              {centralAsianArtist?
+            <div role="list" className="collection-list-4 w-dyn-items">
+              {centralAsianArtist ?
                 centralAsianArtist.map((val, ind) =>
                 (<div role="listitem" className="w-dyn-item">
-                <Link
-                  id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
-                  data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                  to={"/artists/" + val.artistData.firstname}
-                  className="bipocLink"
-                >
-                <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
-                </Link>
-              </div>))
+                  <Link
+                    id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                    data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                    to={"/artists/" + val.artistData.firstname}
+                    className="bipocLink"
+                  >
+                    <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
+                  </Link>
+                </div>))
                 :
-                  <div role="listitem" className="w-dyn-item">
-                    <div className="text-block-5"></div>
-                  </div>
+                <div role="listitem" className="w-dyn-item">
+                  <div className="text-block-5"></div>
+                </div>
               }
             </div>
           </div>
@@ -513,50 +563,62 @@ function Bipoc() {
             <h1 className="newsh2 hide">CENTRAL ASIAN ARTISTS</h1>
           </div>
           {centralAsianArtist ? (
-            <div className="slider w-slider my-3" id={idCentral}>
-                <Slider 
-                    disableAutoPlay 
-                    controllEnabled="outside-dark"
-                    id = {idCentralSlider}
-                >
-                {centralAsianArtist.map((val, ind) =>
-                  val.ImageData.length > 0 ? (
-                    <SliderItem
-                      label={
-                        val.artistData.lastname + " " + val.artistData.firstname
-                      }
-                      col={windowSize.innerWidth < 420 ? "MOBILE" :  ind===0?"col-lg-4 col-md-6 col-12 card _1":"col-lg-4 col-md-6 col-12 card "}
-                      src={val.ImageData[0].subImage[1].path}
-                      val={val}
-                    />
-                  ) : null
-                )}
-              </Slider>
+            <div className=" my-3" id={idCentral}>
+              {/* <Slider
+                disableAutoPlay
+                controllEnabled="outside-dark"
+                id={idCentralSlider}
+              > */}
+              {centralAsianArtist.map((val, ind) =>
+                val.ImageData.length > 0 ? (
+                  <Link
+                    id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                    data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                    to={"/artists/" + val.artistData.firstname}
+                    className="bipocLink"
+                  >
+                    <div className=" justify-content-center w-inline-block" style={{ position: "relative", height: "auto", overflow: "hidden" }}>
+                      <img src={val.ImageData[0].subImage[1].path} val={val} className="card_img m-1"></img>
+                      <p className="p-1 card_img_text" >{val.artistData.lastname + " " + val.artistData.firstname}</p>
+                    </div>
+                  </Link>
+                  // <SliderItem
+                  //   label={
+                  //     val.artistData.lastname + " " + val.artistData.firstname
+                  //   }
+                  //   col={windowSize.innerWidth < 420 ? "MOBILE" : ind === 0 ? "col-lg-4 col-md-6 col-12 card _1" : "col-lg-4 col-md-6 col-12 card "}
+                  //   src={val.ImageData[0].subImage[1].path}
+                  //   val={val}
+                  // />
+                ) : null
+              )}
+              {/* </Slider> */}
             </div>
           ) : null}
         </div>
       </div>
-      <div className="bipoc2cols category" style={styleSheet}>
+      {/*  */}
+      <div className="bipoc2cols category" style={{ position: "relative" }}>
         <div className="categoryinfo">
           <h1 className="newsh2 h">INDIGENOUS ARTISTS</h1>
           <div className="w-dyn-list">
-          <div role="list" className="collection-list-4 w-dyn-items">
-              {indegiousArtist?
+            <div role="list" className="collection-list-4 w-dyn-items">
+              {indegiousArtist ?
                 indegiousArtist.map((val, ind) =>
                 (<div role="listitem" className="w-dyn-item">
-                <Link
-                  id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
-                  data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                  to={"/artists/" + val.artistData.firstname}
-                  className="bipocLink"
-                >
-                <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
-                </Link>
-              </div>))
+                  <Link
+                    id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                    data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                    to={"/artists/" + val.artistData.firstname}
+                    className="bipocLink"
+                  >
+                    <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
+                  </Link>
+                </div>))
                 :
-                  <div role="listitem" className="w-dyn-item">
-                    <div className="text-block-5"></div>
-                  </div>
+                <div role="listitem" className="w-dyn-item">
+                  <div className="text-block-5"></div>
+                </div>
               }
             </div>
           </div>
@@ -567,25 +629,37 @@ function Bipoc() {
             <h1 className="newsh2 hide">INDIGENOUS ARTISTS</h1>
           </div>
           {indegiousArtist ? (
-            <div className="slider w-slider my-3" id={idIndegious}>
-                <Slider 
-                    disableAutoPlay 
-                    controllEnabled="outside-dark"
-                    id = {idIndegiousSlider}
-                >
-                {indegiousArtist.map((val, ind) =>
-                  val.ImageData.length > 0 ? (
-                    <SliderItem
-                      label={
-                        val.artistData.lastname + " " + val.artistData.firstname
-                      }
-                      col={windowSize.innerWidth < 420 ? "MOBILE" :  ind===0?"col-lg-4 col-md-6 col-12 card _1":"col-lg-4 col-md-6 col-12 card "}
-                      src={val.ImageData[0].subImage[1].path}
-                      val={val}
-                    />
-                  ) : null
-                )}
-              </Slider>
+            <div className="my-3" id={idIndegious}>
+              {/* <Slider
+                disableAutoPlay
+                controllEnabled="outside-dark"
+                id={idIndegiousSlider}
+              > */}
+              {indegiousArtist.map((val, ind) =>
+                val.ImageData.length > 0 ? (
+                  // <SliderItem
+                  //   label={
+                  //     val.artistData.lastname + " " + val.artistData.firstname
+                  //   }
+                  //   col={windowSize.innerWidth < 420 ? "MOBILE" : ind === 0 ? "col-lg-4 col-md-6 col-12 card _1" : "col-lg-4 col-md-6 col-12 card "}
+                  //   src={val.ImageData[0].subImage[1].path}
+                  //   val={val}
+                  // />
+                  <Link
+                    id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                    data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                    to={"/artists/" + val.artistData.firstname}
+                    className="bipocLink"
+                  >
+                    <div className=" justify-content-center w-inline-block" style={{ position: "relative", height: "auto", overflow: "hidden" }}>
+                      <img src={val.ImageData[0].subImage[1].path} val={val} className="card_img m-1"></img>
+                      <p className="p-1 card_img_text" >{val.artistData.lastname + " " + val.artistData.firstname}</p>
+                    </div>
+                  </Link>
+
+                ) : null
+              )}
+              {/* </Slider> */}
             </div>
           ) : null}
         </div>
