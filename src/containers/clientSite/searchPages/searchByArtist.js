@@ -282,7 +282,7 @@ function SearchByArtist(props) {
 
   return (
     <div>
-      <Navbar></Navbar>
+      {/* <Navbar></Navbar> */}
       <div className="row mt-0 pt-0" style={{
         maxWidth: "100%",
       }}>

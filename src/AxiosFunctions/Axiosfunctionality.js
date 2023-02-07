@@ -31,6 +31,15 @@ export const artistImageDetailedSliceData = async (data) => {
     }
 }
 
+export const artistImageSliceData = async (data) => {
+    try {
+        const response = await axios.post(BASE_URL+"artistImage/getAllStatusOne",data);
+        return response.data;
+    } catch (error) {
+        logouter();
+    }
+}
+
 export const getImageBaseURL = async (data) => {
     try {
         const response = await axios.post(BASE_URL + 'artistImage/base64', data);

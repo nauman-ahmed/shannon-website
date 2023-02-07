@@ -20,7 +20,7 @@ function Navbar(props) {
             {props.searchBar ?
               <div className="form-block-2 search">
                 <form id="email-form" name="email-form" data-name="Email Form" method="get" className="form-2">
-                  <input onChange={(e) => { props.updateTempArtist(e) }} type="text" className="searchbarhome w-input" maxLength="256" name="Search" data-name="Search" placeholder="SEARCH" id="Search" />
+                  <input onChange={(e) => { props.updateTempArtist(e) }} value={props.searchArtist} type="text" className="searchbarhome w-input" maxLength="256" name="Search" data-name="Search" placeholder="SEARCH" id="Search" />
                   <Link to="#" className="link-block-3 w-inline-block"></Link>
                 </form>
               </div> : null}
@@ -43,7 +43,7 @@ function Navbar(props) {
             props.searchBar ?
               <div className="form-block-2" style={{ marginLeft: "auto" }}>
                 <form id="email-form" name="email-form" data-name="Email Form" method="get" className="form-2">
-                  <input onChange={(e) => { props.updateTempArtist(e) }} type="text" className="searchbarhome w-input" maxLength="256" name="Search" data-name="Search" placeholder="SEARCH" id="Search" />
+                  <input onChange={(e) => { props.updateTempArtist(e) }} type="text" value={props.searchArtist} className="searchbarhome w-input" maxLength="256" name="Search" data-name="Search" placeholder="SEARCH" id="Search" />
                   <Link to="#" className="link-block-3 w-inline-block"></Link>
                 </form>
               </div> : null
@@ -51,7 +51,7 @@ function Navbar(props) {
         </div>
       </div>
     </div >
-  )
+  ) 
 }
 
 export default Navbar

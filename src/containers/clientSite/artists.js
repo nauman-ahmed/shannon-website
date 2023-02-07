@@ -61,7 +61,7 @@ function Artists(props) {
                   src={String(val.mainImage[0].subImage[0].path)}
                   loading="lazy"
                   alt=""
-                  className="image"
+                  className="image" 
                 />
                 <div className="artistnamediv">
                   <div className="artistnametext-v3">

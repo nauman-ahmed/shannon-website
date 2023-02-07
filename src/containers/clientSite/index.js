@@ -72,21 +72,23 @@ function Index(props) {
         dispatch(keywordDataApi());
     }, [])
 
+    useEffect(() => {
+        setSearchArtist("")
+    }, [pages])
 
     return (
         <>
             <Header aciveBtn={pages} />
             <div className={(pages === "artists"?"talentsection":"homesection")+" wf-section "+(pages?"divisions":"")}>
                 <div className={"containerhome "+(pages !== "artists"?"home":"")}>
-                    {pages === "artists" && search?null: 
-                    <Navbar aciveBtn={pages} searchBar={true}  searchArtist={searchArtist}  updateTempArtist={updateTempArtist} />}
+                    <Navbar aciveBtn={pages} searchBar={true}  searchArtist={searchArtist}  updateTempArtist={updateTempArtist} />
                     {pages?
                     pages === "categories"?
                         search?
                         <SearchByCategories>
                             <DivisionSideBar activeBtn={search}/>
                         </SearchByCategories>
-                        :<Categories searchDivision={searchDivision} updateTempDivision={updateTempDivision} tempDivision={tempDivision}>
+                        :<Categories searchArtist={searchArtist}  searchDivision={searchDivision} updateTempDivision={updateTempDivision} tempDivision={tempDivision}>
                             <DivisionSideBar activeBtn={pages}/>
                         </Categories>
                     :pages === "divisions"?
@@ -94,7 +96,7 @@ function Index(props) {
                     <SearchByDivision>
                         <DivisionSideBar activeBtn={search}/>
                     </SearchByDivision>
-                    :<Divisions searchDivision={searchDivision} updateTempDivision={updateTempDivision} tempDivision={tempDivision}>
+                    :<Divisions searchArtist={searchArtist} searchDivision={searchDivision} updateTempDivision={updateTempDivision} tempDivision={tempDivision}>
                         <DivisionSideBar activeBtn={pages}/>
                     </Divisions>
                     :pages === "artists"?
@@ -104,23 +106,23 @@ function Index(props) {
                             <ArtistSideBar/>
                         </Artists>
                     :pages === "illustration-artists"?
-                        <IllustrationArtists>
+                        <IllustrationArtists searchArtist={searchArtist}>
                             <DivisionSideBar activeBtn={pages}/>
                         </IllustrationArtists>
                     :pages === "cgi"?
-                        <CGI>
+                        <CGI searchArtist={searchArtist}>
                             <DivisionSideBar activeBtn={pages}/>
                         </CGI>
                     :pages === "medical"?
-                        <MEDICAL>
+                        <MEDICAL searchArtist={searchArtist}>
                             <DivisionSideBar activeBtn={pages}/>
                         </MEDICAL>
                     :pages === "motion"?
-                        <MOTION>
+                        <MOTION searchArtist={searchArtist}>
                             <DivisionSideBar activeBtn={pages}/>
                         </MOTION>                    
                     :pages === "photography"?
-                        <Photography>
+                        <Photography searchArtist={searchArtist}>
                             <DivisionSideBar activeBtn={pages}/>
                         </Photography>
                     :pages === "about"?

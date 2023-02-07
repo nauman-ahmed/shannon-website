@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { IMAGE_ROUTE } from "../../AxiosFunctions/Axiosfunctionality";
@@ -9,12 +9,72 @@ import loading from "../../assets/loading.gif";
 const images = window.location.origin + "/assets/images";
 
 function Categories(props) {
+
+  const [tempArtist,setTempArtist]= useState([]);
+  const [filterCond,setFilterCond]= useState(true);
+
   const dispatch = useDispatch();
   const { artistImageKeywordDataSlice } = useSelector((state) => state);
+  
   function randomIntFromInterval(min, max) {
     // min and max included
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
+
+
+  const filterChange= (filter) => {
+
+    // let tempData = [...data];
+    // setDataOriginal([...data])
+
+    if(filter==="A-Z"){
+      let temp = []
+      setFilterCond(false)
+      artistImageKeywordDataSlice.artistKeywordImages.map((val,ind) => {
+        let tempImage = [...val.ImageData]
+        tempImage = tempImage.sort((a, b) => a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize()));
+        temp.push({...val,ImageData:tempImage})
+      })
+      console.log("NAU",temp)
+      setTempArtist(temp)
+      // tempData = tempData.sort((a, b) => a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize()));
+    }
+    else{
+      setFilterCond(true)
+      // tempData = [...dataOriginal];
+      // tempData = dataOriginal;
+      // setData(tempData);
+
+    }
+
+  }
+
+  const updateTempArtist = (e) => {
+    if(artistImageKeywordDataSlice.artistKeywordImages.length){
+      console.log(artistImageKeywordDataSlice)
+      
+      const searchvalue = e.toLowerCase();
+      let temp = []
+
+      artistImageKeywordDataSlice.artistKeywordImages.map((val,ind) => {
+        let tempImage = val.ImageData.filter(function (element) {
+          let checker = false
+          if(element.artistId.firstname.toLowerCase().includes(searchvalue) || element.artistId.lastname.toLowerCase().includes(searchvalue)){
+              checker = true
+          }
+          return checker;
+      })
+      console.log(val,tempImage)
+      temp.push({...val,ImageData:tempImage})
+    })
+    console.log(temp)
+    setTempArtist(temp)
+    }
+  }
+
+  useEffect(() => {
+    updateTempArtist(props.searchArtist)
+  }, [artistImageKeywordDataSlice,props.searchArtist]);
 
   useEffect(() => {
     dispatch(artistKeyword({}));
@@ -27,7 +87,15 @@ function Categories(props) {
         id="w-node-_6f42e407-456f-5b2f-82e4-417072db3669-84f2d081"
         className="divisionscolumn"
       >
-        <div className="form-block-2 divisions w-form">
+        <div class="sortingcont right pt-0 mt-0">
+          <a class="filter-button w-inline-block  mt-0" onClick={()=>filterChange("Default")}>
+            <div >DEFAULT</div>
+          </a>
+          <a class="filter-button w-inline-block  mt-0" onClick={()=>filterChange("A-Z")}>
+            <div >ALPHABETICAL A-Z</div>
+          </a>
+        </div>
+        {/* <div className="form-block-2 divisions w-form">
           <form
             id="email-form"
             name="email-form"
@@ -56,7 +124,7 @@ function Categories(props) {
           <div className="w-form-fail">
             <div>Oops! Something went wrong while submitting the form.</div>
           </div>
-        </div>
+        </div> */}
         <div
           id="w-node-_429c632c-0632-16be-f5b5-f2b7200da64a-84f2d081"
           className="divisioncontainer"
@@ -71,16 +139,20 @@ function Categories(props) {
               />
             </div>
           ) : artistImageKeywordDataSlice.artistKeywordImages !== undefined ? (
-            props.searchDivision === "" ? (
+            props.searchArtist === "" && filterCond  ? (
               artistImageKeywordDataSlice.artistKeywordImages.map(
                 (item, key) => (
                   <>
                     {item.ImageData.length > 0 ? (
                       <>
-                        <div className="divisiondivider grad">
-                          <h2 className="divisionh2">
-                            {item.keyword.toUpperCase()} ARTISTS
-                          </h2>
+                         <div className="d-flex">
+                          <h4 className="" style={{color:"#ce651e", fontWeight:"500",}}>
+                            {
+                              item.keyword == '3D Rendering' ? "CGI" 
+                            :
+                              item.keyword.toUpperCase()
+                            } 
+                          </h4> <span style={{width:"100%", height:"1px", color:"#ce651e", border:"1px solid #ce651e", marginTop:"20px"}}></span>
                         </div>
                         <div
                           id="w-node-f734ee66-0b58-4c14-e08b-49ceded015c9-84f2d081"
@@ -143,15 +215,19 @@ function Categories(props) {
                 )
               )
             ) : (
-              props.tempDivision.map((item, key) => (
+              tempArtist.map((item, key) => (
                 <>
                   {item.ImageData.length > 0 ? (
                     <>
-                      <div className="divisiondivider grad">
-                        <h2 className="divisionh2">
-                          {item.keyword.toUpperCase()}
-                        </h2>
-                      </div>
+                       <div className="d-flex">
+                          <h4 className="" style={{color:"#ce651e", fontWeight:"500",}}>
+                            {
+                              item.keyword == '3D Rendering' ? "CGI" 
+                            :
+                              item.keyword.toUpperCase()
+                            } 
+                          </h4> <span style={{width:"100%", height:"1px", color:"#ce651e", border:"1px solid #ce651e", marginTop:"20px"}}></span>
+                        </div>
                       <div
                         id="w-node-f734ee66-0b58-4c14-e08b-49ceded015c9-84f2d081"
                         className="_4cols divisions"
