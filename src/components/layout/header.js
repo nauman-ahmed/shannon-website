@@ -74,7 +74,7 @@ function Header(props) {
                     (props.aciveBtn === "contact" ? "w--current" : "")
                   }
                 >
-                  CONTACT
+                  CONTACT/MYLIST
                 </Link>
               </span>
               <div className="menuinfo v2">

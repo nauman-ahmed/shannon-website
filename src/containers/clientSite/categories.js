@@ -138,105 +138,148 @@ function Categories(props) {
                 src={loading}
                 style={{ width: "50px" }}
               />
-            </div>
+            </div> 
           ) : artistImageKeywordDataSlice.artistKeywordImages !== undefined ? (
             props.searchArtist === "" && filterCond ? (
               artistImageKeywordDataSlice.artistKeywordImages.map(
                 (item, key) => (
                   <>
-                    <Link
-                      key={key}
-                      id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
-                      // to={"/artists/" + item1.artistId._id}
-                      to={"/categories/" + item.Id}
-                      className=" w-inline-block"
-                      style={{ position: "relative", overflow: "hidden", height: "auto" }}
-                    >
-
-                      <img
-                        src={String(item?.ImageData[0]?.mainImage[0]?.path)}
-                        loading="lazy"
-                        alt=""
-                        className="m-1 card_img"
-                        style={{ width: "25.5vh", height: "25.5vh" }}
-                      />
-                      <p className="card_img_text2 pt-2">
-                        {
-                          item.keyword == '3D Rendering' ? "CGI"
-                            :
+                  {item.ImageData.length > 0 ? (
+                    <>
+                      <div className="d-flex">
+                        <h4 className="" style={{color:"#ce651e", fontWeight:"500",}}>
+                          {
+                            item.keyword == '3D Rendering' ? "CGI" 
+                          :
                             item.keyword.toUpperCase()
-                        }
-
-                      </p>
-                    </Link>
-                  </>
+                          } 
+                        </h4> <span style={{width:"100%", height:"1px", color:"#ce651e", border:"1px solid #ce651e", marginTop:"20px"}}></span>
+                      </div>
+                      <div
+                        id="w-node-f734ee66-0b58-4c14-e08b-49ceded015c9-84f2d081"
+                        className="_2"
+                        // style={{ paddingTop: "10px" }}
+                      >
+                        {item?.ImageData.map((item1, key1) => (
+                          <>
+                            {key1 <= 7 ? (
+                              <>
+                              {console.log(item1)}
+                                <Link
+                                  key={key1}
+                                  id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
+                                  to={"/artists/" + item1.artistId._id}
+                                  className=" w-inline-block"
+                                  style={{ position: "relative", overflow: "hidden", height: "auto" }}
+                                >
+                                  <img
+                                    src={String(
+                                      item1?.mainImage[0]?.subImage[0]?.path
+                                    )}
+                                    loading="lazy"
+                                    alt=""
+                                    className="m-1 card_img"
+                                  style={{ width: "25.5vh", height: "25.5vh" }}
+                                  />
+                                <p className="card_img_text2 pt-2">
+                                
+                                      {item1.artistId.lastname}{" "}
+                                      {item1.artistId.firstname}
+                                </p>    
+                                </Link>
+                              </>
+                            ) : (
+                              <></>
+                            )}
+                          </>
+                        ))}
+                      </div>
+                      <div className="divisionbuttoncontainer mb-5">
+                        {console.log("s",item)}
+                        <Link
+                          to={ 
+                            "categories/" + item.Id
+                          }
+                          className="talentbutton w-button seemoreText"
+                          style={{ textDecoration: "none" }}
+                        >
+                          SEE MORE
+                        </Link>
+                      </div>
+                    </>
+                  ) : (
+                    ""
+                  )}
+                </>
                 )
               )
             ) : (
               tempArtist.map((item, key) => (
                 <>
-
                   {item.ImageData.length > 0 ? (
                     <>
-                      {/* <div className="d-flex">
-                        <h4 className="" style={{ color: "#ce651e", fontWeight: "500", }}>
-                          {
-                            item.keyword == '3D Rendering' ? "CGI"
-                              :
-                              item.keyword.toUpperCase()
-                          }
-                        </h4> <span style={{ width: "100%", height: "1px", color: "#ce651e", border: "1px solid #ce651e", marginTop: "20px" }}></span>
-                      </div> */}
-
-                      {/* <div
-                        // id="w-node-f734ee66-0b58-4c14-e08b-49ceded015c9-84f2d081"
-                        className=""> */}
-                        {
-                          // item.ImageData.map((item1, key1) => (
-                          //   <>
-                          //     {key1 <= 7 ? (
-                          //       <>
-                          <Link
-                            key={key}
-                            id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
-                            to={"/categories/" + item.Id}
-                            className="w-inline-block"
-                            style={{ position: "relative", overflow: "hidden", height: "auto" }}
-                          >
-                            <img
-                              src={String(item.ImageData[0].mainImage[0].path)}
-                              loading="lazy"
-                              alt=""
-                              className="m-1 card_img"
-                              style={{ width: "25.5vh", height: "25.5vh" }}
-                            />
-
-                            <p className="card_img_text2 pt-2">
+                    {item.ImageData.length > 0 ? (
+                      <>
+                        <div className="d-flex">
+                            <h4 className="" style={{color:"#ce651e", fontWeight:"500",}}>
                               {
-                                item.keyword == '3D Rendering' ? "CGI"
-                                  :
-                                  item.keyword.toUpperCase()
-                              }</p>
-
-                          </Link>
-                          //       </>
-                          //     ) : (
-                          //       <></>
-                          //     )}
-                          //   </>
-                          // ))
-                        }
-                      {/* </div> */}
-                      {/*   <div className="divisionbuttoncontainer mb-5">
+                                item.keyword == '3D Rendering' ? "CGI" 
+                              :
+                                item.keyword.toUpperCase()
+                              } 
+                            </h4> <span style={{width:"100%", height:"1px", color:"#ce651e", border:"1px solid #ce651e", marginTop:"20px"}}></span>
+                          </div>
+                        <div
+                          id="w-node-f734ee66-0b58-4c14-e08b-49ceded015c9-84f2d081"
+                          className=""
+                          // style={{ paddingTop: "10px" }}
+                        >
+                          {item.ImageData.map((item1, key1) => (
+                            <>
+                              {key1 <= 7 ? (
+                                <>
+                                  <Link
+                                    key={key1}
+                                    id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
+                                    to={"/artists/" + item1.artistId._id}
+                                    className=" w-inline-block"
+                                    style={{ position: "relative", overflow: "hidden", height: "auto" }}
+                                  >
+                                    <img
+                                      src={String(item1.mainImage[0].path)}
+                                      loading="lazy"
+                                      alt=""
+                                      className="m-1 card_img"
+                                      style={{ width: "25.5vh", height: "25.5vh" }}
+                                    />
+                                    <p className="card_img_text2 pt-2">
+                                        {item1.artistId.lastname}{" "}
+                                        {item1.artistId.firstname}</p>
+                                    
+                                  </Link>
+                                </>
+                              ) : (
+                                <></>
+                              )}
+                            </>
+                          ))}
+                        </div>
+                        <div className="divisionbuttoncontainer mb-5">
                           <Link
-                            to={"/categories/" + item.Id}
+                            to={ 
+                              "categories/" + item.Id
+                            }
                             className="talentbutton w-button seemoreText"
                             style={{ textDecoration: "none" }}
                           >
                             SEE MORE
                           </Link>
-                        </div> */}
-                    </>
+                        </div>
+                      </>
+                    ) : (
+                      ""
+                    )}
+                  </>
                   ) : (
                     ""
                   )}
