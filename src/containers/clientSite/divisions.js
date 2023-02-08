@@ -78,14 +78,8 @@ function Divisions(props) {
   }, []);
 
 
-  return (
-    <div className="_2cols">
-      {props.children}
-      <div
-        id="w-node-_6f42e407-456f-5b2f-82e4-417072db3669-84f2d081"
-        className="divisionscolumn"
-      >
-        <div class="sortingcont right pt-0 mt-0">
+  return (<>
+  <div class="sortingcont right pt-0 mt-0">
           <a class="filter-button w-inline-block  mt-0" onClick={()=>filterChange("Default")}>
             <div >DEFAULT</div>
           </a>
@@ -93,6 +87,13 @@ function Divisions(props) {
             <div >ALPHABETICAL A-Z</div>
           </a>
         </div>
+    <div className="_2cols">
+      {props.children}
+      <div
+        id="w-node-_6f42e407-456f-5b2f-82e4-417072db3669-84f2d081"
+        className="divisionscolumn"
+      >
+        
         {/* <div className="form-block-2 divisions w-form">
           <form
             id="email-form"
@@ -305,7 +306,7 @@ function Divisions(props) {
           )}
         </div>
       </div>
-    </div>
+    </div></>
   );
 }
 

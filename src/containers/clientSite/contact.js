@@ -204,13 +204,13 @@ function Contact() {
     <>
       {/* <h2 className="contacth2 h2">CONTACT</h2> */}
       {/* <div className="_3cols"> */}
-      <div className="row" style={{ columnGap: "20px" }}>
+      <div className="row mt-5" style={{ columnGap: "20px" }}>
         {/*  <div id="w-node-_5057f7a3-8aa5-6180-66c7-59cfff8172a6-85f2d07d" className="div-block-9"> */}
         <div className="col-xl-5 col-lg-6 col-md-7 col-sm-10 col-12 ">
           <h2 className="contacth2 hide">CONTACT</h2>
           <div
             id="w-node-_0fb692da-7bfd-42b2-746a-f1ed5ebdb01b-85f2d07d"
-            className="div-block-2">
+            className="div-block-2 mt-5">
             <div className="form-block w-form">
               <div
                 id="email-form"
@@ -491,7 +491,7 @@ function Contact() {
           className="div-block-10"> */}
         <div className="col-lg-5 col-sm-10 col-11 ">
           <h2 className="contacth2 hide">MY LIST</h2>
-          <div className=" mt-3">
+          <div className=" mt-5">
             {AddToCart.cartInfo &&
               Object.keys(AddToCart.cartInfo).map((oneKey, i) => {
                 return (
@@ -509,7 +509,7 @@ function Contact() {
           </div>
           <div
             id="artistCont"
-            className="artistcont w-node-_3ea1885f-5610-a267-b100-5eb12e177818-85f2d07d">
+            className="artistcont2 w-node-_3ea1885f-5610-a267-b100-5eb12e177818-85f2d07d">
             <h3 className="artistconth pt-2">Interested in one of our Illustrators</h3>
             <div className="w-form">
               <div className="contactpartist">Previously Viewed Artists</div>

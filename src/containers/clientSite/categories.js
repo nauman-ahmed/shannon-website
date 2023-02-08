@@ -10,36 +10,36 @@ const images = window.location.origin + "/assets/images";
 
 function Categories(props) {
 
-  const [tempArtist,setTempArtist]= useState([]);
-  const [filterCond,setFilterCond]= useState(true);
+  const [tempArtist, setTempArtist] = useState([]);
+  const [filterCond, setFilterCond] = useState(true);
 
   const dispatch = useDispatch();
   const { artistImageKeywordDataSlice } = useSelector((state) => state);
-  
+
   function randomIntFromInterval(min, max) {
     // min and max included
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
 
-  const filterChange= (filter) => {
+  const filterChange = (filter) => {
 
     // let tempData = [...data];
     // setDataOriginal([...data])
 
-    if(filter==="A-Z"){
+    if (filter === "A-Z") {
       let temp = []
       setFilterCond(false)
-      artistImageKeywordDataSlice.artistKeywordImages.map((val,ind) => {
+      artistImageKeywordDataSlice.artistKeywordImages.map((val, ind) => {
         let tempImage = [...val.ImageData]
         tempImage = tempImage.sort((a, b) => a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize()));
-        temp.push({...val,ImageData:tempImage})
+        temp.push({ ...val, ImageData: tempImage })
       })
-      console.log("NAU",temp)
+      console.log("NAU", temp)
       setTempArtist(temp)
       // tempData = tempData.sort((a, b) => a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize()));
     }
-    else{
+    else {
       setFilterCond(true)
       // tempData = [...dataOriginal];
       // tempData = dataOriginal;
@@ -50,51 +50,52 @@ function Categories(props) {
   }
 
   const updateTempArtist = (e) => {
-    if(artistImageKeywordDataSlice.artistKeywordImages.length){
+    if (artistImageKeywordDataSlice.artistKeywordImages.length) {
       console.log(artistImageKeywordDataSlice)
-      
+
       const searchvalue = e.toLowerCase();
       let temp = []
 
-      artistImageKeywordDataSlice.artistKeywordImages.map((val,ind) => {
+      artistImageKeywordDataSlice.artistKeywordImages.map((val, ind) => {
         let tempImage = val.ImageData.filter(function (element) {
           let checker = false
-          if(element.artistId.firstname.toLowerCase().includes(searchvalue) || element.artistId.lastname.toLowerCase().includes(searchvalue)){
-              checker = true
+          if (element.artistId.firstname.toLowerCase().includes(searchvalue) || element.artistId.lastname.toLowerCase().includes(searchvalue)) {
+            checker = true
           }
           return checker;
+        })
+        console.log(val, tempImage)
+        temp.push({ ...val, ImageData: tempImage })
       })
-      console.log(val,tempImage)
-      temp.push({...val,ImageData:tempImage})
-    })
-    console.log(temp)
-    setTempArtist(temp)
+      console.log(temp)
+      setTempArtist(temp)
     }
   }
 
   useEffect(() => {
     updateTempArtist(props.searchArtist)
-  }, [artistImageKeywordDataSlice,props.searchArtist]);
+  }, [artistImageKeywordDataSlice, props.searchArtist]);
 
   useEffect(() => {
     dispatch(artistKeyword({}));
   }, []);
 
-  return (
+  return (<>
+    <div class="sortingcont right pt-0 mt-0">
+      <a class="filter-button w-inline-block  mt-0" onClick={() => filterChange("Default")}>
+        <div >DEFAULT</div>
+      </a>
+      <a class="filter-button w-inline-block  mt-0" onClick={() => filterChange("A-Z")}>
+        <div >ALPHABETICAL A-Z</div>
+      </a>
+    </div>
     <div className="_2cols">
       {props.children}
       <div
         id="w-node-_6f42e407-456f-5b2f-82e4-417072db3669-84f2d081"
         className="divisionscolumn"
       >
-        <div class="sortingcont right pt-0 mt-0">
-          <a class="filter-button w-inline-block  mt-0" onClick={()=>filterChange("Default")}>
-            <div >DEFAULT</div>
-          </a>
-          <a class="filter-button w-inline-block  mt-0" onClick={()=>filterChange("A-Z")}>
-            <div >ALPHABETICAL A-Z</div>
-          </a>
-        </div>
+
         {/* <div className="form-block-2 divisions w-form">
           <form
             id="email-form"
@@ -129,7 +130,7 @@ function Categories(props) {
           id="w-node-_429c632c-0632-16be-f5b5-f2b7200da64a-84f2d081"
           className="divisioncontainer"
         >
-          {artistImageKeywordDataSlice.loading? (
+          {artistImageKeywordDataSlice.loading ? (
             <div style={{ position: "absolute", top: "50%", left: "50%" }}>
               <img
                 className="mb-3"
@@ -139,66 +140,94 @@ function Categories(props) {
               />
             </div>
           ) : artistImageKeywordDataSlice.artistKeywordImages !== undefined ? (
-            props.searchArtist === "" && filterCond  ? (
+            props.searchArtist === "" && filterCond ? (
               artistImageKeywordDataSlice.artistKeywordImages.map(
                 (item, key) => (
                   <>
-                    {item.ImageData.length > 0 ? (
-                      <>
-                         <div className="d-flex">
-                          <h4 className="" style={{color:"#ce651e", fontWeight:"500",}}>
-                            {
-                              item.keyword == '3D Rendering' ? "CGI" 
+                    <Link
+                      key={key}
+                      id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
+                      // to={"/artists/" + item1.artistId._id}
+                      to={"/categories/" + item.Id}
+                      className=" w-inline-block"
+                      style={{ position: "relative", overflow: "hidden", height: "auto" }}
+                    >
+
+                      <img
+                        src={String(item?.ImageData[0]?.mainImage[0]?.path)}
+                        loading="lazy"
+                        alt=""
+                        className="m-1 card_img"
+                        style={{ width: "25.5vh", height: "25.5vh" }}
+                      />
+                      <p className="card_img_text2 pt-2">
+                        {
+                          item.keyword == '3D Rendering' ? "CGI"
                             :
+                            item.keyword.toUpperCase()
+                        }
+
+                      </p>
+                    </Link>
+                  </>
+                )
+              )
+            ) : (
+              tempArtist.map((item, key) => (
+                <>
+
+                  {item.ImageData.length > 0 ? (
+                    <>
+                      {/* <div className="d-flex">
+                        <h4 className="" style={{ color: "#ce651e", fontWeight: "500", }}>
+                          {
+                            item.keyword == '3D Rendering' ? "CGI"
+                              :
                               item.keyword.toUpperCase()
-                            } 
-                          </h4> <span style={{width:"100%", height:"1px", color:"#ce651e", border:"1px solid #ce651e", marginTop:"20px"}}></span>
-                        </div>
-                        <div
-                          id="w-node-f734ee66-0b58-4c14-e08b-49ceded015c9-84f2d081"
-                          className="_4cols divisions"
-                          // style={{ paddingTop: "10px" }}
-                        >
-                          {item?.ImageData.map((item1, key1) => (
-                            <>
-                              {key1 <= 7 ? (
-                                <>
-                                  <Link
-                                    key={key1}
-                                    id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
-                                    to={"/artists/" + item1.artistId._id}
-                                    className="artistcard division w-inline-block"
-                                   
-                                  >
-                                    <img
-                                      src={String(
-                                        item1?.mainImage[0]?.subImage[0]?.path
-                                      )}
-                                      loading="lazy"
-                                      alt=""
-                                      className="image"
-                                    />
-                                    <div className="artistnamediv">
-                                      <div
-                                        className="artistnametext"
-                                        style={{
-                                          paddingTop: "13px",
-                                          paddingBottom: "13px",
-                                        }}
-                                      >
-                                        {item1.artistId.lastname}{" "}
-                                        {item1.artistId.firstname}
-                                      </div>
-                                    </div>
-                                  </Link>
-                                </>
-                              ) : (
-                                <></>
-                              )}
-                            </>
-                          ))}
-                        </div>
-                        <div className="divisionbuttoncontainer mb-5">
+                          }
+                        </h4> <span style={{ width: "100%", height: "1px", color: "#ce651e", border: "1px solid #ce651e", marginTop: "20px" }}></span>
+                      </div> */}
+
+                      {/* <div
+                        // id="w-node-f734ee66-0b58-4c14-e08b-49ceded015c9-84f2d081"
+                        className=""> */}
+                        {
+                          // item.ImageData.map((item1, key1) => (
+                          //   <>
+                          //     {key1 <= 7 ? (
+                          //       <>
+                          <Link
+                            key={key}
+                            id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
+                            to={"/categories/" + item.Id}
+                            className="w-inline-block"
+                            style={{ position: "relative", overflow: "hidden", height: "auto" }}
+                          >
+                            <img
+                              src={String(item.ImageData[0].mainImage[0].path)}
+                              loading="lazy"
+                              alt=""
+                              className="m-1 card_img"
+                              style={{ width: "25.5vh", height: "25.5vh" }}
+                            />
+
+                            <p className="card_img_text2 pt-2">
+                              {
+                                item.keyword == '3D Rendering' ? "CGI"
+                                  :
+                                  item.keyword.toUpperCase()
+                              }</p>
+
+                          </Link>
+                          //       </>
+                          //     ) : (
+                          //       <></>
+                          //     )}
+                          //   </>
+                          // ))
+                        }
+                      {/* </div> */}
+                      {/*   <div className="divisionbuttoncontainer mb-5">
                           <Link
                             to={"/categories/" + item.Id}
                             className="talentbutton w-button seemoreText"
@@ -206,79 +235,7 @@ function Categories(props) {
                           >
                             SEE MORE
                           </Link>
-                        </div>
-                      </>
-                    ) : (
-                      ""
-                    )}
-                  </>
-                )
-              )
-            ) : (
-              tempArtist.map((item, key) => (
-                <>
-                  {item.ImageData.length > 0 ? (
-                    <>
-                       <div className="d-flex">
-                          <h4 className="" style={{color:"#ce651e", fontWeight:"500",}}>
-                            {
-                              item.keyword == '3D Rendering' ? "CGI" 
-                            :
-                              item.keyword.toUpperCase()
-                            } 
-                          </h4> <span style={{width:"100%", height:"1px", color:"#ce651e", border:"1px solid #ce651e", marginTop:"20px"}}></span>
-                        </div>
-                      <div
-                        id="w-node-f734ee66-0b58-4c14-e08b-49ceded015c9-84f2d081"
-                        className="_4cols divisions"
-                        // style={{ paddingTop: "10px" }}
-                      >
-                        {item.ImageData.map((item1, key1) => (
-                          <>
-                            {key1 <= 7 ? (
-                              <>
-                                <Link
-                                  key={key1}
-                                  id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
-                                  to={"/artists/" + item1.artistId._id}
-                                  className="artistcard bipoc w-inline-block"
-                                  
-                                >
-                                  <img
-                                    src={String(item1.mainImage[0].path)}
-                                    loading="lazy"
-                                    alt=""
-                                    className="image"
-                                  />
-                                  <div className="artistnamediv">
-                                    <div
-                                      className="artistnametext"
-                                      style={{
-                                        paddingTop: "13px",
-                                        paddingBottom: "13px",
-                                      }}
-                                    >
-                                      {item1.artistId.lastname}{" "}
-                                      {item1.artistId.firstname}
-                                    </div>
-                                  </div>
-                                </Link>
-                              </>
-                            ) : (
-                              <></>
-                            )}
-                          </>
-                        ))}
-                      </div>
-                      <div className="divisionbuttoncontainer mb-5">
-                        <Link
-                          to={"/categories/" + item.Id}
-                          className="talentbutton w-button seemoreText"
-                          style={{ textDecoration: "none" }}
-                        >
-                          SEE MORE
-                        </Link>
-                      </div>
+                        </div> */}
                     </>
                   ) : (
                     ""
@@ -291,7 +248,7 @@ function Categories(props) {
           )}
         </div>
       </div>
-    </div>
+    </div></>
   );
 }
 
