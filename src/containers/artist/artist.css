@@ -1,6 +1,25 @@
+.parent {
+    display: grid;
+    grid-template-columns: repeat(5, 0.5fr);
+    grid-column-gap:7px;
+    grid-row-gap: 7px;
+  }
+  .parent1 {
+    display: grid;
+    grid-template-columns: repeat(4, 0.5fr);
+    grid-column-gap:7px;
+    grid-row-gap: 7px;
+  }
+  .parent2 {
+    display: grid;
+    grid-template-columns: repeat(6, 0.5fr);
+    grid-column-gap:7px;
+    grid-row-gap: 7px;
+  }
 .artist{
     font-family: "Roboto2";
 }
+
 .artist>.profile{
     margin-top: -30px;
     display: flex;

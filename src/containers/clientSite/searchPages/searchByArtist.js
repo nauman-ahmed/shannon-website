@@ -391,7 +391,9 @@ function SearchByArtist(props) {
                     </div>
                     : (
                       <div className="">
-                        <div className="cards_img">
+                        
+                        <div className="parent">
+
                           {/* <SliderShow
                           changeIndex={changeIndex}
                           settings={{
@@ -406,14 +408,9 @@ function SearchByArtist(props) {
                         > */}
                           {
                             data1[search].subListData.map((item, keys) => (
-                              <span onClick={() => { setSliderIndex(keys) }} >
-                                {/* <SliderItems
-                                  col="thumb"
-                                  key={keys}
-                                  src={item}
-                                /> */}
-                                <img src={item} className="" height={"120vh"} width={"120vh"} style={{ margin: "3px" }}></img>
-                              </span>
+                                <div className="child" onClick={() => { setSliderIndex(keys) }}>
+                                <img src={item} className="" height={"120vh"} width={"120vh"}></img>
+                                </div>
                             ))
                           }
 
@@ -473,26 +470,26 @@ function SearchByArtist(props) {
                       </div>
                     </div>) : null
                     :
-                    <div className="cards_img my-2">
-                      {/* <SliderShow
-                        settings={{
-                          arrows: true,
-                          infinite: false,
-                          speed: 500,
-                          slidesToShow: data1[search].subListData.length > 18 ? 18 : 10,
-                          slidesToScroll: 2,
-                          variableWidth: true
-                        }}
-                      > */}
+                    <div className="parent1 my-2">
                       {Object.keys(similarData).length > 0
                         ? Object.keys(similarData).map((key, i) => (
-
-                          <span> {/* <SliderItems
-                              col="thumb"
-                              src={similarData[key].mainImage}
-                            /> */}
-                            <img src={similarData[key].mainImage} width={"120vh"} height={"120vh"} style={{ margin: "3px 2px" }}></img>
-                          </span>
+                            <Link
+                            id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                            data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                            className="artistcard w-inline-block"
+                          >
+                            <img
+                              src={String(similarData[key].mainImage)}
+                              loading="lazy"
+                              alt=""
+                              className="image" 
+                            />
+                            <div className="artistnamediv">
+                              <div className="artistnametext-v3">
+                                danish
+                              </div>
+                            </div>
+                          </Link>
                         ))
                         : "NO SIMILAR IMAGES FOUND"
                       }
@@ -521,26 +518,29 @@ function SearchByArtist(props) {
                   windowSize.innerWidth < 479 ?
                     null :
                     (
-                      <div className="cards_img my-2">
-                        {/*  <SliderShow
-                          changeIndex={changeIndex}
-                          settings={{
-                            arrows: true,
-                            infinite: false,
-                            speed: 500,
-                            slidesToShow: data1[search].subListData.length > 18 ? 18 : 10,
-                            slidesToScroll: 2,
-                            variableWidth: true
-                          }}
-                        > */}
+                    <div className="parent1 my-2">
                         {Object.keys(dataViewed).length > 0
                           ? Object.keys(dataViewed).map((key, i) => (
                             <span>
-                              {/* <SliderItems
-                                col="thumb"
-                                src={dataViewed[key].slideList[0]}
-                              /> */}
-                              <img src={dataViewed[key].slideList[0]} width={"120vh"} height={"120vh"} style={{ margin: "3px" ,cursor:"pointer"}}></img>
+  
+                              {/* <img src={dataViewed[key].slideList[0]} width={"120vh"} height={"120vh"} style={{ margin: "3px" ,cursor:"pointer"}}></img> */}
+                              <Link
+                                  id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                                  data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                                  className="artistcard w-inline-block"
+                                >
+                                  <img
+                                    src={String(dataViewed[key].slideList[0])}
+                                    loading="lazy"
+                                    alt=""
+                                    className="image" 
+                                  />
+                                  <div className="artistnamediv">
+                                    <div className="artistnametext-v3">
+                                      danish
+                                    </div>
+                                  </div>
+                                </Link>
                             </span>
                           ))
                           : ""
