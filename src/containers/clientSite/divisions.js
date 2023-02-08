@@ -167,8 +167,8 @@ function Divisions(props) {
                                     key={key1}
                                     id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
                                     to={"/artists/" + item1.artistId._id}
-                                    className="artistcard w-inline-block"
-                                   
+                                    className=" w-inline-block"
+                                    style={{ position: "relative", overflow: "hidden", height: "auto" }}
                                   >
                                     <img
                                       src={String(
@@ -176,21 +176,14 @@ function Divisions(props) {
                                       )}
                                       loading="lazy"
                                       alt=""
-                                      className="image"
-                                      style={{width:"25vh",height:"28vh",margin:"5px"}}
+                                      className="m-1 card_img"
+                                    style={{ width: "25.5vh", height: "25.5vh" }}
                                     />
-                                    <div className="artistnamediv">
-                                      <div
-                                        className="artistnametext-v3"
-                                        /* style={{
-                                          paddingTop: "13px",
-                                          paddingBottom: "13px",
-                                        }} */
-                                      >
+                                  <p className="card_img_text2 pt-2">
+                                  
                                         {item1.artistId.lastname}{" "}
                                         {item1.artistId.firstname}
-                                      </div>
-                                    </div>
+                                  </p>    
                                   </Link>
                                 </>
                               ) : (
@@ -239,7 +232,7 @@ function Divisions(props) {
                         </div>
                       <div
                         id="w-node-f734ee66-0b58-4c14-e08b-49ceded015c9-84f2d081"
-                        className="_4cols divisions"
+                        className=""
                         // style={{ paddingTop: "10px" }}
                       >
                         {item.ImageData.map((item1, key1) => (
@@ -250,27 +243,20 @@ function Divisions(props) {
                                   key={key1}
                                   id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
                                   to={"/artists/" + item1.artistId._id}
-                                  className="artistcard bipoc w-inline-block"
-                                  
+                                  className=" w-inline-block"
+                                  style={{ position: "relative", overflow: "hidden", height: "auto" }}
                                 >
                                   <img
                                     src={String(item1.mainImage[0].path)}
                                     loading="lazy"
                                     alt=""
-                                    className="image"
+                                    className="m-1 card_img"
+                                    style={{ width: "25.5vh", height: "25.5vh" }}
                                   />
-                                  <div className="artistnamediv">
-                                    <div
-                                      className="artistnametext"
-                                      style={{
-                                        paddingTop: "13px",
-                                        paddingBottom: "13px",
-                                      }}
-                                    >
+                                  <p className="card_img_text2 pt-2">
                                       {item1.artistId.lastname}{" "}
-                                      {item1.artistId.firstname}
-                                    </div>
-                                  </div>
+                                      {item1.artistId.firstname}</p>
+                                  
                                 </Link>
                               </>
                             ) : (
