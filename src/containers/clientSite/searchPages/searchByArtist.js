@@ -97,7 +97,7 @@ function SearchByArtist(props) {
   }
 
   const getUserData = async () => {
-  
+    console.log("SEARCH",search)
     let tempData = await artistImageDetailedSliceData({"artistId": search})
     
     console.log(tempData.activeArtist)
@@ -243,7 +243,7 @@ function SearchByArtist(props) {
     handleWindowResize()
     getLocalStorage();
     // dataLoader();
-  }, []);
+  }, [search]);
 
 
   const setFullScreenHandler = (route, key) => {
@@ -474,10 +474,11 @@ function SearchByArtist(props) {
                       {Object.keys(similarData).length > 0
                         ? Object.keys(similarData).map((key, i) => (
                             <Link
-                            id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
-                            data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                            className="artistcard w-inline-block"
-                          >
+                              id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                              data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                              className="artistcard w-inline-block"
+                              to={"/artists/" + key}
+                            >
                             <img
                               src={String(similarData[key].mainImage)}
                               loading="lazy"
@@ -486,7 +487,7 @@ function SearchByArtist(props) {
                             />
                             <div className="artistnamediv">
                               <div className="artistnametext-v3">
-                                danish
+                                {similarData[key].lastname} {similarData[key].firstname}
                               </div>
                             </div>
                           </Link>
@@ -528,6 +529,7 @@ function SearchByArtist(props) {
                                   id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                                   data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                                   className="artistcard w-inline-block"
+                                  to={"/artists/" + key}
                                 >
                                   <img
                                     src={String(dataViewed[key].slideList[0])}
@@ -535,9 +537,10 @@ function SearchByArtist(props) {
                                     alt=""
                                     className="image" 
                                   />
+                                  {console.log("NAU",key,i,dataViewed[key])}
                                   <div className="artistnamediv">
                                     <div className="artistnametext-v3">
-                                      danish
+                                     {dataViewed[key].title}
                                     </div>
                                   </div>
                                 </Link>
