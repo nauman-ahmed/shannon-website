@@ -155,7 +155,7 @@ function Divisions(props) {
                         </div>
                         <div
                           id="w-node-f734ee66-0b58-4c14-e08b-49ceded015c9-84f2d081"
-                          className="_2"
+                          className="parent2"
                           // style={{ paddingTop: "10px" }}
                         >
                           {item?.ImageData.map((item1, key1) => (
@@ -193,7 +193,6 @@ function Divisions(props) {
                           ))}
                         </div>
                         <div className="divisionbuttoncontainer mb-5">
-                          {console.log(item)}
                           <Link
                             to={ 
                               item.keyword == "Illustration" ? "illustration-artists"
@@ -218,7 +217,6 @@ function Divisions(props) {
             ) : (
               tempArtist.map((item, key) => (
                 <>
-                {console.log("RENDER",tempArtist)}
                   {item.ImageData.length > 0 ? (
                     <>
                       <div className="d-flex">

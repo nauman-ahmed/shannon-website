@@ -97,9 +97,9 @@ function SearchByArtist(props) {
   }
 
   const getUserData = async () => {
-
-    let tempData = await artistImageDetailedSliceData({ "artistId": search })
-
+    console.log("SEARCH",search)
+    let tempData = await artistImageDetailedSliceData({"artistId": search})
+    
     console.log(tempData.activeArtist)
 
     dataLocalArtist(
@@ -243,7 +243,7 @@ function SearchByArtist(props) {
     handleWindowResize()
     getLocalStorage();
     // dataLoader();
-  }, []);
+  }, [search]);
 
 
   const setFullScreenHandler = (route, key) => {
@@ -392,7 +392,9 @@ function SearchByArtist(props) {
                     </div>
                     : (
                       <div className="">
-                        <div className="w-inline-block">
+                        
+                        <div className="parent">
+
                           {/* <SliderShow
                           changeIndex={changeIndex}
                           settings={{
@@ -407,14 +409,9 @@ function SearchByArtist(props) {
                         > */}
                           {
                             data1[search].subListData.map((item, keys) => (
-                              <span onClick={() => { setSliderIndex(keys) }} >
-                                {/* <SliderItems
-                                  col="thumb"
-                                  key={keys}
-                                  src={item}
-                                /> */}
-                                <img src={item} className="" height={"120vh"} width={"120vh"} style={{ margin: "3px" }}></img>
-                              </span>
+                                <div className="child" onClick={() => { setSliderIndex(keys) }}>
+                                <img src={item} className="" height={"120vh"} width={"120vh"}></img>
+                                </div>
                             ))
                           }
 
@@ -474,21 +471,26 @@ function SearchByArtist(props) {
                       </div>
                     </div>) : null
                     :
-                    <div className=" my-2">
-                      
+                    <div className="parent1 my-2">
                       {Object.keys(similarData).length > 0
                         ? Object.keys(similarData).map((key, i) => (
-                          <Link
-                            id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
-                            // data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                            to='#'
-                            className=" w-inline-block"
-                            style={{ position: "relative", height: "auto" ,marginBottom:"20px"}}
+                            <Link
+                              id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                              data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                              className="artistcard w-inline-block"
+                              to={"/artists/" + key}
                             >
-                            <img src={similarData[key].mainImage} className="card_img2" 
-                            style={{ margin: "3px 3px" ,width:'16vh', height:'16vh'}}></img>
-                            <p className="card_img_text3 pb-2 pt-1">
-                            {similarData[key].lastname} {similarData[key].firstname}</p>
+                            <img
+                              src={String(similarData[key].mainImage)}
+                              loading="lazy"
+                              alt=""
+                              className="image" 
+                            />
+                            <div className="artistnamediv">
+                              <div className="artistnametext-v3">
+                                {similarData[key].lastname} {similarData[key].firstname}
+                              </div>
+                            </div>
                           </Link>
                         ))
                         : "NO SIMILAR IMAGES FOUND"
@@ -517,25 +519,32 @@ function SearchByArtist(props) {
                   windowSize.innerWidth < 479 ?
                     null :
                     (
-                      <div className="w-inline-block my-2">
-                       
+                    <div className="parent1 my-2">
                         {Object.keys(dataViewed).length > 0
                           ? Object.keys(dataViewed).map((key, i) => (
-                            <Link
-                            id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
-                            // data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                            to='#'
-                            className=" w-inline-block"
-                            style={{ position: "relative", height: "auto" ,marginBottom:"20px"}}
-                            >
-                            <img src={dataViewed[key].slideList[0]} className="card_img2" 
-                            style={{ margin: "3px 3px" ,width:'16vh', height:'16vh'}}></img>
-                            {/* {console.log("Already Veiw",dataViewed[key].title)} */}
-                            <p className="card_img_text3 pb-2 pt-1">
-                            {dataViewed[key].title}
-                            </p>
-                          </Link>
-                            
+                            <span>
+  
+                              {/* <img src={dataViewed[key].slideList[0]} width={"120vh"} height={"120vh"} style={{ margin: "3px" ,cursor:"pointer"}}></img> */}
+                              <Link
+                                  id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                                  data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                                  className="artistcard w-inline-block"
+                                  to={"/artists/" + key}
+                                >
+                                  <img
+                                    src={String(dataViewed[key].slideList[0])}
+                                    loading="lazy"
+                                    alt=""
+                                    className="image" 
+                                  />
+                                  {console.log("NAU",key,i,dataViewed[key])}
+                                  <div className="artistnamediv">
+                                    <div className="artistnametext-v3">
+                                     {dataViewed[key].title}
+                                    </div>
+                                  </div>
+                                </Link>
+                            </span>
                           ))
                           : ""
                         }

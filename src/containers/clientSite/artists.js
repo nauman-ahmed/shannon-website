@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Slider, { SliderItem } from "../../components/slider/slider";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IMAGE_ROUTE } from "../../AxiosFunctions/Axiosfunctionality";
 import { ArtistImageSliceData } from "../../redux/artistImageDataSlice";
@@ -16,19 +16,64 @@ function Artists(props) {
   const dispatch = useDispatch();
   const { artistImageDataSlice } = useSelector((state) => state);
   const { bannerImages } = useSelector((state) => state);
+  const [filterCond,setFilterCond]= useState(true);
+  const [tempArtist,setTempArtist]= useState([]);
+
+
+  const filterChange= (filter) => {
+
+
+    if(filter==="A-Z"){
+      let temp = []
+      setFilterCond(false)
+      let tempImage = [...artistImageDataSlice.artistImages]
+      temp = tempImage.sort((a, b) => a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize()));
+      setTempArtist(temp)
+      // tempData = tempData.sort((a, b) => a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize()));
+    }
+    else{
+      setFilterCond(true)
+      // tempData = [...dataOriginal];
+      // tempData = dataOriginal;
+      // setData(tempData);
+
+    }
+
+  }
 
   useEffect(() => {
     dispatch(ArtistImageSliceData());
     dispatch(bannerLoader());
   }, []);
+  
+  const updateTempArtist = (e) => {
+    if(artistImageDataSlice.artistImages.length){
+
+      const searchvalue = e.toLowerCase();
+
+      let temp = artistImageDataSlice.artistImages.filter(function (element) {
+        let checker = false
+        if(element.artistId.firstname.toLowerCase().includes(searchvalue) || element.artistId.lastname.toLowerCase().includes(searchvalue)){
+            checker = true
+        }
+        return checker;
+      })
+      setTempArtist(temp)
+    }
+  }
+
+  useEffect(() => {
+    updateTempArtist(props.searchArtist)
+  }, [artistImageDataSlice,props.searchArtist]);
+
 
   return (
     <>
     <div class="sortingcont right pt-0 mt-0 me-0 ">
-          <a class="filter-button w-inline-block  mt-0" >
+          <a class="filter-button w-inline-block  mt-0" onClick={()=>filterChange("Default")}>
             <div >DEFAULT</div>
           </a>
-          <a class="filter-button  mt-0 me-0" >
+          <a class="filter-button  mt-0 me-0" onClick={()=>filterChange("A-Z")}>
             <div >ALPHABETICAL A-Z</div>
           </a>
         </div>
@@ -48,7 +93,7 @@ function Artists(props) {
               style={{ width: "50px" }}
             />
           </div>
-        ) : artistImageDataSlice.artistImages && props.searchArtist === "" ? (
+        ) : artistImageDataSlice.artistImages && props.searchArtist === "" && filterCond ? (
           artistImageDataSlice.artistImages.map((val, ind) => (
             <>
               <Link
@@ -220,7 +265,7 @@ function Artists(props) {
             </>
           ))
         ) : (
-          props.tempArtist.map((val, key) => (
+          tempArtist.map((val, key) => (
             <Link
               id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
               data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
