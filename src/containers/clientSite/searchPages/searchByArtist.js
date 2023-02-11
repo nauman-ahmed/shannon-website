@@ -67,7 +67,7 @@ function SearchByArtist(props) {
     let tempData = localStorage.getItem("artistViewed");
 
     tempData = JSON.parse(tempData);
-    console.log(key, _id, firstname, bio, listData, subListData,tempData)
+    console.log(key, _id, firstname, bio, listData, subListData, tempData)
     if (tempData === null) {
       tempData = {};
       tempData[key] = {
@@ -97,19 +97,19 @@ function SearchByArtist(props) {
   }
 
   const getUserData = async () => {
-  
-    let tempData = await artistImageDetailedSliceData({"artistId": search})
-    
+
+    let tempData = await artistImageDetailedSliceData({ "artistId": search })
+
     console.log(tempData.activeArtist)
 
     dataLocalArtist(
-                  tempData.activeArtist[search].id,
-                  tempData.activeArtist[search].id,
-                  tempData.activeArtist[search].firstname + " " + tempData.activeArtist[search].lastname,
-                  tempData.activeArtist[search].detail,
-                  tempData.activeArtist[search].slideList,
-                  tempData.activeArtist[search].subListData
-                );
+      tempData.activeArtist[search].id,
+      tempData.activeArtist[search].id,
+      tempData.activeArtist[search].firstname + " " + tempData.activeArtist[search].lastname,
+      tempData.activeArtist[search].detail,
+      tempData.activeArtist[search].slideList,
+      tempData.activeArtist[search].subListData
+    );
 
     setSimilarData(tempData.similarArtist);
     setData1(tempData.activeArtist);
@@ -269,9 +269,9 @@ function SearchByArtist(props) {
         fullscreen={fullscreen}
       />)
   }
- 
+
   if (data1 !== null) {
-    
+
     if (Object.keys(data1).find(element => element == search) == undefined) {
       return (
         <div>
@@ -286,10 +286,11 @@ function SearchByArtist(props) {
       {/* <Navbar></Navbar> */}
       <div className="row mt-0 pt-0" style={{
         maxWidth: "100%",
+        justifyContent: "center"
       }}>
         {data1 !== null ? (
           <>
-            <div className="col-md-6 mt-2 pt-1">
+            <div className="col-md-7 mt-2 pt-1">
               <h2 className="h2talent">{data1[search].title}</h2>
               {/* <div
               className="talentp large d-block hide_detail"
@@ -305,14 +306,14 @@ function SearchByArtist(props) {
               <div className="d-flex">
                 <Link
                   to="#"
-                  style={{ fontSize: "16px", fontWeight: '600' , minWidth: "60px", maxWidth:"70px"}}
+                  style={{ fontSize: "16px", fontWeight: '600', minWidth: "60px", maxWidth: "70px" }}
                   className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
                 >
                   CALL
                 </Link>
                 <Link
                   to="/contact"
-                  style={{ fontSize: "16px", fontWeight: '600' , minWidth: "110px", maxWidth:"120px"}}
+                  style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
                   className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
                 >
                   GET AN ESTIMATE
@@ -320,7 +321,7 @@ function SearchByArtist(props) {
                 <Link
                   data-w-id="e04f643e-f302-16e2-74ee-4bc7e85391d8"
                   to="#"
-                  style={{ fontSize: "16px", fontWeight: '600' , minWidth: "110px", maxWidth:"120px"}}
+                  style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
                   className="talentbutton hide col-3"
                   onClick={() => addToCartArtist(data1[search].id, data1[search].title)}
                 >
@@ -391,7 +392,7 @@ function SearchByArtist(props) {
                     </div>
                     : (
                       <div className="">
-                        <div className="cards_img">
+                        <div className="w-inline-block">
                           {/* <SliderShow
                           changeIndex={changeIndex}
                           settings={{
@@ -473,30 +474,25 @@ function SearchByArtist(props) {
                       </div>
                     </div>) : null
                     :
-                    <div className="cards_img my-2">
-                      {/* <SliderShow
-                        settings={{
-                          arrows: true,
-                          infinite: false,
-                          speed: 500,
-                          slidesToShow: data1[search].subListData.length > 18 ? 18 : 10,
-                          slidesToScroll: 2,
-                          variableWidth: true
-                        }}
-                      > */}
+                    <div className=" my-2">
+                      
                       {Object.keys(similarData).length > 0
                         ? Object.keys(similarData).map((key, i) => (
-
-                          <span> {/* <SliderItems
-                              col="thumb"
-                              src={similarData[key].mainImage}
-                            /> */}
-                            <img src={similarData[key].mainImage} width={"120vh"} height={"120vh"} style={{ margin: "3px 2px" }}></img>
-                          </span>
+                          <Link
+                            id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                            // data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                            to='#'
+                            className=" w-inline-block"
+                            style={{ position: "relative", height: "auto" ,marginBottom:"20px"}}
+                            >
+                            <img src={similarData[key].mainImage} className="card_img2" 
+                            style={{ margin: "3px 3px" ,width:'16vh', height:'16vh'}}></img>
+                            <p className="card_img_text3 pb-2 pt-1">
+                            {similarData[key].lastname} {similarData[key].firstname}</p>
+                          </Link>
                         ))
                         : "NO SIMILAR IMAGES FOUND"
                       }
-                      {/* </SliderShow> */}
 
                     </div>
                   // 
@@ -521,39 +517,35 @@ function SearchByArtist(props) {
                   windowSize.innerWidth < 479 ?
                     null :
                     (
-                      <div className="cards_img my-2">
-                        {/*  <SliderShow
-                          changeIndex={changeIndex}
-                          settings={{
-                            arrows: true,
-                            infinite: false,
-                            speed: 500,
-                            slidesToShow: data1[search].subListData.length > 18 ? 18 : 10,
-                            slidesToScroll: 2,
-                            variableWidth: true
-                          }}
-                        > */}
+                      <div className="w-inline-block my-2">
+                       
                         {Object.keys(dataViewed).length > 0
                           ? Object.keys(dataViewed).map((key, i) => (
-                            <span>
-                              {/* <SliderItems
-                                col="thumb"
-                                src={dataViewed[key].slideList[0]}
-                              /> */}
-                              <img src={dataViewed[key].slideList[0]} width={"120vh"} height={"120vh"} style={{ margin: "3px" ,cursor:"pointer"}}></img>
-                            </span>
+                            <Link
+                            id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                            // data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                            to='#'
+                            className=" w-inline-block"
+                            style={{ position: "relative", height: "auto" ,marginBottom:"20px"}}
+                            >
+                            <img src={dataViewed[key].slideList[0]} className="card_img2" 
+                            style={{ margin: "3px 3px" ,width:'16vh', height:'16vh'}}></img>
+                            {/* {console.log("Already Veiw",dataViewed[key].title)} */}
+                            <p className="card_img_text3 pb-2 pt-1">
+                            {dataViewed[key].title}
+                            </p>
+                          </Link>
+                            
                           ))
                           : ""
                         }
-
-                        {/*  </SliderShow> */}
 
                       </div>
                     ) /* : null */}
               </div>
             </div>
-            <div className="col-md-6 hide_detail">
-              <div className="" style={{marginTop:"18vh"}}>
+            <div className="col-md-5 hide_detail">
+              <div className="d-flex" style={{ marginTop: "18vh" }}>
 
 
                 {fullscreen.screen ? (
@@ -568,7 +560,7 @@ function SearchByArtist(props) {
                       changeIndex={changeIndex}
                       sliderIndex={sliderIndex}
                       settings={{
-                        arrows: true,
+                        arrows: false,
                         infinite: true,
                         speed: 500,
                         slidesToShow: 1,
@@ -627,7 +619,7 @@ function SearchByArtist(props) {
               </div>
 
               <div className="hide_detail mb-1 mt-2 pt-3">
-                <h4 className="mb-1" style={{ fontWeight: "500",fontSize:"22px" }}>{data1[search].title}</h4>
+                <h4 className="mb-1" style={{ fontWeight: "500", fontSize: "22px" }}>{data1[search].title}</h4>
                 <div
                   className="F large hide_detail pt-2 mt-1"
                   style={{
@@ -647,14 +639,14 @@ function SearchByArtist(props) {
                 }}>
                   <Link
                     to="#"
-                    style={{ fontSize: "16px", fontWeight: '600', minWidth: "60px", maxWidth:"70px"}}
+                    style={{ fontSize: "16px", fontWeight: '600', minWidth: "60px", maxWidth: "70px" }}
                     className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
                   >
                     CALL
                   </Link>
                   <Link
                     to="/contact"
-                    style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px" ,maxWidth:"120px"}}
+                    style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
                     className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
                   >
                     GET AN ESTIMATE
@@ -662,7 +654,7 @@ function SearchByArtist(props) {
                   <Link
                     data-w-id="e04f643e-f302-16e2-74ee-4bc7e85391d8"
                     to="#"
-                    style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth:"120px"}}
+                    style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
                     className="talentbutton hide col-3"
                     onClick={() => addToCartArtist(data1[search].id, data1[search].title)}
                   >
@@ -675,15 +667,15 @@ function SearchByArtist(props) {
 
 
           </>
-        ) : 
-        <div style={{ position: "absolute", top: "50%", left: "50%" }}>
-        <img
-          className="mb-3"
-          alt="loading"
-          src={loading}
-          style={{ width: "50px" }}
-        />
-      </div>
+        ) :
+          <div style={{ position: "absolute", top: "50%", left: "50%" }}>
+            <img
+              className="mb-3"
+              alt="loading"
+              src={loading}
+              style={{ width: "50px" }}
+            />
+          </div>
         }
       </div>
     </div>

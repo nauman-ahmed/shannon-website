@@ -277,6 +277,11 @@ a {
   transform: scale(1.5);
 }
 
+.card_img2:hover{
+  transition: 0.5s ease-in-out;
+  transform: scale(1.04);
+}
+
 .card_img_text{
   font-weight: 400;
   position: absolute;
@@ -302,6 +307,20 @@ a {
   height: 100%;
   top: 86%;
   left: 0;
+}
+.card_img_text3{
+  /* width: 120vh; */
+  font-weight: 400;
+  position: absolute;
+  z-index: 1;
+  text-align: center;
+  background-color: hsla(0, 0%, 100%, 0.67);
+  font-family: Robotocondensed, sans-serif;
+  font-size: 12px;
+   width: 100%;
+  height: fit-content;
+  top: 83%;
+  /* left: 0; */
 }
 .artistnamediv {
   position: absolute;
@@ -3985,7 +4004,7 @@ a {
 }
 
 .form-block-2 {
-  width: 32.6vh;
+  width: 34.6vh;
   min-width: 200px;
   height: 31px;
   margin-bottom: 0px;
@@ -4032,7 +4051,7 @@ a {
   margin-top: 0px;
   margin-left: 10px;
   color: #8a8a8a;
-  padding:8px 1.5vw;
+  padding:8px 1.7vw;
   border: 1px solid #979797;
   border-radius: 16px;
   font-family: 'Roboto Condensed', sans-serif;
