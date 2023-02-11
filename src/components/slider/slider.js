@@ -24,7 +24,7 @@ export const SliderShow=  (props) => {
     return(
         <Slider  className="slider"
         style={{
-          width: "width" in props ? props.width : "100%",
+          width: "width" in props ? props.width : "90%",
           height: "height" in props ? props.height : "100%",
         }}
         {...props.settings}

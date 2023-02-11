@@ -87,7 +87,7 @@ function Divisions(props) {
             <div >ALPHABETICAL A-Z</div>
           </a>
         </div>
-    <div className="_2cols">
+    <div className="_2cols2_">
       {props.children}
       <div
         id="w-node-_6f42e407-456f-5b2f-82e4-417072db3669-84f2d081"
@@ -131,7 +131,7 @@ function Divisions(props) {
           {artistImageDivisionDataSlice.loading ? (
             <div style={{ position: "absolute", top: "50%", left: "50%" }}>
               <img
-                className="mb-3"
+                className="mb-0"
                 alt="loading"
                 src={loading}
                 style={{ width: "50px" }}
@@ -144,14 +144,14 @@ function Divisions(props) {
                   <>
                     {item.ImageData.length > 0 ? (
                       <>
-                        <div className="d-flex">
-                          <h4 className="" style={{color:"#ce651e", fontWeight:"500",}}>
+                        <div className="d-flex mt-0 mb-2">
+                          <h5 className=" mt-0" style={{color:"#ce651e", fontWeight:"500", fontSize:"16.1px",display:'flex',whiteSpace:'nowrap'}}>
                             {
                               item.keyword == '3D Rendering' ? "CGI" 
                             :
                               item.keyword.toUpperCase()
                             } 
-                          </h4> <span style={{width:"100%", height:"1px", color:"#ce651e", border:"1px solid #ce651e", marginTop:"20px"}}></span>
+                          </h5> <span style={{width:"100%", height:"1px", color:"#ce651e", border:"1px solid #ce651e", marginTop:"10px"}}></span>
                         </div>
                         <div
                           id="w-node-f734ee66-0b58-4c14-e08b-49ceded015c9-84f2d081"
@@ -167,8 +167,8 @@ function Divisions(props) {
                                     key={key1}
                                     id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
                                     to={"/artists/" + item1.artistId._id}
-                                    className=" w-inline-block"
-                                    style={{ position: "relative", overflow: "hidden", height: "auto" }}
+                                    className="card_img w-inline-block"
+                                    style={{ position: "relative", overflow: "hidden", height: "14.5vw" }}
                                   >
                                     <img
                                       src={String(
@@ -176,8 +176,8 @@ function Divisions(props) {
                                       )}
                                       loading="lazy"
                                       alt=""
-                                      className="m-1 card_img"
-                                    style={{ width: "25.5vh", height: "25.5vh" }}
+                                      className=" "
+                                    style={{ width: "100%", height: "100%" }}
                                     />
                                   <p className="card_img_text2 pt-2">
                                   
@@ -219,14 +219,14 @@ function Divisions(props) {
                 <>
                   {item.ImageData.length > 0 ? (
                     <>
-                      <div className="d-flex">
-                          <h4 className="" style={{color:"#ce651e", fontWeight:"500",}}>
+                      <div className="d-flex mt-0 mb-2">
+                          <h5 className="mt-0" style={{color:"#ce651e", fontWeight:"500", fontSize:"16.1px",display:'flex',whiteSpace:'nowrap'}}>
                             {
                               item.keyword == '3D Rendering' ? "CGI" 
                             :
                               item.keyword.toUpperCase()
                             } 
-                          </h4> <span style={{width:"100%", height:"1px", color:"#ce651e", border:"1px solid #ce651e", marginTop:"20px"}}></span>
+                          </h5> <span style={{width:"100%", height:"1px", color:"#ce651e", border:"1px solid #ce651e", marginTop:"10px"}}></span>
                         </div>
                       <div
                         id="w-node-f734ee66-0b58-4c14-e08b-49ceded015c9-84f2d081"
@@ -241,15 +241,15 @@ function Divisions(props) {
                                   key={key1}
                                   id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
                                   to={"/artists/" + item1.artistId._id}
-                                  className=" w-inline-block"
-                                  style={{ position: "relative", overflow: "hidden", height: "auto" }}
+                                  className="card_img w-inline-block"
+                                  style={{ position: "relative", overflow: "hidden", height: "14.5vw"  }}
                                 >
                                   <img
                                     src={String(item1.mainImage[0].path)}
                                     loading="lazy"
                                     alt=""
-                                    className="m-1 card_img"
-                                    style={{ width: "25.5vh", height: "25.5vh" }}
+                                    className=" "
+                                    style={{ width: "100%", height: "100%" }}
                                   />
                                   <p className="card_img_text2 pt-2">
                                       {item1.artistId.lastname}{" "}
