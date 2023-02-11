@@ -410,8 +410,8 @@ function SearchByArtist(props) {
                         > */}
                             {
                               data1[search].subListData.map((item, keys) => (
-                                <span className="" onClick={() => { setSliderIndex(keys) }}>
-                                  <img src={item} className="" height={"142vh"} width={"137vw"} style={{ margin: "3px .43vw 3px 0vw" }}></img>
+                                <span className=" " onClick={() => { setSliderIndex(keys) }}>
+                                  <img src={item} className="" height={"140vh"} width={"130vw"} style={{ margin: "3px .43vw 3px 0vw", }}></img>
                                 </span>
                               ))
                             }
