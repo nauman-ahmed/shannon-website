@@ -225,12 +225,14 @@ function Artists(props) {
                       id="w-node-a284be2a-4b91-3177-03eb-6614b2487a29-4bf2d022"
                       to="#"
                       className="banner _2 v2 w-inline-block"
+                      
                     >
-                      <div className="bannerletters _5 v2"></div>
+                      <div className="bannerletters _5 v2" style={{textAlign:"center"}}></div>
                       <div
                         id="w-node-a284be2a-4b91-3177-03eb-6614b24879ec-4bf2d022"
                         className="bannerhome _1 v2"
                         style={{
+                          marginLeft:'10px',
                           backgroundImage:
                             "url(" +
                             setImageRoute(
@@ -248,8 +250,9 @@ function Artists(props) {
                       <div className="bannerletters _6 v2"></div>
                       <div
                         id="w-node-a284be2a-4b91-3177-03eb-6614b24879ec-4bf2d022"
-                        className="bannerhome _1 v2"
+                        className="bannerhome _1 v2 w-100"
                         style={{
+                          marginLeft:'6px',
                           backgroundImage:
                             "url(" +
                             setImageRoute(

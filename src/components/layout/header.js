@@ -25,7 +25,7 @@ function Header(props) {
                 src={images + "/Frame.svg"}
                 loading="lazy"
                 alt=""
-                className="logov2"
+                className=" logov2"
               />
             </Link>
             <nav role="navigation" className="navmenu w-nav-menu">

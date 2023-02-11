@@ -67,7 +67,7 @@ function SearchByArtist(props) {
     let tempData = localStorage.getItem("artistViewed");
 
     tempData = JSON.parse(tempData);
-    console.log(key, _id, firstname, bio, listData, subListData,tempData)
+    console.log(key, _id, firstname, bio, listData, subListData, tempData)
     if (tempData === null) {
       tempData = {};
       tempData[key] = {
@@ -97,19 +97,19 @@ function SearchByArtist(props) {
   }
 
   const getUserData = async () => {
-    console.log("SEARCH",search)
-    let tempData = await artistImageDetailedSliceData({"artistId": search})
-    
+    console.log("SEARCH", search)
+    let tempData = await artistImageDetailedSliceData({ "artistId": search })
+
     console.log(tempData.activeArtist)
 
     dataLocalArtist(
-                  tempData.activeArtist[search].id,
-                  tempData.activeArtist[search].id,
-                  tempData.activeArtist[search].firstname + " " + tempData.activeArtist[search].lastname,
-                  tempData.activeArtist[search].detail,
-                  tempData.activeArtist[search].slideList,
-                  tempData.activeArtist[search].subListData
-                );
+      tempData.activeArtist[search].id,
+      tempData.activeArtist[search].id,
+      tempData.activeArtist[search].firstname + " " + tempData.activeArtist[search].lastname,
+      tempData.activeArtist[search].detail,
+      tempData.activeArtist[search].slideList,
+      tempData.activeArtist[search].subListData
+    );
 
     setSimilarData(tempData.similarArtist);
     setData1(tempData.activeArtist);
@@ -269,9 +269,9 @@ function SearchByArtist(props) {
         fullscreen={fullscreen}
       />)
   }
- 
+
   if (data1 !== null) {
-    
+
     if (Object.keys(data1).find(element => element == search) == undefined) {
       return (
         <div>
@@ -286,12 +286,14 @@ function SearchByArtist(props) {
       {/* <Navbar></Navbar> */}
       <div className="row mt-0 pt-0" style={{
         maxWidth: "100%",
+        justifyContent: "center"
       }}>
         {data1 !== null ? (
           <>
-            <div className="col-md-6 mt-2 pt-1">
-              <h2 className="h2talent">{data1[search].title}</h2>
-              {/* <div
+            <div className=" mt-2 pt-1 left_content">
+              <div >
+                <h2 className="h2talent">{data1[search].title}</h2>
+                {/* <div
               className="talentp large d-block hide_detail"
               style={{
                 fontSize: "16px",
@@ -301,100 +303,100 @@ function SearchByArtist(props) {
               <div dangerouslySetInnerHTML={{ __html: data1[search].detail }}>
               </div>
             </div> */}
-              <div className="talenttext" style={{ marginBottom: 5 }}>Want to commission this artist?</div>
-              <div className="d-flex">
-                <Link
-                  to="#"
-                  style={{ fontSize: "16px", fontWeight: '600' , minWidth: "60px", maxWidth:"70px"}}
-                  className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
-                >
-                  CALL
-                </Link>
-                <Link
-                  to="/contact"
-                  style={{ fontSize: "16px", fontWeight: '600' , minWidth: "110px", maxWidth:"120px"}}
-                  className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
-                >
-                  GET AN ESTIMATE
-                </Link>
-                <Link
-                  data-w-id="e04f643e-f302-16e2-74ee-4bc7e85391d8"
-                  to="#"
-                  style={{ fontSize: "16px", fontWeight: '600' , minWidth: "110px", maxWidth:"120px"}}
-                  className="talentbutton hide col-3"
-                  onClick={() => addToCartArtist(data1[search].id, data1[search].title)}
-                >
-                  ADD TO MY LIST
-                </Link>
-              </div>
-              <div
-                data-current="Tab 3"
-                data-easing="ease"
-                data-duration-in="300"
-                data-duration-out="100"
-                className="w-tabs"
-              >{windowSize.innerWidth < 479 ?
-                <div className="tabs-menu w-tab-menu">
-                  <div
-                    onClick={() => setTab(0)}
-                    className={
-                      "tabs py-2 w-inline-block w-tab-link flex_center " +
-                      (tab === 0 ? "bg-white text-black flex_center" : null)
-                    }
+                {/* <div className="talenttext" style={{ marginBottom: 5 }}>Want to commission this artist?</div> */}
+                <div className="d-flex">
+                  <Link
+                    to="#"
+                    style={{ fontSize: "16px", fontWeight: '600', minWidth: "60px", maxWidth: "70px" }}
+                    className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
                   >
-                    <div style={{ fontWeight: '600' }}>PORTFOLIO</div>
-                  </div>
-                  <div
-                    onClick={() => setTab(1)}
-                    className={
-                      "tabs py-2 w-inline-block w-tab-link " +
-                      (tab === 1 ? "bg-white  text-black" : null)
-                    }
+                    CALL
+                  </Link>
+                  <Link
+                    to="/contact"
+                    style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
+                    className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
                   >
-                    <div style={{ fontWeight: '600' }}>SIMILAR ILLUSTRATORS</div>
-                  </div>
-
+                    GET AN ESTIMATE
+                  </Link>
+                  <Link
+                    data-w-id="e04f643e-f302-16e2-74ee-4bc7e85391d8"
+                    to="#"
+                    style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
+                    className="talentbutton hide col-3"
+                    onClick={() => addToCartArtist(data1[search].id, data1[search].title)}
+                  >
+                    ADD TO MY LIST
+                  </Link>
                 </div>
-                : null}
-
-
-                {tab === 0 ?
-                  windowSize.innerWidth < 479 ?
-                    <div>
-                      <div
-                        className="imagecont"
-                        style={{ marginTop: 10 }}
-                      >
-                        {data1[search].subListData.map((item, keys) =>
-                          keys < artistImages ?
-                            <div className="talentthumbslide resp">
-                              <img
-                                src={item}
-                                loading="lazy"
-                                alt=""
-                                className="image"
-                              />
-                            </div> : null
-                        )
-                        }
-                      </div>
-                      <div style={{ textAlign: "center", margin: "10px", marginTop: 25 }}>
-                        <Link
-                          to="#"
-                          style={{ fontSize: "16px" }}
-                          className="talentbuttonArtistSearch col-3 mr-1"
-                          onClick={() => setArtistImages(artistImages + 8)}
-                        >
-                          See More
-                        </Link>
-                      </div>
+                <div
+                  data-current="Tab 3"
+                  data-easing="ease"
+                  data-duration-in="300"
+                  data-duration-out="100"
+                  className="w-tabs"
+                >{windowSize.innerWidth < 479 ?
+                  <div className="tabs-menu w-tab-menu">
+                    <div
+                      onClick={() => setTab(0)}
+                      className={
+                        "tabs py-2 w-inline-block w-tab-link flex_center " +
+                        (tab === 0 ? "bg-white text-black flex_center" : null)
+                      }
+                    >
+                      <div style={{ fontWeight: '600' }}>PORTFOLIO</div>
                     </div>
-                    : (
-                      <div className="">
-                        
-                        <div className="parent">
+                    <div
+                      onClick={() => setTab(1)}
+                      className={
+                        "tabs py-2 w-inline-block w-tab-link " +
+                        (tab === 1 ? "bg-white  text-black" : null)
+                      }
+                    >
+                      <div style={{ fontWeight: '600' }}>SIMILAR ILLUSTRATORS</div>
+                    </div>
 
-                          {/* <SliderShow
+                  </div>
+                  : null}
+
+
+                  {tab === 0 ?
+                    windowSize.innerWidth < 479 ?
+                      <div>
+                        <div
+                          className="imagecont"
+                          style={{ marginTop: 10 }}
+                        >
+                          {data1[search].subListData.map((item, keys) =>
+                            keys < artistImages ?
+                              <div className="talentthumbslide resp">
+                                <img
+                                  src={item}
+                                  loading="lazy"
+                                  alt=""
+                                  className="image"
+                                />
+                              </div> : null
+                          )
+                          }
+                        </div>
+                        <div style={{ textAlign: "center", margin: "10px", marginTop: 25 }}>
+                          <Link
+                            to="#"
+                            style={{ fontSize: "16px" }}
+                            className="talentbuttonArtistSearch col-3 mr-1"
+                            onClick={() => setArtistImages(artistImages + 8)}
+                          >
+                            See More
+                          </Link>
+                        </div>
+                      </div>
+                      : (
+                        <div className="">
+
+                          <div className="w-inline-block ">
+
+                            {/* <SliderShow
                           changeIndex={changeIndex}
                           settings={{
                             arrows: true,
@@ -406,157 +408,169 @@ function SearchByArtist(props) {
                           }}
                           thumbNail="true"
                         > */}
-                          {
-                            data1[search].subListData.map((item, keys) => (
-                                <div className="child" onClick={() => { setSliderIndex(keys) }}>
-                                <img src={item} className="" height={"120vh"} width={"120vh"}></img>
-                                </div>
-                            ))
-                          }
+                            {
+                              data1[search].subListData.map((item, keys) => (
+                                <span className="" onClick={() => { setSliderIndex(keys) }}>
+                                  <img src={item} className="" height={"142vh"} width={"137vw"} style={{ margin: "3px .43vw 3px 0vw" }}></img>
+                                </span>
+                              ))
+                            }
 
-                          {/* </SliderShow> */}
+                            {/* </SliderShow> */}
+                          </div>
                         </div>
-                      </div>
-                    ) : null}
-                {windowSize.innerWidth > 479 ?
-                  <div>
-                    <div style={{
-                      fontWeight: '600',
-                      backgroundColor: "#ce651e",
-                      fontSize: "18px",
-                      color: "#fff",
-                      paddingLeft: "20px",
-                      marginTop: '8vh',
-                      marginBottom: "3vh",
+                      ) : null}
+                  {windowSize.innerWidth > 479 ?
+                    <div>
+                      <div style={{
+                        width: "95%",
+                        fontWeight: '600',
+                        backgroundColor: "#ce651e",
+                        fontSize: "18px",
+                        color: "#fff",
+                        paddingLeft: "20px",
+                        marginTop: '8vh',
+                        marginBottom: "3vh",
+                        paddingTop: "6px",
+                        paddingBottom: "6px",
+                      }} className=" ">
+                        SIMILAR ARTIST</div>
+                    </div> : null
+                  }
 
-                    }} className="py-2 ">
-                      SIMILAR ARTIST</div>
-                  </div> : null
-                }
-
-                {
-                  // 
-                  windowSize.innerWidth < 479 ?
-                    tab === 1 ? (<div>
-                      <div
-                        className="imagecont"
-                        style={{ marginTop: 10 }}
-                      >
-                        {Object.keys(similarData).length > 0 ?
-                          Object.keys(similarData).map((key, i) =>
-                            i < artistSimilar ?
-                              <div className="talentthumbslide resp">
-                                <img
-                                  src={similarData[key].mainImage}
-                                  loading="lazy"
-                                  alt=""
-                                  className="image"
-                                />
-                              </div>
-                              : null
-                          )
-                          : "NO SIMILAR IMAGES FOUND"
-                        }
-                      </div>
-                      <div style={{ textAlign: "center", margin: "10px" }}>
-                        <Link
-                          to="#"
-                          style={{ fontSize: "16px" }}
-                          className="talentbuttonArtistSearch col-3 mr-1"
-                          onClick={() => setArtistSimilar(artistSimilar + 8)}
+                  {
+                    // 
+                    windowSize.innerWidth < 479 ?
+                      tab === 1 ? (<div>
+                        <div
+                          className="imagecont"
+                          style={{ marginTop: 10 }}
                         >
-                          See More
-                        </Link>
-                      </div>
-                    </div>) : null
-                    :
-                    <div className="parent1 my-2">
-                      {Object.keys(similarData).length > 0
-                        ? Object.keys(similarData).map((key, i) => (
+                          {Object.keys(similarData).length > 0 ?
+                            Object.keys(similarData).map((key, i) =>
+                              i < artistSimilar ?
+                                <div className="talentthumbslide resp">
+                                  <img
+                                    src={similarData[key].mainImage}
+                                    loading="lazy"
+                                    alt=""
+                                    className="image"
+                                  />
+                                </div>
+                                : null
+                            )
+                            : "NO SIMILAR IMAGES FOUND"
+                          }
+                        </div>
+                        <div style={{ textAlign: "center", margin: "10px" }}>
+                          <Link
+                            to="#"
+                            style={{ fontSize: "16px" }}
+                            className="talentbuttonArtistSearch col-3 mr-1"
+                            onClick={() => setArtistSimilar(artistSimilar + 8)}
+                          >
+                            See More
+                          </Link>
+                        </div>
+                      </div>) : null
+                      :
+                      <div className=" my-2">
+                        {Object.keys(similarData).length > 0
+                          ? Object.keys(similarData).map((key, i) => (
                             <Link
                               id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                               data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                              className="artistcard w-inline-block"
+                              className=" w-inline-block"
+                              style={{ position: "relative", height: "auto", marginBottom: "20px" }}
                               to={"/artists/" + key}
                             >
-                            <img
-                              src={String(similarData[key].mainImage)}
-                              loading="lazy"
-                              alt=""
-                              className="image" 
-                            />
-                            <div className="artistnamediv">
+                              <img
+                                src={String(similarData[key].mainImage)}
+                                loading="lazy"
+                                alt=""
+                                className="card_img2"
+                                style={{ margin: "3px .7vw 3px 0vw", height: '22.9vh' }}
+                              />
+                              <p className="card_img_text3 pb-3 pt-1">
+                                {similarData[key].lastname} {similarData[key].firstname}</p>
+                              {/* <div className="artistnamediv">
                               <div className="artistnametext-v3">
                                 {similarData[key].lastname} {similarData[key].firstname}
                               </div>
-                            </div>
-                          </Link>
-                        ))
-                        : "NO SIMILAR IMAGES FOUND"
-                      }
-                      {/* </SliderShow> */}
+                            </div> */}
+                            </Link>
+                          ))
+                          : "NO SIMILAR IMAGES FOUND"
+                        }
 
-                    </div>
-                  // 
-                }
-                {windowSize.innerWidth > 479 ?
-                  <div>
-                    <div style={{
-                      fontWeight: '600',
-                      backgroundColor: "#ce651e",
-                      fontSize: "18px",
-                      color: "#fff",
-                      paddingLeft: "20px",
-                      marginTop: '8vh',
-                      marginBottom: "3vh",
+                      </div>
+                    // 
+                  }
+                  {windowSize.innerWidth > 479 ?
+                    <div>
+                      <div style={{
+                        width: "95%",
+                        fontWeight: '600',
+                        backgroundColor: "#ce651e",
+                        fontSize: "18px",
+                        color: "#fff",
+                        paddingLeft: "20px",
+                        marginTop: '8vh',
+                        marginBottom: "3vh",
 
-                    }} className="py-2 ">ALREADY VIEWED</div>
-                  </div> : null
+                      }} className="py-2 ">ALREADY VIEWED</div>
+                    </div> : null
 
-                }
+                  }
 
-                {/* tab === 2 ? */
-                  windowSize.innerWidth < 479 ?
-                    null :
-                    (
-                    <div className="parent1 my-2">
-                        {Object.keys(dataViewed).length > 0
-                          ? Object.keys(dataViewed).map((key, i) => (
-                            <span>
-  
-                              {/* <img src={dataViewed[key].slideList[0]} width={"120vh"} height={"120vh"} style={{ margin: "3px" ,cursor:"pointer"}}></img> */}
-                              <Link
+                  {/* tab === 2 ? */
+                    windowSize.innerWidth < 479 ?
+                      null :
+                      (
+                        <div className=" my-2">
+                          {Object.keys(dataViewed).length > 0
+                            ? Object.keys(dataViewed).map((key, i) => (
+                              <span>
+
+                                {/* <img src={dataViewed[key].slideList[0]} width={"120vh"} height={"120vh"} style={{ margin: "3px" ,cursor:"pointer"}}></img> */}
+                                <Link
                                   id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                                   data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                                  className="artistcard w-inline-block"
+                                  className=" w-inline-block"
                                   to={"/artists/" + key}
+                                  style={{ position: "relative", height: "auto", marginBottom: "20px" }}
+
                                 >
                                   <img
                                     src={String(dataViewed[key].slideList[0])}
                                     loading="lazy"
                                     alt=""
-                                    className="image" 
+                                    className="card_img2"
+                                    style={{ margin: "3px .7vw 3px 0vw",  height: '22.9vh', minHeight: '20.3vh' }}
                                   />
-                                  {console.log("NAU",key,i,dataViewed[key])}
-                                  <div className="artistnamediv">
+                                  {console.log("NAU", key, i, dataViewed[key])}
+                                  <p className="card_img_text3 pb-3 pt-1">
+                                    {dataViewed[key].title}
+                                  </p>
+                                  {/* <div className="artistnamediv">
                                     <div className="artistnametext-v3">
                                      {dataViewed[key].title}
                                     </div>
-                                  </div>
+                                  </div> */}
                                 </Link>
-                            </span>
-                          ))
-                          : ""
-                        }
+                              </span>
+                            ))
+                            : ""
+                          }
 
-                        {/*  </SliderShow> */}
-
-                      </div>
-                    ) /* : null */}
+                        </div>
+                      ) /* : null */}
+                </div>
               </div>
+
             </div>
-            <div className="col-md-6 hide_detail">
-              <div className="" style={{marginTop:"18vh"}}>
+            <div className=" hide_detail right_content">
+              <div className="d-flex " style={{ marginTop: "17%", justifyContent: 'center' }}>
 
 
                 {fullscreen.screen ? (
@@ -571,7 +585,7 @@ function SearchByArtist(props) {
                       changeIndex={changeIndex}
                       sliderIndex={sliderIndex}
                       settings={{
-                        arrows: true,
+                        arrows: false,
                         infinite: true,
                         speed: 500,
                         slidesToShow: 1,
@@ -630,7 +644,7 @@ function SearchByArtist(props) {
               </div>
 
               <div className="hide_detail mb-1 mt-2 pt-3">
-                <h4 className="mb-1" style={{ fontWeight: "500",fontSize:"22px" }}>{data1[search].title}</h4>
+                <h4 className="mb-1" style={{ fontWeight: "500", fontSize: "22px" }}>{data1[search].title}</h4>
                 <div
                   className="F large hide_detail pt-2 mt-1"
                   style={{
@@ -642,6 +656,7 @@ function SearchByArtist(props) {
                   <div dangerouslySetInnerHTML={{ __html: data1[search].detail }}>
 
                   </div>
+                  
                 </div>
 
                 <div className="d-flex" style={{
@@ -650,14 +665,14 @@ function SearchByArtist(props) {
                 }}>
                   <Link
                     to="#"
-                    style={{ fontSize: "16px", fontWeight: '600', minWidth: "60px", maxWidth:"70px"}}
+                    style={{ fontSize: "16px", fontWeight: '600', minWidth: "60px", maxWidth: "70px" }}
                     className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
                   >
                     CALL
                   </Link>
                   <Link
                     to="/contact"
-                    style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px" ,maxWidth:"120px"}}
+                    style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
                     className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
                   >
                     GET AN ESTIMATE
@@ -665,7 +680,7 @@ function SearchByArtist(props) {
                   <Link
                     data-w-id="e04f643e-f302-16e2-74ee-4bc7e85391d8"
                     to="#"
-                    style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth:"120px"}}
+                    style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
                     className="talentbutton hide col-3"
                     onClick={() => addToCartArtist(data1[search].id, data1[search].title)}
                   >
@@ -678,15 +693,15 @@ function SearchByArtist(props) {
 
 
           </>
-        ) : 
-        <div style={{ position: "absolute", top: "50%", left: "50%" }}>
-        <img
-          className="mb-3"
-          alt="loading"
-          src={loading}
-          style={{ width: "50px" }}
-        />
-      </div>
+        ) :
+          <div style={{ position: "absolute", top: "50%", left: "50%" }}>
+            <img
+              className="mb-3"
+              alt="loading"
+              src={loading}
+              style={{ width: "50px" }}
+            />
+          </div>
         }
       </div>
     </div>

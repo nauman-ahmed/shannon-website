@@ -63,7 +63,7 @@ function MOTION(props) {
             <div>ALPHABETICAL A-Z</div>
           </a>
         </div>
-    <div className="_2cols" style={{clear:'both'}}>
+    <div className="_2cols2_" style={{clear:'both'}}>
     {props.children}
     <div id="w-node-_4a165d69-02be-f2c1-10f5-69fa4946403e-576fcec6" className="divisionscolumn">
       <div id="w-node-_4a165d69-02be-f2c1-10f5-69fa4946403f-576fcec6" className="divisioncontainer">

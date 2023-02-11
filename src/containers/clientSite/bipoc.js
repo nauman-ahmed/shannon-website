@@ -257,7 +257,7 @@ function Bipoc() {
   return (
     <>
       <h1 className="newsh2 hide" >BLACK + INDIGENOUS + PEOPLE OF COLOR</h1>
-      <div className="bipoc2cols mt-5 pt-3">
+      <div className="bipoc2cols " style={{marginTop:"39px"}}>
         <Link
           id="w-node-d7c7bef6-bf4c-3929-b7f7-7a0cd0fdac21-58f2d07a"
           to="#"
@@ -275,7 +275,7 @@ function Bipoc() {
         </Link>
         <div
           id="w-node-_85a7ddb0-1565-6609-f698-06fa7db97dd9-58f2d07a"
-          className="bipocinfo"
+          className="bipocinfo ml-md-5 pl-md-5"
         >
           <h1 className="newsh2 h">BLACK + INDIGENOUS + PEOPLE OF COLOR</h1>
           <p className="paragraph">
@@ -361,8 +361,8 @@ function Bipoc() {
                     to={"/artists/" + val.artistData.firstname}
                     className="bipocLink"
                   >
-                    <div className=" justify-content-center w-inline-block" style={{ position: "relative", height: "auto", overflow: "hidden" }}>
-                      <img src={val.ImageData[0].subImage[1].path} val={val} className="card_img m-1"></img>
+                    <div className=" justify-content-center w-inline-block card_img2" style={{ position: "relative", overflow: "hidden" ,width:"20vh", height:"20vh"}}>
+                      <img src={val.ImageData[0].subImage[1].path} val={val} className=" m-2" style={{width:"100%", height:"100%"}}></img>
                       <p className="p-1 card_img_text" >{val.artistData.lastname + " " + val.artistData.firstname}</p>
                     </div>
                   </Link>
@@ -452,8 +452,8 @@ function Bipoc() {
                     to={"/artists/" + val.artistData.firstname}
                     className="bipocLink"
                   >
-                    <div className=" justify-content-center w-inline-block" style={{ position: "relative", height: "auto", overflow: "hidden" }}>
-                      <img src={val.ImageData[0].subImage[1].path} val={val} className="card_img m-1"></img>
+                    <div className=" justify-content-center w-inline-block card_img2" style={{ position: "relative", overflow: "hidden" ,width:"20vh", height:"20vh"}}>
+                      <img src={val.ImageData[0].subImage[1].path} val={val} className=" m-2" style={{width:"100%", height:"100%"}}></img>
                       <p className="p-1 card_img_text" >{val.artistData.lastname + " " + val.artistData.firstname}</p>
                     </div>
 
@@ -511,8 +511,8 @@ function Bipoc() {
                     to={"/artists/" + val.artistData.firstname}
                     className="bipocLink"
                   >
-                    <div className=" justify-content-center w-inline-block" style={{ position: "relative", height: "auto", overflow: "hidden" }}>
-                      <img src={val.ImageData[0].subImage[1].path} val={val} className="card_img m-1"></img>
+                    <div className=" justify-content-center w-inline-block card_img2" style={{ position: "relative", overflow: "hidden" ,width:"20vh", height:"20vh"}}>
+                      <img src={val.ImageData[0].subImage[1].path} val={val} className=" m-2" style={{width:"100%", height:"100%"}}></img>
                       <p className="p-1 card_img_text" >{val.artistData.lastname + " " + val.artistData.firstname}</p>
                     </div>
                   </Link>
@@ -577,8 +577,8 @@ function Bipoc() {
                     to={"/artists/" + val.artistData.firstname}
                     className="bipocLink"
                   >
-                    <div className=" justify-content-center w-inline-block" style={{ position: "relative", height: "auto", overflow: "hidden" }}>
-                      <img src={val.ImageData[0].subImage[1].path} val={val} className="card_img m-1"></img>
+                    <div className=" justify-content-center w-inline-block card_img2" style={{ position: "relative", overflow: "hidden" ,width:"20vh", height:"20vh"}}>
+                      <img src={val.ImageData[0].subImage[1].path} val={val} className=" m-2" style={{width:"100%", height:"100%"}}></img>
                       <p className="p-1 card_img_text" >{val.artistData.lastname + " " + val.artistData.firstname}</p>
                     </div>
                   </Link>
@@ -651,8 +651,8 @@ function Bipoc() {
                     to={"/artists/" + val.artistData.firstname}
                     className="bipocLink"
                   >
-                    <div className=" justify-content-center w-inline-block" style={{ position: "relative", height: "auto", overflow: "hidden" }}>
-                      <img src={val.ImageData[0].subImage[1].path} val={val} className="card_img m-1"></img>
+                    <div className=" justify-content-center w-inline-block card_img2" style={{ position: "relative",height:"auto", overflow: "hidden" ,width:"20vh", height:"23vh"}}>
+                      <img src={val.ImageData[0].subImage[1].path} val={val} className=" m-2" style={{width:"100%", height:"100%"}}></img>
                       <p className="p-1 card_img_text" >{val.artistData.lastname + " " + val.artistData.firstname}</p>
                     </div>
                   </Link>
