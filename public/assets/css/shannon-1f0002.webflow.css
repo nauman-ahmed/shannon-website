@@ -300,12 +300,19 @@ a {
   }
 }
 .card_content{
-  max-height: 280px;
-  min-height: 250px;
-  max-width: 260px;
-  min-width: 250px;
+  max-height: 20vh;
+  min-height: 200px;
+  max-width: 12vw;
+  min-width: 200px;
   height: max-content;
   width: max-content;
+}
+
+.card_content2 {
+  display: grid;
+  grid-template-columns: repeat(5, 0.5fr);
+  grid-column-gap:7px;
+  grid-row-gap: 7px;
 }
 /* .card_img{
  height: 20vh;
@@ -464,10 +471,10 @@ a {
 }
 
 .menuinfo.v2 {
-  word-spacing: 3px;
+  word-spacing: 2px;
   line-height: 1px;
   /* font-size: 0.6vw; */
-  font-size: 10.5px;
+  font-size: 10px;
   color: #373530;
   margin-bottom: 6px;
 }
@@ -3314,7 +3321,9 @@ a {
 }
 
 .logov2 {
-  width: 60%;
+  /* width: 60%; */
+  width:18.7vw;
+  margin-bottom: 8px;
   margin-top: 14px;
   margin-left: 3px;
 }
@@ -4049,14 +4058,23 @@ a {
 }
 
 .form-block-2 {
-  width: 17vw;
+  /* width: 17vw;
   min-width: 200px;
   height: 4.4vh;
   min-height: 28px;
   margin-bottom: 0px;
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
-  align-self: flex-start;
+  align-self: flex-start; */
+  width: 17vw;
+    min-width: 200px;
+    height: 4.4vh;
+    min-height: 25px;
+    margin-bottom: 0px;
+    -webkit-align-self: flex-start;
+    -ms-flex-item-align: start;
+    align-self: flex-start;
+
 }
 
 .form-block-2.divisions {
@@ -4075,7 +4093,7 @@ a {
   bottom: 0%;
   width: 47px;
   height: 4.4vh;
-  min-height: 28px;
+  min-height: 27px;
   border-radius: 21px;
   background-image: url('../images/Frame_1.svg');
   background-position: 50% 50%;
@@ -4117,7 +4135,7 @@ a {
   margin-top: 0px;
   margin-left: 7px;
   color: #8a8a8a;
-  padding:9.6px 1.5vw;
+  padding:5.6px 2vw;
   border: 1px solid #979797;
   border-radius: 16px;
   font-family: 'Roboto Condensed', sans-serif;
@@ -4132,7 +4150,7 @@ a {
   margin-top: 0px;
   margin-left: 7px;
   color: #8a8a8a;
-  padding:9.6px 1.2vw;
+  padding:5.6px 1.2vw;
   border: 1px solid #979797;
   border-radius: 16px;
   font-family: 'Roboto Condensed', sans-serif;
@@ -4195,6 +4213,8 @@ a {
 
 .fullViewNavbar {
   display: block;
+  margin-top: 12px;
+
 }
 
 .mobileViewNavbar {
