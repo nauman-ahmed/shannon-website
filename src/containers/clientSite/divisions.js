@@ -179,11 +179,11 @@ function Divisions(props) {
                                       className="m-1 card_img"
                                     style={{ width: "25.5vh", height: "25.5vh" }}
                                     />
-                                  <p className="card_img_text2 pt-2">
+                                  <div className="artistnametext-v3">
                                   
                                         {item1.artistId.lastname}{" "}
                                         {item1.artistId.firstname}
-                                  </p>    
+                                  </div>    
                                   </Link>
                                 </>
                               ) : (
