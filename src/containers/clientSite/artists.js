@@ -69,7 +69,7 @@ function Artists(props) {
 
   return (
     <>
-    <div class="sortingcont right pt-0 mt-0 me-0 ">
+    <div class="sortingcont right pt-0  me-0 ">
           <a class="filter-button w-inline-block  mt-0" onClick={()=>filterChange("Default")}>
             <div >DEFAULT</div>
           </a>
