@@ -119,13 +119,13 @@ function Artists(props) {
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879ea-4bf2d022"
                     to="/bipoc"
-                    className="banner _1 v2 w-inline-block-banner"
+                    className="banner _1 v2 w-inline-block-banner2 "
                   >
                     <div 
                       className="bannerletters _1 v2"
                       style={{
                         backgroundImage: "url(" + images + "/BIPOC.png)",
-                        marginLeft: "-0.5vw",
+                        marginLeft: "0vw",
                         marginTop: "0.8vh",
                       }}
                     ></div>
@@ -151,7 +151,7 @@ function Artists(props) {
                     <Link
                       id="w-node-a284be2a-4b91-3177-03eb-6614b2487a29-4bf2d022"
                       to="http://18.191.86.110/#/"
-                      className="banner _2 v2 w-inline-block"
+                      className="banner _2 v2 w-inline-block-banner "
                     >
                       <div className="bannerletters _2 v2"></div>
                       <div
@@ -170,12 +170,12 @@ function Artists(props) {
                     <Link
                       id="w-node-a284be2a-4b91-3177-03eb-6614b2487a2c-4bf2d022"
                       to="medical.html"
-                      className="banner _3 v2 w-inline-block"
+                      className="banner _3 v2 w-inline-block-banner"
                     >
                       <div className="bannerletters _3 v2"></div>
                       <div
                         id="w-node-a284be2a-4b91-3177-03eb-6614b2487a2e-4bf2d022"
-                        className="bannerhome _3 v2"
+                        className="bannerhome _3 v2 "
                         style={{
                           backgroundImage:
                             "url(" +
@@ -224,7 +224,7 @@ function Artists(props) {
                     <Link
                       id="w-node-a284be2a-4b91-3177-03eb-6614b2487a29-4bf2d022"
                       to="#"
-                      className="banner _2 v2 w-inline-block"
+                      className="banner _2 v2 w-inline-block-banner"
                       
                     >
                       <div className="bannerletters _5 v2" style={{textAlign:"center"}}></div>
@@ -245,7 +245,7 @@ function Artists(props) {
                     <Link
                       id="w-node-a284be2a-4b91-3177-03eb-6614b2487a2c-4bf2d022"
                       to="#"
-                      className="banner _3 v2 w-inline-block"
+                      className="banner _3 v2 w-inline-block-banner"
                     >
                       <div className="bannerletters _6 v2"></div>
                       <div

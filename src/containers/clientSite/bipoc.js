@@ -304,7 +304,7 @@ function Bipoc() {
           </p>
         </div>
       </div>
-      <div className="bipoc2cols category" style={{ position: "relative" }}>
+      <div className="bipoc2cols category " style={{ position: "relative" }}>
         <div className="categoryinfo">
           <h2 className="newsh2 h" >BLACK ARTISTS</h2>
           <div className="w-dyn-list">
@@ -337,7 +337,8 @@ function Bipoc() {
             <h1 className="newsh2 hide">BLACK ARTISTS</h1>
           </div>
           {blackArtist ? (
-            <div className=" my-3" id={idBlack}>
+            <div className="mt-5 mb-3 detail_card3" id={idBlack} 
+            style={{paddingTop:"14px"}}>
               {/* <Slider 
                 disableAutoPlay 
                 controllEnabled="outside-dark"
@@ -361,8 +362,8 @@ function Bipoc() {
                     to={"/artists/" + val.artistData.firstname}
                     className="bipocLink"
                   >
-                    <div className=" justify-content-center w-inline-block card_img2" style={{ position: "relative", overflow: "hidden" ,width:"20vh", height:"20vh"}}>
-                      <img src={val.ImageData[0].subImage[1].path} val={val} className=" m-2" style={{width:"100%", height:"100%"}}></img>
+                    <div className=" card_img2 detail_card3_h" style={{ position: "relative",   overflow:"hidden",}}>
+                      <img src={val.ImageData[0].subImage[1].path} val={val} className="h-100 w-100" ></img>
                       <p className="p-1 card_img_text" >{val.artistData.lastname + " " + val.artistData.firstname}</p>
                     </div>
                   </Link>
@@ -430,7 +431,9 @@ function Bipoc() {
             <h1 className="newsh2 hide">ASIAN ARTISTS</h1>
           </div>
           {asianArtist ? (
-            <div className=" my-3" id={idAsian}>
+            <div className="mt-5 mb-3 detail_card3" id={idAsian}
+            style={{paddingTop:"10px"}}
+            >
               {/* <Slider
                 disableAutoPlay
                 controllEnabled="outside-dark"
@@ -446,16 +449,18 @@ function Bipoc() {
                   //   src={val.ImageData[0].subImage[1].path}
                   //   val={val}
                   // />
+                  
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                     to={"/artists/" + val.artistData.firstname}
-                    className="bipocLink"
+                    className="bipocLink "
+                    
                   >
-                    <div className=" justify-content-center w-inline-block card_img2" style={{ position: "relative", overflow: "hidden" ,width:"20vh", height:"20vh"}}>
-                      <img src={val.ImageData[0].subImage[1].path} val={val} className=" m-2" style={{width:"100%", height:"100%"}}></img>
+                    <div className="card_img2 detail_card3_h" style={{ position: "relative",   overflow:"hidden"}}>
+                      <img src={val.ImageData[0].subImage[1].path} val={val} className=" w-100 h-100" ></img>
                       <p className="p-1 card_img_text" >{val.artistData.lastname + " " + val.artistData.firstname}</p>
-                    </div>
+                   </div>
 
                   </Link>
                 ) : null
@@ -497,7 +502,9 @@ function Bipoc() {
             <h1 className="newsh2 hide">LATINO/LATINA ARTISTS</h1>
           </div>
           {latinoArtist ? (
-            <div className=" my-3" id={idLatino}>
+            <div className="mt-5 mb-3 detail_card3" id={idLatino}
+            style={{paddingTop:"10px"}}>
+
               {/* <Slider
                 disableAutoPlay
                 controllEnabled="outside-dark"
@@ -511,8 +518,8 @@ function Bipoc() {
                     to={"/artists/" + val.artistData.firstname}
                     className="bipocLink"
                   >
-                    <div className=" justify-content-center w-inline-block card_img2" style={{ position: "relative", overflow: "hidden" ,width:"20vh", height:"20vh"}}>
-                      <img src={val.ImageData[0].subImage[1].path} val={val} className=" m-2" style={{width:"100%", height:"100%"}}></img>
+                    <div className="card_img2 detail_card3_h" style={{ position: "relative",   overflow:"hidden",}}>
+                      <img src={val.ImageData[0].subImage[1].path} val={val} className="w-100 h-100"></img>
                       <p className="p-1 card_img_text" >{val.artistData.lastname + " " + val.artistData.firstname}</p>
                     </div>
                   </Link>
@@ -563,7 +570,9 @@ function Bipoc() {
             <h1 className="newsh2 hide">CENTRAL ASIAN ARTISTS</h1>
           </div>
           {centralAsianArtist ? (
-            <div className=" my-3" id={idCentral}>
+            <div className="detail_card3 mt-5 mb-3" id={idCentral}
+            style={{paddingTop: '10px'}}
+            >
               {/* <Slider
                 disableAutoPlay
                 controllEnabled="outside-dark"
@@ -577,8 +586,8 @@ function Bipoc() {
                     to={"/artists/" + val.artistData.firstname}
                     className="bipocLink"
                   >
-                    <div className=" justify-content-center w-inline-block card_img2" style={{ position: "relative", overflow: "hidden" ,width:"20vh", height:"20vh"}}>
-                      <img src={val.ImageData[0].subImage[1].path} val={val} className=" m-2" style={{width:"100%", height:"100%"}}></img>
+                    <div className="card_img2 detail_card3_h" style={{ position: "relative",   overflow:"hidden",}}>
+                      <img src={val.ImageData[0].subImage[1].path} val={val} className="w-100 h-100"></img>
                       <p className="p-1 card_img_text" >{val.artistData.lastname + " " + val.artistData.firstname}</p>
                     </div>
                   </Link>
@@ -629,7 +638,9 @@ function Bipoc() {
             <h1 className="newsh2 hide">INDIGENOUS ARTISTS</h1>
           </div>
           {indegiousArtist ? (
-            <div className="my-3" id={idIndegious}>
+            <div className="mt-5 mb-3 detail_card3" id={idIndegious}
+            style={{paddingTop:"10px"}}>
+            
               {/* <Slider
                 disableAutoPlay
                 controllEnabled="outside-dark"
@@ -651,8 +662,8 @@ function Bipoc() {
                     to={"/artists/" + val.artistData.firstname}
                     className="bipocLink"
                   >
-                    <div className=" justify-content-center w-inline-block card_img2" style={{ position: "relative",height:"auto", overflow: "hidden" ,width:"20vh", height:"23vh"}}>
-                      <img src={val.ImageData[0].subImage[1].path} val={val} className=" m-2" style={{width:"100%", height:"100%"}}></img>
+                    <div className="card_img2 detail_card3_h" style={{ position: "relative",overflow: "hidden" }}>
+                      <img src={val.ImageData[0].subImage[1].path} val={val} className="w-100 h-100"></img>
                       <p className="p-1 card_img_text" >{val.artistData.lastname + " " + val.artistData.firstname}</p>
                     </div>
                   </Link>

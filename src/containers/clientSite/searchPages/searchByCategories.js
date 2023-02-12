@@ -148,18 +148,19 @@ function Categories(props) {
                     {item.ImageData.length > 0 ? (
                       <>
                         <div className="d-flex">
-                          <h4 className="" style={{ color: "#ce651e", fontWeight: "500", }}>
+                          <h4 className="" style={{color:"#ce651e",fontWeight:"500", fontSize:"16.1px" ,display:'flex',whiteSpace:'nowrap'}}>
                             {
                               item.keyword == '3D Rendering' ? "CGI"
                                 :
                                 item.keyword.toUpperCase()
                             }
-                          </h4> <div style={{ width: "90%", height: "1px", color: "#ce651e", border: "1px solid #ce651e", marginTop: "20px" }}></div>
+                          </h4> <div style={{ width: "100%", height: "1px", color: "#ce651e", border: "1px solid #ce651e", marginTop: "20px" }}></div>
 
                         </div>
                         <div
                           id="w-node-f734ee66-0b58-4c14-e08b-49ceded015c9-84f2d081"
-                          className=" divisions"
+                          className="detail_card3"
+                          // className=" divisions"
                         // style={{ paddingTop: "10px" }}
                         >
                           {item?.ImageData.map((item1, key1) => (
@@ -168,26 +169,25 @@ function Categories(props) {
                                 key={key1}
                                 id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
                                 to={"/artists/" + item1.artistId._id}
-                                className=" w-inline-block"
-                                style={{ position: "relative", overflow: "hidden", height: "auto" }}
-
-
+                                className=" card_img"
+                                // style={{ position: "relative", overflow: "hidden", height: "auto" }}
                               >
+                                <div className="detail_card4_h" style={{ position: "relative", overflow: "hidden" }}>
                                 <img
                                   src={String(
                                     item1?.mainImage[0]?.subImage[0]?.path
                                   )}
                                   loading="lazy"
                                   alt=""
-                                  className="card_img m-1"
-                                  style={{ width: "25.5vh", height: "25.5vh" }}
+                                  className="w-100 h-100"
+                                  // style={{ width: "25.5vh", height: "25.5vh" }}
 
                                 />
                                 <p className="card_img_text2 pt-2">
                                   {item1.artistId.lastname}{" "}
                                   {item1.artistId.firstname}
 
-                                </p>
+                                </p></div>
                               </Link>
                             </>
                           ))}
@@ -214,7 +214,7 @@ function Categories(props) {
                   {item.ImageData.length > 0 ? (
                     <>
                       <div className="d-flex">
-                        <h4 className="" style={{ color: "#ce651e", fontWeight: "500", }}>
+                        <h4 className="" style={{color:"#ce651e",fontWeight:"500", fontSize:"16.1px" ,display:'flex',whiteSpace:'nowrap'}}>
                           {
                             item.keyword == '3D Rendering' ? "CGI"
                               :

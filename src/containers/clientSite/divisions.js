@@ -7,8 +7,7 @@ import { artistDivision } from "../../redux/artistImageDivisionDataSlice";
 import loading from "../../assets/loading.gif";
 
 const images = window.location.origin + "/assets/images";
- 
-function Divisions(props) {
+ function Divisions(props) {
 
   const [tempArtist,setTempArtist]= useState([]);
   const [filterCond,setFilterCond]= useState(true);
@@ -155,7 +154,7 @@ function Divisions(props) {
                         </div>
                         <div
                           id="w-node-f734ee66-0b58-4c14-e08b-49ceded015c9-84f2d081"
-                          className="parent2"
+                          className="detail_card3 "
                           // style={{ paddingTop: "10px" }}
                         >
                           {item?.ImageData.map((item1, key1) => (
@@ -167,23 +166,24 @@ function Divisions(props) {
                                     key={key1}
                                     id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
                                     to={"/artists/" + item1.artistId._id}
-                                    className="card_img w-inline-block"
-                                    style={{ position: "relative", overflow: "hidden", height: "14.5vw" }}
+                                    className="card_img  "
+                                    
                                   >
+                                    <div className="detail_card4_h" style={{ position: "relative", overflow: "hidden" }}>
                                     <img
                                       src={String(
                                         item1?.mainImage[0]?.subImage[0]?.path
                                       )}
                                       loading="lazy"
                                       alt=""
-                                      className=" "
-                                    style={{ width: "100%", height: "100%" }}
+                                      className="w-100 h-100  "
+                                    // style={{ width: "100%", height: "100%" }}
                                     />
                                   <p className="card_img_text2 pt-2">
                                   
                                         {item1.artistId.lastname}{" "}
                                         {item1.artistId.firstname}
-                                  </p>    
+                                  </p>    </div>
                                   </Link>
                                 </>
                               ) : (
@@ -230,7 +230,7 @@ function Divisions(props) {
                         </div>
                       <div
                         id="w-node-f734ee66-0b58-4c14-e08b-49ceded015c9-84f2d081"
-                        className=""
+                        className="detail_card3"
                         // style={{ paddingTop: "10px" }}
                       >
                         {item.ImageData.map((item1, key1) => (
@@ -241,9 +241,10 @@ function Divisions(props) {
                                   key={key1}
                                   id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
                                   to={"/artists/" + item1.artistId._id}
-                                  className="card_img w-inline-block"
-                                  style={{ position: "relative", overflow: "hidden", height: "14.5vw"  }}
+                                  className="card_img "
+                                  
                                 >
+                                      <div className="detail_card4_h" style={{ position: "relative", overflow: "hidden" }}>
                                   <img
                                     src={String(item1.mainImage[0].path)}
                                     loading="lazy"
@@ -254,7 +255,7 @@ function Divisions(props) {
                                   <p className="card_img_text2 pt-2">
                                       {item1.artistId.lastname}{" "}
                                       {item1.artistId.firstname}</p>
-                                  
+                                  </div>
                                 </Link>
                               </>
                             ) : (

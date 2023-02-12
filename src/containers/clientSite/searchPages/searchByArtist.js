@@ -394,7 +394,7 @@ function SearchByArtist(props) {
                       : (
                         <div className="">
 
-                          <div className="w-inline-block ">
+                          <div className="detail_card w-inline-block ">
 
                             {/* <SliderShow
                           changeIndex={changeIndex}
@@ -411,7 +411,9 @@ function SearchByArtist(props) {
                             {
                               data1[search].subListData.map((item, keys) => (
                                 <span className=" " onClick={() => { setSliderIndex(keys) }}>
-                                  <img src={item} className="" height={"140vh"} width={"130vw"} style={{ margin: "3px .43vw 3px 0vw", }}></img>
+                                  <img src={item} className="w-100"
+                                  // style={{ margin: "3px .43vw 3px 0vw"}}
+                                  ></img>
                                 </span>
                               ))
                             }
@@ -423,7 +425,7 @@ function SearchByArtist(props) {
                   {windowSize.innerWidth > 479 ?
                     <div>
                       <div style={{
-                        width: "95%",
+                        width: "100%",
                         fontWeight: '600',
                         backgroundColor: "#ce651e",
                         fontSize: "18px",
@@ -474,30 +476,27 @@ function SearchByArtist(props) {
                         </div>
                       </div>) : null
                       :
-                      <div className=" my-2">
+                      <div className="detail_card2 my-2">
                         {Object.keys(similarData).length > 0
                           ? Object.keys(similarData).map((key, i) => (
                             <Link
                               id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                               data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                              className=" w-inline-block"
-                              style={{ position: "relative", height: "auto", marginBottom: "20px" }}
+                              className="card_img3"
+                              // style={{ position: "relative" }}
                               to={"/artists/" + key}
                             >
-                              <img
-                                src={String(similarData[key].mainImage)}
-                                loading="lazy"
-                                alt=""
-                                className="card_img2"
-                                style={{ margin: "3px .7vw 3px 0vw", height: '22.9vh' }}
-                              />
-                              <p className="card_img_text3 pb-3 pt-1">
-                                {similarData[key].lastname} {similarData[key].firstname}</p>
-                              {/* <div className="artistnamediv">
-                              <div className="artistnametext-v3">
-                                {similarData[key].lastname} {similarData[key].firstname}
+                              <div className="" style={{ position: "relative", overflow: "hidden" }}>
+                                <img
+                                  src={String(similarData[key].mainImage)}
+                                  loading="lazy"
+                                  alt=""
+                                  className="w-100"
+                                // style={{ margin: "3px .7vw 3px 0vw", height: '22.9vh' }}
+                                />
+                                <p className="card_img_text3 pb-3 pt-1">
+                                  {similarData[key].lastname} {similarData[key].firstname}</p>
                               </div>
-                            </div> */}
                             </Link>
                           ))
                           : "NO SIMILAR IMAGES FOUND"
@@ -509,7 +508,7 @@ function SearchByArtist(props) {
                   {windowSize.innerWidth > 479 ?
                     <div>
                       <div style={{
-                        width: "95%",
+                        width: "100%",
                         fontWeight: '600',
                         backgroundColor: "#ce651e",
                         fontSize: "18px",
@@ -527,38 +526,36 @@ function SearchByArtist(props) {
                     windowSize.innerWidth < 479 ?
                       null :
                       (
-                        <div className=" my-2">
+                        <div className="detail_card2 my-2">
+                          {/* <img src={dataViewed[key].slideList[0]} width={"120vh"} height={"120vh"} style={{ margin: "3px" ,cursor:"pointer"}}></img> */}
+
                           {Object.keys(dataViewed).length > 0
                             ? Object.keys(dataViewed).map((key, i) => (
-                              <span>
 
-                                {/* <img src={dataViewed[key].slideList[0]} width={"120vh"} height={"120vh"} style={{ margin: "3px" ,cursor:"pointer"}}></img> */}
-                                <Link
-                                  id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
-                                  data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                                  className=" w-inline-block"
-                                  to={"/artists/" + key}
-                                  style={{ position: "relative", height: "auto", marginBottom: "20px" }}
 
-                                >
+                              <Link
+                                id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                                data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                                className="card_img3"
+                                to={"/artists/" + key}
+                              // style={{ position: "relative" }} 
+                              >
+                                <div className="" style={{ position: "relative", overflow: "hidden" }}>
+
                                   <img
                                     src={String(dataViewed[key].slideList[0])}
                                     loading="lazy"
                                     alt=""
-                                    className="card_img2"
-                                    style={{ margin: "3px .7vw 3px 0vw",  height: '22.9vh', minHeight: '20.3vh' }}
+                                    className="w-100"
+                                  // style={{ margin: "3px .7vw 3px 0vw",  height: '22.9vh', minHeight: '20.3vh' }}
                                   />
                                   {console.log("NAU", key, i, dataViewed[key])}
                                   <p className="card_img_text3 pb-3 pt-1">
                                     {dataViewed[key].title}
                                   </p>
-                                  {/* <div className="artistnamediv">
-                                    <div className="artistnametext-v3">
-                                     {dataViewed[key].title}
-                                    </div>
-                                  </div> */}
-                                </Link>
-                              </span>
+                                </div>
+                              </Link>
+
                             ))
                             : ""
                           }
@@ -570,122 +567,124 @@ function SearchByArtist(props) {
 
             </div>
             <div className=" hide_detail right_content">
-              <div className="d-flex " style={{ marginTop: "17%", justifyContent: 'center' }}>
+              <div className="rightside">
+                <div className="d-flex" style={{ justifyContent: 'center' }}>
 
 
-                {fullscreen.screen ? (
-                  <FullScreenSliderItem
-                    onClick={setFullScreenHandler}
-                    currentData={data1[search]}
-                    fullscreen={fullscreen}
-                  />
-                ) : (
-                  <>
-                    <SliderShow
-                      changeIndex={changeIndex}
-                      sliderIndex={sliderIndex}
-                      settings={{
-                        arrows: false,
-                        infinite: true,
-                        speed: 500,
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                      }}
-                    >
-                      {
-                        data1[search].slideList.map((item, keys) => (
-                          <SliderItems
-                            key={keys}
-                            src={item}
-                            onClick={setFullScreenHandler}
+                  {fullscreen.screen ? (
+                    <FullScreenSliderItem
+                      onClick={setFullScreenHandler}
+                      currentData={data1[search]}
+                      fullscreen={fullscreen}
+                    />
+                  ) : (
+                    <>
+                      <SliderShow
+                        changeIndex={changeIndex}
+                        sliderIndex={sliderIndex}
+                        settings={{
+                          arrows: false,
+                          infinite: true,
+                          speed: 500,
+                          slidesToShow: 1,
+                          slidesToScroll: 1,
+                        }}
+                      >
+                        {
+                          data1[search].slideList.map((item, keys) => (
+                            <SliderItems
+                              key={keys}
+                              src={item}
+                              onClick={setFullScreenHandler}
 
-                          />
-                        ))
-                      }
+                            />
+                          ))
+                        }
 
-                    </SliderShow>
+                      </SliderShow>
 
-                  </>
+                    </>
 
-                  // <Slider 
-                  // controllEnabled 
-                  // interval={3000}
-                  // setSliderImages={setSliderImages}
-                  // sliderImages={sliderImages}
-                  // setSliderIndex={setSliderIndex}
-                  // images={data1[search].slideList}
-                  // sliderIndex={sliderIndex}
-                  // length={data1[search].slideList.length - 1}
-                  // show={true}
-                  // >
-                  //   {data1[search].slideList.map((item, keys) => (
-                  //     <>
-                  //       <SliderItem
-                  //       index={sliderImages}
-                  //       images={data1[search].slideList}
-                  //       onClick={setFullScreenHandler}
-                  //       key={keys}
-                  //       id={sliderIndex !== null ? sliderIndex : keys}
-                  //       // id={keys}
-                  //       fillMode="contain"
-                  //       src={sliderImages !== null ? sliderImages : item}
-                  //       // src={item}
-                  //       setSliderImages={setSliderImages}
-                  //       sliderImages={sliderImages}
-                  //       setSliderIndex={setSliderIndex}
-                  //       sliderIndex={sliderIndex}
-                  //       length={data1[search].slideList.length - 1}
-                  //     />
-                  //     </>
+                    // <Slider 
+                    // controllEnabled 
+                    // interval={3000}
+                    // setSliderImages={setSliderImages}
+                    // sliderImages={sliderImages}
+                    // setSliderIndex={setSliderIndex}
+                    // images={data1[search].slideList}
+                    // sliderIndex={sliderIndex}
+                    // length={data1[search].slideList.length - 1}
+                    // show={true}
+                    // >
+                    //   {data1[search].slideList.map((item, keys) => (
+                    //     <>
+                    //       <SliderItem
+                    //       index={sliderImages}
+                    //       images={data1[search].slideList}
+                    //       onClick={setFullScreenHandler}
+                    //       key={keys}
+                    //       id={sliderIndex !== null ? sliderIndex : keys}
+                    //       // id={keys}
+                    //       fillMode="contain"
+                    //       src={sliderImages !== null ? sliderImages : item}
+                    //       // src={item}
+                    //       setSliderImages={setSliderImages}
+                    //       sliderImages={sliderImages}
+                    //       setSliderIndex={setSliderIndex}
+                    //       sliderIndex={sliderIndex}
+                    //       length={data1[search].slideList.length - 1}
+                    //     />
+                    //     </>
 
-                  //   ))}
-                  // </Slider>
-                )}
-              </div>
-
-              <div className="hide_detail mb-1 mt-2 pt-3">
-                <h4 className="mb-1" style={{ fontWeight: "500", fontSize: "22px" }}>{data1[search].title}</h4>
-                <div
-                  className="F large hide_detail pt-2 mt-1"
-                  style={{
-                    fontSize: "14px",
-                    marginTop: "20px",
-                    lineHeight: "2"
-                  }}
-                >
-                  <div dangerouslySetInnerHTML={{ __html: data1[search].detail }}>
-
-                  </div>
-                  
+                    //   ))}
+                    // </Slider>
+                  )}
                 </div>
 
-                <div className="d-flex" style={{
-                  position: "relative",
-                  paddingTop: "10px",
-                }}>
-                  <Link
-                    to="#"
-                    style={{ fontSize: "16px", fontWeight: '600', minWidth: "60px", maxWidth: "70px" }}
-                    className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
+                <div className="hide_detail mb-1 mt-2 pt-3">
+                  <h4 className="mb-1" style={{ fontWeight: "500", fontSize: "22px" }}>{data1[search].title}</h4>
+                  <div
+                    className="F large hide_detail pt-2 mt-1"
+                    style={{
+                      fontSize: "14px",
+                      marginTop: "20px",
+                      lineHeight: "2"
+                    }}
                   >
-                    CALL
-                  </Link>
-                  <Link
-                    to="/contact"
-                    style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
-                    className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
-                  >
-                    GET AN ESTIMATE
-                  </Link>
-                  <Link
-                    data-w-id="e04f643e-f302-16e2-74ee-4bc7e85391d8"
-                    to="#"
-                    style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
-                    className="talentbutton hide col-3"
-                    onClick={() => addToCartArtist(data1[search].id, data1[search].title)}
-                  >
-                    ADD TO MY LIST
-                  </Link>
+                    <div dangerouslySetInnerHTML={{ __html: data1[search].detail }}>
+
+                    </div>
+
+                  </div>
+
+                  <div className="d-flex" style={{
+                    position: "relative",
+                    paddingTop: "10px",
+                  }}>
+                    <Link
+                      to="#"
+                      style={{ fontSize: "16px", fontWeight: '600', minWidth: "60px", maxWidth: "70px" }}
+                      className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
+                    >
+                      CALL
+                    </Link>
+                    <Link
+                      to="/contact"
+                      style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
+                      className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
+                    >
+                      GET AN ESTIMATE
+                    </Link>
+                    <Link
+                      data-w-id="e04f643e-f302-16e2-74ee-4bc7e85391d8"
+                      to="#"
+                      style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
+                      className="talentbutton hide col-3"
+                      onClick={() => addToCartArtist(data1[search].id, data1[search].title)}
+                    >
+                      ADD TO MY LIST
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

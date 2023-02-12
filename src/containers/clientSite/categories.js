@@ -157,7 +157,7 @@ function Categories(props) {
                       </div>
                       <div
                         id="w-node-f734ee66-0b58-4c14-e08b-49ceded015c9-84f2d081"
-                        className="parent2"
+                        className="detail_card3 "
                         // style={{ paddingTop: "10px" }}
                       >
                         {item?.ImageData.map((item1, key1) => (
@@ -169,9 +169,10 @@ function Categories(props) {
                                   key={key1}
                                   id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
                                   to={"/artists/" + item1.artistId._id}
-                                  className="card_img w-inline-block"
-                                  style={{ position: "relative", overflow: "hidden", height: "14.5vw"}}
+                                  className="card_img "
+                                  
                                 >
+                                  <div className="detail_card4_h" style={{ position: "relative", overflow: "hidden" }}>
                                   <img
                                     src={String(
                                       item1?.mainImage[0]?.subImage[0]?.path
@@ -185,7 +186,7 @@ function Categories(props) {
                                 
                                       {item1.artistId.lastname}{" "}
                                       {item1.artistId.firstname}
-                                </p>    
+                                </p>   </div> 
                                 </Link>
                               </>
                             ) : (
@@ -231,7 +232,7 @@ function Categories(props) {
                           </div>
                         <div
                           id="w-node-f734ee66-0b58-4c14-e08b-49ceded015c9-84f2d081"
-                          className="parent2"
+                          className="detail_card3 "
                           // style={{ paddingTop: "10px" }}
                         >
                           {item.ImageData.map((item1, key1) => (
@@ -242,9 +243,10 @@ function Categories(props) {
                                     key={key1}
                                     id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
                                     to={"/artists/" + item1.artistId._id}
-                                    className="card_img w-inline-block"
-                                    style={{ position: "relative", overflow: "hidden", height: "14.5vw" }}
+                                    className="card_img"
+                                
                                   >
+                                    <div className="detail_card4_h" style={{ position: "relative", overflow: "hidden" }}>
                                     <img
                                       src={String(item1.mainImage[0].path)}
                                       loading="lazy"
@@ -254,7 +256,7 @@ function Categories(props) {
                                     />
                                     <p className="card_img_text2 pt-2">
                                         {item1.artistId.lastname}{" "}
-                                        {item1.artistId.firstname}</p>
+                                        {item1.artistId.firstname}</p></div>
                                     
                                   </Link>
                                 </>

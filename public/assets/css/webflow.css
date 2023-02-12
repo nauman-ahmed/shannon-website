@@ -70,6 +70,10 @@ html.w-mod-touch * {
   display: inline-block;
 }
 .w-inline-block-banner {
+  max-width: 99.4%;
+  display: inline-block;
+}
+.w-inline-block-banner2 {
   max-width: 99.8%;
   display: inline-block;
 }

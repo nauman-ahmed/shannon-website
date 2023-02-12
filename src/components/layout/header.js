@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 const images = window.location.origin + "/assets/images";
 function Header(props) {
   return (
-    <div className="menu wf-section">
-      <div className="containerhome f">
+    <div className="menu wf-section mb-0">
+      <div className="containerhome f ">
         <div
           data-animation="default"
           data-collapse="medium"
