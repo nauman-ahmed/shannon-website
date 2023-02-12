@@ -179,11 +179,12 @@ const images = window.location.origin + "/assets/images";
                                       className="w-100 h-100  "
                                     // style={{ width: "100%", height: "100%" }}
                                     />
-                                  <div className="artistnametext-v3">
+                                  <p className="card_img_text2 pt-2">
                                   
                                         {item1.artistId.lastname}{" "}
                                         {item1.artistId.firstname}
-                                  </p>    
+                                     </p>
+                                     </div>
                                   </Link>
                                 </>
                               ) : (
