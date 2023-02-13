@@ -114,7 +114,7 @@ function Artists(props) {
                   </div>
                 </div>
               </Link>
-              {ind === 11 ? (
+              {ind === 35 ? (
                 bannerImages.bannerData.length > 0 ? (
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879ea-4bf2d022"
@@ -145,7 +145,7 @@ function Artists(props) {
                 ) : null
               ) : null 
               }
-              {ind === 29 ? (
+              {ind === 47 ? (
                 bannerImages.bannerData.length > 0 ? (
                   <>
                     <Link
@@ -193,7 +193,7 @@ function Artists(props) {
               ) : (
                 ""
               )}
-              {ind === 41 ? (
+              {ind === 59 ? (
                 bannerImages.bannerData.length > 0 ? (
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879ea-4bf2d022"
@@ -218,7 +218,7 @@ function Artists(props) {
               ) : (
                 ""
               )}
-              {ind === 53 ? (
+              {ind === 71 ? (
                 bannerImages.bannerData.length > 0 ? (
                   <>
                     <Link

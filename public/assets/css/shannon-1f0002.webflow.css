@@ -131,7 +131,7 @@ h3 {
 
 a {
   font-family: Roboto, sans-serif;
-  color: #000;
+  color: #373530;
   font-size: 22px;
   font-weight: 500;
   text-decoration: none;
@@ -662,6 +662,7 @@ a {
   padding: 6px 0px;
   bottom: -10px;
   left: 0;
+  text-transform: uppercase;
 }
 
 .card_img_text3 {
@@ -784,12 +785,13 @@ a {
 }
 
 .menuinfo.v2 {
-  word-spacing: 2px;
-  line-height: 1px;
+  /* word-spacing: 2px;
+  line-height: 1px; */
   /* font-size: 0.6vw; */
   font-size: 0.7vw;
   color: #373530;
   margin-bottom: 8.5px;
+  margin-top: 0px;
 }
 
 .allartist {
@@ -3365,11 +3367,11 @@ a {
 }
 
 .navmenu {
-  /*  padding-top: 20px;
-  text-align: right;
+  padding-top: 20px;
+  /*  text-align: right;
 
-  margin-right: -30px; */
-  padding-top:17px;
+  margin-right: -30px;
+  padding-top:17px; */
 
 }
 
@@ -3643,8 +3645,8 @@ a {
 }
 
 .logov2 {
-  /* width: 60%; */
-  width:18.7vw;
+  width: 60%;
+  /* width:18.7vw; */
   margin-bottom: 8px;
   margin-top: 14px;
   margin-left: 3px;
