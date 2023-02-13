@@ -410,8 +410,8 @@ function SearchByArtist(props) {
                         > */}
                             {
                               data1[search].subListData.map((item, keys) => (
-                                <span className=" " onClick={() => { setSliderIndex(keys) }}>
-                                  <img src={item} className="w-100"
+                                <span className="detail_card5_h " onClick={() => { setSliderIndex(keys) }}>
+                                  <img src={item} className="w-100 h-100"
                                   // style={{ margin: "3px .43vw 3px 0vw"}}
                                   ></img>
                                 </span>
@@ -486,16 +486,20 @@ function SearchByArtist(props) {
                               // style={{ position: "relative" }}
                               to={"/artists/" + key}
                             >
-                              <div className="" style={{ position: "relative", overflow: "hidden" }}>
+                              <div className="detail_card6_h" style={{ position: "relative", overflow: "hidden" }}>
                                 <img
                                   src={String(similarData[key].mainImage)}
                                   loading="lazy"
                                   alt=""
-                                  className="w-100"
-                                // style={{ margin: "3px .7vw 3px 0vw", height: '22.9vh' }}
-                                />
-                                <p className="card_img_text3 pb-3 pt-1">
-                                  {similarData[key].lastname} {similarData[key].firstname}</p>
+                                  className="h-100"
+                                  style={{ width: "100%", }} />
+                                <div className="artistnamediv">
+                                  <div className="artistnametext-v3" style={{padding:"6px 0px"}}>
+                                    {similarData[key].lastname} {similarData[key].firstname}
+                                  </div>
+                                </div>
+                                {/* <p className="card_img_text3 pb-3 pt-1">
+                                  {similarData[key].lastname} {similarData[key].firstname}</p> */}
                               </div>
                             </Link>
                           ))
@@ -540,19 +544,25 @@ function SearchByArtist(props) {
                                 to={"/artists/" + key}
                               // style={{ position: "relative" }} 
                               >
-                                <div className="" style={{ position: "relative", overflow: "hidden" }}>
+                                <div className="detail_card6_h" style={{ position: "relative", overflow: "hidden" }}>
 
                                   <img
                                     src={String(dataViewed[key].slideList[0])}
                                     loading="lazy"
                                     alt=""
-                                    className="w-100"
+                                    className="h-100"
+                                    style={{ width: "100%" }}
                                   // style={{ margin: "3px .7vw 3px 0vw",  height: '22.9vh', minHeight: '20.3vh' }}
                                   />
                                   {console.log("NAU", key, i, dataViewed[key])}
-                                  <p className="card_img_text3 pb-3 pt-1">
+                                  <div className="artistnamediv ">
+                                    <div className="artistnametext-v3" style={{padding:"6px 0px"}}>
+                                      {dataViewed[key].title}
+                                    </div>
+                                  </div>
+                                  {/* <p className="card_img_text3 pb-3 pt-1">
                                     {dataViewed[key].title}
-                                  </p>
+                                  </p> */}
                                 </div>
                               </Link>
 

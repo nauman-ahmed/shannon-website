@@ -204,13 +204,13 @@ function Contact() {
     <>
       {/* <h2 className="contacth2 h2">CONTACT</h2> */}
       {/* <div className="_3cols"> */}
-      <div className="row mt-5" style={{ columnGap: "20px" }}>
+      <div className="contactpage mt-5 pt-2" >
         {/*  <div id="w-node-_5057f7a3-8aa5-6180-66c7-59cfff8172a6-85f2d07d" className="div-block-9"> */}
-        <div className="col-xl-5 col-lg-6 col-md-7 col-sm-10 col-12 ">
+        <div className="">
           <h2 className="contacth2 hide">CONTACT</h2>
           <div
             id="w-node-_0fb692da-7bfd-42b2-746a-f1ed5ebdb01b-85f2d07d"
-            className="div-block-2 mt-5">
+            className="div-block-2 mt-5 " style={{paddingTop:'12px'}}>
             <div className="form-block w-form">
               <div
                 id="email-form"
@@ -219,13 +219,13 @@ function Contact() {
                 method="get"
                 className="form"
               >
-                <div className="formdisplay inv2">
-                  <label htmlFor="name" className="contactformlabel col-xl-3 col-4 ">
+                <div className="formdisplay2  ">
+                  <label htmlFor="name" className="contactformlabel ">
                     Name<span className="required">*</span>:
                   </label>
                   <input
                     type="text"
-                    className="text-field col-xl-9 col-8 w-input"
+                    className="text-field w-100 w-input"
                     value={Name}
                     onChange={(e) => {
                       setName(e.target.value);
@@ -238,13 +238,13 @@ function Contact() {
                     required
                   />
                 </div>
-                <div className="formdisplay inv2">
-                  <label htmlFor="Company" className="contactformlabel col-xl-3 col-4">
+                <div className="formdisplay2">
+                  <label htmlFor="Company" className="contactformlabel ">
                     Company:
                   </label>
                   <input
                     type="text"
-                    className="text-field col-xl-9 col-8 w-input"
+                    className="text-field  w-input w-100"
                     maxLength="256"
                     name="Company"
                     value={company}
@@ -256,13 +256,13 @@ function Contact() {
                     id="Company"
                   />
                 </div>
-                <div className="formdisplay inv2">
-                  <label htmlFor="Email" className="contactformlabel col-xl-3 col-4">
+                <div className="formdisplay2">
+                  <label htmlFor="Email" className="contactformlabel ">
                     Email<span className="required">*</span>:
                   </label>
                   <input
                     type="email"
-                    className="text-field col-xl-9 col-8 w-input"
+                    className="text-field  w-input w-100"
                     value={email}
                     onChange={(e) => {
                       setEmail(e.target.value);
@@ -275,13 +275,13 @@ function Contact() {
                     required
                   />
                 </div>
-                <div className="formdisplay inv2">
-                  <label htmlFor="Phone" className="contactformlabel col-xl-3 col-4">
+                <div className="formdisplay2">
+                  <label htmlFor="Phone" className="contactformlabel ">
                     Phone:
                   </label>
                   <input
                     type="text"
-                    className="text-field col-xl-9 col-8 w-input"
+                    className="text-field  w-input w-100"
                     maxLength="256"
                     name="Phone"
                     value={phone}
@@ -293,13 +293,13 @@ function Contact() {
                     id="Phone"
                   />
                 </div>
-                <div className="formdisplay inv2">
-                  <label htmlFor="Address" className="contactformlabel col-xl-3 col-4">
+                <div className="formdisplay2">
+                  <label htmlFor="Address" className="contactformlabel ">
                     Address:
                   </label>
                   <input
                     type="text"
-                    className="text-field col-xl-9 col-8 w-input"
+                    className="text-field  w-input w-100"
                     maxLength="256"
                     name="Address"
                     value={address}
@@ -311,13 +311,13 @@ function Contact() {
                     id="Address"
                   />
                 </div>
-                <div className="formdisplay inv2">
-                  <label htmlFor="City" className="contactformlabel col-xl-3 col-4">
+                <div className="formdisplay2">
+                  <label htmlFor="City" className="contactformlabel ">
                     City:
                   </label>
                   <input
                     type="text"
-                    className="text-field col-xl-9 col-8 w-input"
+                    className="text-field  w-input w-100"
                     maxLength="256"
                     name="City"
                     value={city}
@@ -329,8 +329,8 @@ function Contact() {
                     id="City"
                   />
                 </div>
-                <div className="formdisplay inv2">
-                  <label htmlFor="State" className="contactformlabel col-xl-3 col-4">
+                <div className="formdisplay2">
+                  <label htmlFor="State" className="contactformlabel ">
                     State:
                   </label>
                   <select
@@ -341,7 +341,8 @@ function Contact() {
                     onChange={(e) => {
                       setState(e.target.value);
                     }}
-                    className="text-field col-xl-9 col-8 w-select"
+                    className="text-field w-100 w-select"
+                  
                   >
                     <option value="">Select</option>
                     <option value="Alabama">Alabama</option>
@@ -369,10 +370,10 @@ function Contact() {
                     <option value="Maryland">Maryland</option>
                   </select>
                 </div>
-                <div className="formdisplay inv2">
+                <div className="formdisplay2">
                   <label
                     htmlFor="Purpose-of-Inquiry"
-                    className="contactformlabel  col-xl-3 col-4"
+                    className="contactformlabel  "
                   >
                     Purpose of inquiry:
                   </label>
@@ -380,11 +381,12 @@ function Contact() {
                     id="Purpose-of-Inquiry"
                     name="Purpose-of-Inquiry"
                     value={purposeOfInquiry}
+
                     onChange={(e) => {
                       setPurposeOfInquiry(e.target.value);
                     }}
                     data-name="Purpose of Inquiry"
-                    className="text-field col-xl-9 col-8 long w-select"
+                    className="text-field w-100  long w-select"
                   >
                     <option value="">Select</option>
                     <option value="Get an estimate">Get an estimate</option>
@@ -397,10 +399,10 @@ function Contact() {
                     <option value="Other">Other</option>
                   </select>
                 </div>
-                <div className="formdisplay inv2">
+                <div className="formdisplay2">
                   <label
                     htmlFor="How-did-you-find-us"
-                    className="contactformlabel col-xl-3 col-4"
+                    className="contactformlabel "
                   >
                     How did you find us:
                   </label>
@@ -412,7 +414,7 @@ function Contact() {
                       setFindUs(e.target.value);
                     }}
                     data-name="How did you find us"
-                    className="text-field col-xl-9 col-8 long w-select"
+                    className="text-field w-100 long w-select"
                   >
                     <option value="">Select</option>
                     <option value="Google">Google</option>
@@ -436,8 +438,8 @@ function Contact() {
                     <option value="Other">Other</option>
                   </select>
                 </div>
-                <div className="formdisplay message inv2">
-                  <label htmlFor="field" className="contactformlabel col-xl-3 col-4">
+                <div className="formdisplay2 message inv2">
+                  <label htmlFor="field" className="contactformlabel ">
                     Message:
                   </label>
                   <textarea
@@ -450,7 +452,7 @@ function Contact() {
                     id="field"
                     name="field"
                     data-name="field"
-                    className="textarea w-input"
+                    className="textarea w-input w-100"
                   ></textarea>
                 </div>
                 <div className="formbuttonsbox">
@@ -470,8 +472,8 @@ function Contact() {
                         contactCreate();
                       }}
                       data-wait="Please wait..."
-                      className="btn btn-outline-secondary"
-                      style={{ borderRadius: "18px"}}
+                      className="filter-button mr-md-4"
+                      
                     />
                   )}
                 </div>
@@ -489,9 +491,9 @@ function Contact() {
         {/*  <div
           id="w-node-_8490408e-ad22-b194-846b-3bfd23bb2d1e-85f2d07d"
           className="div-block-10"> */}
-        <div className="col-lg-5 col-sm-10 col-11 ">
+        <div className=" ">
           <h2 className="contacth2 hide">MY LIST</h2>
-          <div className=" mt-5">
+          <div className=" mt-5" style={{padding:"7px 0px 7px 20px"}}>
             {AddToCart.cartInfo &&
               Object.keys(AddToCart.cartInfo).map((oneKey, i) => {
                 return (
@@ -507,10 +509,11 @@ function Contact() {
                 );
               })}
           </div>
+          <div className="pl-3">
           <div
             id="artistCont"
             className="artistcont2 w-node-_3ea1885f-5610-a267-b100-5eb12e177818-85f2d07d">
-            <h3 className="artistconth pt-2">Interested in one of our Illustrators</h3>
+            <h3 className="artistconth pt-2 ">Interested in one of our Illustrators</h3>
             <div className="w-form">
               <div className="contactpartist">Previously Viewed Artists</div>
 
@@ -571,6 +574,7 @@ function Contact() {
               </div>
             </div>
           </div>
+          </div>
           <div className="imagescontainer">
             <div className="w-dyn-list">
               <div role="list" className="collection-list w-dyn-items">
@@ -586,13 +590,13 @@ function Contact() {
         </div>
         <p
             className="contactp">
-            <strong>
+            <strong className="addres">
               Shannon Associates - USA
               <br />
             </strong>
-            333 West 57th Street New York, NY 10019
+            <span className="addres2">333 West 57th Street New York, NY 10019
             <br />
-            info@shannonassociates.com
+            info@shannonassociates.com</span>
           </p>
         {/* <div
           id="w-node-_0fb692da-7bfd-42b2-746a-f1ed5ebdb01b-85f2d07d"

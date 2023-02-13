@@ -304,7 +304,7 @@ function Bipoc() {
           </p>
         </div>
       </div>
-      <div className="bipoc2cols category " style={{ position: "relative" }}>
+      <div className="bipoc2cols category w-100 h-100" style={{ position: "relative" }}>
         <div className="categoryinfo">
           <h2 className="newsh2 h" >BLACK ARTISTS</h2>
           <div className="w-dyn-list">
@@ -332,13 +332,13 @@ function Bipoc() {
           </div>
         </div>
         <div className="sliderbipoc">
-          <div className=" ">
+          <div className=" divisiondivider">
             {/* <h2 className="newsinstah2 h">PORTFOLIOS</h2> */}
             <h1 className="newsh2 hide">BLACK ARTISTS</h1>
           </div>
           {blackArtist ? (
             <div className="mt-5 mb-3 detail_card3" id={idBlack} 
-            style={{paddingTop:"14px"}}>
+            style={{paddingTop:"12px"}}>
               {/* <Slider 
                 disableAutoPlay 
                 controllEnabled="outside-dark"
@@ -400,7 +400,7 @@ function Bipoc() {
         </div>
       </div>
       {/*  */}
-      <div className="bipoc2cols category" style={{ position: "relative" }}>
+      <div className="bipoc2cols category  w-100 h-100" style={{ position: "relative" }}>
         <div className="categoryinfo">
           <h1 className="newsh2 h">ASIAN ARTISTS</h1>
           <div className="w-dyn-list">
@@ -471,7 +471,7 @@ function Bipoc() {
         </div>
       </div>
       {/*  */}
-      <div className="bipoc2cols category" style={{ position: "relative" }}>
+      <div className="bipoc2cols category  w-100 h-100" style={{ position: "relative" }}>
         <div className="categoryinfo">
           <h1 className="newsh2 h">LATINO/LATINA ARTISTS</h1>
           <div className="w-dyn-list">
@@ -539,7 +539,7 @@ function Bipoc() {
         </div>
       </div>
       {/*  */}
-      <div className="bipoc2cols category" style={{ position: "relative" }}>
+      <div className="bipoc2cols category  w-100 h-100" style={{ position: "relative" }}>
         <div className="categoryinfo">
           <h1 className="newsh2 h">CENTRAL ASIAN ARTISTS</h1>
           <div className="w-dyn-list">
@@ -607,7 +607,7 @@ function Bipoc() {
         </div>
       </div>
       {/*  */}
-      <div className="bipoc2cols category" style={{ position: "relative" }}>
+      <div className="bipoc2cols category  w-100 h-100" style={{ position: "relative" }}>
         <div className="categoryinfo">
           <h1 className="newsh2 h">INDIGENOUS ARTISTS</h1>
           <div className="w-dyn-list">
