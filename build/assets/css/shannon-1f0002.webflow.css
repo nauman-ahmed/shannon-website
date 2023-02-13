@@ -140,7 +140,7 @@ a {
   /* padding-top: 2.4vh;
   padding-bottom: 18px; */
   padding-top: 2.4vh;
-  padding-bottom: 18px;
+  padding-bottom: 9px;
   background-color: transparent;
 }
 
@@ -323,7 +323,7 @@ a {
 }
 
 .filterhomelink.v2.w--current {
-  color: #fa8e37;
+  color: #ffb71b;
 }
 
 .homesection {

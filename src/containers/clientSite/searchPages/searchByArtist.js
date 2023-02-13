@@ -536,35 +536,52 @@ function SearchByArtist(props) {
                           {Object.keys(dataViewed).length > 0
                             ? Object.keys(dataViewed).map((key, i) => (
 
-
                               <Link
-                                id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
-                                data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                                className="card_img3"
-                                to={"/artists/" + key}
-                              // style={{ position: "relative" }} 
-                              >
-                                <div className="detail_card6_h" style={{ position: "relative", overflow: "hidden" }}>
-
-                                  <img
-                                    src={String(dataViewed[key].slideList[0])}
-                                    loading="lazy"
-                                    alt=""
-                                    className="h-100"
-                                    style={{ width: "100%" }}
-                                  // style={{ margin: "3px .7vw 3px 0vw",  height: '22.9vh', minHeight: '20.3vh' }}
-                                  />
-                                  {console.log("NAU", key, i, dataViewed[key])}
-                                  <div className="artistnamediv ">
-                                    <div className="artistnametext-v3" style={{padding:"6px 0px"}}>
-                                      {dataViewed[key].title}
-                                    </div>
+                              id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                              data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                              className="card_img3"
+                              // style={{ position: "relative" }}
+                              to={"/artists/" + key}
+                            >
+                              <div className="detail_card6_h" style={{ position: "relative", overflow: "hidden" }}>
+                                <img
+                                  src={String(dataViewed[key].slideList[0])}
+                                  loading="lazy"
+                                  alt=""
+                                  className="h-100"
+                                  style={{ width: "100%", }} />
+                                <div className="artistnamediv">
+                                  <div className="artistnametext-v3" style={{padding:"6px 0px"}}>
+                                  {dataViewed[key].title}
                                   </div>
-                                  {/* <p className="card_img_text3 pb-3 pt-1">
-                                    {dataViewed[key].title}
-                                  </p> */}
                                 </div>
-                              </Link>
+                                {/* <p className="card_img_text3 pb-3 pt-1">
+                                  {similarData[key].lastname} {similarData[key].firstname}</p> */}
+                              </div>
+                            </Link>
+                              // <Link
+                              //   id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                              //   data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                              //   className="card_img3"
+                              //   to={"/artists/" + key}
+                              // >
+                              //   <div className="detail_card6_h" style={{ position: "relative", overflow: "hidden" }}>
+
+                              //     <img
+                              //       src={String(dataViewed[key].slideList[0])}
+                              //       loading="lazy"
+                              //       alt=""
+                              //       className="h-100"
+                              //       style={{ width: "100%" }}
+                              //     />
+                              //     <div className="artistnamediv ">
+                              //       <div className="artistnametext-v3" style={{padding:"6px 0px"}}>
+                              //         {dataViewed[key].title}
+                              //       </div>
+                              //     </div>
+  
+                              //   </div>
+                              // </Link>
 
                             ))
                             : ""

@@ -144,13 +144,13 @@ const images = window.location.origin + "/assets/images";
                     {item.ImageData.length > 0 ? (
                       <>
                         <div className="d-flex mt-0 mb-2">
-                          <h5 className=" mt-0" style={{color:"#ce651e", fontWeight:"500", fontSize:"16.1px",display:'flex',whiteSpace:'nowrap'}}>
+                          <h5 className=" mt-0" style={{color:"#ce651e", fontWeight:"500", fontSize:"15px",display:'flex',whiteSpace:'nowrap'}}>
                             {
                               item.keyword == '3D Rendering' ? "CGI" 
                             :
                               item.keyword.toUpperCase()
                             } 
-                          </h5> <span style={{width:"100%", height:"1px", color:"#ce651e", border:"1px solid #ce651e", marginTop:"10px"}}></span>
+                          </h5> <span style={{width:"100%", height:"1px", color:"#ce651e", border:"1px solid #ce651e", marginTop:"10px",marginLeft:6}}></span>
                         </div>
                         <div
                           id="w-node-f734ee66-0b58-4c14-e08b-49ceded015c9-84f2d081"
