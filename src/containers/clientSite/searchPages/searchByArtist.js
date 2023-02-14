@@ -290,7 +290,7 @@ function SearchByArtist(props) {
       }}>
         {data1 !== null ? (
           <>
-            <div className=" mt-2 pt-1 pl-2 left_content">
+            <div className=" pl-2 left_content">
               <div >
                 <h2 className="h2talent">{data1[search].title}</h2>
                 {/* <div
@@ -304,26 +304,26 @@ function SearchByArtist(props) {
               </div>
             </div> */}
                 {/* <div className="talenttext" style={{ marginBottom: 5 }}>Want to commission this artist?</div> */}
-                <div className="d-flex">
+                <div className="d-flex mt-2">
                   <Link
                     to="#"
-                    style={{ fontSize: "16px", fontWeight: '600', minWidth: "60px", maxWidth: "70px" }}
-                    className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
+                    // style={{ fontSize: "16px", fontWeight: '600', minWidth: "60px", maxWidth: "70px" }}
+                    className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton mr-3"}
                   >
                     CALL
                   </Link>
                   <Link
                     to="/contact"
-                    style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
-                    className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
+                    // style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
+                    className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton mr-3"}
                   >
-                    GET AN ESTIMATE
+                    GET ESTIMATE
                   </Link>
                   <Link
                     data-w-id="e04f643e-f302-16e2-74ee-4bc7e85391d8"
                     to="#"
-                    style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
-                    className="talentbutton hide col-3"
+                    // style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
+                    className="talentbutton hide "
                     onClick={() => addToCartArtist(data1[search].id, data1[search].title)}
                   >
                     ADD TO MY LIST
@@ -411,7 +411,7 @@ function SearchByArtist(props) {
                             {
                               data1[search].subListData.map((item, keys) => (
                                 <span className="detail_card5_h " onClick={() => { setSliderIndex(keys) }}>
-                                  <img src={item} className="w-100 h-100"
+                                  <img src={item} className="w-100 h-100" style={{objectFit:"cover"}}
                                   // style={{ margin: "3px .43vw 3px 0vw"}}
                                   ></img>
                                 </span>
@@ -690,23 +690,23 @@ function SearchByArtist(props) {
                   }}>
                     <Link
                       to="#"
-                      style={{ fontSize: "16px", fontWeight: '600', minWidth: "60px", maxWidth: "70px" }}
-                      className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
+                      // style={{ fontSize: "16px", fontWeight: '600', minWidth: "60px", maxWidth: "70px" }}
+                      className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton  mr-3"}
                     >
                       CALL
                     </Link>
                     <Link
                       to="/contact"
-                      style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
-                      className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton col-3 mr-3"}
+                      // style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
+                      className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton  mr-3"}
                     >
-                      GET AN ESTIMATE
+                      GET ESTIMATE
                     </Link>
                     <Link
                       data-w-id="e04f643e-f302-16e2-74ee-4bc7e85391d8"
                       to="#"
-                      style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
-                      className="talentbutton hide col-3"
+                      // style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
+                      className="talentbutton hide "
                       onClick={() => addToCartArtist(data1[search].id, data1[search].title)}
                     >
                       ADD TO MY LIST
