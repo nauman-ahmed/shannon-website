@@ -290,7 +290,7 @@ function SearchByArtist(props) {
       }}>
         {data1 !== null ? (
           <>
-            <div className=" mt-2 pt-1 left_content">
+            <div className=" mt-2 pt-1 pl-2 left_content">
               <div >
                 <h2 className="h2talent">{data1[search].title}</h2>
                 {/* <div
