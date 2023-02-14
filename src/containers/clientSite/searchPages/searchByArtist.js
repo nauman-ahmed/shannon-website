@@ -521,7 +521,7 @@ function SearchByArtist(props) {
                         marginTop: '8vh',
                         marginBottom: "3vh",
 
-                      }} className="py-2 ">ALREADY VIEWED</div>
+                      }} className="py-2 ">RECENTLY VIEWED</div>
                     </div> : null
 
                   }
