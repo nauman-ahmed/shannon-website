@@ -68,31 +68,31 @@ function Bipoc() {
 
   useEffect(() => {
 
-    setBlackArtist(getDummyData());
-    setAsianArtist(getDummyData());
-    setLatinoArtist(getDummyData());
-    setCentralAsianArtist(getDummyData());
-    setIndegiousArtist(getDummyData());
+    // setBlackArtist(getDummyData());
+    // setAsianArtist(getDummyData());
+    // setLatinoArtist(getDummyData());
+    // setCentralAsianArtist(getDummyData());
+    // setIndegiousArtist(getDummyData());
 
-    // getBipocBlack().then((res) => {
-    //   setBlackArtist(res);
-    // });
+    getBipocBlack().then((res) => {
+      setBlackArtist(res);
+    });
 
-    // getBipocAsian().then((res) => {
-    //   setAsianArtist(res);
-    // });
+    getBipocAsian().then((res) => {
+      setAsianArtist(res);
+    });
 
-    // getBipocLatino().then((res) => {
-    //   setLatinoArtist(res);
-    // });
+    getBipocLatino().then((res) => {
+      setLatinoArtist(res);
+    });
 
-    // getBipocCentralAsia().then((res) => {
-    //   setCentralAsianArtist(res);
-    // });
+    getBipocCentralAsia().then((res) => {
+      setCentralAsianArtist(res);
+    });
 
-    // getBipocIndigenous().then((res) => {
-    //   setIndegiousArtist(res);
-    // });
+    getBipocIndigenous().then((res) => {
+      setIndegiousArtist(res);
+    });
     setGottenData(true)
   }, []);
 

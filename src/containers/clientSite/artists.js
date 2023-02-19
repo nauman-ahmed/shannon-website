@@ -50,9 +50,9 @@ function Artists(props) {
     if(artistImageDataSlice.artistImages.length){
 
       const searchvalue = e.toLowerCase();
-
       let temp = artistImageDataSlice.artistImages.filter(function (element) {
         let checker = false
+        console.log("NAUM",element.artistId.firstname,element.artistId.lastname)
         if(element.artistId.firstname.toLowerCase().includes(searchvalue) || element.artistId.lastname.toLowerCase().includes(searchvalue)){
             checker = true
         }
