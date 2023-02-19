@@ -48,8 +48,8 @@ export const SliderItems = (props)=>{
             alt=""
             style={
               "col" in props
-                ? { OObjectFit: "cover", objectFit: "cover", margin:"auto",width:"100%",height:"100%" }
-                : { OObjectFit: "cover", objectFit: "cover", margin:"auto" }
+                ? { OObjectFit: "cover", objectFit: "cover", margin:"auto",width:"100%",height:"100vh" }
+                : { OObjectFit: "cover", objectFit: "cover", margin:"auto",height:'100vh' }
             }
           />
         </div>
