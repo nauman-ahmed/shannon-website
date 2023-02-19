@@ -486,7 +486,7 @@ function SearchByArtist(props) {
                               // style={{ position: "relative" }}
                               to={"/artists/" + key}
                             >
-                              <div className="detail_card6_h" style={{ position: "relative", overflow: "hidden" }}>
+                              <div className="detail_card6_h" style={{ position: "relative", overflow: "hidden",height:'25vh' }}>
                                 <img
                                   src={String(similarData[key].mainImage)}
                                   loading="lazy"
@@ -543,7 +543,7 @@ function SearchByArtist(props) {
                               // style={{ position: "relative" }}
                               to={"/artists/" + key}
                             >
-                              <div className="detail_card6_h" style={{ position: "relative", overflow: "hidden" }}>
+                              <div className="detail_card6_h" style={{ position: "relative", overflow: "hidden",height:'25vh' }}>
                                 <img
                                   src={String(dataViewed[key].slideList[0])}
                                   loading="lazy"
