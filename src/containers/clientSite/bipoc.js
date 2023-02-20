@@ -317,7 +317,7 @@ function Bipoc() {
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                    to={"/artists/" + val.artistData.firstname}
+                    to={"/artists/" + val.artistData._id}
                     className="bipocLink"
                   >
                     <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
@@ -359,7 +359,7 @@ function Bipoc() {
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                    to={"/artists/" + val.artistData.firstname}
+                    to={"/artists/" + val.artistData._id}
                     className="bipocLink"
                   >
                     <div className=" card_img2 detail_card3_h" style={{ position: "relative",   overflow:"hidden",}}>
@@ -411,7 +411,7 @@ function Bipoc() {
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                    to={"/artists/" + val.artistData.firstname}
+                    to={"/artists/" + val.artistData._id}
                     className="bipocLink"
                   >
                     <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
@@ -453,7 +453,7 @@ function Bipoc() {
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                    to={"/artists/" + val.artistData.firstname}
+                    to={"/artists/" + val.artistData._id}
                     className="bipocLink "
                     
                   >
@@ -479,10 +479,11 @@ function Bipoc() {
               {latinoArtist ?
                 latinoArtist.map((val, ind) =>
                 (<div role="listitem" className="w-dyn-item">
+                  {console.log(val.artistData)}
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                    to={"/artists/" + val.artistData.firstname}
+                    to={"/artists/" + val.artistData._id}
                     className="bipocLink"
                   >
                     <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
@@ -515,7 +516,7 @@ function Bipoc() {
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                    to={"/artists/" + val.artistData.firstname}
+                    to={"/artists/" + val.artistData._id}
                     className="bipocLink"
                   >
                     <div className="card_img2 detail_card3_h" style={{ position: "relative",   overflow:"hidden",}}>
@@ -550,7 +551,7 @@ function Bipoc() {
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                    to={"/artists/" + val.artistData.firstname}
+                    to={"/artists/" + val.artistData._id}
                     className="bipocLink"
                   >
                     <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
@@ -583,7 +584,7 @@ function Bipoc() {
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                    to={"/artists/" + val.artistData.firstname}
+                    to={"/artists/" + val.artistData._id}
                     className="bipocLink"
                   >
                     <div className="card_img2 detail_card3_h" style={{ position: "relative",   overflow:"hidden",}}>
@@ -618,7 +619,7 @@ function Bipoc() {
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                    to={"/artists/" + val.artistData.firstname}
+                    to={"/artists/" + val.artistData._id}
                     className="bipocLink"
                   >
                     <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
@@ -659,7 +660,7 @@ function Bipoc() {
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                    to={"/artists/" + val.artistData.firstname}
+                    to={"/artists/" + val.artistData._id}
                     className="bipocLink"
                   >
                     <div className="card_img2 detail_card3_h" style={{ position: "relative",overflow: "hidden" }}>
