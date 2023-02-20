@@ -38,13 +38,13 @@ export const findSingleContact =(contacts,id) => {
 
 export const sortAlphaOrder=(Artist)=>{
     let arrayForSort = [...Artist]
-    arrayForSort = arrayForSort.sort((a, b) => a.firstname.normalize().localeCompare(b.firstname.normalize()));
+    arrayForSort = arrayForSort.sort((a, b) => a.lastname.normalize().localeCompare(b.lastname.normalize()));
     let alpha = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
     let tempArtist= {}
     alpha.forEach((item,key)=>{
         let tempList = [];
         arrayForSort.forEach((item1,key1)=>{
-            if(item1.firstname[0].toUpperCase() === item){
+            if(item1.lastname[0].toUpperCase() === item){
                 tempList.push(item1)
             }
         })
