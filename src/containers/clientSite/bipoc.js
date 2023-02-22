@@ -166,78 +166,78 @@ function Bipoc() {
 
   }
 
-  const implementAddListner = () => {
+  // const implementAddListner = () => {
 
-    let black = document.querySelector("#" + idBlack)
-    let startB;
-    let endB;
+  //   let black = document.querySelector("#" + idBlack)
+  //   let startB;
+  //   let endB;
 
-    black.addEventListener("touchstart", (e) => {
-      startB = e.changedTouches[0].screenX
-    })
+  //   black.addEventListener("touchstart", (e) => {
+  //     startB = e.changedTouches[0].screenX
+  //   })
 
-    black.addEventListener("touchend", (e) => {
-      endB = e.changedTouches[0].screenX
-      checkDirectionBlack(startB, endB)
-    })
+  //   black.addEventListener("touchend", (e) => {
+  //     endB = e.changedTouches[0].screenX
+  //     checkDirectionBlack(startB, endB)
+  //   })
 
-    let asian = document.querySelector("#" + idAsian)
-    let startA;
-    let endA;
-    asian.addEventListener("touchstart", (e) => {
-      startA = e.changedTouches[0].screenX
-    })
+  //   let asian = document.querySelector("#" + idAsian)
+  //   let startA;
+  //   let endA;
+  //   asian.addEventListener("touchstart", (e) => {
+  //     startA = e.changedTouches[0].screenX
+  //   })
 
-    asian.addEventListener("touchend", (e) => {
-      endA = e.changedTouches[0].screenX
-      checkDirectionAsian(startA, endA)
-    })
+  //   asian.addEventListener("touchend", (e) => {
+  //     endA = e.changedTouches[0].screenX
+  //     checkDirectionAsian(startA, endA)
+  //   })
 
-    let latino = document.querySelector("#" + idLatino)
-    let startL;
-    let endL;
-    latino.addEventListener("touchstart", (e) => {
-      startL = e.changedTouches[0].screenX
-    })
+  //   let latino = document.querySelector("#" + idLatino)
+  //   let startL;
+  //   let endL;
+  //   latino.addEventListener("touchstart", (e) => {
+  //     startL = e.changedTouches[0].screenX
+  //   })
 
-    latino.addEventListener("touchend", (e) => {
-      endL = e.changedTouches[0].screenX
-      checkDirectionLatino(startL, endL)
-    })
+  //   latino.addEventListener("touchend", (e) => {
+  //     endL = e.changedTouches[0].screenX
+  //     checkDirectionLatino(startL, endL)
+  //   })
 
-    let central = document.querySelector("#" + idCentral)
-    let startC;
-    let endC;
-    central.addEventListener("touchstart", (e) => {
-      startC = e.changedTouches[0].screenX
-    })
+  //   let central = document.querySelector("#" + idCentral)
+  //   let startC;
+  //   let endC;
+  //   central.addEventListener("touchstart", (e) => {
+  //     startC = e.changedTouches[0].screenX
+  //   })
 
-    central.addEventListener("touchend", (e) => {
-      endC = e.changedTouches[0].screenX
-      checkDirectionCentral(startC, endC)
-    })
+  //   central.addEventListener("touchend", (e) => {
+  //     endC = e.changedTouches[0].screenX
+  //     checkDirectionCentral(startC, endC)
+  //   })
 
-    let indegious = document.querySelector("#" + idIndegious)
-    let startI;
-    let endI;
-    indegious.addEventListener("touchstart", (e) => {
-      startI = e.changedTouches[0].screenX
-    })
+  //   let indegious = document.querySelector("#" + idIndegious)
+  //   let startI;
+  //   let endI;
+  //   indegious.addEventListener("touchstart", (e) => {
+  //     startI = e.changedTouches[0].screenX
+  //   })
 
-    indegious.addEventListener("touchend", (e) => {
-      endI = e.changedTouches[0].screenX
-      checkDirectionIndegious(startI, endI)
-    })
-  }
+  //   indegious.addEventListener("touchend", (e) => {
+  //     endI = e.changedTouches[0].screenX
+  //     checkDirectionIndegious(startI, endI)
+  //   })
+  // }
 
 
   useEffect(() => {
-    if (indegiousArtist) {
-      const myTimeout = setTimeout(implementAddListner, 2000);
-      function myStopFunction() {
-        clearTimeout(myTimeout);
-      }
-    }
+    // if (indegiousArtist) {
+    //   const myTimeout = setTimeout(implementAddListner, 2000);
+    //   function myStopFunction() {
+    //     clearTimeout(myTimeout);
+    //   }
+    // }
   }, [indegiousArtist])
 
   useEffect(() => {
@@ -313,7 +313,7 @@ function Bipoc() {
             <div role="list" className="collection-list-4 w-dyn-items">
               {blackArtist ?
                 blackArtist.map((val, ind) =>
-                (<div role="listitem" className="w-dyn-item">
+                val.ImageData.length > 0 ? (<div role="listitem" className="w-dyn-item">
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
@@ -322,7 +322,7 @@ function Bipoc() {
                   >
                     <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
                   </Link>
-                </div>))
+                </div>): null)
                 :
                 <div role="listitem" className="w-dyn-item">
                   <div className="text-block-5"></div>
@@ -407,7 +407,7 @@ function Bipoc() {
             <div role="list" className="collection-list-4 w-dyn-items">
               {asianArtist ?
                 asianArtist.map((val, ind) =>
-                (<div role="listitem" className="w-dyn-item">
+                val.ImageData.length > 0 ? (<div role="listitem" className="w-dyn-item">
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
@@ -416,7 +416,7 @@ function Bipoc() {
                   >
                     <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
                   </Link>
-                </div>))
+                </div>): null)
                 :
                 <div role="listitem" className="w-dyn-item">
                   <div className="text-block-5"></div>
@@ -478,7 +478,7 @@ function Bipoc() {
             <div role="list" className="collection-list-4 w-dyn-items">
               {latinoArtist ?
                 latinoArtist.map((val, ind) =>
-                (<div role="listitem" className="w-dyn-item">
+                val.ImageData.length > 0 ? (<div role="listitem" className="w-dyn-item">
                   {console.log(val.artistData)}
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
@@ -488,7 +488,7 @@ function Bipoc() {
                   >
                     <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
                   </Link>
-                </div>))
+                </div>):null)
                 :
                 <div role="listitem" className="w-dyn-item">
                   <div className="text-block-5"></div>
@@ -547,7 +547,7 @@ function Bipoc() {
             <div role="list" className="collection-list-4 w-dyn-items">
               {centralAsianArtist ?
                 centralAsianArtist.map((val, ind) =>
-                (<div role="listitem" className="w-dyn-item">
+                val.ImageData.length > 0 ? (<div role="listitem" className="w-dyn-item">
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
@@ -556,7 +556,7 @@ function Bipoc() {
                   >
                     <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
                   </Link>
-                </div>))
+                </div>):null)
                 :
                 <div role="listitem" className="w-dyn-item">
                   <div className="text-block-5"></div>
@@ -615,7 +615,7 @@ function Bipoc() {
             <div role="list" className="collection-list-4 w-dyn-items">
               {indegiousArtist ?
                 indegiousArtist.map((val, ind) =>
-                (<div role="listitem" className="w-dyn-item">
+                val.ImageData.length > 0 ? (<div role="listitem" className="w-dyn-item">
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
@@ -624,7 +624,7 @@ function Bipoc() {
                   >
                     <div className="text-block-5">{val.artistData.lastname.toUpperCase() + " " + val.artistData.firstname.toUpperCase()}</div>
                   </Link>
-                </div>))
+                </div>):null)
                 :
                 <div role="listitem" className="w-dyn-item">
                   <div className="text-block-5"></div>
