@@ -130,11 +130,11 @@ function Contact() {
   };
   useEffect(() => {
     function getLocalStorage() {
-      if (localStorage.getItem("artistViewed") !== null) {
-        setDataViewed(JSON.parse(localStorage.getItem("artistViewed")));
+      if (localStorage.getItem("artistViewed_V1") !== null) {
+        setDataViewed(JSON.parse(localStorage.getItem("artistViewed_V1")));
       }
     }
-    const tempval = JSON.parse(localStorage.getItem("artistViewed"));
+    const tempval = JSON.parse(localStorage.getItem("artistViewed_V1"));
     let tempChecker = {};
     tempval &&
       Object.keys(tempval).forEach((key) => {
@@ -184,7 +184,7 @@ function Contact() {
 
       //For Images
       let tempArtistImagesData = {};
-      let tempLocalData = JSON.parse(localStorage.getItem("artistViewed"));
+      let tempLocalData = JSON.parse(localStorage.getItem("artistViewed_V1"));
       dispatch(ArtistImageSliceData()).then((res) => {
         res.payload.map((val, ind) => {
           if (temp[val.artistId._id] || tempLocalData[val.artistId._id]) {
