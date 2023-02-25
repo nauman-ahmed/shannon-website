@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createContact } from "../../AxiosFunctions/Axiosfunctionality";
 import { updateMessage, updateOpen } from "../../redux/message";
 import loading from "../../assets/loading.gif";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect, Link, useHistory } from "react-router-dom";
 import { addCart, removeCartItem } from "../../redux/addToCart";
 import SnackbarCustom from "../../components/snackBar/SnackbarCustom";
 import { ArtistDataAPI } from "../../redux/artistDataSlice";
@@ -206,11 +206,11 @@ function Contact() {
       {/* <div className="_3cols"> */}
       <div className="contactpage mt-5 pt-2" >
         {/*  <div id="w-node-_5057f7a3-8aa5-6180-66c7-59cfff8172a6-85f2d07d" className="div-block-9"> */}
-        <div className="">
+        <div className="contact_padd">
           <h2 className="contacth2 hide">CONTACT</h2>
           <div
             id="w-node-_0fb692da-7bfd-42b2-746a-f1ed5ebdb01b-85f2d07d"
-            className="div-block-2 mt-5 " style={{paddingTop:'12px'}}>
+            className="div-block-2 mt-5 " style={{ paddingTop: '12px' }}>
             <div className="form-block w-form">
               <div
                 id="email-form"
@@ -342,7 +342,7 @@ function Contact() {
                       setState(e.target.value);
                     }}
                     className="text-field w-100 w-select"
-                  
+
                   >
                     <option value="">Select</option>
                     <option value="Alabama">Alabama</option>
@@ -473,7 +473,7 @@ function Contact() {
                       }}
                       data-wait="Please wait..."
                       className="filter-button mr-md-4"
-                      
+
                     />
                   )}
                 </div>
@@ -486,118 +486,139 @@ function Contact() {
               </div>
             </div>
           </div>
-         
+
         </div>
         {/*  <div
           id="w-node-_8490408e-ad22-b194-846b-3bfd23bb2d1e-85f2d07d"
           className="div-block-10"> */}
         <div className=" ">
           <h2 className="contacth2 hide">MY LIST</h2>
-          <div className=" mt-5" style={{padding:"7px 0px 7px 20px"}}>
-            {AddToCart.cartInfo &&
-              Object.keys(AddToCart.cartInfo).map((oneKey, i) => {
-                return (
-                  <div style={{ padding: "10px" }}>
-                    <img
-                      src={artistImages[AddToCart.cartInfo[oneKey].id]}
-                      loading="lazy"
-                      alt=""
-                    />
-                    {/* <h5>{ AddToCart.cartInfo[oneKey].Name.toUpperCase()}</h5> 
-                    <button onClick={()=>{removeKey( AddToCart.cartInfo[oneKey].id)}}>Remove Artist</button> */}
+          <div className="artistcont4" >
+            <div>
+              <div className="pl-3">
+                <div
+                  id="artistCont"
+                  className="artistcont2 w-node-_3ea1885f-5610-a267-b100-5eb12e177818-85f2d07d">
+                  <h3 className="artistconth pt-2 ">Interested in one of our Illustrators</h3>
+                  <div className="w-form">
+                    <div className="contactpartist">Previously Viewed Artists</div>
+
+                    {dataViewed !== null
+                      ? Object.keys(dataViewed).map((key) => (
+                        <label
+                          className="w-checkbox artistcheckbox"
+                          style={{ textTransform: "uppercase" }}
+                        >
+                          <input
+                            type="checkbox"
+                            className="w-checkbox-input checkbox-2"
+                            checked={isChecked[key]}
+                            onChange={(e) => {
+                              handleChange(e, dataViewed[key]);
+                            }}
+                          />
+                          <span
+                            className="checkbox-label w-form-label"
+                            htmlFor="SHEYDA-ABVABI"
+                          >
+                            {dataViewed[key].title}
+                          </span>
+                        </label>
+                      ))
+                      : ""}
+
+                    <div className="contactpartist">More Artists</div>
+                    {artistData !== null
+                      ? Object.keys(artistData).map((key) => (
+                        <label
+                          className="w-checkbox artistcheckbox"
+                          style={{ textTransform: "uppercase" }}
+                        >
+                          <input
+                            type="checkbox"
+                            checked={isCheckedArtist[key]}
+                            onChange={(e) => {
+                              handleChangeArtist(e, artistData[key], key);
+                            }}
+                            className="w-checkbox-input checkbox-2"
+                          />
+                          <span
+                            className="checkbox-label w-form-label"
+                            htmlFor="NICK-APONTE"
+                          >
+                            {artistData[key]}
+                          </span>
+                        </label>
+                      ))
+                      : ""}
+
+                    <div className="w-form-done">
+                      <div>Thank you! Your submission has been received!</div>
+                    </div>
+                    <div className="w-form-fail">
+                      <div>Oops! Something went wrong while submitting the form.</div>
+                    </div>
                   </div>
-                );
-              })}
-          </div>
-          <div className="pl-3">
-          <div
-            id="artistCont"
-            className="artistcont2 w-node-_3ea1885f-5610-a267-b100-5eb12e177818-85f2d07d">
-            <h3 className="artistconth pt-2 ">Interested in one of our Illustrators</h3>
-            <div className="w-form">
-              <div className="contactpartist">Previously Viewed Artists</div>
+                </div>
 
-              {dataViewed !== null
-                ? Object.keys(dataViewed).map((key) => (
-                  <label
-                    className="w-checkbox artistcheckbox"
-                    style={{ textTransform: "uppercase" }}
-                  >
-                    <input
-                      type="checkbox"
-                      className="w-checkbox-input checkbox-2"
-                      checked={isChecked[key]}
-                      onChange={(e) => {
-                        handleChange(e, dataViewed[key]);
-                      }}
-                    />
-                    <span
-                      className="checkbox-label w-form-label"
-                      htmlFor="SHEYDA-ABVABI"
-                    >
-                      {dataViewed[key].title}
-                    </span>
-                  </label>
-                ))
-                : ""}
-
-              <div className="contactpartist">More Artists</div>
-              {artistData !== null
-                ? Object.keys(artistData).map((key) => (
-                  <label
-                    className="w-checkbox artistcheckbox"
-                    style={{ textTransform: "uppercase" }}
-                  >
-                    <input
-                      type="checkbox"
-                      checked={isCheckedArtist[key]}
-                      onChange={(e) => {
-                        handleChangeArtist(e, artistData[key], key);
-                      }}
-                      className="w-checkbox-input checkbox-2"
-                    />
-                    <span
-                      className="checkbox-label w-form-label"
-                      htmlFor="NICK-APONTE"
-                    >
-                      {artistData[key]}
-                    </span>
-                  </label>
-                ))
-                : ""}
-
-              <div className="w-form-done">
-                <div>Thank you! Your submission has been received!</div>
-              </div>
-              <div className="w-form-fail">
-                <div>Oops! Something went wrong while submitting the form.</div>
+                <div className="imagescontainer">
+                  <div className="w-dyn-list">
+                    <div role="list" className="collection-list w-dyn-items">
+                      <div role="listitem" className="w-dyn-item"></div>
+                    </div>
+                    <div className="w-dyn-empty">
+                      <div>No items found.</div>
+                    </div>
+                  </div>
+                  <div id="cover" className="cover"></div>
+                </div>
               </div>
             </div>
-          </div>
-          </div>
-          <div className="imagescontainer">
-            <div className="w-dyn-list">
-              <div role="list" className="collection-list w-dyn-items">
-                <div role="listitem" className="w-dyn-item"></div>
-              </div>
-              <div className="w-dyn-empty">
-                <div>No items found.</div>
-              </div>
-            </div>
-            <div id="cover" className="cover"></div>
-          </div>
+            <div className="collection-list-5" >
+              {AddToCart.cartInfo &&
+                Object.keys(AddToCart.cartInfo).map((oneKey, i) => {
+                  return (
 
+
+                    <Link
+                      id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
+                      to={"/artists/" + AddToCart.cartInfo[oneKey].id}
+                      className="card_img " >
+                      <div className="artistimagethumb" style={{ position: "relative", overflow: "hidden" }}>
+                      
+                        <img
+                          src={artistImages[AddToCart.cartInfo[oneKey].id]}
+                          loading="lazy"
+                          alt=""
+                          style={{ width:"100%", height:"100%"}}
+                          className=""
+                        />
+
+                        <div className="nameartistmini">
+                          <div className="artistnametxt">{AddToCart.cartInfo[oneKey].Name}</div>
+                        </div> {console.log(AddToCart.cartInfo[oneKey].Name)}
+                        {/* <h5>{ AddToCart.cartInfo[oneKey].Name.toUpperCase()}</h5> 
+                    <button onClick={()=>{removeKey( AddToCart.cartInfo[oneKey].id)}}>Remove Artist</button> */}
+                    </div>
+                    </Link>
+
+                  );
+                })}
+
+            </div>
+          </div>
         </div>
+
         <p
-            className="contactp">
-            <strong className="addres">
-              Shannon Associates - USA
-              <br />
-            </strong>
-            <span className="addres2">333 West 57th Street New York, NY 10019
+          className="contactp">
+          <strong className="addres">
+            Shannon Associates - USA
+            <br />
+          </strong>
+          <span className="addres2">333 West 57th Street New York, NY 10019
             <br />
             info@shannonassociates.com</span>
-          </p>
+        </p>
         {/* <div
           id="w-node-_0fb692da-7bfd-42b2-746a-f1ed5ebdb01b-85f2d07d"
           className="div-block-2">
