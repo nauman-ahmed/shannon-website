@@ -4,6 +4,14 @@ import Slider from "react-slick";
 import "./slider.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useDispatch, useSelector } from "react-redux";
+
+import { artistImageDetailedSliceData } from '../../AxiosFunctions/Axiosfunctionality';
+
+import { ArtistImageSliceData } from "../../redux/artistImageDataSlice";
+
+import { addCart } from "../../redux/addToCart";
+import { updateMessage, updateOpen } from "../../redux/message";
 
 const images = window.location.origin + "/assets/images";
 
@@ -20,6 +28,7 @@ export const SliderShow=  (props) => {
         }
       }
     },[props.sliderIndex,slider])
+    
 
     return(
         <Slider  className="slider"
@@ -36,6 +45,13 @@ export const SliderShow=  (props) => {
 };
 
 export const SliderItems = (props)=>{
+  const dispatch = useDispatch();
+  
+  const addToCartArtist = (id, firstname) => {
+    dispatch(addCart({ key: id, data: { id: id, Name: firstname } }));
+    dispatch(updateOpen(true));
+    dispatch(updateMessage("Add Artist in Cart"));
+  };
     return(
         <div  className={
           "col" in props ? props.col + " slideItemNew" : "slideItemNew"
@@ -48,10 +64,56 @@ export const SliderItems = (props)=>{
             alt=""
             style={
               "col" in props
-                ? { OObjectFit: "cover", objectFit: "cover", margin:"auto",width:"100%",height:"100vh" }
-                : { OObjectFit: "cover", objectFit: "cover", margin:"auto",height:'100vh' }
+                ? { objectFit: "contain", objectFit: "contain", margin:"auto",width:"100%",height:"auto" }
+                : { bjectFit: "contain", objectFit: "contain", margin:"auto",height:'auto' }
             }
           />
+
+            <div className="hide_detail mb-1 mt-2 pt-3">
+                  <h4 className="mb-1" style={{ fontWeight: "500", fontSize: "22px" }}>{props?props.data1[props.search].title:null}</h4>
+                  <div
+                    className="F large hide_detail pt-2 mt-1"
+                    style={{
+                      fontSize: "14px",
+                      marginTop: "20px",
+                      lineHeight: "2"
+                    }}
+                  >
+                    <div dangerouslySetInnerHTML={{ __html: props ? props?.data1[props.search].detail : null}}>
+
+                    </div>
+
+                  </div>
+
+                  <div className="d-flex" style={{
+                    position: "relative",
+                    paddingTop: "10px",
+                  }}>
+                    <Link
+                      to="#"
+                      // style={{ fontSize: "16px", fontWeight: '600', minWidth: "60px", maxWidth: "70px" }}
+                      className={props.windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton  mr-3"}
+                    >
+                      CALL
+                    </Link>
+                    <Link
+                      to="/contact"
+                      // style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
+                      className={props.windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton  mr-3"}
+                    >
+                      GET ESTIMATE
+                    </Link>
+                    <Link
+                      data-w-id="e04f643e-f302-16e2-74ee-4bc7e85391d8"
+                      to="#"
+                      // style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
+                      className="talentbutton hide "
+                      onClick={() => addToCartArtist(props ? props.data1[props.search].id : null, props ? props.data1[props.search].title : null)}
+                    >
+                      ADD TO MY LIST
+                    </Link>
+                  </div>
+                </div>
         </div>
     )
 }

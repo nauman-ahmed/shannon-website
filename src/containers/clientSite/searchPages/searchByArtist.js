@@ -622,6 +622,9 @@ function SearchByArtist(props) {
                             <SliderItems
                               key={keys}
                               src={item}
+                              data1={data1}
+                              search={search}
+                              windowSize={windowSize}
                               onClick={setFullScreenHandler}
 
                             />
@@ -668,51 +671,7 @@ function SearchByArtist(props) {
                   )}
                 </div>
 
-                <div className="hide_detail mb-1 mt-2 pt-3">
-                  <h4 className="mb-1" style={{ fontWeight: "500", fontSize: "22px" }}>{data1[search].title}</h4>
-                  <div
-                    className="F large hide_detail pt-2 mt-1"
-                    style={{
-                      fontSize: "14px",
-                      marginTop: "20px",
-                      lineHeight: "2"
-                    }}
-                  >
-                    <div dangerouslySetInnerHTML={{ __html: data1[search].detail }}>
-
-                    </div>
-
-                  </div>
-
-                  <div className="d-flex" style={{
-                    position: "relative",
-                    paddingTop: "10px",
-                  }}>
-                    <Link
-                      to="#"
-                      // style={{ fontSize: "16px", fontWeight: '600', minWidth: "60px", maxWidth: "70px" }}
-                      className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton  mr-3"}
-                    >
-                      CALL
-                    </Link>
-                    <Link
-                      to="/contact"
-                      // style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
-                      className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton  mr-3"}
-                    >
-                      GET ESTIMATE
-                    </Link>
-                    <Link
-                      data-w-id="e04f643e-f302-16e2-74ee-4bc7e85391d8"
-                      to="#"
-                      // style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
-                      className="talentbutton hide "
-                      onClick={() => addToCartArtist(data1[search].id, data1[search].title)}
-                    >
-                      ADD TO MY LIST
-                    </Link>
-                  </div>
-                </div>
+              
               </div>
             </div>
 

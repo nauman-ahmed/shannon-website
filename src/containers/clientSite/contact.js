@@ -138,14 +138,14 @@ function Contact() {
     let tempChecker = {};
     tempval &&
       Object.keys(tempval).forEach((key) => {
-        tempChecker[tempval[key].id] = false;
+        tempChecker[tempval[key]?.id] = false;
       });
-    AddToCart.cartInfo &&
-      Object.keys(AddToCart.cartInfo).forEach((oneKey, i) => {
+    AddToCart?.cartInfo &&
+      Object.keys(AddToCart?.cartInfo).forEach((oneKey, i) => {
         tempval &&
           Object.keys(tempval).forEach((key) => {
-            if (AddToCart.cartInfo[oneKey].id === tempval[key].id) {
-              tempChecker[AddToCart.cartInfo[oneKey].id] = true;
+            if (AddToCart?.cartInfo[oneKey]?.id === tempval[key]?.id) {
+              tempChecker[AddToCart?.cartInfo[oneKey]?.id] = true;
             }
           });
       });
@@ -154,28 +154,28 @@ function Contact() {
       let temp = {};
       let tempchecked = {};
       let keyChecker = true;
-      res.payload.forEach((item, key1) => {
+      res?.payload?.forEach((item, key1) => {
         if (key1 <= 12) {
-          if (tempval && tempval[item._id] === undefined) {
-            temp[item._id] = item.firstname + " " + item.lastname;
-            tempchecked[item._id] = false;
+          if (tempval && tempval[item?._id] === undefined) {
+            temp[item?._id] = item?.firstname + " " + item?.lastname;
+            tempchecked[item?._id] = false;
             keyChecker = false;
           }
         }
       });
       if (keyChecker) {
-        res.payload.forEach((item, key1) => {
+        res?.payload?.forEach((item, key1) => {
           if (key1 <= 12) {
-            temp[item._id] = item.firstname + " " + item.lastname;
-            tempchecked[item._id] = false;
+            temp[item?._id] = item?.firstname + " " + item?.lastname;
+            tempchecked[item?._id] = false;
           }
         });
       }
-      AddToCart.cartInfo &&
-        Object.keys(AddToCart.cartInfo).forEach((oneKey, i) => {
-          res.payload.forEach((item, key1) => {
-            if (AddToCart.cartInfo[oneKey].id === item._id) {
-              tempchecked[item._id] = true;
+      AddToCart?.cartInfo &&
+        Object.keys(AddToCart?.cartInfo).forEach((oneKey, i) => {
+          res?.payload?.forEach((item, key1) => {
+            if (AddToCart?.cartInfo[oneKey]?.id === item?._id) {
+              tempchecked[item?._id] = true;
             }
           });
         });
@@ -186,11 +186,11 @@ function Contact() {
       let tempArtistImagesData = {};
       let tempLocalData = JSON.parse(localStorage.getItem("artistViewed_V1"));
       dispatch(ArtistImageSliceData()).then((res) => {
-        res.payload.map((val, ind) => {
-          if (temp[val.artistId._id] || tempLocalData[val.artistId._id]) {
-            tempArtistImagesData[val.artistId._id] =
-              val.mainImage[0].subImage[1].path;
-          }
+        res?.payload?.map((val, ind) => {
+          // if (temp[val?.artistId?._id] || tempLocalData[val?.artistId?._id]) {
+            tempArtistImagesData[val?.artistId?._id] =
+              val?.mainImage[0]?.subImage[1]?.path;
+          // }
         });
         setArtistImages(tempArtistImagesData);
       });
