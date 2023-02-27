@@ -111,10 +111,10 @@ function IllustrationArtists(props) {
                   className="image"
                 />
                 <p className="card_img_text2 pt-2">
-                {val.artistId.lastname} {val.artistId.firstname}</p>
+                {val.artistId.firstname} {val.artistId.lastname} </p>
                 {/* <div className="artistnamediv">
                   <div className="artistnametext">
-                    {val.artistId.lastname} {val.artistId.firstname}
+                    {val.artistId.firstname} {val.artistId.lastname} 
                   </div>
                 </div> */}
               </Link>
@@ -137,10 +137,10 @@ function IllustrationArtists(props) {
                   className="image"
                 />
                 <p className="card_img_text2 pt-2">
-                {val.artistId.lastname} {val.artistId.firstname}</p>
+                {val.artistId.firstname} {val.artistId.lastname} </p>
                 {/* <div className="artistnamediv">
                   <div className="artistnametext">
-                    {val.artistId.lastname} {val.artistId.firstname}
+                    {val.artistId.firstname} {val.artistId.lastname} 
                   </div>
                 </div> */}
               </Link>

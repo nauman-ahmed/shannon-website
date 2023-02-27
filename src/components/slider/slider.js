@@ -74,7 +74,7 @@ export const SliderItems = (props)=>{
                   <div
                     className="F large hide_detail pt-2 mt-1"
                     style={{
-                      fontSize: "14px",
+                      fontSize: "17px",
                       marginTop: "20px",
                       lineHeight: "2"
                     }}

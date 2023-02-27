@@ -583,7 +583,7 @@ function Contact() {
                     <Link
                       id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
                       to={"/artists/" + AddToCart.cartInfo[oneKey].id}
-                      className="card_img " >
+                      className="card_img" >
                       <div className="artistimagethumb" style={{ position: "relative", overflow: "hidden" }}>
                       
                         <img

@@ -147,7 +147,7 @@ function Categories(props) {
                   {item.ImageData.length > 0 ? (
                     <>
                       <div className="d-flex mt-0">
-                        <h5 className="mt-0" style={{color:"#ce651e", fontWeight:"500", fontSize:"16.1px",display:'flex',whiteSpace:'nowrap'}}>
+                        <h5 className="mt-0 cat_font" style={{color:"#ce651e", fontWeight:"500", fontSize:"16.1px",display:'flex',whiteSpace:'nowrap'}}>
                           {
                             item.keyword == '3D Rendering' ? "CGI" 
                           :
@@ -184,8 +184,7 @@ function Categories(props) {
                                   />
                                 <p className="card_img_text2 pt-2">
                                 
-                                      {item1.artistId.lastname}{" "}
-                                      {item1.artistId.firstname}
+                                      {item1.artistId.firstname}{" "}{item1.artistId.lastname}                                    
                                 </p>   </div> 
                                 </Link>
                               </>
@@ -222,7 +221,7 @@ function Categories(props) {
                     {item.ImageData.length > 0 ? (
                       <>
                         <div className="d-flex">
-                            <h5 className="mt-0" style={{color:"#ce651e",fontWeight:"500", fontSize:"16.1px" ,display:'flex',whiteSpace:'nowrap'}}>
+                            <h5 className="mt-0 cat_font" style={{color:"#ce651e",fontWeight:"500", fontSize:"16.1px" ,display:'flex',whiteSpace:'nowrap'}}>
                               {
                                 item.keyword == '3D Rendering' ? "CGI" 
                               :
@@ -243,7 +242,7 @@ function Categories(props) {
                                     key={key1}
                                     id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
                                     to={"/artists/" + item1.artistId._id}
-                                    className="card_img"
+                                    className="card_img "
                                 
                                   >
                                     <div className="detail_card4_h" style={{ position: "relative", overflow: "hidden" }}>
@@ -255,8 +254,8 @@ function Categories(props) {
                                       style={{ width:"100%", height:"100%" }}
                                     />
                                     <p className="card_img_text2 pt-2">
-                                        {item1.artistId.lastname}{" "}
-                                        {item1.artistId.firstname}</p></div>
+                                         {item1.artistId.firstname}{" "}{item1.artistId.lastname}
+                                       </p></div>
                                     
                                   </Link>
                                 </>

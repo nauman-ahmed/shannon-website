@@ -181,8 +181,8 @@ const images = window.location.origin + "/assets/images";
                                     />
                                   <p className="card_img_text2 pt-2">
                                   
-                                        {item1.artistId.lastname}{" "}
-                                        {item1.artistId.firstname}
+                                        {item1.artistId.firstname}{" "}{item1.artistId.lastname}
+                                        
                                      </p>
                                      </div>
                                   </Link>
@@ -254,8 +254,8 @@ const images = window.location.origin + "/assets/images";
                                     style={{ width: "100%", height: "100%" }}
                                   />
                                   <p className="card_img_text2 pt-2">
-                                      {item1.artistId.lastname}{" "}
-                                      {item1.artistId.firstname}</p>
+                                      {item1.artistId.firstname}{" "}{item1.artistId.lastname}
+                                      </p>
                                   </div>
                                 </Link>
                               </>
