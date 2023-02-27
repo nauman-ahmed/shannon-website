@@ -97,7 +97,7 @@ function MEDICAL(props) {
                   alt=""
                   className="image"
                 />
-                <p className="card_img_text2 pt-2">
+                <p className="card_img_text2">
                 {val.artistId.firstname} {val.artistId.lastname} </p>
                {/*  <div className="artistnamediv">
                   <div className="artistnametext">

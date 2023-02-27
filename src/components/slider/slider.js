@@ -79,7 +79,7 @@ export const SliderItems = (props)=>{
                       lineHeight: "2"
                     }}
                   >
-                    <div dangerouslySetInnerHTML={{ __html: props ? props?.data1[props.search].detail : null}}>
+                    <div style={{fontFamily: 'Roboto',fontSize:17,color: '#373530',lineHeight:1.4}} dangerouslySetInnerHTML={{ __html: props ? props?.data1[props.search].detail : null}}>
 
                     </div>
 

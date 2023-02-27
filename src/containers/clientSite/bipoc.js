@@ -364,7 +364,7 @@ function Bipoc() {
                   >
                     <div className=" card_img2 detail_card3_h" style={{ position: "relative",   overflow:"hidden",}}>
                       <img src={val.ImageData[0].subImage[1].path} val={val} className="h-100 w-100" ></img>
-                      <p className="p-1 card_img_text" >{val.artistData.firstname + " " + val.artistData.lastname }</p>
+                      <p className="card_img_text2" style={{paddingTop:'0.8vh', paddingBottom:'0.8vh',fontSize:'1.5rem'}}>{val.artistData.firstname + " " + val.artistData.lastname }</p>
                     </div>
                   </Link>
                   // </div>)

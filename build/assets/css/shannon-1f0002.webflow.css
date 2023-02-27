@@ -5170,6 +5170,15 @@ a {
     float: right;
   }
 
+  .detail_artist{
+    font-size: 17px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-family: Roboto, sans-serif;
+    line-height: 1.4;
+    font-weight: 400;
+    color: #373530;
+  }
   .link-block-3 {
     height: auto;
   }

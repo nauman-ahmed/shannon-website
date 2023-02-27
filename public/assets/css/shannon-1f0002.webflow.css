@@ -747,9 +747,10 @@ a {
   text-align: center;
   background-color: hsla(0, 0%, 100%, 0.67);
   font-family: Robotocondensed, sans-serif;
-  font-size: 11px;
+  font-size: 1.3vh !important;
   width: 100%;
-  padding: 6px 0px;
+  padding-top:1.0vh;
+  padding-bottom:1.0vh;
   bottom: -10px;
   left: 0;
   text-transform: uppercase;
@@ -3719,8 +3720,8 @@ a {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding-top: 1.02vh;
-  padding-bottom: 1.04vh;
+  padding-top: 1.01vh;
+  padding-bottom: 1.01vh;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -3733,7 +3734,7 @@ a {
   font-family: Robotocondensed, sans-serif;
   text-transform: uppercase;
   color: #373530;
-  font-size: 0.74vw;
+  font-size: 1.3vh !important;
   line-height: 1;
   font-weight: 400;
   text-align: center;
@@ -4750,7 +4751,7 @@ column-gap:20px ;
   top: 0%;
   right: 0%;
   bottom: 0%;
-  width: 60px;
+  width: 55px;
   height: 3.8vh;
   min-height: 20px;
   border-radius: 21px;
@@ -4816,7 +4817,7 @@ column-gap:20px ;
     margin-top: 0px;
     margin-left: 7px;
     color: #818181;
-    padding: 9px 1.8vw;
+    padding: 9px 1.5vw;
     border: 1.5px solid #979797;
     border-radius: 20px;
     font-family: 'Roboto Condensed', sans-serif;
@@ -12483,7 +12484,7 @@ element.style {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  /* margin-top: 10px */
+  margin-top: -7px !important
 }
 
 .left {
