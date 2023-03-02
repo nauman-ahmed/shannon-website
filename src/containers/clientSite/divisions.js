@@ -144,7 +144,13 @@ const images = window.location.origin + "/assets/images";
                     {item.ImageData.length > 0 ? (
                       <>
                         <div className="d-flex mt-0 mb-2">
-                          <h5 className=" mt-0" style={{color:"#ce651e", fontWeight:"500", fontSize:"15px",display:'flex',whiteSpace:'nowrap'}}>
+                          <h5 className=" mt-0" style={{display:'flex',whiteSpace:'nowrap',
+                            fontFamily: 'Roboto, sans-serif',
+                            color: '#ce651e',
+                            fontSize: '1vw',
+                            lineHeight: 1,
+                            fontWeight: '500',
+                            textAlign: 'left'}}>
                             {
                               item.keyword == '3D Rendering' ? "CGI" 
                             :
@@ -153,8 +159,8 @@ const images = window.location.origin + "/assets/images";
                           </h5> <span style={{width:"100%", height:"1px", color:"#ce651e", border:"1px solid #ce651e", marginTop:"10px",marginLeft:6}}></span>
                         </div>
                         <div
-                          id="w-node-f734ee66-0b58-4c14-e08b-49ceded015c9-84f2d081"
-                          className="detail_card3 "
+                         id="w-node-a284be2a-4b91-3177-03eb-6614b24879c1-4bf2d022"
+                         className="_4cols-v2"
                           // style={{ paddingTop: "10px" }}
                         >
                           {item?.ImageData.map((item1, key1) => (
@@ -164,27 +170,33 @@ const images = window.location.origin + "/assets/images";
                                 {console.log(item1)}
                                   <Link
                                     key={key1}
-                                    id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
+                                    id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                                    data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                                     to={"/artists/" + item1.artistId._id}
-                                    className="card_img  "
+                                    className="artistcard w-inline-block"
                                     
                                   >
-                                    <div className="detail_card4_h" style={{ position: "relative", overflow: "hidden" }}>
+                                    {/* <div className="detail_card4_h" style={{ position: "relative", overflow: "hidden" }}> */}
                                     <img
                                       src={String(
                                         item1?.mainImage[0]?.subImage[0]?.path
                                       )}
                                       loading="lazy"
                                       alt=""
-                                      className="w-100 h-100  "
+                                      className="image" 
                                     // style={{ width: "100%", height: "100%" }}
                                     />
-                                  <p className="card_img_text2 pt-2">
+                                     <div className="artistnamediv">
+                                      <div className="artistnametext-v3">
+                                      {item1.artistId.firstname}  {item1.artistId.lastname} 
+                                      </div>
+                                    </div>
+                                  {/* <p className="card_img_text2 pt-2">
                                   
                                         {item1.artistId.firstname}{" "}{item1.artistId.lastname}
                                         
-                                     </p>
-                                     </div>
+                                     </p> */}
+                                     {/* </div> */}
                                   </Link>
                                 </>
                               ) : (
