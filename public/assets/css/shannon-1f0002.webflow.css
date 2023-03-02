@@ -701,11 +701,14 @@ a {
   text-align: center;
   background-color: hsla(0, 0%, 100%, 0.67);
   font-family: Robotocondensed, sans-serif;
-  font-size: 11px;
+  font-size: 0.74vw;
   width: 100%;
   height: 100%;
   top: 88%;
   left: 0;
+  text-transform: uppercase;
+  color: #373530;
+
 }
 @media (min-width: 1300px){
   .card_img_text {
@@ -720,6 +723,8 @@ a {
     height: 100%;
     top: 88%;
     left: 0;
+    text-transform: uppercase;
+    color: #373530;
   }
   .card_img_text2 {
     font-weight: 400;
@@ -734,6 +739,7 @@ a {
     bottom: -10px;
     left: 0;
     text-transform: uppercase;
+    color: #373530;
   }
   .cat_font{
     font-size: 1vw !important;
@@ -754,6 +760,8 @@ a {
   bottom: -10px;
   left: 0;
   text-transform: uppercase;
+  color: #373530;
+
 }
 
 .card_img_text3 {
