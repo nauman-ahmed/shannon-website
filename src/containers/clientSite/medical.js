@@ -97,13 +97,18 @@ function MEDICAL(props) {
                   alt=""
                   className="image"
                 />
-                <p className="card_img_text2">
-                {val.artistId.firstname} {val.artistId.lastname} </p>
-               {/*  <div className="artistnamediv">
+                {/* <p className="card_img_text2"> 
+                {val.artistId.firstname} {val.artistId.lastname} </p> */}
+                {/* <div className="artistnamediv">
                   <div className="artistnametext">
                     {val.artistId.firstname} {val.artistId.lastname} 
                   </div>
                 </div> */}
+                <div className="artistnamediv">
+                  <div className="artistnametext-v3">
+                  {val.artistId.firstname}  {val.artistId.lastname} 
+                  </div>
+                </div>
               </Link>
               </>
         )))
@@ -123,13 +128,18 @@ function MEDICAL(props) {
                   alt=""
                   className="image"
                 />
-                <p className="card_img_text2 pt-2">
-                {val.artistId.firstname} {val.artistId.lastname} </p>
+                {/* <p className="card_img_text2 pt-2">
+                {val.artistId.firstname} {val.artistId.lastname} </p> */}
                 {/* <div className="artistnamediv">
                   <div className="artistnametext">
                     {val.artistId.firstname} {val.artistId.lastname} 
                   </div>
                 </div> */}
+                <div className="artistnamediv">
+                  <div className="artistnametext-v3">
+                  {val.artistId.firstname}  {val.artistId.lastname} 
+                  </div>
+                </div>
               </Link>
               </>
         )))

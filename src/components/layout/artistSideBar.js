@@ -13,7 +13,7 @@ function ArtistSideBar() {
     setArtistData(sortAlphaOrder(ArtistDataAPI.artistData!==undefined?ArtistDataAPI.artistData.length>0?ArtistDataAPI.artistData:[]:[]))
   }, [ArtistDataAPI])
 
-
+ 
   return (
     
     <div id="w-node-a284be2a-4b91-3177-03eb-6614b2487763-4bf2d022" className="div-block-4">

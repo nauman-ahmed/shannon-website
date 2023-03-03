@@ -432,9 +432,17 @@ a {
   }
 
   .detail_card6_h {
-    height: 25.2vh;
+    position: "relative";
+    overflow: "hidden";
+    height: 12vw;
   }
 }
+
+.detail_card6_h {
+    position: "relative";
+    overflow: "hidden";
+    height: 12vw;
+  }
 
 @media(max-width: 1300px) {
   .contactpage {
@@ -772,11 +780,11 @@ a {
   text-align: center;
   background-color: hsla(0, 0%, 100%, 0.67);
   font-family: Robotocondensed, sans-serif;
-  font-size: 11px;
-  padding: 4px 0px;
+  font-size: 0.9vw;
   width: 100%;
   height: fit-content;
   bottom: -20px;
+  vertical-align: middle;
   /* bottom: -6%; */
   /* left: 0; */
 }

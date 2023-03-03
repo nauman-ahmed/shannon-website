@@ -486,12 +486,12 @@ function SearchByArtist(props) {
                               // style={{ position: "relative" }}
                               to={"/artists/" + key}
                             >
-                              <div className="detail_card6_h" style={{ position: "relative", overflow: "hidden",height:'25vh' }}>
+                              <div className="detail_card6_h" style={{ position: "relative", overflow: "hidden",height:'12vw' }}>
                                 <img
                                   src={String(similarData[key].mainImage)}
                                   loading="lazy"
                                   alt=""
-                                  className="h-100"
+                                  className="image"
                                   style={{ width: "100%", }} />
                                 <div className="artistnamediv">
                                   <div className="artistnametext-v3" style={{padding:"6px 0px"}}>
@@ -543,12 +543,12 @@ function SearchByArtist(props) {
                               // style={{ position: "relative" }}
                               to={"/artists/" + key}
                             >
-                              <div className="detail_card6_h" style={{ position: "relative", overflow: "hidden",height:'25vh' }}>
+                              <div className="detail_card6_h" style={{ position: "relative", overflow: "hidden",height:'12vw' }}>
                                 <img
                                   src={String(dataViewed[key].slideList[0])}
                                   loading="lazy"
                                   alt=""
-                                  className="h-100"
+                                  className="image"
                                   style={{ width: "100%", }} />
                                 <div className="artistnamediv">
                                   <div className="artistnametext-v3" style={{padding:"6px 0px"}}>
