@@ -426,7 +426,7 @@ function SearchByArtist(props) {
                     <div>
                       <div style={{
                         width: "100%",
-                        fontWeight: '600',
+                        fontWeight: '700',
                         backgroundColor: "#ce651e",
                         fontSize: "18px",
                         color: "#fff",
@@ -513,7 +513,7 @@ function SearchByArtist(props) {
                     <div>
                       <div style={{
                         width: "100%",
-                        fontWeight: '600',
+                        fontWeight: '700',
                         backgroundColor: "#ce651e",
                         fontSize: "18px",
                         color: "#fff",
