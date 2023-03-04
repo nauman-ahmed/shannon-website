@@ -150,7 +150,7 @@ function Categories(props) {
                                 :
                                 item.keyword.toUpperCase()
                             }
-                          </h4> <div style={{ width: "100%", height: "1px", color: "#ce651e", border: "1px solid #ce651e", marginTop: "20px" }}></div>
+                          </h4> <span style={{width:"100%", height:"1px", color:"#ce651e", border:"1px solid #ce651e", marginTop:"4.5px", marginLeft:6}}></span>
 
                         </div>
                         <div
@@ -222,7 +222,7 @@ function Categories(props) {
                               :
                               item.keyword.toUpperCase()
                           }
-                        </h4> <span style={{ width: "90%", height: "1px", color: "#ce651e", border: "1px solid #ce651e", marginTop: "20px" }}></span>
+                        </h4> <span style={{width:"100%", height:"1px", color:"#ce651e", border:"1px solid #ce651e", marginTop:"4.5px", marginLeft:6}}></span>
                       </div>
                       <div
                         id="w-node-f734ee66-0b58-4c14-e08b-49ceded015c9-84f2d081"
