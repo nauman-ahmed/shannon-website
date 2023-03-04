@@ -4742,8 +4742,8 @@ column-gap:20px ;
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start; */
-  width: 17vw;
-  min-width: 200px;
+  width: 15.8vw !important;
+  /* min-width: 200px; */
   height: 4.2vh;
   min-height: 25px;
   margin-bottom: 0px;
@@ -4768,7 +4768,7 @@ column-gap:20px ;
   right: 0%;
   bottom: 0%;
   width: 18%;
-  height: 2vw;
+  height: 3.7vh;
   min-height: 20px;
   border-radius: 21px;
   background-image: url('../images/Frame_1.svg');
@@ -4779,8 +4779,8 @@ column-gap:20px ;
 
 @media screen and (max-width:1536px) {
   .link-block-3{
-    width: 18%;
-  height: 2vw;
+    width: 25%;
+    height: 3.7vh;
     background-size: 55px;
   }
 }
@@ -4798,6 +4798,7 @@ column-gap:20px ;
 }
 
 @media(min-width:1920px){
+
   .filter-button {
     text-align: center;
     margin-top: 0px;
@@ -4813,6 +4814,7 @@ column-gap:20px ;
   }
 }
 @media(max-width:1920px){
+
   .filter-button {
     text-align: center;
     margin-top: 0px;
@@ -4829,6 +4831,7 @@ column-gap:20px ;
 }
 
 @media(max-width:1800px){
+ 
   .filter-button {
     text-align: center;
     margin-top: 0px;
@@ -4845,6 +4848,9 @@ column-gap:20px ;
 }
 
 @media(max-width:1700px){
+  .form-block-2{
+  width: 16.4vw !important;
+}
   .filter-button {
     text-align: center;
     margin-top: 0px;
@@ -4860,6 +4866,9 @@ column-gap:20px ;
   }
 }
 @media(max-width:1500px){
+  .form-block-2{
+    width: 17.6vw !important;
+  }
   .filter-button {
     text-align: center;
     margin-top: 0px;
@@ -4876,6 +4885,9 @@ column-gap:20px ;
 }
 
 @media(max-width:1400px){
+  .form-block-2{
+    width: 18.8vw !important;
+  }
   .filter-button {
     text-align: center;
     margin-top: 0px;
@@ -4907,6 +4919,9 @@ column-gap:20px ;
 } */
 
 @media(max-width: 1300px) {
+  .form-block-2{
+    width: 17.6vw !important;
+  }
   .filter-button {
     text-align: center;
     margin-top: 0px;
@@ -4923,6 +4938,9 @@ column-gap:20px ;
 }
 
 @media(max-width: 1200px) {
+  .form-block-2{
+    width: 19vw !important;
+  }
   .filter-button {
     text-align: center;
     margin-top: 0px;
@@ -5002,7 +5020,11 @@ column-gap:20px ;
 }
 
 
+
 @media screen and (max-width: 830px) {
+  .form-block-2{
+    width: 20vw !important;
+  }
   input#Search-2::placeholder {
     font-size: 16px;
     font-family: 'Roboto Condensed', sans-serif;
@@ -5017,10 +5039,12 @@ column-gap:20px ;
 }
 
 @media screen and (max-width: 991px) {
-  
+  .form-block-2{
+    width: 20vw !important;
+  }
   .link-block-3 {
-    width: 18%;
-    height: 2vw;
+    width: 25%;
+    height: 3.7vh;
   }
   
   .container {
@@ -5339,6 +5363,7 @@ column-gap:20px ;
 }
 
 @media screen and (max-width:750px) {
+
   .filterhomebox.v2 {
     display: block;
     row-gap: 20px;
@@ -5347,10 +5372,16 @@ column-gap:20px ;
 
   .form-block-2 {
     margin: 20px 0px;
+    width: 27vw !important;
+
   }
 }
 
 @media screen and (max-width:618px) {
+  .form-block-2 {
+    margin: 20px 0px;
+    width: 35vw !important;
+  }
   .brand.w--current {
     width: 70%;
   }
