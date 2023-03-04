@@ -578,14 +578,11 @@ function Contact() {
               {AddToCart.cartInfo &&
                 Object.keys(AddToCart.cartInfo).map((oneKey, i) => {
                   return (
-
-
                     <Link
                       id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
                       to={"/artists/" + AddToCart.cartInfo[oneKey].id}
                       className="card_img" >
                       <div className="artistimagethumb" style={{ position: "relative", overflow: "hidden" }}>
-                      
                         <img
                           src={artistImages[AddToCart.cartInfo[oneKey].id]}
                           loading="lazy"
@@ -593,10 +590,9 @@ function Contact() {
                           style={{ width:"100%", height:"100%"}}
                           className=""
                         />
-
                         <div className="nameartistmini">
                           <div className="artistnametxt">{AddToCart.cartInfo[oneKey].Name}</div>
-                        </div> {console.log(AddToCart.cartInfo[oneKey].Name)}
+                        </div> 
                         {/* <h5>{ AddToCart.cartInfo[oneKey].Name.toUpperCase()}</h5> 
                     <button onClick={()=>{removeKey( AddToCart.cartInfo[oneKey].id)}}>Remove Artist</button> */}
                     </div>
