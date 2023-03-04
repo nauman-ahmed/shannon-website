@@ -74,7 +74,7 @@ function Index(props) {
 
     useEffect(() => {
         setSearchArtist("")
-    }, [pages])
+    }, [pages,search])
 
     return (
         <>

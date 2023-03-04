@@ -34,7 +34,6 @@ const images = window.location.origin + "/assets/images";
         tempImage = tempImage.sort((a, b) => a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize()));
         temp.push({...val,ImageData:tempImage})
       })
-      console.log("NAU",temp)
       setTempArtist(temp)
       // tempData = tempData.sort((a, b) => a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize()));
     }

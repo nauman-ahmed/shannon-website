@@ -147,9 +147,9 @@ function Artists(props) {
               {ind === 47 ? (
                 bannerImages.bannerData.length > 0 ? (
                   <>
-                    <Link
+                    <a
                       id="w-node-a284be2a-4b91-3177-03eb-6614b2487a29-4bf2d022"
-                      to="http://18.191.86.110/#/"
+                      href="http://18.191.86.110/#/"
                       className="banner _2 v2 w-inline-block-banner "
                     >
                       <div className="bannerletters _2 v2"></div>
@@ -165,7 +165,7 @@ function Artists(props) {
                             ")",
                         }}
                       ></div>
-                    </Link>
+                    </a>
                     <Link
                       id="w-node-a284be2a-4b91-3177-03eb-6614b2487a2c-4bf2d022"
                       to="medical.html"

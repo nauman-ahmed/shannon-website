@@ -67,7 +67,6 @@ function ArtistsList(props) {
         for(let i = 0; i < tempTypeTwo.length; i++){
             tempTypeTwo[i].orderKidArtist = i
         };
-        console.log(tempTypeOne)
         setIsLoader(true)
         orderArtist(tempTypeOne).then(res=>{
             dispatch(updateOpen(true))

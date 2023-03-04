@@ -479,7 +479,6 @@ function Bipoc() {
               {latinoArtist ?
                 latinoArtist.map((val, ind) =>
                 val.ImageData.length > 0 ? (<div role="listitem" className="w-dyn-item">
-                  {console.log(val.artistData)}
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"

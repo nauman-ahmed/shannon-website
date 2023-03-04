@@ -67,7 +67,6 @@ function SearchByArtist(props) {
     let tempData = localStorage.getItem("artistViewed_V1");
 
     tempData = JSON.parse(tempData);
-    console.log(key, _id, firstname, bio, listData, subListData, tempData)
     if (tempData === null) {
       tempData = {};
       tempData[key] = {
@@ -97,10 +96,7 @@ function SearchByArtist(props) {
   }
 
   const getUserData = async () => {
-    console.log("SEARCH", search)
     let tempData = await artistImageDetailedSliceData({ "artistId": search })
-
-    console.log(tempData.activeArtist)
 
     dataLocalArtist(
       tempData.activeArtist[search].id,

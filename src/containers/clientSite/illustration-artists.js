@@ -49,7 +49,6 @@ function IllustrationArtists(props) {
 
   const updateTempArtist = (e)=>{
     if(data){
-      console.log(e)
       const searchvalue = e.toLowerCase();
       setTempArtist( data !== undefined ? data.filter(function (element) {
           let checker = false

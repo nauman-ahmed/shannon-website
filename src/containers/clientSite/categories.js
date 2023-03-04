@@ -35,7 +35,6 @@ function Categories(props) {
         tempImage = tempImage.sort((a, b) => a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize()));
         temp.push({ ...val, ImageData: tempImage })
       })
-      console.log("NAU", temp)
       setTempArtist(temp)
       // tempData = tempData.sort((a, b) => a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize()));
     }
@@ -51,8 +50,6 @@ function Categories(props) {
 
   const updateTempArtist = (e) => {
     if (artistImageKeywordDataSlice.artistKeywordImages.length) {
-      console.log(artistImageKeywordDataSlice)
-
       const searchvalue = e.toLowerCase();
       let temp = []
 
@@ -64,10 +61,8 @@ function Categories(props) {
           }
           return checker;
         })
-        console.log(val, tempImage)
         temp.push({ ...val, ImageData: tempImage })
       })
-      console.log(temp)
       setTempArtist(temp)
     }
   }
@@ -205,7 +200,6 @@ function Categories(props) {
                         ))}
                       </div>
                       <div className="divisionbuttoncontainer mb-5">
-                        {console.log("s",item)}
                         <Link
                           to={ 
                             "categories/" + item.Id
