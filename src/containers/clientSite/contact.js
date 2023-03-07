@@ -20,6 +20,7 @@ function Contact() {
 
   const [isPopupShow, setIsPopupShow] = useState(false);
   const [artistImages, setArtistImages] = useState("");
+  const [totalArtistImages, setTotalArtistImages] = useState(undefined);
   const [Name, setName] = useState("");
   const [company, setCompany] = useState("");
   const [email, setEmail] = useState("");
@@ -36,11 +37,28 @@ function Contact() {
   const [artistData, setArtistData] = useState({});
   const [msg, setMsg] = useState("");
   const [isCheckedArtist, setIsCheckedArtist] = useState({});
+  const [filterCond,setFilterCond]= useState(true);
+  const [tempArtist,setTempArtist]= useState([]);
 
-  // const [artistId,setArtistId] = useState([]);
-  // const [status,setStatus] = useState("");
   const { AddToCart } = useSelector((state) => state);
   const { artistImageDataSlice } = useSelector((state) => state);
+
+
+  const filterChange= (filter) => {
+
+
+    if(filter==="A-Z"){
+      let temp = []
+      setFilterCond(false)
+      let tempImage = [...artistImageDataSlice.artistImages]
+      temp = tempImage.sort((a, b) => a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize()));
+      setTempArtist(temp)
+    }
+    else{
+      setFilterCond(true)
+    }
+
+  }
 
   const contactCreate = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -127,18 +145,22 @@ function Contact() {
     dispatch(updateOpen(true));
     dispatch(updateMessage("Add Artist in Cart"));
   };
+
+
   useEffect(() => {
     function getLocalStorage() {
       if (localStorage.getItem("artistViewed_V1") !== null) {
         setDataViewed(JSON.parse(localStorage.getItem("artistViewed_V1")));
       }
     }
+
     const tempval = JSON.parse(localStorage.getItem("artistViewed_V1"));
     let tempChecker = {};
     tempval &&
       Object.keys(tempval).forEach((key) => {
         tempChecker[tempval[key]?.id] = false;
       });
+
     AddToCart?.cartInfo &&
       Object.keys(AddToCart?.cartInfo).forEach((oneKey, i) => {
         tempval &&
@@ -154,13 +176,11 @@ function Contact() {
       let tempchecked = {};
       let keyChecker = true;
       res?.payload?.forEach((item, key1) => {
-        if (key1 <= 12) {
           if (tempval && tempval[item?._id] === undefined) {
             temp[item?._id] = item?.firstname + " " + item?.lastname;
             tempchecked[item?._id] = false;
             keyChecker = false;
           }
-        }
       });
       if (keyChecker) {
         res?.payload?.forEach((item, key1) => {
@@ -186,11 +206,9 @@ function Contact() {
       let tempLocalData = JSON.parse(localStorage.getItem("artistViewed_V1"));
       dispatch(ArtistImageSliceData()).then((res) => {
         res?.payload?.map((val, ind) => {
-          // if (temp[val?.artistId?._id] || tempLocalData[val?.artistId?._id]) {
-          tempArtistImagesData[val?.artistId?._id] =
-            val?.mainImage[0]?.subImage[1]?.path;
-          // }
+          tempArtistImagesData[val?.artistId?._id] = val?.mainImage[0]?.subImage[1]?.path;
         });
+        
         setArtistImages(tempArtistImagesData);
       });
     });
@@ -203,13 +221,10 @@ function Contact() {
     <>
       <div className="row mx-0 pr-0 mt-0 pt-0" style={{
         maxWidth: "100%",
-
       }}>
-
         <div className=" pl-2 left_content contact_w"
           style={{ paddingRight: "0.8vw" }}
         >
-
           <div >
             <h2 className="contacth2 hide">CONTACT</h2>
             <div className="row mr-0 ">
@@ -498,36 +513,7 @@ function Contact() {
                           ></textarea>
                         </div>
                       </div>
-
-                      {/* <div className="formbuttonsbox">
-                        <div className="w-form-formrecaptcha g-recaptcha g-recaptcha-error g-recaptcha-disabled g-recaptcha-invalid-key"></div>
-                        {holder ? (
-                          <img
-                            className="mt-1"
-                            alt="loading"
-                            src={loading}
-                            style={{ width: "30px" }}
-                          />
-                        ) : (
-                          <input
-                            type="submit"
-                            value="SUBMIT"
-                            onClick={() => {
-                              contactCreate();
-                            }}
-                            data-wait="Please wait..."
-                            className="filter-button mr-md-4"
-
-                          />
-                        )}
-                      </div> */}
                     </div>
-                    {/* <div className="w-form-done">
-                      <div>Thank you! Your submission has been received!</div>
-                    </div>
-                    <div className="w-form-fail">
-                      <div>Oops! Something went wrong while submitting the form.</div>
-                    </div> */}
                   </div>
                 </div>
               </div>
@@ -539,213 +525,98 @@ function Contact() {
           style={{ paddingTop: "24px", paddingRight: "0", paddingLef: "1vw" }}>
           <h2 className="contacth2 hide">MY LIST</h2>
           <div className="" style={{ paddingTop: "5.4vh" }} >
-            <div className="detail_card_6 w-100 h-100 w-inline-block ">
-              <Link className="detail_card5_h "
-                style={{ position: "relative", overflow: "hidden" }}
-              >
-                <img src={"IMG1.png"} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
-                <div className="artistnamediv">
-                  <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
-                    Paul
+            {AddToCart.cartInfo && Object.keys(AddToCart.cartInfo).length > 0 &&
+              <div className="detail_card_6 w-inline-block artist_card_h">
+                {
+                  Object.keys(AddToCart.cartInfo).map((oneKey, i) => {
+                    return (
+                      <Link className="detail_card5_h "
+                  style={{ position: "relative", overflow: "hidden" }}
+                  to="#"
+                  onClick={(e) => {
+                    handleChangeArtist(e, AddToCart.cartInfo[oneKey].Name, AddToCart.cartInfo[oneKey].id);
+                  }}
+                >
+                  <img src={artistImages[AddToCart.cartInfo[oneKey].id]} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
+                  <div className="artistnamediv">
+                    <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
+                     {AddToCart.cartInfo[oneKey].Name}
+                    </div>
                   </div>
-                </div>
-              </Link>
-              <Link className="detail_card5_h "
-                style={{ position: "relative", overflow: "hidden" }}
-              >
-                <img src={"IMG1.png"} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
-                <div className="artistnamediv">
-                  <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
-                    Paul
-                  </div>
-                </div>
-              </Link>
-              <Link className="detail_card5_h "
-                style={{ position: "relative", overflow: "hidden" }}
-              >
-                <img src={"IMG1.png"} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
-                <div className="artistnamediv">
-                  <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
-                    Paul
-                  </div>
-                </div>
-              </Link>
-              <Link className="detail_card5_h "
-                style={{ position: "relative", overflow: "hidden" }}
-              >
-                <img src={"IMG1.png"} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
-                <div className="artistnamediv">
-                  <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
-                    Paul
-                  </div>
-                </div>
-              </Link>
-              <Link className="detail_card5_h "
-                style={{ position: "relative", overflow: "hidden" }}
-              >
-                <img src={"IMG1.png"} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
-                <div className="artistnamediv">
-                  <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
-                    Paul
-                  </div>
-                </div>
-              </Link>
-
-            </div>
+                </Link>
+  
+                    );
+                  })
+                }                
+             </div>                
+            }
             <div style={{ marginTop: "9vh" }} className="" >
               <h5 style={{ float: "left" }} >Additional Artists</h5>
               <div className="sortingcont right mt-0 pt-0  me-0 ">
-                <a class="filter-button w-inline-block  mt-0" >
+                <a class="filter-button w-inline-block  mt-0" onClick={()=>filterChange("Default")}>
                   <div >DEFAULT</div>
                 </a>
-                <a className="filter-button  mt-0 me-0" >
+                <a className="filter-button  mt-0 me-0" onClick={()=>filterChange("A-Z")}>
                   <div >ALPHABETICAL A-Z</div>
                 </a>
               </div>
-              <div className="detail_card_6 w-100  w-inline-block artist_card_h">
-                <Link className="detail_card5_h "
-                  style={{ position: "relative", overflow: "hidden" }}
-                >
-                  <img src={"IMG1.png"} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
-                  <div className="artistnamediv">
-                    <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
-                      Paul
+                {
+                  artistImageDataSlice.loading ? (
+                    <div style={{ position: "relative", top: "50%", left: "50%" }}>
+                      <img
+                        className="mb-3"
+                        alt="loading"
+                        src={loading}
+                        style={{ width: "50px" }}
+                      />
                     </div>
-                  </div>
-                </Link>
-                <Link className="detail_card5_h "
-                  style={{ position: "relative", overflow: "hidden" }}
-                >
-                  <img src={"IMG1.png"} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
-                  <div className="artistnamediv">
-                    <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
-                      Paul
-                    </div>
-                  </div>
-                </Link>
-                <Link className="detail_card5_h "
-                  style={{ position: "relative", overflow: "hidden" }}
-                >
-                  <img src={"IMG1.png"} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
-                  <div className="artistnamediv">
-                    <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
-                      Paul
-                    </div>
-                  </div>
-                </Link>
-                <Link className="detail_card5_h "
-                  style={{ position: "relative", overflow: "hidden" }}
-                >
-                  <img src={"IMG1.png"} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
-                  <div className="artistnamediv">
-                    <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
-                      Paul
-                    </div>
-                  </div>
-                </Link>
-                <Link className="detail_card5_h "
-                  style={{ position: "relative", overflow: "hidden" }}
-                >
-                  <img src={"IMG1.png"} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
-                  <div className="artistnamediv">
-                    <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
-                      Paul
-                    </div>
-                  </div>
-                </Link>
-                <Link className="detail_card5_h "
-                  style={{ position: "relative", overflow: "hidden" }}
-                >
-                  <img src={"IMG1.png"} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
-                  <div className="artistnamediv">
-                    <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
-                      Paul
-                    </div>
-                  </div>
-                </Link>
-                <Link className="detail_card5_h "
-                  style={{ position: "relative", overflow: "hidden" }}
-                >
-                  <img src={"IMG1.png"} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
-                  <div className="artistnamediv">
-                    <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
-                      Paul
-                    </div>
-                  </div>
-                </Link>
-                <Link className="detail_card5_h "
-                  style={{ position: "relative", overflow: "hidden" }}
-                >
-                  <img src={"IMG1.png"} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
-                  <div className="artistnamediv">
-                    <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
-                      Paul
-                    </div>
-                  </div>
-                </Link>
-                <Link className="detail_card5_h "
-                  style={{ position: "relative", overflow: "hidden" }}
-                >
-                  <img src={"IMG1.png"} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
-                  <div className="artistnamediv">
-                    <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
-                      Paul
-                    </div>
-                  </div>
-                </Link>
-                <Link className="detail_card5_h "
-                  style={{ position: "relative", overflow: "hidden" }}
-                >
-                  <img src={"IMG1.png"} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
-                  <div className="artistnamediv">
-                    <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
-                      Paul
-                    </div>
-                  </div>
-                </Link>
-                <Link className="detail_card5_h "
-                  style={{ position: "relative", overflow: "hidden" }}
-                >
-                  <img src={"IMG1.png"} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
-                  <div className="artistnamediv">
-                    <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
-                      Paul
-                    </div>
-                  </div>
-                </Link>
-                <Link className="detail_card5_h "
-                  style={{ position: "relative", overflow: "hidden" }}
-                >
-                  <img src={"IMG1.png"} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
-                  <div className="artistnamediv">
-                    <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
-                      Paul
-                    </div>
-                  </div>
-                </Link>
-                <Link className="detail_card5_h "
-                  style={{ position: "relative", overflow: "hidden" }}
-                >
-                  <img src={"IMG1.png"} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
-                  <div className="artistnamediv">
-                    <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
-                      Paul
-                    </div>
-                  </div>
-                </Link>
-
-                <Link className="detail_card5_h "
-                  style={{ position: "relative", overflow: "hidden" }}
-                >
-                  <img src={"IMG1.png"} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
-                  <div className="artistnamediv">
-                    <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
-                      Paul
-                    </div>
-                  </div>
-                </Link>
-
+              
+              ) : artistImageDataSlice.artistImages && filterCond ?
+              <div className="detail_card_6  w-inline-block artist_card_h">
+              {
+               artistImageDataSlice.artistImages.map((val, ind) =>  {
+                 return (
+                   <Link className="detail_card5_h "
+                 style={{ position: "relative", overflow: "hidden" }}
+                 to="#"
+                 onClick={(e) => {
+                   handleChangeArtist(e, val.artistId.firstname + " " + val.artistId.lastname, val.artistId._id);
+                 }}
+               >
+                 <img src={String(val.mainImage[0].subImage[0].path)} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
+                 <div className="artistnamediv">
+                   <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
+                     {val.artistId.firstname}  {val.artistId.lastname} 
+                   </div>
+                 </div>
+               </Link>
+                 );
+               })
+              }
               </div>
+                : <div className="detail_card_6  w-inline-block artist_card_h">
+                {
+                 tempArtist.map((val, ind) =>  {
+                   return (
+                     <Link className="detail_card5_h "
+                   style={{ position: "relative", overflow: "hidden" }}
+                   to="#"
+                   onClick={(e) => {
+                     handleChangeArtist(e, val.artistId.firstname + " " + val.artistId.lastname, val.artistId._id);
+                   }}
+                 >
+                   <img src={String(val.mainImage[0].subImage[0].path)} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
+                   <div className="artistnamediv">
+                     <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
+                       {val.artistId.firstname}  {val.artistId.lastname} 
+                     </div>
+                   </div>
+                 </Link>
+                   );
+                 })
+                }
+                </div>
+                }
               <div className="formbuttonsbox mt-4">
                 <div className="w-form-formrecaptcha g-recaptcha g-recaptcha-error g-recaptcha-disabled g-recaptcha-invalid-key"></div>
                 {holder ? (
@@ -764,11 +635,9 @@ function Contact() {
                     }}
                     data-wait="Please wait..."
                     className="filter-button mr-md-4"
-
                   />
                 )}
               </div>
-
               <div className="w-form-done">
                 <div>Thank you! Your submission has been received!</div>
               </div>
@@ -777,419 +646,9 @@ function Contact() {
               </div>
             </div>
           </div>
-
         </div>
-
-
       </div>
-
       <div className="contactpage mt-5 pt-2" >
-        {/*       <div className="contact_padd">
-          <h2 className="contacth2 hide">CONTACT</h2>
-          <div
-            id="w-node-_0fb692da-7bfd-42b2-746a-f1ed5ebdb01b-85f2d07d"
-            className="div-block-2 mt-5 " style={{ paddingTop: '12px' }}>
-            <div className="form-block w-form">
-              <div
-                id="email-form"
-                name="email-form"
-                data-name="Email Form"
-                method="get"
-                className="form"
-              >
-                <div className="formdisplay2  ">
-                  <label htmlFor="name" className="contactformlabel ">
-                    Name<span className="required">*</span>:
-                  </label>
-                  <input
-                    type="text"
-                    className="text-field w-100 w-input"
-                    value={Name}
-                    onChange={(e) => {
-                      setName(e.target.value);
-                    }}
-                    maxLength="256"
-                    name="name"
-                    data-name="Name"
-                    placeholder=""
-                    id="name"
-                    required
-                  />
-                </div>
-                <div className="formdisplay2">
-                  <label htmlFor="Company" className="contactformlabel ">
-                    Company:
-                  </label>
-                  <input
-                    type="text"
-                    className="text-field  w-input w-100"
-                    maxLength="256"
-                    name="Company"
-                    value={company}
-                    onChange={(e) => {
-                      setCompany(e.target.value);
-                    }}
-                    data-name="Company"
-                    placeholder=""
-                    id="Company"
-                  />
-                </div>
-                <div className="formdisplay2">
-                  <label htmlFor="Email" className="contactformlabel ">
-                    Email<span className="required">*</span>:
-                  </label>
-                  <input
-                    type="email"
-                    className="text-field  w-input w-100"
-                    value={email}
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                    }}
-                    maxLength="256"
-                    name="Email"
-                    data-name="Email"
-                    placeholder=""
-                    id="Email"
-                    required
-                  />
-                </div>
-                <div className="formdisplay2">
-                  <label htmlFor="Phone" className="contactformlabel ">
-                    Phone:
-                  </label>
-                  <input
-                    type="text"
-                    className="text-field  w-input w-100"
-                    maxLength="256"
-                    name="Phone"
-                    value={phone}
-                    onChange={(e) => {
-                      setPhone(e.target.value);
-                    }}
-                    data-name="Phone"
-                    placeholder=""
-                    id="Phone"
-                  />
-                </div>
-                <div className="formdisplay2">
-                  <label htmlFor="Address" className="contactformlabel ">
-                    Address:
-                  </label>
-                  <input
-                    type="text"
-                    className="text-field  w-input w-100"
-                    maxLength="256"
-                    name="Address"
-                    value={address}
-                    onChange={(e) => {
-                      setAddress(e.target.value);
-                    }}
-                    data-name="Address"
-                    placeholder=""
-                    id="Address"
-                  />
-                </div>
-                <div className="formdisplay2">
-                  <label htmlFor="City" className="contactformlabel ">
-                    City:
-                  </label>
-                  <input
-                    type="text"
-                    className="text-field  w-input w-100"
-                    maxLength="256"
-                    name="City"
-                    value={city}
-                    onChange={(e) => {
-                      setCity(e.target.value);
-                    }}
-                    data-name="City"
-                    placeholder=""
-                    id="City"
-                  />
-                </div>
-                <div className="formdisplay2">
-                  <label htmlFor="State" className="contactformlabel ">
-                    State:
-                  </label>
-                  <select
-                    id="State"
-                    name="State"
-                    data-name="State"
-                    value={state}
-                    onChange={(e) => {
-                      setState(e.target.value);
-                    }}
-                    className="text-field w-100 w-select"
-
-                  >
-                    <option value="">Select</option>
-                    <option value="Alabama">Alabama</option>
-                    <option value="Alaska">Alaska</option>
-                    <option value="Arizona">Arizona</option>
-                    <option value="Arkansas">Arkansas</option>
-                    <option value="California">California</option>
-                    <option value="Colorado">Colorado</option>
-                    <option value="Connecticut">Connecticut</option>
-                    <option value="Delaware">Delaware</option>
-                    <option value="District Of Columbia">
-                      District Of Columbia
-                    </option>
-                    <option value="Florida">Florida</option>
-                    <option value="Georgia">Georgia</option>
-                    <option value="Hawaii">Hawaii</option>
-                    <option value="Idaho">Idaho</option>
-                    <option value="Illinois">Illinois</option>
-                    <option value="Indiana">Indiana</option>
-                    <option value="Iowa">Iowa</option>
-                    <option value="Kansas">Kansas</option>
-                    <option value="Kentucky">Kentucky</option>
-                    <option value="Louisiana">Louisiana</option>
-                    <option value="Maine">Maine</option>
-                    <option value="Maryland">Maryland</option>
-                  </select>
-                </div>
-                <div className="formdisplay2">
-                  <label
-                    htmlFor="Purpose-of-Inquiry"
-                    className="contactformlabel  "
-                  >
-                    Purpose of inquiry:
-                  </label>
-                  <select
-                    id="Purpose-of-Inquiry"
-                    name="Purpose-of-Inquiry"
-                    value={purposeOfInquiry}
-
-                    onChange={(e) => {
-                      setPurposeOfInquiry(e.target.value);
-                    }}
-                    data-name="Purpose of Inquiry"
-                    className="text-field w-100  long w-select"
-                  >
-                    <option value="">Select</option>
-                    <option value="Get an estimate">Get an estimate</option>
-                    <option value="Commission an artist">
-                      Commission an artist
-                    </option>
-                    <option value="Looking for representation">
-                      Looking for representation
-                    </option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-                <div className="formdisplay2">
-                  <label
-                    htmlFor="How-did-you-find-us"
-                    className="contactformlabel "
-                  >
-                    How did you find us:
-                  </label>
-                  <select
-                    id="How-did-you-find-us"
-                    name="How-did-you-find-us"
-                    value={findUs}
-                    onChange={(e) => {
-                      setFindUs(e.target.value);
-                    }}
-                    data-name="How did you find us"
-                    className="text-field w-100 long w-select"
-                  >
-                    <option value="">Select</option>
-                    <option value="Google">Google</option>
-                    <option value="Workbook">Workbook</option>
-                    <option value="Directory of Illustration">
-                      Directory of Illustration
-                    </option>
-                    <option value="Contact">Contact</option>
-                    <option value="Picturebook">Picturebook</option>
-                    <option value="Folioplanet">Folioplanet</option>
-                    <option value="Award Book/Illustration Annual">
-                      Award Book/Illustration Annual
-                    </option>
-                    <option value="Postcard/promotional">
-                      Postcard/promotional
-                    </option>
-                    <option value="Referral">Referral</option>
-                    <option value="Previous Client">Previous Client</option>
-                    <option value="General Web">General Web</option>
-                    <option value="Email Promo">Email Promo</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-                <div className="formdisplay2 message inv2">
-                  <label htmlFor="field" className="contactformlabel ">
-                    Message:
-                  </label>
-                  <textarea
-                    placeholder=""
-                    value={message}
-                    onChange={(e) => {
-                      setMessage(e.target.value);
-                    }}
-                    maxLength="5000"
-                    id="field"
-                    name="field"
-                    data-name="field"
-                    className="textarea w-input w-100"
-                  ></textarea>
-                </div>
-                <div className="formbuttonsbox">
-                  <div className="w-form-formrecaptcha g-recaptcha g-recaptcha-error g-recaptcha-disabled g-recaptcha-invalid-key"></div>
-                  {holder ? (
-                    <img
-                      className="mt-1"
-                      alt="loading"
-                      src={loading}
-                      style={{ width: "30px" }}
-                    />
-                  ) : (
-                    <input
-                      type="submit"
-                      value="SUBMIT"
-                      onClick={() => {
-                        contactCreate();
-                      }}
-                      data-wait="Please wait..."
-                      className="filter-button mr-md-4"
-
-                    />
-                  )}
-                </div>
-              </div>
-              <div className="w-form-done">
-                <div>Thank you! Your submission has been received!</div>
-              </div>
-              <div className="w-form-fail">
-                <div>Oops! Something went wrong while submitting the form.</div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <div className=" ">
-          <h2 className="contacth2 hide">MY LIST</h2>
-          <div className="artistcont4" >
-            <div>
-              <div className="pl-3">
-                <div
-                  id="artistCont"
-                  className="artistcont2 w-node-_3ea1885f-5610-a267-b100-5eb12e177818-85f2d07d">
-                  <h3 className="artistconth pt-2 ">Interested in one of our Illustrators</h3>
-                  <div className="w-form">
-                    <div className="contactpartist">Previously Viewed Artists</div>
-
-                    {dataViewed !== null
-                      ? Object.keys(dataViewed).map((key) => (
-                        <label
-                          className="w-checkbox artistcheckbox"
-                          style={{ textTransform: "uppercase" }}
-                        >
-                          <input
-                            type="checkbox"
-                            className="w-checkbox-input checkbox-2"
-                            checked={isChecked[key]}
-                            onChange={(e) => {
-                              handleChange(e, dataViewed[key]);
-                            }}
-                          />
-                          <span
-                            className="checkbox-label w-form-label"
-                            htmlFor="SHEYDA-ABVABI"
-                          >
-                            {dataViewed[key].title}
-                          </span>
-                        </label>
-                      ))
-                      : ""}
-
-                    <div className="contactpartist">More Artists</div>
-                    {artistData !== null
-                      ? Object.keys(artistData).map((key) => (
-                        <label
-                          className="w-checkbox artistcheckbox"
-                          style={{ textTransform: "uppercase" }}
-                        >
-                          <input
-                            type="checkbox"
-                            checked={isCheckedArtist[key]}
-                            onChange={(e) => {
-                              handleChangeArtist(e, artistData[key], key);
-                            }}
-                            className="w-checkbox-input checkbox-2"
-                          />
-                          <span
-                            className="checkbox-label w-form-label"
-                            htmlFor="NICK-APONTE"
-                          >
-                            {artistData[key]}
-                          </span>
-                        </label>
-                      ))
-                      : ""}
-
-                    <div className="w-form-done">
-                      <div>Thank you! Your submission has been received!</div>
-                    </div>
-                    <div className="w-form-fail">
-                      <div>Oops! Something went wrong while submitting the form.</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="imagescontainer">
-                  <div className="w-dyn-list">
-                    <div role="list" className="collection-list w-dyn-items">
-                      <div role="listitem" className="w-dyn-item"></div>
-                    </div>
-                    <div className="w-dyn-empty">
-                      <div>No items found.</div>
-                    </div>
-                  </div>
-                  <div id="cover" className="cover"></div>
-                </div>
-              </div>
-            </div>
-            <div className="collection-list-5" >
-              {AddToCart.cartInfo &&
-                Object.keys(AddToCart.cartInfo).map((oneKey, i) => {
-                  return (
-                    <Link
-                      id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
-                      to={"/artists/" + AddToCart.cartInfo[oneKey].id}
-                      className="card_img" >
-                      <div className="artistimagethumb" style={{ position: "relative", overflow: "hidden" }}>
-                        <img
-                          src={artistImages[AddToCart.cartInfo[oneKey].id]}
-                          loading="lazy"
-                          alt=""
-                          style={{ width: "100%", height: "100%" }}
-                          className=""
-                        />
-                        <div className="nameartistmini">
-                          <div className="artistnametxt">{AddToCart.cartInfo[oneKey].Name}</div>
-                        </div>
-                        
-                      </div>
-                    </Link>
-
-                  );
-                })}
-
-            </div>
-          </div>
-        </div>
-
-        <p
-          className="contactp">
-          <strong className="addres">
-            Shannon Associates - USA
-            <br />
-          </strong>
-          <span className="addres2">333 West 57th Street New York, NY 10019
-            <br />
-            info@shannonassociates.com</span>
-        </p> */}
         {isPopupShow ? (
           <MyPopup
             BackClose
