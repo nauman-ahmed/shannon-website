@@ -392,6 +392,85 @@ a {
   grid-column-gap: 6px;
   grid-row-gap: 6px;
 }
+.detail_card_6 {
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 6px;
+  grid-row-gap: 6px;
+}
+.contact_w{
+  width: 50% !important;
+}
+@media screen and (max-width: 1300px) {
+  .detail_card_6 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 6px;
+    grid-row-gap: 6px;
+  }
+}
+@media screen and (max-width: 1050px) {
+  .detail_card_6 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 6px;
+    grid-row-gap: 6px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .artist_card_h{
+    height: auto !important;
+    overflow-y: auto;
+    padding-right: 0.5vh;
+  }
+  .detail_card_6 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 6px;
+    grid-row-gap: 6px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .contact_w{
+    width: 100% !important;
+  }
+  .detail_card_6 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-column-gap: 6px;
+    grid-row-gap: 6px;
+  }
+}
+@media screen and (max-width: 600px) {
+
+  .detail_card_6 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 6px;
+    grid-row-gap: 6px;
+  }
+}
+@media screen and (max-width: 500px) {
+
+  .detail_card_6 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 6px;
+    grid-row-gap: 6px;
+  }
+}
+@media screen and (max-width: 450px) {
+
+  .detail_card_6 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 6px;
+    grid-row-gap: 6px;
+  }
+}
+
+
 
 .detail_card2 {
   display: grid;
@@ -426,6 +505,7 @@ a {
     justify-content: left;
 
   }
+  
 
   .detail_card5_h {
     height: 18.9vh;
@@ -3842,22 +3922,36 @@ a {
 }
 
 .text-field {
-  width: 84%;
   margin-bottom: 0px;
   border-style: solid;
   border-width: 1px;
   border-color: #e6e6e6;
-  background-color: #e6e6e6;
-  color: rgba(55, 53, 48, 0.32);
-  font-weight: 700;
+  border-radius: 1vh;
+  /* background-color: #e6e6e6; */
+  color: black !important;;
+  font-weight: 500;
 }
-
+.text-field.text_h{
+  height: 5.25vh !important;
+}
 .text-field.long {
   width: 75%;
   height: 100%;
   margin-bottom: 0px;
 }
-
+.artist_card_h{
+  height: 39vh ;
+  overflow-y: auto;
+  padding-right: 0.5vh;
+}
+.artist_card_h::-webkit-scrollbar {
+  width: 1vh;
+  border-radius: 4px;
+}
+.artist_card_h::-webkit-scrollbar-thumb{
+background-color: #ce651e;
+border-radius: 4px;
+}
 /* 
 .form-block {
   height: 100%;
@@ -3875,6 +3969,7 @@ a {
 }
  */
 .contactformlabel {
+  margin-bottom: 1vh;
   color: #373530;
   padding: 0;
   display: -webkit-box;
@@ -3944,13 +4039,28 @@ a {
 
 .textarea {
   width: 84%;
-  max-height: 200px;
-  min-height: 200px;
+  /* max-height: 200px;
+  min-height: 200px; */
   border-style: solid;
   border-width: 1px;
   border-color: #e6e6e6;
-  background-color: #e6e6e6;
+  border-radius: 1vh;
+  overflow-y: auto;
+  resize: none;
+  /* background-color: #e6e6e6; */
 }
+.left_content .row{
+  margin-bottom: 1.8vh;
+}
+@media screen and (max-width: 576px) {
+  .left_content .row{
+    margin-bottom: 0vh;
+  }
+  .left_content .row .col-sm-6{
+    margin-bottom: 1.8vh;
+  }
+}
+
 
 .formbuttonsbox {
   display: -webkit-box;
