@@ -550,7 +550,7 @@ function Contact() {
                 }                
              </div>                
             }
-            <div>
+            <div style={{ marginTop: "2vh" }} className="" >
               <h5 style={{ float: "left" }} >Additional Artists</h5>
               <div className="sortingcont right mt-0 pt-0  me-0 ">
                 <a class="filter-button w-inline-block  mt-0" onClick={()=>filterChange("Default")}>
