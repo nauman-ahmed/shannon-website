@@ -34,7 +34,10 @@ export const SliderShow=  (props) => {
       next.style.top = calc.toString()+"px"
 
       var details = document.getElementById('detailBelowSlider');
-      console.log("checkAgain",image.clientHeight, calc, prev.style.top)
+      if(calc == 0){
+        console.log("checkAgain",image, calc, prev.style.top)
+        setTimeout(setSLiderHeight, 200);
+      }
     }
 
     setTimeout(setSLiderHeight, 200);
