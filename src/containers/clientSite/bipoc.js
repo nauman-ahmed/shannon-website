@@ -304,13 +304,11 @@ function Bipoc() {
           </p>
         </div>
       </div>
-      <div className="bipoc2cols category w-100 h-100" style={{ position: "relative" }}>
+      <div className="bipoc2cols category w-100 h-100" style={{ position: "relative", marginTop: "10vh" }}>
         <div className="categoryinfo">
-          <h2 className="newsh2 h" >BLACK ARTISTS</h2>
           <div className="w-dyn-list">
             <div role="list" className="collection-list-4 w-dyn-items">
-            </div>
-            <div role="list" className="collection-list-4 w-dyn-items">
+              <h2 className="newsh2 h" >BLACK ARTISTS</h2>
               {blackArtist ?
                 blackArtist.map((val, ind) =>
                 val.ImageData.length > 0 ? (<div role="listitem" className="w-dyn-item">
@@ -332,13 +330,8 @@ function Bipoc() {
           </div>
         </div>
         <div className="sliderbipoc">
-          <div className=" divisiondivider">
-            {/* <h2 className="newsinstah2 h">PORTFOLIOS</h2> */}
-            <h1 className="newsh2 hide">BLACK ARTISTS</h1>
-          </div>
           {blackArtist ? (
-            <div className="mt-5 mb-3 detail_card3" id={idBlack} 
-            style={{paddingTop:"12px"}}>
+            <div className="mb-3 detail_card3" id={idBlack} >
               {/* <Slider 
                 disableAutoPlay 
                 controllEnabled="outside-dark"
@@ -426,14 +419,8 @@ function Bipoc() {
           </div>
         </div>
         <div className="sliderbipoc">
-          <div className="divisiondivider ">
-            {/* <h2 className="newsinstah2 h">PORTFOLIOS</h2> */}
-            <h1 className="newsh2 hide">ASIAN ARTISTS</h1>
-          </div>
           {asianArtist ? (
-            <div className="mt-5 mb-3 detail_card3" id={idAsian}
-            style={{paddingTop:"10px"}}
-            >
+            <div className="mb-3 detail_card3" id={idAsian}>
               {/* <Slider
                 disableAutoPlay
                 controllEnabled="outside-dark"
@@ -497,13 +484,8 @@ function Bipoc() {
           </div>
         </div>
         <div className="sliderbipoc">
-          <div className="divisiondivider ">
-            {/* <h2 className="newsinstah2 h">PORTFOLIOS</h2> */}
-            <h1 className="newsh2 hide">LATINO/LATINA ARTISTS</h1>
-          </div>
           {latinoArtist ? (
-            <div className="mt-5 mb-3 detail_card3" id={idLatino}
-            style={{paddingTop:"10px"}}>
+            <div className="mb-3 detail_card3" id={idLatino}>
 
               {/* <Slider
                 disableAutoPlay
@@ -565,14 +547,8 @@ function Bipoc() {
           </div>
         </div>
         <div className="sliderbipoc">
-          <div className="divisiondivider ">
-            {/* <h2 className="newsinstah2 h">PORTFOLIOS</h2> */}
-            <h1 className="newsh2 hide">CENTRAL ASIAN ARTISTS</h1>
-          </div>
           {centralAsianArtist ? (
-            <div className="detail_card3 mt-5 mb-3" id={idCentral}
-            style={{paddingTop: '10px'}}
-            >
+            <div className="detail_card3 mb-3" id={idCentral}>
               {/* <Slider
                 disableAutoPlay
                 controllEnabled="outside-dark"
@@ -633,13 +609,8 @@ function Bipoc() {
           </div>
         </div>
         <div className="sliderbipoc">
-          <div className="divisiondivider ">
-            {/* <h2 className="newsinstah2 h">PORTFOLIOS</h2> */}
-            <h1 className="newsh2 hide">INDIGENOUS ARTISTS</h1>
-          </div>
           {indegiousArtist ? (
-            <div className="mt-5 mb-3 detail_card3" id={idIndegious}
-            style={{paddingTop:"10px"}}>
+            <div className="mb-3 detail_card3" id={idIndegious}>
             
               {/* <Slider
                 disableAutoPlay

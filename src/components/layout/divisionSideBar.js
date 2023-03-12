@@ -61,7 +61,7 @@ function DivisionSideBar(props) {
 
   return (
     <div id="w-node-_783b3b4a-9daa-ecbf-356e-d84dbb36f4cc-bb36f4cc" className="respdivhide">
-      <h3 className="homeh3">{
+      <h3 className="homeh3" style={{color:"#C82E2E"}}>{
         props.activeBtn === "illustration-artists" ? "ILLUSTRATION" 
         : props.activeBtn === "cgi" ? "CGI" 
         : props.activeBtn === "photography" ? "PHOTOGRAPHY" 

@@ -113,6 +113,16 @@ function SearchByArtist(props) {
   }
 
   useEffect(() => {
+    let currentSelectedSlider = document.getElementById("firstSlider0");
+
+    if(currentSelectedSlider){
+      currentSelectedSlider.style.boxShadow = "0 2px 10px #141c2a"
+    }
+
+  }, [data1]);
+
+  useEffect(() => {
+    
     // localStorage.removeItem("artistViewed")
 
     getUserData()
@@ -257,6 +267,16 @@ function SearchByArtist(props) {
 
   };
 
+  const setSliderIndexHandler = (keys) => {
+    let previousSelectedSlider = document.getElementById(sliderIndex? "firstSlider"+sliderIndex : "firstSlider0");
+    let currentSelectedSlider = document.getElementById("firstSlider"+keys);
+    
+    currentSelectedSlider.style.boxShadow = "0 2px 10px #141c2a"
+    previousSelectedSlider.style.boxShadow = ""
+    setSliderIndex(keys)
+
+  };
+
   if (fullscreen.screen) {
     return (
       <FullScreenSliderItem
@@ -270,9 +290,14 @@ function SearchByArtist(props) {
 
     if (Object.keys(data1).find(element => element == search) == undefined) {
       return (
-        <div>
-          "No Approved Images"
-        </div>
+        <div style={{ position: "absolute", top: "50%", left: "50%" }}>
+            <img
+              className="mb-3"
+              alt="loading"
+              src={loading}
+              style={{ width: "50px" }}
+            />
+          </div>
       )
     }
   }
@@ -289,16 +314,6 @@ function SearchByArtist(props) {
             <div className=" pl-2 left_content">
               <div >
                 <h2 className="h2talent">{data1[search].title}</h2>
-                {/* <div
-              className="talentp large d-block hide_detail"
-              style={{
-                fontSize: "16px",
-
-              }}
-            >
-              <div dangerouslySetInnerHTML={{ __html: data1[search].detail }}>
-              </div>
-            </div> */}
                 {/* <div className="talenttext" style={{ marginBottom: 5 }}>Want to commission this artist?</div> */}
                 <div className="d-flex mt-2">
                   <Link
@@ -406,11 +421,11 @@ function SearchByArtist(props) {
                         > */}
                             {
                               data1[search].subListData.map((item, keys) => (
-                                <span className="detail_card5_h " onClick={() => { setSliderIndex(keys) }}>
+                                <div id={"firstSlider"+keys} className="detail_card5_h" style={{ overflow: "hidden" }} onClick={() => { setSliderIndexHandler(keys) }}> 
                                   <img src={item} className="w-100 h-100" style={{objectFit:"cover"}}
                                   // style={{ margin: "3px .43vw 3px 0vw"}}
                                   ></img>
-                                </span>
+                                </div>
                               ))
                             }
 
@@ -606,7 +621,7 @@ function SearchByArtist(props) {
                         changeIndex={changeIndex}
                         sliderIndex={sliderIndex}
                         settings={{
-                          arrows: false,
+                          arrows: true,
                           infinite: true,
                           speed: 500,
                           slidesToShow: 1,
@@ -616,7 +631,7 @@ function SearchByArtist(props) {
                         {
                           data1[search].slideList.map((item, keys) => (
                             <SliderItems
-                              key={keys}
+                              keys={keys}
                               src={item}
                               data1={data1}
                               search={search}

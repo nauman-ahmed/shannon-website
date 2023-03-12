@@ -20,13 +20,33 @@ export const SliderShow=  (props) => {
 
     const [slider,setSlider] = useState(null)
 
+    const setSLiderHeight = () => {
+      var clientHeight = document.getElementsByClassName('slick-current')[0].clientHeight;
+      var arrowPrev = document.getElementsByClassName('slick-prev')[0].clientHeight;
+      var image = document.getElementById(props.sliderIndex? 'sliderImage'+props.sliderIndex : 'sliderImage0');
+
+      var prev = document.getElementsByClassName('slick-prev')[0];
+      var next = document.getElementsByClassName('slick-next')[0];
+
+      let calc = image.clientHeight / 2
+
+      prev.style.top = calc.toString()+"px"
+      next.style.top = calc.toString()+"px"
+
+      var details = document.getElementById('detailBelowSlider');
+      console.log("checkAgain",image.clientHeight, calc, prev.style.top)
+    }
+
+    setTimeout(setSLiderHeight, 200);
+
     useEffect(()=>{
-      
-      if(props.sliderIndex !== null){
-        if(slider){
-          slider.slickGoTo(props.sliderIndex)
-        }
+
+    if(props.sliderIndex !== null){
+      setSLiderHeight()
+      if(slider){
+        slider.slickGoTo(props.sliderIndex)
       }
+    }
     },[props.sliderIndex,slider])
     
 
@@ -59,6 +79,7 @@ export const SliderItems = (props)=>{
           style={{ padding: 1 }}
        >
           <img 
+            id={"sliderImage"+props.keys}
             onClick={() => ("onClick" in props ? props.onClick(props.src) : null)}
             src={props.src}
             alt=""
@@ -68,8 +89,7 @@ export const SliderItems = (props)=>{
                 : { bjectFit: "contain", objectFit: "contain", margin:"auto",height:'auto' }
             }
           />
-
-            <div className="hide_detail mb-1 mt-2 pt-3">
+            <div id='detailBelowSlider' className="hide_detail mb-1 mt-2 pt-3">
                   <h4 className="mb-1" style={{ fontWeight: "500", fontSize: "22px" }}>{props?props.data1[props.search].title:null}</h4>
                   <div
                     className="F large hide_detail pt-2 mt-1"
@@ -78,7 +98,7 @@ export const SliderItems = (props)=>{
                       marginTop: "20px",
                       lineHeight: "2"
                     }}
-                  >
+                  > 
                     <div style={{fontFamily: 'Roboto',fontSize:17,color: '#373530',lineHeight:1.4}} dangerouslySetInnerHTML={{ __html: props ? props?.data1[props.search].detail : null}}>
 
                     </div>

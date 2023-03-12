@@ -159,6 +159,7 @@ a {
   grid-template-columns: 13vw 1fr;
   -ms-grid-rows: auto;
   grid-template-rows: auto;
+  margin-bottom: 10vh;
 }
 
 ._2cols2_ {
@@ -171,6 +172,7 @@ a {
   grid-template-columns: 15.5vw 1fr;
   -ms-grid-rows: auto;
   grid-template-rows: auto;
+  margin-bottom: 10vh;
 }
 
 .navlink {
@@ -224,7 +226,7 @@ a {
 
 .artistcard img:hover {
   transition: 0.5s ease-in-out;
-  transform: scale(1.5);
+  transform: scale(1.2);
 }
 
 
@@ -370,12 +372,12 @@ a {
 }
 .card_img img:hover {
   transition: 0.5s ease-in-out;
-  transform: scale(1.5);
+  transform: scale(1.2);
 }
 
 .card_img3 img:hover {
   transition: 0.5s ease-in-out;
-  transform: scale(1.5);
+  transform: scale(1.2);
 }
 .card_img2 img{
   object-fit: cover;
@@ -480,8 +482,10 @@ a {
   grid-row-gap: 16px;
 }
 
-.detail_card5_h:hover {
+.detail_card5_h img:hover {
   cursor: pointer;
+  transition: 0.5s ease-in-out;
+  transform: scale(1.2);
 }
 
 @media(min-width: 1300px) {
@@ -945,7 +949,7 @@ a {
 
 .homesection.divisions {
   overflow: hidden;
-  padding-bottom: 80px;
+  /* padding-bottom: 80px; */
 }
 
 .filterhomebox {
@@ -1215,6 +1219,11 @@ a {
   background-color: #000;
 }
 
+.footerlink:hover {
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #BC6127;
+}
+
 .footerlink {
   margin-right: 25px;
   margin-left: 25px;
@@ -1231,6 +1240,11 @@ a {
 .mediafooterdiv {
   margin-top: 10px;
   margin-bottom: 25px;
+}
+
+.mediafooterlink:hover {
+  background-color: #BC6127;
+  color: #BC6127;
 }
 
 .mediafooterlink {
@@ -1361,8 +1375,9 @@ a {
 
 
 .talentbutton:hover {
-  background-color: #000;
+  background-color: #BC6127;
   color: #fff;
+  cursor: pointer;
 }
 
 .talentbutton.contactbutton {
@@ -3773,7 +3788,7 @@ a {
   -ms-grid-columns: 1fr 16px 1fr 16px 1fr 16px 1fr 16px 1fr 16px 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   -ms-grid-rows: auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto;
-  grid-template-rows: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
+  /* grid-template-rows: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto; */
 }
 
 .artistnametext-v2 {
@@ -4362,9 +4377,9 @@ column-gap:20px ;
   display: none;
 }
 
-.divisioncontainer {
+/* .divisioncontainer {
   margin-bottom: 80px;
-}
+} */
 
 .divisionh2 {
   margin-top: 10px;
@@ -4761,6 +4776,9 @@ column-gap:20px ;
   background-repeat: no-repeat;
 }
 
+.text-block-5:hover {
+  color: #ffb71b;
+}
 
 .text-block-5 {
   color: #373530;
@@ -5075,12 +5093,13 @@ column-gap:20px ;
 }
 
 .filter-button:hover {
-  background-color: #000;
+  background-color: #BC6127;
   color: #fff;
+  cursor: pointer;
 }
 
 .filter-button.sort-active {
-  background-color: #000;
+  background-color: #BC6127;
   color: #fff;
 }
 
