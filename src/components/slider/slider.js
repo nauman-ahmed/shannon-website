@@ -18,7 +18,7 @@ const images = window.location.origin + "/assets/images";
 
 export const SliderShow=  (props) => {
 
-    const [slider,setSlider] = useState(null)
+    const [slider,setSlider] = useState(null) 
 
     const setSLiderHeight = () => {
       var clientHeight = document.getElementsByClassName('slick-current')[0].clientHeight;
@@ -35,7 +35,6 @@ export const SliderShow=  (props) => {
 
       var details = document.getElementById('detailBelowSlider');
       if(calc == 0){
-        console.log("checkAgain",image, calc, prev.style.top)
         setTimeout(setSLiderHeight, 200);
       }
     }

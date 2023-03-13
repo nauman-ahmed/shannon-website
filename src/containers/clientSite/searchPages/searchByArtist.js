@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import {
   SliderShow,
@@ -40,6 +40,7 @@ function SearchByArtist(props) {
   const [sliderImages, setSliderImages] = useState(null);
   const [sliderIndex, setSliderIndex] = useState(null);
   const [windowSize, setWindowSize] = useState(getWindowSize());
+  const myStateRef = useRef(0);
 
   function getWindowSize() {
     const { innerWidth, innerHeight } = window
@@ -114,17 +115,64 @@ function SearchByArtist(props) {
 
   useEffect(() => {
     let currentSelectedSlider = document.getElementById("firstSlider0");
+    var prev = document.getElementsByClassName('slick-prev')[0];
+    var next = document.getElementsByClassName('slick-next')[0]
 
+    
     if(currentSelectedSlider){
+      
       currentSelectedSlider.style.boxShadow = "0 2px 10px #141c2a"
+      
+      prev.addEventListener("click", (e) => {
+        console.log("LEFT BUTTON CLICKED",myStateRef.current ,data1[search].pictureTitle.length)
+        
+        if(myStateRef.current == 0 ){
+          setSliderIndexHandler(data1[search].pictureTitle.length-1,myStateRef.current,true)
+        }else{
+          setSliderIndexHandler(myStateRef.current -1 ,myStateRef.current,true)
+        }
+      })
+  
+      next.addEventListener("click", (e) => {
+        console.log("RIGHT BUTTON CLICKED",myStateRef ,data1[search].pictureTitle.length)
+
+        if(myStateRef.current !== data1[search].pictureTitle.length-1){
+          setSliderIndexHandler(myStateRef.current+1,myStateRef.current,true)
+        }else{
+          setSliderIndexHandler(0,data1[search].pictureTitle.length - 1,true)
+        }
+      })
+
     }
 
   }, [data1]);
 
-  useEffect(() => {
-    
-    // localStorage.removeItem("artistViewed")
+  const setSliderIndexHandler = (keys, oldValue = null, clickedSliderButton = false) => {
+    if(clickedSliderButton){
+      
+      console.log("FUNCTION",keys, oldValue)
 
+      let previousSelectedSlider = document.getElementById("firstSlider"+oldValue);
+      let currentSelectedSlider = document.getElementById("firstSlider"+keys);
+
+      currentSelectedSlider.style.boxShadow = "0 2px 10px #141c2a"
+      previousSelectedSlider.style.boxShadow = ""
+      myStateRef.current = keys
+      setSliderIndex(keys)
+    }else{
+      let previousSelectedSlider = document.getElementById(sliderIndex? "firstSlider"+sliderIndex : "firstSlider0");
+      let currentSelectedSlider = document.getElementById("firstSlider"+keys);
+      
+      currentSelectedSlider.style.boxShadow = "0 2px 10px #141c2a"
+      previousSelectedSlider.style.boxShadow = ""
+      myStateRef.current = keys
+      setSliderIndex(keys)
+    }
+
+  };
+
+  useEffect(() => {
+   
     getUserData()
     // function dataLoader() {
     //   if (artistImageDataSlice.artistImages !== undefined) {
@@ -264,16 +312,6 @@ function SearchByArtist(props) {
     setFullscreen(temp);
     setFullScreenData(data1[search])
 
-
-  };
-
-  const setSliderIndexHandler = (keys) => {
-    let previousSelectedSlider = document.getElementById(sliderIndex? "firstSlider"+sliderIndex : "firstSlider0");
-    let currentSelectedSlider = document.getElementById("firstSlider"+keys);
-    
-    currentSelectedSlider.style.boxShadow = "0 2px 10px #141c2a"
-    previousSelectedSlider.style.boxShadow = ""
-    setSliderIndex(keys)
 
   };
 
@@ -616,7 +654,7 @@ function SearchByArtist(props) {
                       fullscreen={fullscreen}
                     />
                   ) : (
-                    <>
+                    <> 
                       <SliderShow
                         changeIndex={changeIndex}
                         sliderIndex={sliderIndex}
