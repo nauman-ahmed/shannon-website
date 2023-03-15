@@ -130,7 +130,7 @@ export const SliderItems = (props)=>{
                       to="#"
                       // style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
                       className="talentbutton hide "
-                      onClick={() => addToCartArtist(props ? props.data1[props.search].id : null, props ? props.data1[props.search].title : null)}
+                      onClick={() => props.addToCartArtistHandler(props ? props.data1[props.search].id : null, props ? props.data1[props.search].title : null)}
                     >
                       ADD TO MY LIST
                     </Link>

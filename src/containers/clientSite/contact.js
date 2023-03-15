@@ -529,23 +529,24 @@ function Contact() {
               <div className="detail_card_6 w-inline-block artist_card_h">
                 {
                   Object.keys(AddToCart.cartInfo).map((oneKey, i) => {
-                    return (
-                      <Link className="detail_card5_h "
-                  style={{ position: "relative", overflow: "hidden" }}
-                  to="#"
-                  onClick={(e) => {
-                    handleChangeArtist(e, AddToCart.cartInfo[oneKey].Name, AddToCart.cartInfo[oneKey].id);
-                  }}
-                >
-                  <img src={artistImages[AddToCart.cartInfo[oneKey].id]} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
-                  <div className="artistnamediv">
-                    <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
-                     {AddToCart.cartInfo[oneKey].Name}
-                    </div>
-                  </div>
-                </Link>
-  
-                    );
+                    if(oneKey !== "messageShow" && oneKey !== "count" ){
+                      return (
+                        <Link className="detail_card5_h "
+                          style={{ position: "relative", overflow: "hidden" }}
+                          to="#"
+                          onClick={(e) => {
+                            handleChangeArtist(e, AddToCart.cartInfo[oneKey].Name, AddToCart.cartInfo[oneKey].id);
+                          }}
+                        >
+                          <img loading="lazy" src={artistImages[AddToCart.cartInfo[oneKey].id]} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
+                          <div className="artistnamediv">
+                            <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
+                            {AddToCart.cartInfo[oneKey].Name}
+                            </div>
+                          </div>
+                        </Link>
+                      );
+                    }
                   })
                 }                
              </div>                
@@ -646,7 +647,7 @@ function Contact() {
               </div>
             </div>
           </div>
-        </div>
+        </div> 
       </div>
       <div className="contactpage mt-5 pt-2" >
         {isPopupShow ? (

@@ -6,19 +6,14 @@ import {
   FullScreenSliderItem,
 } from "../../../components/slider/slider";
 import loading from '../../../assets/loading.gif';
-
 import Navbar from "../../../components/layout/navbar";
 import { useDispatch, useSelector } from "react-redux";
-
 import { artistImageDetailedSliceData } from '../../../AxiosFunctions/Axiosfunctionality';
-
 import { ArtistImageSliceData } from "../../../redux/artistImageDataSlice";
-
-import { addCart } from "../../../redux/addToCart";
+import { addCart,saveCartItemMessageKey } from "../../../redux/addToCart";
 import { updateMessage, updateOpen } from "../../../redux/message";
-// import { Carousel } from "react-responsive-carousel";
-// import { SliderItems, SliderShow } from "../../../components/slider/NewSlider";
-// import { setImageRoute } from '../../../UserServices/Services';
+import MyPopup from "../../../components/myPopup/myPopup";
+
 
 // import downloadArrow from "../../images/download.png";
 const images = window.location.origin + "/assets/images";
@@ -30,7 +25,7 @@ function SearchByArtist(props) {
   const [fullscreen, setFullscreen] = useState({ screen: false, route: null });
   const [fullScreenData, setFullScreenData] = useState({ screen: false, route: null });
   const { search } = useParams();
-  const { artistImageDataSlice } = useSelector((state) => state);
+  const { artistImageDataSlice, AddToCart } = useSelector((state) => state);
   const dispatch = useDispatch();
   const [data1, setData1] = useState(null);
   const [dataViewed, setDataViewed] = useState({});
@@ -40,6 +35,11 @@ function SearchByArtist(props) {
   const [sliderImages, setSliderImages] = useState(null);
   const [sliderIndex, setSliderIndex] = useState(null);
   const [windowSize, setWindowSize] = useState(getWindowSize());
+  const [isPopupShow, setIsPopupShow] = useState(false);
+  const [isPopupShowWithCheckbox, setIsPopupShowWithCheckbox] = useState(true);
+  const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
+  const [msg, setMsg] = useState("");
+  
   const myStateRef = useRef(0);
 
   function getWindowSize() {
@@ -60,8 +60,8 @@ function SearchByArtist(props) {
 
   const addToCartArtist = (id, firstname) => {
     dispatch(addCart({ key: id, data: { id: id, Name: firstname } }));
-    dispatch(updateOpen(true));
-    dispatch(updateMessage("Add Artist in Cart"));
+    // dispatch(updateOpen(true));
+    // dispatch(updateMessage("Add Artist in Cart"));
   };
 
   const dataLocalArtist = (key, _id, firstname, bio, listData, subListData) => {
@@ -315,6 +315,26 @@ function SearchByArtist(props) {
 
   };
 
+  const saveCartMessage = (msg) =>{
+    dispatch(saveCartItemMessageKey({ messageShow:msg }));
+  }
+
+  const addToCartArtistHandler = (id,title) =>{
+    let key = Object.keys(AddToCart.cartInfo).find(element => element == id)
+    if(key == undefined){
+      if(AddToCart.cartInfo.messageShow){
+        setMsg("You have added "+ title +" to your list, to view your list visit Contact/My List Page.")
+        setIsPopupShow(true)
+        console.log("CLICKED",AddToCart)
+      }
+      addToCartArtist(id, title)
+    }else{
+      setMsg("You have already added "+ title +" to your list, to view your list visit Contact/My List Page.")
+      setIsPopupShow(true)
+      setIsPopupShowWithCheckbox(false)
+    }
+  }
+
   if (fullscreen.screen) {
     return (
       <FullScreenSliderItem
@@ -373,7 +393,7 @@ function SearchByArtist(props) {
                     to="#"
                     // style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
                     className="talentbutton hide "
-                    onClick={() => addToCartArtist(data1[search].id, data1[search].title)}
+                    onClick={() => addToCartArtistHandler(data1[search].id, data1[search].title)}
                   >
                     ADD TO MY LIST
                   </Link>
@@ -675,7 +695,7 @@ function SearchByArtist(props) {
                               search={search}
                               windowSize={windowSize}
                               onClick={setFullScreenHandler}
-
+                              addToCartArtistHandler={addToCartArtistHandler}
                             />
                           ))
                         }
@@ -736,6 +756,44 @@ function SearchByArtist(props) {
               style={{ width: "50px" }}
             />
           </div>
+        }
+      </div>
+      <div className="contactpage mt-5 pt-2" >
+        {isPopupShow && isPopupShowWithCheckbox? (
+          <MyPopup
+            BackClose
+            onClose={() => {
+              saveCartMessage(!isCheckboxChecked)
+              setIsPopupShow(false);
+            }}
+          >
+            <div className="mx-5 my-4">
+              <div>{msg}</div>
+              <div class="form-check form-switch mt-2">
+                <input 
+                  class="form-check-input" 
+                  type="checkbox" 
+                  id="flexSwitchCheckDefault" 
+                  style={{cursor:"pointer",accentColor:"#BC6127"}}
+                  checked={isCheckboxChecked}
+                  onClick={()=> { setIsCheckboxChecked(!isCheckboxChecked); console.log("CLICKED")}}
+                  />
+                <label class="form-check-label" for="flexSwitchCheckDefault" style={{paddingTop:"5px"}}>Do not show this again</label>
+              </div>
+            </div>
+          </MyPopup>
+        ) : isPopupShow && !isPopupShowWithCheckbox?
+        <MyPopup
+            BackClose
+            onClose={() => {
+              setIsPopupShowWithCheckbox(true);
+              setIsPopupShow(false);
+            }}
+          >
+            <div className="mx-5 my-4">
+              <div>{msg}</div>
+            </div>
+          </MyPopup> : null
         }
       </div>
     </div>

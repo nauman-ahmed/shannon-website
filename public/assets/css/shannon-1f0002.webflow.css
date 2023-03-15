@@ -5092,6 +5092,24 @@ column-gap:20px ;
   }
 }
 
+
+.cartBadge{
+  position: absolute;
+  right: -15px;
+  top: 10px;
+  background-color: #BC6127;
+  border-radius: 83px;
+  /* color: black; */
+  /* height: auto; */
+  /* width: auto; */
+  /* padding: 10px; */
+  font-size: 12px;
+  background: #BC6127;
+  color: #fff;
+  padding: 2px 5px;
+  vertical-align: top;
+}
+
 .filter-button:hover {
   background-color: #BC6127;
   color: #fff;

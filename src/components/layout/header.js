@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
 const images = window.location.origin + "/assets/images";
+
 function Header(props) {
+
+
+  const { AddToCart } = useSelector((state) => state);
+
+  useEffect(()=>{
+    console.log("HEADER",AddToCart)
+  },[AddToCart])
+
   return (
     <div className="menu wf-section mb-0">
       <div className="containerhome f ">
@@ -75,6 +86,7 @@ function Header(props) {
                   }
                 >
                   CONTACT/MYLIST
+                  {AddToCart.cartInfo.count > 0 ? <div className="cartBadge">{AddToCart.cartInfo.count}</div> : null}
                 </Link>
               </span>
               <div className="menuinfo v2">
