@@ -124,7 +124,7 @@ function About() {
       <div className="clientscontainer resp">
         <h1 className="newsh2">CLIENTS WE WORK</h1>
         <div className="logoscontainer">
-          <img src={images + "/Frame-60_1.png"} loading="lazy" alt="" />
+          <img src={images + "/Frame-60_1.png"} loading="lazy" alt="" /> 
           <img src={images + "/Frame-61_1.png"} loading="lazy" alt="" />
           <img src={images + "/Frame-62_1.png"} loading="lazy" alt="" />
           <img src={images + "/Frame-63_1.png"} loading="lazy" alt="" />
