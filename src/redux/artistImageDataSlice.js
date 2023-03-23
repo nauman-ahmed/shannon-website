@@ -13,6 +13,7 @@ export const ArtistImageSliceData = createAsyncThunk(
 
 const initialState = {
     artistImages :[],
+    artistImagesCopy :[],
     loading:false,
     message:""
 }
@@ -20,6 +21,11 @@ const initialState = {
 const ArtistImageDataSlice = createSlice({
     name: "ArtistImageData",
     initialState,
+    reducers: {
+        filterImages(state,action) {
+            state.cartInfo = {...state.cartInfo,[action.payload.key]:action.payload.data,count:state.cartInfo.count+1}
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(ArtistImageSliceData.pending,(state,action)=>{
             state.loading = true;
@@ -28,12 +34,13 @@ const ArtistImageDataSlice = createSlice({
         builder.addCase(ArtistImageSliceData.fulfilled, (state,action) => {
             state.loading = false;
             state.artistImages = action.payload
-
+            state.artistImagesCopy = action.payload
         })
         builder.addCase(ArtistImageSliceData.rejected, (state,action) => {
             state.loading = false;
             state.message = action.payload
-            state.artistImages =[]
+            state.artistImages = []
+            state.artistImagesCopy = []
         })
     },
 });

@@ -18,7 +18,7 @@ function MEDICAL(props) {
     let tempData = [...data];
     setDataOriginal([...data])
     if (filter === "A-Z") {
-      tempData = tempData.sort((a, b) => a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize()));
+      tempData = tempData.sort((a, b) => a.lastname.firstname.normalize().localeCompare(b.artistId.lastname.normalize()));
     }
     else if (dataOriginal) {
       tempData = [...dataOriginal];

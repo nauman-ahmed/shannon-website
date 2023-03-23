@@ -17,6 +17,7 @@ function IllustrationArtists(props) {
   const [data,setData] = useState(null)
   const [dataOriginal,setDataOriginal] = useState(null)
   const [tempArtist,setTempArtist]= useState([]);
+  const [filterCond,setFilterCond]= useState(true);
 
 
 
@@ -26,44 +27,54 @@ function IllustrationArtists(props) {
 
   const filterChange= (filter) => {
 
-    let tempData = [...data];
-    setDataOriginal([...data])
-    if(filter==="A-Z"){
-      tempData = tempData.sort((a, b) => a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize()));
-    }
-    else if (dataOriginal){
-      tempData = [...dataOriginal];
-      // tempData = dataOriginal;
-    }
 
-    setData(tempData);
+    if(filter==="A-Z"){
+      let temp = []
+      setFilterCond(false)
+      let tempImage = [...artistImageDataSlice.artistImages]
+      temp = tempImage.sort((a, b) => a.artistId.lastname.normalize().localeCompare(b.artistId.lastname.normalize()));
+      setTempArtist(temp)
+      // tempData = tempData.sort((a, b) => a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize()));
+    }
+    else{
+      setFilterCond(true)
+      // tempData = [...dataOriginal];
+      // tempData = dataOriginal;
+      // setData(tempData);
+
+    }
 
   }
 
   useEffect(() => {
-    artistImageSliceData().then((res)=>{
-      setData(res)
-    })
+    if(artistImageDataSlice.artistImages.length == 0){
+      dispatch(ArtistImageSliceData());
+    }
+
+    // artistImageSliceData().then((res)=>{
+    //   setData(res)
+    // })
   }, []);
 
 
-  const updateTempArtist = (e)=>{
-    if(data){
+  const updateTempArtist = (e) => {
+    if(artistImageDataSlice.artistImages.length){
+
       const searchvalue = e.toLowerCase();
-      setTempArtist( data !== undefined ? data.filter(function (element) {
-          let checker = false
-          if(element.artistId.firstname.toLowerCase().includes(searchvalue) || element.artistId.lastname.toLowerCase().includes(searchvalue)){
-              checker = true
-          }
-          return checker;
-  
-      }):[]);
+      let temp = artistImageDataSlice.artistImages.filter(function (element) {
+        let checker = false
+        if(element.artistId.firstname.toLowerCase().includes(searchvalue) || element.artistId.lastname.toLowerCase().includes(searchvalue)){
+            checker = true
+        }
+        return checker;
+      })
+      setTempArtist(temp)
     }
-}
+  }
 
   useEffect(() => {
     updateTempArtist(props.searchArtist)
-  }, [props.searchArtist]);
+  }, [artistImageDataSlice,props.searchArtist]);
 
 
 
@@ -83,7 +94,7 @@ function IllustrationArtists(props) {
       <div id="w-node-_4a165d69-02be-f2c1-10f5-69fa4946403f-576fcec6" className="divisioncontainer">
        
       <div id="w-node-_4a165d69-02be-f2c1-10f5-69fa49464043-576fcec6" className="_4cols-v2">
-        { data == null && props.searchArtist === "" ?
+        { artistImageDataSlice.loading ?
         (
           <div style={{ position: "absolute", top: "50%", left: "50%" }}>
             <img
@@ -94,8 +105,8 @@ function IllustrationArtists(props) {
             />
           </div>
         ) :
-        data && props.searchArtist === "" ?  (
-          data.map((val, ind) => (
+        artistImageDataSlice.artistImages && props.searchArtist === "" && filterCond ?  (
+          artistImageDataSlice.artistImages.map((val, ind) => (
             <>
               <Link
                 id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"

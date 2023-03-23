@@ -10,7 +10,6 @@ function Header(props) {
   const { AddToCart } = useSelector((state) => state);
 
   useEffect(()=>{
-    console.log("HEADER",AddToCart)
   },[AddToCart])
 
   return (
@@ -33,10 +32,10 @@ function Header(props) {
               className="brand w-nav-brand w--current"
             >
               <img
-                src={images + "/Frame.svg"}
+                src={images + "/Logo_shannon.svg"}
                 loading="lazy"
                 alt=""
-                className=" logov2"
+                className="logov2"
               />
             </Link>
             <nav role="navigation" className="navmenu w-nav-menu">

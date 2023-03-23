@@ -27,7 +27,7 @@ function Artists(props) {
       let temp = []
       setFilterCond(false)
       let tempImage = [...artistImageDataSlice.artistImages]
-      temp = tempImage.sort((a, b) => a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize()));
+      temp = tempImage.sort((a, b) => a.artistId.lastname.normalize().localeCompare(b.artistId.lastname.normalize()));
       setTempArtist(temp)
       // tempData = tempData.sort((a, b) => a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize()));
     }
@@ -42,7 +42,9 @@ function Artists(props) {
   }
 
   useEffect(() => {
-    dispatch(ArtistImageSliceData());
+    if(artistImageDataSlice.artistImages.length == 0){
+      dispatch(ArtistImageSliceData());
+    }
     dispatch(bannerLoader());
   }, []);
   

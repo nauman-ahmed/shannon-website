@@ -38,6 +38,7 @@ function Contact() {
   const [msg, setMsg] = useState("");
   const [isCheckedArtist, setIsCheckedArtist] = useState({});
   const [filterCond,setFilterCond]= useState(true);
+  const [deletedImages,setDeletedImages]= useState([]);
   const [tempArtist,setTempArtist]= useState([]);
 
   const { AddToCart } = useSelector((state) => state);
@@ -51,7 +52,7 @@ function Contact() {
       let temp = []
       setFilterCond(false)
       let tempImage = [...artistImageDataSlice.artistImages]
-      temp = tempImage.sort((a, b) => a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize()));
+      temp = tempImage.sort((a, b) => a.artistId.lastname.normalize().localeCompare(b.artistId.lastname.normalize()));
       setTempArtist(temp)
     }
     else{
@@ -65,7 +66,7 @@ function Contact() {
     let Id = [];
     Object.keys(AddToCart.cartInfo).forEach((key, value) => {
       Id.push(AddToCart.cartInfo[key].id);
-    });
+    }); 
     if (Id.length > 0) {
       if (email == "" || Name == "") {
         setIsPopupShow(true);
@@ -204,13 +205,20 @@ function Contact() {
       //For Images
       let tempArtistImagesData = {};
       let tempLocalData = JSON.parse(localStorage.getItem("artistViewed_V1"));
-      dispatch(ArtistImageSliceData()).then((res) => {
-        res?.payload?.map((val, ind) => {
+      if(artistImageDataSlice.artistImages.length == 0){
+        dispatch(ArtistImageSliceData()).then((res) => {
+          res?.payload?.map((val, ind) => {
+            tempArtistImagesData[val?.artistId?._id] = val?.mainImage[0]?.subImage[1]?.path;
+          });
+          
+          setArtistImages(tempArtistImagesData);
+        });
+      }else{
+        artistImageDataSlice.artistImages.map((val, ind) => {
           tempArtistImagesData[val?.artistId?._id] = val?.mainImage[0]?.subImage[1]?.path;
         });
-        
         setArtistImages(tempArtistImagesData);
-      });
+      }
     });
 
     setIsChecked(tempChecker);
@@ -519,32 +527,41 @@ function Contact() {
               </div>
             </div>
 
-          </div>
+          </div> 
         </div>
         <div className="right_content mt-0 mx-0 contact_w"
           style={{ paddingTop: "24px", paddingRight: "0", paddingLef: "1vw" }}>
           <h2 className="contacth2 hide">MY LIST</h2>
           <div className="" style={{ paddingTop: "5.4vh" }} >
             {AddToCart.cartInfo && Object.keys(AddToCart.cartInfo).length > 0 &&
-              <div className="detail_card_6 w-inline-block artist_card_h">
+              <div className="detail_card_6 w-inline-block artist_card_h"
+              style={{overflowY:"initial"}}
+              >
                 {
                   Object.keys(AddToCart.cartInfo).map((oneKey, i) => {
                     if(oneKey !== "messageShow" && oneKey !== "count" ){
                       return (
-                        <Link className="detail_card5_h "
-                          style={{ position: "relative", overflow: "hidden" }}
-                          to="#"
-                          onClick={(e) => {
-                            handleChangeArtist(e, AddToCart.cartInfo[oneKey].Name, AddToCart.cartInfo[oneKey].id);
-                          }}
-                        >
-                          <img loading="lazy" src={artistImages[AddToCart.cartInfo[oneKey].id]} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
-                          <div className="artistnamediv">
-                            <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
-                            {AddToCart.cartInfo[oneKey].Name}
+                       
+                          <Link
+                            to="#"
+                          >
+                             <div className="detail_card_contact"
+                             style={{ position: "relative"}}
+                             >
+                              {console.log(artistImages, artistImages[AddToCart.cartInfo[oneKey].id])}
+                              <div className="cartBadgeContact"
+                                onClick={(e) => {
+                                  handleChangeArtist(e, AddToCart.cartInfo[oneKey].Name, AddToCart.cartInfo[oneKey].id);
+                                }}
+                                >x</div>
+                              <img loading="lazy" src={artistImages[AddToCart.cartInfo[oneKey].id]} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
+                              <div className="artistnamediv">
+                                <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
+                                {AddToCart.cartInfo[oneKey].Name}
+                                </div>
+                              </div>
                             </div>
-                          </div>
-                        </Link>
+                          </Link>
                       );
                     }
                   })
@@ -576,22 +593,24 @@ function Contact() {
               <div className="detail_card_6  w-inline-block artist_card_h">
               {
                artistImageDataSlice.artistImages.map((val, ind) =>  {
-                 return (
-                   <Link className="detail_card5_h "
-                 style={{ position: "relative", overflow: "hidden" }}
-                 to="#"
-                 onClick={(e) => {
-                   handleChangeArtist(e, val.artistId.firstname + " " + val.artistId.lastname, val.artistId._id);
-                 }}
-               >
-                 <img src={String(val.mainImage[0].subImage[0].path)} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
-                 <div className="artistnamediv">
-                   <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
-                     {val.artistId.firstname}  {val.artistId.lastname} 
-                   </div>
-                 </div>
-               </Link>
-                 );
+                if( isCheckedArtist[val.artistId._id] == false || isCheckedArtist[val.artistId._id] == undefined ){
+                  return (
+                    <Link className="detail_card5_h "
+                  style={{ position: "relative", overflow: "hidden", cursor:"pointer" }}
+                  to="#"
+                  onClick={(e) => {
+                    handleChangeArtist(e, val.artistId.firstname + " " + val.artistId.lastname, val.artistId._id);
+                  }}
+                >
+                  <img src={String(val.mainImage[0].subImage[0].path)} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
+                  <div className="artistnamediv">
+                    <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
+                      {val.artistId.firstname}  {val.artistId.lastname} 
+                    </div>
+                  </div>
+                </Link>
+                  );
+                }
                })
               }
               </div>
@@ -635,7 +654,7 @@ function Contact() {
                       contactCreate();
                     }}
                     data-wait="Please wait..."
-                    className="filter-button mr-md-4"
+                    className="submit-button mr-md-4"
                   />
                 )}
               </div>

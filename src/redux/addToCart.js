@@ -21,6 +21,7 @@ const AddToCart = createSlice({
             state.cartInfo ={}
         },
         removeCartItem(state,action){
+            state.cartInfo = {...state.cartInfo,count:state.cartInfo.count-1}
             delete state.cartInfo[action.payload] 
         },
         saveCartItemMessageKey(state,action){
