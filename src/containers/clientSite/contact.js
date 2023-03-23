@@ -27,6 +27,7 @@ function Contact() {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
+  const [zip, setZip] = useState("");
   const [state, setState] = useState("");
   const [purposeOfInquiry, setPurposeOfInquiry] = useState("");
   const [findUs, setFindUs] = useState("");
@@ -65,7 +66,9 @@ function Contact() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     let Id = [];
     Object.keys(AddToCart.cartInfo).forEach((key, value) => {
-      Id.push(AddToCart.cartInfo[key].id);
+      if(key !== "messageShow" && key !== "count" ){
+        Id.push(AddToCart.cartInfo[key].id);
+      }
     }); 
     if (Id.length > 0) {
       if (email == "" || Name == "") {
@@ -85,6 +88,7 @@ function Contact() {
           purposeOfInquiry: purposeOfInquiry,
           findUs: findUs,
           message: message,
+          zip:zip,
           artistId: Id,
         };
         setHolder(true);
@@ -96,6 +100,7 @@ function Contact() {
             tempMsg = `Hi ${data.Name}, Thank you for your submission. We appreciate your interest in Shannon Associates. Due to the extremely high volume of applicants we receive, we are unfortunately unable to reply to all. Please feel free to try again if you have new samples to present. We hope you understand and wish you the best in all that is ahead. Your Friends at Shannon Associates`
           }
         }
+        console.log(data)
         createContact(data).then((res) => {
           setHolder(false);
           // dispatch(updateOpen(true))
@@ -419,8 +424,10 @@ function Contact() {
                             className="text-field text_h  w-input w-100"
                             maxLength="256"
                             name="zip"
-                            value={city}
-                            onChange={(e) => { }}
+                            value={zip}
+                            onChange={(e) => {
+                              setZip(e.target.value);
+                            }}
                             data-name="Zip"
                             placeholder=""
                             id="Zip"
@@ -491,6 +498,7 @@ function Contact() {
                             <option value="Postcard/promotional">
                               Postcard/promotional
                             </option>
+                            <option value="Previous Client">Previous Client</option>
                             <option value="Referral">Referral</option>
                             <option value="Previous Client">Previous Client</option>
                             <option value="General Web">General Web</option>
@@ -617,7 +625,8 @@ function Contact() {
                 : <div className="detail_card_6  w-inline-block artist_card_h">
                 {
                  tempArtist.map((val, ind) =>  {
-                   return (
+                if( isCheckedArtist[val.artistId._id] == false || isCheckedArtist[val.artistId._id] == undefined ){
+                  return (
                      <Link className="detail_card5_h "
                    style={{ position: "relative", overflow: "hidden" }}
                    to="#"
@@ -633,6 +642,7 @@ function Contact() {
                    </div>
                  </Link>
                    );
+                  }
                  })
                 }
                 </div>

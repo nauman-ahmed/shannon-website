@@ -4697,6 +4697,8 @@ column-gap:20px ;
   grid-template-columns: 1fr;
   -ms-grid-rows: auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
   grid-template-rows: auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
+  margin-top: -80px;
+  margin-left: -10px;
 }
 
 .logo {
@@ -5409,7 +5411,7 @@ column-gap:20px ;
     height: 27vw;
   }
 
-  .filterhomelink.v2 {
+  .filterhomelink.v2 { 
     font-size: 12px;
   }
 
@@ -5583,7 +5585,7 @@ column-gap:20px ;
   }
 
   .clientscontainer {
-    margin-top: 50px;
+    margin-top: 15px;
   }
 
   .logo.row1 {
