@@ -386,6 +386,15 @@ export const artistImagedelete = async (data) => {
     }
 }
 
+export const artistImageToggleVisibility = async (data) => {
+    try {
+        const response = await axios.post(BASE_URL + 'artistImage/toggleVisibility', data);
+        return response.data;
+    } catch (error) {
+        logouter();
+    }
+}
+
 export const artistDataId = async (data) => {
     try {
         const response = await axios.post(BASE_URL + 'artistImage/findId', data);

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { IMAGE_ROUTE,artistPortfolioOrder,getTypeTwoKeyword,artistImagedelete } from '../../../AxiosFunctions/Axiosfunctionality'
+import { IMAGE_ROUTE,artistPortfolioOrder,getTypeTwoKeyword,artistImagedelete, artistImageToggleVisibility } from '../../../AxiosFunctions/Axiosfunctionality'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import unHide from "../../../assets/img/icons8-hide-48.png"
+import hide from "../../../assets/img/icons8-eye-64.png"
 
 function Portfolio(props) {
 
@@ -149,8 +151,19 @@ function Portfolio(props) {
     props.updateSelectedImagesArray(response.data)
   }
 
+  const toggleImageVisibilityHandler = async (val) => {
+    let response = await artistImageToggleVisibility({
+        _id:val._id,
+        hideImage: !val.hideImage
+
+    })
+    console.log(response)
+    props.updateSelectedImagesArray(response.data)
+  }
+
   return (
     <>
+    {console.log("Render")}
     <div className='d-flex flex-column' style={{marginTop:-10,marginLeft:'25%'}}> 
        <button onClick={()=>{setFormNo2(0);updateCharacters(typeOneData);}} className={'btn'+(formNo2 === 0? " active": " non_active")} style={{border:'none',
       textDecoration:'none',outline:'none'}}>All Artist</button>
@@ -166,12 +179,12 @@ function Portfolio(props) {
       :
       null}
       <div className='row m-0'> 
-        {
+        { 
         characters.length > 0 ? characters.map((item,key)=>(
           item.status === 1?
           <div key={key} className='col-6 col-md-3 col-sm-4 artistcardAdmin w-inline-block' >
               <div
-                  onClick={() => deleteImageHandler(item)}
+                  
                   className="crossSection"
                   >
                   <svg
@@ -179,14 +192,20 @@ function Portfolio(props) {
                       width="12px"
                       height="12px"
                       viewBox="0 0 352 512"
+                      onClick={() => deleteImageHandler(item)}
                   >
                       <path
                       fill="grey"
                       d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
                       />
                   </svg>
+                  <img 
+                    src={item.hideImage? hide : unHide } 
+                    style={{width:"20px", height:"20px", marginTop:"1vh", }} 
+                    onClick={() => toggleImageVisibilityHandler(item)}
+                  />
               </div>
-              <img style={{cursor: "pointer"}} onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})}  alt='' src={item.path} className="image"/>
+              <img style={item.hideImage? {cursor: "pointer",filter:"brightness(0.5)"} : {cursor: "pointer"}} onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})}  alt='' src={item.path} className="image"/>
           </div>:""
         )):""
       }

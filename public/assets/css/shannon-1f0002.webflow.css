@@ -23,7 +23,7 @@ input#Search-2::placeholder {
 }
 
 .artistcardAdmin:hover .crossSection {
-  display: block;
+  display: grid;
 }
 
 .artistcardAdmin .crossSection {
@@ -32,12 +32,12 @@ input#Search-2::placeholder {
 
 .crossSection {
   position: absolute;
-  right: 5vw;
+  right: 4vw;
   top: 0%;
   cursor: pointer;
   z-index: 1;
+  justify-items: center;
 }
-
 
 .w-checkbox::before {
   content: ' ';
