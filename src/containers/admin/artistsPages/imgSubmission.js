@@ -11,7 +11,7 @@ function ImgSubmission(props) {
       {localStorage.setItem('currentArtist',JSON.stringify(props.selectedArtist))}
         {Object.keys(props.selectedImages).length > 0 ? props.selectedImages.mainImage.map((item,key)=>
             (item.statusSubmit === 1 && item.status === 0?<div key={key} onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})} className='col-6 col-md-3 col-sm-4 artistcardAdmin w-inline-block'>
-            <img alt='' src={item.path} className="image"/>
+            <img alt='' src={item.path} className="image" style={{cursor:"pointer"}} />
         </div>:<div key={key}></div>)
         ):""}
        

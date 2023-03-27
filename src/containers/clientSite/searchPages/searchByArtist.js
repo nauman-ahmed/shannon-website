@@ -122,27 +122,29 @@ function SearchByArtist(props) {
     if(currentSelectedSlider){
       
       currentSelectedSlider.style.boxShadow = "0 2px 10px #141c2a"
+      if(prev){
+        prev.addEventListener("click", (e) => {
+          console.log("LEFT BUTTON CLICKED",myStateRef.current ,data1[search].pictureTitle.length)
+          
+          if(myStateRef.current == 0 ){
+            setSliderIndexHandler(data1[search].pictureTitle.length-1,myStateRef.current,true)
+          }else{
+            setSliderIndexHandler(myStateRef.current -1 ,myStateRef.current,true)
+          }
+        })
+      }
       
-      prev.addEventListener("click", (e) => {
-        console.log("LEFT BUTTON CLICKED",myStateRef.current ,data1[search].pictureTitle.length)
-        
-        if(myStateRef.current == 0 ){
-          setSliderIndexHandler(data1[search].pictureTitle.length-1,myStateRef.current,true)
-        }else{
-          setSliderIndexHandler(myStateRef.current -1 ,myStateRef.current,true)
-        }
-      })
+      if(next){
+        next.addEventListener("click", (e) => {
+          console.log("RIGHT BUTTON CLICKED",myStateRef ,data1[search].pictureTitle.length)
   
-      next.addEventListener("click", (e) => {
-        console.log("RIGHT BUTTON CLICKED",myStateRef ,data1[search].pictureTitle.length)
-
-        if(myStateRef.current !== data1[search].pictureTitle.length-1){
-          setSliderIndexHandler(myStateRef.current+1,myStateRef.current,true)
-        }else{
-          setSliderIndexHandler(0,data1[search].pictureTitle.length - 1,true)
-        }
-      })
-
+          if(myStateRef.current !== data1[search].pictureTitle.length-1){
+            setSliderIndexHandler(myStateRef.current+1,myStateRef.current,true)
+          }else{
+            setSliderIndexHandler(0,data1[search].pictureTitle.length - 1,true)
+          }
+        })
+      }
     }
 
   }, [data1]);

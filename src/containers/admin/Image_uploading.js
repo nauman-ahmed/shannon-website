@@ -33,6 +33,8 @@ function Image_uploading(props) {
         height: 225,
         aspect: 1 ,
       })
+      const [copyrightText, setCopyrightText] = useState("")
+      const [copyrightColor, setCopyrightColor] = useState("")
 
 
 
@@ -49,19 +51,24 @@ function Image_uploading(props) {
                 u8arr[n] = bstr.charCodeAt(n);
             }
             setTemp("data:image/jpeg;base64,"+res.data)
-    
         }
     } 
 
 
     useEffect(()=>{
         try{
-            getBase64FromUrl(props.images.path)
+
+            getBase64FromUrl(props.images.originalPath)
+
             setArtistImage({
-                imgPath: props.images.path,
+                imgPath: props.images.originalPath,
                 title: props.images.title,
-                _id:props.data[0].artistId._id
+                _id:props.data[0].artistId._id,
             })
+            
+            let caption = props.images.copyrightText  ? props.images.copyrightText : `© ${props.artistId.lastname.toLowerCase()} ${props.artistId.firstname.toLowerCase()}`
+            setCopyrightColor(props.images.copyrightColor  ? props.images.copyrightColor : "light Gray")
+            setCopyrightText(caption)
 
             if(keywordList == null){
                 let data = {};
@@ -161,18 +168,25 @@ function Image_uploading(props) {
 
         keywordList = keywordKidsTemp.concat(keywordTemp);
 
+        let originalImage = dataURLtoFile(temp,"originalImage.jpg")
 
         let artistImageTemp = {...artistImage,keyword:keywordList,mainId:props.images._id}
         let keywordListTemp = []
         artistImageTemp.keyword.map(val => {
             keywordListTemp.push(val._id)
         })
+
+        console.log(artistImageTemp,originalImage)
+
         const imageCreate = new FormData()
         imageCreate.append('k_id',keywordListTemp)
         imageCreate.append('title',artistImageTemp.title)
         imageCreate.append('artistImage',artistImageTemp["1"])
         imageCreate.append('artistImage',artistImageTemp["2"])
         imageCreate.append('mainId',props.images._id)
+        imageCreate.append('artistImage',originalImage)
+        imageCreate.append('caption',copyrightText)
+        imageCreate.append('color',copyrightColor)
  
         changeArtistImageDetails(imageCreate).then((res)=>{
             if(res == 'successfully updated'){
@@ -286,7 +300,7 @@ function Image_uploading(props) {
                     <div className='px-5 row m-0'>
                         <div className='col-xl-9 col-lg-8 d-flex justify-content-center'>
                            {artistImage !== null && pageNo === 0 ? 
-                           <img alt='' src={props.images.path}/>
+                           <img alt='' src={props.images.originalPath}/>
                            : null
                         }
                         {artistImage !== null ? 
@@ -320,6 +334,29 @@ function Image_uploading(props) {
                                     name= "title"
                                     onChange={onChangeHandler}
                                 />
+                            </div>
+                            <div className='d-flex flex-column align-items-center w-100'>
+                                <b className='mb-4'>Copyright Text</b>
+                                <input 
+                                    className='textField' 
+                                    value={copyrightText == "" ? "" : copyrightText} 
+                                    type="text"
+                                    name= "title"
+                                    onChange={(e) => setCopyrightText(e.target.value)}
+                                />
+                            </div>
+                            <div className='d-flex flex-column align-items-center w-100 mb-2'>
+                                <b className='mb-4'>Copyright Color</b>
+                                <div className='d-flex align-items-center'>
+                                    <label className='px-3 d-flex' style={{width:"max-content", cursor:"pointer"}} >
+                                        <input className='mr-2' name="color" type="radio" value={"Light Gray"}  checked={copyrightColor === "Light Gray"} onClick={(e)=>setCopyrightColor(e.target.value)}/>
+                                        Light Gray
+                                    </label>
+                                    <label className='px-3 d-flex' style={{width:"max-content", cursor:"pointer"}} >
+                                        <input className='mr-2' name="color" type="radio" value={"Dark Gray"} checked={copyrightColor === "Dark Gray"} onClick={(e)=>setCopyrightColor(e.target.value)} />
+                                        Dark Gray
+                                    </label>
+                                </div>
                             </div>
                             <button className='btn1 dark px-4 align-self-bottom' onClick={()=>setPageNo(pageNo + 1)}>NEXT</button>
                         </div>

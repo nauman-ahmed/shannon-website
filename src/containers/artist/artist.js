@@ -21,6 +21,7 @@ function Artist() {
     const [showLoader,setShowLoader] = useState(false);
 
     const changePageHandler = async (e) => {
+        console.log(e.target.files)
         setShowLoader(true)
         let storageData = localStorage.getItem("authorization")
         let details = decodeToken(storageData)
@@ -54,9 +55,10 @@ function Artist() {
     },[])
     
     const updateImageDetails = (data) => {
+        console.log(data)
         dispatch(updateUploadedImage({
             _id:data._id,
-            imageFile: data.path
+            imageFile: data
         }))
         
         history.push({

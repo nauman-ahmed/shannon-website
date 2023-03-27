@@ -16,7 +16,7 @@ function ImgViewer(props) {
   let history = useHistory()
 
   const [isPopupShow, setIsPopupShow] = useState(false)
-  const [imageData,setImageData]  = useState({});
+  const [imageData,setImageData]  = useState({mainImage:[{}]});
   const [holder,setHolder] = useState(false);
   const getArtistImage = () =>{
     let params = {
@@ -28,7 +28,7 @@ function ImgViewer(props) {
     })
   }
   const changeStatus = (e)=>{
-    if(imageData.subImage.length === 0){
+    if(imageData.mainImage[0].subImage.length === 0){
       setIsPopupShow(true)
       return
     }
@@ -50,15 +50,16 @@ function ImgViewer(props) {
   if(history.location.pathname.split("/")[3] === "updateImage"){
     return(
       <Admin_image
-        images={imageData}
-        data={props.artistImages}
+        images = {imageData.mainImage[0]}
+        data = {props.artistImages}
+        artistId = {imageData.artistId}
       />
     )
   }
   return (
   <div className='px-xl-5 mx-xl-5'>
     <div className='mx-lg-5 px-lg-3 py-4 mt-3 ml-5 d-flex justify-content-between'>
-        <h4>{imageData.title}</h4>
+        <h4>{imageData.mainImage[0]?.title}</h4>
         <div>
           <button className='btn1 mt-3 mb-5' onClick={()=>history.push({
                 pathname:'/admin/artists',
@@ -73,21 +74,21 @@ function ImgViewer(props) {
     <div className='px-5 mx-5 row scrollerOn py-5'>
       <div className='col-md-6'>
         <h5 className='mb-4'>Original</h5>
-        <img alt='' src={String(Object.keys(imageData).length > 0 ? imageData.path:"")} />
+        <img alt='' src={String(Object.keys(imageData.mainImage[0]).length > 0 ? imageData.mainImage[0].path:"")} />
         <div className='row'>
           <div className='col-md-12'>
             <h5 className='mb-4'>Thumbnails</h5>
           </div>
           <div className='col-md-8'>
-            {Object.keys(imageData).length !== 0 &&
-            imageData.subImage.length > 0 ? 
-            <img alt='' src={String(Object.keys(imageData).length > 0 ? imageData.subImage[0].path:"")} />
+            {Object.keys(imageData.mainImage[0]).length !== 0 &&
+            imageData.mainImage[0].subImage.length > 0 ? 
+            <img alt='' src={String(Object.keys(imageData.mainImage[0]).length > 0 ? imageData.mainImage[0].subImage[0].path:"")} />
             :null
             }
           </div>
           <div className='col-md-4'>
-            {Object.keys(imageData).length !== 0 && imageData.subImage.length > 0 ?
-            <img alt='' src={String(Object.keys(imageData).length > 0 ? imageData.subImage[1].path:"")} />
+            {Object.keys(imageData.mainImage[0]).length !== 0 && imageData.mainImage[0].subImage.length > 0 ?
+            <img alt='' src={String(Object.keys(imageData.mainImage[0]).length > 0 ? imageData.mainImage[0].subImage[1].path:"")} />
             :null
             }
           </div>
@@ -95,8 +96,8 @@ function ImgViewer(props) {
       </div>
       <div className='col-md-6'>
         <h5 className='mb-4'>Keywords</h5>
-        {Object.keys(imageData).length !== 0 && imageData.keywordID.length > 0 ?
-          Object.keys(imageData).length > 0 ? imageData.keywordID.map((item,key)=>(<p key={key}>{item.keyword}</p>)):""
+        {Object.keys(imageData.mainImage[0]).length !== 0 && imageData.mainImage[0].keywordID.length > 0 ?
+          Object.keys(imageData.mainImage[0]).length > 0 ? imageData.mainImage[0].keywordID.map((item,key)=>(<p key={key}>{item.keyword}</p>)):""
           : 
           null
         }

@@ -22,20 +22,21 @@ export const SliderShow=  (props) => {
 
     const setSLiderHeight = () => {
       var clientHeight = document.getElementsByClassName('slick-current')[0].clientHeight;
-      var arrowPrev = document.getElementsByClassName('slick-prev')[0].clientHeight;
       var image = document.getElementById(props.sliderIndex? 'sliderImage'+props.sliderIndex : 'sliderImage0');
 
       var prev = document.getElementsByClassName('slick-prev')[0];
       var next = document.getElementsByClassName('slick-next')[0];
 
-      let calc = image.clientHeight / 2
+      if(prev){
+        let calc = image.clientHeight / 2
 
-      prev.style.top = calc.toString()+"px"
-      next.style.top = calc.toString()+"px"
-
-      var details = document.getElementById('detailBelowSlider');
-      if(calc == 0){
-        setTimeout(setSLiderHeight, 200);
+        prev.style.top = calc.toString()+"px"
+        next.style.top = calc.toString()+"px"
+  
+        var details = document.getElementById('detailBelowSlider');
+        if(calc == 0){
+          setTimeout(setSLiderHeight, 200);
+        }
       }
     }
 

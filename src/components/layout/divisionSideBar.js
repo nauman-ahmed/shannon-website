@@ -78,7 +78,7 @@ function DivisionSideBar(props) {
         
         </div>
      )):"" 
-      :
+      : 
       <div className="allartist v2">
         <Link to="/illustration-artists" className={"divisionslink"+(props.activeBtn === "illustration-artists"?" w--current":"")}><span className="sidebarlink">ILLUSTRATION<br /></span></Link>
         <Link to="/bipoc" className={"divisionslink"+(props.activeBtn === "bipoc"?" w--current":"")}><span className="sidebarlink">BIPOC<br /></span></Link>

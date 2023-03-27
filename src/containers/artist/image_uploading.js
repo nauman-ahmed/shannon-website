@@ -27,6 +27,7 @@ function Image_uploading() {
     const [keyword,setKeyword] = useState(null)
     const [keywordList,setKeywordList] = useState(null)
     const [keywordKids,setKeywordKids] = useState(null)
+    const [temp, setTemp] = useState(null)
 
 
     const [pagination, setPagination] = useState({
@@ -53,22 +54,17 @@ function Image_uploading() {
     const getBase64FromUrl = async (dataurl) => {
         if(dataurl){
             let res = await getImageBaseURL({url:dataurl})
-            // var arr = res.data,
-            //     mime = "image/jpeg",
-            //     bstr = atob(arr), 
-            //     n = bstr.length, 
-            //     u8arr = new Uint8Array(n);
+            var arr = res.data,
+                mime = "image/jpeg",
+                bstr = atob(arr), 
+                n = bstr.length, 
+                u8arr = new Uint8Array(n);
                 
-            // while(n--){
-            //     u8arr[n] = bstr.charCodeAt(n);
-            // }
-            let artistImageDetailsTemp = []
-            artistImageDetailsTemp.push({
-                img: "data:image/jpeg;base64,"+res.data,
-                title: "",
-            })
-            setArtistImageDetails(artistImageDetailsTemp)
-            // setTemp("data:image/jpeg;base64,"+res.data)
+            while(n--){
+                u8arr[n] = bstr.charCodeAt(n);
+            }
+            
+            setTemp("data:image/jpeg;base64,"+res.data)
     
         }
     } 
@@ -76,7 +72,13 @@ function Image_uploading() {
     useEffect(()=>{
 
         try{
-            getBase64FromUrl(artistReducer.uploadedImage.imageFile)
+            getBase64FromUrl(artistReducer.uploadedImage.imageFile.originalPath)
+            let artistImageDetailsTemp = []
+            artistImageDetailsTemp.push({
+                img: artistReducer.uploadedImage.imageFile.originalPath,
+                title: "",
+            })
+            setArtistImageDetails(artistImageDetailsTemp)
             paginationHandler(0)   
 
             let keywordTemp = []
@@ -308,17 +310,24 @@ function Image_uploading() {
                     dispatch(updateMessage(message))
             }else{
 
+                let originalImage = dataURLtoFile(temp,"originalImage.jpg")
+        
                 const imageCreate = new FormData()
                 imageCreate.append('k_id',artistImageDetails[3].keywordList)
                 imageCreate.append('_id',details._id)
-                imageCreate.append('mainId',artistReducer.uploadedImage._id)
+                imageCreate.append('mainId',artistReducer.uploadedImage.imageFile._id)
                 imageCreate.append('title',artistImageDetails[0].title)
                 imageCreate.append('artistDir',details.artistDir)
                 imageCreate.append('artistImage_2',artistImageDetails[1].name)
                 imageCreate.append('artistImage_3',artistImageDetails[2].name)
                 imageCreate.append('artistImage',artistImageDetails[1].img)
                 imageCreate.append('artistImage',artistImageDetails[2].img)
+                imageCreate.append('artistImage',originalImage)
+                imageCreate.append('caption',"Ⓒ " + details.firstname.toLowerCase())
+                imageCreate.append('color',artistReducer.uploadedImage.imageFile.copyrightColor)
+
                 setShowLoader(true)
+                console.log(artistImageDetails,artistReducer.uploadedImage,details)
                 changeArtistImageDetails(imageCreate).then(res => {
                     if(res == 'successfully updated'){
                         setShowLoader(false)
@@ -375,7 +384,7 @@ function Image_uploading() {
                                     >
                                     <img
                                         alt="Crop me"
-                                        src={artistImageDetails[0].img}
+                                        src={temp}
                                         onLoad={onImageLoad}
                                     />
                                 </ReactCrop>
