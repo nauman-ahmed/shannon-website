@@ -3,8 +3,32 @@ import { IMAGE_ROUTE,artistPortfolioOrder,getTypeTwoKeyword,artistImagedelete, a
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import unHide from "../../../assets/img/icons8-hide-48.png"
 import hide from "../../../assets/img/icons8-eye-64.png"
+import {
+  DndContext,
+  closestCenter,
+  MouseSensor,
+  TouchSensor,
+  DragOverlay,
+  useSensor,
+  useSensors
+} from "@dnd-kit/core";
+import {
+  arrayMove,
+  SortableContext,
+  rectSortingStrategy
+} from "@dnd-kit/sortable";
+
+import { Grid } from "./dropableFolder/Grid";
+import { SortablePhoto } from "./dropableFolder/SortablePhoto";
+import { Photo } from "./dropableFolder/Photo";
+
 
 function Portfolio(props) {
+
+  const [items, setItems] = useState(null);
+  const [activeId, setActiveId] = useState(null);
+  const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
+
 
   const [characters,updateCharacters] = useState([])
   const [typeOneData,setTypeOneData] = useState([])
@@ -69,8 +93,7 @@ function Portfolio(props) {
 
 
     setTypeOneData(tempDataOne)
-    updateCharacters(tempDataOne)
-   
+    setItems(tempDataOne)
   }
 
   const enableHandler = () => {
@@ -87,8 +110,8 @@ function Portfolio(props) {
           tempTypeTwo[i].orderPortfolio = i
       };
 
-
-      artistPortfolioOrder({
+      console.log(tempTypeTwo)
+        artistPortfolioOrder({
         id:props.selectedArtist._id,
         images:tempTypeTwo
       }).then(res=>{
@@ -98,49 +121,84 @@ function Portfolio(props) {
     setEnabled(!enabled)
   }
 
-  const handleOnDragEnd = (result) => {
-    if(!result.destination) return;
-    const items = Array.from(characters)
-    const [reorderedItem] = items.splice(result.source.index,1)
-    items.splice(result.destination.index,0,reorderedItem)
-    if(formNo2 == 0){
-      setTypeOneData(items)
-    }else{
-      setTypeTwoData(items)
-    }
-    updateCharacters(items)
-  }
+  // const handleOnDragEnd = (result) => {
+  //   if(!result.destination) return;
+  //   const items = Array.from(characters)
+  //   const [reorderedItem] = items.splice(result.source.index,1)
+  //   items.splice(result.destination.index,0,reorderedItem)
+  //   if(formNo2 == 0){
+  //     setTypeOneData(items)
+  //   }else{
+  //     setTypeTwoData(items)
+  //   }
+  //   updateCharacters(items)
+  // }
   
+
+  function handleDragStart(event) {
+    setActiveId(event.active.id);
+  }
+
+  function handleDragEnd(event) {
+    const {active, over} = event;
+
+    if (active.id !== over.id) {
+
+      let oldIndex;
+      let newIndex;
+
+      setItems((items) => {
+        oldIndex = items.findIndex((val)=>val.path === active.id)
+        newIndex = items.findIndex((val)=>val.path === over.id)
+        return arrayMove(items, oldIndex, newIndex);
+      });
+      console.log(oldIndex,newIndex)
+      if(formNo2 == 0){
+        setTypeOneData((typeOneData) => {
+          return arrayMove(typeOneData, oldIndex, newIndex);
+        })
+      }else{
+        setTypeTwoData((typeTwoData) => {
+          return arrayMove(typeTwoData, oldIndex, newIndex);
+        })
+      }
+    }
+
+    setActiveId(null);
+  }
+
+  function handleDragCancel() {
+    setActiveId(null);
+  }
+
   if(enabled){
     return (
       <>
-      <button className='m-2 myBtn active' onClick={enableHandler}>SUBMIT</button>
-        <DragDropContext onDragEnd={handleOnDragEnd}>
-          <Droppable droppableId='characters'>
-            {(provided)=>(
-              <div className='row m-0' {...provided.droppableProps} ref={provided.innerRef}>
-                {
-                Object.keys(props.selectedImages).length > 0 ?
-                characters.map((item,key)=>(
-                  item.status === 1?
-                  <Draggable key={item._id} draggableId={item._id} index={key}>
-                    {(provided) => (
-                    <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} className='col-12 col-md-12 col-sm-12 artistcardAdmin w-inline-block'>
-                      <img alt='' src={item.path} className="image"/>
-                    </div>
-                    )}
-                  </Draggable>
-                  :""
-                  ))
-                  :""
-                }
-                {provided.placeholder}
-              </div>
-            )}
-        </Droppable>
-        </DragDropContext>
+        <button className='m-2 myBtn active' onClick={enableHandler}>SUBMIT</button>
+        <DndContext
+          sensors={sensors}
+          collisionDetection={closestCenter}
+          onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}
+          onDragCancel={handleDragCancel}
+        >
+          <SortableContext items={items} strategy={rectSortingStrategy}>
+            <Grid columns={4}>
+              {items.map((url, index) => (
+                <SortablePhoto key={url.path} url={url.path} index={index} />
+              ))}
+            </Grid>
+          </SortableContext>
+    
+          <DragOverlay adjustScale={true}>
+            {activeId ? (
+              <Photo url={activeId} index={items.findIndex((val)=>val.path === activeId)} />
+            ) : null}
+          </DragOverlay>
+        </DndContext>
       </>
-    )
+    );
+    
   }
 
   const deleteImageHandler = async (val) => {
@@ -157,17 +215,15 @@ function Portfolio(props) {
         hideImage: !val.hideImage
 
     })
-    console.log(response)
     props.updateSelectedImagesArray(response.data)
   }
 
   return (
     <>
-    {console.log("Render")}
     <div className='d-flex flex-column' style={{marginTop:-10,marginLeft:'25%'}}> 
-       <button onClick={()=>{setFormNo2(0);updateCharacters(typeOneData);}} className={'btn'+(formNo2 === 0? " active": " non_active")} style={{border:'none',
+       <button onClick={()=>{setFormNo2(0);setItems(typeOneData);}} className={'btn'+(formNo2 === 0? " active": " non_active")} style={{border:'none',
       textDecoration:'none',outline:'none'}}>All Artist</button>
-       <button onClick={()=>{setFormNo2(1);updateCharacters(typeTwoData);}} className={'btn'+(formNo2 === 1? " active": " non_active")} style={{marginTop:-5,border:'none',
+       <button onClick={()=>{setFormNo2(1);setItems(typeTwoData);}} className={'btn'+(formNo2 === 1? " active": " non_active")} style={{marginTop:-5,border:'none',
       textDecoration:'none',outline:'none'}}>Kid Shanon</button>
        </div>
       {Object.keys(props.selectedImages).length > 0 ?
@@ -180,7 +236,7 @@ function Portfolio(props) {
       null}
       <div className='row m-0'> 
         { 
-        characters.length > 0 ? characters.map((item,key)=>(
+        items?.length > 0 ? items.map((item,key)=>(
           item.status === 1?
           <div key={key} className='col-6 col-md-3 col-sm-4 artistcardAdmin w-inline-block' >
               <div
