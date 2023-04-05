@@ -10,6 +10,7 @@ import {  getCategory,getImageBaseURL } from '../../AxiosFunctions/Axiosfunction
 import { useDispatch } from 'react-redux'
 import { updateMessage, updateOpen } from '../../redux/message'
 import ReactCrop from 'react-image-crop'
+import loading from '../../assets/loading.gif'; 
 
 const img1 = window.location.origin+"/assets/images/IMG3.png"
 
@@ -187,7 +188,7 @@ function Image_uploading(props) {
         imageCreate.append('artistImage',originalImage)
         imageCreate.append('caption',copyrightText)
         imageCreate.append('color',copyrightColor)
- 
+        setIsPopupShow(true)
         changeArtistImageDetails(imageCreate).then((res)=>{
             if(res == 'successfully updated'){
                 dispatch(updateOpen(true));
@@ -200,8 +201,8 @@ function Image_uploading(props) {
                 pathname:'/admin/artists',
                 state:{Nauman:1}
             });
+            setIsPopupShow(false)
         })
-        setIsPopupShow(true)
     }
 
     const getCroppedImg = () => {
@@ -423,12 +424,17 @@ function Image_uploading(props) {
                             </div>
 
                         </div>
+                        {console.log("S",isPopupShow)}
                         <div className='col-12 d-flex justify-content-end'>
-                            <button 
+                        {isPopupShow?
+                           <img alt="loading" src={loading} style={{width:"30px",marginTop:-20}}/>
+                        :
+                        <button 
                                 className='btn1 dark px-4 align-self-bottom' 
                                 style={{marginTop:-20}} 
                                 onClick={()=>onSubmitHandler()}
                             >Submit</button>
+                        }
                         </div>
                     </div>
                 }

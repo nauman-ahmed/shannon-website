@@ -95,19 +95,20 @@ function Contact() {
         let tempMsg = "Thank you! Your submission has been received!"
         if (data.purposeOfInquiry) {
           if (data.purposeOfInquiry == "Looking for representation") {
-            tempMsg = `Thank you ${data.Name}. A Shannon Associates representative will be responding to your inquiry as soon as possible.`
+            tempMsg = <p> Hi {data.Name}, Thank you for your submission. <br></br><br></br> We appreciate your interest in Shannon Associates. Due to the extremely high volume of applicants we receive, we are unfortunately unable to reply to all. Please feel free to try again if you have new samples to present. We hope you understand and wish you the best in all that is ahead.<br></br><br></br> Your Friends at Shannon Associates</p>
           } else {
-            tempMsg = `Hi ${data.Name}, Thank you for your submission. We appreciate your interest in Shannon Associates. Due to the extremely high volume of applicants we receive, we are unfortunately unable to reply to all. Please feel free to try again if you have new samples to present. We hope you understand and wish you the best in all that is ahead. Your Friends at Shannon Associates`
+            tempMsg = `Thank you ${data.Name}. A Shannon Associates representative will be responding to your inquiry as soon as possible.`
           }
         }
-        console.log(data)
-        createContact(data).then((res) => {
-          setHolder(false);
-          // dispatch(updateOpen(true))
-          setIsPopupShow(true);
-          setMsg(tempMsg);
-          // dispatch(updateMessage(res));
-        });
+        setIsPopupShow(true);
+        setMsg(tempMsg);
+        // createContact(data).then((res) => {
+        //   setHolder(false);
+        //   // dispatch(updateOpen(true))
+        //   setIsPopupShow(true);
+        //   setMsg(tempMsg);
+        //   // dispatch(updateMessage(res));
+        // });
       }
     } else {
       setIsPopupShow(true);
@@ -686,7 +687,7 @@ function Contact() {
               setIsPopupShow(false);
             }}
           >
-            <div className="mx-5 my-4">{msg}</div>
+            <div className="mx-5 my-4" style={{ wordWrap: "break-word", width: "500px" }}>{msg}</div>
           </MyPopup>
         ) : null}
       </div>
