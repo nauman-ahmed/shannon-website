@@ -100,15 +100,13 @@ function Contact() {
             tempMsg = `Thank you ${data.Name}. A Shannon Associates representative will be responding to your inquiry as soon as possible.`
           }
         }
-        setIsPopupShow(true);
-        setMsg(tempMsg);
-        // createContact(data).then((res) => {
-        //   setHolder(false);
-        //   // dispatch(updateOpen(true))
-        //   setIsPopupShow(true);
-        //   setMsg(tempMsg);
-        //   // dispatch(updateMessage(res));
-        // });
+        createContact(data).then((res) => {
+          setHolder(false);
+          // dispatch(updateOpen(true))
+          setIsPopupShow(true);
+          setMsg(tempMsg);
+          // dispatch(updateMessage(res));
+        });
       }
     } else {
       setIsPopupShow(true);
