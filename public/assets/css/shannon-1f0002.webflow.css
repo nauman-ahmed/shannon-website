@@ -1381,6 +1381,23 @@ a {
   align-items: center;
 }
 
+.talentbuttonSeeMore {
+  display: flex;
+  /* width: 120px; */
+  width: auto;
+  height: 2vw;
+  /* margin-right: 25px !important; */
+  background-color: #fff;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 0.74vw;
+  font-weight: 400;
+  color: #818181;
+  text-align: center;
+  /* align-self: center; */
+  /* justify-items: center; */
+  align-items: end;
+}
+
 .talentbuttonArtistSearch {
   margin: 10px 0px 10px;
   width: auto;
@@ -1401,9 +1418,15 @@ a {
 
 .talentbutton:hover {
   background-color: #BC6127;
-  color: #fff;
+  color: #BC6127;
   cursor: pointer;
 }
+
+.talentbuttonSeeMore:hover {
+  color: #BC6127;
+  cursor: pointer;
+}
+
 
 .talentbutton.contactbutton {
   margin-right: 0px;
@@ -3877,11 +3900,11 @@ a {
 }
 
 .logov2 { 
-  width: 100%;
+  width: 70%;
   /* width:18.7vw; */
   margin-bottom: 8px;
   margin-top: 14px;
-  margin-left: -18px;
+  margin-left: 5px;
 }
 
 .contactsection {
@@ -3904,11 +3927,19 @@ a {
 
 .contacth2 {
   margin-top: 2px;
-  font-family: Montserrat, sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 1.58vw;
   line-height: 1;
   color: #373530;
   font-weight: 800;
+}
+
+.contactLabel {
+  margin-top: 2px;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.58vw;
+  line-height: 1;
+  color: #373530;
 }
 
 .contacth2.h {
@@ -5294,8 +5325,9 @@ column-gap:20px ;
 
 .filter-button:hover {
   background-color: #BC6127;
-  color: #fff;
+  color: #fff; 
   cursor: pointer;
+  text-decoration: none;
 }
 
 .filter-button.sort-active {
@@ -5526,6 +5558,10 @@ column-gap:20px ;
     font-size: 16px;
   }
 
+  .contactLabel {
+    font-size: 16px;
+  }
+  
   .contacth2.hide {
     font-size: 16px;
   }
@@ -13258,4 +13294,14 @@ element.style {
     transition: all 1s;
   }
 
+}
+
+.slickNaum {
+  background-image: url(" ") !important;
+  background-position: 50% !important;
+  background-repeat: no-repeat !important;
+  background-size: 24px !important;
+  /* right: 25px !important; */
+  z-index: 999;
+  position: absolute;
 }

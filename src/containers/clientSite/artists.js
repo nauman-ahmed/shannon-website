@@ -18,20 +18,22 @@ function Artists(props) {
   const { bannerImages } = useSelector((state) => state);
   const [filterCond,setFilterCond]= useState(true);
   const [tempArtist,setTempArtist]= useState([]);
+  const [filterHighlighted,setFilterHighlighted]= useState(null);
 
 
   const filterChange= (filter) => {
-
 
     if(filter==="A-Z"){
       let temp = []
       setFilterCond(false)
       let tempImage = [...artistImageDataSlice.artistImages]
       temp = tempImage.sort((a, b) => a.artistId.lastname.normalize().localeCompare(b.artistId.lastname.normalize()));
+      setFilterHighlighted(2)
       setTempArtist(temp)
       // tempData = tempData.sort((a, b) => a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize()));
     }
     else{
+      setFilterHighlighted(1)
       setFilterCond(true)
       // tempData = [...dataOriginal];
       // tempData = dataOriginal;
@@ -59,6 +61,7 @@ function Artists(props) {
         }
         return checker;
       })
+      setFilterHighlighted(null)
       setTempArtist(temp)
     }
   }
@@ -70,11 +73,12 @@ function Artists(props) {
 
   return (
     <>
+            {console.log("FILTER",filterHighlighted)}
     <div class="sortingcont right pt-0  me-0 ">
-          <a class="filter-button w-inline-block  mt-0" onClick={()=>filterChange("Default")}>
+          <a class={filterHighlighted == 1 ? "filter-button sort-active w-inline-block  mt-0" : "filter-button w-inline-block  mt-0"} onClick={()=>filterChange("Default")}>
             <div >DEFAULT</div>
           </a>
-          <a class="filter-button  mt-0 me-0" onClick={()=>filterChange("A-Z")}>
+          <a class={filterHighlighted == 2 ? "filter-button sort-active mt-0 me-0" : "filter-button mt-0 me-0"} onClick={()=>filterChange("A-Z")}>
             <div >ALPHABETICAL A-Z</div>
           </a>
         </div>
@@ -97,7 +101,6 @@ function Artists(props) {
         ) : artistImageDataSlice.artistImages && props.searchArtist === "" && filterCond ? (
           artistImageDataSlice.artistImages.map((val, ind) =>  (
             <>
-            {console.log(val)}
               <Link
                 id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                 data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"

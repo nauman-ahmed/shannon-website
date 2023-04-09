@@ -7,10 +7,12 @@ import { artistDivision } from "../../redux/artistImageDivisionDataSlice";
 import loading from "../../assets/loading.gif";
 
 const images = window.location.origin + "/assets/images";
+
  function Divisions(props) {
 
   const [tempArtist,setTempArtist]= useState([]);
   const [filterCond,setFilterCond]= useState(true);
+  const [filterHighlighted,setFilterHighlighted]= useState(null);
 
 
   const dispatch = useDispatch();
@@ -34,10 +36,12 @@ const images = window.location.origin + "/assets/images";
         tempImage = tempImage.sort((a, b) => a.artistId.lastname.normalize().localeCompare(b.artistId.lastname.normalize()));
         temp.push({...val,ImageData:tempImage})
       })
+      setFilterHighlighted(2)
       setTempArtist(temp)
       // tempData = tempData.sort((a, b) => a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize()));
     }
     else{
+      setFilterHighlighted(1)
       setFilterCond(true)
       // tempData = [...dataOriginal];
       // tempData = dataOriginal;
@@ -63,6 +67,7 @@ const images = window.location.origin + "/assets/images";
       })
       temp.push({...val,ImageData:tempImage})
     })
+    setFilterHighlighted(null)
     setTempArtist(temp)
     }
   }
@@ -78,13 +83,13 @@ const images = window.location.origin + "/assets/images";
 
   return (<>
   <div class="sortingcont right pt-0 mt-0">
-          <a class="filter-button w-inline-block  mt-0" onClick={()=>filterChange("Default")}>
-            <div >DEFAULT</div>
-          </a>
-          <a class="filter-button w-inline-block  mt-0" onClick={()=>filterChange("A-Z")}>
-            <div >ALPHABETICAL A-Z</div>
-          </a>
-        </div>
+    <a class={filterHighlighted == 1 ? "filter-button sort-active w-inline-block  mt-0" : "filter-button w-inline-block  mt-0"} onClick={() => filterChange("Default")}>
+      <div >DEFAULT</div>
+    </a>
+    <a class={filterHighlighted == 2 ? "filter-button sort-active w-inline-block  mt-0" : "filter-button w-inline-block  mt-0"} onClick={() => filterChange("A-Z")}>
+      <div >ALPHABETICAL A-Z</div>
+    </a>
+  </div>
     <div className="_2cols2_">
       {props.children}
       <div
@@ -165,46 +170,40 @@ const images = window.location.origin + "/assets/images";
                         >
                           {item?.ImageData.map((item1, key1) => (
                             <>
-                              {key1 <= 7 ? (
-                                <>
-                                  <Link
-                                    key={key1}
-                                    id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
-                                    data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                                    to={"/artists/" + item1.artistId._id}
-                                    className="artistcard w-inline-block"
+                              <Link
+                                key={key1}
+                                id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                                data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                                to={"/artists/" + item1.artistId._id}
+                                className="artistcard w-inline-block"
+                                
+                              >
+                                {/* <div className="detail_card4_h" style={{ position: "relative", overflow: "hidden" }}> */}
+                                <img
+                                  src={String(
+                                    item1?.mainImage[0]?.subImage[0]?.path
+                                  )}
+                                  loading="lazy"
+                                  alt=""
+                                  className="image" 
+                                // style={{ width: "100%", height: "100%" }}
+                                />
+                                  <div className="artistnamediv">
+                                  <div className="artistnametext-v3">
+                                  {item1.artistId.firstname}  {item1.artistId.lastname} 
+                                  </div>
+                                </div>
+                              {/* <p className="card_img_text2 pt-2">
+                              
+                                    {item1.artistId.firstname}{" "}{item1.artistId.lastname}
                                     
-                                  >
-                                    {/* <div className="detail_card4_h" style={{ position: "relative", overflow: "hidden" }}> */}
-                                    <img
-                                      src={String(
-                                        item1?.mainImage[0]?.subImage[0]?.path
-                                      )}
-                                      loading="lazy"
-                                      alt=""
-                                      className="image" 
-                                    // style={{ width: "100%", height: "100%" }}
-                                    />
-                                     <div className="artistnamediv">
-                                      <div className="artistnametext-v3">
-                                      {item1.artistId.firstname}  {item1.artistId.lastname} 
-                                      </div>
-                                    </div>
-                                  {/* <p className="card_img_text2 pt-2">
-                                  
-                                        {item1.artistId.firstname}{" "}{item1.artistId.lastname}
-                                        
-                                     </p> */}
-                                     {/* </div> */}
-                                  </Link>
-                                </>
-                              ) : (
-                                <></>
-                              )}
+                                  </p> */}
+                                  {/* </div> */}
+                              </Link>
                             </>
                           ))}
                         </div>
-                        <div className="divisionbuttoncontainer mb-5">
+                        <div className="divisionbuttoncontainer mb-5" style={{ justifyContent: "flex-end" }}>
                           <Link
                             to={ 
                               item.keyword == "Illustration" ? "illustration-artists"
@@ -213,10 +212,10 @@ const images = window.location.origin + "/assets/images";
                               : item.keyword == "Medical" ? "medical"
                               : null
                             }
-                            className="talentbutton w-button seemoreText"
+                            className="talentbuttonSeeMore"
                             style={{ textDecoration: "none" }}
                           >
-                            SEE MORE
+                            SEE MORE <div className="mx-2"> <img src={images+"/seeMore.svg"} style={{width:"6px"}}/> </div>
                           </Link>
                         </div>
                       </>
@@ -254,42 +253,36 @@ const images = window.location.origin + "/assets/images";
                       >
                         {item.ImageData.map((item1, key1) => (
                           <>
-                            {key1 <= 7 ? (
-                              <>
-                               <Link
-                                    key={key1}
-                                    id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
-                                    data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                                    to={"/artists/" + item1.artistId._id}
-                                    className="artistcard w-inline-block"
+                            <Link
+                                key={key1}
+                                id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                                data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                                to={"/artists/" + item1.artistId._id}
+                                className="artistcard w-inline-block"
+                                
+                              >
+                                {/* <div className="detail_card4_h" style={{ position: "relative", overflow: "hidden" }}> */}
+                                <img
+                                  src={String(
+                                    item1?.mainImage[0]?.subImage[0]?.path
+                                  )}
+                                  loading="lazy"
+                                  alt=""
+                                  className="image" 
+                                // style={{ width: "100%", height: "100%" }}
+                                />
+                                  <div className="artistnamediv">
+                                  <div className="artistnametext-v3">
+                                  {item1.artistId.firstname}  {item1.artistId.lastname} 
+                                  </div>
+                                </div>
+                              {/* <p className="card_img_text2 pt-2">
+                              
+                                    {item1.artistId.firstname}{" "}{item1.artistId.lastname}
                                     
-                                  >
-                                    {/* <div className="detail_card4_h" style={{ position: "relative", overflow: "hidden" }}> */}
-                                    <img
-                                      src={String(
-                                        item1?.mainImage[0]?.subImage[0]?.path
-                                      )}
-                                      loading="lazy"
-                                      alt=""
-                                      className="image" 
-                                    // style={{ width: "100%", height: "100%" }}
-                                    />
-                                     <div className="artistnamediv">
-                                      <div className="artistnametext-v3">
-                                      {item1.artistId.firstname}  {item1.artistId.lastname} 
-                                      </div>
-                                    </div>
-                                  {/* <p className="card_img_text2 pt-2">
-                                  
-                                        {item1.artistId.firstname}{" "}{item1.artistId.lastname}
-                                        
-                                     </p> */}
-                                     {/* </div> */}
-                                  </Link>
-                              </>
-                            ) : (
-                              <></>
-                            )}
+                                  </p> */}
+                                  {/* </div> */}
+                              </Link>
                           </>
                         ))}
                       </div>

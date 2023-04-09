@@ -680,13 +680,13 @@ function SearchByArtist(props) {
                       <SliderShow
                         changeIndex={changeIndex}
                         sliderIndex={sliderIndex}
-                        settings={{
-                          arrows: true,
-                          infinite: true,
-                          speed: 500,
-                          slidesToShow: 1,
-                          slidesToScroll: 1,
-                        }}
+                        // settings={{
+                        //   arrows: true,
+                        //   infinite: true,
+                        //   speed: 500,
+                        //   slidesToShow: 1,
+                        //   slidesToScroll: 1,
+                        // }}
                       >
                         {
                           data1[search].slideList.map((item, keys) => (

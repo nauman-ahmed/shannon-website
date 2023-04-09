@@ -12,19 +12,24 @@ function CGI(props) {
   const [data,setData] = useState(null)
   const [dataOriginal,setDataOriginal] = useState(null)
   const [tempArtist,setTempArtist]= useState([]);
+  const [filterHighlighted,setFilterHighlighted]= useState(null);
 
   const filterChange= (filter) => {
 
     let tempData = [...data];
+    let filter_highli = null
     setDataOriginal([...data])
     if(filter==="A-Z"){
+      filter_highli = 2
       tempData = tempData.sort((a, b) => a.artistId.lastname.normalize().localeCompare(b.artistId.lastname.normalize()));
     }
     else if (dataOriginal){
+      filter_highli = 1
       tempData = [...dataOriginal];
       // tempData = dataOriginal;
     }
 
+    setFilterHighlighted(filter_highli)
     setData(tempData);
 
   }
@@ -37,6 +42,7 @@ function CGI(props) {
   const updateTempArtist = (e)=>{
     if(data){
       const searchvalue = e.toLowerCase();
+      setFilterHighlighted(null)
       setTempArtist( data !== undefined ? data.filter(function (element) {
           let checker = false
           if(element.artistId.firstname.toLowerCase().includes(searchvalue) || element.artistId.lastname.toLowerCase().includes(searchvalue)){
@@ -56,12 +62,12 @@ function CGI(props) {
   return (
     <>
      <div class="sortingcont right mt-0 me-0">
-    <a sort-by=".order" href="#" class="filter-button w-inline-block" onClick={()=>filterChange("Default")}>
-      <div>DEFAULT</div>
-    </a>
-    <a sort-by=".name" href="#" class="filter-button w-inline-block" onClick={()=>filterChange("A-Z")}>
-      <div>ALPHABETICAL A-Z</div>
-    </a>
+      <a class={filterHighlighted == 1 ? "filter-button sort-active w-inline-block  mt-0" : "filter-button w-inline-block  mt-0"} onClick={() => filterChange("Default")}>
+        <div >DEFAULT</div>
+      </a>
+      <a class={filterHighlighted == 2 ? "filter-button sort-active w-inline-block  mt-0" : "filter-button w-inline-block  mt-0"} onClick={() => filterChange("A-Z")}>
+        <div >ALPHABETICAL A-Z</div>
+      </a>
   </div>
 <div className="_2cols" style={{clear:"both"}}>
 {props.children}

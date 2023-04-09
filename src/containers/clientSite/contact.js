@@ -11,7 +11,12 @@ import { ArtistDataAPI } from "../../redux/artistDataSlice";
 import { ArtistImageSliceData } from "../../redux/artistImageDataSlice";
 import { IMAGE_ROUTE } from "../../AxiosFunctions/Axiosfunctionality";
 import MyPopup from "../../components/myPopup/myPopup";
-const images = window.location.origin + "/assets/images";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+
+const images = window.location.origin + "/assets/images"; 
 
 function Contact() {
   const number = [1, 2, 3, 4, 5, , 6, 7, 78, 99, 0, 0];
@@ -41,6 +46,7 @@ function Contact() {
   const [filterCond,setFilterCond]= useState(true);
   const [deletedImages,setDeletedImages]= useState([]);
   const [tempArtist,setTempArtist]= useState([]);
+  const [filterHighlighted,setFilterHighlighted]= useState(null);
 
   const { AddToCart } = useSelector((state) => state);
   const { artistImageDataSlice } = useSelector((state) => state);
@@ -54,9 +60,11 @@ function Contact() {
       setFilterCond(false)
       let tempImage = [...artistImageDataSlice.artistImages]
       temp = tempImage.sort((a, b) => a.artistId.lastname.normalize().localeCompare(b.artistId.lastname.normalize()));
+      setFilterHighlighted(2)
       setTempArtist(temp)
     }
     else{
+      setFilterHighlighted(1)
       setFilterCond(true)
     }
 
@@ -121,6 +129,7 @@ function Contact() {
   };
 
   const handleChange = (e, data) => {
+    
     if (isChecked[data.id] !== true) {
       dispatch(
         addCart({ key: data.id, data: { id: data.id, Name: data.title } })
@@ -138,6 +147,13 @@ function Contact() {
   };
 
   const handleChangeArtist = (e, data, key) => {
+    var slick = document.getElementsByClassName('slick-list')[0];
+
+    if(slick){
+      console.log(slick.style)
+      slick.style.padding = "3px"
+    }
+    
     if (isCheckedArtist[key] !== true) {
       dispatch(addCart({ key: key, data: { id: key, Name: data } }));
     } else {
@@ -151,6 +167,7 @@ function Contact() {
 
 
   useEffect(() => {
+    
     function getLocalStorage() {
       if (localStorage.getItem("artistViewed_V1") !== null) {
         setDataViewed(JSON.parse(localStorage.getItem("artistViewed_V1")));
@@ -225,6 +242,7 @@ function Contact() {
 
     setIsChecked(tempChecker);
     getLocalStorage();
+    return () => console.log("NAUMAN");
   }, []);
 
   return (
@@ -536,9 +554,10 @@ function Contact() {
         </div>
         <div className="right_content mt-0 mx-0 contact_w"
           style={{ paddingTop: "24px", paddingRight: "0", paddingLef: "1vw" }}>
-          <h2 className="contacth2 hide">MY LIST</h2>
+          <h2 className="contactLabel hide">MY LIST</h2>
+          <p className=" hide">Selected favorites from portfolio pages and/or below</p>
           <div className="" style={{ paddingTop: "5.4vh" }} >
-            {AddToCart.cartInfo && Object.keys(AddToCart.cartInfo).length > 0 &&
+          {/* {AddToCart.cartInfo && Object.keys(AddToCart.cartInfo).length > 0 &&
               <div className="detail_card_6 w-inline-block artist_card_h"
               style={{overflowY:"initial"}}
               >
@@ -572,14 +591,52 @@ function Contact() {
                   })
                 }                
              </div>                
+            } */}
+          <Slider className="detail_card_6 w-inline-block" {...{
+                  dots: false,
+                  infinite: false,
+                  speed: 500,
+                  slidesToShow: 5,
+                  slidesToScroll: 1,
+                  nextArrow: <SampleNextArrow />,
+                  prevArrow: <SamplePrevArrow />
+                }}>
+          {AddToCart.cartInfo && Object.keys(AddToCart.cartInfo).length > 0 &&
+                  Object.keys(AddToCart.cartInfo).map((oneKey, i) => {
+                    if(oneKey !== "messageShow" && oneKey !== "count" ){
+                      return (
+                       
+                          <Link
+                            to="#"
+                          >
+                             <div className="detail_card_contact"
+                             style={{ position: "relative", margin: "3px"}}
+                             >
+                              <div className="cartBadgeContact"
+                                onClick={(e) => {
+                                  handleChangeArtist(e, AddToCart.cartInfo[oneKey].Name, AddToCart.cartInfo[oneKey].id);
+                                }}
+                                >x</div>
+                              <img loading="lazy" src={artistImages[AddToCart.cartInfo[oneKey].id]} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
+                              <div className="artistnamediv">
+                                <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
+                                {AddToCart.cartInfo[oneKey].Name}
+                                </div>
+                              </div>
+                            </div>
+                          </Link>
+                      );
+                    }
+                  })
             }
+        </Slider>
             <div style={{ marginTop: "2vh" }} className="" >
               <h5 style={{ float: "left" }} >Additional Artists</h5>
               <div className="sortingcont right mt-0 pt-0  me-0 ">
-                <a class="filter-button w-inline-block  mt-0" onClick={()=>filterChange("Default")}>
+                <a class={filterHighlighted == 1 ? "filter-button sort-active w-inline-block  mt-0" : "filter-button w-inline-block  mt-0"} onClick={()=>filterChange("Default")}>
                   <div >DEFAULT</div>
                 </a>
-                <a className="filter-button  mt-0 me-0" onClick={()=>filterChange("A-Z")}>
+                <a class={filterHighlighted == 2 ? "filter-button sort-active mt-0 me-0" : "filter-button mt-0 me-0"} onClick={()=>filterChange("A-Z")}>
                   <div >ALPHABETICAL A-Z</div>
                 </a>
               </div>
@@ -692,3 +749,30 @@ function Contact() {
 }
 
 export default Contact;
+
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+
+  return ( <img
+    src={images + "/contact_right.png"}
+    style={{width:"auto"}}
+    loading="lazy"
+    alt=""
+    className={className}
+  />
+
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <img
+    src={images + "/contact_left.png"}
+    style={{width:"auto"}}
+    loading="lazy"
+    alt=""
+    className={className}
+  />
+  );
+}

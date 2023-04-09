@@ -9,26 +9,6 @@
     width: 100%;
     max-height: 100%;
 }
- 
-.slick-prev {
-    background-image: url(../../assets/img/left.png) !important;
-    background-position: 50% !important;
-    background-repeat: no-repeat !important;
-    background-size: 24px !important;
-    /* left:25px !important; */
-    z-index: 999;
-    position: absolute;
-}
-
-.slick-next {
-    background-image: url(../../assets/img/right.png) !important;
-    background-position: 50% !important;
-    background-repeat: no-repeat !important;
-    background-size: 24px !important;
-    /* right:25px !important; */
-    z-index: 999;
-    position: absolute;
-}
 
 .slick-next::before,
 .slick-prev::before {

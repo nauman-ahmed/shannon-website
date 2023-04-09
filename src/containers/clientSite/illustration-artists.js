@@ -18,6 +18,7 @@ function IllustrationArtists(props) {
   const [dataOriginal,setDataOriginal] = useState(null)
   const [tempArtist,setTempArtist]= useState([]);
   const [filterCond,setFilterCond]= useState(true);
+  const [filterHighlighted,setFilterHighlighted]= useState(null);
 
 
 
@@ -33,10 +34,12 @@ function IllustrationArtists(props) {
       setFilterCond(false)
       let tempImage = [...artistImageDataSlice.artistImages]
       temp = tempImage.sort((a, b) => a.artistId.lastname.normalize().localeCompare(b.artistId.lastname.normalize()));
+      setFilterHighlighted(2)
       setTempArtist(temp)
       // tempData = tempData.sort((a, b) => a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize()));
     }
     else{
+      setFilterHighlighted(1)
       setFilterCond(true)
       // tempData = [...dataOriginal];
       // tempData = dataOriginal;
@@ -68,6 +71,7 @@ function IllustrationArtists(props) {
         }
         return checker;
       })
+      setFilterHighlighted(null)
       setTempArtist(temp)
     }
   }
@@ -81,10 +85,10 @@ function IllustrationArtists(props) {
   return (  
    <> 
         <div class="sortingcont right pt-0 mt-0">
-          <a class="filter-button w-inline-block  mt-0" onClick={()=>filterChange("Default")}>
+          <a class={filterHighlighted == 1 ? "filter-button sort-active w-inline-block  mt-0" : "filter-button w-inline-block  mt-0"} onClick={() => filterChange("Default")}>
             <div >DEFAULT</div>
           </a>
-          <a class="filter-button w-inline-block  mt-0" onClick={()=>filterChange("A-Z")}>
+          <a class={filterHighlighted == 2 ? "filter-button sort-active w-inline-block  mt-0" : "filter-button w-inline-block  mt-0"} onClick={() => filterChange("A-Z")}>
             <div >ALPHABETICAL A-Z</div>
           </a>
         </div>

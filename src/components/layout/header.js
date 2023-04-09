@@ -84,7 +84,7 @@ function Header(props) {
                     (props.aciveBtn === "contact" ? "w--current" : "")
                   }
                 >
-                  CONTACT/MYLIST
+                  CONTACT/ MY LIST
                   {AddToCart.cartInfo.count > 0 ? <div className="cartBadge">{AddToCart.cartInfo.count}</div> : null}
                 </Link>
               </span>

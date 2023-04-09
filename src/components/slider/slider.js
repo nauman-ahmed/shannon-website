@@ -59,13 +59,46 @@ export const SliderShow=  (props) => {
           width: "width" in props ? props.width : "90%",
           height: "height" in props ? props.height : "100%",
         }}
-        {...props.settings}
+        {...{
+          arrows: true,
+          infinite: true,
+          speed: 500,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          nextArrow: <SampleNextArrow />,
+          prevArrow: <SamplePrevArrow />
+        }}
         ref={slider => setSlider(slider)}
         >
           {props.children}
         </Slider>
     )
 };
+
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+
+  return ( <img
+    src={images + "/right.png"}
+    loading="lazy"
+    alt=""
+    className={className}
+  />
+
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return ( <img
+    src={images + "/left.png"}
+    loading="lazy"
+    alt=""
+    className={className}
+  />
+
+  );
+}
 
 export const SliderItems = (props)=>{
   const dispatch = useDispatch();

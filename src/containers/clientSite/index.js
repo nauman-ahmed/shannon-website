@@ -19,6 +19,7 @@ import Photography from './photography'
 import SearchByArtist from './searchPages/searchByArtist'
 import SearchByDivision from './searchPages/searchByDivision'
 import SearchByCategories from './searchPages/searchByCategories'
+import BlackArtist from './bipocSubPages/blackArtist'
 
 
 import { useSelector } from 'react-redux'
@@ -131,6 +132,8 @@ function Index(props) {
                         <Contact/>
                     :pages === "bipoc"?
                         <Bipoc/>
+                    :pages === "black"?
+                        <BlackArtist/>
                     :<Redirect to="/404"/>
                     :<Artists  tempArtist={tempArtist} searchArtist={searchArtist}>
                         <ArtistSideBar activeBtn={pages}/>
