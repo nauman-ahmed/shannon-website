@@ -23,22 +23,17 @@ import { IMAGE_ROUTE } from "../../../AxiosFunctions/Axiosfunctionality";
 // import downloadArrow from "../../images/download.png";
 const images = window.location.origin + "/assets/images";
 
-function BlackArtist(props) {
+function CentralAsianArtist(props) {
 
   const [gottenData, setGottenData] = useState(false);
 
   const [styleSheet, setStyleSheet] = useState({ maxWidth: "100%" });
-  const [blackArtist, setBlackArtist] = useState(null);
-  const [asianArtist, setAsianArtist] = useState(null);
-  const [latinoArtist, setLatinoArtist] = useState(null);
   const [centralAsianArtist, setCentralAsianArtist] = useState(null);
-  const [indegiousArtist, setIndegiousArtist] = useState(null);
 
   useEffect(() => {
 
-
-    getBipocBlack().then((res) => {
-      setBlackArtist(res);
+    getBipocCentralAsia().then((res) => {
+      setCentralAsianArtist(res);
     });
 
   }, []);
@@ -55,7 +50,7 @@ function BlackArtist(props) {
                     <div 
                       className="bannerletters _1 v2"
                       style={{
-                        backgroundImage: "url(" + images + "/blackNew.png)",
+                        backgroundImage: "url(" + images + "/centralAsianNew.png)",
                         marginLeft: "0vw",
                         marginTop: "0.8vh",
                         padding:"5px"
@@ -67,7 +62,7 @@ function BlackArtist(props) {
                       className="bannerhome _1 v2"
                       style={{
                         backgroundImage:
-                          "url("+ images + "/blackNewLarge.png)",
+                        "url("+ images + "/centralAsianNewLarge.png)",
                         height: "100%",
                       }}
                     ></div>
@@ -77,8 +72,8 @@ function BlackArtist(props) {
     <div className="categoryinfo">
       <div className="w-dyn-list">
         <div role="list" className="collection-list-4 w-dyn-items">
-          {blackArtist ?
-            blackArtist.map((val, ind) =>
+          {centralAsianArtist ?
+            centralAsianArtist.map((val, ind) =>
             val.ImageData.length > 0 ? (<div role="listitem" className="w-dyn-item">
               <Link
                 id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
@@ -99,14 +94,14 @@ function BlackArtist(props) {
       </div>
     </div>
     <div className="sliderbipoc">
-      {blackArtist ? (
+      {centralAsianArtist ? (
         <div className="mb-3 detail_card3"  >
           {/* <Slider 
             disableAutoPlay 
             controllEnabled="outside-dark"
             id = {idBlackSlider}
         > */}
-          {blackArtist.map((val, ind) =>
+          {centralAsianArtist.map((val, ind) =>
             val.ImageData.length > 0 ? (
 
               // <SliderItem
@@ -165,4 +160,4 @@ function BlackArtist(props) {
   );
 }
 
-export default BlackArtist;
+export default CentralAsianArtist;

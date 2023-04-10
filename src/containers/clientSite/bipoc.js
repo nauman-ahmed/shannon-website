@@ -308,7 +308,7 @@ function Bipoc() {
         <div className="categoryinfo">
           <div className="w-dyn-list">
             <div role="list" className="collection-list-4 w-dyn-items">
-              <h2 className="newsh2 h" >BLACK ARTISTS</h2>
+            <Link style={{ textDecoration: "none" }} to={"/black"}><h2 className="bipocTitle" >BLACK ARTISTS</h2></Link>
               {blackArtist ?
                 blackArtist.map((val, ind) =>
                 val.ImageData.length > 0 ? (<div role="listitem" className="w-dyn-item">
@@ -396,7 +396,7 @@ function Bipoc() {
       {/*  */}
       <div className="bipoc2cols category  w-100 h-100" style={{ position: "relative" }}>
         <div className="categoryinfo">
-          <h1 className="newsh2 h">ASIAN ARTISTS</h1>
+        <Link style={{ textDecoration: "none" }} to={"/asianArtist"}><h2 className="bipocTitle" >ASIAN ARTISTS</h2></Link>
           <div className="w-dyn-list">
             <div role="list" className="collection-list-4 w-dyn-items">
               {asianArtist ?
@@ -461,7 +461,7 @@ function Bipoc() {
       {/*  */}
       <div className="bipoc2cols category  w-100 h-100" style={{ position: "relative" }}>
         <div className="categoryinfo">
-          <h1 className="newsh2 h">LATINO/LATINA ARTISTS</h1>
+          <Link style={{ textDecoration: "none" }} to={"/latinoArtist"}><h2 className="bipocTitle" >LATINO/LATINA ARTISTS</h2></Link>
           <div className="w-dyn-list">
             <div role="list" className="collection-list-4 w-dyn-items">
               {latinoArtist ?
@@ -524,7 +524,7 @@ function Bipoc() {
       {/*  */}
       <div className="bipoc2cols category  w-100 h-100" style={{ position: "relative" }}>
         <div className="categoryinfo">
-          <h1 className="newsh2 h">CENTRAL ASIAN ARTISTS</h1>
+          <Link style={{ textDecoration: "none" }} to={"/centralAsianArtist"}><h2 className="bipocTitle" >CENTRAL ASIAN ARTISTS</h2></Link>
           <div className="w-dyn-list">
             <div role="list" className="collection-list-4 w-dyn-items">
               {centralAsianArtist ?
@@ -587,7 +587,7 @@ function Bipoc() {
       {/*  */}
       <div className="bipoc2cols category  w-100 h-100" style={{ position: "relative" }}>
         <div className="categoryinfo">
-          <h1 className="newsh2 h">INDIGENOUS ARTISTS</h1>
+          <Link style={{ textDecoration: "none" }} to={"/indigenousArtist"}><h2 className="bipocTitle" >INDIGENOUS ARTISTS</h2></Link>
           <div className="w-dyn-list">
             <div role="list" className="collection-list-4 w-dyn-items">
               {indegiousArtist ?

@@ -203,7 +203,7 @@ const images = window.location.origin + "/assets/images";
                             </>
                           ))}
                         </div>
-                        <div className="divisionbuttoncontainer mb-5" style={{ justifyContent: "flex-end" }}>
+                        <div className="divisionbuttoncontainer" style={{ justifyContent: "flex-end" }}>
                           <Link
                             to={ 
                               item.keyword == "Illustration" ? "illustration-artists"
@@ -286,7 +286,7 @@ const images = window.location.origin + "/assets/images";
                           </>
                         ))}
                       </div>
-                      <div className="divisionbuttoncontainer mb-5">
+                      <div className="divisionbuttoncontainer">
                         <Link
                           to={ 
                             item.keyword == "Illustration" ? "illustration-artists"

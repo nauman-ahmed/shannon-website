@@ -20,6 +20,10 @@ import SearchByArtist from './searchPages/searchByArtist'
 import SearchByDivision from './searchPages/searchByDivision'
 import SearchByCategories from './searchPages/searchByCategories'
 import BlackArtist from './bipocSubPages/blackArtist'
+import AsianArtist from './bipocSubPages/asianArtist'
+import CentralAsianArtist from './bipocSubPages/centralAsianArtist'
+import LatinoArtist from './bipocSubPages/latinoArtist'
+import IndigenousArtist from './bipocSubPages/indigenousArtist'
 
 
 import { useSelector } from 'react-redux'
@@ -134,6 +138,14 @@ function Index(props) {
                         <Bipoc/>
                     :pages === "black"?
                         <BlackArtist/>
+                    :pages === "asianArtist"?
+                        <AsianArtist/>
+                    :pages === "latinoArtist"?
+                        <LatinoArtist/>
+                    :pages === "centralAsianArtist"?
+                        <CentralAsianArtist/>
+                    :pages === "indigenousArtist"?
+                        <IndigenousArtist/>
                     :<Redirect to="/404"/>
                     :<Artists  tempArtist={tempArtist} searchArtist={searchArtist}>
                         <ArtistSideBar activeBtn={pages}/>

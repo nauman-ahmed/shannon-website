@@ -4496,7 +4496,6 @@ column-gap:20px ;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 50px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -4519,6 +4518,13 @@ column-gap:20px ;
   flex-direction: column;
 }
  */
+
+.divisionslink:hover {
+  color: #BC6127; 
+  cursor: pointer;
+  text-decoration: none;
+}
+
 .divisionslink {
   font-size: 0.74vw;
   line-height: 1.4;
@@ -4531,6 +4537,22 @@ column-gap:20px ;
 }
 
 .newsh2 {
+  color: #373530;
+  margin-top: 0px;
+  margin-bottom: 40px;
+  font-family: Montserrat, sans-serif;
+  font-size: 1.74vw;
+  line-height: 1;
+  font-weight: 800;
+}
+
+.bipocTitle:hover {
+  color: #BC6127; 
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.bipocTitle {
   color: #373530;
   margin-top: 0px;
   margin-bottom: 40px;
@@ -5717,6 +5739,10 @@ column-gap:20px ;
     font-size: 16px;
   }
 
+  .bipocTitle {
+    font-size: 16px;
+  }
+
   .collection-list-sort {
     display: -ms-grid;
     display: grid;
@@ -6458,6 +6484,12 @@ column-gap:20px ;
   }
 
   .newsh2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    line-height: 1.3;
+  }
+
+  .bipocTitle {
     margin-bottom: 20px;
     font-size: 22px;
     line-height: 1.3;
