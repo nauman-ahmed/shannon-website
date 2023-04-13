@@ -107,11 +107,14 @@ function Contact() {
           } 
         }
         createContact(data).then((res) => {
-          setHolder(false);
-          // dispatch(updateOpen(true))
-          setIsPopupShow(true);
-          setMsg(tempMsg);
-          // dispatch(updateMessage(res));
+          if(res == "Email is an Issue"){
+            tempMsg = <p> ERROR IN CONTACT DETAILS SUBMISSION</p>
+            setMsg(tempMsg);
+          }else{
+            setHolder(false);
+            setIsPopupShow(true);
+            setMsg(tempMsg);
+          }
         });
       }
     } else {
@@ -759,6 +762,7 @@ function SampleNextArrow(props) {
     loading="lazy"
     alt=""
     className={className}
+    onClick={onClick}
   />
 
   );
@@ -773,6 +777,7 @@ function SamplePrevArrow(props) {
     loading="lazy"
     alt=""
     className={className}
+    onClick={onClick}
   />
   );
 }
