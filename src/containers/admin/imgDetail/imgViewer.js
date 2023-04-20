@@ -86,12 +86,12 @@ function ImgViewer(props) {
             :null
             }
           </div>
-          <div className='col-md-4'>
+          {/* <div className='col-md-4'>
             {Object.keys(imageData.mainImage[0]).length !== 0 && imageData.mainImage[0].subImage.length > 0 ?
             <img alt='' src={String(Object.keys(imageData.mainImage[0]).length > 0 ? imageData.mainImage[0].subImage[1].path:"")} />
             :null
             }
-          </div>
+          </div> */}
         </div>
       </div>
       <div className='col-md-6'>

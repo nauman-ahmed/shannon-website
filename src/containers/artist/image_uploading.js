@@ -28,6 +28,7 @@ function Image_uploading() {
     const [keywordList,setKeywordList] = useState(null)
     const [keywordKids,setKeywordKids] = useState(null)
     const [temp, setTemp] = useState(null)
+    const [details, setDetails] = useState(decodeToken(localStorage.getItem("authorization")))
 
 
     const [pagination, setPagination] = useState({
@@ -292,18 +293,19 @@ function Image_uploading() {
 
     const onSubmit = () => {
         try{
+            console.log("NAUMAN",artistImageDetails)
             let storageData = localStorage.getItem("authorization")
             let details = decodeToken(storageData)
-            if(artistImageDetails[3] == undefined){
+            if(artistImageDetails.length == 2){
                 dispatch(updateOpen(true))
                 dispatch(updateMessage("Select Atleast One Keyword"))
             }
-            if(artistImageDetails[3].keywordList.length == 0){
+            else if(artistImageDetails[2].keywordList.length == 0){
                 dispatch(updateOpen(true))
                 dispatch(updateMessage("Select Atleast One Keyword"))
             }
-            if(artistImageDetails[3].keywordList.length > 8 || artistImageDetails[0].title ==""){
-                    let message1 = artistImageDetails[3].keywordList.length > 8 ? "Keywords Must be 8 or Less" : null
+            else if(artistImageDetails[2].keywordList.length > 8 ){
+                    let message1 = artistImageDetails[2].keywordList.length > 8 ? "Keywords Must be 8 or Less" : null
                     let message2 = artistImageDetails[0].title =="" ? "Image Title Should not be Empty" : null
                     let message = message1 == null ? message2 : message2 == null ? message1 : message1 + " and " + message2
                     dispatch(updateOpen(true))
@@ -313,21 +315,17 @@ function Image_uploading() {
                 let originalImage = dataURLtoFile(temp,"originalImage.jpg")
         
                 const imageCreate = new FormData()
-                imageCreate.append('k_id',artistImageDetails[3].keywordList)
+                imageCreate.append('k_id',artistImageDetails[2].keywordList)
                 imageCreate.append('_id',details._id)
                 imageCreate.append('mainId',artistReducer.uploadedImage.imageFile._id)
-                imageCreate.append('title',artistImageDetails[0].title)
                 imageCreate.append('artistDir',details.artistDir)
                 imageCreate.append('artistImage_2',artistImageDetails[1].name)
-                imageCreate.append('artistImage_3',artistImageDetails[2].name)
                 imageCreate.append('artistImage',artistImageDetails[1].img)
-                imageCreate.append('artistImage',artistImageDetails[2].img)
                 imageCreate.append('artistImage',originalImage)
                 imageCreate.append('caption',"Ⓒ " + details.firstname.toLowerCase())
                 imageCreate.append('color',artistReducer.uploadedImage.imageFile.copyrightColor)
 
                 setShowLoader(true)
-                console.log(artistImageDetails,artistReducer.uploadedImage,details)
                 changeArtistImageDetails(imageCreate).then(res => {
                     if(res == 'successfully updated'){
                         setShowLoader(false)
@@ -352,29 +350,44 @@ function Image_uploading() {
     return (
         <>
             <Header/>
-            <div className='px-0 mx-5 imageUploader'>
-                <div className='px-0 row m-0'>
+            <div className='px-0 mx-5 mb-5 imageUploader'>
+                <div className='profile'>
+                    <div className='profilePic'>{ details ? details.firstname ?  details.firstname.toUpperCase() : "...loading" : null }</div>
                     <button 
-                        className='btn1 mt-3 mb-5'
+                        className='btn1 mt-3 '
                         onClick={()=>history.push('/artist')}
                     >
                         CANCEL
                     </button>
                     {pageNo > 0?
-                    <button className='btn1 mt-3 mb-5' onClick={()=>paginationHandler(pageNo-1,true)}>
+                    <button className='btn1 mt-3' onClick={()=>paginationHandler(pageNo-1,true)}>
                         <img alt='' src={BackArrow}/>
                     </button>
                     :null}
+                    <h3 className='artistCounter mb-5'>{pageNo + 2}</h3>
+                    <h3 className='artistCounterMessage mb-5' >
+                        {pageNo + 2 == 4 ?
+                            <p>
+                                Please choose up to 8 keywords in each section (if your work is applicable for both sections).<br/>
+                                Please be sure to keyword for the SPECIFIC IMAGE and not your body of work.
+                            </p>
+                            :
+                            "Move and resize the box to select the desired thumbnail, click next when the thumbnail has been selected."
+                        }
+                         
+                    </h3>
                 </div>
-                {pageNo === 0 || pageNo === 1 || pageNo === 2?
+                <div className='px-0 row m-0'>
+                </div>
+                {pageNo === 0 || pageNo === 1 ?
                     <div className='px-0 row m-0'>
-                        <div className='col-xl-9 col-lg-8 d-flex justify-content-center'>
+                        <div className='col-xl-9 col-lg-8'>
                         {artistImageDetails !== null && pageNo === 0 ? 
                            <img alt='' src={artistImageDetails[0].img}/>
                            : null
                         }
                         {artistImageDetails !== null ? 
-                           pageNo === 1 || pageNo === 2?
+                           pageNo === 1 ?
                             <ReactCrop
                                     crop={completedCrop}
                                     onChange={(percentCrop) => setCompletedCrop(percentCrop)}
@@ -393,35 +406,24 @@ function Image_uploading() {
                         } 
                         </div>
                         {pageNo === 0?
-                        <div className='col-xl-3 col-lg-4 mt-lg-0 mt-5 d-flex flex-column align-items-center'>
-                            <div className='d-flex flex-column align-items-center w-100'>
-                                <b className='mb-4'>ORIGINAL</b>
-                                <input className='textField' type="text" name="title" onChange={onChangeHandler}/>
-                            </div>
+                        <div className='col-xl-3 col-lg-4 mt-lg-0 mt-5'>
                             <button className='btn1 dark px-4 align-self-bottom' onClick={()=>paginationHandler(pageNo + 1)}>NEXT</button>
                         </div>
-                        :pageNo === 1 || pageNo === 2?
-                        <div className='col-xl-3 col-lg-4 mt-lg-0 mt-5 d-flex flex-column align-items-center'>
-                            <div className='d-flex flex-column align-items-center w-100'>
-                                <b className='mb-4'>ORIGINAL</b>
-                                <label className='checkBox'>THUMBNAIL {pageNo}
-                                    {/* <input type="checkbox"/>
-                                    <span className="checkmark"></span> */}
-                                </label>
-                            </div>
+                        :pageNo === 1 ?
+                        <div className='col-xl-3 col-lg-4 mt-lg-0 mt-5'>
                             <button className='btn1 dark px-4 align-self-bottom' onClick={()=>{paginationHandler(pageNo + 1)}}>NEXT</button>
                         </div>
                         :null}
                     </div>
                 :
                     <div className='px-5 row m-0'>
-                        <div className='col-12 border-bottom'>
+                        {/* <div className='col-12 border-bottom'>
                             <p>
                                 Please choose up to 8 keywords in each section (if your work is applicable for both sections).<br/>
                                 Please be sure to keyword for the SPECIFIC IMAGE and not your body of work.
                             </p>
-                        </div>
-                        <div className='col-md-6 col-12 px-0 py-5 border-right border-md-0'>
+                        </div> */}
+                        <div className='col-md-6 col-12 px-0 py-5 border-right border-md-0 border-top'>
                             <div className='row m-0'>
                                 <h4 className='col-12 mb-5'>KEYWORD LISTING</h4>
                                 {keyword !== null &&
@@ -436,7 +438,7 @@ function Image_uploading() {
                                 }
                             </div>
                         </div>
-                        <div className='col-md-6 col-12 px-0 py-5'>
+                        <div className='col-md-6 col-12 px-0 py-5 border-top'>
                             <div className='row m-0'>
                                 <h4 className='col-12 mb-5'>KEYWORD LISTING KIDS</h4>
                                 {keywordKids !== null &&
@@ -453,8 +455,8 @@ function Image_uploading() {
                                 }
                             </div>
                         </div>
-                        <div className='col-12 d-flex justify-content-end'>
-                            <button className='btn1 dark px-4 align-self-bottom' style={{marginTop:-20}} onClick={onSubmit}>Submit</button>
+                        <div className='col-12 d-flex justify-content-center my-5 '>
+                            <button className='btn1 dark px-4 align-self-bottom' style={{fontSize: "3vh"}} onClick={onSubmit}>Submit</button>
                         </div>
                     </div>
                 }

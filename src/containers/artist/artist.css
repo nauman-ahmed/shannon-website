@@ -24,14 +24,61 @@
     margin-top: -30px;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 .artist>.profile>.profilePic{
-    width: 100px;
-    height: 100px;
-    background-image: linear-gradient(#FFB71B,#EC297B);
-    border-radius: 100px;
+    width: 250px;
+    height: 50px;
+    background-color: #D16A27;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 3vh;
+    font-family: 'Roboto Condensed', sans-serif;
+
 }
+
+.imageUploader>.profile{
+  margin-top: -30px;
+}
+.imageUploader>.profile>.profilePic{
+  width: 250px;
+  height: 50px;
+  background-color: #D16A27;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 3vh;
+  font-family: 'Roboto Condensed', sans-serif;
+
+}
+
+.artistCounter{
+    margin-left: auto;
+    margin-right: auto;
+    width: 50px;
+    height: 50px;
+    background-color: #D16A27;
+    border-radius: 50px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: white;
+}
+
+.artistCounterMessage{
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 3vh;
+    font-family: 'Roboto Condensed', sans-serif;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
 .artistcardAdmin{
     margin-bottom: 10px;
 }
@@ -72,9 +119,12 @@
     max-width: 250px;
 }
 .imageUploader .btn1.dark{
-    background-color: black;
-    border-radius: 5px;
+    background-color: #D16A27;
+    border-radius: 10px;
     color: white;
+    height: 40px;
+    width: 150px;
+    font-size: 2vh;
 }
 .imageUploader .checkBox{
     font-weight: normal;

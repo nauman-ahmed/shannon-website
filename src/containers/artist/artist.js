@@ -10,6 +10,7 @@ import { decodeToken } from "react-jwt";
 import { artistImageCreate,artistImagedelete } from '../../AxiosFunctions/Axiosfunctionality'
 import MyPopupLoading from '../../components/loader/myPopup'
 import loading from '../../assets/loading.gif'; 
+import BackArrow from "../../assets/svgs/backArrow.svg"
 
 function Artist() {
     
@@ -87,9 +88,9 @@ function Artist() {
         <Header/>
         <div className='px-1 px-md-5 artist'>
             <div className='profile'>
-                <div className='profilePic'></div>
-                <h3 className='mb-5'>{artistDetails ?  artistDetails.firstname : "...loading"}</h3>
-                <h6 className='mt-5'>SUBMIT IMAGES</h6>
+                <div className='profilePic mb-5'>{artistDetails ?  artistDetails.firstname : "...loading"}</div>
+                <h3 className='artistCounter mb-5'>1</h3>
+                <h3 className='artistCounterMessage mb-5' >Upload one or more images. Click on the thumbnail to select thumbnail, keyword and submit. </h3>
             </div>
             <div className='row m-0'>
                 <label className='col-6 col-lg-2 col-md-3 col-sm-4 m-0 artistcardAdmin w-inline-block addImageBtn'>

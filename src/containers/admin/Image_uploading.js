@@ -182,9 +182,8 @@ function Image_uploading(props) {
         const imageCreate = new FormData()
         imageCreate.append('k_id',keywordListTemp)
         imageCreate.append('title',artistImageTemp.title)
-        imageCreate.append('artistImage',artistImageTemp["1"])
-        imageCreate.append('artistImage',artistImageTemp["2"])
         imageCreate.append('mainId',props.images._id)
+        imageCreate.append('artistImage',artistImageTemp["1"])
         imageCreate.append('artistImage',originalImage)
         imageCreate.append('caption',copyrightText)
         imageCreate.append('color',copyrightColor)
@@ -297,7 +296,7 @@ function Image_uploading(props) {
                     </button>
                     :null}
                 </div>
-                {pageNo === 0 || pageNo === 1 || pageNo === 2?
+                {pageNo === 0 || pageNo === 1 ?
                     <div className='px-5 row m-0'>
                         <div className='col-xl-9 col-lg-8 d-flex justify-content-center'>
                            {artistImage !== null && pageNo === 0 ? 
@@ -305,7 +304,7 @@ function Image_uploading(props) {
                            : null
                         }
                         {artistImage !== null ? 
-                           pageNo === 1 || pageNo === 2?
+                           pageNo === 1 ?
                                <ReactCrop
                                 crop={completedCrop}
                                 onChange={(percentCrop) => setCompletedCrop(percentCrop)}
@@ -361,7 +360,7 @@ function Image_uploading(props) {
                             </div>
                             <button className='btn1 dark px-4 align-self-bottom' onClick={()=>setPageNo(pageNo + 1)}>NEXT</button>
                         </div>
-                        :pageNo === 1 || pageNo === 2?
+                        :pageNo === 1 ?
                         <div className='col-xl-3 col-lg-4 mt-lg-0 mt-5 d-flex flex-column align-items-center'>
                             <div className='d-flex flex-column align-items-center w-100'>
                                 <b className='mb-4'>ORIGINAL</b>
