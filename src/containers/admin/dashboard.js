@@ -6,6 +6,7 @@ import ImagesForReview from './dashboardPages/imagesForReview'
 import AddNewArtist from './dashboardPages/addNewArtist'
 import AccountCreationReq from './dashboardPages/accountCreationReq'
 import Input from '../../components/input/input'
+import loading from '../../assets/loading_trasnparent.gif'; 
 
 
 function Dashboard(props) {
@@ -73,7 +74,12 @@ function Dashboard(props) {
                             IMAGES FOR <br/>
                             REVIEW
                         </h5>
-                        <h1>{props.reviewImagesCount}</h1>
+                        {console.log(props.reviewImagesCount)}
+                        { props.reviewImagesCount == "loading" ? 
+                            <img alt="loading" src={loading} style={{width:"50px"}}/>  
+                            :
+                            <h1>{props.reviewImagesCount}</h1>
+                         }
                     </div>
                 </div>
                 <div className='col-md-6 mb-3'>
@@ -82,7 +88,7 @@ function Dashboard(props) {
                     </div>
                 </div>
                 <div className='col-md-6 mb-3'>
-                    <div onClick={()=>props.setFormNo(4)} className='dash_card color4 p-5'>
+                    <div onClick={()=>props.setFormNo(4)} className='dash_card color4 p-5'> 
                         <h5>
                             ACCOUNT <br/>
                             CREATION <br/>

@@ -32,7 +32,10 @@ function Admin(props) {
     const [reviewImagesCount,setReviewImagesCount] =useState(0); 
     const [reviewArtistCount,setReviewArtistCount] =useState(0); 
     const [holder,setHolder] =useState(false); 
+    const [calculatingArtist,setCalculatingArtist] =useState(true); 
     const [Uholder,setUHolder] =useState(false); 
+
+
     const populateContacts =()=>{
         let data = {};
         getContacts(data).then((res)=>{
@@ -44,8 +47,8 @@ function Admin(props) {
         getArtImages(data).then((res)=>{
             setArtistImages(res)
             setReviewImagesCount(findCountOfReviewArtist(res));
+            setCalculatingArtist(false)
         })
-          
         
     }
     
@@ -132,7 +135,7 @@ function Admin(props) {
                 history={props.history}
                 //Counts And small Stuff
                 contactCount = {Contacts !== undefined ? getContantCount(Contacts):0}
-                reviewImagesCount = {reviewImagesCount}
+                reviewImagesCount = {calculatingArtist ? "loading" : reviewImagesCount}
                 reviewArtistCount = {reviewArtistCount}
                 //All Mandatory Data
                 contacts = {Contacts !== undefined ? Contacts:[]}

@@ -80,7 +80,7 @@ function Image_uploading() {
                 title: "",
             })
             setArtistImageDetails(artistImageDetailsTemp)
-            paginationHandler(0)   
+            // paginationHandler(0)   
 
             let keywordTemp = []
             let keywordKidsTemp = []
@@ -104,79 +104,16 @@ function Image_uploading() {
 
 
     const paginationHandler = (num,prev=false) =>{
-        setPageNo(num)
-        if(num === 0){
-            if(prev){
-                setImage(null)
-                let pag = {...pagination}
-                let prevPag = [...pagination.previous]
-                let currPag = prevPag.pop()
-                let nextPag = [...pagination.next]
-                nextPag.push(pag.current)
-
-                setPagination({
-                    previous: prevPag,
-                    current: currPag,
-                    next:nextPag
-                })
-
-            }else{
-                pagination.next.pop()
-                setPagination({
-                    ...pagination,
-                    current:{
-                        page:num,
-                        image:artistReducer.uploadedImage
-                    }
-                })
-            }
-        }
-        else if(num > 0){
-            if(prev){
+        if(prev){
+            console.log(artistImageDetails.length)
+            const len = artistImageDetails.length
+            for (let index = 0; index < len - 1; index++) {
                 artistImageDetails.pop()
-                let pag = {...pagination}
-                let prevPag = [...pagination.previous]
-                let currPag = prevPag.pop()
-                let nextPag = [...pagination.next]
-                nextPag.push(pag.current)
-
-                setPagination({
-                    previous: prevPag,
-                    current: currPag,
-                    next:nextPag
-                })
-
             }
-            else{
-                pagination.next.pop()
-                let prev = [...pagination.previous]
-                prev.push(pagination.current)
-
-                getCroppedImg()
-
-                setPagination({
-                    ...pagination,
-                    previous: prev,
-                    current:{
-                        page:num,
-                        image:image
-                    }
-                })
-
-            }
-        }else{
-            pagination.next.pop()
-            let prev = [...pagination.previous]
-            prev.push(pagination.current)
-            setPagination({
-                ...pagination,
-                previous: prev,
-                current:{
-                    page:num,
-                    image:image
-                }
-            })
-        }
+        }else(
+            getCroppedImg()
+        )
+        setPageNo(num)
     }
 
 
@@ -379,15 +316,11 @@ function Image_uploading() {
                 </div>
                 <div className='px-0 row m-0'>
                 </div>
-                {pageNo === 0 || pageNo === 1 ?
+                {pageNo === 0 ?
                     <div className='px-0 row m-0'>
                         <div className='col-xl-9 col-lg-8'>
-                        {artistImageDetails !== null && pageNo === 0 ? 
-                           <img alt='' src={artistImageDetails[0].img}/>
-                           : null
-                        }
                         {artistImageDetails !== null ? 
-                           pageNo === 1 ?
+                           pageNo === 0 ?
                             <ReactCrop
                                     crop={completedCrop}
                                     onChange={(percentCrop) => setCompletedCrop(percentCrop)}
@@ -408,10 +341,6 @@ function Image_uploading() {
                         {pageNo === 0?
                         <div className='col-xl-3 col-lg-4 mt-lg-0 mt-5'>
                             <button className='btn1 dark px-4 align-self-bottom' onClick={()=>paginationHandler(pageNo + 1)}>NEXT</button>
-                        </div>
-                        :pageNo === 1 ?
-                        <div className='col-xl-3 col-lg-4 mt-lg-0 mt-5'>
-                            <button className='btn1 dark px-4 align-self-bottom' onClick={()=>{paginationHandler(pageNo + 1)}}>NEXT</button>
                         </div>
                         :null}
                     </div>
