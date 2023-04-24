@@ -303,7 +303,8 @@ function Image_uploading() {
                     :null}
                     <h3 className='artistCounter mb-5'>{pageNo + 2}</h3>
                     <h3 className='artistCounterMessage mb-5' >
-                        {pageNo + 2 == 4 ?
+                        {console.log(pageNo)}
+                        {pageNo == 1 ?
                             <p>
                                 Please choose up to 8 keywords in each section (if your work is applicable for both sections).<br/>
                                 Please be sure to keyword for the SPECIFIC IMAGE and not your body of work.
@@ -379,23 +380,22 @@ function Image_uploading() {
                                             />
                                             <span className="checkmark"></span>
                                         </label>
-                                    </div>
+                                    </div> 
                                     )
                                 }
                             </div>
                         </div>
                         <div className='col-12 d-flex justify-content-center my-5 '>
-                            <button className='btn1 dark px-4 align-self-bottom' style={{fontSize: "3vh"}} onClick={onSubmit}>Submit</button>
+                            {showLoader?
+                                <img alt="loading" src={loading} style={{width:"30px",marginTop:-20}}/>
+                                :
+                                <button className='btn1 dark px-4 align-self-bottom' style={{fontSize: "3vh"}} onClick={onSubmit}>Submit</button>
+                            }
                         </div>
                     </div>
                 }
             </div>
-            {showLoader?
-                <MyPopupLoading >
-                        <img className="mt-4" alt="loading" src={loading} style={{width:"30px"}}/>
-                </MyPopupLoading>
-                :
-                isPopupShow?
+            {isPopupShow?
                 <MyPopup BackClose onClose={()=>{setIsPopupShow(false); history.push("/artist")}}>
                     <div className='mx-5 my-4'>
                         WE RECEIVED YOUR IMAGE
