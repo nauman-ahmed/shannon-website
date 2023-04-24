@@ -259,7 +259,7 @@ function Image_uploading() {
                 imageCreate.append('artistImage_2',artistImageDetails[1].name)
                 imageCreate.append('artistImage',artistImageDetails[1].img)
                 imageCreate.append('artistImage',originalImage)
-                imageCreate.append('caption',"Ⓒ " + details.firstname.toLowerCase())
+                imageCreate.append('caption',"© " + details.firstname.toLowerCase())
                 imageCreate.append('color',artistReducer.uploadedImage.imageFile.copyrightColor)
 
                 setShowLoader(true)
