@@ -4,7 +4,8 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     cartInfo:{
         messageShow:true,
-        count:0
+        count:0,
+        getAnEstimate:false
     }
 }
 
@@ -26,6 +27,10 @@ const AddToCart = createSlice({
         },
         saveCartItemMessageKey(state,action){
             state.cartInfo = {...state.cartInfo,messageShow:action.payload.messageShow}
+        },
+        getAnEstimateHandler(state,action){
+            console.log("getAnEstimate")
+            state.cartInfo = {...state.cartInfo,getAnEstimate:true}
         }
     },
    
@@ -33,5 +38,5 @@ const AddToCart = createSlice({
 })
 
 // // Action creators are generated for each case reducer function
-export const { addCart, emptyCart ,removeCartItem, saveCartItemMessageKey} = AddToCart.actions
+export const { addCart, emptyCart ,removeCartItem, saveCartItemMessageKey, getAnEstimateHandler} = AddToCart.actions
 export default AddToCart.reducer

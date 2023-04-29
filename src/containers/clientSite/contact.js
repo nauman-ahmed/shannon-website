@@ -38,6 +38,7 @@ function Contact() {
   const [findUs, setFindUs] = useState("");
   const [message, setMessage] = useState("");
   const [holder, setHolder] = useState(false);
+  const [getAnEstimate, setGetAnEstimate] = useState(false);
   const [dataViewed, setDataViewed] = useState({});
   const [isChecked, setIsChecked] = useState({});
   const [artistData, setArtistData] = useState({});
@@ -124,6 +125,7 @@ function Contact() {
       // dispatch(updateMessage("select atleast one artist"));
     }
   };
+
   const removeKey = (id) => {
     dispatch(removeCartItem(id));
 
@@ -171,6 +173,11 @@ function Contact() {
 
   useEffect(() => {
     
+    if(AddToCart.cartInfo.getAnEstimate){
+      setPurposeOfInquiry("Get an estimate")
+      setGetAnEstimate(true)
+    }
+
     function getLocalStorage() {
       if (localStorage.getItem("artistViewed_V1") !== null) {
         setDataViewed(JSON.parse(localStorage.getItem("artistViewed_V1")));
@@ -465,8 +472,6 @@ function Contact() {
                           <select
                             id="Purpose-of-Inquiry"
                             name="Purpose-of-Inquiry"
-                            value={purposeOfInquiry}
-
                             onChange={(e) => {
                               setPurposeOfInquiry(e.target.value);
                             }}
@@ -474,7 +479,7 @@ function Contact() {
                             className="text-field text_h w-100 w-select"
                           >
                             <option value="">Select</option>
-                            <option value="Get an estimate">Get an estimate</option>
+                            <option value="Get an estimate" selected={getAnEstimate} >Get an estimate</option>
                             <option value="Commission an artist">
                               Commission an artist
                             </option>
@@ -606,7 +611,7 @@ function Contact() {
                 }}>
           {AddToCart.cartInfo && Object.keys(AddToCart.cartInfo).length > 0 &&
                   Object.keys(AddToCart.cartInfo).map((oneKey, i) => {
-                    if(oneKey !== "messageShow" && oneKey !== "count" ){
+                    if(oneKey !== "messageShow" && oneKey !== "count" && oneKey !== "getAnEstimate" ){
                       return (
                        
                           <Link

@@ -949,7 +949,7 @@ a {
   /* font-weight: 380; */
 }
 
-.filterhomelink:hover {
+.filterhomelink:hover { 
   color: #ffb71b;
 }
 
@@ -964,7 +964,7 @@ a {
 }
 
 .filterhomelink.v2.w--current {
-  color: #ffb71b;
+  color: #fa8e37;
 }
 
 .homesection {
@@ -1413,8 +1413,10 @@ a {
 
 .talentbutton:hover {
   background-color: #BC6127;
-  color: #BC6127;
+  color: #fff;
   cursor: pointer;
+  text-decoration: none;
+
 }
 
 .talentbuttonSeeMore:hover {
@@ -4984,6 +4986,11 @@ column-gap:20px ;
  cursor: pointer;
 }
 
+.cartBadgeSearchArtist:hover{
+  cursor: pointer;
+ }
+ 
+
 @media screen and (max-width:1536px) {
   .link-block-3{
     width: 25%;
@@ -5320,6 +5327,23 @@ column-gap:20px ;
   background: #BC6127;
   color: #fff;
   padding: 2px 5px;
+  vertical-align: top;
+}
+
+.cartBadgeSearchArtist{
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  background-color: #BC6127;
+  border-radius: 83px;
+  /* color: black; */
+  /* height: auto; */
+  /* width: auto; */
+  /* padding: 10px; */
+  font-size: 12px;
+  background: #BC6127;
+  color: #fff;
+  padding: 5px 8px;
   vertical-align: top;
 }
 

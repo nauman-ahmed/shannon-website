@@ -10,7 +10,7 @@ import Navbar from "../../../components/layout/navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { artistImageDetailedSliceData } from '../../../AxiosFunctions/Axiosfunctionality';
 import { ArtistImageSliceData } from "../../../redux/artistImageDataSlice";
-import { addCart,saveCartItemMessageKey } from "../../../redux/addToCart";
+import { addCart, saveCartItemMessageKey, getAnEstimateHandler } from "../../../redux/addToCart";
 import { updateMessage, updateOpen } from "../../../redux/message";
 import MyPopup from "../../../components/myPopup/myPopup";
 
@@ -58,10 +58,11 @@ function SearchByArtist(props) {
     };
   }, []);
 
-  const addToCartArtist = (id, firstname) => {
+  const addToCartArtist = (id, firstname,getAnEstimate=false) => {
     dispatch(addCart({ key: id, data: { id: id, Name: firstname } }));
-    // dispatch(updateOpen(true));
-    // dispatch(updateMessage("Add Artist in Cart"));
+    if(getAnEstimate){
+      dispatch(getAnEstimateHandler());
+    }
   };
 
   const dataLocalArtist = (key, _id, firstname, bio, listData, subListData) => {
@@ -321,15 +322,14 @@ function SearchByArtist(props) {
     dispatch(saveCartItemMessageKey({ messageShow:msg }));
   }
 
-  const addToCartArtistHandler = (id,title) =>{
+  const addToCartArtistHandler = (id,title,getAnEstimate=false) =>{
     let key = Object.keys(AddToCart.cartInfo).find(element => element == id)
     if(key == undefined){
       if(AddToCart.cartInfo.messageShow){
         setMsg("You have added "+ title +" to your list, to view your list visit Contact/My List Page.")
         setIsPopupShow(true)
-        console.log("CLICKED",AddToCart)
       }
-      addToCartArtist(id, title)
+      addToCartArtist(id, title, getAnEstimate)
     }else{
       setMsg("You have already added "+ title +" to your list, to view your list visit Contact/My List Page.")
       setIsPopupShow(true)
@@ -387,6 +387,7 @@ function SearchByArtist(props) {
                     to="/contact"
                     // style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
                     className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton mr-3"}
+                    onClick={() => addToCartArtistHandler(data1[search].id, data1[search].title, true)}
                   >
                     GET ESTIMATE
                   </Link>
@@ -765,13 +766,13 @@ function SearchByArtist(props) {
           <MyPopup
             BackClose
             onClose={() => {
-              saveCartMessage(!isCheckboxChecked)
+              saveCartMessage(!isCheckboxChecked) 
               setIsPopupShow(false);
             }}
           >
             <div className="mx-5 my-4">
               <div>{msg}</div>
-              <div class="form-check form-switch mt-2">
+              <div class="form-check form-switch mt-2"> 
                 <input 
                   class="form-check-input" 
                   type="checkbox" 
@@ -783,6 +784,10 @@ function SearchByArtist(props) {
                 <label class="form-check-label" for="flexSwitchCheckDefault" style={{paddingTop:"5px"}}>Do not show this again</label>
               </div>
             </div>
+            <div className="cartBadgeSearchArtist" onClick={() => {
+              saveCartMessage(!isCheckboxChecked) 
+              setIsPopupShow(false);
+            }} >x</div>
           </MyPopup>
         ) : isPopupShow && !isPopupShowWithCheckbox?
         <MyPopup
@@ -795,6 +800,10 @@ function SearchByArtist(props) {
             <div className="mx-5 my-4">
               <div>{msg}</div>
             </div>
+            <div className="cartBadgeSearchArtist" onClick={() => {
+              saveCartMessage(!isCheckboxChecked) 
+              setIsPopupShow(false);
+            }} >x</div>
           </MyPopup> : null
         }
       </div>

@@ -76,7 +76,7 @@ function Categories(props) {
 
   useEffect(() => {
     dispatch(artistKeyword({ _id: search }));
-  }, []);
+  }, [search]);
 
   return (
     <div className="_2cols mt-5">

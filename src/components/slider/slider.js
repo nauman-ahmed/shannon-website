@@ -156,6 +156,7 @@ export const SliderItems = (props)=>{
                       to="/contact"
                       // style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
                       className={props.windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton  mr-3"}
+                      onClick={() => props.addToCartArtistHandler(props ? props.data1[props.search].id : null, props ? props.data1[props.search].title : null, true)}
                     >
                       GET ESTIMATE
                     </Link>
