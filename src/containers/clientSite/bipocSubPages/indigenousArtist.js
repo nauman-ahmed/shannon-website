@@ -62,7 +62,7 @@ function IndigenousArtist(props) {
                       style={{
                         backgroundImage:
                         "url("+ images + "/indigenousNewLarge.png)",
-                        height: "100%",
+                        // height: "100%",
                       }}
                     ></div>
                   </Link>

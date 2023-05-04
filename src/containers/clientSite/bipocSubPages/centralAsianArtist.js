@@ -63,7 +63,7 @@ function CentralAsianArtist(props) {
                       style={{
                         backgroundImage:
                         "url("+ images + "/centralAsianNewLarge.png)",
-                        height: "100%",
+                        // height: "100%",
                       }}
                     ></div>
                   </Link>

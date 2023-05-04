@@ -65,7 +65,7 @@ function AsianArtist(props) {
                       style={{
                         backgroundImage:
                         "url("+ images + "/asianNewLarge.png)",
-                        height: "100%",
+                        // height: "100%",
                       }}
                     ></div>
                   </Link>

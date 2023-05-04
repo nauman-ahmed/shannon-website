@@ -64,7 +64,7 @@ function LatinoArtist(props) {
                       style={{
                         backgroundImage:
                         "url("+ images + "/latinoNewLarge.png)",
-                        height: "100%",
+                        // height: "100%",
                       }}
                     ></div>
                   </Link>

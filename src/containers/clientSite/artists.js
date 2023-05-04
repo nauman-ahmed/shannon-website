@@ -143,7 +143,7 @@ function Artists(props) {
                           "url(" +
                           setImageRoute(bannerImages.bannerData[0].imagePath) +
                           ")",
-                        height: "100%",
+                        // height: "100%",
                       }}
                     ></div>
                   </Link>

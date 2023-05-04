@@ -68,7 +68,7 @@ function BlackArtist(props) {
                       style={{
                         backgroundImage:
                           "url("+ images + "/blackNewLarge.png)",
-                        height: "100%",
+                        // height: "100%",
                       }}
                     ></div>
                   </Link>

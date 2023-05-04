@@ -85,6 +85,7 @@
 .artistcardAdmin>.image{
     object-fit: cover;
     width: 50%;
+    height: 100%;
 }
 .artistcardAdmin.addImageBtn{
     display: flex;
