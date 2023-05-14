@@ -73,7 +73,6 @@ function Artists(props) {
 
   return (
     <>
-            {console.log("FILTER",filterHighlighted)}
     <div class="sortingcont right pt-0  me-0 ">
           <a class={filterHighlighted == 1 ? "filter-button sort-active w-inline-block  mt-0" : "filter-button w-inline-block  mt-0"} onClick={()=>filterChange("Default")}>
             <div >DEFAULT</div>
@@ -83,7 +82,6 @@ function Artists(props) {
           </a>
         </div>
     <div className="_2cols" style={{clear:"both"}}>
-      
       {props.children}
       <div
         id="w-node-a284be2a-4b91-3177-03eb-6614b24879c1-4bf2d022"
