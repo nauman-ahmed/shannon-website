@@ -153,7 +153,7 @@ function Artists(props) {
                   <>
                     <a
                       id="w-node-a284be2a-4b91-3177-03eb-6614b2487a29-4bf2d022"
-                      href="http://18.191.86.110/#/"
+                      href="http://13.59.180.10/#/"
                       className="banner _2 v2 w-inline-block-banner "
                     >
                       <div className="bannerletters _2 v2"></div>
@@ -198,9 +198,9 @@ function Artists(props) {
               )}
               {ind === 59 ? (
                 bannerImages.bannerData.length > 0 ? (
-                  <Link
+                  <a
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879ea-4bf2d022"
-                    to="#"
+                    href="https://www.instagram.com/shannonassociates/?hl=es"
                     className="banner _1 v2 w-inline-block-banner2"
                   >
                     <div className="bannerletters _4 v2"></div>
@@ -214,7 +214,7 @@ function Artists(props) {
                           ")",
                       }}
                     ></div>
-                  </Link>
+                  </a>
                 ) : (
                   ""
                 )
