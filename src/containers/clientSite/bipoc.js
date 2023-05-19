@@ -357,7 +357,7 @@ function Bipoc() {
                     className="bipocLink"
                   >
                     <div className=" card_img2 detail_card3_h" style={{ position: "relative",   overflow:"hidden",}}>
-                      <img src={val.ImageData[0].subImage[1].path} val={val} className="h-100 w-100" ></img>
+                      <img src={val.ImageData[0].subImage[0].path} val={val} className="h-100 w-100" ></img>
                       <p className="p-1 card_img_text" >{val.artistData.firstname  + " " +val.artistData.lastname}</p>
                     </div>
                   </Link>
@@ -446,7 +446,7 @@ function Bipoc() {
                     
                   >
                     <div className="card_img2 detail_card3_h" style={{ position: "relative",   overflow:"hidden"}}>
-                      <img src={val.ImageData[0].subImage[1].path} val={val} className=" w-100 h-100" ></img>
+                      <img src={val.ImageData[0].subImage[0].path} val={val} className=" w-100 h-100" ></img>
                       <p className="p-1 card_img_text" >{val.artistData.firstname  + " " +val.artistData.lastname}</p>
                    </div>
 
@@ -502,7 +502,7 @@ function Bipoc() {
                     className="bipocLink"
                   >
                     <div className="card_img2 detail_card3_h" style={{ position: "relative",   overflow:"hidden",}}>
-                      <img src={val.ImageData[0].subImage[1].path} val={val} className="w-100 h-100"></img>
+                      <img src={val.ImageData[0].subImage[0].path} val={val} className="w-100 h-100"></img>
                       <p className="p-1 card_img_text" >{val.artistData.firstname  + " " +val.artistData.lastname }</p>
                     </div>
                   </Link>
@@ -565,7 +565,7 @@ function Bipoc() {
                     className="bipocLink"
                   >
                     <div className="card_img2 detail_card3_h" style={{ position: "relative",   overflow:"hidden",}}>
-                      <img src={val.ImageData[0].subImage[1].path} val={val} className="w-100 h-100"></img>
+                      <img src={val.ImageData[0].subImage[0].path} val={val} className="w-100 h-100"></img>
                       <p className="p-1 card_img_text" >{ val.artistData.firstname+ " " + val.artistData.lastname}</p>
                     </div>
                   </Link>
@@ -636,7 +636,7 @@ function Bipoc() {
                     className="bipocLink"
                   >
                     <div className="card_img2 detail_card3_h" style={{ position: "relative",overflow: "hidden" }}>
-                      <img src={val.ImageData[0].subImage[1].path} val={val} className="w-100 h-100"></img>
+                      <img src={val.ImageData[0].subImage[0].path} val={val} className="w-100 h-100"></img>
                       <p className="p-1 card_img_text" >{val.artistData.firstname + " " + val.artistData.lastname}</p>
                     </div>
                   </Link>

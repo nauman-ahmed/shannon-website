@@ -237,14 +237,14 @@ function Contact() {
       if(artistImageDataSlice.artistImages.length == 0){
         dispatch(ArtistImageSliceData()).then((res) => {
           res?.payload?.map((val, ind) => {
-            tempArtistImagesData[val?.artistId?._id] = val?.mainImage[0]?.subImage[1]?.path;
+            tempArtistImagesData[val?.artistId?._id] = val?.mainImage[0]?.subImage[0]?.path;
           });
           
           setArtistImages(tempArtistImagesData);
         });
       }else{
         artistImageDataSlice.artistImages.map((val, ind) => {
-          tempArtistImagesData[val?.artistId?._id] = val?.mainImage[0]?.subImage[1]?.path;
+          tempArtistImagesData[val?.artistId?._id] = val?.mainImage[0]?.subImage[0]?.path;
         });
         setArtistImages(tempArtistImagesData);
       }
