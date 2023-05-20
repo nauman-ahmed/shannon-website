@@ -18,6 +18,8 @@ import {
 } from "../../AxiosFunctions/Axiosfunctionality";
 import { IMAGE_ROUTE } from "../../AxiosFunctions/Axiosfunctionality";
 import { getDummyData } from "./temp";
+import coverImage from "./bipocSubPages/bipocAssets/BIPOC_PAGE_SQUARE.jpg"
+
 
 const images = window.location.origin + "/assets/images";
 
@@ -264,7 +266,7 @@ function Bipoc() {
           className="artistcard bipoc set_height w-inline-block"
         >
           <img
-            src={images + "/Rectangle-114.png"}
+            src={coverImage}
             loading="lazy"
             alt=""
             className="image bipoc"

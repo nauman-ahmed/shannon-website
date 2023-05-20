@@ -172,7 +172,7 @@ function Artists(props) {
                     </a>
                     <Link
                       id="w-node-a284be2a-4b91-3177-03eb-6614b2487a2c-4bf2d022"
-                      to="medical.html"
+                      to="/medical"
                       className="banner _3 v2 w-inline-block-banner"
                     >
                       <div className="bannerletters _3 v2"></div>
@@ -226,7 +226,7 @@ function Artists(props) {
                   <>
                     <Link
                       id="w-node-a284be2a-4b91-3177-03eb-6614b2487a29-4bf2d022"
-                      to="#"
+                      to="/motion"
                       className="banner _2 v2 w-inline-block-banner3"
                       
                     >
@@ -246,7 +246,7 @@ function Artists(props) {
                     </Link>
                     <Link
                       id="w-node-a284be2a-4b91-3177-03eb-6614b2487a2c-4bf2d022"
-                      to="#"
+                      to="/about"
                       className="banner _3 v2 w-inline-block-banner3"
                     >
                       <div className="bannerletters _6 v2"></div>

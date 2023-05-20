@@ -376,13 +376,13 @@ function SearchByArtist(props) {
                 <h2 className="h2talent">{data1[search].title}</h2>
                 {/* <div className="talenttext" style={{ marginBottom: 5 }}>Want to commission this artist?</div> */}
                 <div className="d-flex mt-2">
-                  <Link
+                  {/* <Link
                     to="#"
                     // style={{ fontSize: "16px", fontWeight: '600', minWidth: "60px", maxWidth: "70px" }}
                     className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton mr-3"}
                   >
                     CALL
-                  </Link>
+                  </Link> */}
                   <Link
                     to="/contact"
                     // style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}

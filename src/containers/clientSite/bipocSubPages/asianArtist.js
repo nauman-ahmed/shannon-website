@@ -17,8 +17,7 @@ import {
   getBipocLatino,
 } from "../../../AxiosFunctions/Axiosfunctionality";
 import { IMAGE_ROUTE } from "../../../AxiosFunctions/Axiosfunctionality";
-
-
+import asianImage from "./bipocAssets/Asian_Artist.png"
 
 // import downloadArrow from "../../images/download.png";
 const images = window.location.origin + "/assets/images";
@@ -57,14 +56,14 @@ function AsianArtist(props) {
                         marginTop: "0.8vh",
                         padding:"5px"
                       }}
-                    ></div>
+                    ></div> 
                     {/* <img id="w-node-a284be2a-4b91-3177-03eb-6614b24879ec-4bf2d022" alt="banner " src={IMAGE_ROUTE+bannerImages.bannerData[0].imagePath}  className="bannerletters _1 v2"/> */}
                     <div
                       id="w-node-a284be2a-4b91-3177-03eb-6614b24879ec-4bf2d022"
                       className="bannerhome _1 v2"
                       style={{
                         backgroundImage:
-                        "url("+ images + "/asianNewLarge.png)",
+                        "url("+ asianImage + ")",
                         // height: "100%",
                       }}
                     ></div>

@@ -17,7 +17,7 @@ import {
   getBipocLatino,
 } from "../../../AxiosFunctions/Axiosfunctionality";
 import { IMAGE_ROUTE } from "../../../AxiosFunctions/Axiosfunctionality";
-
+import latinoImage from "./bipocAssets/Latino_Artist.png"
 
 
 // import downloadArrow from "../../images/download.png";
@@ -63,7 +63,7 @@ function LatinoArtist(props) {
                       className="bannerhome _1 v2"
                       style={{
                         backgroundImage:
-                        "url("+ images + "/latinoNewLarge.png)",
+                        "url("+ latinoImage + ")",
                         // height: "100%",
                       }}
                     ></div>

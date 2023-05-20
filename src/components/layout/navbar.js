@@ -25,7 +25,7 @@ function Navbar(props) {
                   <Link to="#" className="link-block-3 w-inline-block"></Link>
                 </form>
               </div> : null} */}
-          </div>
+          </div> 
         </div>
       </div >
 

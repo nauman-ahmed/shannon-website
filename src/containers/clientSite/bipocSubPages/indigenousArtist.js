@@ -17,7 +17,7 @@ import {
   getBipocLatino,
 } from "../../../AxiosFunctions/Axiosfunctionality";
 import { IMAGE_ROUTE } from "../../../AxiosFunctions/Axiosfunctionality";
-
+import indeginousImgage from "./bipocAssets/Indigenous_artist.png"
 
 
 // import downloadArrow from "../../images/download.png";
@@ -61,7 +61,7 @@ function IndigenousArtist(props) {
                       className="bannerhome _1 v2"
                       style={{
                         backgroundImage:
-                        "url("+ images + "/indigenousNewLarge.png)",
+                        "url("+ indeginousImgage + ")",
                         // height: "100%",
                       }}
                     ></div>

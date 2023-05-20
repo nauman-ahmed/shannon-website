@@ -17,7 +17,7 @@ import {
   getBipocLatino,
 } from "../../../AxiosFunctions/Axiosfunctionality";
 import { IMAGE_ROUTE } from "../../../AxiosFunctions/Axiosfunctionality";
-
+import centralImage from "./bipocAssets/Central_Asian_Artist.png"
 
 
 // import downloadArrow from "../../images/download.png";
@@ -62,7 +62,7 @@ function CentralAsianArtist(props) {
                       className="bannerhome _1 v2"
                       style={{
                         backgroundImage:
-                        "url("+ images + "/centralAsianNewLarge.png)",
+                        "url("+ centralImage + ")",
                         // height: "100%",
                       }}
                     ></div>

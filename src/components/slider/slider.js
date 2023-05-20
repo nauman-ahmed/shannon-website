@@ -145,13 +145,13 @@ export const SliderItems = (props)=>{
                     position: "relative",
                     paddingTop: "10px",
                   }}>
-                    <Link
+                    {/* <Link
                       to="#"
                       // style={{ fontSize: "16px", fontWeight: '600', minWidth: "60px", maxWidth: "70px" }}
                       className={props.windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton  mr-3"}
                     >
                       CALL
-                    </Link>
+                    </Link> */}
                     <Link
                       to="/contact"
                       // style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
@@ -190,7 +190,7 @@ export function FullScreenSliderItem(props) {
           justifyContent: "center",
         }}
       >
-        <div className="col-5 mt-4 ">
+        {/* <div className="col-5 mt-4 ">
           <h2
             className="h2talent"
             style={{ marginBottom: "5px", width: "70%" }}
@@ -222,24 +222,6 @@ export function FullScreenSliderItem(props) {
             </div>
           </div>
           <div className="d-flex align-items-center mt-5">
-            {/* <div>
-              <button
-                className="text-uppercase"
-                style={{
-                  width: "7vw",
-                  fontFamily: "'Roboto Condensed', sans-serif",
-                  paddingTop: "1.1vh",
-                  paddingBottom: "1.1vh",
-                  borderRadius: "5px",
-                  backgroundColor: "black",
-                  color: "white",
-                  fontSize: "0.7vw",
-                  fontWeight: 600,
-                }}
-              >
-                Learn More
-              </button>
-            </div> */}
             <div>
               <button
                 className=" text-uppercase"
@@ -302,14 +284,12 @@ export function FullScreenSliderItem(props) {
                   fontWeight: 600,
                 }}
                 onClick = {()=>history.push("/contact")}
-                // href="http://localhost:3000/#/contact"
-                // href="http://18.191.86.110/#/contact"
               >
                 Get an estimated
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="col-7">
           <div
             onClick={() => props.onClick()}
