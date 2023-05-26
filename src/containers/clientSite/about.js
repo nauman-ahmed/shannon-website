@@ -28,35 +28,22 @@ function About() {
         >
           <h1 className="newsh2 h">ABOUT SHANNON</h1>
           <p className="paragraph">
-            Shannon Associates is the premier agency in the fields of
-            illustration, animation, photography and various areas of the visual
-            arts. We have been serving the needs of creative professionals in
-            publishing, advertising, entertainment, design, technology, digital
-            and print media for many years. We have the privilege to represent
-            the most talented group of individuals, honored with every coveted
-            award available in the industry.
+              Shannon Associates, headquartered in New York City with clients around the globe, is a premier creative management agency, serving the needs of professionals in publishing, advertising, entertainment, design, architecture, and tech.
             <br />
             <br />
-            Our clients and artists. . . lorem ipsum dolor sit amet,
-            consectetuer adipiscing elit, sed diam nonummy nibh euismod
-            tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi
-            enim ad minim veniam, quis nostrud exerci tation.
+              With a wide range of talent from contemporary to traditional, young breakouts to award-winning veterans, the unique creatives at Shannon reach across a wide spectrum of techniques and styles, specialties, and visions. From best-selling children’s books to global ads, movies to murals, from magazines to the latest virtual worlds, our group of top-talented individuals have their pulse on the ever-evolving culture of the creative economy.
             <br />
             <br />
-            Our team are all industry. . . lorem ipsum dolor sit amet,
-            consectetuer adipiscing elit, sed diam nonummy nibh euismod
-            tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi
-            enim ad minim veniam, quis nostrud.
+              Their work speaks for itself, having been honored with every coveted award available in our fields of expertise.
             <br />
             <br />
-            Shannon Associates was established in 1999 and since then we’ve been
-            continually collecting new cutting-edge illustrators. . . lorem
-            ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-            nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-            volutpat. Ut wisi enim ad minim veniam. <br />
+              Our artists, illustrators, and authors are a representation of virtually every background, story, and region around the world. The diversity of talent that makes up Shannon bring their unique voices to the clients looking for an authentic touch. Our selection of clients below demonstrates the range of clients that have entrusted their projects to Shannon Associates.
             <br />
-            Want more info on Shannon Associates or our team?  Email us
-            info@shannonassociates.com
+            <br />
+              Be it the latest tech company or most coveted fashion house, the companies, both large and small, have come to expect the best from our team.
+            <br />
+            <br />
+              If you’d like more information about Shannon Associates or our team, please email or call anytime. It will be our honor to assist you.
           </p>
         </div>
       </div>
