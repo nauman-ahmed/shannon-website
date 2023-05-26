@@ -185,6 +185,8 @@ a {
   color: #ffb71b;
 }
 
+
+
 .navlink.v2 {
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 1.0vw;
@@ -6750,6 +6752,12 @@ column-gap:20px ;
   }
 }
 
+.svg-text {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 16px;
+  fill: #000;
+}
+
 #w-node-a284be2a-4b91-3177-03eb-6614b2487763-4bf2d022 {
   -ms-grid-column: span 1;
   grid-column-start: span 1;
@@ -13122,6 +13130,13 @@ element.style {
     width: 95%;
     margin-left: 2.5%;
   } */
+}
+
+@font-face {
+  font-family: 'Century Gothic';
+  src: url('../fonts/Century-Gothic.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {

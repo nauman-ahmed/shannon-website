@@ -483,7 +483,7 @@ function SearchByArtist(props) {
                             {
                               data1[search].subListData.map((item, keys) => (
                                 <div id={"firstSlider"+keys} className="detail_card5_h" style={{ overflow: "hidden" }} onClick={() => { setSliderIndexHandler(keys) }}> 
-                                  <img src={item} className="w-100 h-100" style={{objectFit:"cover"}}
+                                  <img src={item} className="w-100 h-100" 
                                   // style={{ margin: "3px .43vw 3px 0vw"}}
                                   ></img>
                                 </div>

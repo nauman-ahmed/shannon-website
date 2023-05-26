@@ -74,7 +74,7 @@ function ForgetPassword() {
             setMsg("Email not exist")
           }
           else{
-            setMsg("ERROR In Generating Passowrd")
+            setMsg("ERROR in Generating Passowrd")
           }
         }
         catch(err){

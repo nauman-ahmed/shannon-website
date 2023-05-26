@@ -26,6 +26,7 @@ function Image_uploading(props) {
     const [artistkeyword, setArtistKeyword] = useState(null)
     const [temp, setTemp] = useState(null)
     const [image,setImage] = useState(null)
+    const [svg,setSvg] = useState("")
     const [completedCrop, setCompletedCrop] = useState({
         unit: 'px',
         x: 20,
@@ -187,6 +188,8 @@ function Image_uploading(props) {
         imageCreate.append('artistImage',originalImage)
         imageCreate.append('caption',copyrightText)
         imageCreate.append('color',copyrightColor)
+        imageCreate.append('svg',svg)
+
         setIsPopupShow(true)
         changeArtistImageDetails(imageCreate).then((res)=>{
             if(res == 'successfully updated'){
@@ -274,6 +277,40 @@ function Image_uploading(props) {
 
     const onImageLoad = (e) => {
         const { naturalWidth: width, naturalHeight: height } = e.currentTarget;
+        let demen_object = {
+            "width": width,
+            "height": height
+        }
+
+        // try {
+        //     demen_object = sizeOf(req.files[1].path)
+        // } catch (error) {
+        //     demen_object = sizeOf(await sharp(await readFile(req.files[1].path)).toColorspace("srgb").toBuffer())
+        // }
+
+        let demen_width = 0
+        let demen_height = 0
+        let diff = 0
+        let per = copyrightText.length <= 8 ? 0.7 : copyrightText.length <= 14 ? 0.65 : 0.6 
+        let fontFamily = "'Century Gothic', sans-serif"
+        let fontSize =  Math.floor(demen_object.width * 0.0299).toString()+"px"
+        
+
+
+        diff = demen_object.height - Math.floor(demen_object.height * 0.95)
+        demen_width = Math.floor(demen_object.width * per)
+        demen_height = Math.floor(demen_object.height * 0.1)
+
+        setSvg(`<svg viewBox="0 0 ${demen_object.width} ${demen_object.height}" width="${demen_object.width}" height="${demen_object.height}" >
+        <style>
+            .small {
+                font-family: ${fontFamily};
+                font-size: ${fontSize};
+                fill: ${copyrightColor};
+            }
+            </style>
+            <text  x="95%" y="95%" text-anchor="end" dominant-baseline="ideographic" class="small"> ${copyrightText} </text>
+         </svg>`)
         setImage(e.currentTarget)
     }
 
