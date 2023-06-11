@@ -367,40 +367,18 @@ function SearchByArtist(props) {
       {/* <Navbar></Navbar> */}
       <div className="row mt-0 pt-0" style={{
         maxWidth: "100%",
-        justifyContent: "center"
+        justifyContent: "center",
+        margin: "0px"
       }}>
         {data1 !== null ? (
           <>
-            <div className=" pl-2 left_content">
+            <div className="pl-2 left_content">
+              <h2 className="h2talent">{data1[search].title}</h2>
+              {props.children}
+            </div>
+            <div className="pl-2 mid_content">
               <div >
-                <h2 className="h2talent">{data1[search].title}</h2>
                 {/* <div className="talenttext" style={{ marginBottom: 5 }}>Want to commission this artist?</div> */}
-                <div className="d-flex mt-2">
-                  {/* <Link
-                    to="#"
-                    // style={{ fontSize: "16px", fontWeight: '600', minWidth: "60px", maxWidth: "70px" }}
-                    className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton mr-3"}
-                  >
-                    CALL
-                  </Link> */}
-                  <Link
-                    to="/contact"
-                    // style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
-                    className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton mr-3"}
-                    onClick={() => addToCartArtistHandler(data1[search].id, data1[search].title, true)}
-                  >
-                    GET ESTIMATE
-                  </Link>
-                  <Link
-                    data-w-id="e04f643e-f302-16e2-74ee-4bc7e85391d8"
-                    to="#"
-                    // style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
-                    className="talentbutton hide "
-                    onClick={() => addToCartArtistHandler(data1[search].id, data1[search].title)}
-                  >
-                    ADD TO MY LIST
-                  </Link>
-                </div>
                 <div
                   data-current="Tab 3"
                   data-easing="ease"
@@ -666,6 +644,33 @@ function SearchByArtist(props) {
 
             </div>
             <div className=" hide_detail right_content">
+              <div className="d-flex mt-2" style={{ justifyContent: "end" }}>
+                  {/* <Link
+                    to="#"
+                    // style={{ fontSize: "16px", fontWeight: '600', minWidth: "60px", maxWidth: "70px" }}
+                    className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton mr-3"}
+                  >
+                    CALL
+                  </Link> */}
+                  <Link
+                    to="/contact"
+                    // style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
+                    className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton mr-3"}
+                    onClick={() => addToCartArtistHandler(data1[search].id, data1[search].title, true)}
+                  >
+                    GET ESTIMATE
+                  </Link>
+                  <Link
+                    data-w-id="e04f643e-f302-16e2-74ee-4bc7e85391d8"
+                    to="#"
+                    // style={{ fontSize: "16px", fontWeight: '600', minWidth: "110px", maxWidth: "120px" }}
+                    className="talentbutton hide "
+                    style={{ marginRight: "0px !important" }}
+                    onClick={() => addToCartArtistHandler(data1[search].id, data1[search].title)}
+                  >
+                    ADD TO MY LIST
+                  </Link>
+              </div>
               <div className="rightside">
                 <div className="d-flex" style={{ justifyContent: 'center' }}>
 

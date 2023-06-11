@@ -131,7 +131,7 @@ function Artists(props) {
                         marginLeft: "0vw",
                         marginTop: "0.8vh",
                       }}
-                    ></div>
+                    ></div> 
                     {/* <img id="w-node-a284be2a-4b91-3177-03eb-6614b24879ec-4bf2d022" alt="banner " src={IMAGE_ROUTE+bannerImages.bannerData[0].imagePath}  className="bannerletters _1 v2"/> */}
                     <div
                       id="w-node-a284be2a-4b91-3177-03eb-6614b24879ec-4bf2d022"

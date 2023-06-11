@@ -6,7 +6,7 @@ import "./artist.css"
 import BackArrow from "../../assets/svgs/backArrow.svg"
 import { useDispatch,useSelector } from 'react-redux'
 import ReactCrop from 'react-image-crop'
-import { getImageBaseURL, changeArtistImageDetails} from '../../AxiosFunctions/Axiosfunctionality'
+import { getImageBaseURL, changeArtistImageDetails, getAllContents} from '../../AxiosFunctions/Axiosfunctionality'
 import { artistImageCreateApi } from '../../redux/artistImageSlice'
 import { decodeToken } from "react-jwt";
 import { useHistory } from 'react-router-dom'
@@ -20,9 +20,10 @@ function Image_uploading() {
 
     const history = useHistory()
 
+    const [imageContent,setImageContent] = useState([])
     const [showLoader,setShowLoader] = useState(false);
     const [pageNo, setPageNo] = useState(0)
-    const [isPopupShow, setIsPopupShow] = useState(false)
+    const [isPopupShow, setIsPopupShow] = useState(false) 
     const [image,setImage] = useState(null)
     const [keyword,setKeyword] = useState(null)
     const [keywordList,setKeywordList] = useState(null)
@@ -70,9 +71,17 @@ function Image_uploading() {
         }
     } 
 
+    const getAllContent = ()=>{
+        getAllContents({type: "IMAGE"}).then((res)=>{
+            let image = res[0].content
+            setImageContent(image)
+        })
+    }
+
     useEffect(()=>{
 
         try{
+            getAllContent();
             getBase64FromUrl(artistReducer.uploadedImage.imageFile.originalPath)
             let artistImageDetailsTemp = []
             artistImageDetailsTemp.push({
@@ -306,11 +315,12 @@ function Image_uploading() {
                         {console.log(pageNo)}
                         {pageNo == 1 ?
                             <p>
-                                Please choose up to 8 keywords in each section (if your work is applicable for both sections).<br/>
-                                Please be sure to keyword for the SPECIFIC IMAGE and not your body of work.
+                                {imageContent.length > 0 ? imageContent[2].name : "Please choose up to 8 keywords in each section (if your work is applicable for both sections)"}
+                                <br/>
+                                {imageContent.length > 0 ? imageContent[3].name : "Please be sure to keyword for the SPECIFIC IMAGE and not your body of work."}
                             </p>
                             :
-                            "Move and resize the box to select the desired thumbnail, click next when the thumbnail has been selected."
+                            imageContent.length > 0 ? imageContent[1].name : "Move and resize the box to select the desired thumbnail, click next when the thumbnail has been selected."
                         }
                          
                     </h3>

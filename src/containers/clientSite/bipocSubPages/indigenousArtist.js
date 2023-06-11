@@ -19,16 +19,28 @@ import {
 import { IMAGE_ROUTE } from "../../../AxiosFunctions/Axiosfunctionality";
 import indeginousImgage from "./bipocAssets/Indigenous_artist.png"
 
+import { useDispatch, useSelector } from "react-redux";
+import { setImageRoute } from "../../../UserServices/Services";
+import { bannerLoader } from "../../../redux/bannerImages";
+
 
 // import downloadArrow from "../../images/download.png";
 const images = window.location.origin + "/assets/images";
 
 function IndigenousArtist(props) {
 
-  const [gottenData, setGottenData] = useState(false);
+  const dispatch = useDispatch();
+  const { bannerImages } = useSelector((state) => state);
 
+  const [gottenData, setGottenData] = useState(false);
   const [styleSheet, setStyleSheet] = useState({ maxWidth: "100%" });
   const [indegiousArtist, setIndegiousArtist] = useState(null);
+
+  useEffect(() => {
+    if(bannerImages.bipocBannerData.length == 0){
+      dispatch(bannerLoader());
+    }
+  }, []);
 
   useEffect(() => {
 
@@ -59,11 +71,15 @@ function IndigenousArtist(props) {
                     <div
                       id="w-node-a284be2a-4b91-3177-03eb-6614b24879ec-4bf2d022"
                       className="bannerhome _1 v2"
-                      style={{
+                      style={ bannerImages.bipocBannerData.length > 0 ? {
                         backgroundImage:
-                        "url("+ indeginousImgage + ")",
+                          "url(" +
+                          setImageRoute(
+                            bannerImages.bipocBannerData[5].imagePath 
+                            ) +
+                          ")",
                         // height: "100%",
-                      }}
+                      }:{}}
                     ></div>
                   </Link>
     </div>

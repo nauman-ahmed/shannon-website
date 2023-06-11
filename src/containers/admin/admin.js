@@ -10,6 +10,7 @@ import Artists from './artists'
 import ContactFormSubmissions from './contactFormSubmissions'
 import ImgViewer from './imgDetail/imgViewer'
 import Banners from './banners'
+import Content from './content'
 import Categories from './categories'
 import {getContacts,getArtImages, getArtist} from '../../AxiosFunctions/Axiosfunctionality';
 import { findCountOfReviewArtist,findCountOfArtistUsers } from '../../UserServices/Services'
@@ -180,6 +181,8 @@ function Admin(props) {
                     />
                 :pageName === "banners"?
                 <Banners history={props.history}/>
+                :pageName === "content"?
+                <Content history={props.history}/>
                 :pageName === "categories"?
                 <Categories history={props.history}/>
                 :pageName === "contact"?

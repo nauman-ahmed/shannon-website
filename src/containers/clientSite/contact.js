@@ -260,7 +260,7 @@ function Contact() {
       <div className="row mx-0 pr-0 mt-0 pt-0" style={{
         maxWidth: "100%",
       }}>
-        <div className=" pl-2 left_content contact_w"
+        <div className=" pl-2 left_content-contact contact_w"
           style={{ paddingRight: "0.8vw" }}
         >
           <div >

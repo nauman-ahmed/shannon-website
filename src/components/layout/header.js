@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { getAllContents } from '../../AxiosFunctions/Axiosfunctionality'
 
 const images = window.location.origin + "/assets/images";
 
@@ -8,6 +9,19 @@ function Header(props) {
 
 
   const { AddToCart } = useSelector((state) => state);
+  const [shannonContent,setShannonContent] = useState([])
+
+  const getAllContent = ()=>{
+    getAllContents({type: "SHANNON"}).then((res)=>{
+        let shannon = res[0].content
+        console.log(shannon[0])
+        setShannonContent(shannon)
+    })
+  }
+
+  useEffect(()=>{
+    getAllContent();
+  },[])
 
   useEffect(()=>{
   },[AddToCart])
@@ -88,8 +102,11 @@ function Header(props) {
                   {AddToCart.cartInfo.count > 0 ? <div className="cartBadge">{AddToCart.cartInfo.count}</div> : null}
                 </Link>
               </span>
-              <div className="menuinfo v2">
+              {/* <div className="menuinfo v2">
                 INFO@SHANNONASSOCIATES.COM • 212.333.2251
+              </div> */}
+              <div className="menuinfo v2">
+                {shannonContent.length > 0 ? shannonContent[0].name : "INFO@SHANNONASSOCIATES.COM • 212.333.2251"}
               </div>
             </nav>
             <div className="menu-button w-nav-button">

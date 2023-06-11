@@ -222,9 +222,9 @@ function Portfolio(props) {
     <>
     <div className='d-flex flex-column' style={{marginTop:-10,marginLeft:'25%'}}> 
        <button onClick={()=>{setFormNo2(0);setItems(typeOneData);}} className={'btn'+(formNo2 === 0? " active": " non_active")} style={{border:'none',
-      textDecoration:'none',outline:'none'}}>All Artist</button>
+      textDecoration:'none',outline:'none'}}>Shannon</button>
        <button onClick={()=>{setFormNo2(1);setItems(typeTwoData);}} className={'btn'+(formNo2 === 1? " active": " non_active")} style={{marginTop:-5,border:'none',
-      textDecoration:'none',outline:'none'}}>Kid Shanon</button>
+      textDecoration:'none',outline:'none'}}>Kid Shannon</button>
        </div>
       {Object.keys(props.selectedImages).length > 0 ?
         formNo2 == 0 && typeOneData.length > 0 ?
@@ -234,11 +234,11 @@ function Portfolio(props) {
           : null
       :
       null}
-      <div className='row m-0'> 
+      <div className='_4cols-v2-admin'>  
         { 
         items?.length > 0 ? items.map((item,key)=>(
           item.status === 1?
-          <div key={key} className='col-6 col-md-3 col-sm-4 artistcardAdmin w-inline-block' >
+          <div key={key} className='artistcardAdmin w-inline-block' >
               <div
                   
                   className="crossSection"

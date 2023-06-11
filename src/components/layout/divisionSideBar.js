@@ -1,5 +1,5 @@
 import React from 'react'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom'
 import { getCategoryTypeOne, getArtistCategoryTypeOne } from '../../AxiosFunctions/Axiosfunctionality';
@@ -14,10 +14,12 @@ function DivisionSideBar(props) {
   // const  {keywordReducer} = useSelector(state=>state);
   const  [keywordReducer,setKeywordReducer] = useState([]);
   const [artistData, setArtistData]  = useState([])
+  const currentArtist = useRef(0);
+
   let alpha = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
   
   useEffect(()=>{
-    if(props.activeBtn === "illustration-artists" || props.activeBtn === "divisions"){
+    if(props.activeBtn === "illustration-artists" || props.activeBtn === "divisions" || props.activeBtn === "detailedPage"){
       getArtistCategoryTypeOne({keyword:"ILLUSTRATION"}).then(res => {
         setArtistData(
           sortAlphaOrder(res!==undefined?res.length>0?res:[]:[])
@@ -61,13 +63,14 @@ function DivisionSideBar(props) {
 
   return (
     <div id="w-node-_783b3b4a-9daa-ecbf-356e-d84dbb36f4cc-bb36f4cc" className="respdivhide">
-      <h3 className="homeh3" style={{ color:"#000000", fontFamily: "Montserrat, sans-serif", textUnderlineOffset : "5px", fontWeight: 800 }}>{
+      <h3 className="homeh3" style={props.activeBtn === "detailedPage" ? {textDecorationLine:"none"} : { color:"#000000", fontFamily: "Montserrat, sans-serif", textUnderlineOffset : "5px", fontWeight: 800 }}>{
         props.activeBtn === "illustration-artists" ? "ILLUSTRATION" 
         : props.activeBtn === "cgi" ? "CGI" 
         : props.activeBtn === "photography" ? "PHOTOGRAPHY" 
         : props.activeBtn === "medical" ? "MEDICAL" 
         : props.activeBtn === "motion" ? "MOTION" 
         : props.activeBtn === "categories" ? "CATEGORIES" 
+        : props.activeBtn === "detailedPage" ? "SELECT BY CATEGORY" 
         : "DIVISIONS"
         }</h3>
       {pages == "categories"? 
@@ -101,7 +104,7 @@ function DivisionSideBar(props) {
             {item}<br/>
             {artistData[item].map((item1,key1)=>(
               <div key={key1}>
-               <Link to={"/artists/"+item1._id} className="sidebarlink">{item1.firstname.toUpperCase()} {item1.lastname.toUpperCase()}<br/></Link>
+               <Link to={"/artists/"+item1._id} className="sidebarlink" style={search === item1._id ? {color: "#fa8e37"} : {}}>{item1.firstname.toUpperCase()} {item1.lastname.toUpperCase()}<br/></Link>
               </div>
             ))}
             <br/>

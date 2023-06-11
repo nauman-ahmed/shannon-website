@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+
+import { useDispatch, useSelector } from "react-redux";
+import { setImageRoute } from "../../../UserServices/Services";
+import { bannerLoader } from "../../../redux/bannerImages";
+
 import {
   SliderShow,
   SliderItems
@@ -25,8 +30,10 @@ const images = window.location.origin + "/assets/images";
 
 function BlackArtist(props) {
 
-  const [gottenData, setGottenData] = useState(false);
+  const dispatch = useDispatch();
+  const { bannerImages } = useSelector((state) => state);
 
+  const [gottenData, setGottenData] = useState(false);
   const [styleSheet, setStyleSheet] = useState({ maxWidth: "100%" });
   const [blackArtist, setBlackArtist] = useState(null);
   const [asianArtist, setAsianArtist] = useState(null);
@@ -35,7 +42,12 @@ function BlackArtist(props) {
   const [indegiousArtist, setIndegiousArtist] = useState(null);
 
   useEffect(() => {
+    if(bannerImages.bipocBannerData.length == 0){
+      dispatch(bannerLoader());
+    }
+  }, []);
 
+  useEffect(() => {
 
     getBipocBlack().then((res) => {
       setBlackArtist(res);
@@ -45,6 +57,7 @@ function BlackArtist(props) {
 
   return (
     <div>
+      {console.log(bannerImages.bipocBannerData)}
     <div className="bipoc2cols category w-100 h-100" style={{ position: "relative", marginTop: "10vh" }}>
       <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879ea-4bf2d022"
@@ -65,11 +78,16 @@ function BlackArtist(props) {
                     <div
                       id="w-node-a284be2a-4b91-3177-03eb-6614b24879ec-4bf2d022"
                       className="bannerhome _1 v2"
-                      style={{
+                      style={ bannerImages.bipocBannerData.length > 0 ? {
                         backgroundImage:
-                          "url("+ images + "/blackNewLarge.png)",
+                          "url(" +
+                          setImageRoute(
+                            bannerImages.bipocBannerData[1].imagePath 
+                            ) +
+                          ")",
                         // height: "100%",
-                      }}
+                      }:{}}
+              
                     ></div>
                   </Link>
     </div>
@@ -124,7 +142,6 @@ function BlackArtist(props) {
                 to={"/artists/" + val.artistData._id}
                 className="bipocLink"
               >
-                {console.log(val.ImageData[0].subImage[0].path,val.artistData._id)}
                 <div className=" card_img2 detail_card3_h" style={{ position: "relative",   overflow:"hidden",}}>
                   <img src={val.ImageData[0].subImage[0].path} val={val} className="h-100 w-100" ></img>
                   <p className="p-1 card_img_text" >{val.artistData.firstname  + " " +val.artistData.lastname}</p>

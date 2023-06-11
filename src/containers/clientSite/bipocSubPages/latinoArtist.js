@@ -19,19 +19,29 @@ import {
 import { IMAGE_ROUTE } from "../../../AxiosFunctions/Axiosfunctionality";
 import latinoImage from "./bipocAssets/Latino_Artist.png"
 
+import { useDispatch, useSelector } from "react-redux";
+import { setImageRoute } from "../../../UserServices/Services";
+import { bannerLoader } from "../../../redux/bannerImages";
 
 // import downloadArrow from "../../images/download.png";
 const images = window.location.origin + "/assets/images";
 
 function LatinoArtist(props) {
 
-  const [gottenData, setGottenData] = useState(false);
+  const dispatch = useDispatch();
+  const { bannerImages } = useSelector((state) => state);
 
+  const [gottenData, setGottenData] = useState(false);
   const [styleSheet, setStyleSheet] = useState({ maxWidth: "100%" });
   const [latinoArtist, setLatinoArtist] = useState(null);
 
   useEffect(() => {
+    if(bannerImages.bipocBannerData.length == 0){
+      dispatch(bannerLoader());
+    }
+  }, []);
 
+  useEffect(() => {
 
     getBipocLatino().then((res) => {
       setLatinoArtist(res);
@@ -61,11 +71,15 @@ function LatinoArtist(props) {
                     <div
                       id="w-node-a284be2a-4b91-3177-03eb-6614b24879ec-4bf2d022"
                       className="bannerhome _1 v2"
-                      style={{
+                      style={ bannerImages.bipocBannerData.length > 0 ? {
                         backgroundImage:
-                        "url("+ latinoImage + ")",
+                          "url(" +
+                          setImageRoute(
+                            bannerImages.bipocBannerData[3].imagePath 
+                            ) +
+                          ")",
                         // height: "100%",
-                      }}
+                      }:{}}
                     ></div>
                   </Link>
     </div>

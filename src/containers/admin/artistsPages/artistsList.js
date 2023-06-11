@@ -5,13 +5,17 @@ import { orderArtist } from '../../../AxiosFunctions/Axiosfunctionality';
 import { updateMessage, updateOpen } from '../../../redux/message'
 import { useDispatch, useSelector } from 'react-redux'
 import SnackbarCustom from "../../../components/snackBar/SnackbarCustom";
+import MyPopup from '../../../components/myPopup/myPopup'
 
 import loading from '../../../assets/loading.gif';
 function ArtistsList(props) {
 
     const dispatch = useDispatch();
 
+    const splitTextLengthLimit = 20
     const [isLoader,setIsLoader] = useState(0)
+    const [isPopupShow, setIsPopupShow] = useState(false)
+    const [selectedArtist, setSelectedArtist] = useState(false)
     const [characters,updateCharacters] = useState([])
     const [filterArtist,setFilterArtist] = useState([]);
     const [typeOneArtist,setTypeOneArtist] = useState([]);
@@ -107,7 +111,7 @@ function ArtistsList(props) {
                         <Td className={item.status ===1?"text-success":"text-danger"}>{item.status ===1?"Active":"Inactive"}</Td>
                         <Td className="d-flex">
                             <button onClick={()=>props.formChangeEvent(item)} className='mx-1 myBtn' type="text">EDIT</button>
-                            {props.holder?<img className="mt-1" alt="loading" src={loading} style={{width:"30px"}}/>:<button className='mx-1 myBtn active' type="text" onClick={(e)=>{props.deleteArtistUser(e,item._id)}}>DELETE</button>}
+                            {props.holder?<img className="mt-1" alt="loading" src={loading} style={{width:"30px"}}/>:<button className='mx-1 myBtn active' type="text" onClick={(e)=>{setIsPopupShow(true); setSelectedArtist(item)}}>DELETE</button>}
                         </Td>
                     </Tr>
                     )):
@@ -121,7 +125,7 @@ function ArtistsList(props) {
                                 <Td className={item.status ===1?"text-success":"text-danger"}>{item.status ===1?"Active":"Inactive"}</Td>
                                 <Td className="d-flex">
                                     <button onClick={()=>props.formChangeEvent(item)} className='mx-1 myBtn' type="text">EDIT</button>
-                                    {props.holder?<img className="mt-1" alt="loading" src={loading} style={{width:"30px"}}/>:<button className='mx-1 myBtn active' type="text" onClick={(e)=>{props.deleteArtistUser(e,item._id)}}>DELETE</button>}
+                                    {props.holder?<img className="mt-1" alt="loading" src={loading} style={{width:"30px"}}/>:<button className='mx-1 myBtn active' type="text" onClick={(e)=>{setIsPopupShow(true); setSelectedArtist(item)}}>DELETE</button>}
                                 </Td>
                             </Tr>
                     )}
@@ -136,6 +140,25 @@ function ArtistsList(props) {
             </Droppable>
             </DragDropContext>
         }
+        {console.log(selectedArtist)}
+        {isPopupShow?
+                <MyPopup BackClose onClose={()=>{setIsPopupShow(false)}}>
+                    <div className='mx-5 my-2'>
+                        <>
+                            Are you sure you want to delete "{selectedArtist.lastname}" profile,
+                            <br />
+                            <div className='my-4'>
+                                this action can't be undone.
+                            </div>
+                        </>
+                        <div className='mx-5 my-2 d-flex' style={{ justifyContent: "space-between" }}>
+                            <button className='mx-1 myBtn' type="text" style={{ background: "red", padding:"10px 15px" }} onClick={(e)=>{props.deleteArtistUser(e,selectedArtist._id)}}>DELETE</button>
+                            <button className='mx-1 myBtn' type="text" style={{ background: "#ffb71b", padding:"10px 15px" }} onClick={(e)=>{setIsPopupShow(false)}}>CANCEL</button>
+                        </div>
+                    </div>
+                </MyPopup>
+                :null
+            }
         <SnackbarCustom  />
 
     </>

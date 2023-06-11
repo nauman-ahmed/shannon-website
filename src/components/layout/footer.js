@@ -1,5 +1,7 @@
-import React from 'react' 
+import React, { useEffect, useState } from 'react' 
 import { Link } from 'react-router-dom'
+import { getAllContents } from '../../AxiosFunctions/Axiosfunctionality'
+
 const facebook = window.location.origin+"/assets/images/brandico_facebook-rect.svg"
 const facebookColored = window.location.origin+"/assets/images/brandico_facebook-rect_colored.png"
 
@@ -19,6 +21,19 @@ const linkedin = window.location.origin+"/assets/images/brandico_linkedin-rect.s
 const linkedinColored = window.location.origin+"/assets/images/brandico_linkedin-rect_colored.png"
 
 function Footer() {
+    const [shannonContent,setShannonContent] = useState([])
+
+    const getAllContent = ()=>{
+        getAllContents({type: "SHANNON"}).then((res)=>{
+            let shannon = res[0].content
+            console.log(shannon[0])
+            setShannonContent(shannon)
+        })
+    }
+
+    useEffect(()=>{
+        getAllContent();
+    },[])
     return (
         <div className="footersection wf-section" >
             <div className="footerorange"></div>
@@ -37,7 +52,14 @@ function Footer() {
                     <a href="https://www.behance.net/shannonassociates" className="mediafooterlink w-inline-block"><img src={behance} width="30px" onMouseOver={(props) => props.target.src = behanceColored} onMouseOut={(props) => props.target.src = behance} loading="lazy" alt=""/></a>
                     <a href="http://www.linkedin.com/in/shannonassociates" className="mediafooterlink w-inline-block"><img src={linkedin} width="30px" onMouseOver={(props) => props.target.src = linkedinColored} onMouseOut={(props) => props.target.src = linkedin} loading="lazy" alt=""/></a>
                  </div>
-                <div className="footertext">© 1995-2021 SHANNON ASSOCIATES, LLC · 333 West 57th Street, Suite 809 · New York, New York 10019 · 212-333-2551</div>
+                 <div className="footertext">
+                    {  
+                        shannonContent.length > 0 ? 
+                        shannonContent[1].name : 
+                        "© 1995-2021 SHANNON ASSOCIATES, LLC · 333 West 57th Street, Suite 809 · New York, New York 10019 · 212-333-2551"
+                    }
+                </div>
+                {/* <div className="footertext">© 1995-2021 SHANNON ASSOCIATES, LLC · 333 West 57th Street, Suite 809 · New York, New York 10019 · 212-333-2551</div> */}
             </div>
         </div>
     )

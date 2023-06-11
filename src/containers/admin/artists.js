@@ -133,9 +133,6 @@ function Artists(props) {
                 <h4>
                     {selectedArtist.lastname} {selectedArtist.firstname}
                 </h4>
-                {/* <p className='text-center'>
-                    {selectedArtist.address}
-                </p> */}
                 <div className='col-6 p-0 subNavBar d-flex justify-content-between'>
                     <button onClick={()=>setFormNo2(0)} className={'btn'+(formNo2 === 0? " active": "")}>Bio</button>
                     <button onClick={()=>setFormNo2(1)} className={'btn'+(formNo2 === 1? " active": "")}>Image Submissions</button>
@@ -155,7 +152,7 @@ function Artists(props) {
             }
             
         </div>
-        <div className='px-5 mx-5'>
+        <div className='px-3 mx-5'>
         {
             props.formNo === 1?
                 formNo2 === 1?

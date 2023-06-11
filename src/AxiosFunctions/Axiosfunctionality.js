@@ -489,6 +489,16 @@ export const getAllBanner = async (data) => {
         logouter();
     }
 }
+
+export const getAllContents = async (data) => {
+    try {
+        const response = await axios.post(BASE_URL + 'content/getAll', data);
+        return response.data;
+    } catch (error) {
+        logouter();
+    }
+}
+
 export const artistKeywordBased = async (data) => {
     try {
         const response = await axios.post(BASE_URL + 'artistImage/getKeywordBased', data);
@@ -501,6 +511,15 @@ export const artistKeywordBased = async (data) => {
 export const updateBannerImage = async (data) => {
     try {
         const response = await axios.post(BASE_URL + 'banner/singleUpdate', data);
+        return response.data;
+    } catch (error) {
+        logouter();
+    }
+}
+
+export const updateContents= async (data) => {
+    try {
+        const response = await axios.post(BASE_URL + 'content/singleUpdate', data);
         return response.data;
     } catch (error) {
         logouter();

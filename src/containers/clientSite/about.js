@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+
+import { useDispatch, useSelector } from "react-redux";
+import { setImageRoute } from "../../UserServices/Services";
+import { bannerLoader } from "../../redux/bannerImages";
+
 const images = window.location.origin + "/assets/images";
 
 function About() {
+
+  const dispatch = useDispatch();
+  const { bannerImages } = useSelector((state) => state);
+
+  useEffect(() => {
+    if(bannerImages.bipocBannerData.length == 0){
+      dispatch(bannerLoader());
+    }
+  }, []);
+
   return (
     <>
       <h1 className="newsh2 hide">ABOUT SHANNON</h1>
@@ -13,7 +28,7 @@ function About() {
           className="artistcard bipoc set_height w-inline-block"
         >
           <img
-            src={images + "/IMG15.png"}
+            src={bannerImages.aboutBannerData.length > 0 ? bannerImages.aboutBannerData[0].imagePath : ""}
             loading="lazy"
             alt=""
             className="image bipoc "

@@ -22,6 +22,8 @@ export const bannerLoader = createAsyncThunk(
 
 const initialState = {
     bannerData:[],
+    bipocBannerData:[],
+    aboutBannerData:[],
     loading:false,
     message:"",
 }
@@ -35,13 +37,27 @@ const BannerImages = createSlice({
 
         })
         builder.addCase(bannerLoader.fulfilled, (state,action) => {
+            
+            let shannon = action.payload.filter((item) => item.pageName == "SHANNON")
+            let bipoc = action.payload.filter((item) => item.pageName == "BIPOC")
+            let about = action.payload.filter((item) => item.pageName == "ABOUT")
+
             state.loading = false;
-            state.bannerData = action.payload
+            state.bannerData = shannon
+            state.bipocBannerData = bipoc
+            state.aboutBannerData = about
 
         })
         builder.addCase(bannerLoader.rejected, (state,action) => {
+            
+            let shannon = action.payload.filter((item) => item.pageName == "SHANNON")
+            let bipoc = action.payload.filter((item) => item.pageName == "BIPOC")
+            let about = action.payload.filter((item) => item.pageName == "ABOUT")
+
             state.loading = false;
-            state.bannerData = action.payload
+            state.bannerData = shannon
+            state.bipocBannerData = bipoc
+            state.aboutBannerData = about
             
         })
     },

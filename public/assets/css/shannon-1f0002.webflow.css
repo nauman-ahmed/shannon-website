@@ -22,8 +22,16 @@ input#Search-2::placeholder {
   letter-spacing: 0.7px;
 }
 
+.artistcardAdmin {
+  position: relative;
+  overflow: hidden;
+  height: 14vw;
+}
+
 .artistcardAdmin:hover .crossSection {
   display: grid;
+  background-color: #000;
+  padding: 5%;
 }
 
 .artistcardAdmin .crossSection {
@@ -32,7 +40,6 @@ input#Search-2::placeholder {
 
 .crossSection {
   position: absolute;
-  right: 4vw;
   top: 0%;
   cursor: pointer;
   z-index: 1;
@@ -287,7 +294,7 @@ a {
 
 @media (min-width: 768px) {
 
-  .left_content {
+  .left_content-contact {
     margin-top: 20px;
     width: 52%;
     /* float: left; */
@@ -295,13 +302,29 @@ a {
     padding-left: 2px;
   }
 
+  .left_content {
+    margin-top: 14vh;
+    width: 20%;
+    /* float: left; */
+    padding-right: 1.8vw;
+    padding-left: 2px;
+  }
+
+  .mid_content {
+    margin-top: 8vh;
+    width: 40%;
+    /* float: left; */
+    padding-right: 1.8vw;
+    padding-left: 2px;
+  }
+
   .right_content {
 
-    margin-top: 8.5vw;
+    /* margin-top: 8.5vw; */
     /* margin-top: calc( 16.6vh - 10px); */
     padding-left: 1.5vw;
     /* margin-left: 4vw; */
-    width: 47%;
+    width: 40%;
 
 
   }
@@ -336,8 +359,20 @@ a {
     width: 100%;
   }
 
+  .mid_content {
+    padding-left: 15px;
+    /* flex-direction: column; */
+    width: 100%;
+  }
+
+  .left_content-contact {
+    padding-left: 15px;
+    /* flex-direction: column; */
+    width: 100%;
+  }
+
   .right_content {
-    margin-top: 8vw;
+    /* margin-top: 8vw; */
     /* flex-direction: column; */
     width: 100%;
   }
@@ -345,7 +380,7 @@ a {
 }
 @media only screen and (min-width: 1200px) {
   .right_content {
-    margin-top: 7vw;
+    /* margin-top: 7vw; */
     /* flex-direction: column; */
   }
 }
@@ -392,7 +427,7 @@ a {
 
 .detail_card {
   display: grid;
-  grid-template-columns: repeat(5, 0.5fr);
+  grid-template-columns: repeat(4, 0.5fr);
   grid-column-gap: 6px;
   grid-row-gap: 6px;
 }
@@ -479,7 +514,7 @@ a {
 .detail_card2 {
   display: grid;
   /* grid-template-columns: repeat(auto-fit, minmax(20vh, 1fr)); */
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 16px;
   grid-row-gap: 16px;
 }
@@ -1324,15 +1359,15 @@ a {
 }
 
 .h2talent {
-  color: #ce651e;
+  /* color: #ce651e; */
   margin-top: 0px;
-  margin-bottom: 0px;
+  margin-bottom: 5vh;
   padding-bottom: 6px;
   /* border-bottom: 2px solid #000; */
   font-family: Roboto, sans-serif;
   font-size: 1.5vw;
   line-height: 1;
-  font-weight: 500;
+  font-weight: 900;
 }
 
 .talentp {
@@ -4119,14 +4154,39 @@ border-radius: 4px;
   resize: none;
   /* background-color: #e6e6e6; */
 }
+
 .left_content .row{
   margin-bottom: 1.8vh;
 }
+
+.mid_content .row{
+  margin-bottom: 1.8vh;
+}
+
+.left_content-contact .row{
+  margin-bottom: 1.8vh;
+}
+
 @media screen and (max-width: 576px) {
+  
   .left_content .row{
     margin-bottom: 0vh;
   }
   .left_content .row .col-sm-6{
+    margin-bottom: 1.8vh;
+  }
+
+  .mid_content .row{
+    margin-bottom: 0vh;
+  }
+  .mid_content .row .col-sm-6{
+    margin-bottom: 1.8vh;
+  }
+
+  .left_content-contact .row{
+    margin-bottom: 0vh;
+  }
+  .left_content-contact .row .col-sm-6{
     margin-bottom: 1.8vh;
   }
 }
@@ -5435,6 +5495,40 @@ column-gap:20px ;
   display: block;
   /* margin-top: 12px; */
 
+}
+
+.navbarBipocLink{
+  position: relative;
+}
+
+.bipocSpan{
+  width: 1vw;
+  margin: 0.25vh 0 0 0.5vw;
+  background-image: url(data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%3E%3Ctitle%3Edown-arrow%3C%2Ftitle%3E%3Cg%20fill%3D%22%23000000%22%3E%3Cpath%20d%3D%22M10.293%2C3.293%2C6%2C7.586%2C1.707%2C3.293A1%2C1%2C0%2C0%2C0%2C.293%2C4.707l5%2C5a1%2C1%2C0%2C0%2C0%2C1.414%2C0l5-5a1%2C1%2C0%2C1%2C0-1.414-1.414Z%22%20fill%3D%22%23000000%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E);
+  display: flex;
+  height: 2vh;
+  background-repeat: no-repeat;
+}
+
+.navbarBipocLink:hover .navbarBipocItemsLink{
+  display: grid;
+}
+
+.navbarBipocLink:hover .bipocSpan{
+  transform: rotate(180deg);
+  transition: 0.3s all linear;
+}
+
+.navbarBipocItemsLink {
+  display: none;
+  border-left-color: #fa8e37;
+  border-left-width: 2px;
+  border-left-style: solid;
+  padding: 5px;
+  margin-top: 1vh;
+  position: absolute;
+  z-index: 1;
+  background-color: white;
 }
 
 .mobileViewNavbar {

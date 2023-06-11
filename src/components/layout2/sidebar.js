@@ -47,6 +47,7 @@ function Sidebar(props) {
                 <Link className={'my-2 '+(activePage === "website_admin"?"active":"")} to="/admin/website_admin">Website Administrator</Link>
                 <Link className={'my-2 '+(activePage === "artists"?"active":"")} to="/admin/artists" onClick={()=>{props.setFormNo(0)}}>Artists</Link>
                 <Link className={'my-2 '+(activePage === "banners"?"active":"")} to="/admin/banners">Banners</Link>
+                <Link className={'my-2 '+(activePage === "content"?"active":"")} to="/admin/content">Content</Link>
                 <Link className={'my-2 '+(activePage === "categories"?"active":"")} to="/admin/categories">Categories</Link>
                 <Link className={'my-2 '+(activePage === "contact"?"active":"")} to="/admin/contact">Contact Form Submissions</Link>
             </div>

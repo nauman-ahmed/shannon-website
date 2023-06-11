@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import {
   SliderShow,
   SliderItems
@@ -19,11 +20,15 @@ import {
 import { IMAGE_ROUTE } from "../../AxiosFunctions/Axiosfunctionality";
 import { getDummyData } from "./temp";
 import coverImage from "./bipocSubPages/bipocAssets/BIPOC_PAGE_SQUARE.jpg"
+import { bannerLoader } from "../../redux/bannerImages";
 
 
 const images = window.location.origin + "/assets/images";
 
 function Bipoc() {
+
+  const dispatch = useDispatch();
+  const { bannerImages } = useSelector((state) => state);
 
   const [gottenData, setGottenData] = useState(false);
 
@@ -67,6 +72,11 @@ function Bipoc() {
     };
   }, []);
 
+  useEffect(() => {
+    if(bannerImages.bipocBannerData.length == 0){
+      dispatch(bannerLoader());
+    }
+  }, []);
 
   useEffect(() => {
 
@@ -266,7 +276,7 @@ function Bipoc() {
           className="artistcard bipoc set_height w-inline-block"
         >
           <img
-            src={coverImage}
+            src={bannerImages.bipocBannerData.length > 0 ? bannerImages.bipocBannerData[0].imagePath : ""}
             loading="lazy"
             alt=""
             className="image bipoc"

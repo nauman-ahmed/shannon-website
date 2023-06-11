@@ -79,12 +79,22 @@
     display: flex;
 }
 
-.artistcardAdmin{
-    margin-bottom: 10px;
+._4cols-v2-admin {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-column-gap: 6px;
+  grid-row-gap: 6px;
+  grid-template-areas: ".";
+  -ms-grid-columns: 1fr 16px 1fr 16px 1fr 16px 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  -ms-grid-rows: auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto;
+  /* grid-template-rows: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto; */
 }
+
+
 .artistcardAdmin>.image{
     object-fit: cover;
-    width: 50%;
     height: 100%;
 }
 .artistcardAdmin.addImageBtn{

@@ -7,7 +7,7 @@ import { useDispatch,useSelector } from 'react-redux'
 import { artistImageDataApi, updateUploadedImage, storeUploadedImages,resetUploadedImages } from '../../redux/artistSlice' 
 import { keywordDataApi } from '../../redux/keywordSlice' 
 import { decodeToken } from "react-jwt";
-import { artistImageCreate,artistImagedelete } from '../../AxiosFunctions/Axiosfunctionality'
+import { artistImageCreate,artistImagedelete,getAllContents } from '../../AxiosFunctions/Axiosfunctionality'
 import MyPopupLoading from '../../components/loader/myPopup'
 import loading from '../../assets/loading.gif'; 
 import BackArrow from "../../assets/svgs/backArrow.svg"
@@ -20,6 +20,7 @@ function Artist() {
     const { artistReducer } = useSelector( state => state )
     const [artistDetails,setArtistDetails] = useState(null)
     const [showLoader,setShowLoader] = useState(false);
+    const [imageContent,setImageContent] = useState([])
 
     const changePageHandler = async (e) => {
         console.log(e.target.files)
@@ -41,11 +42,19 @@ function Artist() {
         setShowLoader(false)
     }
 
+    const getAllContent = ()=>{
+        getAllContents({type: "IMAGE"}).then((res)=>{
+            let image = res[0].content
+            setImageContent(image)
+        })
+    }
+    
     useEffect(()=>{
         
         let storageData = localStorage.getItem("authorization")
         let details = decodeToken(storageData)
         try {
+            getAllContent();
             dispatch(keywordDataApi())
             dispatch(artistImageDataApi({artistId:details._id}))
         } catch (error) {
@@ -87,20 +96,22 @@ function Artist() {
     <>  
         <Header/>
         <div className='px-1 px-md-5 artist'>
+            {console.log(imageContent)}
             <div className='profile'>
                 <div className='profilePic mb-5'>{artistDetails ?  artistDetails.firstname.toUpperCase() : "...loading"}</div>
                 <h3 className='artistCounter mb-5'>1</h3>
-                <h3 className='artistCounterMessage mb-5' >Upload one or more images. Click on the thumbnail to select thumbnail, keyword and submit. </h3>
+                <h3 className='artistCounterMessage mb-5' >{imageContent.length > 0 ? imageContent[0].name : "Upload one or more images. Click on the thumbnail to select thumbnail, keyword and submit."}</h3>
+                {/* <h3 className='artistCounterMessage mb-5' >Upload one or more images. Click on the thumbnail to select thumbnail, keyword and submit. </h3> */}
             </div>
-            <div className='row m-0'>
-                <label className='col-6 col-lg-2 col-md-3 col-sm-4 m-0 artistcardAdmin w-inline-block addImageBtn'>
+            <div className='_4cols-v2'>
+                <label className='artistcardAdmin w-inline-block addImageBtn'>
                     <img alt='' src={AddImage} className="addImage"/>
                     <input hidden multiple type="file" onChange={(e)=>changePageHandler(e)}/>
                 </label>
                 {artistReducer.savedImages !== null && 
                     artistReducer.savedImages.map((val,ind)=>
                     val.statusSubmit == 0 ?
-                            <div className='col-6 col-lg-2 col-md-3 col-sm-4 artistcardAdmin' style={{cursor: "pointer"}} key={ind}>
+                            <div className='artistcardAdmin w-inline-block' style={{cursor: "pointer"}} key={ind}>
                                 <div
                                     onClick={() => deleteImageHandler(val)}
                                     className="crossSection"
