@@ -5516,7 +5516,7 @@ column-gap:20px ;
 
 .navbarBipocLink:hover .bipocSpan{
   transform: rotate(180deg);
-  transition: 0.3s all linear;
+  transition: 0.2s all linear;
 }
 
 .navbarBipocItemsLink {
