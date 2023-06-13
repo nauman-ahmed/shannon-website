@@ -457,10 +457,10 @@ function SearchByArtist(props) {
                             variableWidth: true
                           }}
                           thumbNail="true"
-                        > */}
+                        > */} 
                             {
                               data1[search].subListData.map((item, keys) => (
-                                <div id={"firstSlider"+keys} className="detail_card5_h" style={{ overflow: "hidden" }} onClick={() => { setSliderIndexHandler(keys) }}> 
+                                <div id={"firstSlider"+keys} className="detail_card5_h" style={{ overflow: "hidden", height:"18vh" }} onClick={() => { setSliderIndexHandler(keys) }}> 
                                   <img src={item} className="w-100 h-100" 
                                   // style={{ margin: "3px .43vw 3px 0vw"}}
                                   ></img>

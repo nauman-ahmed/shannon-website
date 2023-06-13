@@ -76,7 +76,7 @@ function DivisionSideBar(props) {
       {pages == "categories"? 
       keywordReducer?.length > 0 ? keywordReducer?.map((item,key)=>(
         <div key={key}>
-          {item.type === 1?(<Link to={"/categories/"+item._id}  className={"divisionslink"+(props.activeBtn === item._id?" w--current":"")}><span className="sidebarlink">{item.keyword.toUpperCase()}<br /></span></Link>):""}
+          {item.type === 1?(<Link to={"/categories/"+item._id}  className={"divisionslink"+(search === item._id?" w--current":"")}><span className="sidebarlink">{item.keyword.toUpperCase()}<br /></span></Link>):""}
         </div>
      )):"" 
       : 
@@ -89,9 +89,9 @@ function DivisionSideBar(props) {
         <Link to="/medical" className={"divisionslink"+(props.activeBtn === "medical"?" w--current":"")}><span className="sidebarlink">MEDICAL<br /></span></Link>
         <Link to="/motion" className={"divisionslink"+(props.activeBtn === "motion"?" w--current":"")}><span className="sidebarlink">MOTION</span></Link>
         <br /><br /><br /><br />
-       {keywordReducer?.length > 0 ? keywordReducer?.map((item,key)=>(
+       {pages == "categories" && keywordReducer?.length > 0 ? keywordReducer?.map((item,key)=>(
           <div key={key}>
-          {item.type === 2?(<Link to={"/divisions/"+item.keyword}  className={"divisionslink"+(props.activeBtn === item.keyword?" w--current":"")}><span className="sidebarlink">{item.keyword.toUpperCase()}<br /></span></Link>):""}
+          {item.type === 1?(<Link to={"/divisions/"+item.keyword}  className={"divisionslink"+(props.activeBtn === item.keyword?" w--current":"")}><span className="sidebarlink">{item.keyword.toUpperCase()}<br /></span></Link>):""}
           
           </div>
        )):""}
@@ -120,4 +120,4 @@ function DivisionSideBar(props) {
   )
 }
 
-export default DivisionSideBar
+export default DivisionSideBar 

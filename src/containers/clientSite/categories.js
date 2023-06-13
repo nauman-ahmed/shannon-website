@@ -27,15 +27,19 @@ function Categories(props) {
 
     // let tempData = [...data];
     // setDataOriginal([...data])
-
     if (filter === "A-Z") {
       let temp = []
+      let data = [...artistImageKeywordDataSlice.artistKeywordImages]
+      
       setFilterCond(false)
-      artistImageKeywordDataSlice.artistKeywordImages.map((val, ind) => {
-        let tempImage = [...val]
-        tempImage = tempImage.sort((a, b) => a.keyword.normalize().localeCompare(b.keyword.normalize()));
-        temp.push({ ...val, ImageData: tempImage })
-      })
+
+      temp = data.sort((a, b) => a.keyword.normalize().localeCompare(b.keyword.normalize()));
+      // artistImageKeywordDataSlice.artistKeywordImages.map((val, ind) => {
+      //   let tempImage = [...val.ImageData]
+      //   console.log(val,tempImage,artistImageKeywordDataSlice.artistKeywordImages)
+      //   tempImage = tempImage.sort((a, b) => a.keyword.normalize().localeCompare(b.keyword.normalize()));
+      //   temp.push({...val,ImageData:tempImage})
+      // })
       setFilterHighlighted(2)
       setTempArtist(temp)
       // tempData = tempData.sort((a, b) => a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize()));
@@ -73,7 +77,7 @@ function Categories(props) {
   }, [artistImageKeywordDataSlice, props.searchArtist]);
 
   useEffect(() => {
-    dispatch(artistKeyword({}));
+    dispatch(artistKeyword({type:1}));
   }, []);
 
   return (<>
@@ -113,10 +117,8 @@ function Categories(props) {
             >
               {artistImageKeywordDataSlice.artistKeywordImages.map(
                 (item, key) => (
-                  item.ImageData.length > 0 ? 
+                  item.ImageData.length > 0 && item.ImageData[0]?.mainImage[0]?.subImage[0]?.path ? 
                     <>
-                  {console.log(item)}
-                 
                     <>
                       <Link
                         key={key}
@@ -165,7 +167,7 @@ function Categories(props) {
               // style={{ paddingTop: "10px" }}
             >
               {tempArtist.map((item, key) => (
-                item.ImageData.length > 0 ? 
+                item.ImageData.length > 0 && item.ImageData[0]?.mainImage[0]?.subImage[0]?.path ? 
                     <>
                     <>
                       <Link

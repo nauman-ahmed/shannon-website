@@ -21,6 +21,7 @@ const linkedin = window.location.origin+"/assets/images/brandico_linkedin-rect.s
 const linkedinColored = window.location.origin+"/assets/images/brandico_linkedin-rect_colored.png"
 
 function Footer() {
+    
     const [shannonContent,setShannonContent] = useState([])
 
     const getAllContent = ()=>{
@@ -34,6 +35,7 @@ function Footer() {
     useEffect(()=>{
         getAllContent();
     },[])
+
     return (
         <div className="footersection wf-section" >
             <div className="footerorange"></div>

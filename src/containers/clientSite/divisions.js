@@ -295,10 +295,10 @@ const images = window.location.origin + "/assets/images";
                             : item.keyword == "Medical" ? "medical"
                             : null
                           }
-                          className="talentbutton w-button seemoreText"
+                          className="talentbuttonSeeMore"
                           style={{ textDecoration: "none" }}
                         >
-                          SEE MORE
+                          SEE MORE <div className="mx-2"> <img src={images+"/seeMore.svg"} style={{width:"6px"}}/> </div>
                         </Link>
                       </div>
                     </>
