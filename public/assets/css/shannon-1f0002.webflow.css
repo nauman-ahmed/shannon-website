@@ -430,6 +430,7 @@ a {
   grid-template-columns: repeat(4, 0.5fr);
   grid-column-gap: 6px;
   grid-row-gap: 6px;
+  justify-content: space-between;
 }
 .detail_card_6 {
 

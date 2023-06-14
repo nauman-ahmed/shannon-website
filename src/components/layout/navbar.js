@@ -36,7 +36,8 @@ function Navbar(props) {
           <a href="http://13.59.180.10/#/" target="_blank" className={"filterhomelink v2 " + (props.aciveBtn === "kidshannon" ? "w--current" : "")}>KIDSHANNON</a>
           <Link to="/photography" className={"filterhomelink v2 " + (props.aciveBtn === "photography" ? "w--current" : "")}>PHOTOGRAPHY</Link>
           <div className='navbarBipocLink'>
-            <Link to="/bipoc" className={"filterhomelink v2 d-flex " + (props.aciveBtn === "bipoc" ? "w--current" : "")}>BIPOC <span className='bipocSpan'></span> </Link>
+            {/* <Link to="/bipoc" className={"filterhomelink v2 d-flex " + (props.aciveBtn === "bipoc" ? "w--current" : "")}>BIPOC <span className='bipocSpan'></span> </Link> */}
+            <Link to="/bipoc" className={"filterhomelink v2 d-flex " + (props.aciveBtn === "bipoc" ? "w--current" : "")}>BIPOC </Link>
             <div className='navbarBipocItemsLink'>
               <Link to="/black" className={"filterhomelink v2 mb-3 " + (props.aciveBtn === "black" ? "w--current" : "")}>BLACK</Link>
               <Link to="/asianArtist" className={"filterhomelink v2 mb-3 " + (props.aciveBtn === "asianArtist" ? "w--current" : "")}>ASIAN</Link>
