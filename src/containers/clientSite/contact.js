@@ -665,7 +665,7 @@ function Contact() {
                artistImageDataSlice.artistImages.map((val, ind) =>  {
                 if( isCheckedArtist[val.artistId._id] == false || isCheckedArtist[val.artistId._id] == undefined ){
                   return (
-                    <Link className="detail_card5_h "
+                    <Link className="detail_card5_h_contact "
                   style={{ position: "relative", overflow: "hidden", cursor:"pointer" }}
                   to="#"
                   onClick={(e) => {
@@ -689,7 +689,7 @@ function Contact() {
                  tempArtist.map((val, ind) =>  {
                 if( isCheckedArtist[val.artistId._id] == false || isCheckedArtist[val.artistId._id] == undefined ){
                   return (
-                     <Link className="detail_card5_h "
+                     <Link className="detail_card5_h_contact "
                    style={{ position: "relative", overflow: "hidden" }}
                    to="#"
                    onClick={(e) => {

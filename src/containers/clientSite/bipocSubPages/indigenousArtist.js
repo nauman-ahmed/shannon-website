@@ -110,7 +110,7 @@ function IndigenousArtist(props) {
     </div>
     <div className="sliderbipoc">
       {indegiousArtist ? (
-        <div className="mb-3 detail_card3"  >
+        <div className="mb-3 detail_card3_bipoc"  >
           {/* <Slider 
             disableAutoPlay 
             controllEnabled="outside-dark"

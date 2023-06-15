@@ -344,7 +344,7 @@ function Bipoc() {
         </div>
         <div className="sliderbipoc">
           {blackArtist ? (
-            <div className="mb-3 detail_card3" id={idBlack} >
+            <div className="mb-3 detail_card3_bipoc" id={idBlack} >
               {/* <Slider 
                 disableAutoPlay 
                 controllEnabled="outside-dark"
@@ -433,7 +433,7 @@ function Bipoc() {
         </div>
         <div className="sliderbipoc">
           {asianArtist ? (
-            <div className="mb-3 detail_card3" id={idAsian}>
+            <div className="mb-3 detail_card3_bipoc" id={idAsian}>
               {/* <Slider
                 disableAutoPlay
                 controllEnabled="outside-dark"
@@ -498,7 +498,7 @@ function Bipoc() {
         </div>
         <div className="sliderbipoc">
           {latinoArtist ? (
-            <div className="mb-3 detail_card3" id={idLatino}>
+            <div className="mb-3 detail_card3_bipoc" id={idLatino}>
 
               {/* <Slider
                 disableAutoPlay
@@ -562,7 +562,7 @@ function Bipoc() {
         </div>
         <div className="sliderbipoc">
           {centralAsianArtist ? (
-            <div className="detail_card3 mb-3" id={idCentral}>
+            <div className="detail_card3_bipoc mb-3" id={idCentral}>
               {/* <Slider
                 disableAutoPlay
                 controllEnabled="outside-dark"
@@ -624,7 +624,7 @@ function Bipoc() {
         </div>
         <div className="sliderbipoc">
           {indegiousArtist ? (
-            <div className="mb-3 detail_card3" id={idIndegious}>
+            <div className="mb-3 detail_card3_bipoc" id={idIndegious}>
             
               {/* <Slider
                 disableAutoPlay
