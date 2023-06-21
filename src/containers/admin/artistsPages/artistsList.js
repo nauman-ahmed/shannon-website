@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import Table, { TBody, Td, Th, THead, Tr } from '../../../components/table/table'
-import { orderArtist } from '../../../AxiosFunctions/Axiosfunctionality';
+import { orderArtist, similarArtistAdd, similarArtistGetAll } from '../../../AxiosFunctions/Axiosfunctionality';
 import { updateMessage, updateOpen } from '../../../redux/message'
 import { useDispatch, useSelector } from 'react-redux'
 import SnackbarCustom from "../../../components/snackBar/SnackbarCustom";
@@ -18,6 +18,7 @@ function ArtistsList(props) {
     const [selectedArtist, setSelectedArtist] = useState(false)
     const [characters,updateCharacters] = useState([])
     const [filterArtist,setFilterArtist] = useState([]);
+    const [similarArtist,setSimilarArtist] = useState([]);
     const [typeOneArtist,setTypeOneArtist] = useState([]);
     const [typeTwoArtist,setTypeTwoArtist] = useState([]);
     const [formNo,setFormNo] = useState(0);
@@ -39,6 +40,12 @@ function ArtistsList(props) {
     
     useEffect(()=>{
         updateList()
+        if(props.similarArtist){
+            similarArtistGetAll({_id:props.selectedArtist._id}).then((res) => {
+                console.log(res)
+                setSimilarArtist(res.data[0])
+            })
+        }
     },[props.artistUsers])
    
     const updateList = (payload)=>{
@@ -83,10 +90,34 @@ function ArtistsList(props) {
         })
         props.reorderArtistHandler(tempTypeOne)
     }
- 
+    
+    const onSubmitSimilarArtistHandler = (data,status="ADD") => {
+        
+        setIsLoader(true)
+        similarArtistAdd({
+            artist: props.selectedArtist,
+            similarArtist: data,
+            status
+        }).then(res=>{
+            dispatch(updateOpen(true))
+            if(res.msg=="Recieved"){
+                console.log(res.data)
+                setSimilarArtist(res.data[0])
+                dispatch(updateMessage("Successfully Updated"));
+            }else{
+                dispatch(updateMessage(res.msg));
+            }
+            setIsLoader(false)
+        })
+
+    }
+
     return (
     <>
-    {isLoader?
+    {
+    props.similarArtist ?  null 
+    
+    :isLoader?
         <img className='mt-1' alt="loading" src={loading} style={{width:"30px"}}/>
     :
         <button className='mr-3 mb-3 myBtn active' type="text" onClick={onSubmitHandler}>CONFIRM ORDER</button>
@@ -105,18 +136,77 @@ function ArtistsList(props) {
                 </THead>
                 <TBody>
                     {props.artistUsers.length>0    ?  props.search !== "" ? props.tempArtist.map((item,key)=>
+                    props.selectedArtist ? 
+                    item._id !== props.selectedArtist._id &&
                     (
                     <Tr key={key}>
                         <Td>{item.lastname} {item.firstname}</Td>
                         <Td className={item.status ===1?"text-success":"text-danger"}>{item.status ===1?"Active":"Inactive"}</Td>
-                        <Td className="d-flex">
-                            <button onClick={()=>props.formChangeEvent(item)} className='mx-1 myBtn' type="text">EDIT</button>
-                            {props.holder?<img className="mt-1" alt="loading" src={loading} style={{width:"30px"}}/>:<button className='mx-1 myBtn active' type="text" onClick={(e)=>{setIsPopupShow(true); setSelectedArtist(item)}}>DELETE</button>}
-                        </Td>
+                        {
+                            similarArtist ? similarArtist.similarArtistCollection ? 
+                            similarArtist.similarArtistCollection.findIndex((item1)=> item1 == item._id) == -1 ?
+                                <Td className="d-flex">
+                                    {isLoader?<img className="mt-1" alt="loading" src={loading} style={{width:"30px"}}/>:<button className='mx-1 myBtn active' type="text" onClick={(e)=>{onSubmitSimilarArtistHandler(item._id)}}>ADD</button>}
+                                </Td>
+                            :
+                                <Td className="d-flex">
+                                    {isLoader?<img className="mt-1" alt="loading" src={loading} style={{width:"30px"}}/>:<button className='mx-1 myBtn active' type="text" onClick={(e)=>{onSubmitSimilarArtistHandler(item._id,"DELETE")}}>REMOVE</button>}
+                                </Td>
+                            :  <Td className="d-flex">
+                                    {isLoader?<img className="mt-1" alt="loading" src={loading} style={{width:"30px"}}/>:<button className='mx-1 myBtn active' type="text" onClick={(e)=>{onSubmitSimilarArtistHandler(item._id)}}>ADD</button>}
+                                </Td>
+                            :  <Td className="d-flex">
+                                    {isLoader?<img className="mt-1" alt="loading" src={loading} style={{width:"30px"}}/>:<button className='mx-1 myBtn active' type="text" onClick={(e)=>{onSubmitSimilarArtistHandler(item._id)}}>ADD</button>}
+                                </Td>
+                        }
                     </Tr>
-                    )):
-                    characters.map((item,key)=>
+                    )
+                    :
                     (
+                        <Tr key={key}>
+                            <Td>{item.lastname} {item.firstname}</Td>
+                            <Td className={item.status ===1?"text-success":"text-danger"}>{item.status ===1?"Active":"Inactive"}</Td>
+                            <Td className="d-flex">
+                                <button onClick={()=>props.formChangeEvent(item)} className='mx-1 myBtn' type="text">EDIT</button>
+                                {props.holder?<img className="mt-1" alt="loading" src={loading} style={{width:"30px"}}/>:<button className='mx-1 myBtn active' type="text" onClick={(e)=>{setIsPopupShow(true); setSelectedArtist(item)}}>DELETE</button>}
+                            </Td>
+                        </Tr>
+                        )
+                    ):
+                    characters.map((item,key)=>
+                    props.selectedArtist ?
+                    item._id !== props.selectedArtist._id &&
+                    (
+                        <Draggable key={item._id} draggableId={item._id} index={key}>
+                        {(provided) => (
+                            <Tr key={key} provided={provided}>
+                                <Td>{item.lastname} {item.firstname}</Td>
+                                {/* <Td><p style={item.status ===1?{color:"green"}:{color:"red"}}>{item.status ===1?"Active":"Inactive"}</p> </Td> */}
+                                {console.log(similarArtist)}
+                                <Td className={item.status ===1?"text-success":"text-danger"}>{item.status ===1?"Active":"Inactive"}</Td>
+                                {
+                                    similarArtist ? similarArtist.similarArtistCollection ? 
+                                    similarArtist.similarArtistCollection.findIndex((item1)=> item1 == item._id) == -1 ?
+                                        <Td className="d-flex">
+                                            {isLoader?<img className="mt-1" alt="loading" src={loading} style={{width:"30px"}}/>:<button className='mx-1 myBtn active' type="text" onClick={(e)=>{onSubmitSimilarArtistHandler(item._id)}}>ADD</button>}
+                                        </Td>
+                                    :
+                                        <Td className="d-flex">
+                                            {isLoader?<img className="mt-1" alt="loading" src={loading} style={{width:"30px"}}/>:<button className='mx-1 myBtn active' type="text" onClick={(e)=>{onSubmitSimilarArtistHandler(item._id,"DELETE")}}>REMOVE</button>}
+                                        </Td>
+                                    :  <Td className="d-flex">
+                                            {isLoader?<img className="mt-1" alt="loading" src={loading} style={{width:"30px"}}/>:<button className='mx-1 myBtn active' type="text" onClick={(e)=>{onSubmitSimilarArtistHandler(item._id)}}>ADD</button>}
+                                        </Td>
+                                    :  <Td className="d-flex">
+                                            {isLoader?<img className="mt-1" alt="loading" src={loading} style={{width:"30px"}}/>:<button className='mx-1 myBtn active' type="text" onClick={(e)=>{onSubmitSimilarArtistHandler(item._id)}}>ADD</button>}
+                                        </Td>
+                                }
+                            </Tr>
+                    )}
+                    </Draggable>
+                      )
+                      :
+                      (
                         <Draggable key={item._id} draggableId={item._id} index={key}>
                         {(provided) => (
                             <Tr key={key} provided={provided}>
@@ -130,7 +220,9 @@ function ArtistsList(props) {
                             </Tr>
                     )}
                     </Draggable>
-                      )):"" }
+                      )
+                      
+                      ):"" }
                     
                    
                 </TBody>
@@ -140,7 +232,6 @@ function ArtistsList(props) {
             </Droppable>
             </DragDropContext>
         }
-        {console.log(selectedArtist)}
         {isPopupShow?
                 <MyPopup BackClose onClose={()=>{setIsPopupShow(false)}}>
                     <div className='mx-5 my-2'>

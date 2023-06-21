@@ -148,13 +148,7 @@ const images = window.location.origin + "/assets/images";
                     {item.ImageData.length > 0 ? (
                       <>
                         <div className="d-flex mt-0 mb-2">
-                          <h5 className=" mt-0" style={{display:'flex',whiteSpace:'nowrap',
-                            fontFamily: 'Roboto, sans-serif',
-                            color: '#ce651e',
-                            fontSize: '1vw',
-                            lineHeight: 1,
-                            fontWeight: '500',
-                            textAlign: 'left'}}>
+                          <h5 className="divisionHeading mt-0">
                             {
                               item.keyword == '3D Rendering' ? "CGI" 
                             :
@@ -231,13 +225,7 @@ const images = window.location.origin + "/assets/images";
                   {item.ImageData.length > 0 ? (
                     <>
                       <div className="d-flex mt-0 mb-2">
-                          <h5 className="mt-0" style={{display:'flex',whiteSpace:'nowrap',
-                            fontFamily: 'Roboto, sans-serif',
-                            color: '#ce651e',
-                            fontSize: '1vw',
-                            lineHeight: 1,
-                            fontWeight: '500',
-                            textAlign: 'left'}}>
+                          <h5 className="divisionHeading mt-0">
                             {
                               item.keyword == '3D Rendering' ? "CGI" 
                             :

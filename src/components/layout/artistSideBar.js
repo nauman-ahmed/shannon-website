@@ -23,7 +23,7 @@ function ArtistSideBar() {
        (
         <div key={key}>
           {artistData[item] !== undefined ? (
-          <div key={key}>
+          <div key={key} className="alphabets">
             {item}<br/>
             {artistData[item].map((item1,key1)=>(
               <div key={key1}>

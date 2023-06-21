@@ -127,9 +127,17 @@ function Artists(props) {
     return (
         <div className='px-xl-5 mx-xl-5'>
         <div className={'mx-lg-5 px-lg-3 py-4 mt-3 ml-5 d-flex flex-column'+(props.formNo === 1?" align-items-center":"")}>
+        
             {
             props.formNo === 1?
             <>
+                <div className='mx-lg-5 px-lg-3 py-4 mt-3 ml-5 d-flex justify-content-end w-100'>
+                    <Input
+                    type="search"
+                    label="Search"
+                    value={search}
+                    onChange={(e)=>{changeArtistData(e)}}/>
+                </div>
                 <h4>
                     {selectedArtist.lastname} {selectedArtist.firstname}
                 </h4>
@@ -138,6 +146,7 @@ function Artists(props) {
                     <button onClick={()=>setFormNo2(1)} className={'btn'+(formNo2 === 1? " active": "")}>Image Submissions</button>
                     <button onClick={()=>setFormNo2(2)} className={'btn'+(formNo2 === 2? " active": "")}>Portfolio</button>
                     <button onClick={()=>setFormNo2(3)} className={'btn'+(formNo2 === 3? " active": "")}>Edit</button>
+                    <button onClick={()=>setFormNo2(4)} className={'btn'+(formNo2 === 4? " active": "")}>Similar Artists</button>
                 </div>
             </>
             :
@@ -177,6 +186,18 @@ function Artists(props) {
                 setFormNo2={(e)=>setFormNo2(e)}
                 updateArtist={updateArtist}
                 />
+                :formNo2 === 4?
+                    <ArtistsList 
+                        search = {search}
+                        tempArtist = {tempArtist}
+                        holder = {holder}
+                        artistUsers={props.artistUsers}
+                        deleteArtistUser={props.deleteArtistUser}
+                        formChangeEvent={(e)=>formChangeEvent(e)}
+                        reorderArtistHandler={props.reorderArtistHandler}
+                        similarArtist={true}
+                        selectedArtist = {selectedArtist}
+                    />
                 : 
                 // https://www.npmjs.com/package/react-quill
                 <>

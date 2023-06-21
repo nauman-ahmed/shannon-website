@@ -359,6 +359,33 @@ export const orderArtist = async (data) => {
     }
 }
 
+export const similarArtistAdd = async (data) => {
+    try {
+        const response = await axios.post(BASE_URL + 'similarArtistUser/update', data);
+        return response.data;
+    } catch (error) {
+        logouter();
+    }
+}
+
+export const similarArtistGetAll = async (data) => {
+    try {
+        const response = await axios.post(BASE_URL + 'similarArtistUser/getAll', data);
+        return response.data;
+    } catch (error) {
+        logouter();
+    }
+}
+
+export const similarArtist = async (data) => {
+    try {
+        const response = await axios.post(BASE_URL + 'similarArtistUser/update', data);
+        return response.data;
+    } catch (error) {
+        logouter();
+    }
+}
+
 export const artistPortfolioOrder = async (data) => {
     try {
         const response = await axios.post(BASE_URL + 'artistImage/orderPortfolio', data);

@@ -99,7 +99,7 @@ function Index(props) {
                     :pages === "divisions"?
                     search?
                     <SearchByDivision>
-                        <DivisionSideBar activeBtn={search}/>
+                        <DivisionSideBar activeBtn={search}/> 
                     </SearchByDivision>
                     :<Divisions searchArtist={searchArtist} searchDivision={searchDivision} updateTempDivision={updateTempDivision} tempDivision={tempDivision}>
                         <DivisionSideBar activeBtn={pages}/>

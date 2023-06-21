@@ -96,7 +96,6 @@ function Artist() {
     <>  
         <Header/>
         <div className='px-1 px-md-5 artist'>
-            {console.log(imageContent)}
             <div className='profile'>
                 <div className='profilePic mb-5'>{artistDetails ?  artistDetails.firstname.toUpperCase() : "...loading"}</div>
                 <h3 className='artistCounter mb-5'>1</h3>
