@@ -59,8 +59,8 @@
 .artistCounter{
     margin-left: auto;
     margin-right: auto;
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
     background-color: #D16A27;
     border-radius: 50px;
     align-items: center;
@@ -107,7 +107,7 @@
     cursor: pointer;
 }
 .artistcardAdmin.addImageBtn>.addImage{
-    width: 35% !important;
+    width: 20% !important;
 }
 .imageUploader{
     font-family: "Robotocondensed";

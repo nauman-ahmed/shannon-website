@@ -5,7 +5,6 @@ import back from "../../assets/svgs/back_asset.svg"
 import down from "../../assets/img/down.png"
 import Input from '../../components/input/input'
 import MyPopup from '../../components/myPopup/myPopup'
-import { LoginAdmin } from '../../AxiosFunctions/Axiosfunctionality'
 import { useDispatch,useSelector } from 'react-redux'
 import { userRegisterApi, userLoginApi } from "../../redux/signInUpSlice";
 import {setAuthToken} from '../../AxiosFunctions/setCommonHeader';
@@ -14,6 +13,8 @@ import { updateMessage, updateOpen } from '../../redux/message'
 import loading from '../../assets/loading.gif'; 
 import { cityGetter, stateGetter, allCityGetter,allStateGetter } from '../../redux/StateCity'
 import { decodeToken } from "react-jwt";
+import { LoginAdmin, artistImageCreate,artistImagedelete, getAllContents, getArtist } from '../../AxiosFunctions/Axiosfunctionality'
+import { keywordDataApi } from '../../redux/keywordSlice' 
 
 const Logo = window.location.origin+"/assets/images/Frame.svg"
 function Login() {
@@ -79,6 +80,7 @@ function Login() {
             dispatch(updateMessage("Invalid user or password"))
           }
           else{
+            getArtist()
             dispatch(updateMessage("Successfully Login"))
             localStorage.setItem("authorization",res.token!==undefined?res.token:"")
             setAuthToken(res.token);
@@ -101,11 +103,17 @@ function Login() {
         }))
         .then((res)=>{
           localStorage.setItem("authorization",res.payload.token!==undefined?res.payload.token:"")
+          console.log(res.payload.token)
           setAuthToken(res.token);
           dispatch(updateOpen(true))
           setShowLoader(true);
-          dispatch(updateMessage(res.payload.token !== undefined?"successfully login":"Invalid Credentials or In Active Account" ))
-          window.location.href = '/#/artist'
+          if(res.payload.token !== undefined){
+            getAllContents()
+            dispatch(updateMessage("Successfully Login"))
+            window.location.href = '/#/artist'
+          }else{
+            dispatch(updateMessage("Invalid Credentials or In Active Account" ))
+          }
         });;
       }else{
         let data = {
@@ -175,6 +183,7 @@ function Login() {
 
   return (
     <div className='loginPage d-flex justify-content-center'>
+      {console.log(new Date().getSeconds())}
       <img className='backAsset1' alt='' src={back}/>
       <img className='backAsset2' alt='' src={back}/>
       <div className='myForm col-12 pt-md-0 pt-5'>

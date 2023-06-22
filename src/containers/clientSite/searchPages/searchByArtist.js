@@ -250,11 +250,10 @@ function SearchByArtist(props) {
 
   return (
     <div>
-      {console.log(windowSize.innerWidth)}
       {data1 !== null ? 
         <div className="d-flex" style={{ justifyContent: "space-between", marginTop: "-10px" }} > 
             <h2 className="h2talent">{data1[search].title}</h2> 
-            <div className="d-flex" style={{ justifyContent: "end" }}>
+            <div className="d-flex" style={{ justifyContent: "space-between", width: "20%" }}>
                 <Link
                   to="/contact"
                   className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton mr-3"}
@@ -267,6 +266,7 @@ function SearchByArtist(props) {
                   to="#"
                   className="talentbutton hide "
                   onClick={() => addToCartArtistHandler(data1[search].id, data1[search].title)}
+                  style={{ marginRight: "0px" }}
                 >
                   ADD TO MY LIST
                 </Link>

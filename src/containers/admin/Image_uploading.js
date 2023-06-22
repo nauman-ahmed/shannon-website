@@ -335,7 +335,7 @@ function Image_uploading(props) {
                 </div>
                 {pageNo === 0  ?
                     <div className='px-5 row m-0'>
-                        <div className='col-xl-9 col-lg-8 d-flex justify-content-center'>
+                        <div className='col-xl-9 col-lg-8 d-flex my-5 justify-content-center'>
                            
                         {artistImage !== null ? 
                            pageNo === 0 ?

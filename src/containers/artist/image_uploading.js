@@ -298,21 +298,38 @@ function Image_uploading() {
             <Header/>
             <div className='px-0 mx-5 mb-5 imageUploader'>
                 <div className='profile'>
-                    <div className='profilePic'>{ details ? details.firstname ?  details.firstname.toUpperCase() : "...loading" : null }</div>
-                    <button 
-                        className='btn1 mt-3 '
-                        onClick={()=>history.push('/artist')}
-                    >
-                        CANCEL
-                    </button>
-                    {pageNo > 0?
-                    <button className='btn1 mt-3' onClick={()=>paginationHandler(pageNo-1,true)}>
-                        <img alt='' src={BackArrow}/>
-                    </button>
-                    :null}
-                    <h3 className='artistCounter mb-5'>{pageNo + 2}</h3>
-                    <h3 className='artistCounterMessage mb-5' >
-                        {console.log(pageNo)}
+                    <div className='profilePic'>{ details ? details.firstname ?  "WELCOME " + details.firstname.toUpperCase() : "...loading" : null }</div>
+                        {pageNo > 0?
+                            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                                <div>
+                                    <button 
+                                        className='btn1 mt-3 '
+                                        onClick={()=>history.push('/artist')}
+                                    >
+                                        CANCEL
+                                    </button>
+                                    <button className='btn1 mt-3' onClick={()=>paginationHandler(pageNo-1,true)}>
+                                        <img alt='' src={BackArrow}/>
+                                    </button>
+                                </div>
+                                <div>
+                                    {showLoader?
+                                        <img alt="loading" src={loading} style={{width:"30px",marginTop:-20}}/>
+                                        :
+                                        <button className='btn1 dark px-4 align-self-bottom' style={{fontSize: "1.3vw"}} onClick={onSubmit}>Submit</button>
+                                    }
+                                </div>
+                            </div>
+                            :
+                                <button 
+                                className='btn1 mt-3 '
+                                onClick={()=>history.push('/artist')}
+                            >
+                                CANCEL
+                            </button>
+                        }
+                    <h3 className='artistCounter mb-5'>STEP {pageNo + 2}</h3>
+                    <p className='artistCounterMessage mb-5' >
                         {pageNo == 1 ?
                             <p>
                                 {imageContent.length > 0 ? imageContent[2].name : "Please choose up to 8 keywords in each section (if your work is applicable for both sections)"}
@@ -323,13 +340,13 @@ function Image_uploading() {
                             imageContent.length > 0 ? imageContent[1].name : "Move and resize the box to select the desired thumbnail, click next when the thumbnail has been selected."
                         }
                          
-                    </h3>
+                    </p>
                 </div>
                 <div className='px-0 row m-0'>
                 </div>
                 {pageNo === 0 ?
                     <div className='px-0 row m-0'>
-                        <div className='col-xl-9 col-lg-8'>
+                        <div className='col-xl-9 col-lg-8 my-5'>
                         {artistImageDetails !== null ? 
                            pageNo === 0 ?
                             <ReactCrop
@@ -343,6 +360,7 @@ function Image_uploading() {
                                         alt="Crop me"
                                         src={temp}
                                         onLoad={onImageLoad}
+                                        style={{ maxWidth: "500px", objectFit: "cover", maxHeight: "1000px"}}
                                     />
                                 </ReactCrop>
                            :null                   
@@ -395,13 +413,7 @@ function Image_uploading() {
                                 }
                             </div>
                         </div>
-                        <div className='col-12 d-flex justify-content-center my-5 '>
-                            {showLoader?
-                                <img alt="loading" src={loading} style={{width:"30px",marginTop:-20}}/>
-                                :
-                                <button className='btn1 dark px-4 align-self-bottom' style={{fontSize: "3vh"}} onClick={onSubmit}>Submit</button>
-                            }
-                        </div>
+                        
                     </div>
                 }
             </div>
