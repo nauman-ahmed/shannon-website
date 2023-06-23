@@ -5,7 +5,7 @@ import { createContact } from "../../AxiosFunctions/Axiosfunctionality";
 import { updateMessage, updateOpen } from "../../redux/message";
 import loading from "../../assets/loading.gif";
 import { Redirect, Link, useHistory } from "react-router-dom";
-import { addCart, removeCartItem } from "../../redux/addToCart";
+import { addCart, emptyCart, removeCartItem } from "../../redux/addToCart";
 import SnackbarCustom from "../../components/snackBar/SnackbarCustom";
 import { ArtistDataAPI } from "../../redux/artistDataSlice";
 import { ArtistImageSliceData } from "../../redux/artistImageDataSlice";
@@ -14,6 +14,7 @@ import MyPopup from "../../components/myPopup/myPopup";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { compose } from "@reduxjs/toolkit";
 
 
 const images = window.location.origin + "/assets/images"; 
@@ -26,6 +27,7 @@ function Contact() {
   const [isPopupShow, setIsPopupShow] = useState(false);
   const [artistImages, setArtistImages] = useState("");
   const [totalArtistImages, setTotalArtistImages] = useState(undefined);
+  const [localStorageChecked, setLocalStorageChecked] = useState(false);
   const [Name, setName] = useState("");
   const [company, setCompany] = useState("");
   const [email, setEmail] = useState("");
@@ -75,7 +77,7 @@ function Contact() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     let Id = [];
     Object.keys(AddToCart.cartInfo).forEach((key, value) => {
-      if(key !== "messageShow" && key !== "count" ){
+      if(key !== "messageShow" && key !== "count" && key !== "getAnEstimate" ){
         Id.push(AddToCart.cartInfo[key].id);
       }
     }); 
@@ -112,6 +114,7 @@ function Contact() {
             tempMsg = <p> ERROR IN CONTACT DETAILS SUBMISSION</p>
             setMsg(tempMsg);
           }else{
+            dispatch(emptyCart());
             setHolder(false);
             setIsPopupShow(true);
             setMsg(tempMsg);
@@ -133,36 +136,35 @@ function Contact() {
     }
   };
 
-  const removeKey = (id) => {
-    dispatch(removeCartItem(id));
+  // const removeKey = (id) => {
+  //   dispatch(removeCartItem(id));
 
-    setIsChecked((preState) => ({ ...preState, [id]: false }));
-    setIsCheckedArtist((preState) => ({ ...preState, [id]: false }));
-  };
+  //   setIsChecked((preState) => ({ ...preState, [id]: false }));
+  //   setIsCheckedArtist((preState) => ({ ...preState, [id]: false }));
+  // };
 
-  const handleChange = (e, data) => {
+  // const handleChange = (e, data) => {
     
-    if (isChecked[data.id] !== true) {
-      dispatch(
-        addCart({ key: data.id, data: { id: data.id, Name: data.title } })
-      );
-    } else {
-      dispatch(removeCartItem(data.id));
-    }
+  //   if (isChecked[data.id] !== true) {
+  //     dispatch(
+  //       addCart({ key: data.id, data: { id: data.id, Name: data.title } })
+  //     );
+  //   } else {
+  //     dispatch(removeCartItem(data.id));
+  //   }
 
-    setIsChecked((preState) => ({
-      ...preState,
-      [data.id]: !preState[data.id],
-    }));
-    dispatch(updateOpen(true));
-    dispatch(updateMessage("Add Artist in Cart"));
-  };
+  //   setIsChecked((preState) => ({
+  //     ...preState,
+  //     [data.id]: !preState[data.id],
+  //   }));
+  //   dispatch(updateOpen(true));
+  //   dispatch(updateMessage("Add Artist in Cart"));
+  // };
 
   const handleChangeArtist = (e, data, key) => {
     var slick = document.getElementsByClassName('slick-list')[0];
 
     if(slick){
-      console.log(slick.style)
       slick.style.padding = "3px"
     }
     
@@ -177,7 +179,6 @@ function Contact() {
     dispatch(updateMessage("Add Artist in Cart"));
   };
 
-
   useEffect(() => {
     
     if(AddToCart.cartInfo.getAnEstimate){
@@ -185,62 +186,65 @@ function Contact() {
       setGetAnEstimate(true)
     }
 
-    function getLocalStorage() {
-      if (localStorage.getItem("artistViewed_V1") !== null) {
-        setDataViewed(JSON.parse(localStorage.getItem("artistViewed_V1")));
-      }
-    }
+    // function getLocalStorage() {
+    //   if (localStorage.getItem("artistViewed_V1") !== null) {
+    //     setDataViewed(JSON.parse(localStorage.getItem("artistViewed_V1")));
+    //   }
+    // }
 
-    const tempval = JSON.parse(localStorage.getItem("artistViewed_V1"));
     let tempChecker = {};
-    tempval &&
-      Object.keys(tempval).forEach((key) => {
-        tempChecker[tempval[key]?.id] = false;
-      });
+    // const tempval = JSON.parse(localStorage.getItem("artistViewed_V1"));
+    // tempval &&
+    //   Object.keys(tempval).forEach((key) => {
+    //     tempChecker[tempval[key]?.id] = false;
+    //   });
 
-    AddToCart?.cartInfo &&
-      Object.keys(AddToCart?.cartInfo).forEach((oneKey, i) => {
-        tempval &&
-          Object.keys(tempval).forEach((key) => {
-            if (AddToCart?.cartInfo[oneKey]?.id === tempval[key]?.id) {
-              tempChecker[AddToCart?.cartInfo[oneKey]?.id] = true;
-            }
-          });
-      });
+    // AddToCart?.cartInfo &&
+    //   Object.keys(AddToCart?.cartInfo).forEach((oneKey, i) => {
+    //     tempval &&
+    //       Object.keys(tempval).forEach((key) => {
+    //         if (AddToCart?.cartInfo[oneKey]?.id === tempval[key]?.id) {
+    //           tempChecker[AddToCart?.cartInfo[oneKey]?.id] = true;
+    //         }
+    //       });
+    //   });
 
     dispatch(ArtistDataAPI()).then((res) => {
       let temp = {};
       let tempchecked = {};
       let keyChecker = true;
-      res?.payload?.forEach((item, key1) => {
-          if (tempval && tempval[item?._id] === undefined) {
-            temp[item?._id] = item?.firstname + " " + item?.lastname;
-            tempchecked[item?._id] = false;
-            keyChecker = false;
-          }
-      });
-      if (keyChecker) {
-        res?.payload?.forEach((item, key1) => {
-          if (key1 <= 12) {
-            temp[item?._id] = item?.firstname + " " + item?.lastname;
-            tempchecked[item?._id] = false;
-          }
-        });
-      }
-      AddToCart?.cartInfo &&
-        Object.keys(AddToCart?.cartInfo).forEach((oneKey, i) => {
-          res?.payload?.forEach((item, key1) => {
-            if (AddToCart?.cartInfo[oneKey]?.id === item?._id) {
-              tempchecked[item?._id] = true;
-            }
-          });
-        });
-      setIsCheckedArtist(tempchecked);
-      setArtistData(temp);
+      // res?.payload?.forEach((item, key1) => {
+      //     if (tempval && tempval[item?._id] === undefined) {
+      //       temp[item?._id] = item?.firstname + " " + item?.lastname;
+      //       tempchecked[item?._id] = false;
+      //       keyChecker = false;
+      //     }
+      // });
+      // if (keyChecker) {
+      //   res?.payload?.forEach((item, key1) => {
+      //     if (key1 <= 12) {
+      //       temp[item?._id] = item?.firstname + " " + item?.lastname;
+      //       tempchecked[item?._id] = false;
+      //     }
+      //   });
+      // }
+
+      // setArtistData(temp);
 
       //For Images
+      // let tempLocalData = JSON.parse(localStorage.getItem("artistViewed_V1"));
+
+      AddToCart?.cartInfo &&
+      Object.keys(AddToCart?.cartInfo).forEach((oneKey, i) => {
+        res?.payload?.forEach((item, key1) => {
+          if (AddToCart?.cartInfo[oneKey]?.id === item?._id) {
+            tempchecked[item?._id] = true;
+          }
+        });
+      });
+
+      setIsCheckedArtist(tempchecked);
       let tempArtistImagesData = {};
-      let tempLocalData = JSON.parse(localStorage.getItem("artistViewed_V1"));
       if(artistImageDataSlice.artistImages.length == 0){
         dispatch(ArtistImageSliceData()).then((res) => {
           res?.payload?.map((val, ind) => {
@@ -255,15 +259,18 @@ function Contact() {
         });
         setArtistImages(tempArtistImagesData);
       }
+      // addToCarTLocalStorage()
     });
 
-    setIsChecked(tempChecker);
-    getLocalStorage();
+    setLocalStorageChecked(true)
+    // setIsChecked(tempChecker);
+    // getLocalStorage();
     return () => console.log("NAUMAN");
-  }, []);
+  }, [localStorageChecked]);
 
   return (
     <>
+      {console.log("CHALA",AddToCart?.cartInfo,JSON.parse(localStorage.getItem("addToCart")))}
       <div className="row mx-0 pr-0 mt-0 pt-0" style={{
         maxWidth: "100%",
       }}>
@@ -476,7 +483,6 @@ function Contact() {
                           >
                             Purpose of inquiry
                           </label>
-                          {console.log(getAnEstimate)}
                           <select
                             id="Purpose-of-Inquiry"
                             name="Purpose-of-Inquiry"
@@ -756,7 +762,7 @@ function Contact() {
               setIsPopupShow(false);
             }}
           >
-            <div className="mx-5 my-4" style={{ wordWrap: "break-word", width: "500px" }}>{msg}</div>
+            <div className="mx-5 my-4" style={{ wordWrap: "break-word", width: "max-content" }}>{msg}</div>
           </MyPopup>
         ) : null}
       </div>

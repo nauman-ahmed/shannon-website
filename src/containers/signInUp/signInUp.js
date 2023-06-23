@@ -61,7 +61,28 @@ function Login() {
     setPassword(e.target.value);
   }
 
+  const authenticationHandler = (data) => {
 
+    LoginAdmin(data).then( (res)=>{
+      try{
+        dispatch(updateOpen(true))
+        setShowLoader(true)
+        if(res.message === "Authentication failed. Invalid user or password."){
+          dispatch(updateMessage("Invalid user or password"))
+        }
+        else{
+          dispatch(updateMessage("Successfully Login"))
+          localStorage.setItem("authorization",res.token!==undefined?res.token:"")
+          setAuthToken(res.token);
+          window.location.href = '/#/admin'
+        }
+      }
+      catch(err){
+        dispatch(updateMessage(err.message))
+      }
+    })
+
+  }
 
 
     const signInFunc = () =>{
@@ -72,25 +93,10 @@ function Login() {
         password:password
       }
       setShowLoader(false);
-      LoginAdmin(data).then( (res)=>{
-        try{
-          dispatch(updateOpen(true))
-          setShowLoader(true)
-          if(res.message === "Authentication failed. Invalid user or password."){
-            dispatch(updateMessage("Invalid user or password"))
-          }
-          else{
-            getArtist()
-            dispatch(updateMessage("Successfully Login"))
-            localStorage.setItem("authorization",res.token!==undefined?res.token:"")
-            setAuthToken(res.token);
-            window.location.href = '/#/admin'
-          }
-        }
-        catch(err){
-          dispatch(updateMessage(err.message))
-        }
-      })
+
+      setTimeout(() => {
+        authenticationHandler(data)
+      }, 2000);
       
       
     }else{
@@ -108,7 +114,6 @@ function Login() {
           dispatch(updateOpen(true))
           setShowLoader(true);
           if(res.payload.token !== undefined){
-            getAllContents()
             dispatch(updateMessage("Successfully Login"))
             window.location.href = '/#/artist'
           }else{

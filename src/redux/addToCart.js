@@ -19,7 +19,11 @@ const AddToCart = createSlice({
             state.cartInfo = {...state.cartInfo,[action.payload.key]:action.payload.data,count:state.cartInfo.count+1}
         },
         emptyCart(state,action){
-            state.cartInfo ={}
+            state.cartInfo ={
+                 messageShow:true,
+                count:0,
+                getAnEstimate:false
+            }
         },
         removeCartItem(state,action){
             state.cartInfo = {...state.cartInfo,count:state.cartInfo.count-1}
@@ -29,7 +33,6 @@ const AddToCart = createSlice({
             state.cartInfo = {...state.cartInfo,messageShow:action.payload.messageShow}
         },
         getAnEstimateHandler(state,action){
-            console.log("getAnEstimate")
             state.cartInfo = {...state.cartInfo,getAnEstimate:true}
         }
     },

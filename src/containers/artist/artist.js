@@ -99,7 +99,13 @@ function Artist() {
             <div className='profile'>
                 <div className='profilePic mb-5'>{artistDetails ? "WELCOME " + artistDetails.firstname.toUpperCase() : "...loading"}</div>
                 <h3 className='artistCounter mb-5'> STEP 1</h3>
-                <div className='imageUploader'><p className='imageUploader artistCounterMessage mb-5' >{imageContent.length > 0 ? imageContent[0].name : "Upload one or more images. Click on the thumbnail to select thumbnail, keyword and submit."}</p></div>  
+                <div className='imageUploader'>
+                    <p className='artistCounterMessage mb-5'>
+                        <p style={{ textTransform: "initial" }}>
+                            {imageContent.length > 0 ? imageContent[0].name : "Upload one or more images. Click on the thumbnail to select thumbnail, keyword and submit."}
+                        </p>
+                    </p>
+                </div>  
                 {/* <h3 className='artistCounterMessage mb-5' >Upload one or more images. Click on the thumbnail to select thumbnail, keyword and submit. </h3> */}
             </div>
             <div className='_4cols-v2'>

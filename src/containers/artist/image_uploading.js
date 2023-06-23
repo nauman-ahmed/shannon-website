@@ -298,7 +298,7 @@ function Image_uploading() {
             <Header/>
             <div className='px-0 mx-5 mb-5 imageUploader'>
                 <div className='profile'>
-                    <div className='profilePic'>{ details ? details.firstname ?  "WELCOME " + details.firstname.toUpperCase() : "...loading" : null }</div>
+                    <div className='profilePic'>{ details ? details.firstname ? details.firstname.toUpperCase() : "...loading" : null }</div>
                         {pageNo > 0?
                             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                                 <div>
@@ -328,16 +328,16 @@ function Image_uploading() {
                                 CANCEL
                             </button>
                         }
-                    <h3 className='artistCounter mb-5'>STEP {pageNo + 2}</h3>
-                    <p className='artistCounterMessage mb-5' >
+                    <h3 className='artistCounter mb-3' style={pageNo == 1 ? { marginTop: "-25px" } : {}}>STEP {pageNo + 2}</h3>
+                    <p className='artistCounterMessage mb-3' >
                         {pageNo == 1 ?
-                            <p>
+                            <p style={{ textTransform: "initial" }}>
                                 {imageContent.length > 0 ? imageContent[2].name : "Please choose up to 8 keywords in each section (if your work is applicable for both sections)"}
                                 <br/>
                                 {imageContent.length > 0 ? imageContent[3].name : "Please be sure to keyword for the SPECIFIC IMAGE and not your body of work."}
                             </p>
                             :
-                            imageContent.length > 0 ? imageContent[1].name : "Move and resize the box to select the desired thumbnail, click next when the thumbnail has been selected."
+                            <p style={{ textTransform: "initial" }}>{imageContent.length > 0 ? imageContent[1].name : "Move and resize the box to select the desired thumbnail, click next when the thumbnail has been selected."}</p>
                         }
                          
                     </p>
@@ -352,8 +352,8 @@ function Image_uploading() {
                             <ReactCrop
                                     crop={completedCrop}
                                     onChange={(percentCrop) => setCompletedCrop(percentCrop)}
-                                    minHeight={200}
-                                    minWidth={200}
+                                    minHeight={50}
+                                    minWidth={50}
                                     aspect={1}
                                     >
                                     <img
@@ -381,9 +381,9 @@ function Image_uploading() {
                                 Please be sure to keyword for the SPECIFIC IMAGE and not your body of work.
                             </p>
                         </div> */}
-                        <div className='col-md-6 col-12 px-0 py-5 border-right border-md-0 border-top'>
+                        <div className='col-md-6 col-12 px-0 pb-5 pt-2 border-right border-md-0 border-top'>
                             <div className='row m-0'>
-                                <h4 className='col-12 mb-5'>KEYWORD LISTING</h4>
+                                <h4 className='col-12 mb-3'>KEYWORD LISTING</h4>
                                 {keyword !== null &&
                                     keyword.map((val,ind)=>
                                     <div className='col-xl-4 col-lg-6 col-sm-12 col-12' key={ind}>
@@ -396,9 +396,9 @@ function Image_uploading() {
                                 }
                             </div>
                         </div>
-                        <div className='col-md-6 col-12 px-0 py-5 border-top'>
+                        <div className='col-md-6 col-12 px-0 px-0 pb-5 pt-2 border-top'>
                             <div className='row m-0'>
-                                <h4 className='col-12 mb-5'>KEYWORD LISTING KIDS</h4>
+                                <h4 className='col-12 mb-3'>KEYWORD LISTING KIDS</h4>
                                 {keywordKids !== null &&
                                     keywordKids.map((val,ind)=>
                                     <div className='col-xl-4 col-lg-6 col-sm-12 col-12' key={ind}>

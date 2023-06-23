@@ -52,6 +52,7 @@ function AboutBanners(props) {
   };
   
   useEffect(()=>{
+    console.log(props.banners)
     setBanners(props.banners)
   },[props.banners])
 
@@ -59,13 +60,23 @@ function AboutBanners(props) {
   return (
   <div className='px-xl-5 mx-xl-5 banners'>
     <div className='d-flex flex-column scrollerOn pt-2 mx-5'>
-      <p className='mb-3'><b>ABOUT</b> ({banners.length>0?banners[0].aspectRatio.width+"X"+banners[0].aspectRatio.height:null})</p>
+      <p className='mb-3'><b>SHANNON ABOUT</b> ({banners.length>0?banners[0].aspectRatio.width+"X"+banners[0].aspectRatio.height:null})</p>
       <div className='d-flex mb-4'>
         <div className='artistcardAdmin'>
             <img alt='first' src={(banners.length>0?banners[0].imagePath:"")} className="image"/>
         </div>
         <button onClick={onBtnClick1} className='myBtn align-self-end m-3'>UPLOAD</button>
         <input ref={inputFileRef1} hidden onChange={(e)=>{props.uploadImage(e,banners.length>0?banners[0]._id:"")}} type="file"/>
+      </div>
+    </div>
+    <div className='d-flex flex-column scrollerOn pt-2 mx-5'>
+      <p className='mb-3'><b>KID ABOUT</b> ({banners.length>0?banners[1].aspectRatio.width+"X"+banners[0].aspectRatio.height:null})</p>
+      <div className='d-flex mb-4'>
+        <div className='artistcardAdmin'>
+            <img alt='first' src={(banners.length>0?banners[1].imagePath:"")} className="image"/>
+        </div>
+        <button onClick={onBtnClick1} className='myBtn align-self-end m-3'>UPLOAD</button>
+        <input ref={inputFileRef1} hidden onChange={(e)=>{props.uploadImage(e,banners.length>0?banners[1]._id:"")}} type="file"/>
       </div>
     </div>
   </div>

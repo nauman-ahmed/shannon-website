@@ -38,7 +38,7 @@ function Admin(props) {
 
 
     const populateContacts =()=>{
-        let data = {};
+        let data = {}; 
         getContacts(data).then((res)=>{
             setContacts(res)
         })

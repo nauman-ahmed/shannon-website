@@ -353,6 +353,10 @@ a {
   cursor: pointer;
 }
 
+.detail_card_contact {
+  height: 18.9vh;
+}
+
 .detail_card5_h {
   height: 18.9vh;
 }
@@ -908,12 +912,12 @@ a {
 .talentbutton {
   display: flex;
   margin: 6px 0px 20px;
-  /* width: 120px; */
-  width: auto;
+  width: 100%;
+  /* width: auto; */
   height: 2vw;
   margin-right: 20px;
   /* margin-right: 25px !important; */
-  padding: 0px 1.3vw;
+  /* padding: 0px 1.3vw; */
   border: 1.5px solid #979797;
   border-radius: 20px;
   background-color: #fff;
@@ -923,7 +927,7 @@ a {
   color: #818181;
   text-align: center;
   /* align-self: center; */
-  /* justify-items: center; */
+  justify-content: center;
   align-items: center;
 }
 

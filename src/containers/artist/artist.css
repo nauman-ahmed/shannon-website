@@ -69,15 +69,7 @@
     color: white;
 }
 
-.artistCounterMessage{
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 3vh;
-    font-family: 'Roboto Condensed', sans-serif;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-}
+
 
 ._4cols-v2-admin {
   display: -ms-grid;
@@ -208,13 +200,22 @@
   .imageUploader  .border-right{
       border-right: 2px solid #e7e7e7;
   }
+
+  .artistCounterMessage{
+    
+}
+
   .imageUploader p{
       font-family: "Roboto2";
       text-align: center;
       font-size: 15px;
-      text-transform: uppercase;
       line-height: 30px;
   }
+  .imageUploader .paragraph{
+    font-family: "Roboto2";
+    text-align: center;
+    line-height: 30px;
+}
   .imageUploader h4{
       text-align: center;
   }

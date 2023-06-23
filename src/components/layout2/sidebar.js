@@ -41,7 +41,7 @@ function Sidebar(props) {
                     </h5>
                     <small>ADMINISTRATOR</small>
                 </div>
-            </div>
+            </div> 
             <div className='sidebar_body pl-5 pt-4'>
                 <Link className={'my-2 '+(!activePage || activePage === "dashboard"?"active":"")} to="/admin/dashboard" onClick={()=>{props.setFormNo(0)}}>Dashboard</Link>
                 <Link className={'my-2 '+(activePage === "website_admin"?"active":"")} to="/admin/website_admin">Website Administrator</Link>

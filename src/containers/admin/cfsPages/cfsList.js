@@ -10,9 +10,14 @@ function CFSList(props) {
 
   const dispatch = useDispatch();
 
-  const [contacts,setContacts] = useState(props.contacts)
+  const [contacts,setContacts] = useState()
   const [isLoader,setIsLoader] = useState(false)
   
+  useEffect(()=>{
+    console.log(props.contacts)
+    setContacts(props.contacts)
+  },[props.contacts])
+
   const deleteContactForm = (id) => {
       setIsLoader(true)
 
@@ -39,7 +44,7 @@ function CFSList(props) {
         <Th width="110"></Th>
       </THead>
       <TBody>
-        {contacts.map((item,key)=>(
+        {contacts && contacts.map((item,key)=>(
           <Tr key={key}> 
           <Td>{item.Name}</Td>
           <Td>{item.company}</Td>

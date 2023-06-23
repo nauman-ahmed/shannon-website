@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllContents } from '../../AxiosFunctions/Axiosfunctionality'
+import { addCart } from "../../redux/addToCart";
 
 const images = window.location.origin + "/assets/images";
 
@@ -9,18 +10,38 @@ function Header(props) {
 
 
   const { AddToCart } = useSelector((state) => state);
+  const dispatch = useDispatch();
+  
   const [shannonContent,setShannonContent] = useState([])
 
   const getAllContent = ()=>{
     getAllContents({type: "SHANNON"}).then((res)=>{
         let shannon = res[0].content
-        console.log(shannon[0])
         setShannonContent(shannon)
     })
   }
 
+  const addToCartArtist = (id, firstname) => {
+    dispatch(addCart({ key: id, data: { id: id, Name: firstname } }));
+  };
+
+  const addToCartArtistHandler = (id,title) =>{
+    let key = Object.keys(AddToCart.cartInfo).find(element => element == id)
+    if(key == undefined){
+      addToCartArtist(id, title)
+    }
+  }
+
   useEffect(()=>{
     getAllContent();
+
+    let obj = JSON.parse(localStorage.getItem("addToCart"));
+    if(obj !== null){
+      obj.map((val) => {
+        addToCartArtistHandler(val.id,val.Name)
+      })
+      localStorage.removeItem("addToCart")
+    }
   },[])
 
   useEffect(()=>{
