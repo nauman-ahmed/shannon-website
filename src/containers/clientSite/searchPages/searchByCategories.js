@@ -144,13 +144,7 @@ function Categories(props) {
                     {item.ImageData.length > 0 ? (
                       <>
                         <div className="d-flex">
-                          <h4 className="mt-0 cat_font" style={{display:'flex',whiteSpace:'nowrap',
-                            fontFamily: 'Roboto, sans-serif',
-                            color: '#ce651e',
-                            fontSize: '1vw',
-                            lineHeight: 1,
-                            fontWeight: '500',
-                            textAlign: 'left'}}>
+                          <h4 className="mt-0 cat_font">
                             {
                               item.keyword == '3D Rendering' ? "CGI"
                                 :

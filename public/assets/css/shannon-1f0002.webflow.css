@@ -897,7 +897,14 @@ a {
     color: #373530;
   }
   .cat_font{
-    font-size: 1vw !important;
+    display:'flex';
+    white-space:'nowrap';
+    font-family: 'Roboto, sans-serif';
+    color: '#ce651e';
+    font-size: '1vw';
+    line-height: 1;
+    font-weight: '500';
+    text-align: 'left';
   }
 }
 
@@ -5966,7 +5973,7 @@ column-gap:20px ;
     height: 100% !important;
   }
 
-  .artistcard {
+  .artistcard { 
     height: 50vw !important;
   }
 

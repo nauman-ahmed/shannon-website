@@ -1,42 +1,74 @@
 .parent {
-    display: grid;
-    grid-template-columns: repeat(5, 0.5fr);
-    grid-column-gap:7px;
-    grid-row-gap: 7px;
-  }
-  .parent1 {
-    display: grid;
-    grid-template-columns: repeat(4, 0.5fr);
-    grid-column-gap:7px;
-    grid-row-gap: 7px;
-  }
-  .parent2 {
-    display: grid;
-    grid-template-columns: repeat(6, 0.5fr);
-    grid-column-gap:7px;
-    grid-row-gap: 7px;
-  }
+  display: grid;
+  grid-template-columns: repeat(5, 0.5fr);
+  grid-column-gap:7px;
+  grid-row-gap: 7px;
+}
+.parent1 {
+  display: grid;
+  grid-template-columns: repeat(4, 0.5fr);
+  grid-column-gap:7px;
+  grid-row-gap: 7px;
+}
+.parent2 {
+  display: grid;
+  grid-template-columns: repeat(6, 0.5fr);
+  grid-column-gap:7px;
+  grid-row-gap: 7px;
+}
 .artist{
-    font-family: "Roboto2";
+  font-family: "Roboto2";
 }
 
 .artist>.profile{
-    margin-top: -30px;
-    display: flex;
-    flex-direction: column;
+  margin-top: -30px;
+  display: flex;
+  flex-direction: column;
 }
-.artist>.profile>.profilePic{
-    width: 250px;
-    height: 50px;
-    background-color: #D16A27;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 3vh;
-    font-family: 'Roboto Condensed', sans-serif;
+.artist>.desc{
+  padding: 2% 5%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: max-content;
+}
+.artist>.desc>.inner{
+  width: 75%;
+  font-size: 1.4vw;
+  margin: auto;
+  background-color: antiquewhite
+}
+.artist>.desc>.inner>.inner_text{
+  padding: 2% 5%;
+}
+.artist>.desc>.inner>.buttons_div{
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  margin: 5% auto;
+}
 
+.artist>.desc>.inner>.buttons_div>.buttons{
+  padding: 2% 10%;
+  border-radius: 50px;
+  background-color: #D16A27;
+  display: flex;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.artist>.profile>.profilePic{
+  width: 250px;
+  height: 50px;
+  background-color: #D16A27;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 3vh;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .imageUploader>.profile{
@@ -57,16 +89,16 @@
 }
 
 .artistCounter{
-    margin-left: auto;
-    margin-right: auto;
-    width: 100px;
-    height: 100px;
-    background-color: #D16A27;
-    border-radius: 50px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    color: white;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+  height: 100px;
+  background-color: #D16A27;
+  border-radius: 50px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  color: white;
 }
 
 
@@ -86,40 +118,39 @@
 
 
 .artistcardAdmin>.image{
-    object-fit: cover;
-    height: 100%;
+  object-fit: cover;
+  height: 100%;
 }
 .artistcardAdmin.addImageBtn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .artistcardAdmin.addImageBtn:hover{
-    background-color: #fafafa;
-    cursor: pointer;
+  background-color: #fafafa;
+  cursor: pointer;
 }
 .artistcardAdmin.addImageBtn>.addImage{
-    width: 20% !important;
+  width: 20% !important;
 }
 .imageUploader{
-    font-family: "Robotocondensed";
+  font-family: "Robotocondensed";
 }
 .imageUploader .btn1{
-    background-color: transparent;
-    margin: 5px 10px;
-    
+  background-color: transparent;
+  margin: 5px 10px;
 }
 .imageUploader .btn1 > img{
-    height: 15px;
-    margin-top: -5px;
+  height: 15px;
+  margin-top: -5px;
 }
 .imageUploader .textField{
-    border: 2px solid black;
-    background-color: transparent;
-    border-radius: 5px;
-    padding: 8px 15px;
-    width: 100%;
-    max-width: 250px;
+  border: 2px solid black;
+  background-color: transparent;
+  border-radius: 5px;
+  padding: 8px 15px;
+  width: 100%;
+  max-width: 250px;
 }
 .imageUploader .btn1.dark{
     background-color: #D16A27;
@@ -204,18 +235,17 @@
   .artistCounterMessage{
     
 }
-
-  .imageUploader p{
-      font-family: "Roboto2";
-      text-align: center;
-      font-size: 15px;
-      line-height: 30px;
-  }
-  .imageUploader .paragraph{
+.imageUploader p{
     font-family: "Roboto2";
     text-align: center;
+    font-size: 15px;
     line-height: 30px;
 }
-  .imageUploader h4{
-      text-align: center;
-  }
+.imageUploader .paragraph{
+  font-family: "Roboto2";
+  text-align: center;
+  line-height: 30px;
+}
+.imageUploader h4{
+    text-align: center;
+}

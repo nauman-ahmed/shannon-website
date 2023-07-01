@@ -220,7 +220,7 @@ const images = window.location.origin + "/assets/images";
                 )
               )
             ) : (
-              tempArtist.map((item, key) => (
+              tempArtist.map((item, key) => ( 
                 <>
                   {item.ImageData.length > 0 ? (
                     <>

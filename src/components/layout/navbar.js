@@ -30,7 +30,7 @@ function Navbar(props) {
               <a href="http://13.59.180.10/#/" target="_blank" className={"filterhomelink v2 " + (props.aciveBtn === "kidshannon" ? "w--current" : "")} onClick={()=>localStorageAddToCart()}>KIDSHANNON</a>
               <Link to="/photography" className={"filterhomelink v2 " + (props.aciveBtn === "photography" ? "w--current" : "")}>PHOTOGRAPHY</Link>
               <Link to="/bipoc" className={"filterhomelink v2 " + (props.aciveBtn === "bipoc" ? "w--current" : "")}>BIPOC</Link>
-              <Link to="/black" className={"filterhomelink v2 " + (props.aciveBtn === "black" ? "w--current" : "")}>BLACH</Link>
+              <Link to="/black" className={"filterhomelink v2 " + (props.aciveBtn === "black" ? "w--current" : "")}>BLACK</Link>
               <Link to="/cgi" className={"filterhomelink v2 " + (props.aciveBtn === "cgi" ? "w--current" : "")}>CGI</Link>
               <Link to="/medical" className={"filterhomelink v2 " + (props.aciveBtn === "medical" ? "w--current" : "")}>MEDICAL</Link>
               <Link to="/motion" className={"filterhomelink v2 " + (props.aciveBtn === "motion" ? "w--current" : "")}>MOTION</Link>

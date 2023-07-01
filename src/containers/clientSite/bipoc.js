@@ -318,9 +318,9 @@ function Bipoc() {
       </div>
       <div className="bipoc2cols category w-100 h-100" style={{ position: "relative", marginTop: "10vh" }}>
         <div className="categoryinfo">
+          <Link style={{ textDecoration: "none" }} to={"/black"}><h2 className="bipocTitle" >BLACK ARTISTS</h2></Link>
           <div className="w-dyn-list">
             <div role="list" className="collection-list-4 w-dyn-items">
-            <Link style={{ textDecoration: "none" }} to={"/black"}><h2 className="bipocTitle" >BLACK ARTISTS</h2></Link>
               {blackArtist ?
                 blackArtist.map((val, ind) =>
                 val.ImageData.length > 0 ? (<div role="listitem" className="w-dyn-item">
