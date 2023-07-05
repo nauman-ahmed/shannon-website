@@ -36,6 +36,7 @@ function Artist() {
             }
     
             let response = await artistImageCreate(imageCreate)
+            console.log(response)
             if(response.msg == "Add Artist Image"){
                 dispatch(await storeUploadedImages(response.data.mainImage))
             }
