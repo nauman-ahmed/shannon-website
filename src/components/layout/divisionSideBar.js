@@ -3,12 +3,14 @@ import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom'
 import { getCategoryTypeOne, getArtistCategoryTypeOne } from '../../AxiosFunctions/Axiosfunctionality';
-import { sortAlphaOrder } from '../../UserServices/Services'
+import { sortAlphaOrder, sortAlphaOrderKeyword } from '../../UserServices/Services'
+import { useHistory } from 'react-router-dom'
 
 function DivisionSideBar(props) {
 
   const { pages } = useParams()
   const { search } = useParams()
+  const history = useHistory();
 
   const dispatch = useDispatch();
   // const  {keywordReducer} = useSelector(state=>state);
@@ -57,8 +59,9 @@ function DivisionSideBar(props) {
         }
       )
     }
+    console.log(history, history.length,history.location.state?.from)
     getCategoryTypeOne().then(res => { 
-      setKeywordReducer(res)})
+      setKeywordReducer(sortAlphaOrderKeyword(res!==undefined?res.length>0?res:[]:[]))})
   },[])
 
   return (

@@ -23,23 +23,26 @@ function Artist() {
     const [imageContent,setImageContent] = useState([])
 
     const changePageHandler = async (e) => {
-        console.log(e.target.files)
-        setShowLoader(true)
-        let storageData = localStorage.getItem("authorization")
-        let details = decodeToken(storageData)
-
-        const imageCreate = new FormData()
-        imageCreate.append('_id',details._id)
-
-        for(let i=0;i<e.target.files.length;i++){
-            imageCreate.append('artistImage',e.target.files[i])
+        try{
+            setShowLoader(true)
+            let storageData = localStorage.getItem("authorization")
+            let details = decodeToken(storageData)
+    
+            const imageCreate = new FormData()
+            imageCreate.append('_id',details._id)
+    
+            for(let i=0;i<e.target.files.length;i++){
+                imageCreate.append('artistImage',e.target.files[i])
+            }
+    
+            let response = await artistImageCreate(imageCreate)
+            if(response.msg == "Add Artist Image"){
+                dispatch(await storeUploadedImages(response.data.mainImage))
+            }
+            setShowLoader(false)
+        }catch (error) {
+            console.log('Causing Error in Uploading',error)            
         }
-
-        let response = await artistImageCreate(imageCreate)
-        if(response.msg == "Add Artist Image"){
-            dispatch(await storeUploadedImages(response.data.mainImage))
-        }
-        setShowLoader(false)
     }
 
     const getAllContent = ()=>{

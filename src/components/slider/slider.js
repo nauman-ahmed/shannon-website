@@ -29,7 +29,10 @@ export const SliderShow=  (props) => {
 
       if(prev){
         let calc = image.clientHeight / 2
+        // let calc = 50
 
+        prev.style.height = image.clientHeight.toString()+"px"
+        next.style.height = image.clientHeight.toString()+"px"
         prev.style.top = calc.toString()+"px"
         next.style.top = calc.toString()+"px"
   
@@ -78,25 +81,25 @@ export const SliderShow=  (props) => {
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
 
-  return ( <img
+  return ( <div className={className} ><img
     src={images + "/right.png"}
     loading="lazy"
     alt=""
-    className={className}
+    style={{position:"absolute", top:"50px"}}
   />
-
+</div>
   );
 }
 
 function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
-  return ( <img
+  return ( <div className={className} ><img
     src={images + "/left.png"}
     loading="lazy"
     alt=""
-    className={className}
-  />
-
+    style={{position:"absolute", top:"50px"}}
+/>
+</div>
   );
 }
 

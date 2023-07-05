@@ -56,6 +56,11 @@ export const sortAlphaOrder=(Artist)=>{
     return tempArtist;
 }
 
+export const sortAlphaOrderKeyword=(Artist)=>{
+    let arrayForSort = [...Artist]
+    arrayForSort = arrayForSort.sort((a, b) => a.keyword.normalize().localeCompare(b.keyword.normalize()));
+    return arrayForSort;
+}
 
 export const setImageRoute=(route)=>{
     let newRoute = ''

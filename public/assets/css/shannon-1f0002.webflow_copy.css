@@ -4431,6 +4431,11 @@ column-gap:20px ;
 
 }
 
+.right-filter-button{
+  justify-content:space-between;
+  width: 19.2vw !important;
+}
+
 .form-block-2.divisions {
   margin-bottom: 30px;
   -webkit-align-self: flex-end;
@@ -10936,6 +10941,14 @@ element.style {
   position: absolute;
 }
 
+.rightside {
+  /* display: flex; */
+  top: 2rem;
+  position: sticky;
+  /* max-height: 100vh; */
+  /* overflow-y: auto; */
+}
+
 @media screen and (max-width: 1300px) {
 
   .detail_card3_h {
@@ -10968,6 +10981,10 @@ element.style {
     -webkit-align-self: flex-start;
     -ms-flex-item-align: start;
     align-self: flex-start;
+  }
+
+  .right-filter-button{
+    width: 20vw !important;
   }
 
   .form-2 {
@@ -12312,7 +12329,7 @@ element.style {
     font-size: 2vw;
   }
   
-  .detail_card3 {
+  .detail_card3 { 
     grid-template-columns: repeat(2,1fr);
   }
 

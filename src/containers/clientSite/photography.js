@@ -62,13 +62,15 @@ function Photography(props) {
 
   return (
     <>
-      <div class="sortingcont right mt-0 me-0">
-        <a class={filterHighlighted == 1 ? "filter-button sort-active w-inline-block  mt-0" : "filter-button w-inline-block  mt-0"} onClick={() => filterChange("Default")}>
-          <div >DEFAULT</div>
-        </a>
-        <a class={filterHighlighted == 2 ? "filter-button sort-active w-inline-block  mt-0" : "filter-button w-inline-block  mt-0"} onClick={() => filterChange("A-Z")}>
-          <div >ALPHABETICAL A-Z</div>
-        </a>
+      <div class="sortingcont right pt-0  me-0 ">
+        <div className="d-flex right-filter-button">
+              <a class={filterHighlighted == 1 ? "filter-button sort-active w-inline-block  mt-0" : "filter-button w-inline-block  mt-0"} style={{ marginLeft: "0px" }} onClick={()=>filterChange("Default")}>
+                <div >DEFAULT</div>
+              </a>
+              <a class={filterHighlighted == 2 ? "filter-button sort-active mt-0 me-0" : "filter-button mt-0 me-0"} onClick={()=>filterChange("A-Z")}>
+                <div >ALPHABETICAL A-Z</div>
+              </a>
+        </div>
       </div>
       <div className="_2cols2_" style={{ clear: "both" }}>
         {props.children}

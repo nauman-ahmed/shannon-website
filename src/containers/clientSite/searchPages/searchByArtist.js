@@ -20,6 +20,7 @@ const images = window.location.origin + "/assets/images";
 
 function SearchByArtist(props) {
 
+  const { pages } = useParams()
   const [keyword, setKeyword] = useState(0);
   const [tab, setTab] = useState(0);
   const [fullscreen, setFullscreen] = useState({ screen: false, route: null });
@@ -52,6 +53,7 @@ function SearchByArtist(props) {
   }
 
   useEffect(() => {
+    console.log(search,pages)
     window.addEventListener('resize', handleWindowResize);
     return () => {
       window.removeEventListener('resize', handleWindowResize);
