@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { getPhotography } from '../../AxiosFunctions/Axiosfunctionality'
 import loading from '../../assets/loading.gif';
 import { IMAGE_ROUTE } from '../../AxiosFunctions/Axiosfunctionality';
+import { useHistory } from 'react-router-dom'
 
 const images = window.location.origin + "/assets/images"
 
@@ -12,6 +13,7 @@ function Photography(props) {
   const [dataOriginal, setDataOriginal] = useState(null)
   const [tempArtist, setTempArtist] = useState([]);
   const [filterHighlighted,setFilterHighlighted]= useState(null);
+  const {location} = useHistory();
 
   const filterChange = (filter) => {
 
@@ -55,6 +57,7 @@ function Photography(props) {
   }
 
   useEffect(() => {
+    localStorage.setItem("Category","Photography")
     updateTempArtist(props.searchArtist)
   }, [props.searchArtist]);
 

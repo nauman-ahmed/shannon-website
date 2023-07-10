@@ -53,7 +53,6 @@ function SearchByArtist(props) {
   }
 
   useEffect(() => {
-    console.log(search,pages)
     window.addEventListener('resize', handleWindowResize);
     return () => {
       window.removeEventListener('resize', handleWindowResize);
@@ -100,6 +99,9 @@ function SearchByArtist(props) {
   }
 
   const getUserData = async () => {
+    let localPrevCate = localStorage.getItem("Category")
+    console.log(localPrevCate)
+
     let tempData = await artistImageDetailedSliceData({ "artistId": search })
 
     dataLocalArtist(
@@ -127,7 +129,6 @@ function SearchByArtist(props) {
       currentSelectedSlider.style.boxShadow = "0 2px 10px #141c2a"
       if(prev){
         prev.addEventListener("click", (e) => {
-          console.log("LEFT BUTTON CLICKED",myStateRef.current ,data1[search].pictureTitle.length)
           
           if(myStateRef.current == 0 ){
             setSliderIndexHandler(data1[search].pictureTitle.length-1,myStateRef.current,true)
@@ -139,7 +140,6 @@ function SearchByArtist(props) {
       
       if(next){
         next.addEventListener("click", (e) => {
-          console.log("RIGHT BUTTON CLICKED",myStateRef ,data1[search].pictureTitle.length)
   
           if(myStateRef.current !== data1[search].pictureTitle.length-1){
             setSliderIndexHandler(myStateRef.current+1,myStateRef.current,true)
@@ -155,8 +155,6 @@ function SearchByArtist(props) {
   const setSliderIndexHandler = (keys, oldValue = null, clickedSliderButton = false) => {
     if(clickedSliderButton){
       
-      console.log("FUNCTION",keys, oldValue)
-
       let previousSelectedSlider = document.getElementById("firstSlider"+oldValue);
       let currentSelectedSlider = document.getElementById("firstSlider"+keys);
 
@@ -584,7 +582,7 @@ function SearchByArtist(props) {
                   id="flexSwitchCheckDefault" 
                   style={{cursor:"pointer",accentColor:"#BC6127"}}
                   checked={isCheckboxChecked}
-                  onClick={()=> { setIsCheckboxChecked(!isCheckboxChecked); console.log("CLICKED")}}
+                  onClick={()=> { setIsCheckboxChecked(!isCheckboxChecked);}}
                   />
                 <label class="form-check-label" for="flexSwitchCheckDefault" style={{paddingTop:"5px"}}>Do not show this again</label>
               </div>

@@ -141,7 +141,10 @@ function SearchByArtist(props) {
   }
 
   const getUserData = async () => {
-    let tempData = await artistImageDetailedSliceData({ "artistId": search })
+    let localPrevCate = localStorage.getItem("Category")
+    console.log(localPrevCate)
+
+    let tempData = await artistImageDetailedSliceData({ "artistId": search, "category": localPrevCate })
 
     dataLocalArtist(
       tempData.activeArtist[search].id,
@@ -180,7 +183,6 @@ function SearchByArtist(props) {
       
       if(next){
         next.addEventListener("click", (e) => {
-          console.log("RIGHT BUTTON CLICKED",myStateRef ,data1[search].pictureTitle.length)
   
           if(myStateRef.current !== data1[search].pictureTitle.length-1){
             setSliderIndexHandler(myStateRef.current+1,myStateRef.current,true)
@@ -196,7 +198,6 @@ function SearchByArtist(props) {
   const setSliderIndexHandler = (keys, oldValue = null, clickedSliderButton = false) => {
     if(clickedSliderButton){
       
-      console.log("FUNCTION",keys, oldValue)
 
       let previousSelectedSlider = document.getElementById("firstSlider"+oldValue);
       let currentSelectedSlider = document.getElementById("firstSlider"+keys);

@@ -21,8 +21,9 @@ export const SliderShow=  (props) => {
     const [slider,setSlider] = useState(null) 
 
     const setSLiderHeight = () => {
-      var clientHeight = document.getElementsByClassName('slick-current')[0].clientHeight;
+      var clientHeight = document.getElementsByClassName('slick-current')[0].clientHeight;    
       var image = document.getElementById(props.sliderIndex? 'sliderImage'+props.sliderIndex : 'sliderImage0');
+      var sliderHeight = document.getElementsByClassName('slider')[0];    
 
       var prev = document.getElementsByClassName('slick-prev')[0];
       var next = document.getElementsByClassName('slick-next')[0];
@@ -30,12 +31,13 @@ export const SliderShow=  (props) => {
       if(prev){
         let calc = image.clientHeight / 2
         // let calc = 50
-
         prev.style.height = image.clientHeight.toString()+"px"
         next.style.height = image.clientHeight.toString()+"px"
         prev.style.top = calc.toString()+"px"
         next.style.top = calc.toString()+"px"
-  
+ 
+        sliderHeight.style.height = (clientHeight - 24).toString()+"px"
+
         var details = document.getElementById('detailBelowSlider');
         if(calc == 0){
           setTimeout(setSLiderHeight, 200);

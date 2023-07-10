@@ -55,6 +55,7 @@ function CGI(props) {
 }
 
   useEffect(() => {
+    localStorage.setItem("Category","3D Rendering")
     updateTempArtist(props.searchArtist)
   }, [props.searchArtist]);
 

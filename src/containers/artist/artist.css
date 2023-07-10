@@ -40,22 +40,28 @@
 }
 .artist>.desc>.inner>.inner_text{
   padding: 2% 5%;
+  font-family: "Roboto2";
+  text-align: center;
+  font-size: 1vw;
+  line-height: 30px;
 }
 .artist>.desc>.inner>.buttons_div{
-  width: 90%;
+  width: 50%;
   display: flex;
-  justify-content: space-between;
-  margin: 5% auto;
+  justify-content: space-evenly;
+  margin: 0% auto 2% auto;
 }
 
 .artist>.desc>.inner>.buttons_div>.buttons{
-  padding: 2% 10%;
+  padding: 2% 5%;
   border-radius: 50px;
   background-color: #D16A27;
   display: flex;
   color: white;
   cursor: pointer;
   text-decoration: none;
+  font-family: "Roboto2";
+  font-size: 1vw;
 }
 
 .artist>.profile>.profilePic{
@@ -67,7 +73,7 @@
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 3vh;
+  font-size: 1.5vw;
   font-family: 'Roboto Condensed', sans-serif;
 }
 
@@ -238,7 +244,7 @@
 .imageUploader p{
     font-family: "Roboto2";
     text-align: center;
-    font-size: 15px;
+    font-size: 1vw;
     line-height: 30px;
 }
 .imageUploader .paragraph{
