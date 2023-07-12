@@ -39,10 +39,31 @@ function ArtistsList(props) {
     }
     
     useEffect(()=>{
+
+        console.log(typeOneArtist,similarArtist)
+        if(props.similarArtist){
+            if(similarArtist){
+                let temp = [...typeOneArtist]
+                let counter = 0
+                for (let index = 0; index < typeOneArtist.length; index++) {
+                    if(similarArtist.similarArtistCollection.findIndex((item1)=> item1 == typeOneArtist[index]._id) !== -1){
+                        temp.splice(counter,0,typeOneArtist[index])
+                        console.log("CHALA",temp.length)
+                        temp.splice(index+1,1)
+                        console.log("CHALA",temp.length)
+                        counter += 1
+                    }
+                }
+                updateCharacters(temp)
+            }
+        }
+
+    },[similarArtist])
+
+    useEffect(()=>{
         updateList()
         if(props.similarArtist){
             similarArtistGetAll({_id:props.selectedArtist._id}).then((res) => {
-                console.log(res)
                 setSimilarArtist(res.data[0])
             })
         }
@@ -61,9 +82,15 @@ function ArtistsList(props) {
                 typeOther.push(item);
             })
 
-            setTypeOneArtist(typeOther)
-            setTypeTwoArtist(typeKid)
-            updateCharacters(typeOther)
+            if(props.similarArtist){
+                setTypeOneArtist(typeOther.sort((a, b) => a.lastname.normalize().localeCompare(b.lastname.normalize())))
+                setTypeTwoArtist(typeKid.sort((a, b) => a.lastname.normalize().localeCompare(b.lastname.normalize())))
+                updateCharacters(typeOther.sort((a, b) => a.lastname.normalize().localeCompare(b.lastname.normalize())))
+            }else{
+                setTypeOneArtist(typeOther)
+                setTypeTwoArtist(typeKid)
+                updateCharacters(typeOther)
+            }
 
         }
     }
@@ -101,7 +128,6 @@ function ArtistsList(props) {
         }).then(res=>{
             dispatch(updateOpen(true))
             if(res.msg=="Recieved"){
-                console.log(res.data)
                 setSimilarArtist(res.data[0])
                 dispatch(updateMessage("Successfully Updated"));
             }else{
@@ -182,7 +208,6 @@ function ArtistsList(props) {
                             <Tr key={key} provided={provided}>
                                 <Td>{item.lastname} {item.firstname}</Td>
                                 {/* <Td><p style={item.status ===1?{color:"green"}:{color:"red"}}>{item.status ===1?"Active":"Inactive"}</p> </Td> */}
-                                {console.log(similarArtist)}
                                 <Td className={item.status ===1?"text-success":"text-danger"}>{item.status ===1?"Active":"Inactive"}</Td>
                                 {
                                     similarArtist ? similarArtist.similarArtistCollection ? 

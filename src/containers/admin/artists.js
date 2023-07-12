@@ -79,9 +79,9 @@ function Artists(props) {
         setSearch(e.target.value);
         const searchvalue = e.target.value.toLowerCase();
         setTempArtist(props.artistUsers.filter(function (element) {
-            return element.firstname.toLowerCase().includes(searchvalue) || (element.status === 1 && searchvalue.includes("active")) || (element.status === 0 && searchvalue.includes("inactive"));
+            return element.firstname.toLowerCase().includes(searchvalue) || element.lastname.toLowerCase().includes(searchvalue) || (element.status === 1 && searchvalue.includes("active")) || (element.status === 0 && searchvalue.includes("inactive"));
         }));
-
+ 
     }
     
     const handleChangeText = (text)=>{
