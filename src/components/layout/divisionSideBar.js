@@ -79,7 +79,7 @@ function DivisionSideBar(props) {
       keywordReducer?.length > 0 ? keywordReducer?.map((item,key)=>(
         <div key={key}>
           {item.type === 1?(<Link to={"/categories/"+item._id}  className={"divisionslink"+(search === item._id?" w--current":"")}><span className="sidebarlink">{item.keyword.toUpperCase()}<br /></span></Link>):""}
-        </div>
+        </div> 
      )):"" 
       : 
       <div className="allartist v2">
