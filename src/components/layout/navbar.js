@@ -19,7 +19,7 @@ function Navbar(props) {
       localStorage.removeItem('addToCart')
     }
   }
-
+ 
   return (
     <div>
       <div>

@@ -270,7 +270,6 @@ function Contact() {
 
   return (
     <>
-      {console.log("CHALA",AddToCart?.cartInfo,JSON.parse(localStorage.getItem("addToCart")))}
       <div className="row mx-0 pr-0 mt-0 pt-0" style={{
         maxWidth: "100%",
       }}>

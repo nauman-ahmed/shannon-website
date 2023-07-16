@@ -180,7 +180,7 @@ function SearchByArtist(props) {
           }
         })
       }
-      
+       
       if(next){
         next.addEventListener("click", (e) => {
   
