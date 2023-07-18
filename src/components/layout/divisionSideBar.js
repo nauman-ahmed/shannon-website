@@ -78,7 +78,7 @@ function DivisionSideBar(props) {
       {pages == "categories"? 
       keywordReducer?.length > 0 ? keywordReducer?.map((item,key)=>(
         <div key={key}>
-          {item.type === 1?(<Link to={"/categories/"+item._id}  className={"divisionslink"+(search === item._id?" w--current":"")}><span className="sidebarlink">{item.keyword.toUpperCase()}<br /></span></Link>):""}
+          {item.type === 1?(<Link to={"/categories/"+item._id}  onClick={()=>{localStorage.setItem("Category",item.keyword == '3D Rendering' ? "CGI" : item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1) )}} className={"divisionslink"+(search === item._id?" w--current":"")}><span className="sidebarlink">{item.keyword.toUpperCase()}<br /></span></Link>):""}
         </div> 
      )):"" 
       : 
