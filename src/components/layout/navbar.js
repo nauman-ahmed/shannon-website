@@ -20,7 +20,7 @@ function Navbar(props) {
     }
   }
  
-  return (
+  return (  
     <div>
       <div>
         <div className="div-block-11 w-100 ">

@@ -55,7 +55,7 @@ function MOTION(props) {
 }
 
   useEffect(() => {
-    localStorage.setItem("Category","3D Rendering")
+    localStorage.setItem("Category","motion")
     updateTempArtist(props.searchArtist)
   }, [props.searchArtist]);
 

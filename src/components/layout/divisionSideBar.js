@@ -78,18 +78,18 @@ function DivisionSideBar(props) {
       {pages == "categories"? 
       keywordReducer?.length > 0 ? keywordReducer?.map((item,key)=>(
         <div key={key}>
-          {item.type === 1?(<Link to={"/categories/"+item._id}  onClick={()=>{localStorage.setItem("Category",item.keyword == '3D Rendering' ? "CGI" : item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1) )}} className={"divisionslink"+(search === item._id?" w--current":"")}><span className="sidebarlink">{item.keyword.toUpperCase()}<br /></span></Link>):""}
+          {item.type === 1?(<Link to={"/categories/"+item._id}  onClick={()=>{localStorage.setItem("Category",item.keyword == '3D Rendering' ? "3D Rendering" : item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1) )}} className={"divisionslink"+(search === item._id?" w--current":"")}><span className="sidebarlink">{item.keyword.toUpperCase()}<br /></span></Link>):""}
         </div> 
      )):"" 
       : 
       <div className="allartist v2">
         <Link to="/illustration-artists" className={"divisionslink"+(props.activeBtn === "illustration-artists" || localStorage.getItem("Category") == "none"?" w--current":"")}><span className="sidebarlink">ILLUSTRATION<br /></span></Link>
         <Link to="/bipoc" className={"divisionslink"+(props.activeBtn === "bipoc"?" w--current":"")}><span className="sidebarlink">BIPOC<br /></span></Link>
-        <Link to="/cgi" className={"divisionslink"+(props.activeBtn === "cgi" || localStorage.getItem("Category") == "3D Rendering" ?" w--current":"")}><span className="sidebarlink">CGI</span></Link>
+        <Link to="/cgi" className={"divisionslink"+(props.activeBtn === "cgi" || localStorage.getItem("Category") == "cgi" ?" w--current":"")}><span className="sidebarlink">CGI</span></Link>
         <span className="sidebarlink"><br /></span>
         <span className="sidebarlink">KIDSHANNON<br /></span>
         <Link to="/medical" className={"divisionslink"+(props.activeBtn === "medical" || localStorage.getItem("Category") == "Medical" ?" w--current":"")}><span className="sidebarlink">MEDICAL<br /></span></Link>
-        <Link to="/motion" className={"divisionslink"+(props.activeBtn === "motion" || localStorage.getItem("Category") == "3D Rendering" ?" w--current":"")}><span className="sidebarlink">MOTION</span></Link>
+        <Link to="/motion" className={"divisionslink"+(props.activeBtn === "motion" || localStorage.getItem("Category") == "motion" ? " w--current":"")}><span className="sidebarlink">MOTION</span></Link>
         <br /><br /><br /><br />
        {pages == "categories" && keywordReducer?.length > 0 ? keywordReducer?.map((item,key)=>(
           <div key={key}>
