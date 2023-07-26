@@ -47,6 +47,8 @@ function BlackArtist(props) {
     }
   }, []);
 
+  useEffect(()=>{},[window])
+  
   useEffect(() => {
 
     getBipocBlack().then((res) => {
@@ -57,13 +59,13 @@ function BlackArtist(props) {
 
   return (
     <div>
-      {console.log(bannerImages.bipocBannerData)}
+      {console.log("NAUMAN",window.innerWidth)}
     <div className="bipoc2cols category w-100 h-100" style={{ position: "relative", marginTop: "10vh" }}>
       <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879ea-4bf2d022"
                     to="/bipoc"
                     className="banner _1 v2 w-inline-block-banner2 "
-                    style={{ gridTemplateColumns: "6vw 1fr" }}
+                    style={window.innerWidth < 479 ? { gridTemplateColumns: "13vw 1fr" } : { gridTemplateColumns: "6vw 1fr" }}
                   >
                     <div 
                       className="bannerletters _1 v2"
@@ -85,6 +87,7 @@ function BlackArtist(props) {
                             bannerImages.bipocBannerData[1].imagePath 
                             ) +
                           ")",
+                          marginLeft: window.innerWidth < 479 ? "5px" : "0px"
                         // height: "100%",
                       }:{}}
               

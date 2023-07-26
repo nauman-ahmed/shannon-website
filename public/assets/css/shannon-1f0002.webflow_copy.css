@@ -949,17 +949,20 @@ a {
 }
 
 .talentbuttonArtistSearch {
-  margin: 10px 0px 10px;
+  /* background-color: #fff !important; */
+  display: flex;
+  /* height: 2vw; */
+  margin: 6px 0px 20px;
   width: auto;
   margin-right: 25px;
   /* margin-right: 25px !important; */
   padding-top: 1.1vh;
   padding-bottom: 1.1vh;
-  border: 2px solid #000;
-  border-radius: 5px;
-  background-color: #000;
+  border: 1.5px solid #979797;
+  border-radius: 20px;
+  background-color: #fff;
   font-family: 'Roboto Condensed', sans-serif;
-  color: #fff;
+  color: #818181;
   font-size: 11px !important;
   font-weight: 400;
   text-align: center;
@@ -11226,6 +11229,11 @@ element.style {
 
 @media screen and (max-width: 576px) {
   
+  .right-filter-button{
+    width: 50vw !important;
+    justify-content: center;
+  }
+
   .container {
     display: -webkit-box;
     display: -webkit-flex;

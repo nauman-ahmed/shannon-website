@@ -293,9 +293,9 @@ function SearchByArtist(props) {
   return (
     <div>
       {data1 !== null ? 
-        <div className="d-flex" style={windowSize.innerWidth < 479 ? { justifyContent: "space-around" } : { justifyContent: "space-between", marginTop: "-10px" }} > 
+        <div className={windowSize.innerWidth < 479 ? "" : "d-flex"} style={windowSize.innerWidth < 479 ? { marginLeft: "8%" } : { justifyContent: "space-between", marginTop: "-10px" }} > 
             <h2 className="h2talent">{data1[search].title}</h2> 
-            <div className="d-flex" style={windowSize.innerWidth < 479 ? { justifyContent: "space-around", width: "20%" } :  { justifyContent: "space-between", width: "20%" }}>
+            <div className="d-flex" style={windowSize.innerWidth < 479 ? { } :  { justifyContent: "space-between", width: "20%" }}>
                 <Link
                   to="/contact"
                   className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton mr-3"}
@@ -306,7 +306,7 @@ function SearchByArtist(props) {
                 <Link
                   data-w-id="e04f643e-f302-16e2-74ee-4bc7e85391d8"
                   to="#"
-                  className="talentbutton hide "
+                  className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearch  col-lg-2 col-md-3 mr-1" : "talentbutton mr-3"}
                   onClick={() => addToCartArtistHandler(data1[search].id, data1[search].title)}
                   style={{ marginRight: "0px" }}
                 >

@@ -41,6 +41,8 @@ function LatinoArtist(props) {
     }
   }, []);
 
+  useEffect(()=>{},[window.innerWidth])
+
   useEffect(() => {
 
     getBipocLatino().then((res) => {
@@ -56,7 +58,7 @@ function LatinoArtist(props) {
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879ea-4bf2d022"
                     to="/bipoc"
                     className="banner _1 v2 w-inline-block-banner2 "
-                    style={{ gridTemplateColumns: "6vw 1fr" }}
+                    style={window.innerWidth < 479 ? { gridTemplateColumns: "13vw 1fr" } : { gridTemplateColumns: "6vw 1fr" }}
                   >
                     <div 
                       className="bannerletters _1 v2"
@@ -78,6 +80,7 @@ function LatinoArtist(props) {
                             bannerImages.bipocBannerData[3].imagePath 
                             ) +
                           ")",
+                          marginLeft: window.innerWidth < 479 ? "5px" : "0px"
                         // height: "100%",
                       }:{}}
                     ></div>
