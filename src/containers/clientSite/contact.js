@@ -50,10 +50,16 @@ function Contact() {
   const [deletedImages,setDeletedImages]= useState([]);
   const [tempArtist,setTempArtist]= useState([]);
   const [filterHighlighted,setFilterHighlighted]= useState(null);
+  const [windowSize, setWindowSize] = useState(getWindowSize());
 
   const { AddToCart } = useSelector((state) => state);
   const { artistImageDataSlice } = useSelector((state) => state);
 
+
+  function getWindowSize() {
+    const { innerWidth, innerHeight } = window
+    return { innerWidth, innerHeight };
+  }
 
   const filterChange= (filter) => {
 
@@ -179,6 +185,19 @@ function Contact() {
     dispatch(updateMessage("Add Artist in Cart"));
   };
 
+  function handleWindowResize() {
+    setWindowSize(getWindowSize());
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize',handleWindowResize);
+    
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+      window.removeEventListener('scroll', function(){});
+    };
+  }, []);
+
   useEffect(() => {
     
     if(AddToCart.cartInfo.getAnEstimate){
@@ -270,10 +289,11 @@ function Contact() {
 
   return (
     <>
+    {console.log("CONTACT",windowSize.innerWidth)}
       <div className="row mx-0 pr-0 mt-0 pt-0" style={{
         maxWidth: "100%",
       }}>
-        <div className=" pl-2 left_content-contact contact_w"
+        <div className="pl-2 left_content-contact contact_w"
           style={{ paddingRight: "0.8vw" }}
         >
           <div >
@@ -282,7 +302,7 @@ function Contact() {
               <div className="col">
                 <div
                   id="w-node-_0fb692da-7bfd-42b2-746a-f1ed5ebdb01b-85f2d07d"
-                  className="div-block-2 " style={{ paddingTop: '5vh' }}>
+                  className="div-block-2 " style={{ paddingTop: '2vw' }}>
                   <div className="form-block w-form">
                     <div
                       id="email-form"
@@ -573,7 +593,7 @@ function Contact() {
 
           </div> 
         </div>
-        <div className="right_content mt-0 mx-0 contact_w"
+        <div className="right_content_contact mt-0 mx-0 contact_w"
           style={{ paddingTop: "24px", paddingRight: "0", paddingLef: "1vw" }}>
           <h2 className="contactLabel hide">MY LIST</h2>
           <p className=" hide">Selected favorites from portfolio pages and/or below</p>
@@ -617,7 +637,7 @@ function Contact() {
                   dots: false,
                   infinite: false,
                   speed: 500,
-                  slidesToShow: 5,
+                  slidesToShow: windowSize.innerWidth < 479 ? 3 : 5,
                   slidesToScroll: 1,
                   nextArrow: <SampleNextArrow />,
                   prevArrow: <SamplePrevArrow />

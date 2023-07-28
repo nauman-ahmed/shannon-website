@@ -316,7 +316,7 @@ function Bipoc() {
           </p>
         </div>
       </div>
-      <div className="bipoc2cols category w-100 h-100" style={{ position: "relative", marginTop: "10vh" }}>
+      <div className="bipoc2cols category w-100" style={{ position: "relative", marginTop: "10vh" }}>
         <div className="categoryinfo">
           <Link style={{ textDecoration: "none" }} to={"/black"}><h2 className="bipocTitle" >BLACK ARTISTS</h2></Link>
           <div className="w-dyn-list">
@@ -406,7 +406,7 @@ function Bipoc() {
         </div>
       </div>
       {/*  */}
-      <div className="bipoc2cols category  w-100 h-100" style={{ position: "relative" }}>
+      <div className="bipoc2cols category w-100" style={{ position: "relative" }}>
         <div className="categoryinfo">
         <Link style={{ textDecoration: "none" }} to={"/asianArtist"}><h2 className="bipocTitle" >ASIAN ARTISTS</h2></Link>
           <div className="w-dyn-list">
@@ -471,7 +471,7 @@ function Bipoc() {
         </div>
       </div>
       {/*  */}
-      <div className="bipoc2cols category  w-100 h-100" style={{ position: "relative" }}>
+      <div className="bipoc2cols category w-100" style={{ position: "relative" }}>
         <div className="categoryinfo">
           <Link style={{ textDecoration: "none" }} to={"/latinoArtist"}><h2 className="bipocTitle" >LATINO/LATINA ARTISTS</h2></Link>
           <div className="w-dyn-list">
@@ -534,7 +534,7 @@ function Bipoc() {
         </div>
       </div>
       {/*  */}
-      <div className="bipoc2cols category  w-100 h-100" style={{ position: "relative" }}>
+      <div className="bipoc2cols category w-100" style={{ position: "relative" }}>
         <div className="categoryinfo">
           <Link style={{ textDecoration: "none" }} to={"/centralAsianArtist"}><h2 className="bipocTitle" >CENTRAL ASIAN ARTISTS</h2></Link>
           <div className="w-dyn-list">
@@ -597,7 +597,7 @@ function Bipoc() {
         </div>
       </div>
       {/*  */}
-      <div className="bipoc2cols category  w-100 h-100" style={{ position: "relative" }}>
+      <div className="bipoc2cols category w-100" style={{ position: "relative" }}>
         <div className="categoryinfo">
           <Link style={{ textDecoration: "none" }} to={"/indigenousArtist"}><h2 className="bipocTitle" >INDIGENOUS ARTISTS</h2></Link>
           <div className="w-dyn-list">
