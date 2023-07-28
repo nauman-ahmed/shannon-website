@@ -456,7 +456,7 @@ function SearchByArtist(props) {
                       paddingTop: "6px",
                       paddingBottom: "6px",
                     }} className=" ">
-                      SIMILAR ARTIST</div> : null
+                      SIMILAR ARTISTS</div> : null
                 }
                 <div className="pl-2">
                 {

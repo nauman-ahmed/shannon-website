@@ -282,7 +282,7 @@ function Bipoc() {
             className="image bipoc"
           />
           <div className="artistnamediv">
-            <div className="artistnametext-v2" style={{ lineHeight: '1', fontSize: '0.74vw' }}>LONNIE OLLIVIERRE</div>
+            <div className="artistnametext-v2" style={{ lineHeight: '1', fontSize: '0.74vw' }}>EMMANUELE BOATENG</div>
           </div>
         </Link>
         <div
