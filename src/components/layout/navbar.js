@@ -23,6 +23,7 @@ function Navbar(props) {
   return (  
     <div>
       <div>
+        {console.log("HEADER",props)}
         <div className="div-block-11 w-100 ">
           <div className='mobileViewNavbar'>
             <div className='w-100 d-flex flex-wrap justify-content-center '>
@@ -36,13 +37,13 @@ function Navbar(props) {
               <Link to="/motion" className={"filterhomelink v2 " + (props.aciveBtn === "motion" ? "w--current" : "")}>MOTION</Link>
             </div>
 
-            {/* {props.searchBar ?
+            {props.searchBar && props.aciveBtn == undefined?
               <div className="form-block-2 search">
                 <form id="email-form" name="email-form" data-name="Email Form" method="get" className="form-2"> 
                   <input onChange={(e) => { props.updateTempArtist(e) }} value={props.searchArtist} type="text" className="searchbarhome w-input" maxLength="256" name="Search" data-name="Search" placeholder="SEARCH" id="Search" />
                   <Link to="#" className="link-block-3 w-inline-block"></Link>
                 </form>
-              </div> : null} */}
+              </div> : null}
           </div> 
         </div>
       </div >

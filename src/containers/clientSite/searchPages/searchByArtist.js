@@ -470,12 +470,29 @@ function SearchByArtist(props) {
                           Object.keys(similarData).map((key, i) =>
                             i < artistSimilar ?
                               <div className="talentthumbslide resp">
-                                <img
-                                  src={similarData[key].mainImage}
-                                  loading="lazy"
-                                  alt=""
-                                  className="image"
-                                />
+                               <Link
+                                  id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                                  data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                                  className="card_img3"
+                                  // style={{ position: "relative" }}
+                                  to={"/artists/" + key}
+                                >
+                                  <div className="detail_card6_h">
+                                    <img
+                                      src={String(similarData[key].mainImage)}
+                                      loading="lazy"
+                                      alt=""
+                                      className="image"
+                                      style={{ width: "100%", }} />
+                                    <div className="artistnamediv">
+                                      <div className="artistnametext-v3" style={{padding:"6px 0px"}}>
+                                        {similarData[key].lastname} {similarData[key].firstname}
+                                      </div>
+                                    </div>
+                                    {/* <p className="card_img_text3 pb-3 pt-1">
+                                      {similarData[key].lastname} {similarData[key].firstname}</p> */}
+                                  </div>
+                                </Link>
                               </div>
                               : null
                           )

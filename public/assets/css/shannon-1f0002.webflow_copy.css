@@ -11254,6 +11254,10 @@ element.style {
 
 @media screen and (max-width: 576px) {
   
+  .detail_card6_h {
+    height: 40vw;
+  }
+
   .detail_card_6{
     grid-template-columns: 1fr 1fr 1fr;
   }
@@ -11349,6 +11353,7 @@ element.style {
     margin-top: 10px;
     text-align: center;
     font-size: 3vw;
+    padding: 0px;
   }
 
   .containerhome {
@@ -12140,9 +12145,15 @@ element.style {
     height: 100%;
     margin-bottom: 15px;
     float: right; */
-    display: block;
+    width: 100% !important;
+    display: flex;
+    justify-content: center;
   }
 
+  .form-2 {
+    width: max-content;
+    min-width: max-content;
+  }
 
   .form-block-2 {
     /*  width: 50%;
@@ -12382,9 +12393,13 @@ element.style {
   }
 
   .talentbuttonSeeMore {
-    font-size: 2vw;
+    font-size: 3vw;
   }
   
+  .talentbuttonSeeMore img{
+    width: 8px !important;
+  }
+
   .detail_card3 { 
     grid-template-columns: repeat(2,1fr);
   }
