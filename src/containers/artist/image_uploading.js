@@ -250,8 +250,8 @@ function Image_uploading() {
                 dispatch(updateOpen(true))
                 dispatch(updateMessage("Select Atleast One Keyword"))
             }
-            else if(artistImageDetails[2].keywordList.length > 8 ){
-                    let message1 = artistImageDetails[2].keywordList.length > 8 ? "Keywords Must be 8 or Less" : null
+            else if(artistImageDetails[2].keywordList.length > 16 ){
+                    let message1 = artistImageDetails[2].keywordList.length > 16 ? "Keywords must be 8 or less per section " : null
                     let message2 = artistImageDetails[0].title =="" ? "Image Title Should not be Empty" : null
                     let message = message1 == null ? message2 : message2 == null ? message1 : message1 + " and " + message2
                     dispatch(updateOpen(true))

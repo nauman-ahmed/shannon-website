@@ -141,7 +141,7 @@ function Login() {
         dispatch(userRegisterApi(data)).then((res)=>{
           setMsg(
             <>
-            <p style={{textAlign:'center'}}>We've received your account creation request.<br></br>You will receive your credentials via email within the next 24 hours.<br></br>If you need immediate access call us at 2222222</p>
+            <p style={{textAlign:'center'}}>We've received your account creation request.<br></br>You will receive your credentials via email within the next 24 hours.<br></br>If you need immediate access call us at 212.333.2251</p>
             </>
             )
            setIsPopupShow(true)
