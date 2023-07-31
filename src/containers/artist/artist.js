@@ -155,8 +155,8 @@ function Artist() {
                 <div className='inner'>
                     <div className='inner_text'>"At Shannon Associates, we genuinely care about our artist's work, and glaze emerges as a powerful tool to prevent the learning and imitating of your unique style of AI-art models"</div>
                     <div className='buttons_div' >
-                        <a className='buttons' href='https://glaze.cs.uchicago.edu/downloads.html' >Download Glaze</a> 
-                        <a className='buttons' href='https://youtu.be/zryvJjb9EEY'>Tutorial</a> 
+                        <a className='buttons' href='https://glaze.cs.uchicago.edu/downloads.html' target="_blank">Download Glaze</a> 
+                        <a className='buttons' href='https://youtu.be/zryvJjb9EEY' target="_blank">Tutorial</a> 
                     </div>
                 </div>
             </div>
