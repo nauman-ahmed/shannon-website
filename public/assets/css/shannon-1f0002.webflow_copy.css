@@ -12417,3 +12417,12 @@ element.style {
   }
 
 }
+
+@media screen and (max-width: 375px) {
+
+  .filter-button {
+    font-size: 10px;
+    padding: 5px 8px;
+  }
+
+}
