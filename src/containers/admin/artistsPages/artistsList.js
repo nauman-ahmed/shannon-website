@@ -268,7 +268,7 @@ function ArtistsList(props) {
                             </div>
                         </>
                         <div className='mx-5 my-2 d-flex' style={{ justifyContent: "space-between" }}>
-                            <button className='mx-1 myBtn' type="text" style={{ background: "red", padding:"10px 15px" }} onClick={(e)=>{props.deleteArtistUser(e,selectedArtist._id)}}>DELETE</button>
+                            <button className='mx-1 myBtn' type="text" style={{ background: "red", padding:"10px 15px" }} onClick={(e)=>{props.deleteArtistUser(e,selectedArtist._id); setIsPopupShow(false)}}>DELETE</button>
                             <button className='mx-1 myBtn' type="text" style={{ background: "#ffb71b", padding:"10px 15px" }} onClick={(e)=>{setIsPopupShow(false)}}>CANCEL</button>
                         </div>
                     </div>

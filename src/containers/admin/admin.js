@@ -81,7 +81,6 @@ function Admin(props) {
                 id:id
             }
             DArtistUser(data).then((res)=>{
-
                 dispatch(updateOpen(true))
                 dispatch(updateMessage(res));
                 populateArtistUsers();
