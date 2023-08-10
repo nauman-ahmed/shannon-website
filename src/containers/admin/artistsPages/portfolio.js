@@ -21,7 +21,12 @@ import {
 import { Grid } from "./dropableFolder/Grid";
 import { SortablePhoto } from "./dropableFolder/SortablePhoto";
 import { Photo } from "./dropableFolder/Photo";
+import { connectAdvanced } from 'react-redux'
 
+const img1 = window.location.origin+"/assets/images/IMG1.png"
+const img2 = window.location.origin+"/assets/images/IMG2.png"
+const img3 = window.location.origin+"/assets/images/IMG3.png"
+const img4 = window.location.origin+"/assets/images/IMG4.png" 
 
 function Portfolio(props) {
 
@@ -171,35 +176,35 @@ function Portfolio(props) {
     setActiveId(null);
   }
 
-  if(enabled){
-    return (
-      <>
-        <button className='m-2 myBtn active' onClick={enableHandler}>SUBMIT</button>
-        <DndContext
-          sensors={sensors}
-          collisionDetection={closestCenter}
-          onDragStart={handleDragStart}
-          onDragEnd={handleDragEnd}
-          onDragCancel={handleDragCancel}
-        >
-          <SortableContext items={items} strategy={rectSortingStrategy}>
-            <Grid columns={4}>
-              {items.map((url, index) => (
-                <SortablePhoto key={url.path} url={url.path} index={index} />
-              ))}
-            </Grid>
-          </SortableContext>
+  // if(enabled){
+  //   return (
+  //     <>
+  //       <button className='m-2 myBtn active' onClick={enableHandler}>SUBMIT</button>
+  //       <DndContext
+  //         sensors={sensors}
+  //         collisionDetection={closestCenter}
+  //         onDragStart={handleDragStart}
+  //         onDragEnd={handleDragEnd}
+  //         onDragCancel={handleDragCancel}
+  //       >
+  //         <SortableContext items={items} strategy={rectSortingStrategy}>
+  //           <Grid columns={8}>
+  //             {items.map((url, index) => (
+  //               url.hideImage == false && <SortablePhoto key={url.path} url={url.path} index={index} />
+  //             ))}
+  //           </Grid>
+  //         </SortableContext>
     
-          <DragOverlay adjustScale={true}>
-            {activeId ? (
-              <Photo url={activeId} index={items.findIndex((val)=>val.path === activeId)} />
-            ) : null}
-          </DragOverlay>
-        </DndContext>
-      </>
-    );
+  //         <DragOverlay adjustScale={true}>
+  //           {activeId ? (
+  //             <Photo url={activeId} index={items.findIndex((val)=>val.path === activeId)} />
+  //           ) : null}
+  //         </DragOverlay>
+  //       </DndContext>
+  //     </>
+  //   );
     
-  }
+  // }
 
   const deleteImageHandler = async (val) => {
     let response = await artistImagedelete({
@@ -220,25 +225,120 @@ function Portfolio(props) {
 
   return (
     <>
-    <div className='d-flex flex-column' style={{marginTop:-10,marginLeft:'25%'}}> 
-       <button onClick={()=>{setFormNo2(0);setItems(typeOneData);}} className={'btn'+(formNo2 === 0? " active": " non_active")} style={{border:'none',
-      textDecoration:'none',outline:'none'}}>Shannon</button>
-       <button onClick={()=>{setFormNo2(1);setItems(typeTwoData);}} className={'btn'+(formNo2 === 1? " active": " non_active")} style={{marginTop:-5,border:'none',
-      textDecoration:'none',outline:'none'}}>Kid Shannon</button>
-       </div>
-      {Object.keys(props.selectedImages).length > 0 ?
-        formNo2 == 0 && typeOneData.length > 0 ?
-          <button className='m-2 myBtn active' type="text" onClick={enableHandler}>ORDER PORTFOLIO</button>
-        : formNo2 == 1 && typeTwoData.length > 0 ?
-            <button className='m-2 myBtn active' type="text" onClick={enableHandler}>ORDER PORTFOLIO</button>
-          : null
-      :
-      null}
-      <div className='_4cols-v2-admin'>  
+    <div className='my-3'>
+      <div className='row'>
+        <div className='col-12 my-3'>
+          <h2> IMAGES SUBMISSIONS</h2>
+        </div>
+      </div>
+      <div className='row m-0'>
+      {localStorage.setItem('currentArtist',JSON.stringify(props.selectedArtist))}
+        {Object.keys(props.selectedImages).length > 0 ? props.selectedImages.mainImage.map((item,key)=>
+            (item.statusSubmit === 1 && item.status === 0?<div key={key} onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})} className='col-6 col-md-3 col-sm-4 mb-2 artistcardAdmin w-inline-block'>
+            <img alt='' src={item.path} className="image" style={{cursor:"pointer"}} />
+        </div>:<div key={key}></div>)
+        ):""}
+      </div>
+    </div>
+    {enabled ?
+     <>
+     <div className='row'>
+      <div className='my-3'>
+        <h2>  ORDER IMAGES </h2>
+      </div>
+     </div>
+     <button className='m-2 myBtn active' onClick={enableHandler}>SUBMIT</button>
+     <DndContext
+       sensors={sensors}
+       collisionDetection={closestCenter}
+       onDragStart={handleDragStart}
+       onDragEnd={handleDragEnd}
+       onDragCancel={handleDragCancel}
+     >
+       <SortableContext items={items} strategy={rectSortingStrategy}>
+         <Grid columns={8}>
+           {items.map((url, index) => (
+             url.hideImage == false && <SortablePhoto key={url.path} url={url.path} index={index} />
+           ))}
+         </Grid>
+       </SortableContext>
+ 
+       <DragOverlay adjustScale={true}>
+         {activeId ? (
+           <Photo url={activeId} index={items.findIndex((val)=>val.path === activeId)} />
+         ) : null}
+       </DragOverlay>
+     </DndContext>
+   </>:
+
+   <>
+   <div className='row'>
+      <div className='mt-5'>
+       <h2>  ACTIVE IMAGES </h2>
+      </div>
+      <div className='col-12 d-flex justify-content-between align-items-baseline my-5'>
+        <div>
+          {Object.keys(props.selectedImages).length > 0 ?
+            formNo2 == 0 && typeOneData.length > 0 ?
+              <button className='m-2 myBtn active' type="text" onClick={enableHandler}>ORDER PORTFOLIO</button>
+            : formNo2 == 1 && typeTwoData.length > 0 ?
+                <button className='m-2 myBtn active' type="text" onClick={enableHandler}>ORDER PORTFOLIO</button>
+              : null
+          :
+          null}
+        </div>
+        <div className='d-flex ' style={{marginTop:-10,marginLeft:'25%'}}> 
+          <button onClick={()=>{setFormNo2(0);setItems(typeOneData);}} className={'btn'+(formNo2 === 0? " active": " non_active")} style={{border:'none',
+          textDecoration:'none',outline:'none'}}>Shannon</button>
+          <button onClick={()=>{setFormNo2(1);setItems(typeTwoData);}} className={'btn'+(formNo2 === 1? " active": " non_active")} style={{marginTop:-5,border:'none',
+          textDecoration:'none',outline:'none'}}>Kid Shannon</button>
+        </div>
+      </div>
+      </div>
+      <div className='_4cols-v2-admin my-3'>  
         { 
         items?.length > 0 ? items.map((item,key)=>(
-          item.status === 1?
+          item.status === 1 && item.hideImage == false ?
           <div key={key} className='artistcardAdmin w-inline-block' >
+              <div
+                  
+                  className="crossSection"
+                  >
+                  <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="12px"
+                      height="12px"
+                      viewBox="0 0 352 512"
+                      onClick={() => deleteImageHandler(item)}
+                  >
+                      <path
+                      fill="grey"
+                      d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      />
+                  </svg>
+                  <img 
+                    src={item.hideImage? hide : unHide } 
+                    style={{width:"20px", height:"20px", marginTop:"1vh", }} 
+                    onClick={() => toggleImageVisibilityHandler(item)}
+                  />
+              </div>
+              <img style={item.hideImage? {cursor: "pointer",filter:"brightness(0.5)"} : {cursor: "pointer"}} onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})}  alt='' src={item.path} className="image"/>
+          </div>:""
+        )):""
+      }
+      </div>
+   </>
+
+    }
+      <div className='row mt-5'>
+       <h2>  INACTIVE IMAGES </h2>
+      </div>
+      <div className='_4cols-v2-admin my-3'>  
+        { 
+        items?.length > 0 ? items.map((item,key)=>(
+          item.status === 1 && item.hideImage == true ?
+          <div key={key} className='artistcardAdmin w-inline-block' >
+            {console.log("NAUMAN",item)}
               <div
                   
                   className="crossSection"

@@ -143,7 +143,7 @@ function Artists(props) {
                 </h4>
                 <div className='col-6 p-0 subNavBar d-flex justify-content-between'>
                     <button onClick={()=>setFormNo2(0)} className={'btn'+(formNo2 === 0? " active": "")}>Bio</button>
-                    <button onClick={()=>setFormNo2(1)} className={'btn'+(formNo2 === 1? " active": "")}>Image Submissions</button>
+                    {/* <button onClick={()=>setFormNo2(1)} className={'btn'+(formNo2 === 1? " active": "")}>Image Submissions</button> */}
                     <button onClick={()=>setFormNo2(2)} className={'btn'+(formNo2 === 2? " active": "")}>Portfolio</button>
                     <button onClick={()=>setFormNo2(3)} className={'btn'+(formNo2 === 3? " active": "")}>Edit</button>
                     <button onClick={()=>setFormNo2(4)} className={'btn'+(formNo2 === 4? " active": "")}>Similar Artists</button>
@@ -165,7 +165,7 @@ function Artists(props) {
         {
             props.formNo === 1?
                 formNo2 === 1?
-                <ImgSubmission
+                <ImgSubmission 
                     holder = {holder}
                     history={props.history} 
                     selectedArtist = {selectedArtist}
