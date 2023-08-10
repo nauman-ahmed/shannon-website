@@ -258,7 +258,7 @@ function Portfolio(props) {
        <SortableContext items={items} strategy={rectSortingStrategy}>
          <Grid columns={8}>
            {items.map((url, index) => (
-             url.hideImage == false && <SortablePhoto key={url.path} url={url.path} index={index} />
+             url.status === 1 &&  url.hideImage == false && <SortablePhoto key={url.path} url={url.path} index={index} />
            ))}
          </Grid>
        </SortableContext>
