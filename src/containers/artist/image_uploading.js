@@ -420,15 +420,9 @@ function Image_uploading() {
             {isPopupShow?
                 <MyPopup BackClose onClose={()=>{setIsPopupShow(false); history.push("/artist")}}>
                     <div className='mx-5 my-4'>
-                        <p style="text-align:center">
-                        Your image has been received.
-                        </p>
-                        <p style="text-align:center">
-                        The Shannon Associates team will promptly review and publish it. Feel free to reach out to aleksey@shannonassociates.com with any questions or concerns.
-                        </p>
-                        <p style="text-align:center">
+                        Your image has been received. <br/>
+                        The Shannon Associates team will promptly review and publish it. Feel free to reach out to aleksey@shannonassociates.com with any questions or concerns. <br/>
                         Feel free to reach out to aleksey@shannonassociates.com with any questions or concerns.
-                        </p>
                     </div>
                 </MyPopup>
                 :null
