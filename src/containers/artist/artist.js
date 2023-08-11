@@ -104,12 +104,14 @@ function Artist() {
                 <h3 className='artistCounter mb-5'> STEP 1</h3>
                 <div className='imageUploader'>
                     <p className='artistCounterMessage mb-5'>
-                        <p style={{ textTransform: "initial" }}>
-                            console.log(imageContent);
+                        {/* <p style={{ textTransform: "initial" }}>
                             {imageContent.length > 0 ? imageContent[0].name : 'To upload one or more images click on the "UPLOAD HERE" button on the left.'}
+                        </p> */}
+                        <p style={{ textTransform: "initial" }}>
+                            To upload one or more images click on the "UPLOAD HERE" button on the left.
                         </p>
                         <p style={{ textTransform: "initial" }}>
-                            {imageContent.length > 0 ? imageContent[0].name : 'Click on an image to crop the "thumbnail".'}
+                            Click on an image to crop the "thumbnail".
                         </p>
                     </p>
                 </div>  
