@@ -252,7 +252,7 @@ function Image_uploading() {
             }
             else if(artistImageDetails[2].keywordList.length > 16 ){
                     let message1 = artistImageDetails[2].keywordList.length > 16 ? "Keywords must be 8 or less per section " : null
-                    let message2 = artistImageDetails[0].title =="" ? "Image Title Should not be Empty" : null
+                    let message2 = artistImageDetails[0].title =="" ? "" : null /* "Image Title Should not be Empty" : null */
                     let message = message1 == null ? message2 : message2 == null ? message1 : message1 + " and " + message2
                     dispatch(updateOpen(true))
                     dispatch(updateMessage(message))
@@ -420,7 +420,15 @@ function Image_uploading() {
             {isPopupShow?
                 <MyPopup BackClose onClose={()=>{setIsPopupShow(false); history.push("/artist")}}>
                     <div className='mx-5 my-4'>
-                        Your image has been received. The Shannon Associates team will promptly review and publish it. Feel free to reach out to aleksey@shannonassociates.com with any questions or concerns.
+                        <p style="text-align:center">
+                        Your image has been received.
+                        </p>
+                        <p style="text-align:center">
+                        The Shannon Associates team will promptly review and publish it. Feel free to reach out to aleksey@shannonassociates.com with any questions or concerns.
+                        </p>
+                        <p style="text-align:center">
+                        Feel free to reach out to aleksey@shannonassociates.com with any questions or concerns.
+                        </p>
                     </div>
                 </MyPopup>
                 :null
