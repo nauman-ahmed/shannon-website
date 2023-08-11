@@ -178,7 +178,6 @@ function Image_uploading(props) {
             keywordListTemp.push(val._id)
         })
 
-        console.log(artistImageTemp,originalImage)
 
         const imageCreate = new FormData()
         imageCreate.append('k_id',keywordListTemp)
@@ -189,6 +188,7 @@ function Image_uploading(props) {
         imageCreate.append('caption',copyrightText)
         imageCreate.append('color',copyrightColor)
         imageCreate.append('svg',svg)
+        imageCreate.append('adminPortfolio',true)
 
         setIsPopupShow(true)
         changeArtistImageDetails(imageCreate).then((res)=>{
@@ -201,7 +201,7 @@ function Image_uploading(props) {
             }
             history.push({
                 pathname:'/admin/artists',
-                state:{Nauman:1}
+                state:{Nauman:2}
             });
             setIsPopupShow(false)
         })
@@ -448,7 +448,6 @@ function Image_uploading(props) {
                             </div>
 
                         </div>
-                        {console.log("S",isPopupShow)}
                         <div className='col-12 d-flex justify-content-end'>
                         {isPopupShow?
                            <img alt="loading" src={loading} style={{width:"30px",marginTop:-20}}/>

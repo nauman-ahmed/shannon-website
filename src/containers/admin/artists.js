@@ -42,7 +42,7 @@ function Artists(props) {
     const formChangeEvent = (data,state=false) => {
         props.setFormNo(1)
         if(state){
-            setFormNo2(1)
+            setFormNo2(2)
         }else{
             setFormNo2(0)
         }
