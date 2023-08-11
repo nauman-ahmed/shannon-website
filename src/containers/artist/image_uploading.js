@@ -337,7 +337,7 @@ function Image_uploading() {
                                 {imageContent.length > 0 ? imageContent[3].name : "Please be sure to keyword for the SPECIFIC IMAGE and not your body of work."}
                             </p>
                             :
-                            <p style={{ textTransform: "initial" }}>{imageContent.length > 0 ? imageContent[1].name : "Move and resize the box to select the desired thumbnail, click next when the thumbnail has been selected."}</p>
+                            <p style={{ textTransform: "initial" }}>{imageContent.length > 0 ? imageContent[1].name : 'Move and resize the crop tool to select the desired thumbnail. Click "NEXT" when the thumbnail size has been selected.'}</p>
                         }
                          
                     </p>
@@ -420,7 +420,7 @@ function Image_uploading() {
             {isPopupShow?
                 <MyPopup BackClose onClose={()=>{setIsPopupShow(false); history.push("/artist")}}>
                     <div className='mx-5 my-4'>
-                        WE RECEIVED YOUR IMAGE
+                        Your image has been received. The Shannon Associates team will promptly review and publish it. Feel free to reach out to aleksey@shannonassociates.com with any questions or concerns.
                     </div>
                 </MyPopup>
                 :null

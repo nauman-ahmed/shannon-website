@@ -105,7 +105,10 @@ function Artist() {
                 <div className='imageUploader'>
                     <p className='artistCounterMessage mb-5'>
                         <p style={{ textTransform: "initial" }}>
-                            {imageContent.length > 0 ? imageContent[0].name : "Upload one or more images. Click on the thumbnail to select thumbnail, keyword and submit."}
+                            {imageContent.length > 0 ? imageContent[0].name : 'To upload one or more images click on the "UPLOAD HERE" button on the left.'}
+                        </p>
+                        <p style={{ textTransform: "initial" }}>
+                            {imageContent.length > 0 ? imageContent[0].name : 'Click on an image to crop the "thumbnail".'}
                         </p>
                     </p>
                 </div>  
