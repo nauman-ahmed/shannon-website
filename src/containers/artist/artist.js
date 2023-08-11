@@ -105,6 +105,7 @@ function Artist() {
                 <div className='imageUploader'>
                     <p className='artistCounterMessage mb-5'>
                         <p style={{ textTransform: "initial" }}>
+                            console.log(imageContent);
                             {imageContent.length > 0 ? imageContent[0].name : 'To upload one or more images click on the "UPLOAD HERE" button on the left.'}
                         </p>
                         <p style={{ textTransform: "initial" }}>
