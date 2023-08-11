@@ -40,7 +40,10 @@ function ImgViewer(props) {
       setHolder(false);
       dispatch(updateOpen(true))
       dispatch(updateMessage(res));
-      history.push('/admin/artists')
+      history.push({
+        pathname:'/admin/artists',
+        state:{Nauman:2}
+    });
     })
 
   }
