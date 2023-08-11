@@ -26,6 +26,7 @@
     z-index: 1;
     font-weight: bold;
     font-family: "Roboto2";
+    text-align: center;
 }
 .myPopup>.myPopupCard>.closeBtn{
     position: absolute;

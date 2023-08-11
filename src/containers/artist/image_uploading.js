@@ -252,7 +252,7 @@ function Image_uploading() {
             }
             else if(artistImageDetails[2].keywordList.length > 16 ){
                     let message1 = artistImageDetails[2].keywordList.length > 16 ? "Keywords must be 8 or less per section " : null
-                    let message2 = artistImageDetails[0].title =="" ? "Image Title Should not be Empty" : null
+                    let message2 = artistImageDetails[0].title =="" ? "" : null /* "Image Title Should not be Empty" : null */
                     let message = message1 == null ? message2 : message2 == null ? message1 : message1 + " and " + message2
                     dispatch(updateOpen(true))
                     dispatch(updateMessage(message))
@@ -337,7 +337,7 @@ function Image_uploading() {
                                 {imageContent.length > 0 ? imageContent[3].name : "Please be sure to keyword for the SPECIFIC IMAGE and not your body of work."}
                             </p>
                             :
-                            <p style={{ textTransform: "initial" }}>{imageContent.length > 0 ? imageContent[1].name : "Move and resize the box to select the desired thumbnail, click next when the thumbnail has been selected."}</p>
+                            <p style={{ textTransform: "initial" }}>{imageContent.length > 0 ? imageContent[1].name : 'Move and resize the crop tool to select the desired thumbnail. Click "NEXT" when the thumbnail size has been selected.'}</p>
                         }
                          
                     </p>
@@ -420,7 +420,9 @@ function Image_uploading() {
             {isPopupShow?
                 <MyPopup BackClose onClose={()=>{setIsPopupShow(false); history.push("/artist")}}>
                     <div className='mx-5 my-4'>
-                        WE RECEIVED YOUR IMAGE
+                        Your image has been received. <br/>
+                        The Shannon Associates team will promptly review and publish it. Feel free to reach out to aleksey@shannonassociates.com with any questions or concerns. <br/>
+                        Feel free to reach out to aleksey@shannonassociates.com with any questions or concerns.
                     </div>
                 </MyPopup>
                 :null
