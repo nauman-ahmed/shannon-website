@@ -5,8 +5,8 @@ export const Photo = forwardRef(
     const inlineStyles = {
       opacity: faded ? "0.2" : "1",
       transformOrigin: "0 0",
-      height: "8vw",
-      width:"8vw",
+      height: "5vw",
+      width:"5vw",
       gridRowStart: null,
       gridColumnStart: null,
       backgroundImage: `url("${url}")`,
