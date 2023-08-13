@@ -6,6 +6,7 @@ export const Photo = forwardRef(
       opacity: faded ? "0.2" : "1",
       transformOrigin: "0 0",
       height: "8vw",
+      width:"8vw",
       gridRowStart: null,
       gridColumnStart: null,
       backgroundImage: `url("${url}")`,

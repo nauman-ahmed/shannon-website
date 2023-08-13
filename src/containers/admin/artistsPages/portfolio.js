@@ -225,21 +225,6 @@ function Portfolio(props) {
 
   return (
     <>
-    <div className='my-3'>
-      <div className='row'>
-        <div className='col-12 my-3'>
-          <h2> IMAGES SUBMISSIONS</h2>
-        </div>
-      </div>
-      <div className='row m-0'>
-      {localStorage.setItem('currentArtist',JSON.stringify(props.selectedArtist))}
-        {Object.keys(props.selectedImages).length > 0 ? props.selectedImages.mainImage.map((item,key)=>
-            (item.statusSubmit === 1 && item.status === 0?<div key={key} onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})} className='col-6 col-md-3 col-sm-4 mb-2 artistcardAdmin w-inline-block'>
-            <img alt='' src={item.path} className="image" style={{cursor:"pointer"}} />
-        </div>:<div key={key}></div>)
-        ):""}
-      </div>
-    </div>
     {enabled ?
      <>
      <div className='row'>
@@ -256,7 +241,7 @@ function Portfolio(props) {
        onDragCancel={handleDragCancel}
      >
        <SortableContext items={items} strategy={rectSortingStrategy}>
-         <Grid columns={8}>
+         <Grid columns={4}>
            {items.map((url, index) => (
              url.status === 1 &&  url.hideImage == false && <SortablePhoto key={url.path} url={url.path} index={index} />
            ))}
@@ -299,7 +284,7 @@ function Portfolio(props) {
         { 
         items?.length > 0 ? items.map((item,key)=>(
           item.status === 1 && item.hideImage == false ?
-          <div key={key} className='artistcardAdmin w-inline-block' >
+          <div key={key} className='artistcardAdminPortfolio w-inline-block' >
               <div
                   
                   className="crossSection"
@@ -337,7 +322,7 @@ function Portfolio(props) {
         { 
         items?.length > 0 ? items.map((item,key)=>(
           item.status === 1 && item.hideImage == true ?
-          <div key={key} className='artistcardAdmin w-inline-block' >
+          <div key={key} className='artistcardAdminPortfolio w-inline-block' >
             {console.log("NAUMAN",item)}
               <div
                   
@@ -366,6 +351,21 @@ function Portfolio(props) {
         )):""
       }
       </div>
+      <div>
+      <div className='row'>
+        <div className='col-12 p-0'>
+          <h2> IMAGES SUBMISSIONS</h2>
+        </div>
+      </div>
+      <div className='row m-0'>
+      {localStorage.setItem('currentArtist',JSON.stringify(props.selectedArtist))}
+        {Object.keys(props.selectedImages).length > 0 ? props.selectedImages.mainImage.map((item,key)=>
+            (item.statusSubmit === 1 && item.status === 0?<div key={key} onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})} className='col-6 col-md-3 col-sm-4 mb-2 artistcardAdminPortfolio w-inline-block'>
+            <img alt='' src={item.path} className="image" style={{cursor:"pointer"}} />
+        </div>:<div key={key}></div>)
+        ):""}
+      </div>
+    </div>
     </>
   )
 }

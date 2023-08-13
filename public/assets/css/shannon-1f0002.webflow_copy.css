@@ -38,6 +38,23 @@ input#Search-2::placeholder {
   display: none;
 }
 
+.artistcardAdminPortfolio {
+  position: relative;
+  overflow: hidden;
+  height: 8vw;
+  width: 8vw;
+}
+
+.artistcardAdminPortfolio:hover .crossSection {
+  display: grid;
+  background-color: #000;
+  padding: 5%;
+}
+
+.artistcardAdminPortfolio .crossSection {
+  display: none;
+}
+
 .crossSection {
   position: absolute;
   top: 0%;
