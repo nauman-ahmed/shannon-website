@@ -419,9 +419,9 @@ function Image_uploading() {
             </div>
             {isPopupShow?
                 <MyPopup BackClose onClose={()=>{setIsPopupShow(false); history.push("/artist")}}>
-                    <div className='mx-5 my-4'>
+                    <div className='mx-5 my-4 popUpfontsize'>
                         Your image has been received. <br/>
-                        The Shannon Associates team will promptly review and publish it. Feel free to reach out to aleksey@shannonassociates.com with any questions or concerns. <br/>
+                        The Shannon Associates team will promptly review and publish it. <br/>
                         Feel free to reach out to aleksey@shannonassociates.com with any questions or concerns.
                     </div>
                 </MyPopup>
