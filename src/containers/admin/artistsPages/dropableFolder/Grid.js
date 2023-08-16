@@ -5,8 +5,8 @@ export function Grid({children, columns}) {
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: `repeat(${columns}, 1fr)`,
-        gridGap: 10,
+        gridTemplateColumns: `repeat(${columns}, 5vw)`,
+        gridGap: 4,
         padding: 10,
         width:"50%",
         margin: "auto"

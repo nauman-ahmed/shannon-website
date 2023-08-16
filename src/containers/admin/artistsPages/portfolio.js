@@ -302,12 +302,12 @@ function Portfolio(props) {
                       />
                   </svg>
                   <img 
-                    src={item.hideImage? hide : unHide } 
+                    src={item.hideImage? unHide : hide } 
                     style={{width:"20px", height:"20px", marginTop:"1vh", }} 
                     onClick={() => toggleImageVisibilityHandler(item)}
                   />
               </div>
-              <img style={item.hideImage? {cursor: "pointer",filter:"brightness(0.5)"} : {cursor: "pointer"}} onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})}  alt='' src={item.path} className="image"/>
+              <img style={{cursor: "pointer"}} onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})}  alt='' src={item.path} className="image"/>
           </div>:""
         )):""
       }
@@ -325,7 +325,6 @@ function Portfolio(props) {
           <div key={key} className='artistcardAdminPortfolio w-inline-block' >
             {console.log("NAUMAN",item)}
               <div
-                  
                   className="crossSection"
                   >
                   <svg
@@ -341,31 +340,37 @@ function Portfolio(props) {
                       />
                   </svg>
                   <img 
-                    src={item.hideImage? hide : unHide } 
+                    src={item.hideImage? unHide : hide } 
                     style={{width:"20px", height:"20px", marginTop:"1vh", }} 
                     onClick={() => toggleImageVisibilityHandler(item)}
                   />
               </div>
-              <img style={item.hideImage? {cursor: "pointer",filter:"brightness(0.5)"} : {cursor: "pointer"}} onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})}  alt='' src={item.path} className="image"/>
+              <img style={{cursor: "pointer"}} onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})}  alt='' src={item.path} className="image"/>
           </div>:""
         )):""
       }
       </div>
-      <div>
+      <div style={{ paddingBottom: "50px" }}>
       <div className='row'>
         <div className='col-12 p-0'>
           <h2> IMAGES SUBMISSIONS</h2>
         </div>
       </div>
       <div className='row m-0'>
-      {localStorage.setItem('currentArtist',JSON.stringify(props.selectedArtist))}
-        {Object.keys(props.selectedImages).length > 0 ? props.selectedImages.mainImage.map((item,key)=>
-            (item.statusSubmit === 1 && item.status === 0?<div key={key} onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})} className='col-6 col-md-3 col-sm-4 mb-2 artistcardAdminPortfolio w-inline-block'>
-            <img alt='' src={item.path} className="image" style={{cursor:"pointer"}} />
-        </div>:<div key={key}></div>)
-        ):""}
+        <div className='_4cols-v2-admin my-3'>  
+          {localStorage.setItem('currentArtist',JSON.stringify(props.selectedArtist))}
+            {Object.keys(props.selectedImages).length > 0 ? props.selectedImages.mainImage.map((item,key)=>
+                (item.statusSubmit === 1 && item.status === 0?
+                  <div key={key} onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})} className='artistcardAdminPortfolio w-inline-block'>
+                    <img alt='' src={item.path} className="image" style={{cursor:"pointer"}} />
+                  </div>
+                :null)
+              )
+            :""}
+        </div>
       </div>
     </div>
+    <div className='mt-5'></div>
     </>
   )
 }

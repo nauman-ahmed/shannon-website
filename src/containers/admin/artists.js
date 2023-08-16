@@ -131,13 +131,17 @@ function Artists(props) {
             {
             props.formNo === 1?
             <>
-                <div className='mx-lg-5 px-lg-3 py-4 mt-3 ml-5 d-flex justify-content-end w-100'>
-                    <Input
-                    type="search"
-                    label="Search"
-                    value={search}
-                    onChange={(e)=>{changeArtistData(e)}}/>
-                </div>
+                {/* {formNo2 == 4 ?
+                    <div className='mx-lg-5 px-lg-3 py-4 mt-3 ml-5 d-flex justify-content-end w-100'>
+                        <Input
+                        type="search"
+                        label="Search"
+                        value={search}
+                        onChange={(e)=>{changeArtistData(e)}}/>
+                    </div>
+                    :
+                    null
+                } */}
                 <h4>
                     {selectedArtist.lastname} {selectedArtist.firstname}
                 </h4>
