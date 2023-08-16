@@ -61,7 +61,7 @@ function Login() {
     setPassword(e.target.value);
   }
 
-  const authenticationHandler = (data) => {
+  const authenticationHandler = (data) => { 
 
     LoginAdmin(data).then( (res)=>{
       try{
@@ -74,7 +74,7 @@ function Login() {
           dispatch(updateMessage("Successfully Login"))
           localStorage.setItem("authorization",res.token!==undefined?res.token:"")
           setAuthToken(res.token);
-          window.location.href = '/#/admin'
+          window.location.href = '/#/admin/artists'
         }
       }
       catch(err){

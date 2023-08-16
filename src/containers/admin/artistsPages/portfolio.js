@@ -223,6 +223,11 @@ function Portfolio(props) {
     props.updateSelectedImagesArray(response.data)
   }
 
+  const goToPortfolioHandler = () =>{
+    // window.location.href = '/#/artists/'+props.selectedArtist._id
+    window.open('/#/artists/'+props.selectedArtist._id, '_blank');
+  }
+
   return (
     <>
     {enabled ?
@@ -265,10 +270,16 @@ function Portfolio(props) {
         <div>
           {Object.keys(props.selectedImages).length > 0 ?
             formNo2 == 0 && typeOneData.length > 0 ?
-              <button className='m-2 myBtn active' type="text" onClick={enableHandler}>ORDER PORTFOLIO</button>
-            : formNo2 == 1 && typeTwoData.length > 0 ?
+              <div> 
                 <button className='m-2 myBtn active' type="text" onClick={enableHandler}>ORDER PORTFOLIO</button>
-              : null
+                <button className='m-2 myBtn active' type="text" onClick={goToPortfolioHandler}>GO TO PORTFOLIO</button>
+              </div>
+          : formNo2 == 1 && typeTwoData.length > 0 ?
+              <div> 
+                <button className='m-2 myBtn active' type="text" onClick={enableHandler}>ORDER PORTFOLIO</button>
+                <button className='m-2 myBtn active' type="text" onClick={goToPortfolioHandler}>GO TO PORTFOLIO</button>
+              </div>
+            : null
           :
           null}
         </div>
@@ -286,7 +297,6 @@ function Portfolio(props) {
           item.status === 1 && item.hideImage == false ?
           <div key={key} className='artistcardAdminPortfolio w-inline-block' >
               <div
-                  
                   className="crossSection"
                   >
                   <svg
@@ -323,7 +333,6 @@ function Portfolio(props) {
         items?.length > 0 ? items.map((item,key)=>(
           item.status === 1 && item.hideImage == true ?
           <div key={key} className='artistcardAdminPortfolio w-inline-block' >
-            {console.log("NAUMAN",item)}
               <div
                   className="crossSection"
                   >

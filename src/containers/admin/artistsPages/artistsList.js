@@ -144,7 +144,7 @@ function ArtistsList(props) {
     props.similarArtist ?  null 
     
     :isLoader?
-        <img className='mt-1' alt="loading" src={loading} style={{width:"30px"}}/>
+        <img className='mt-1' alt="loading" src={loading} />
     :
         <button className='mr-3 mb-3 myBtn active' type="text" onClick={onSubmitHandler}>CONFIRM ORDER</button>
     }
