@@ -108,7 +108,7 @@ function Edit(props) {
             </label>
             <label className='col-md-6'>
                 <div>Email</div>
-                <input type="email" className='textField' value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
+                <input type="email" className='textField' disabled value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
             </label>
             <label className='col-md-6'>
                 <div>Password</div>

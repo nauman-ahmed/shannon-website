@@ -300,7 +300,7 @@ export function FullScreenSliderItem(props) {
             </div>
           </div>
         </div> */}
-        <div className="col-7">
+        <div className={ props.fullscreen.resposive ? "position-relative" : "col-7"}>
           <div
             onClick={() => props.onClick()}
             style={{

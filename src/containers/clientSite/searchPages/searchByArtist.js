@@ -237,8 +237,9 @@ function SearchByArtist(props) {
     if (!temp.screen) {
       temp.route = route;
       temp.key = key
-    }
+    } 
 
+    temp.resposive = windowSize.innerWidth < 479 ? true : false
     temp.screen = !temp.screen;
     setFullscreen(temp);
     setFullScreenData(data1[search])
@@ -360,7 +361,7 @@ function SearchByArtist(props) {
                         >
                           {data1[search].subListData.map((item, keys) =>
                             keys < artistImages ?
-                              <div className="talentthumbslide resp">
+                              <div className="talentthumbslide resp" onClick={() => setFullScreenHandler(item)}>
                                 <img
                                   src={item}
                                   loading="lazy"
