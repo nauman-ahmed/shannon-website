@@ -144,7 +144,7 @@ function ArtistsList(props) {
     props.similarArtist ?  null 
     
     :isLoader?
-        <img className='mt-1' alt="loading" src={loading} />
+        <img className='mt-1' alt="loading" src={loading} style={{width:"30px"}}/>
     :
         <button className='mr-3 mb-3 myBtn active' type="text" onClick={onSubmitHandler}>CONFIRM ORDER</button>
     }
@@ -234,7 +234,7 @@ function ArtistsList(props) {
                       (
                         <Draggable key={item._id} draggableId={item._id} index={key}>
                         {(provided) => (
-                            <Tr key={key} provided={provided}>
+                            <Tr key={key} provided={provided} onClick={()=>props.formChangeEvent(item)}>
                                 <Td>{item.lastname} {item.firstname}</Td>
                                 {/* <Td><p style={item.status ===1?{color:"green"}:{color:"red"}}>{item.status ===1?"Active":"Inactive"}</p> </Td> */}
                                 <Td className={item.status ===1?"text-success":"text-danger"}>{item.status ===1?"Active":"Inactive"}</Td>

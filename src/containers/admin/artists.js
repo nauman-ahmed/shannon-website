@@ -18,7 +18,7 @@ function Artists(props) {
     const historyCurrent = useHistory()
 
     const dispatch = useDispatch();
-    const [formNo2, setFormNo2] = useState(0)
+    const [formNo2, setFormNo2] = useState(2)
     const [search, setSearch] = useState("")
     const [selectedArtist,setSelectedArtist] = useState({});
     const [selectedImages,setSelectedImages] = useState({});
@@ -44,7 +44,7 @@ function Artists(props) {
         if(state){
             setFormNo2(2)
         }else{
-            setFormNo2(0)
+            setFormNo2(2)
         }
         if(!data._id){
             checkCurrentUserLocalStorage()
@@ -126,6 +126,7 @@ function Artists(props) {
 
     return (
         <div className='px-xl-5 mx-xl-5'>
+            {console.log("NAUA",formNo2)}
         <div className={'mx-lg-5 px-lg-3 pb-4 ml-5 d-flex flex-column'+(props.formNo === 1?" align-items-center":"")}>
         
             {

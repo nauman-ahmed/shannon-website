@@ -41,7 +41,7 @@ input#Search-2::placeholder {
 .artistcardAdminPortfolio {
   position: relative;
   overflow: hidden;
-  height: 14.5vh;
+  height: 9vw;
   /* width: 5vw; */
 }
 
@@ -10996,6 +10996,18 @@ element.style {
   /* max-height: 100vh; */
   /* overflow-y: auto; */
 }
+
+@media screen and (max-width: 1500px) {
+
+  .artistcardAdminPortfolio {
+    position: relative;
+    overflow: hidden;
+    height: 8vw;
+    /* width: 5vw; */
+  }
+
+}
+
 
 @media screen and (max-width: 1300px) {
 
