@@ -40,7 +40,6 @@ function ArtistsList(props) {
     
     useEffect(()=>{
 
-        console.log(typeOneArtist,similarArtist)
         if(props.similarArtist){
             if(similarArtist){
                 let temp = [...typeOneArtist]
@@ -197,7 +196,7 @@ function ArtistsList(props) {
                                 {props.holder?<img className="mt-1" alt="loading" src={loading} style={{width:"30px"}}/>:<button className='mx-1 myBtn active' type="text" onClick={(e)=>{setIsPopupShow(true); setSelectedArtist(item)}}>DELETE</button>}
                             </Td>
                         </Tr>
-                        )
+                    )
                     ):
                     characters.map((item,key)=>
                     props.selectedArtist ?
@@ -232,19 +231,21 @@ function ArtistsList(props) {
                       )
                       :
                       (
-                        <Draggable key={item._id} draggableId={item._id} index={key}>
-                        {(provided) => (
-                            <Tr key={key} provided={provided} onClick={()=>props.formChangeEvent(item)}>
-                                <Td>{item.lastname} {item.firstname}</Td>
-                                {/* <Td><p style={item.status ===1?{color:"green"}:{color:"red"}}>{item.status ===1?"Active":"Inactive"}</p> </Td> */}
-                                <Td className={item.status ===1?"text-success":"text-danger"}>{item.status ===1?"Active":"Inactive"}</Td>
-                                <Td className="d-flex">
-                                    <button onClick={()=>props.formChangeEvent(item)} className='mx-1 myBtn' type="text">EDIT</button>
-                                    {props.holder?<img className="mt-1" alt="loading" src={loading} style={{width:"30px"}}/>:<button className='mx-1 myBtn active' type="text" onClick={(e)=>{setIsPopupShow(true); setSelectedArtist(item)}}>DELETE</button>}
-                                </Td>
-                            </Tr>
-                    )}
-                    </Draggable>
+                        <Draggable key={item._id} draggableId={item._id} index={key} >
+                            {(provided) => (
+                                <Tr key={key} provided={provided} >
+                                    <div onClick={()=>props.formChangeEvent(item)} style={{ display: "contents", cursor: "pointer" }}>
+                                        <Td>{item.lastname} {item.firstname}</Td>
+                                        {/* <Td><p style={item.status ===1?{color:"green"}:{color:"red"}}>{item.status ===1?"Active":"Inactive"}</p> </Td> */}
+                                        <Td className={item.status ===1?"text-success":"text-danger"}>{item.status ===1?"Active":"Inactive"}</Td>
+                                        <Td className="d-flex">
+                                            <button onClick={()=>props.formChangeEvent(item)} className='mx-1 myBtn' type="text">EDIT</button>
+                                            {props.holder?<img className="mt-1" alt="loading" src={loading} style={{width:"30px"}}/>:<button className='mx-1 myBtn active' type="text" onClick={(e)=>{setIsPopupShow(true); setSelectedArtist(item)}}>DELETE</button>}
+                                        </Td>
+                                    </div>
+                                </Tr>
+                            )}
+                        </Draggable>
                       )
                       
                       ):"" }

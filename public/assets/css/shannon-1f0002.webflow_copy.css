@@ -41,8 +41,8 @@ input#Search-2::placeholder {
 .artistcardAdminPortfolio {
   position: relative;
   overflow: hidden;
-  height: 9vw;
-  /* width: 5vw; */
+  height: 5vw;
+  width: 5vw;
 }
 
 .artistcardAdminPortfolio:hover .crossSection {
@@ -10997,7 +10997,7 @@ element.style {
   /* overflow-y: auto; */
 }
 
-@media screen and (max-width: 1500px) {
+/* @media screen and (max-width: 1500px) {
 
   .artistcardAdminPortfolio {
     position: relative;
@@ -11006,7 +11006,7 @@ element.style {
     /* width: 5vw; */
   }
 
-}
+} */
 
 
 @media screen and (max-width: 1300px) {
