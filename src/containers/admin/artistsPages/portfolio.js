@@ -317,7 +317,8 @@ function Portfolio(props) {
                     onClick={() => toggleImageVisibilityHandler(item)}
                   />
               </div>
-              <img style={{cursor: "pointer"}} onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})}  alt='' src={item.path} className="image"/>
+              {console.log("NAUMAN",item)}
+              <img style={{cursor: "pointer"}} onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})}  alt='' src={item.subImage[0].path} className="image"/>
           </div>:""
         )):""
       }
@@ -354,7 +355,7 @@ function Portfolio(props) {
                     onClick={() => toggleImageVisibilityHandler(item)}
                   />
               </div>
-              <img style={{cursor: "pointer"}} onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})}  alt='' src={item.path} className="image"/>
+              <img style={{cursor: "pointer"}} onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})}  alt='' src={item.subImage[0].path} className="image"/>
           </div>:""
         )):""
       }

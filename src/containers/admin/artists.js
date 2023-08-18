@@ -126,7 +126,6 @@ function Artists(props) {
 
     return (
         <div className='px-xl-5 mx-xl-5'>
-            {console.log("NAUA",formNo2)}
         <div className={'mx-lg-5 px-lg-3 pb-4 ml-5 d-flex flex-column'+(props.formNo === 1?" align-items-center":"")}>
         
             {
