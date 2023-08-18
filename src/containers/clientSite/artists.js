@@ -120,7 +120,7 @@ function Artists(props) {
                   </div>
                 </div>
               </Link>
-              {ind === 35 ? (
+              {/* { ind === 35 ? (
                 bannerImages.bannerData.length > 0 ? (
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879ea-4bf2d022"
@@ -135,7 +135,7 @@ function Artists(props) {
                         marginTop: "0.8vh",
                       }}
                     ></div> 
-                    {/* <img id="w-node-a284be2a-4b91-3177-03eb-6614b24879ec-4bf2d022" alt="banner " src={IMAGE_ROUTE+bannerImages.bannerData[0].imagePath}  className="bannerletters _1 v2"/> */}
+                    { <img id="w-node-a284be2a-4b91-3177-03eb-6614b24879ec-4bf2d022" alt="banner " src={IMAGE_ROUTE+bannerImages.bannerData[0].imagePath}  className="bannerletters _1 v2"/> }
                     <div
                       id="w-node-a284be2a-4b91-3177-03eb-6614b24879ec-4bf2d022"
                       className="bannerhome _1 v2"
@@ -150,7 +150,7 @@ function Artists(props) {
                   </Link>
                 ) : null
               ) : null 
-              }
+              } */}
               {ind === 47 ? (
                 bannerImages.bannerData.length > 0 ? (
                   <>
