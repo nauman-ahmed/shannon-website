@@ -356,7 +356,7 @@ function SearchByArtist(props) {
                     windowSize.innerWidth < 479 ?
                       <div>
                         <div
-                          className="imagecont"
+                          className="imagecont" 
                           style={{ marginTop: 10 }}
                         >
                           {data1[search].subListData.map((item, keys) =>
