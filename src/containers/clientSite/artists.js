@@ -151,7 +151,7 @@ function Artists(props) {
                 ) : null
               ) : null 
               } */}
-              {ind === 47 ? (
+              {/* {ind === 47 ? (
                 bannerImages.bannerData.length > 0 ? (
                   <>
                     <a
@@ -268,7 +268,7 @@ function Artists(props) {
                     </Link>
                   </>
                 ) : null
-              ) : null}
+              ) : null} */}
             </>
           ))
         ) : ( 
