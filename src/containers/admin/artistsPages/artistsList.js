@@ -47,9 +47,7 @@ function ArtistsList(props) {
                 for (let index = 0; index < typeOneArtist.length; index++) {
                     if(similarArtist.similarArtistCollection.findIndex((item1)=> item1 == typeOneArtist[index]._id) !== -1){
                         temp.splice(counter,0,typeOneArtist[index])
-                        console.log("CHALA",temp.length)
                         temp.splice(index+1,1)
-                        console.log("CHALA",temp.length)
                         counter += 1
                     }
                 }
@@ -86,9 +84,10 @@ function ArtistsList(props) {
                 setTypeTwoArtist(typeKid.sort((a, b) => a.lastname.normalize().localeCompare(b.lastname.normalize())))
                 updateCharacters(typeOther.sort((a, b) => a.lastname.normalize().localeCompare(b.lastname.normalize())))
             }else{
+                let sortedArray = typeKid.sort((a, b) => a.orderKidArtist - b.orderKidArtist)
                 setTypeOneArtist(typeOther)
-                setTypeTwoArtist(typeKid)
-                updateCharacters(typeOther)
+                setTypeTwoArtist(sortedArray)
+                updateCharacters(formNo == 0 ? typeOther : sortedArray )
             }
 
         }
@@ -147,8 +146,8 @@ function ArtistsList(props) {
     :
         <button className='mr-3 mb-3 myBtn active' type="text" onClick={onSubmitHandler}>CONFIRM ORDER</button>
     }
-    <button className='mx-3 mb-3 myBtn active' type="text" onClick={()=>{updateCharacters(typeOneArtist); setFormNo(0);}}>ALL ARTISTS</button>
-    <button className='mx-3 mb-3 myBtn active' type="text" onClick={()=>{updateCharacters(typeTwoArtist);setFormNo(1)}}>KIDSHANON ARTISTS</button>
+    <button className={ formNo == 0 ? 'mx-3 mb-3 myBtn' : 'mx-3 mb-3 myBtn active'} type="text" onClick={()=>{updateCharacters(typeOneArtist); setFormNo(0);}}>ALL ARTISTS</button>
+    <button className={ formNo == 1 ? 'mx-3 mb-3 myBtn' : 'mx-3 mb-3 myBtn active'} type="text" onClick={()=>{updateCharacters(typeTwoArtist);setFormNo(1)}}>KIDSHANON ARTISTS</button>
     {props.holder?<div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"50vh"}}><img className="mb-3" alt="loading" src={loading} style={{width:"50px"}}/></div>:
         <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId='charactersStuff'>

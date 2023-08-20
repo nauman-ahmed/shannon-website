@@ -69,7 +69,6 @@ function Admin(props) {
                 dispatch(updateMessage(res));
                 populateArtistUsers();
                 history.push('admin/dashboard');
-                
             })
         }
     }
