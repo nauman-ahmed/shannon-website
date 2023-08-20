@@ -107,15 +107,22 @@ function Portfolio(props) {
       let sortedImages = []
       let tempTypeTwo = [...typeOneData]
       let tempTypeOne = [...typeTwoData]
+      let kidCounter = 0
+      let counter = 0
 
       for(let i = 0; i < tempTypeOne.length; i++){
-        tempTypeOne[i].orderKidPortfolio = i
+        if(tempTypeOne[i].status == 1 && tempTypeOne[i].hideImage == false){
+          tempTypeOne[i].orderKidPortfolio = kidCounter
+          kidCounter += 1
+        }
       };
       for(let i = 0; i < tempTypeTwo.length; i++){
-          tempTypeTwo[i].orderPortfolio = i
+        if(tempTypeTwo[i].status == 1 && tempTypeTwo[i].hideImage == false){
+          tempTypeTwo[i].orderPortfolio = counter
+          counter += 1
+        }          
       };
 
-      console.log(tempTypeTwo)
         artistPortfolioOrder({
         id:props.selectedArtist._id,
         images:tempTypeTwo
