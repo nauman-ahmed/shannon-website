@@ -25,18 +25,19 @@ function Artists(props) {
     const [seletedBio,setSelectedBio] = useState("");
     const [holder,setHolder]= useState(false);
     const [tempArtist,setTempArtist] = useState([]);
+
     const populateImageArtist = (data) =>{
         let params = {
             artistId : data._id
         }
         setHolder(true)
         artistDataId(params).then((res)=>{
-            setHolder(false)
             if(res == "ERROR"){
                 setSelectedImages([]);
             }else if(res.length > 0){
                 setSelectedImages(res[0]);
             }
+            setHolder(false)
         })
     }
     const formChangeEvent = (data,state=false) => {
@@ -50,6 +51,7 @@ function Artists(props) {
             checkCurrentUserLocalStorage()
             return
         }
+        setSelectedImages([])
         populateImageArtist(data);
         setSelectedArtist(data);
         setSelectedBio(data.bio);
@@ -181,7 +183,8 @@ function Artists(props) {
                     selectedArtist = {selectedArtist}
                     selectedImages = {selectedImages}
                     updateSelectedImagesArray = {updateSelectedImagesArray}
-                    />
+                    holder = {holder}
+                />
                 :formNo2 === 3?
                 <Edit
                 holder={holder}

@@ -22,6 +22,7 @@ import { Grid } from "./dropableFolder/Grid";
 import { SortablePhoto } from "./dropableFolder/SortablePhoto";
 import { Photo } from "./dropableFolder/Photo";
 import { connectAdvanced } from 'react-redux'
+import loading from '../../../assets/loading.gif';
 
 const img1 = window.location.origin+"/assets/images/IMG1.png"
 const img2 = window.location.origin+"/assets/images/IMG2.png"
@@ -61,7 +62,7 @@ function Portfolio(props) {
   }, [props.selectedImages])
 
   const filterImages = (keywordsList)=>{
-    
+    // in this function we are trying to seperate shannon and kidshannon images
     let tempData = [];
 
     tempData = props.selectedImages.mainImage.filter((item,key)=>{
@@ -164,7 +165,7 @@ function Portfolio(props) {
         newIndex = items.findIndex((val)=>val.path === over.id)
         return arrayMove(items, oldIndex, newIndex);
       });
-      console.log(oldIndex,newIndex)
+
       if(formNo2 == 0){
         setTypeOneData((typeOneData) => {
           return arrayMove(typeOneData, oldIndex, newIndex);
@@ -235,6 +236,10 @@ function Portfolio(props) {
     window.open('/#/artists/'+props.selectedArtist._id, '_blank');
   }
 
+  if(props.holder){
+    return <div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"50vh"}}><img className="mb-3" alt="loading" src={loading} style={{width:"50px"}}/></div>
+  }
+  
   return (
     <>
     {enabled ?
@@ -324,8 +329,15 @@ function Portfolio(props) {
                     onClick={() => toggleImageVisibilityHandler(item)}
                   />
               </div>
-              {console.log("NAUMAN",item)}
-              <img style={{cursor: "pointer"}} onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})}  alt='' src={item.subImage[0].path} className="image"/>
+              <img 
+                key={key}
+                style={{cursor: "pointer"}} 
+                onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})}  
+                alt='LOADING' 
+                src={item.subImage[0].path} 
+                className="image"
+                loading="eager"
+              />
           </div>:""
         )):""
       }
@@ -360,9 +372,17 @@ function Portfolio(props) {
                     src={item.hideImage? unHide : hide } 
                     style={{width:"20px", height:"20px", marginTop:"1vh", }} 
                     onClick={() => toggleImageVisibilityHandler(item)}
+                    loading="eager"
                   />
               </div>
-              <img style={{cursor: "pointer"}} onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})}  alt='' src={item.subImage[0].path} className="image"/>
+              <img 
+                style={{cursor: "pointer"}} 
+                onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})}  
+                alt='' 
+                src={item.subImage[0].path} 
+                className="image"
+                loading='eager'
+              />
           </div>:""
         )):""
       }
