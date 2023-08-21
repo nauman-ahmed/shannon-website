@@ -86,7 +86,7 @@ function DivisionSideBar(props) {
         <Link to="/illustration-artists" className={"divisionslink"+(props.activeBtn === "illustration-artists" || localStorage.getItem("Category") == "none"?" w--current":"")}><span className="sidebarlink">ILLUSTRATION<br /></span></Link>
         <Link to="/bipoc" className={"divisionslink"+(props.activeBtn === "bipoc"?" w--current":"")}><span className="sidebarlink">BIPOC<br /></span></Link>
         {/* <Link to="/cgi" className={"divisionslink"+(props.activeBtn === "cgi" || localStorage.getItem("Category") == "cgi" ?" w--current":"")}><span className="sidebarlink">CGI</span></Link> */}
-        <span className="sidebarlink"><br /></span>
+        {/* <span className="sidebarlink"><br /></span> */}
         <span className="sidebarlink">KIDSHANNON<br /></span>
         <Link to="/medical" className={"divisionslink"+(props.activeBtn === "medical" || localStorage.getItem("Category") == "Medical" ?" w--current":"")}><span className="sidebarlink">MEDICAL<br /></span></Link>
         <Link to="/motion" className={"divisionslink"+(props.activeBtn === "motion" || localStorage.getItem("Category") == "motion" ? " w--current":"")}><span className="sidebarlink">MOTION</span></Link>
