@@ -554,6 +554,10 @@ a {
   text-align: right;
 }
 
+.infoImage{
+  width: 80%;
+}
+
 .menuinfo.v2 {
   /* word-spacing: 2px;
   line-height: 1px; */
