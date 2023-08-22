@@ -128,7 +128,7 @@ function Header(props) {
               </div> */}
               <div className="menuinfo v2">
                 {/* {shannonContent.length > 0 ? shannonContent[0].name : "INFO@SHANNONASSOCIATES.COM • 212.333.2251"} */}
-                <img className="infoImage" alt="INFO@SHANNONASSOCIATES.COM • 212.333.2251" src={images+ "/shannonInfo.png"} />
+                <img className="infoImage" alt="INFO@SHANNONASSOCIATES.COM • 212.333.2251" src={images+ "/shannonInfo.svg"} />
               </div>
             </nav>
             <div className="menu-button w-nav-button">
