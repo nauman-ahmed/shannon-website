@@ -147,7 +147,7 @@ const images = window.location.origin + "/assets/images";
               artistImageDivisionDataSlice.artistKeywordImages.map(
                 (item, key) => (
                   <>
-                    {item.ImageData.length > 0 ? (
+                    {item.ImageData.length > 0 && item.keyword!= '3D Rendering' ? (
                       <>
                         <div className="d-flex mt-0 mb-2">
                           <h5 className="divisionHeading mt-0">
