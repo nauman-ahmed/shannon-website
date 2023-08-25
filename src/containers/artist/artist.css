@@ -264,11 +264,13 @@
 .modalTutorial{
   width: 100vw;
   height: 100vh;
-  background-color: rgba(200, 200, 200);
+  background-color: rgba(200, 200, 200, 0.7);
   position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
+  bottom: 0;
+  right: 0;
 }
 
 .containerModal{
