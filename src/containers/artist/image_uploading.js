@@ -31,6 +31,8 @@ function Image_uploading() {
     const [temp, setTemp] = useState(null)
     const [details, setDetails] = useState(decodeToken(localStorage.getItem("authorization")))
 
+    const [videoModal, setVideoModal] = useState(false);
+
 
     const [pagination, setPagination] = useState({
         previous:[],
@@ -111,6 +113,15 @@ function Image_uploading() {
         }
     },[])
 
+    const closeVideo = ()=>{
+        setVideoModal(false);
+        this.refs.vidRef.pause();
+    }
+
+    const openVideo= ()=>{
+        setVideoModal(true);
+        this.refs.vidRef.play();
+    }
 
     const paginationHandler = (num,prev=false) =>{
         if(prev){
@@ -341,6 +352,22 @@ function Image_uploading() {
                         }
                          
                     </p>
+                    
+                    <div>
+                        <button className='btn1 dark px-4 align-self-bottom' onClick={openVideo}  >Tutorial</button>
+                        
+                        {videoModal && (<div className='modalTutorial'>
+                            <div className='containerModal'>
+                                <div className='modalCloseBtn'>
+                                <button onClick={closeVideo} >×</button>
+                                </div>
+                                <video src="../../assets/video/TutorialCrop.mp4" controls="controls" type='video/mp4' ref="vidRef">
+                                </video>
+                            </div>
+                        </div>)}
+                    </div>
+
+
                 </div>
                 <div className='px-0 row m-0'>
                 </div>
