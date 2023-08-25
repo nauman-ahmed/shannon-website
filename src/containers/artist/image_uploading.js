@@ -115,12 +115,10 @@ function Image_uploading() {
 
     const closeVideo = ()=>{
         setVideoModal(false);
-        this.refs.vidRef.pause();
     }
 
     const openVideo= ()=>{
         setVideoModal(true);
-        this.refs.vidRef.play();
     }
 
     const paginationHandler = (num,prev=false) =>{
