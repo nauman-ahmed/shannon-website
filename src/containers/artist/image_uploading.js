@@ -358,7 +358,7 @@ function Image_uploading() {
                                 <div className='modalCloseBtn'>
                                 <button onClick={()=>setVideoModal(false)} >×</button>
                                 </div>
-                                <video src="../../assets/video/TutorialCrop.mp4" controls="controls" type='video/mp4'>
+                                <video src="../../assets/video/TutorialCrop.mp4" controls="controls" autoPlay type='video/mp4'>
                                 </video>
                             </div>
                         </div></>):null}
