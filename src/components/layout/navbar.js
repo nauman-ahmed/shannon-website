@@ -23,7 +23,6 @@ function Navbar(props) {
   return (  
     <div>
       <div>
-        {console.log("HEADER",props)}
         <div className="div-block-11 w-100 ">
           <div className='mobileViewNavbar'>
             <div className='w-100 d-flex flex-wrap justify-content-center '>

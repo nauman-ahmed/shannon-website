@@ -469,7 +469,6 @@ function SearchByArtist(props) {
                       >
                         {Object.keys(similarData).length > 0 ?
                           Object.keys(similarData).map((key, i) =>
-                            i < artistSimilar ?
                               <div className="talentthumbslide resp">
                                <Link
                                   id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
@@ -495,7 +494,6 @@ function SearchByArtist(props) {
                                   </div>
                                 </Link>
                               </div>
-                              : null
                           )
                           : "NO SIMILAR IMAGES FOUND"
                         }
@@ -582,7 +580,7 @@ function SearchByArtist(props) {
                           >
                             <div className="detail_card6_h">
                               <img
-                                src={String(dataViewed[key].slideList[0])}
+                                src={String(dataViewed[key].subListData[0])}
                                 loading="lazy"
                                 alt=""
                                 className="image"
