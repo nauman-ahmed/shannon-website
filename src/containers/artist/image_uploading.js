@@ -353,7 +353,7 @@ function Image_uploading() {
                     
                     <div>
                         <button className='btn1 dark px-4 align-self-bottom' onClick={()=>setVideoModal(true)}  >Tutorial</button>
-                        
+                        {console.log(videoModal)}
                         {videoModal? (<div className='modalTutorial'>
                             <div className='containerModal'>
                                 <div className='modalCloseBtn'>
