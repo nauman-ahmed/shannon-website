@@ -480,7 +480,7 @@ function SearchByArtist(props) {
                                 >
                                   <div className="detail_card6_h">
                                     <img
-                                      src={String(similarData[key].mainImage[0].subImage[0].path)}
+                                      src={String(similarData[key].mainImage)}
                                       loading="lazy"
                                       alt=""
                                       className="image"
@@ -525,7 +525,7 @@ function SearchByArtist(props) {
                           >
                             <div className="detail_card6_h">
                               <img
-                                src={String(similarData[key].mainImage[0].subImage[0].path)}
+                                src={String(similarData[key].mainImage)}
                                 loading="lazy"
                                 alt=""
                                 className="image"
