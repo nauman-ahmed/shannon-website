@@ -111,7 +111,7 @@ function Artist() {
                             To upload one or more images click on the "UPLOAD HERE" button on the left.
                         </p>
                         <p style={{ textTransform: "initial" }}>
-                            Click on an image to crop the "thumbnail".
+                            Click on an image to crop the thumbnail.
                         </p>
                     </p>
                 </div>  
