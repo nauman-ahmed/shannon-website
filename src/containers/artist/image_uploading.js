@@ -353,8 +353,7 @@ function Image_uploading() {
                     
                     <div>
                         <button className='btn1 dark px-4 align-self-bottom' onClick={()=>setVideoModal(true)}  >Tutorial</button>
-                        {console.log(videoModal)}
-                        {videoModal? (<div className='modalTutorial'>
+                        {videoModal ? (<><div className='modalTutorial'>
                             <div className='containerModal'>
                                 <div className='modalCloseBtn'>
                                 <button onClick={()=>setVideoModal(false)} >×</button>
@@ -362,7 +361,7 @@ function Image_uploading() {
                                 <video src="../../assets/video/TutorialCrop.mp4" controls="controls" type='video/mp4' ref="vidRef">
                                 </video>
                             </div>
-                        </div>):null}
+                        </div></>):null}
                     </div>
 
 
