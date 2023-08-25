@@ -298,3 +298,9 @@
   cursor: pointer;
   
 }
+
+.tutorialContainer{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
