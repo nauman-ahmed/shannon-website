@@ -271,11 +271,12 @@
   align-items: center;
   bottom: 0;
   right: 0;
+  z-index: 1;
 }
 
 .containerModal{
-  width: 800px;
-  height: 500px;
+  width: auto;
+  height: auto;
   border-radius: 12px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
