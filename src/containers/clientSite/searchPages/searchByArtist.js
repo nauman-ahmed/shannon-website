@@ -514,8 +514,7 @@ function SearchByArtist(props) {
                     :
                     <div className="detail_card2 my-2">
                       {Object.keys(similarData).length > 0
-                        ? Object.keys(similarData).map((key, i) => 
-                        i<=5 ?  
+                        ? Object.keys(similarData).map(key =>   
                         (
                           <Link
                             id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
@@ -540,7 +539,8 @@ function SearchByArtist(props) {
                                 {similarData[key].lastname} {similarData[key].firstname}</p> */}
                             </div>
                           </Link>
-                        ): null)
+                        )
+                        )
                         : "NO SIMILAR IMAGES FOUND"
                       }
                       </div>
