@@ -206,13 +206,13 @@ function Contact() {
     }
 
     // function getLocalStorage() {
-    //   if (localStorage.getItem("artistViewed_V1") !== null) {
-    //     setDataViewed(JSON.parse(localStorage.getItem("artistViewed_V1")));
+    //   if (localStorage.getItem("artistViewed_V2") !== null) {
+    //     setDataViewed(JSON.parse(localStorage.getItem("artistViewed_V2")));
     //   }
     // }
 
     let tempChecker = {};
-    // const tempval = JSON.parse(localStorage.getItem("artistViewed_V1"));
+    // const tempval = JSON.parse(localStorage.getItem("artistViewed_V2"));
     // tempval &&
     //   Object.keys(tempval).forEach((key) => {
     //     tempChecker[tempval[key]?.id] = false;
@@ -251,7 +251,7 @@ function Contact() {
       // setArtistData(temp);
 
       //For Images
-      // let tempLocalData = JSON.parse(localStorage.getItem("artistViewed_V1"));
+      // let tempLocalData = JSON.parse(localStorage.getItem("artistViewed_V2"));
 
       AddToCart?.cartInfo &&
       Object.keys(AddToCart?.cartInfo).forEach((oneKey, i) => {
