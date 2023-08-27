@@ -52,6 +52,16 @@ function Login() {
 
   useEffect(()=>{
     getAllTheCity()
+    console.log("AUT>HORIZATION",decodeToken(localStorage.getItem("authorization")))
+    let details = decodeToken(localStorage.getItem("authorization"))
+    
+    if(details !== null && details.email == "tech@shannonassociates.com"){
+      window.location.href = '/#/admin/artists'
+    }
+    else if(details !== null){
+      window.location.href = '/#/artist'
+    }
+
   },[])
 
   const onChangeHandlerEmail = (e) => {
