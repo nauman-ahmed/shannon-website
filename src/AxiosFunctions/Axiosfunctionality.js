@@ -13,7 +13,7 @@ export const IMAGE_ROUTE = "http://3.143.107.63:5000/";
 
 
 export const logouter = () => {
-    localStorage.removeItem('authorization');
+    // localStorage.removeItem('authorization');
     // window.location.href = '/#/admin/signin/'
 }
 
