@@ -580,7 +580,7 @@ function SearchByArtist(props) {
                           >
                             <div className="detail_card6_h">
                               <img
-                                src={String(dataViewed[key].subListData[0])}
+                                src={String(dataViewed[key]?.subListData[0])}
                                 loading="lazy"
                                 alt=""
                                 className="image"
