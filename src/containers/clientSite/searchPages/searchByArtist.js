@@ -570,7 +570,7 @@ function SearchByArtist(props) {
 
                         {Object.keys(dataViewed).length > 0
                           ? Object.keys(dataViewed).map((key, i) => 
-                          i<=18 && dataViewed[key]?
+                          i<=18 && dataViewed[key].subListData?
                           (
                             <Link
                             id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
