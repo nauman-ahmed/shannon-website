@@ -186,7 +186,7 @@ function Artists(props) {
                     holder = {holder}
                 />
                 :formNo2 === 3?
-                <Edit
+                <Edit 
                 holder={holder}
                 selectedArtist = {selectedArtist} 
                 setFormNo={(e)=>props.setFormNo(e)} 

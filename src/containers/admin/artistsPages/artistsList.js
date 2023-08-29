@@ -147,7 +147,7 @@ function ArtistsList(props) {
         <button className='mr-3 mb-3 myBtn active' type="text" onClick={onSubmitHandler}>CONFIRM ORDER</button>
     }
     <button className={ formNo == 0 ? 'mx-3 mb-3 myBtn' : 'mx-3 mb-3 myBtn active'} type="text" onClick={()=>{updateCharacters(typeOneArtist); setFormNo(0);}}>ALL ARTISTS</button>
-    <button className={ formNo == 1 ? 'mx-3 mb-3 myBtn' : 'mx-3 mb-3 myBtn active'} type="text" onClick={()=>{updateCharacters(typeTwoArtist);setFormNo(1)}}>KIDSHANON ARTISTS</button>
+    {props.similarArtist? null : <button className={ formNo == 1 ? 'mx-3 mb-3 myBtn' : 'mx-3 mb-3 myBtn active'} type="text" onClick={()=>{updateCharacters(typeTwoArtist);setFormNo(1)}}>KIDSHANON ARTISTS</button> } 
     {props.holder?<div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"50vh"}}><img className="mb-3" alt="loading" src={loading} style={{width:"50px"}}/></div>:
         <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId='charactersStuff'>
