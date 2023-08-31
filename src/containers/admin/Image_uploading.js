@@ -37,22 +37,29 @@ function Image_uploading(props) {
       })
       const [copyrightText, setCopyrightText] = useState("")
       const [copyrightColor, setCopyrightColor] = useState("")
+      const [maximumLimit, setMaximumLimit] = useState(0)
 
 
 
     const getBase64FromUrl = async (dataurl) => {
-        if(dataurl){
-            let res = await getImageBaseURL({url:dataurl})
-            var arr = res.data,
-                mime = "image/jpeg",
-                bstr = atob(arr), 
-                n = bstr.length, 
-                u8arr = new Uint8Array(n);
-                
-            while(n--){
-                u8arr[n] = bstr.charCodeAt(n);
+        try {
+            if(dataurl){
+                let res = await getImageBaseURL({url:dataurl})
+                var arr = res.data,
+                    mime = "image/jpeg",
+                    bstr = atob(arr), 
+                    n = bstr.length, 
+                    u8arr = new Uint8Array(n);
+                    
+                while(n--){
+                    u8arr[n] = bstr.charCodeAt(n);
+                }
+                setTemp("data:image/jpeg;base64,"+res.data)
             }
-            setTemp("data:image/jpeg;base64,"+res.data)
+        } catch (error) {
+            if(maximumLimit < 10){
+                setMaximumLimit(maximumLimit+1)
+            }
         }
     } 
 
@@ -61,11 +68,10 @@ function Image_uploading(props) {
         try{
 
             getBase64FromUrl(props.images.originalPath)
-
             setArtistImage({
                 imgPath: props.images.originalPath,
                 title: props.images.title,
-                _id:props.data[0].artistId._id,
+                _id:props.artistId._id,
             })
             
             let caption = props.images.copyrightText  ? props.images.copyrightText : `© ${props.artistId.lastname.toLowerCase()} ${props.artistId.firstname.toLowerCase()}`
@@ -119,7 +125,7 @@ function Image_uploading(props) {
         });
     }
 
-    },[keywordList])
+    },[keywordList,maximumLimit])
     
 
     const onChangeHandler = (e) => {

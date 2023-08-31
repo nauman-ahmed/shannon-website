@@ -74,12 +74,12 @@ function App() {
           name="Admin"
           component={Admin}
         />
-        <PrivateRoute
+        {/* <PrivateRoute
           exact
           path="admin/artist/updateImage"
           name="Admin"
           component={Admin_update}
-        />
+        /> */}
         <PrivateRoute
           exact
           path="/admin/:pageName"
