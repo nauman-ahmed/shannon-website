@@ -55,7 +55,6 @@ function Portfolio(props) {
   }
 
   useEffect(() => {
-    localStorage.setItem('currentArtist',JSON.stringify(props.selectedArtist))
     if(props.selectedImages.mainImage !== undefined){
       getKeywordsAndSeperate()
     } 
@@ -395,7 +394,6 @@ function Portfolio(props) {
       </div>
       <div className='row m-0'>
         <div className='_4cols-v2-admin my-3'>  
-          {localStorage.setItem('currentArtist',JSON.stringify(props.selectedArtist))}
             {Object.keys(props.selectedImages).length > 0 ? props.selectedImages.mainImage.map((item,key)=>
                 (item.statusSubmit === 1 && item.status === 0?
                   <div key={key} onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})} className='artistcardAdminPortfolio w-inline-block'>

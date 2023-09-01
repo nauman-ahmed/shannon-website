@@ -52,7 +52,6 @@ function Login() {
 
   useEffect(()=>{
     getAllTheCity()
-    console.log("AUT>HORIZATION",decodeToken(localStorage.getItem("authorization")))
     let details = decodeToken(localStorage.getItem("authorization"))
     
     if(details !== null && details.email == "tech@shannonassociates.com"){
@@ -198,7 +197,6 @@ function Login() {
 
   return (
     <div className='loginPage d-flex justify-content-center'>
-      {console.log(new Date().getSeconds())}
       <img className='backAsset1' alt='' src={back}/>
       <img className='backAsset2' alt='' src={back}/>
       <div className='myForm col-12 pt-md-0 pt-5'>

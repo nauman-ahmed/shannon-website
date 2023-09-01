@@ -41,6 +41,7 @@ function Artists(props) {
         })
     }
     const formChangeEvent = (data,state=false) => {
+
         props.setFormNo(1)
         if(state){
             setFormNo2(2)
@@ -51,12 +52,16 @@ function Artists(props) {
             checkCurrentUserLocalStorage()
             return
         }
+        localStorage.setItem('currentArtist',JSON.stringify(data))
         setSelectedImages([])
         populateImageArtist(data);
         setSelectedArtist(data);
         setSelectedBio(data.bio);
+        setSearch("")
     }
+
     const updateArtistBioData = (e,data)=>{
+
         setHolder(true)
         updateArtistBio(data).then((res)=>{
             setHolder(false)
@@ -67,6 +72,7 @@ function Artists(props) {
     }
 
     const updateArtist = (e,data)=>{
+
         setHolder(true)
         updateArtistData(data).then((res)=>{
             setHolder(false)
@@ -78,6 +84,7 @@ function Artists(props) {
         })
     }
     const changeArtistData = (e)=>{
+
         setSearch(e.target.value);
         const searchvalue = e.target.value.toLowerCase();
         setTempArtist(props.artistUsers.filter(function (element) {
@@ -92,6 +99,7 @@ function Artists(props) {
     }
 
     const checkCurrentUserLocalStorage = () => {
+
         const curr = JSON.parse(localStorage.getItem("currentArtist"));
         if(curr){
             populateImageArtist(curr);
@@ -101,6 +109,7 @@ function Artists(props) {
     }
 
     useEffect(()=>{
+
         if(historyCurrent.location.state){
             checkCurrentUserLocalStorage()
             formChangeEvent(historyCurrent.location.state,true)           
