@@ -5,6 +5,7 @@ import DivisionSideBar from '../../components/layout/divisionSideBar'
 import Footer from '../../components/layout/footer'
 import Header from '../../components/layout/header'
 import Navbar from '../../components/layout/navbar'
+import NewestArtists from './newestArtists'
 import About from './about'
 import Artists from './artists'
 import Bipoc from './bipoc'
@@ -132,6 +133,8 @@ function Index(props) {
                         <Photography searchArtist={searchArtist}>
                             <DivisionSideBar activeBtn={pages}/>
                         </Photography>
+                    :pages === 'newest'?
+                        <NewestArtists/>
                     :pages === "about"?
                         <About/>
                     :pages === "contact"?
