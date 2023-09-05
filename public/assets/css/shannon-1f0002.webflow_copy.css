@@ -4718,6 +4718,10 @@ column-gap:20px ;
   background-color: white;
 }
 
+.navbarArtistNewUpdated {
+  width: 40px;
+}
+
 .navbarArtistNewUpdated:hover .navbarArtistNewUpdatedItem{
   display: grid;
 }
