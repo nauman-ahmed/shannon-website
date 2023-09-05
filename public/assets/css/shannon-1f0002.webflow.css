@@ -5539,6 +5539,22 @@ column-gap:20px ;
   background-color: white;
 }
 
+.navbarArtistNewUpdated:hover .navbarArtistNewUpdatedItem{
+  display: grid;
+}
+
+.navbarArtistNewUpdatedItem {
+  display: none;
+  border-left-color: #fa8e37;
+  border-left-width: 2px;
+  border-left-style: solid;
+  padding: 5px;
+  margin-top: 1vh;
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+}
+
 .mobileViewNavbar {
   display: none;
   width: auto;
