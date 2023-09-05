@@ -32,6 +32,7 @@ function Artist() {
             imageCreate.append('_id',details._id)
     
             for(let i=0;i<e.target.files.length;i++){
+                console.log(e.target.files);
                 imageCreate.append('artistImage',e.target.files[i])
             }
     
