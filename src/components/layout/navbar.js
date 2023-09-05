@@ -65,9 +65,7 @@ function Navbar(props) {
           <Link to="/medical" className={"filterhomelink v2 " + (props.aciveBtn === "medical" ? "w--current" : "")}>MEDICAL</Link>
           {/* <Link to="/cgi" className={"filterhomelink v2 " + (props.aciveBtn === "cgi" ? "w--current" : "")}>CGI</Link> */}
           <Link to="/motion" className={"filterhomelink v2 " + (props.aciveBtn === "motion" ? "w--current" : "")}>MOTION</Link>
-          <div className="navbarArtistNewUpdated">
-              <Link className= "navbarDot"> · </Link>
-          </div>
+          <Link> · </Link>
           <Link to="/newest" className={"filterhomelink v2 mb-3 " + (props.aciveBtn === "newest" ? "w--current" : "")} > NEW </Link>
           <Link to="/recentlyUpdated" className={"filterhomelink v2 mb-3 " + (props.aciveBtn === "recentlyUpdated" ? "w--current" : "")} > UPDATED </Link>
 
