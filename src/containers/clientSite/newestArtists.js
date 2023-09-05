@@ -100,29 +100,31 @@ function NewestArtists(props) {
           artistImageDataSlice.artistImages.map((val, ind) =>  
             {
                 let fullName = val.firstname + ' '+ val.lastname;
-                if(newArtistList.includes(fullName))
-                return (    
-                    <>
-                      <Link
-                        id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
-                        data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                        to={"/artists/" + val.artistId._id}
-                        className="artistcard"
-                      >
-                        <img
-                          src={String(val.mainImage[0].subImage[0].path)}
-                          loading="lazy"
-                          alt=""
-                          className="image" 
-                        />
-                        <div className="artistnamediv">
-                          <div className="artistnametext-v3">
-                          {val.artistId.firstname}  {val.artistId.lastname} 
-                          </div>
-                        </div>
-                      </Link>
-                    </>
-                  )
+                if(newArtistList.includes(fullName)){
+                    console.log(fullName);
+                    return (    
+                        <>
+                          <Link
+                            id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                            data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                            to={"/artists/" + val.artistId._id}
+                            className="artistcard"
+                          >
+                            <img
+                              src={String(val.mainImage[0].subImage[0].path)}
+                              loading="lazy"
+                              alt=""
+                              className="image" 
+                            />
+                            <div className="artistnamediv">
+                              <div className="artistnametext-v3">
+                              {val.artistId.firstname}  {val.artistId.lastname} 
+                              </div>
+                            </div>
+                          </Link>
+                        </>
+                      )
+                }
             }
             )
         ) : ( 
