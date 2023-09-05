@@ -6,6 +6,7 @@ import Footer from '../../components/layout/footer'
 import Header from '../../components/layout/header'
 import Navbar from '../../components/layout/navbar'
 import NewestArtists from './newestArtists'
+import UpdatedArtists from './updatedArtists'
 import About from './about'
 import Artists from './artists'
 import Bipoc from './bipoc'
@@ -137,6 +138,10 @@ function Index(props) {
                         <NewestArtists searchArtist={searchArtist}>
                             <ArtistSideBar/>
                         </NewestArtists>
+                    :pages === 'updated'?
+                        <UpdatedArtists searchArtist={searchArtist}>
+                            <ArtistSideBar/>
+                        </UpdatedArtists>
                     :pages === "about"?
                         <About/>
                     :pages === "contact"?
