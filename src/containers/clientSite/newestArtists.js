@@ -99,7 +99,7 @@ function NewestArtists(props) {
         ) : artistImageDataSlice.artistImages && props.searchArtist === "" && filterCond ? (
           artistImageDataSlice.artistImages.map((val, ind) =>  
             {
-                let fullName = val.firstname + ' '+ val.lastname;
+                let fullName = val.artistId.firstname + ' '+ val.artistId.lastname;
                 if(newArtistList.includes(fullName)){
                     console.log(fullName);
                     return (    
