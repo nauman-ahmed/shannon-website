@@ -134,7 +134,9 @@ function Index(props) {
                             <DivisionSideBar activeBtn={pages}/>
                         </Photography>
                     :pages === 'newest'?
-                        <NewestArtists/>
+                        <NewestArtists searchArtist={searchArtist}>
+                            <DivisionSideBar aciveBtn={pages}/>
+                        </NewestArtists>
                     :pages === "about"?
                         <About/>
                     :pages === "contact"?
