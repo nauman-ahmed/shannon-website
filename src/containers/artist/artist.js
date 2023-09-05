@@ -32,13 +32,13 @@ function Artist() {
             imageCreate.append('_id',details._id)
     
             for(let i=0;i<e.target.files.length;i++){
-                console.log(e.target.files[i]);
                 imageCreate.append('artistImage',e.target.files[i])
             }
     
             let response = await artistImageCreate(imageCreate)
             if(response.msg == "Add Artist Image"){
                 dispatch(await storeUploadedImages(response.data.mainImage))
+                console.log(response.data.mainImage);
             }
             setShowLoader(false)
         }catch (error) {
