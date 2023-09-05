@@ -131,7 +131,7 @@ function Index(props) {
                         </MOTION>                    
                     :pages === "photography"?
                         <Photography searchArtist={searchArtist}>
-                            <DivisionSideBar activeBtn={pages}/>
+                                <ArtistSideBar/>
                         </Photography>
                     :pages === 'newest'?
                         <NewestArtists searchArtist={searchArtist}>
