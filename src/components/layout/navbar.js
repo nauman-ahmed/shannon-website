@@ -67,11 +67,9 @@ function Navbar(props) {
           <Link to="/motion" className={"filterhomelink v2 " + (props.aciveBtn === "motion" ? "w--current" : "")}>MOTION</Link>
           <div className="navbarArtistNewUpdated">
               <Link className= "navbarDot"> · </Link>
-            <div className="navbarArtistNewUpdatedItem" >
-              <Link to="/newest" className={"filterhomelink v2 mb-3 " + (props.aciveBtn === "black" ? "w--current" : "")} > NEW </Link>
-              <Link to="/recentlyUpdated" className={"filterhomelink v2 mb-3 " + (props.aciveBtn === "black" ? "w--current" : "")} > UPDATED </Link>
-            </div>
           </div>
+          <Link to="/newest" className={"filterhomelink v2 mb-3 " + (props.aciveBtn === "black" ? "w--current" : "")} > NEW </Link>
+          <Link to="/recentlyUpdated" className={"filterhomelink v2 mb-3 " + (props.aciveBtn === "black" ? "w--current" : "")} > UPDATED </Link>
 
           {
             props.searchBar ?
