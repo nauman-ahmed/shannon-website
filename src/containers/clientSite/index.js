@@ -138,7 +138,7 @@ function Index(props) {
                         <NewestArtists searchArtist={searchArtist}>
                             <ArtistSideBar/>
                         </NewestArtists>
-                    :pages === 'updated'?
+                    :pages === 'recentlyUpdated'?
                         <UpdatedArtists searchArtist={searchArtist}>
                             <ArtistSideBar/>
                         </UpdatedArtists>
