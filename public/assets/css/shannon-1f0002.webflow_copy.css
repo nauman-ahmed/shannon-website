@@ -4718,6 +4718,11 @@ column-gap:20px ;
   background-color: white;
 }
 
+.navbarDot{
+  font-size: 25px;
+  color: #fa8e37;
+}
+
 .mobileViewNavbar {
   display: none;
   width: auto;
