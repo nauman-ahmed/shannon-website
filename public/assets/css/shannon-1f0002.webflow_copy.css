@@ -3434,7 +3434,7 @@ a {
   -ms-grid-columns: 1fr 16px 1fr 16px 1fr 16px 1fr 16px 1fr 16px 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   -ms-grid-rows: auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto;
-  /* grid-template-rows: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto; */
+  grid-template-rows: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
 }
 
 .artistnametext-v2 {
@@ -4716,6 +4716,12 @@ column-gap:20px ;
   position: absolute;
   z-index: 1;
   background-color: white;
+}
+
+.navbarDot{
+  width: 30px;
+  font-size: 25px;
+  color: #fa8e37;
 }
 
 .mobileViewNavbar {
