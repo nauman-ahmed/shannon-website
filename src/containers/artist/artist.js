@@ -11,6 +11,7 @@ import { artistImageCreate,artistImagedelete,getAllContents } from '../../AxiosF
 import MyPopupLoading from '../../components/loader/myPopup'
 import loading from '../../assets/loading.gif'; 
 import BackArrow from "../../assets/svgs/backArrow.svg"
+import MyPopup from '../../components/myPopup/myPopup'
 
 function Artist() {
     
@@ -21,6 +22,7 @@ function Artist() {
     const [artistDetails,setArtistDetails] = useState(null)
     const [showLoader,setShowLoader] = useState(false);
     const [imageContent,setImageContent] = useState([])
+    const [warning,setWarning] = useState(false)
 
     const changePageHandler = async (e) => {
         try{
@@ -38,6 +40,8 @@ function Artist() {
             let response = await artistImageCreate(imageCreate)
             if(response.msg == "Add Artist Image"){
                 dispatch(await storeUploadedImages(response.data.mainImage))
+            }else if(response.msg == "PROBLEM WITH IMAGE PROPERTIES"){
+                setWarning(true)
             }
             setShowLoader(false)
         }catch (error) {
@@ -98,6 +102,14 @@ function Artist() {
     return (
     <>  
         <Header/>
+        {warning && 
+            <MyPopup BackClose onClose={()=>{setWarning(false)}}>
+                <div className='mx-5 my-4 popUpfontsize'>
+                    Any of your uploaded Image does not comply to our company's standards <br/>
+                    Please contact admin
+                </div>
+            </MyPopup>
+        }
         <div className='px-1 px-md-5 artist mb-5' >
             <div className='profile'>
                 <div className='profilePic mb-5'>{artistDetails ? "WELCOME " + artistDetails.firstname.toUpperCase() : "...loading"}</div>
