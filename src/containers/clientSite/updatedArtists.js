@@ -87,7 +87,7 @@ function UpdatedArtists(props) {
       {props.children}
       <div
         id="w-node-a284be2a-4b91-3177-03eb-6614b24879c1-4bf2d022"
-        className="_4cols-v2"
+        className="_4cols-v2 heightIssue"
       >
         {artistImageDataSlice.loading ? (
           <div style={{ position: "absolute", top: "50%", left: "50%" }}>
