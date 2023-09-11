@@ -3437,6 +3437,10 @@ a {
   grid-template-rows: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
 }
 
+.heightIssue{
+  grid-template-rows: 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw;
+}
+
 .artistnametext-v2 {
   position: absolute;
   left: 0%;
