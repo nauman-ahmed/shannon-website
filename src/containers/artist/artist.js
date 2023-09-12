@@ -40,6 +40,9 @@ function Artist() {
             let response = await artistImageCreate(imageCreate)
             if(response.msg == "Add Artist Image"){
                 dispatch(await storeUploadedImages(response.data.mainImage))
+            }else if(response.msg == "Add Artist Image And Problem With Image"){
+                dispatch(await storeUploadedImages(response.data.mainImage))
+                setWarning(true)
             }else if(response.msg == "PROBLEM WITH IMAGE PROPERTIES"){
                 setWarning(true)
             }
