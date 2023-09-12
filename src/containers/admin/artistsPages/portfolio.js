@@ -396,7 +396,7 @@ function Portfolio(props) {
         <div className='_4cols-v2-admin my-3'>  
             {Object.keys(props.selectedImages).length > 0 ? props.selectedImages.mainImage.map((item,key)=>
                 (item.statusSubmit === 1 && item.status === 0?
-                  <div key={key} onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})} className='artistcardAdminPortfolio w-inline-block'>
+                  <div key={key} className='artistcardAdminPortfolio w-inline-block'>
                     <div className="crossSection">
                       <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -410,7 +410,7 @@ function Portfolio(props) {
                       />
                       </svg>
                     </div>
-                    <img alt='' src={item.path} className="image" style={{cursor:"pointer"}} />
+                    <img onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})} alt='' src={item.path} className="image" style={{cursor:"pointer"}} />
                   </div>
                 :null)
               )
