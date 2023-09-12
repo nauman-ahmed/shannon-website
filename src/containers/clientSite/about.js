@@ -43,19 +43,19 @@ function About() {
         >
           <h1 className="newsh2 h">ABOUT SHANNON</h1>
           <p className="paragraph">
-              Shannon Associates, headquartered in New York City with clients around the globe, is a premier creative management agency, serving the needs of professionals in publishing, advertising, entertainment, design, architecture, and tech.
+              Shannon Associates is headquartered in New York City with clients around the globe. We are a premier creative management agency, serving the needs of professionals in publishing, advertising, entertainment, design, architecture, and tech.
             <br />
             <br />
-              With a wide range of talent from contemporary to traditional, young breakouts to award-winning veterans, the unique creatives at Shannon reach across a wide spectrum of techniques and styles, specialties, and visions. From best-selling children’s books to global ads, movies to murals, from magazines to the latest virtual worlds, our group of top-talented individuals have their pulse on the ever-evolving culture of the creative economy.
+              We represent a wide range of talent from contemporary to traditional, young breakouts to award-winning veterans. The unique creatives at Shannon reach across a wide spectrum of techniques and styles, specialties, and visions. From best-selling children’s books to global ads, movies to murals, from magazines to the latest virtual worlds, our group of top-talented individuals have their pulse on the ever-evolving culture of the creative economy.
             <br />
             <br />
               Their work speaks for itself, having been honored with every coveted award available in our fields of expertise.
             <br />
             <br />
-              Our artists, illustrators, and authors are a representation of virtually every background, story, and region around the world. The diversity of talent that makes up Shannon bring their unique voices to the clients looking for an authentic touch. Our selection of clients below demonstrates the range of clients that have entrusted their projects to Shannon Associates.
+              Our artists, illustrators, and authors are a representation of virtually every background, story, and region around the world. Shannon is made up of a diversity of talent with each artist bringing their unique voice and authentic touch to every client project. The selection of clients below demonstrates the variety of businesses that have entrusted their projects to Shannon Associates.
             <br />
             <br />
-              Be it the latest tech company or most coveted fashion house, the companies, both large and small, have come to expect the best from our team.
+              Whether it the latest tech company or the most coveted fashion house. These companies, both large and small, have come to expect the best from our team.
             <br />
             <br />
               If you’d like more information about Shannon Associates or our team, please email or call anytime. It will be our honor to assist you.
