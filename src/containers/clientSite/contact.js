@@ -109,7 +109,7 @@ function Contact() {
           artistId: Id,
         };
         setHolder(true);
-        let tempMsg = `Thank you ${data.Name}. A Shannon Associates representative will be responding to your inquiry as soon as possible.`
+        let tempMsg = `Thank you ${data.Name}.`+ <br/> +`A Shannon Associates representative will be responding to your inquiry as soon as possible.`
         if (data.purposeOfInquiry) {
           if (data.purposeOfInquiry == "Looking for representation") {
             tempMsg = <p> Hi {data.Name}, Thank you for your submission. <br></br><br></br> We appreciate your interest in Shannon Associates. Due to the extremely high volume of applicants we receive, we are unfortunately unable to reply to all. Please feel free to try again if you have new samples to present. We hope you understand and wish you the best in all that is ahead.<br></br><br></br> Your Friends at Shannon Associates</p>
