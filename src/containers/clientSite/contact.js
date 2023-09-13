@@ -110,7 +110,7 @@ function Contact() {
         };
         setHolder(true);
         let tempMsg = <p>
-          Thank you ${data.Name}. <br/>
+          Thank you {data.Name}. <br/>
           A Shannon Associates representative will be responding to your inquiry as soon as possible.
         </p>
         if (data.purposeOfInquiry) {
