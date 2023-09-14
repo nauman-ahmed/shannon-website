@@ -11,6 +11,7 @@ const SnackbarCustom = (props) => {
     
   }, [message])
   try {
+    console.log("PRODUCTION",message)
     return (
       <SnackBar
           show={message.open}                    
