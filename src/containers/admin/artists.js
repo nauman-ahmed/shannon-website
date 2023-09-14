@@ -96,6 +96,7 @@ function Artists(props) {
 
         setHolder(true)
         updateArtistData(data).then((res)=>{
+            console.log("PRODUCTION 1",res)
             setHolder(false)
             dispatch(updateOpen(true))
             dispatch(updateMessage(res));
