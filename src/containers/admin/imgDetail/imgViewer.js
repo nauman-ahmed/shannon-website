@@ -72,7 +72,7 @@ function ImgViewer(props) {
             })}>
               <img alt='' src={BackArrow}/>
           </button>
-          {imageReady == 1 ? <button onClick={()=>history.push("/admin/artists/updateImage")} className='mx-1 myBtn sm align-self-center px-4'>EDIT</button> : 
+          {imageReady >= 1 ? <button onClick={()=>history.push("/admin/artists/updateImage")} className='mx-1 myBtn sm align-self-center px-4'>EDIT</button> : 
           <img className='mt-1' alt="loading" src={loading} style={{width:"30px"}}/>
           }
           
