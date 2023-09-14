@@ -10,18 +10,29 @@ const SnackbarCustom = (props) => {
     setTimeout(function changerState(){dispatch(updateOpen(false))},4000);
     
   }, [message])
-  return (
-    <SnackBar
-        show={message.open}                    
-        timer={4000}                          
-        >
-            <div >
-              <label>{message.message.toUpperCase()}</label>
-        </div>
-        
-       
-    </SnackBar>
-  )
+  try {
+    return (
+      <SnackBar
+          show={message.open}                    
+          timer={4000}                          
+          >
+              <div >
+                <label>{message.message.toUpperCase()}</label>
+          </div>
+      </SnackBar>
+    )
+  } catch (error) {
+    return (
+      <SnackBar
+          show={message.open}                    
+          timer={4000}                          
+          >
+              <div >
+                <label>{message.toUpperCase()}</label>
+          </div>
+      </SnackBar>
+    )
+  }
 }
 
 export default SnackbarCustom
