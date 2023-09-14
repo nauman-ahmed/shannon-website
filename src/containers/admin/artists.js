@@ -40,6 +40,27 @@ function Artists(props) {
             setHolder(false)
         })
     }
+
+    useEffect(()=>{
+
+        if(historyCurrent.location.state){
+            checkCurrentUserLocalStorage()
+            formChangeEvent(historyCurrent.location.state,true)           
+            return
+        }
+        checkCurrentUserLocalStorage()
+    },[])
+
+    const checkCurrentUserLocalStorage = () => {
+
+        const curr = JSON.parse(localStorage.getItem("currentArtist"));
+        if(curr){
+            populateImageArtist(curr);
+            setSelectedArtist(curr);
+            setSelectedBio(curr.bio);
+        }
+    }
+
     const formChangeEvent = (data,state=false) => {
 
         props.setFormNo(1)
@@ -97,27 +118,6 @@ function Artists(props) {
         text = text !== "<p><br></p>" ? text : "";
         setSelectedBio(text);
     }
-
-    const checkCurrentUserLocalStorage = () => {
-
-        const curr = JSON.parse(localStorage.getItem("currentArtist"));
-        if(curr){
-            populateImageArtist(curr);
-            setSelectedArtist(curr);
-            setSelectedBio(curr.bio);
-        }
-    }
-
-    useEffect(()=>{
-
-        if(historyCurrent.location.state){
-            checkCurrentUserLocalStorage()
-            formChangeEvent(historyCurrent.location.state,true)           
-            return
-        }
-        checkCurrentUserLocalStorage()
-    },[])
-
 
     const  modules = {
         toolbar: [

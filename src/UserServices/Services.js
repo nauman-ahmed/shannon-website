@@ -1,10 +1,37 @@
+
+export const getDifferenceOfDates = (dateString1,dateString2) => {
+   // Parse date strings into Date objects
+    const date1 = new Date(dateString1);
+    const date2 = new Date(dateString2);
+
+    // Calculate the difference in milliseconds
+    const timeDifference = date2 - date1;
+
+    // Convert milliseconds to days, hours, minutes, and seconds
+    const millisecondsPerSecond = 1000;
+    const millisecondsPerMinute = 60 * millisecondsPerSecond;
+    const millisecondsPerHour = 60 * millisecondsPerMinute;
+    const millisecondsPerDay = 24 * millisecondsPerHour;
+
+    const daysDifference = Math.floor(timeDifference / millisecondsPerDay);
+    const hoursDifference = Math.floor((timeDifference % millisecondsPerDay) / millisecondsPerHour);
+    const minutesDifference = Math.floor((timeDifference % millisecondsPerHour) / millisecondsPerMinute);
+    const secondsDifference = Math.floor((timeDifference % millisecondsPerMinute) / millisecondsPerSecond);
+
+    return daysDifference
+}
+
+
 export const findCountOfReviewArtist = (res) => {
     var Counter = 0;
     res.forEach((item, key) => {
         if (item.mainImage.length > 0) {
             item.mainImage.forEach((item1, key1) => {
-                if (item1["statusViewed"] === 0 && item1["statusSubmit"] === 1 && item.artistId) {
-                    Counter++;
+                if(item.artistId){
+                    if (item1["statusSubmit"] === 1 && item.artistId.status == 1 && item1["status"] === 0) {
+                        // console.log("ARTIST",item.artistId,item.mainImage.length)
+                        Counter += 1;
+                    }
                 }
             })
         }

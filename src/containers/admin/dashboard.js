@@ -74,7 +74,6 @@ function Dashboard(props) {
                             IMAGES FOR <br/>
                             REVIEW
                         </h5>
-                        {console.log(props.reviewImagesCount)}
                         { props.reviewImagesCount == "loading" ? 
                             <img alt="loading" src={loading} style={{width:"50px"}}/>  
                             :
