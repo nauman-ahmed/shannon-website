@@ -396,8 +396,21 @@ function Portfolio(props) {
         <div className='_4cols-v2-admin my-3'>  
             {Object.keys(props.selectedImages).length > 0 ? props.selectedImages.mainImage.map((item,key)=>
                 (item.statusSubmit === 1 && item.status === 0?
-                  <div key={key} onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})} className='artistcardAdminPortfolio w-inline-block'>
-                    <img alt='' src={item.path} className="image" style={{cursor:"pointer"}} />
+                  <div key={key} className='artistcardAdminPortfolio w-inline-block'>
+                    <div className="crossSection">
+                      <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="12px"
+                          height="12px"
+                          viewBox="0 0 352 512"
+                          onClick={() => deleteImageHandler(item)}>
+                      <path
+                      fill="grey"
+                      d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      />
+                      </svg>
+                    </div>
+                    <img onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})} alt='' src={item.path} className="image" style={{cursor:"pointer"}} />
                   </div>
                 :null)
               )

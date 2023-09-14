@@ -108,8 +108,9 @@ function Artist() {
         {warning && 
             <MyPopup BackClose onClose={()=>{setWarning(false)}}>
                 <div className='mx-5 my-4 popUpfontsize'>
-                    Any of your uploaded Image does not comply to our company's standards <br/>
-                    Please contact admin
+                    One or more images do not meet our upload criteria.<br/> 
+                    Please ensure that your image has a maximum width of 2,400 pixels, the height may vary.<br/> 
+                    Make sure the image is in the flattened JPEG or PNG format and has a resolution of 72 dpi.
                 </div>
             </MyPopup>
         }
