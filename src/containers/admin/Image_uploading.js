@@ -15,7 +15,7 @@ import loading from '../../assets/loading.gif';
 const img1 = window.location.origin+"/assets/images/IMG3.png"
 
 function Image_uploading(props) {
-    const dispatch=useDispatch();
+    const dispatch=useDispatch(); 
     const history = useHistory()
     const [pageNo, setPageNo] = useState(0)
     const [isPopupShow, setIsPopupShow] = useState(false)
@@ -195,6 +195,7 @@ function Image_uploading(props) {
         imageCreate.append('color',copyrightColor)
         imageCreate.append('svg',svg)
         imageCreate.append('adminPortfolio',true)
+        imageCreate.append('_id',props.artistId._id)
 
         setIsPopupShow(true)
         changeArtistImageDetails(imageCreate).then((res)=>{

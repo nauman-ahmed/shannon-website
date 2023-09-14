@@ -72,7 +72,7 @@ function ImgViewer(props) {
             })}>
               <img alt='' src={BackArrow}/>
           </button>
-          {imageReady == 2 ? <button onClick={()=>history.push("/admin/artists/updateImage")} className='mx-1 myBtn sm align-self-center px-4'>EDIT</button> : 
+          {imageReady == 1 ? <button onClick={()=>history.push("/admin/artists/updateImage")} className='mx-1 myBtn sm align-self-center px-4'>EDIT</button> : 
           <img className='mt-1' alt="loading" src={loading} style={{width:"30px"}}/>
           }
           
@@ -82,7 +82,7 @@ function ImgViewer(props) {
     <div className='px-5 mx-5 row scrollerOn py-5'>
       <div className='col-md-6'>
         <h5 className='mb-4'>Original</h5>
-        <img onLoad={() => setImageReady(imageReady+1)} alt='' src={String(Object.keys(imageData.mainImage[0]).length > 0 ? imageData.mainImage[0].path:"")} />
+        <img onLoad={() => setImageReady(imageReady+1)} alt='' src={String(Object.keys(imageData.mainImage[0]).length > 0 ? imageData.mainImage[0].originalPath:"")} />
         <div className='row'>
           <div className='col-md-12'>
             <h5 className='mb-4'>Thumbnails</h5>
