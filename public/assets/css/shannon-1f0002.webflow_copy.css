@@ -521,6 +521,10 @@ a {
   color: #fa8e37;
 }
 
+.undelinedNavbar {
+  text-decoration: underline;
+}
+
 .homesection {
   padding-top: 18px;
   /* padding-bottom: 160px; */
