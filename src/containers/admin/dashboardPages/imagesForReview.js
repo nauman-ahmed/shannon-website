@@ -8,6 +8,15 @@ import { getDifferenceOfDates } from "../../../UserServices/Services"
 function ImagesForReview(props) {
     const historyCurrent = useHistory()
 
+    const checkConditionHandler = (item) => {
+        let count = findStatusCount(item)
+        let difference = getDifferenceOfDates(item.artistId.imageLastModified,new Date())
+        if(count == 0 && difference >30){
+            return false
+        }
+        return true
+    }
+
     const findStatusCount = (item)=>{
         var count = 0;
         item.mainImage.forEach((item1,key)=>{
@@ -49,7 +58,7 @@ function ImagesForReview(props) {
         </THead>
         <TBody>
             {props.artistImages.map((item,key)=>( 
-                item.artistId && item.artistId.populateUnderImageReview ?
+                item.artistId && checkConditionHandler(item) ?
             <Tr key={key}>
                 <Td>{item.artistId !== null?item.artistId.lastname+" "+item.artistId.firstname:""}</Td>
                 <Td>{moment(item.artistId.imageLastModified).format('MM/DD/YYYY')}</Td>
