@@ -41,7 +41,8 @@ function Dashboard(props) {
             <ImagesForReview
             holder={props.holder}
             artistImages = {props.artistImages}
-            
+            populateArtistImages={props.populateArtistImages}
+            populateArtistUsers={props.populateArtistUsers} 
             />:
             props.formNo === 3?
             <AddNewArtist
@@ -57,7 +58,7 @@ function Dashboard(props) {
                 approveArtistUser= {props.approveArtistUser}
                 loading = {props.loading}
             />:
-            <>
+            <> 
                 <div className='col-md-6 mb-3'>
                     <div onClick={()=>props.history.push("/admin/contact")} className='dash_card color1 p-5'>
                         <h5>

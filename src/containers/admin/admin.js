@@ -43,7 +43,9 @@ function Admin(props) {
             setContacts(res)
         })
     } 
+
     const populateArtistImages =()=>{
+        setCalculatingArtist(true)
         let data = {};
         getArtImages(data).then((res)=>{
             setArtistImages(res)
@@ -143,6 +145,7 @@ function Admin(props) {
                 //functions for contact
                 // contactViewMore = {contactViewMore}
                 //populate artist users
+                populateArtistImages={populateArtistImages}
                 populateArtistUsers={populateArtistUsers} 
                 //artist functionalities
                 addArtistUser= {addArtistUser}

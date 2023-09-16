@@ -8,7 +8,6 @@ import { getDifferenceOfDates } from "../../../UserServices/Services"
 function ImagesForReview(props) {
     const historyCurrent = useHistory()
 
-
     const findStatusCount = (item)=>{
         var count = 0;
         item.mainImage.forEach((item1,key)=>{
@@ -22,12 +21,20 @@ function ImagesForReview(props) {
     } 
 
     const redirectToArtistSubmission = (data) => {
-        // changeArtistImageViewed(data)
         localStorage.removeItem("currentArtist")
         historyCurrent.push({
             pathname:"/admin/artists",
             state:data
         })
+    }
+
+    const toggleArtistVisibility = async (data) => {
+        let res = await changeArtistImageViewed(data)
+        console.log("COMPLETED",res)
+        if(res == "successfully updated"){
+            props.populateArtistImages()
+            props.populateArtistUsers()
+        }
     }
 
   return (
@@ -36,13 +43,13 @@ function ImagesForReview(props) {
         
         <THead>
             <Th minWidth="120">Name</Th>
-            <Th minWidth="120">Date Last Modified</Th>
+            <Th minWidth="120">Date Last Uploaded</Th>
             <Th minWidth="120"># of images for review</Th>
             <Th width="110"></Th>
         </THead>
         <TBody>
             {props.artistImages.map((item,key)=>( 
-                findStatusCount(item) > 0 ?
+                item.artistId && item.artistId.populateUnderImageReview ?
             <Tr key={key}>
                 <Td>{item.artistId !== null?item.artistId.lastname+" "+item.artistId.firstname:""}</Td>
                 <Td>{moment(item.artistId.imageLastModified).format('MM/DD/YYYY')}</Td>
@@ -53,6 +60,11 @@ function ImagesForReview(props) {
                         style={{width: 130}} type="text"
                         onClick={()=>redirectToArtistSubmission(item.artistId)}
                         >VIEW PROFILE</button>
+                    <button 
+                        className='mx-1 myBtn active' 
+                        style={{width: 130}} type="text"
+                        onClick={()=>toggleArtistVisibility(item.artistId)}
+                        >APPROVE</button>
                 </Td>
             </Tr>:""
             )

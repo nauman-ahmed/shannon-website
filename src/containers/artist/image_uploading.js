@@ -248,7 +248,6 @@ function Image_uploading() {
 
     const onSubmit = () => {
         try{
-            console.log("NAUMAN",artistImageDetails)
             let storageData = localStorage.getItem("authorization")
             let details = decodeToken(storageData)
             if(artistImageDetails.length == 2){
@@ -279,6 +278,7 @@ function Image_uploading() {
                 imageCreate.append('artistImage',originalImage)
                 imageCreate.append('caption',"© " + details.firstname.toLowerCase())
                 imageCreate.append('color',artistReducer.uploadedImage.imageFile.copyrightColor)
+                imageCreate.append('populateUnderImageReview',true)
 
                 setShowLoader(true)
                 changeArtistImageDetails(imageCreate).then(res => {
