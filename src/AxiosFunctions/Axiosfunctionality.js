@@ -223,6 +223,15 @@ export const getArtist = async (data) => {
     }
 }
 
+export const getActiveArtist = async (data) => {
+    try {
+        const response = await axios.post(BASE_URL+"artistUser/getAllClient",data);
+        return response.data;
+    } catch (error) {
+        logouter();
+    }
+}
+
 export const updateSingleContact = async (data) => {
     try {
         const response = await axios.post(BASE_URL + 'contact/updateSingle', data);

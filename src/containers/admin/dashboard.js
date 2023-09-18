@@ -70,7 +70,7 @@ function Dashboard(props) {
                     </div>
                 </div>
                 <div className='col-md-6 mb-3'> 
-                    <div onClick={()=>props.setFormNo(2)} className='dash_card color2 p-5'>
+                    <div onClick={props.reviewImagesCount !== "loading" ? ()=>props.setFormNo(2) : null} className='dash_card color2 p-5'>
                         <h5>
                             IMAGES FOR <br/>
                             REVIEW

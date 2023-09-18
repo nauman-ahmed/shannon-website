@@ -194,7 +194,7 @@ function Image_uploading(props) {
         imageCreate.append('caption',copyrightText)
         imageCreate.append('color',copyrightColor)
         imageCreate.append('svg',svg)
-        imageCreate.append('adminPortfolio',true)
+        imageCreate.append('adminPortfolio',true) 
         imageCreate.append('_id',props.artistId._id)
 
         setIsPopupShow(true)

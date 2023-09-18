@@ -3,14 +3,27 @@ import { Link } from 'react-router-dom'
 
 import { useSelector } from 'react-redux'
 import { sortAlphaOrder } from '../../UserServices/Services'
+import { useDispatch } from 'react-redux'
+import { ArtistDataAPI } from '../../redux/artistDataSlice'
+import { getActiveArtist } from "../../AxiosFunctions/Axiosfunctionality"
 
-function ArtistSideBar() {
+function ArtistSideBar(props) {
 
-  const {ArtistDataAPI} = useSelector(state=>state)
+  const dispatch = useDispatch();
+  const { ArtistDataAPI } = useSelector(state=>state)
   const [artistData, setArtistData]  = useState([])
   let alpha = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+  
   useEffect(() => {
-    setArtistData(sortAlphaOrder(ArtistDataAPI.artistData!==undefined?ArtistDataAPI.artistData.length>0?ArtistDataAPI.artistData:[]:[]))
+
+    if(props.activeBtn === "newest" || props.activeBtn === "recentlyUpdated"){
+      getActiveArtist({keyword : props.activeBtn}).then((res)=>{
+        setArtistData(sortAlphaOrder(res!==undefined?res.length>0?res:[]:[]))
+      })
+    }else{
+      setArtistData(sortAlphaOrder(ArtistDataAPI.artistData!==undefined?ArtistDataAPI.artistData.length>0?ArtistDataAPI.artistData:[]:[]))
+    }
+
   }, [ArtistDataAPI])
 
  

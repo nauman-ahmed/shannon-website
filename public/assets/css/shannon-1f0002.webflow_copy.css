@@ -523,6 +523,7 @@ a {
 
 .undelinedNavbar {
   text-decoration: underline;
+  text-underline-offset: 5px;
 }
 
 .homesection {
@@ -4730,6 +4731,10 @@ column-gap:20px ;
   width: 30px;
   font-size: 25px;
   color: #fa8e37;
+}
+
+.navbarDot:hover{
+  text-decoration: none;
 }
 
 .mobileViewNavbar {

@@ -153,15 +153,15 @@ function Portfolio(props) {
 
   function handleDragEnd(event) {
     const {active, over} = event;
-
+    console.log("IDS",active,over)
     if (active.id !== over.id) {
 
       let oldIndex;
       let newIndex;
 
       setItems((items) => {
-        oldIndex = items.findIndex((val)=>val.path === active.id)
-        newIndex = items.findIndex((val)=>val.path === over.id)
+        oldIndex = items.findIndex((val)=>val.subImage[0].path === active.id)
+        newIndex = items.findIndex((val)=>val.subImage[0].path === over.id)
         return arrayMove(items, oldIndex, newIndex);
       });
 
@@ -259,7 +259,7 @@ function Portfolio(props) {
        <SortableContext items={items} strategy={rectSortingStrategy}>
          <Grid columns={4}>
            {items.map((url, index) => (
-             url.status === 1 &&  url.hideImage == false && <SortablePhoto key={url.path} url={url.path} index={index} />
+             url.status === 1 &&  url.hideImage == false && <SortablePhoto key={url.path} url={url.subImage[0].path} index={index} />
            ))}
          </Grid>
        </SortableContext>

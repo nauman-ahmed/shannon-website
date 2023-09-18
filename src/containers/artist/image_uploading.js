@@ -279,6 +279,7 @@ function Image_uploading() {
                 imageCreate.append('caption',"© " + details.firstname.toLowerCase())
                 imageCreate.append('color',artistReducer.uploadedImage.imageFile.copyrightColor)
                 imageCreate.append('populateUnderImageReview',true)
+                imageCreate.append('artistPortfolio',true)
 
                 setShowLoader(true)
                 changeArtistImageDetails(imageCreate).then(res => {

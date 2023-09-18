@@ -28,7 +28,7 @@ export const findCountOfReviewArtist = (res) => {
         if (item.mainImage.length > 0) {
             item.mainImage.forEach((item1, key1) => {
                 if(item.artistId){
-                    if (item1["statusSubmit"] === 1 && item.artistId.status == 1 && item1["status"] === 0) {
+                    if (item1["statusSubmit"] === 1 && item.artistId.status == 1 && item1["status"] === 0 && item.artistId.populateUnderImageReview) {
                         // console.log("ARTIST",item.artistId,item.mainImage.length)
                         Counter += 1;
                     }
@@ -81,6 +81,13 @@ export const sortAlphaOrder=(Artist)=>{
     })
    
     return tempArtist;
+}
+
+export const sortArrayOrder=(Artist)=>{
+    let arrayForSort = [...Artist]
+    let filtered = arrayForSort.filter((data)=> data.artistId)
+    let filteredAndSorted = filtered.sort((a, b) => new Date(b.artistId.imageLastUploaded) - new Date(a.artistId.imageLastUploaded));
+    return filteredAndSorted;
 }
 
 export const sortAlphaOrderKeyword=(Artist)=>{

@@ -1,17 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Table, { TBody, Td, Th, THead, Tr } from '../../../components/table/table'
 import { changeArtistImageViewed } from '../../../AxiosFunctions/Axiosfunctionality'
 import { useHistory } from 'react-router-dom'
 import moment from 'moment';
-import { getDifferenceOfDates } from "../../../UserServices/Services"
+import { getDifferenceOfDates, sortArrayOrder } from "../../../UserServices/Services"
+import loading from '../../../assets/loading_trasnparent.gif'; 
 
 function ImagesForReview(props) {
     const historyCurrent = useHistory()
+    const [artistImage, setArtistImage] = useState([])
+    const [loading, setLoading] = useState(false)
+
+    useEffect(()=>{
+        setArtistImage(sortArrayOrder(props.artistImages))
+    },[props.artistImages])
 
     const checkConditionHandler = (item) => {
         let count = findStatusCount(item)
         let difference = getDifferenceOfDates(item.artistId.imageLastModified,new Date())
         if(count == 0 && difference >30){
+            return false
+        }else if(item.artistId.populateUnderImageReview == false){
             return false
         }
         return true
@@ -38,12 +47,13 @@ function ImagesForReview(props) {
     }
 
     const toggleArtistVisibility = async (data) => {
+        setLoading(true)
         let res = await changeArtistImageViewed(data)
-        console.log("COMPLETED",res)
         if(res == "successfully updated"){
             props.populateArtistImages()
             props.populateArtistUsers()
         }
+        setLoading(false)
     }
 
   return (
@@ -53,14 +63,16 @@ function ImagesForReview(props) {
         <THead>
             <Th minWidth="120">Name</Th>
             <Th minWidth="120">Date Last Uploaded</Th>
+            <Th minWidth="120">Date Last Modified</Th>
             <Th minWidth="120"># of images for review</Th>
             <Th width="110"></Th>
         </THead>
         <TBody>
-            {props.artistImages.map((item,key)=>( 
+            {artistImage.length > 0 && artistImage.map((item,key)=>( 
                 item.artistId && checkConditionHandler(item) ?
             <Tr key={key}>
                 <Td>{item.artistId !== null?item.artistId.lastname+" "+item.artistId.firstname:""}</Td>
+                <Td>{moment(item.artistId.imageLastUploaded).format('MM/DD/YYYY')}</Td>
                 <Td>{moment(item.artistId.imageLastModified).format('MM/DD/YYYY')}</Td>
                 <Td>{findStatusCount(item)}</Td>
                 <Td className="d-flex">
@@ -73,7 +85,7 @@ function ImagesForReview(props) {
                         className='mx-1 myBtn active' 
                         style={{width: 130}} type="text"
                         onClick={()=>toggleArtistVisibility(item.artistId)}
-                        >APPROVE</button>
+                    >APPROVE</button>
                 </Td>
             </Tr>:""
             )

@@ -34,13 +34,15 @@ import SnackbarCustom from '../../components/snackBar/SnackbarCustom'
 import { ArtistDataAPI } from '../../redux/artistDataSlice'
 import { ArtistImageSliceData } from '../../redux/artistImageDataSlice'
 import { keywordDataApi } from '../../redux/keywordSlice'
+import { RecentlyArtistImageSliceData } from "../../redux/recentlyArtistImageDataSlice";
+
 
 function Index(props) {
     const { pages } = useParams()
     const { search } = useParams()
 
     const dispatch = useDispatch();
-    const  {artistImageDataSlice} = useSelector(state=>state);
+    const  {artistImageDataSlice, recentlyArtistImageDataSlice} = useSelector(state=>state);
     const  {artistImageKeywordDataSlice} = useSelector(state=>state);
 
 
@@ -63,6 +65,7 @@ function Index(props) {
 
         }):[]);
     }
+
     const updateTempDivision = (e)=>{
         setSearchDivision(e.target.value);
         const searchvalue = e.target.value.toLowerCase();
@@ -74,14 +77,17 @@ function Index(props) {
  
     
 
-    useEffect(() => {
+    useEffect(() => { 
         dispatch(ArtistDataAPI());
         dispatch(keywordDataApi());
+        dispatch(RecentlyArtistImageSliceData());
+
     }, [])
 
     useEffect(() => {
         setSearchArtist("")
     }, [pages,search])
+
 
     return (
         <>
@@ -132,15 +138,14 @@ function Index(props) {
                         </MOTION>                    
                     :pages === "photography"?
                         <Photography searchArtist={searchArtist}>
-                            <DivisionSideBar activeBtn={pages}/>
                         </Photography>
                     :pages === 'newest'?
                         <NewestArtists searchArtist={searchArtist}>
-                            <ArtistSideBar/>
+                            <ArtistSideBar  activeBtn={pages}/>
                         </NewestArtists>
                     :pages === 'recentlyUpdated'?
                         <UpdatedArtists searchArtist={searchArtist}>
-                            <ArtistSideBar/>
+                            <ArtistSideBar activeBtn={pages}/>
                         </UpdatedArtists>
                     :pages === "about"?
                         <About/>

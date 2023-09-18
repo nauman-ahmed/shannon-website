@@ -11,8 +11,8 @@ import artistImageDivisionDataSlice from './artistImageDivisionDataSlice';
 import selectedDivision from './selectedDivision';
 import AddToCart from './addToCart';
 import bannerImages from './bannerImages';
-
-
+import newestArtistImageDataSlice from './newestArtistImageDataSlice';
+import recentlyArtistImageDataSlice from './recentlyArtistImageDataSlice';
 
 
 export const store = configureStore({
@@ -28,6 +28,8 @@ export const store = configureStore({
     artistImageDivisionDataSlice,
     selectedDivision,
     AddToCart,
+    newestArtistImageDataSlice,
+    recentlyArtistImageDataSlice,
     bannerImages
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
