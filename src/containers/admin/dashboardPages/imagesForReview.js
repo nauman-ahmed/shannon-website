@@ -4,15 +4,18 @@ import { changeArtistImageViewed } from '../../../AxiosFunctions/Axiosfunctional
 import { useHistory } from 'react-router-dom'
 import moment from 'moment';
 import { getDifferenceOfDates, sortArrayOrder } from "../../../UserServices/Services"
-import loading from '../../../assets/loading_trasnparent.gif'; 
+import loadingImage from '../../../assets/loading_trasnparent.gif'; 
 
 function ImagesForReview(props) {
     const historyCurrent = useHistory()
     const [artistImage, setArtistImage] = useState([])
     const [loading, setLoading] = useState(false)
+    const [storedId, setStoredId] = useState(null)
 
     useEffect(()=>{
         setArtistImage(sortArrayOrder(props.artistImages))
+        setLoading(false)
+        setStoredId(null)
     },[props.artistImages])
 
     const checkConditionHandler = (item) => {
@@ -47,15 +50,16 @@ function ImagesForReview(props) {
     }
 
     const toggleArtistVisibility = async (data) => {
+        setStoredId(data._id)
         setLoading(true)
         let res = await changeArtistImageViewed(data)
         if(res == "successfully updated"){
             props.populateArtistImages()
             props.populateArtistUsers()
         }
-        setLoading(false)
     }
 
+    console.log("LOADING", loading)
   return (
     <div className='col'>
     <Table height="calc(100vh - 350px)">
@@ -81,11 +85,16 @@ function ImagesForReview(props) {
                         style={{width: 130}} type="text"
                         onClick={()=>redirectToArtistSubmission(item.artistId)}
                         >VIEW PROFILE</button>
-                    <button 
-                        className='mx-1 myBtn active' 
-                        style={{width: 130}} type="text"
-                        onClick={()=>toggleArtistVisibility(item.artistId)}
-                    >APPROVE</button>
+                    { loading && storedId == item.artistId._id ? 
+                            <img alt="loading" src={loadingImage} style={{width:"50px"}}/>  
+                            :
+                            <button 
+                                className='mx-1 myBtn active' 
+                                style={{width: 130}} type="text"
+                                onClick={()=>toggleArtistVisibility(item.artistId)}
+                            >APPROVE</button>
+                    }
+                    
                 </Td>
             </Tr>:""
             )
