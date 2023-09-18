@@ -35,7 +35,8 @@ function ImgViewer(props) {
       return
     }
     let params = {
-      _id:imageId
+      _id:imageId,
+      artistId: imageData.artistId._id
     }
     setHolder(true);
     changeArtistImageStatus(params).then((res)=>{
