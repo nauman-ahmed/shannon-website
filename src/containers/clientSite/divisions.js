@@ -164,7 +164,7 @@ const images = window.location.origin + "/assets/images";
                          className="_4cols-v2"
                           // style={{ paddingTop: "10px" }}
                         >
-                          {item?.ImageData.map((item1, key1) => (
+                          {item?.ImageData.map((item1, key1) => item1.artistId.status!=0?(
                             <>
                               <Link
                                 key={key1}
@@ -197,7 +197,7 @@ const images = window.location.origin + "/assets/images";
                                   {/* </div> */}
                               </Link>
                             </>
-                          ))}
+                          ):null)}
                         </div>
                         <div className="divisionbuttoncontainer" style={{ justifyContent: "flex-end" }}>
                           <Link
