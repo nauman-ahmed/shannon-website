@@ -161,7 +161,7 @@ const images = window.location.origin + "/assets/images";
                         </div>
                         <div
                          id="w-node-a284be2a-4b91-3177-03eb-6614b24879c1-4bf2d022"
-                         className="_4cols-v2"
+                         className="_4cols-v2div"
                           // style={{ paddingTop: "10px" }}
                         >
                           {item?.ImageData.map((item1, key1) => item1.artistId.status!=0?(

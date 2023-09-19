@@ -3442,6 +3442,18 @@ a {
   grid-template-rows: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
 }
 
+._4cols-v2div {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-column-gap: 6px;
+  grid-row-gap: 6px;
+  grid-template-areas: ".";
+  -ms-grid-columns: 1fr 16px 1fr 16px 1fr 16px 1fr 16px 1fr 16px 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  -ms-grid-rows: auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto 1.28vh auto;
+}
+
 .heightIssue{
   grid-template-rows: 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw 14vw;
 }
