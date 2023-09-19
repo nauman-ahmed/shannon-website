@@ -557,7 +557,6 @@ function Contact() {
                             <option value="Postcard/promotional">
                               Postcard/promotional
                             </option>
-                            <option value="Previous Client">Previous Client</option>
                             <option value="Referral">Referral</option>
                             <option value="Previous Client">Previous Client</option>
                             <option value="General Web">General Web</option>

@@ -33,7 +33,11 @@ function Categories(props) {
       
       setFilterCond(false)
 
+      console.log(data);
+
       temp = data.sort((a, b) => a.keyword.normalize().localeCompare(b.keyword.normalize()));
+
+      console.log(temp);
       // artistImageKeywordDataSlice.artistKeywordImages.map((val, ind) => {
       //   let tempImage = [...val.ImageData]
       //   console.log(val,tempImage,artistImageKeywordDataSlice.artistKeywordImages)
