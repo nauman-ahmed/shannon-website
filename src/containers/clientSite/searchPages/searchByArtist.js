@@ -486,7 +486,7 @@ function SearchByArtist(props) {
                                       style={{ width: "100%", }} />
                                     <div className="artistnamediv">
                                       <div className="artistnametext-v3" style={{padding:"6px 0px"}}>
-                                        {similarData[key].lastname} {similarData[key].firstname}
+                                        {similarData[key].firstname} {similarData[key].lastname}
                                       </div>
                                     </div>
                                     {/* <p className="card_img_text3 pb-3 pt-1">
