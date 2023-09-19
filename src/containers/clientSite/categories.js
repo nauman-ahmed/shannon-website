@@ -33,11 +33,9 @@ function Categories(props) {
       
       setFilterCond(false)
 
-      console.log(data);
 
       temp = data.sort((a, b) => a.keyword.normalize().localeCompare(b.keyword.normalize()));
 
-      console.log(temp);
       // artistImageKeywordDataSlice.artistKeywordImages.map((val, ind) => {
       //   let tempImage = [...val.ImageData]
       //   console.log(val,tempImage,artistImageKeywordDataSlice.artistKeywordImages)
@@ -144,11 +142,7 @@ function Categories(props) {
                           />
                           <div className="artistnamediv">
                               <div className="artistnametext-v3">
-                              {
-                                  item.keyword == '3D Rendering' ? "CGI" 
-                                :
-                                  item.keyword.toUpperCase()
-                                } 
+                              { item.keyword.toUpperCase() } 
                               </div>
                           </div>
                         </Link>
@@ -191,11 +185,7 @@ function Categories(props) {
                         />
                         <div className="artistnamediv">
                             <div className="artistnametext-v3">
-                            {
-                                item.keyword == '3D Rendering' ? "CGI" 
-                              :
-                                item.keyword.toUpperCase()
-                              } 
+                            { item.keyword.toUpperCase()} 
                             </div>
                           </div>
                       {/* <p className="card_img_text2 pt-2">
