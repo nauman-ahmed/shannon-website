@@ -55,7 +55,6 @@ const images = window.location.origin + "/assets/images";
     if(artistImageDivisionDataSlice.artistKeywordImages.length){
 
       const searchvalue = e.toLowerCase();
-      console.log(searchvalue);
       let temp = []
 
       artistImageDivisionDataSlice.artistKeywordImages.map((val,ind) => {
