@@ -153,15 +153,16 @@ function Portfolio(props) {
 
   function handleDragEnd(event) {
     const {active, over} = event;
-    console.log("IDS",active,over)
     if (active.id !== over.id) {
 
       let oldIndex;
       let newIndex;
 
       setItems((items) => {
-        oldIndex = items.findIndex((val)=>val.subImage[0].path === active.id)
-        newIndex = items.findIndex((val)=>val.subImage[0].path === over.id)
+        
+        oldIndex = items.findIndex((val)=> val.status == 1 && val.hideImage == false && val.subImage[0].path === active.id)
+        newIndex = items.findIndex((val)=> val.status == 1 && val.hideImage == false && val.subImage[0].path === over.id)
+        console.log("INDEX",active.id,over.id, oldIndex,newIndex)
         return arrayMove(items, oldIndex, newIndex);
       });
 
