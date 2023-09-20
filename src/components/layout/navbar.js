@@ -27,7 +27,7 @@ function Navbar(props) {
           <div className='mobileViewNavbar'>
             <div className='w-100 d-flex flex-wrap justify-content-center '>
               <Link to="/illustration-artists" className={"filterhomelink v2 " + (props.aciveBtn === "illustration-artists" ? "w--current" : "")}>ILLUSTRATION</Link>
-              <a href="http://13.59.180.10/#/" target="_blank" className={"filterhomelink v2 " + (props.aciveBtn === "kidshannon" ? "w--current" : "")} onClick={()=>localStorageAddToCart()}>KIDSHANNON</a>
+              <a href="http://13.59.180.10/#/" target="_blank" className={"filterhomelink v2 " + (props.aciveBtn === "kidshannon" ? "w--current" : "")} onClick={()=>localStorageAddToCart()}>KIDSHANNON</a> 
               <Link to="/photography" className={"filterhomelink v2 " + (props.aciveBtn === "photography" ? "w--current" : "")}>PHOTOGRAPHY</Link>
               <Link to="/bipoc" className={"filterhomelink v2 " + (props.aciveBtn === "bipoc" ? "w--current" : "")}>BIPOC</Link>
               <Link to="/black" className={"filterhomelink v2 " + (props.aciveBtn === "black" ? "w--current" : "")}>BLACK</Link>
