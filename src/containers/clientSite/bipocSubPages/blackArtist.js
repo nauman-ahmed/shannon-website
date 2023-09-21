@@ -58,18 +58,21 @@ function BlackArtist(props) {
   }, []);
 
   useEffect(()=>{
-    console.log(blackArtist);
 
-      let orderedArtist = blackArtist?.sort((a, b) => {
-        if(a.artistId.lastname.normalize().localeCompare(b.artistId.lastname.normalize()) === 0){
-          return a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize())
-        }else{
-          return a.artistId.lastname.normalize().localeCompare(b.artistId.lastname.normalize());
-        }
-      });
-      console.log(orderedArtist);
+    if(blackArtist){
+      console.log(blackArtist);
   
-      setBlackArtist(orderedArtist);
+        let orderedArtist = blackArtist?.sort((a, b) => {
+          if(a.artistId.lastname.normalize().localeCompare(b.artistId.lastname.normalize()) === 0){
+            return a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize())
+          }else{
+            return a.artistId.lastname.normalize().localeCompare(b.artistId.lastname.normalize());
+          }
+        });
+        console.log(orderedArtist);
+    
+        setBlackArtist(orderedArtist);
+    }
   },blackArtist)
 
   return (
