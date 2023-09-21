@@ -53,10 +53,14 @@ function BlackArtist(props) {
 
     getBipocBlack().then((res) => {
       setBlackArtist(res);
+    });
 
-      console.log(blackArtist);
+  }, []);
 
-      const orderedArtist = blackArtist?.sort((a, b) => {
+  useEffect(()=>{
+    console.log(blackArtist);
+
+      let orderedArtist = blackArtist?.sort((a, b) => {
         if(a.artistId.lastname.normalize().localeCompare(b.artistId.lastname.normalize()) === 0){
           return a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize())
         }else{
@@ -66,10 +70,7 @@ function BlackArtist(props) {
       console.log(orderedArtist);
   
       setBlackArtist(orderedArtist);
-
-    });
-
-  }, []);
+  },blackArtist)
 
   return (
     <div>
