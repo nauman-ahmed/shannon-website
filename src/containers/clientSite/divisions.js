@@ -76,7 +76,8 @@ const images = window.location.origin + "/assets/images";
     updateTempArtist(props.searchArtist)
   }, [artistImageDivisionDataSlice,props.searchArtist]);
 
-  useEffect(() => {
+  useEffect(() => { 
+    localStorage.setItem("Category","none")
     dispatch(artistDivision({}));
   }, []);
 
@@ -98,37 +99,6 @@ const images = window.location.origin + "/assets/images";
         id="w-node-_6f42e407-456f-5b2f-82e4-417072db3669-84f2d081"
         className="divisionscolumn"
       >
-        
-        {/* <div className="form-block-2 divisions w-form">
-          <form
-            id="email-form"
-            name="email-form"
-            data-name="Email Form"
-            method="get"
-            className="form-2"
-          >
-            <input
-              type="text"
-              className="searchbarhome w-input"
-              maxLength="256"
-              value={props.searchDivision}
-              onChange={(e) => {
-                props.updateTempDivision(e);
-              }}
-              name="Search-2"
-              data-name="Search 2"
-              placeholder="SEARCH"
-              id="Search-2"
-            />
-            <Link to="#" className="link-block-3 w-inline-block"></Link>
-          </form>
-          <div className="w-form-done">
-            <div>Thank you! Your submission has been received!</div>
-          </div>
-          <div className="w-form-fail">
-            <div>Oops! Something went wrong while submitting the form.</div>
-          </div>
-        </div> */}
         <div
           id="w-node-_429c632c-0632-16be-f5b5-f2b7200da64a-84f2d081"
           className="divisioncontainer"
@@ -147,7 +117,7 @@ const images = window.location.origin + "/assets/images";
               artistImageDivisionDataSlice.artistKeywordImages.map(
                 (item, key) => (
                   <>
-                    {item.ImageData.length > 0 && item.keyword!= '3D Rendering' ? (
+                    {item.ImageData.length > 0 && item.keyword != '3D Rendering' ? (
                       <>
                         <div className="d-flex mt-0 mb-2">
                           <h5 className="divisionHeading mt-0">
@@ -164,7 +134,7 @@ const images = window.location.origin + "/assets/images";
                          className="_4cols-v2div"
                           // style={{ paddingTop: "10px" }}
                         >
-                          {item?.ImageData.map((item1, key1) => item1.artistId.status!=0?(
+                          {item?.ImageData.map((item1, key1) => item1.artistId.status == 1 ?(
                             <>
                               <Link
                                 key={key1}
@@ -172,7 +142,7 @@ const images = window.location.origin + "/assets/images";
                                 data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                                 to={"/artists/" + item1.artistId._id}
                                 className="artistcard w-inline-block"
-                                
+                                onClick={()=> localStorage.setItem("Category",item.keyword)}
                               >
                                 {/* <div className="detail_card4_h" style={{ position: "relative", overflow: "hidden" }}> */}
                                 <img
@@ -224,7 +194,7 @@ const images = window.location.origin + "/assets/images";
             ) : (
               tempArtist.map((item, key) => ( 
                 <>
-                  {item.ImageData.length > 0 ? (
+                  {item.ImageData.length > 0 && item.keyword != '3D Rendering'? (
                     <>
                       <div className="d-flex mt-0 mb-2">
                           <h5 className="divisionHeading mt-0">
@@ -249,7 +219,7 @@ const images = window.location.origin + "/assets/images";
                                 data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                                 to={"/artists/" + item1.artistId._id}
                                 className="artistcard w-inline-block"
-                                
+                                onClick={()=> localStorage.setItem("Category",item.keyword)}
                               >
                                 {/* <div className="detail_card4_h" style={{ position: "relative", overflow: "hidden" }}> */}
                                 <img

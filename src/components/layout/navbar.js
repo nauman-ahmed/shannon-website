@@ -76,7 +76,7 @@ function Navbar(props) {
                   <input onChange={(e) => { props.updateTempArtist(e) }} type="text" value={props.searchArtist} className="searchbarhome w-input" maxLength="256" name="Search" data-name="Search" placeholder="SEARCH" id="Search" />
                   <Link to="#" className="link-block-3 w-inline-block"></Link>
                 </form>
-              </div> : null
+              </div> : null 
           }
         </div>
       </div>

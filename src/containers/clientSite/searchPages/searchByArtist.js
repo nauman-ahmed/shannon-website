@@ -85,6 +85,7 @@ function SearchByArtist(props) {
     return () => {
       window.removeEventListener('resize', handleWindowResize);
       window.removeEventListener('scroll', function(){});
+      localStorage.setItem("Category","none")
     };
   }, []);
 
