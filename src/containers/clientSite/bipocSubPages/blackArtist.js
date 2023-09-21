@@ -53,20 +53,21 @@ function BlackArtist(props) {
 
     getBipocBlack().then((res) => {
       setBlackArtist(res);
+
+      console.log(blackArtist);
+
+      const orderedArtist = blackArtist?.sort((a, b) => {
+        if(a.artistId.lastname.normalize().localeCompare(b.artistId.lastname.normalize()) === 0){
+          return a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize())
+        }else{
+          return a.artistId.lastname.normalize().localeCompare(b.artistId.lastname.normalize());
+        }
+      });
+      console.log(orderedArtist);
+  
+      setBlackArtist(orderedArtist);
+
     });
-
-    console.log(blackArtist);
-
-    const orderedArtist = blackArtist?.sort((a, b) => {
-      if(a.artistId.lastname.normalize().localeCompare(b.artistId.lastname.normalize()) === 0){
-        return a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize())
-      }else{
-        return a.artistId.lastname.normalize().localeCompare(b.artistId.lastname.normalize());
-      }
-    });
-    console.log(orderedArtist);
-
-    setBlackArtist(orderedArtist);
 
   }, []);
 
