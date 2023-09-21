@@ -62,7 +62,7 @@ function CentralAsianArtist(props) {
         });
         setCentralAsianArtist(orderedArtist);
     }
-  },centralAsianArtist);
+  },[]);
 
   return (
     <div>

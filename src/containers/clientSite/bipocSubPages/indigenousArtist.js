@@ -62,7 +62,7 @@ function IndigenousArtist(props) {
         });
         setIndegiousArtist(orderedArtist);
     }
-  },indegiousArtist);
+  },[]);
 
   return (
     <div>

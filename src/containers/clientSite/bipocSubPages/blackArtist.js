@@ -69,7 +69,7 @@ function BlackArtist(props) {
         });
         setBlackArtist(orderedArtist);
     }
-  },blackArtist);
+  },[]);
 
   return (
     <div>

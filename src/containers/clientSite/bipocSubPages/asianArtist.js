@@ -62,7 +62,7 @@ function AsianArtist(props) {
         });
         setAsianArtist(orderedArtist);
     }
-  },asianArtist);
+  },[]);
 
   return (
     <div>
