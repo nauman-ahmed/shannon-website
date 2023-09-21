@@ -11128,7 +11128,7 @@ element.style {
   /* NavBar Pages styling starting */
 
   .artistcard {
-    height: 25vw;
+    /*height: auto;*/
   }
 
   .detail_card3_h {
