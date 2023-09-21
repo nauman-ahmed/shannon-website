@@ -35,8 +35,6 @@ const images = window.location.origin + "/assets/images";
         let tempImage = [...val.ImageData]
         tempImage = tempImage.sort((a, b) => {
           if(a.artistId.lastname.normalize().localeCompare(b.artistId.lastname.normalize()) === 0){
-            console.log(a.artistId.firstname);
-            console.log(b.artistId.firstname);
             return a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize())
           }else{
             return a.artistId.lastname.normalize().localeCompare(b.artistId.lastname.normalize());
