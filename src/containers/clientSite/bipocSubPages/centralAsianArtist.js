@@ -60,9 +60,9 @@ function CentralAsianArtist(props) {
             return a.artistData.lastname.normalize().localeCompare(b.artistData.lastname.normalize());
           }
         });
-        setCentralAsianArtist(orderedArtist);
+        centralAsianArtist(orderedArtist);
     }
-  },[]);
+  },centralAsianArtist);
 
   return (
     <div>

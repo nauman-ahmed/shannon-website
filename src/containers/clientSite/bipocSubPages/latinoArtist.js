@@ -62,7 +62,7 @@ function LatinoArtist(props) {
         });
         setLatinoArtist(orderedArtist);
     }
-  },[]);
+  },latinoArtist);
 
   return (
     <div>
