@@ -33,7 +33,13 @@ const images = window.location.origin + "/assets/images";
       setFilterCond(false)
       artistImageDivisionDataSlice.artistKeywordImages.map((val,ind) => {
         let tempImage = [...val.ImageData]
-        tempImage = tempImage.sort((a, b) => a.artistId.lastname.normalize().localeCompare(b.artistId.lastname.normalize()));
+        tempImage = tempImage.sort((a, b) => {
+          if(a.artistId.lastname.normalize().localeCompare(b.artistId.lastname.normalize()) === 0){
+            return a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize())
+          }else{
+            return a.artistId.lastname.normalize().localeCompare(b.artistId.lastname.normalize());
+          }
+        });
         temp.push({...val,ImageData:tempImage})
       })
       setFilterHighlighted(2)
