@@ -63,10 +63,10 @@ function BlackArtist(props) {
       console.log(blackArtist);
   
         let orderedArtist = blackArtist?.sort((a, b) => {
-          if(a.artistId.lastname.normalize().localeCompare(b.artistId.lastname.normalize()) === 0){
-            return a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize())
+          if(a.artistData.lastname.normalize().localeCompare(b.artistData.lastname.normalize()) === 0){
+            return a.artistData.firstname.normalize().localeCompare(b.artistData.firstname.normalize())
           }else{
-            return a.artistId.lastname.normalize().localeCompare(b.artistId.lastname.normalize());
+            return a.artistData.lastname.normalize().localeCompare(b.artistData.lastname.normalize());
           }
         });
         console.log(orderedArtist);
