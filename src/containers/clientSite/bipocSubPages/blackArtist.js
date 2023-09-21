@@ -60,8 +60,6 @@ function BlackArtist(props) {
   useEffect(()=>{
 
     if(blackArtist){
-      console.log(blackArtist);
-  
         let orderedArtist = blackArtist?.sort((a, b) => {
           if(a.artistData.lastname.normalize().localeCompare(b.artistData.lastname.normalize()) === 0){
             return a.artistData.firstname.normalize().localeCompare(b.artistData.firstname.normalize())
@@ -69,11 +67,9 @@ function BlackArtist(props) {
             return a.artistData.lastname.normalize().localeCompare(b.artistData.lastname.normalize());
           }
         });
-        console.log(orderedArtist);
-    
         setBlackArtist(orderedArtist);
     }
-  },blackArtist)
+  },blackArtist);
 
   return (
     <div>
