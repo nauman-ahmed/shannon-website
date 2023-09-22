@@ -87,23 +87,58 @@ function Bipoc() {
     // setIndegiousArtist(getDummyData());
 
     getBipocBlack().then((res) => {
-      setBlackArtist(res);
+      let orderedArtist = res?.sort((a, b) => {
+        if(a.artistData.lastname.normalize().localeCompare(b.artistData.lastname.normalize()) === 0){
+          return a.artistData.firstname.normalize().localeCompare(b.artistData.firstname.normalize())
+        }else{
+          return a.artistData.lastname.normalize().localeCompare(b.artistData.lastname.normalize());
+        }
+      });
+      setBlackArtist(orderedArtist);
     });
 
     getBipocAsian().then((res) => {
-      setAsianArtist(res);
+      let orderedArtist = res?.sort((a, b) => {
+        if(a.artistData.lastname.normalize().localeCompare(b.artistData.lastname.normalize()) === 0){
+          return a.artistData.firstname.normalize().localeCompare(b.artistData.firstname.normalize())
+        }else{
+          return a.artistData.lastname.normalize().localeCompare(b.artistData.lastname.normalize());
+        }
+      });
+      setAsianArtist(orderedArtist);
     });
 
     getBipocLatino().then((res) => {
-      setLatinoArtist(res);
+      let orderedArtist = res?.sort((a, b) => {
+        if(a.artistData.lastname.normalize().localeCompare(b.artistData.lastname.normalize()) === 0){
+          return a.artistData.firstname.normalize().localeCompare(b.artistData.firstname.normalize())
+        }else{
+          return a.artistData.lastname.normalize().localeCompare(b.artistData.lastname.normalize());
+        }
+      });
+      setLatinoArtist(orderedArtist);
     });
 
     getBipocCentralAsia().then((res) => {
-      setCentralAsianArtist(res);
+      let orderedArtist = res?.sort((a, b) => {
+        if(a.artistData.lastname.normalize().localeCompare(b.artistData.lastname.normalize()) === 0){
+          return a.artistData.firstname.normalize().localeCompare(b.artistData.firstname.normalize())
+        }else{
+          return a.artistData.lastname.normalize().localeCompare(b.artistData.lastname.normalize());
+        }
+      });
+      setCentralAsianArtist(orderedArtist);
     });
 
     getBipocIndigenous().then((res) => {
-      setIndegiousArtist(res);
+      let orderedArtist = res?.sort((a, b) => {
+        if(a.artistData.lastname.normalize().localeCompare(b.artistData.lastname.normalize()) === 0){
+          return a.artistData.firstname.normalize().localeCompare(b.artistData.firstname.normalize())
+        }else{
+          return a.artistData.lastname.normalize().localeCompare(b.artistData.lastname.normalize());
+        }
+      });
+      setIndegiousArtist(orderedArtist);
     });
     setGottenData(true)
   }, []);

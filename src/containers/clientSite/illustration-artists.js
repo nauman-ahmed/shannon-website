@@ -33,7 +33,13 @@ function IllustrationArtists(props) {
       let temp = []
       setFilterCond(false)
       let tempImage = [...artistImageDataSlice.artistImages]
-      temp = tempImage.sort((a, b) => a.artistId.lastname.normalize().localeCompare(b.artistId.lastname.normalize()));
+      temp = tempImage.sort((a, b) => {
+        if(a.artistId.lastname.normalize().localeCompare(b.artistId.lastname.normalize()) === 0){
+          return a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize())
+        }else{
+          return a.artistId.lastname.normalize().localeCompare(b.artistId.lastname.normalize());
+        }
+      });
       setFilterHighlighted(2)
       setTempArtist(temp)
       // tempData = tempData.sort((a, b) => a.artistId.firstname.normalize().localeCompare(b.artistId.firstname.normalize()));

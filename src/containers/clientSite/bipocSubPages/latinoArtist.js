@@ -46,10 +46,30 @@ function LatinoArtist(props) {
   useEffect(() => {
 
     getBipocLatino().then((res) => {
-      setLatinoArtist(res);
+      let orderedArtist = res?.sort((a, b) => {
+        if(a.artistData.lastname.normalize().localeCompare(b.artistData.lastname.normalize()) === 0){
+          return a.artistData.firstname.normalize().localeCompare(b.artistData.firstname.normalize())
+        }else{
+          return a.artistData.lastname.normalize().localeCompare(b.artistData.lastname.normalize());
+        }
+      });
+      setLatinoArtist(orderedArtist);
     });
 
   }, []);
+
+  useEffect(()=>{
+    if(latinoArtist){  
+        let orderedArtist = latinoArtist?.sort((a, b) => {
+          if(a.artistData.lastname.normalize().localeCompare(b.artistData.lastname.normalize()) === 0){
+            return a.artistData.firstname.normalize().localeCompare(b.artistData.firstname.normalize())
+          }else{
+            return a.artistData.lastname.normalize().localeCompare(b.artistData.lastname.normalize());
+          }
+        });
+        setLatinoArtist(orderedArtist);
+    }
+  },latinoArtist);
 
   return (
     <div>
