@@ -55,6 +55,7 @@ function Portfolio(props) {
   }
 
   useEffect(() => {
+    console.log("W",formNo2)
     if(props.selectedImages.mainImage !== undefined){
       getKeywordsAndSeperate()
     } 
@@ -98,7 +99,11 @@ function Portfolio(props) {
 
 
     setTypeOneData(tempDataOne)
-    setItems(tempDataOne)
+    if(formNo2 == 1){
+      setItems(tempData)
+    }else{
+      setItems(tempDataOne)
+    }
   }
 
   const enableHandler = () => {
@@ -162,7 +167,6 @@ function Portfolio(props) {
         
         oldIndex = items.findIndex((val)=> val.status == 1 && val.hideImage == false && val.subImage[0].path === active.id)
         newIndex = items.findIndex((val)=> val.status == 1 && val.hideImage == false && val.subImage[0].path === over.id)
-        console.log("INDEX",active.id,over.id, oldIndex,newIndex)
         return arrayMove(items, oldIndex, newIndex);
       });
 
