@@ -75,6 +75,11 @@ function Header(props) {
             </Link>
             <nav role="navigation" className="navmenu w-nav-menu">
               <span>
+              <a 
+                href="http://3.132.94.46/#/" 
+                target="_blank" 
+                className="navlink v2 w-nav-link ">KIDSHANNON</a>
+
                 <Link
                   to="/"
                   aria-current="page"
