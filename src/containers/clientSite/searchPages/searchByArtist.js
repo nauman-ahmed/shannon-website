@@ -296,7 +296,6 @@ function SearchByArtist(props) {
     <div style={{ width: "100%" }}>
       {data1 !== null ? 
         <div className={windowSize.innerWidth < 479 ? "" : "d-flex"} style={windowSize.innerWidth < 479 ? { marginLeft: "8%" } : { justifyContent: "end", marginTop: "-10px" }} > 
-            <h2 className="h2talent">{data1[search].title}</h2> 
             <div className="d-flex" style={windowSize.innerWidth < 479 ? { } :  { justifyContent: "space-between", width: "20%" }}>
                 <Link
                   to="/contact"
