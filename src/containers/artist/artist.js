@@ -127,7 +127,13 @@ function Artist() {
                             To upload one or more images click on the "UPLOAD HERE" button on the left.
                         </p>
                         <p style={{ textTransform: "initial" }}>
-                            Click on an image to crop the thumbnail.
+                            Please ensure that your image has a maximum width of 2,400 pixels; the height may vary.
+                        </p>
+                        <p style={{ textTransform: "initial" }}>
+                            Make sure the image is in the flattened JPEG or PNG format and has a resolution of 72 dpi. 
+                        </p>
+                        <p style={{ textTransform: "initial" }}>
+                            Once your uploads are complete, Click on an image to crop the thumbnail.
                         </p>
                     </p>
                 </div>  

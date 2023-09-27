@@ -136,7 +136,7 @@ export const SliderItems = (props)=>{
             }
           />
             <div id='detailBelowSlider' className="hide_detail mb-1 mt-2 pt-3">
-                  <h4 className="mb-1" style={{ fontWeight: "500", fontSize: "22px" }}>{props?props.data1[props.search].title:null}</h4>
+                  <h4 className="mb-1" style={{ fontWeight: "500", fontSize: "22px", color:"#fa8e37" }}>{props?props.data1[props.search].title:null}</h4>
                   <div
                     className="F large hide_detail pt-2 mt-1"
                     style={{
