@@ -925,6 +925,12 @@ a {
   margin-bottom: 6px;
 }
 
+.linkToKS :hover{
+  color: #ce651e;
+}
+
+
+
 .talentp {
   margin-bottom: 180px;
   font-family: Roboto, sans-serif;
