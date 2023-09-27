@@ -905,6 +905,7 @@ a {
 .h2talent {
   /* color: #ce651e; */
   margin-top: 10px;
+  margin-bottom: 0px;
   padding-bottom: 6px;
   /* border-bottom: 2px solid #000; */
   font-family: Roboto, sans-serif;
@@ -920,6 +921,8 @@ a {
   font-size: 0.7vw;
   line-height: 1;
   font-weight: 300;
+  align-self: end;
+  margin-bottom: 6px;
 }
 
 .talentp {
