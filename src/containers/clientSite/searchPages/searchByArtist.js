@@ -330,9 +330,9 @@ function SearchByArtist(props) {
             <div className="row mid_full_content">
               <div className="pl-2 mid_content">
 
-              <div className={windowSize.innerWidth < 479 ? "" : "d-flex"} style={windowSize.innerWidth < 479 ? { marginLeft: "8%" } : { justifyContent: "space-between", marginTop: "-10px" ,marginBottom:"10px" }} > 
+              <div className={windowSize.innerWidth < 479 ? "" : "d-flex"} style={windowSize.innerWidth < 479 ? { marginLeft: "8%" } : { justifyContent: "space-between", marginTop: "-10px" ,marginBottom:"10px", width:"98.4%" }} > 
                 <h2 className="h2talent">{data1[search].title}</h2>  
-                <a href={"http://13.59.180.10/#/artists/"+data1[search].id} target="_blank" className="linkToKS">Kid's portfolio</a> 
+                <a href={"http://13.59.180.10/#/artists/"+data1[search].id} target="_blank" className="linkToKS">View Kid's portfolio</a> 
               </div>
 
                 {windowSize.innerWidth < 479 ?
