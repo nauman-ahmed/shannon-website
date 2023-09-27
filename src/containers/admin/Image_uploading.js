@@ -194,7 +194,7 @@ function Image_uploading(props) {
         imageCreate.append('caption',copyrightText)
         imageCreate.append('color',copyrightColor)
         imageCreate.append('svg',svg)
-        imageCreate.append('adminPortfolio',true) 
+        imageCreate.append('adminPortfolio',true)
         imageCreate.append('_id',props.artistId._id)
 
         setIsPopupShow(true)
@@ -223,27 +223,36 @@ function Image_uploading(props) {
         const canvas = document.createElement("canvas");
         const scaleX = image.naturalWidth / image.width;
         const scaleY = image.naturalHeight / image.height;
-        canvas.width = completedCrop.width;
-        canvas.height = completedCrop.height;
+        var originWidth = completedCrop.width * scaleX;
+        var originHeight = completedCrop.height * scaleY;
+        // maximum width/height
+        var maxWidth = 2400, maxHeight = 2400 / (16 / 9);
+        var targetWidth = originWidth,
+          targetHeight = originHeight;
+        if (originWidth > maxWidth || originHeight > maxHeight) {
+          if (originWidth / originHeight > maxWidth / maxHeight) {
+            targetWidth = maxWidth;
+            targetHeight = Math.round(maxWidth * (originHeight / originWidth));
+          } else {
+            targetHeight = maxHeight;
+            targetWidth = Math.round(maxHeight * (originWidth / originHeight));
+          }
+        }
+        // set canvas size
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
         const ctx = canvas.getContext("2d");
-      
-        // New lines to be added
-        const pixelRatio = window.devicePixelRatio;
-        canvas.width = completedCrop.width * pixelRatio;
-        canvas.height = completedCrop.height * pixelRatio;
-        ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-        ctx.imageSmoothingQuality = "high";
-      
+    
         ctx.drawImage(
-          image,
-          completedCrop.x * scaleX,
-          completedCrop.y * scaleY,
-          completedCrop.width * scaleX,
-          completedCrop.height * scaleY,
-          0,
-          0,
-          completedCrop.width,
-          completedCrop.height
+          image, 
+          completedCrop.x * scaleX, 
+          completedCrop.y * scaleY, 
+          completedCrop.width * scaleX, 
+          completedCrop.height * scaleY, 
+          0, 
+          0, 
+          targetWidth, 
+          targetHeight 
         );
       
         new Promise((resolve, reject) => {
@@ -260,7 +269,7 @@ function Image_uploading(props) {
                 }
 
             },
-            "image/jpeg",
+            "image/png",
             1
           );
         });
