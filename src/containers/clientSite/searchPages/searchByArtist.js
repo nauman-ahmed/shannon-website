@@ -221,8 +221,6 @@ function SearchByArtist(props) {
   useEffect(() => {
     getUserData()
     
-    const dataArtist = ArtistDataAPI.artistdata.filter(artist=>artist._id===data1[search].id);
-
     function getLocalStorage() {
       if (localStorage.getItem("artistViewed_V2") !== null) {
         setDataViewed(JSON.parse(localStorage.getItem("artistViewed_V2")));
