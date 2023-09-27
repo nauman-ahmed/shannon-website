@@ -67,9 +67,9 @@ function Image_uploading(props) {
     useEffect(()=>{
         try{
 
-            getBase64FromUrl(props.images.originalPath)
+            getBase64FromUrl(props.images.path)
             setArtistImage({
-                imgPath: props.images.originalPath,
+                imgPath: props.images.path,
                 title: props.images.title,
                 _id:props.artistId._id,
             })
@@ -358,8 +358,8 @@ function Image_uploading(props) {
                                <ReactCrop
                                 crop={completedCrop}
                                 onChange={(percentCrop) => setCompletedCrop(percentCrop)}
-                                minHeight={10}
-                                minWidth={10}
+                                minHeight={200}
+                                minWidth={200}
                                 aspect={1}
                               >
                            <img
