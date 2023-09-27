@@ -31,8 +31,8 @@ function Image_uploading(props) {
         unit: 'px',
         x: 20,
         y: 20,
-        width: 225,
-        height: 225,
+        width: 200,
+        height: 200,
         aspect: 1 ,
       })
       const [copyrightText, setCopyrightText] = useState("")
