@@ -26,7 +26,7 @@ function SearchByArtist(props) {
   const [fullscreen, setFullscreen] = useState({ screen: false, route: null });
   const [fullScreenData, setFullScreenData] = useState({ screen: false, route: null });
   const { search } = useParams();
-  const { artistImageDataSlice, AddToCart } = useSelector((state) => state);
+  const { artistImageDataSlice, AddToCart, ArtistDataAPI } = useSelector((state) => state);
   const dispatch = useDispatch();
   const [data1, setData1] = useState(null);
   const [dataViewed, setDataViewed] = useState({});
@@ -221,6 +221,8 @@ function SearchByArtist(props) {
   useEffect(() => {
     getUserData()
     
+    const dataArtist = ArtistDataAPI.artistdata.filter(artist=>artist._id===data1[search].id);
+
     function getLocalStorage() {
       if (localStorage.getItem("artistViewed_V2") !== null) {
         setDataViewed(JSON.parse(localStorage.getItem("artistViewed_V2")));
@@ -332,7 +334,9 @@ function SearchByArtist(props) {
 
               <div className={windowSize.innerWidth < 479 ? "" : "d-flex"} style={windowSize.innerWidth < 479 ? { marginLeft: "8%" } : { justifyContent: "space-between", marginTop: "-10px" ,marginBottom:"10px", width:"98.4%" }} > 
                 <h2 className="h2talent">{data1[search].title}</h2>  
-                <a href={"http://13.59.180.10/#/artists/"+data1[search].id} target="_blank" className="linkToKS">Visit Kid's portfolio</a> 
+                {
+                  (dataArtist.orderKidArtist !== 100000)? <a href={"http://13.59.180.10/#/artists/"+data1[search].id} target="_blank" className="linkToKS">Visit Kid's portfolio</a> :null
+                }
               </div>
 
                 {windowSize.innerWidth < 479 ?
