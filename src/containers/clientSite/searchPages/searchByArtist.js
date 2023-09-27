@@ -334,9 +334,8 @@ function SearchByArtist(props) {
 
               <div className={windowSize.innerWidth < 479 ? "" : "d-flex"} style={windowSize.innerWidth < 479 ? { marginLeft: "8%" } : { justifyContent: "space-between", marginTop: "-10px" ,marginBottom:"10px", width:"98.4%" }} > 
                 <h2 className="h2talent">{data1[search].title}</h2>  
-                {
-                  (dataArtist.orderKidArtist !== 100000)? <a href={"http://13.59.180.10/#/artists/"+data1[search].id} target="_blank" className="linkToKS">Visit Kid's portfolio</a> :null
-                }
+                
+                <a href={"http://13.59.180.10/#/artists/"+data1[search].id} target="_blank" className="linkToKS">Visit Kid's portfolio</a> 
               </div>
 
                 {windowSize.innerWidth < 479 ?
