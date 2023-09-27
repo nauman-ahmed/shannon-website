@@ -905,15 +905,31 @@ a {
 .h2talent {
   /* color: #ce651e; */
   margin-top: 10px;
-  margin-bottom: 5vh;
+  margin-bottom: 0px;
   padding-bottom: 6px;
   /* border-bottom: 2px solid #000; */
   font-family: Roboto, sans-serif;
-  font-size: 2.2vw;
+  font-size: 2vw;
   line-height: 1;
   font-weight: 900;
   overflow-wrap: break-word;
 }
+
+.linkToKS{
+  color: #818181;
+  font-family: Roboto, sans-serif;
+  font-size: 0.7vw;
+  line-height: 1;
+  font-weight: 300;
+  align-self: end;
+  margin-bottom: 6px;
+}
+
+.linkToKS:hover{
+  color: #ce651e;
+}
+
+
 
 .talentp {
   margin-bottom: 180px;
@@ -11494,6 +11510,10 @@ element.style {
     margin-bottom: 5px;
     padding-bottom: 5px;
     font-size: 24px;
+  }
+
+  .linkToKS{
+    font-size: 12px;
   }
 
   .talentp {
