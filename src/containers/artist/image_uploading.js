@@ -43,8 +43,8 @@ function Image_uploading() {
         unit: 'px',
         x: 20,
         y: 20,
-        width: 225,
-        height: 225,
+        width: 200,
+        height: 200,
         aspect: 1 ,
       })
 
@@ -144,27 +144,36 @@ function Image_uploading() {
         const canvas = document.createElement("canvas");
         const scaleX = image.naturalWidth / image.width;
         const scaleY = image.naturalHeight / image.height;
-        canvas.width = completedCrop.width;
-        canvas.height = completedCrop.height;
+        var originWidth = completedCrop.width * scaleX;
+        var originHeight = completedCrop.height * scaleY;
+        // maximum width/height
+        var maxWidth = 2400, maxHeight = 2400 / (16 / 9);
+        var targetWidth = originWidth,
+          targetHeight = originHeight;
+        if (originWidth > maxWidth || originHeight > maxHeight) {
+          if (originWidth / originHeight > maxWidth / maxHeight) {
+            targetWidth = maxWidth;
+            targetHeight = Math.round(maxWidth * (originHeight / originWidth));
+          } else {
+            targetHeight = maxHeight;
+            targetWidth = Math.round(maxHeight * (originWidth / originHeight));
+          }
+        }
+        // set canvas size
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
         const ctx = canvas.getContext("2d");
-      
-        // New lines to be added
-        const pixelRatio = window.devicePixelRatio;
-        canvas.width = completedCrop.width * pixelRatio;
-        canvas.height = completedCrop.height * pixelRatio;
-        ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-        ctx.imageSmoothingQuality = "high";
-      
+    
         ctx.drawImage(
-          image,
-          completedCrop.x * scaleX,
-          completedCrop.y * scaleY,
-          completedCrop.width * scaleX,
-          completedCrop.height * scaleY,
-          0,
-          0,
-          completedCrop.width,
-          completedCrop.height
+          image, 
+          completedCrop.x * scaleX, 
+          completedCrop.y * scaleY, 
+          completedCrop.width * scaleX, 
+          completedCrop.height * scaleY, 
+          0, 
+          0, 
+          targetWidth, 
+          targetHeight 
         );
       
         new Promise((resolve, reject) => {
@@ -183,7 +192,7 @@ function Image_uploading() {
                 }
 
             },
-            "image/jpeg",
+            "image/png",
             1
           );
         });
@@ -377,8 +386,8 @@ function Image_uploading() {
                             <ReactCrop
                                     crop={completedCrop}
                                     onChange={(percentCrop) => setCompletedCrop(percentCrop)}
-                                    minHeight={50}
-                                    minWidth={50}
+                                    minHeight={200}
+                                    minWidth={200}
                                     aspect={1}
                                     >
                                     <img
