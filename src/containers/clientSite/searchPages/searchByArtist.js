@@ -40,6 +40,7 @@ function SearchByArtist(props) {
   const [isPopupShowWithCheckbox, setIsPopupShowWithCheckbox] = useState(true);
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
   const [msg, setMsg] = useState("");
+  //let artistKSOrder = 0;
   
   const myStateRef = useRef(0);
   const screenScrolling = useRef(true);
@@ -219,8 +220,11 @@ function SearchByArtist(props) {
   };
 
   useEffect(() => {
-    getUserData()
+    getUserData();
     
+    const artistKSOrder = ArtistDataAPI.artistData.filter(artist=> artist._id === search);
+    console.log(artistKSOrder);
+
     function getLocalStorage() {
       if (localStorage.getItem("artistViewed_V2") !== null) {
         setDataViewed(JSON.parse(localStorage.getItem("artistViewed_V2")));
