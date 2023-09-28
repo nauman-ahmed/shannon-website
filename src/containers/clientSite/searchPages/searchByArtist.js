@@ -40,7 +40,7 @@ function SearchByArtist(props) {
   const [isPopupShowWithCheckbox, setIsPopupShowWithCheckbox] = useState(true);
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
   const [msg, setMsg] = useState("");
-  //let artistKSOrder = 0;
+  let artistKSOrder = 0;
   
   const myStateRef = useRef(0);
   const screenScrolling = useRef(true);
@@ -221,11 +221,8 @@ function SearchByArtist(props) {
 
   useEffect(() => {
     getUserData();
-    
-    console.log(ArtistDataAPI);
 
-    const artistKSOrder = ArtistDataAPI.artistData.filter(artist=>artist._id === search)[0].orderKidArtist;
-    console.log(artistKSOrder);
+    artistKSOrder = ArtistDataAPI.artistData.filter(artist=>artist._id === search)[0].orderKidArtist;
 
     function getLocalStorage() {
       if (localStorage.getItem("artistViewed_V2") !== null) {
@@ -338,8 +335,9 @@ function SearchByArtist(props) {
 
               <div className={windowSize.innerWidth < 479 ? "" : "d-flex"} style={windowSize.innerWidth < 479 ? { marginLeft: "8%" } : { justifyContent: "space-between", marginTop: "-10px" ,marginBottom:"10px", width:"98.4%" }} > 
                 <h2 className="h2talent">{data1[search].title}</h2>  
-                
-                <a href={"http://13.59.180.10/#/artists/"+data1[search].id} target="_blank" className="linkToKS">Visit Kid's portfolio</a> 
+                {
+                  artistKSOrder !== 100000 ? (<a href={"http://13.59.180.10/#/artists/"+data1[search].id} target="_blank" className="linkToKS">Visit Kid's portfolio</a> ): null
+                }
               </div>
 
                 {windowSize.innerWidth < 479 ?
