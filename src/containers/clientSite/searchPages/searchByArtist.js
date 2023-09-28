@@ -224,12 +224,8 @@ function SearchByArtist(props) {
     
     console.log(ArtistDataAPI);
 
-    const artistKSOrder = ArtistDataAPI.artistData.filter(artist=>{
-      console.log(artist);
-      return artist._id === search
-    } );
+    const artistKSOrder = ArtistDataAPI.artistData.filter(artist=>artist._id === search)[0].orderKidArtist;
     console.log(artistKSOrder);
-    console.log(search);
 
     function getLocalStorage() {
       if (localStorage.getItem("artistViewed_V2") !== null) {
