@@ -222,7 +222,10 @@ function SearchByArtist(props) {
   useEffect(() => {
     getUserData();
     
-    const artistKSOrder = ArtistDataAPI.artistData.filter(artist=> artist._id === search);
+    const artistKSOrder = ArtistDataAPI.artistData.filter(artist=>{
+      console.log(artist);
+      return artist._id === search
+    } );
     console.log(artistKSOrder);
     console.log(search);
 
