@@ -83,7 +83,7 @@ function ImgViewer(props) {
     <div className='px-5 mx-5 row scrollerOn py-5'>
       <div className='col-md-6'>
         <h5 className='mb-4'>Original</h5>
-        <img onLoad={() => setImageReady(imageReady+1)} alt='' src={String(Object.keys(imageData.mainImage[0]).length > 0 ? imageData.mainImage[0].path:"")} />
+        <img onLoad={() => setImageReady(imageReady+1)} alt='' src={String(Object.keys(imageData.mainImage[0]).length > 0 ? imageData.mainImage[0].originalPath:"")} />
         <div className='row'>
           <div className='col-md-12'>
             <h5 className='mb-4'>Thumbnails</h5>

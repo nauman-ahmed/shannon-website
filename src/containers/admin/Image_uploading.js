@@ -67,14 +67,15 @@ function Image_uploading(props) {
     useEffect(()=>{
         try{
 
-            getBase64FromUrl(props.images.path)
+            getBase64FromUrl(props.images.originalPath)
             setArtistImage({
-                imgPath: props.images.path,
+                imgPath: props.images.originalPath,
                 title: props.images.title,
                 _id:props.artistId._id,
             })
             
-            let caption = props.images.copyrightText  ? props.images.copyrightText : `© ${props.artistId.lastname.toLowerCase()} ${props.artistId.firstname.toLowerCase()}`
+            // let caption = props.images.copyrightText  ? props.images.copyrightText : `© ${props.artistId.lastname.toLowerCase()} ${props.artistId.firstname.toLowerCase()}`
+            let caption = props.images.copyrightText  ? props.images.copyrightText : ``
             setCopyrightColor(props.images.copyrightColor  ? props.images.copyrightColor : "light Gray")
             setCopyrightText(caption)
 
@@ -184,7 +185,7 @@ function Image_uploading(props) {
             keywordListTemp.push(val._id)
         })
 
-
+        console.log("SUBMIT HANDLER",copyrightText)
         const imageCreate = new FormData()
         imageCreate.append('k_id',keywordListTemp)
         imageCreate.append('title',artistImageTemp.title)
