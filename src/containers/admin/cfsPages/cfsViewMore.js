@@ -54,7 +54,7 @@ function CFSViewMore(props) {
                     <span className='py-2' style={{ minWidth: 70 }}>Phone:</span>
                     <input className='textField' value={singleContact.phone} readOnly/>
                 </label>
-                <label className='col-md-12 d-flex'>
+                {/* <label className='col-md-12 d-flex'>
                     <span className='py-2' style={{ minWidth: 70 }}>Address:</span>
                     <input className='textField' value={singleContact.address} readOnly/>
                 </label>
@@ -65,7 +65,7 @@ function CFSViewMore(props) {
                 <label className='col-md-6 d-flex'>
                     <span className='py-2' style={{ minWidth: 70 }}>State:</span>
                     <input className='textField' value={singleContact.state} readOnly/>
-                </label>
+                </label> */}
                 <label className='col-md-12 d-flex'>
                     <span className='py-2' style={{ minWidth: 100 }}>Intrested In:</span>
                     <input className='textField' value={extractArtist(singleContact)} readOnly/>
