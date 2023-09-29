@@ -4754,6 +4754,7 @@ column-gap:20px ;
   position: absolute;
   z-index: 1;
   background-color: white;
+  width: max-content;
 }
 
 .navbarDot{

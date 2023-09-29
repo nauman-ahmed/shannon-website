@@ -59,9 +59,9 @@ function Navbar(props) {
             <div className='navbarBipocItemsLink'>
               <Link to="/black" className={"filterhomelink v2 mb-3 " + (props.aciveBtn === "black" ? "w--current" : "")}>BLACK</Link>
               <Link to="/asianArtist" className={"filterhomelink v2 mb-3 " + (props.aciveBtn === "asianArtist" ? "w--current" : "")}>ASIAN</Link>
-              <Link to="/latinoArtist" className={"filterhomelink v2 mb-1 " + (props.aciveBtn === "latinoArtist" ? "w--current" : "")}>LATINO/LATINA</Link>
-              <Link to="/centralAsianArtist" className={"filterhomelink v2 mb-1 " + (props.aciveBtn === "centralAsianArtist" ? "w--current" : "")}>CENTRAL ASIAN</Link>
-              <Link to="/indigenousArtist" className={"filterhomelink v2 mb-1 " + (props.aciveBtn === "indigenousArtist" ? "w--current" : "")}>INDIGENOUS</Link>
+              <Link to="/latinoArtist" className={"filterhomelink v2 mb-3 " + (props.aciveBtn === "latinoArtist" ? "w--current" : "")}>LATINO/LATINA</Link>
+              <Link to="/centralAsianArtist" className={"filterhomelink v2 mb-3 " + (props.aciveBtn === "centralAsianArtist" ? "w--current" : "")}>CENTRAL ASIAN</Link>
+              <Link to="/indigenousArtist" className={"filterhomelink v2 mb-3 " + (props.aciveBtn === "indigenousArtist" ? "w--current" : "")}>INDIGENOUS</Link>
             </div>
           </div>
           <Link to="/medical" className={"filterhomelink v2 " + (props.aciveBtn === "medical" ? "w--current" : "")}>MEDICAL</Link>
