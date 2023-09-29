@@ -104,7 +104,7 @@ function ForgetPassword() {
         <img className='myLogo my-md-5 mt-5 mb-1' alt='' src={Logo}/>
         {accountType === "forgetAdmin"?
           <>
-            <h5 className='mb-md-5 mb-0'>FORGET ADMIN PASSWORD</h5>
+            <h5 className='mb-md-5 mb-0'>FORGOT ADMIN PASSWORD</h5>
             <div className='row col-xl-3 col-md-5 col-sm-8'>
          
               <div className='col-12'>
@@ -119,7 +119,7 @@ function ForgetPassword() {
              
             </div>
             <Link to={"/admin/signin"}>Back to Login</Link>
-            {showLoader?<button className='myButton my-md-5 mb-5 mt-1' onClick={()=>signInFunc()}>Forget Password</button>:<img className="mt-4" alt="loading" src={loading} style={{width:"30px"}}/>}
+            {showLoader?<button className='myButton my-md-5 mb-5 mt-1' onClick={()=>signInFunc()}>Forgot Password</button>:<img className="mt-4" alt="loading" src={loading} style={{width:"30px"}}/>}
           </>
           :accountType === "forgetArtist"?
           <>
