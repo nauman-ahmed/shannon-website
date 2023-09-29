@@ -34,7 +34,17 @@ input#Search-2::placeholder {
   padding: 5%;
 }
 
+.artistcardAdmin:hover .crossSectionRight {
+  display: grid;
+  background-color: green;
+  padding: 5%;
+}
+
 .artistcardAdmin .crossSection {
+  display: none;
+}
+
+.artistcardAdmin .crossSectionRight {
   display: none;
 }
 
@@ -43,7 +53,7 @@ input#Search-2::placeholder {
   overflow: hidden;
   height: 5vw;
   width: 5vw;
-}
+} 
 
 .artistcardAdminPortfolio:hover .crossSection {
   display: grid;
@@ -51,7 +61,17 @@ input#Search-2::placeholder {
   padding: 5%;
 }
 
+.artistcardAdminPortfolio:hover .crossSectionRight {
+  display: grid;
+  background-color: greenyellow;
+  padding: 5%;
+}
+
 .artistcardAdminPortfolio .crossSection {
+  display: none;
+}
+
+.artistcardAdminPortfolio .crossSectionRight {
   display: none;
 }
 
@@ -61,6 +81,15 @@ input#Search-2::placeholder {
   cursor: pointer;
   z-index: 1;
   justify-items: center;
+}
+
+.crossSectionRight {
+  position: absolute;
+  top: 0%;
+  cursor: pointer;
+  z-index: 1;
+  justify-items: center;
+  right: 0%;
 }
 
 .w-checkbox::before {

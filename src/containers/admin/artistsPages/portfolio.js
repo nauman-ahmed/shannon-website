@@ -3,6 +3,11 @@ import { IMAGE_ROUTE,artistPortfolioOrder,getTypeTwoKeyword,artistImagedelete, a
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import unHide from "../../../assets/img/icons8-hide-48.png"
 import hide from "../../../assets/img/icons8-eye-64.png"
+import check from "../../../assets/img/check-mark.png"
+import { changeArtistImageStatus } from '../../../AxiosFunctions/Axiosfunctionality'
+import { useDispatch } from 'react-redux'
+import { updateMessage, updateOpen } from '../../../redux/message'
+
 import {
   DndContext,
   closestCenter,
@@ -31,6 +36,8 @@ const img4 = window.location.origin+"/assets/images/IMG4.png"
 
 function Portfolio(props) {
 
+  const dispatch = useDispatch();
+  
   const [items, setItems] = useState(null);
   const [activeId, setActiveId] = useState(null);
   const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
@@ -55,7 +62,6 @@ function Portfolio(props) {
   }
 
   useEffect(() => {
-    console.log("W",formNo2)
     if(props.selectedImages.mainImage !== undefined){
       getKeywordsAndSeperate()
     } 
@@ -235,6 +241,20 @@ function Portfolio(props) {
     props.updateSelectedImagesArray(response.data)
   }
 
+  const toggleImageApprovalHandler = async (val) => {
+
+    let params = {
+      _id:val._id,
+      artistId: props.selectedArtist._id
+    }
+    changeArtistImageStatus(params).then((res)=>{
+      dispatch(updateOpen(true))
+      dispatch(updateMessage(res.msg));
+      props.updateSelectedImagesArray(res.data)
+    })
+
+  }
+
   const goToPortfolioHandler = () =>{
     // window.location.href = '/#/artists/'+props.selectedArtist._id
     window.open('/#/artists/'+props.selectedArtist._id, '_blank');
@@ -244,6 +264,7 @@ function Portfolio(props) {
     return <div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"50vh"}}><img className="mb-3" alt="loading" src={loading} style={{width:"50px"}}/></div>
   }
   
+
   return (
     <>
     {enabled ?
@@ -414,6 +435,14 @@ function Portfolio(props) {
                       d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
                       />
                       </svg>
+                    </div>
+                    <div className="crossSectionRight">
+                      <img 
+                        src={check} 
+                        style={{width:"15px", height:"15px", }} 
+                        onClick={() => toggleImageApprovalHandler(item)}
+                        loading="eager"
+                      />
                     </div>
                     <img onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})} alt='' src={item.path} className="image" style={{cursor:"pointer"}} />
                   </div>

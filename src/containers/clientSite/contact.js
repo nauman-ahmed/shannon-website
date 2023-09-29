@@ -107,6 +107,7 @@ function Contact() {
           message: message,
           zip:zip,
           artistId: Id,
+          kidShannon:false
         };
         setHolder(true);
         let tempMsg = <p>
@@ -115,7 +116,7 @@ function Contact() {
         </p>
         if (data.purposeOfInquiry) {
           if (data.purposeOfInquiry == "Looking for representation") {
-            tempMsg = <p> Hi {data.Name}, Thank you for your submission. <br></br><br></br> We appreciate your interest in Shannon Associates. Due to the extremely high volume of applicants we receive, we are unfortunately unable to reply to all. Please feel free to try again if you have new samples to present. We hope you understand and wish you the best in all that is ahead.<br></br><br></br> Your Friends at Shannon Associates</p>
+            tempMsg = <p> Hi {data.Name}, Thank you for your submission. <br></br><br></br> We appreciate your interest in Shannon Associates. Due to the extremely high volume of applicants we receive, we are unfortunately unable to reply to all. <br></br><br></br> Please feel free to try again if you have new samples to present. We hope you understand and wish you the best in all that is ahead.<br></br><br></br> Your Friends at Shannon Associates</p>
           } 
         }
         createContact(data).then((res) => {
@@ -823,3 +824,4 @@ function SamplePrevArrow(props) {
   />
   );
 }
+

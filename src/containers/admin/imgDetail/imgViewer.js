@@ -42,7 +42,7 @@ function ImgViewer(props) {
     changeArtistImageStatus(params).then((res)=>{
       setHolder(false);
       dispatch(updateOpen(true))
-      dispatch(updateMessage(res));
+      dispatch(updateMessage(res.msg));
       history.push({
         pathname:'/admin/artists',
         state:{Nauman:2}
