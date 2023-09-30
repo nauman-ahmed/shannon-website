@@ -11,6 +11,9 @@ import axios from "axios";
 export const BASE_URL = "http://3.143.107.63:5000/api/"
 export const IMAGE_ROUTE = "http://3.143.107.63:5000/";
 
+// export const BASE_URL = "http://3.143.107.63:5000/api/"
+// export const IMAGE_ROUTE = "http://3.143.107.63:5000/";
+
 
 export const logouter = () => {
     // localStorage.removeItem('authorization');
