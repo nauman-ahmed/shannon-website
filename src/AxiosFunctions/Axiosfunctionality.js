@@ -8,11 +8,8 @@ import axios from "axios";
 // export const IMAGE_ROUTE = "http://localhost:5001/";
 
 
-export const BASE_URL = "http://3.143.107.63:5000/api/"
-export const IMAGE_ROUTE = "http://3.143.107.63:5000/";
-
-// export const BASE_URL = "http://3.143.107.63:5000/api/"
-// export const IMAGE_ROUTE = "http://3.143.107.63:5000/";
+export const BASE_URL = "http://3.128.113.172/api/"
+export const IMAGE_ROUTE = "http://3.128.113.172/";
 
 
 export const logouter = () => {
