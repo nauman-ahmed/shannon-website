@@ -54,7 +54,8 @@ function Contact() {
 
   const { AddToCart } = useSelector((state) => state);
   const { artistImageDataSlice } = useSelector((state) => state);
-
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [referesh, setReferesh] = useState(true);
 
   function getWindowSize() {
     const { innerWidth, innerHeight } = window
@@ -94,6 +95,20 @@ function Contact() {
         // dispatch(updateOpen(true))
         // dispatch(updateMessage("Please Fill Required Fields"));
       } else {
+
+          const contactCreate = new FormData()
+          contactCreate.append('Name',Name)
+          contactCreate.append('company',company)
+          contactCreate.append('email',email)
+          contactCreate.append('phone',phone)
+          contactCreate.append('address',address)
+          contactCreate.append('purposeOfInquiry',purposeOfInquiry)
+          contactCreate.append('findUs',findUs)
+          contactCreate.append('message',message)
+          contactCreate.append('artistId',Id)
+          contactCreate.append('kidShannon',false)
+          contactCreate.append('contactFile',selectedFile)
+
         let data = {
           Name: Name,
           company: company,
@@ -111,18 +126,29 @@ function Contact() {
         };
         setHolder(true);
         let tempMsg = <p>
-          Thank you {data.Name}. <br/>
+          Thank you {Name}. <br/>
           A Shannon Associates representative will be responding to your inquiry as soon as possible.
         </p>
-        if (data.purposeOfInquiry) {
-          if (data.purposeOfInquiry == "Looking for representation") {
-            tempMsg = <p> Hi {data.Name}, Thank you for your submission. <br></br><br></br> We appreciate your interest in Shannon Associates. Due to the extremely high volume of applicants we receive, we are unfortunately unable to reply to all. <br></br><br></br> Please feel free to try again if you have new samples to present. We hope you understand and wish you the best in all that is ahead.<br></br><br></br> Your Friends at Shannon Associates</p>
+        if (purposeOfInquiry) {
+          if (purposeOfInquiry == "Looking for representation") {
+            tempMsg = <p> Hi {Name}, Thank you for your submission. <br></br><br></br> We appreciate your interest in Shannon Associates. Due to the extremely high volume of applicants we receive, we are unfortunately unable to reply to all. <br></br><br></br> Please feel free to try again if you have new samples to present. We hope you understand and wish you the best in all that is ahead.<br></br><br></br> Your Friends at Shannon Associates</p>
           } 
         }
-        createContact(data).then((res) => {
+        createContact(contactCreate).then((res) => {
           if(res == "Email is an Issue"){
             tempMsg = <p> ERROR IN CONTACT DETAILS SUBMISSION</p>
+            dispatch(emptyCart());
+            setHolder(false);
+            setIsPopupShow(true);
             setMsg(tempMsg);
+            setName("")
+            setCompany("")
+            setEmail("")
+            setPhone("")
+            setPurposeOfInquiry("")
+            setFindUs("")
+            setMessage("")
+            setSelectedFile(null)
           }else{
             dispatch(emptyCart());
             setHolder(false);
@@ -135,7 +161,10 @@ function Contact() {
             setPurposeOfInquiry("")
             setFindUs("")
             setMessage("")
+            setSelectedFile(null)
           }
+          setReferesh(!referesh)
+
         });
       }
     } else {
@@ -289,11 +318,22 @@ function Contact() {
     // setIsChecked(tempChecker);
     // getLocalStorage();
     return () => console.log("NAUMAN");
-  }, [localStorageChecked]);
+  }, [localStorageChecked,referesh]);
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    
+    if (file && file.size <= 25 * 1024 * 1024) {
+      // File is within the size limit
+      setSelectedFile(file);
+    } else {
+      // File is too large
+      alert('File size exceeds 25MB limit.');
+    }
+  };
 
   return (
     <>
-    {console.log("CONTACT",windowSize.innerWidth)}
       <div className="row mx-0 pr-0 mt-0 pt-0" style={{
         maxWidth: "100%",
       }}>
@@ -510,6 +550,9 @@ function Contact() {
                             id="Purpose-of-Inquiry"
                             name="Purpose-of-Inquiry"
                             onChange={(e) => {
+                              if(e.target.value !== "Get an estimate"){
+                                setSelectedFile(null)
+                              }
                               setPurposeOfInquiry(e.target.value);
                             }}
                             data-name="Purpose of Inquiry"
@@ -588,6 +631,19 @@ function Contact() {
                           ></textarea>
                         </div>
                       </div>
+                      {purposeOfInquiry == "Get an estimate" ?
+                        <div className=" row mr-0 ">
+                          <div className="col-12 mr-0 pr-0">
+                            <input
+                              type="file"
+                              accept=".jpg, .jpeg, .png, .pdf" // Set allowed file types
+                              onChange={handleFileChange}
+                            />
+                          </div>
+                        </div>
+
+                            :null
+                      }
                     </div>
                   </div>
                 </div>

@@ -33,6 +33,21 @@ function CFSViewMore(props) {
         setSingleContact(singleContact);
         setMessage(singleContact.message);
     }, [])
+
+    const handleDownload = () => {
+        const filePath = singleContact.path; // Replace with the actual file path
+        const fileName = "Reference Image "+ new Date() +" .png"; // Replace with the desired file name
+    
+        const anchor = document.createElement('a');
+        anchor.href = filePath;
+        anchor.download = fileName;
+        anchor.style.display = 'none';
+    
+        document.body.appendChild(anchor);
+        anchor.click();
+        document.body.removeChild(anchor);
+      };
+
     return (
        
        <>
@@ -82,6 +97,20 @@ function CFSViewMore(props) {
                     <span className='py-2' style={{ minWidth: 70 }}>Message:</span>
                     <textarea className='textField' value={message} onChange={(e)=>setMessage(e.target.value)}></textarea>
                 </label>
+                {singleContact.path !== "" ?
+                    <label className='col-md-12'>
+                        <span className='py-2' style={{ minWidth: 70 }}>Sample Image:</span>
+                        <button onClick={handleDownload} className="mx-1 myBtn active sm">Download File</button>
+                        <div className='my-5'>
+                            <img
+                                src={singleContact.path}
+                                style={{ width:"25%" }}
+                            />   
+                        </div>
+                    </label>
+                    : 
+                    null
+                }
                 <div className='col-12 d-flex justify-content-end'>
                     {singleContact.status===0?<button className='mx-1 myBtn active sm' onClick={() => {props.setFormNo(0);updateContact(singleContact._id)}}>REVIEWED</button>:<button className='mx-1 myBtn active sm' onClick={() => {props.setFormNo(0);}}>Back</button>}
                 </div>
