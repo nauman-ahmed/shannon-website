@@ -20,8 +20,9 @@ import axios from "axios";
 // export const IMAGE_ROUTE = "http://localhost:5001/";
 
 
-export const BASE_URL = "3.128.113.172/api/"
-export const IMAGE_ROUTE = "3.128.113.172/";
+export const BASE_URL = "https://api.kidshannon.com/api/"
+export const IMAGE_ROUTE = "https://api.kidshannon.com/";
+
 
 
 export const logouter = () => {
