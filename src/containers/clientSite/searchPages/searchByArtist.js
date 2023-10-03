@@ -222,7 +222,7 @@ function SearchByArtist(props) {
   useEffect(() => {
     getUserData();
 
-    let artistKSOrderTemp = ArtistDataAPI.artistData.filter(artist=>artist._id === search)[0].orderKidArtist;
+    let artistKSOrderTemp = ArtistDataAPI.artistData.filter(artist=>artist._id === search)[0]?.orderKidArtist || 0;
     setartistKSOrder(artistKSOrderTemp);
     console.log(artistKSOrder);
 
