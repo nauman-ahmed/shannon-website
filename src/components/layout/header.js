@@ -76,7 +76,7 @@ function Header(props) {
             <nav role="navigation" className="navmenu w-nav-menu">
               <span>
               <a 
-                href="http://13.59.180.10/#/" 
+                href="https://kidshannon.com/#/" 
                 target="_blank" 
                 className="navlink v2 w-nav-link ">KIDSHANNON</a>
 

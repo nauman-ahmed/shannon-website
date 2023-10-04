@@ -156,7 +156,7 @@ function Artists(props) {
                   <>
                     <a
                       id="w-node-a284be2a-4b91-3177-03eb-6614b2487a29-4bf2d022"
-                      href="http://13.59.180.10/#/"
+                      href="https://kidshannon.com/#/"
                       className="banner _2 v2 w-inline-block-banner "
                     >
                       <div className="bannerletters _2 v2"></div>

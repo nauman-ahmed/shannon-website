@@ -87,7 +87,7 @@ function DivisionSideBar(props) {
         <Link to="/bipoc" className={"divisionslink"+(props.activeBtn === "bipoc"?" w--current":"")}><span className="sidebarlink">BIPOC<br /></span></Link>
         {/* <Link to="/cgi" className={"divisionslink"+(props.activeBtn === "cgi" || localStorage.getItem("Category") == "cgi" ?" w--current":"")}><span className="sidebarlink">CGI</span></Link> */}
         {/* <span className="sidebarlink"><br /></span> */}
-        <a href="http://13.59.180.10/#/" target="_blank" className="sidebarlink">KIDSHANNON<br /></a>
+        <a href="https://kidshannon.com/#/" target="_blank" className="sidebarlink">KIDSHANNON<br /></a>
         <Link to="/medical" className={"divisionslink"+(props.activeBtn === "medical" || localStorage.getItem("Category") == "Medical" ?" w--current":"")}><span className="sidebarlink">MEDICAL<br /></span></Link>
         <Link to="/motion" className={"divisionslink"+(props.activeBtn === "motion" || localStorage.getItem("Category") == "motion" ? " w--current":"")}><span className="sidebarlink">MOTION</span></Link>
         <br /><br /><br /><br />
