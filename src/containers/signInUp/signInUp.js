@@ -55,10 +55,10 @@ function Login() {
     let details = decodeToken(localStorage.getItem("authorization"))
     
     if(details !== null && details.email == "tech@shannonassociates.com"){
-      window.location.href = '/#/admin/artists'
+      window.location.href = '/admin/artists'
     }
     else if(details !== null){
-      window.location.href = '/#/artist'
+      window.location.href = '/artist'
     }
 
   },[])
@@ -83,7 +83,7 @@ function Login() {
           dispatch(updateMessage("Successfully Login"))
           localStorage.setItem("authorization",res.token!==undefined?res.token:"")
           setAuthToken(res.token);
-          window.location.href = '/#/admin/artists'
+          window.location.href = '/admin/artists'
         }
       }
       catch(err){
@@ -124,7 +124,7 @@ function Login() {
           setShowLoader(true);
           if(res.payload.token !== undefined){
             dispatch(updateMessage("Successfully Login"))
-            window.location.href = '/#/artist'
+            window.location.href = '/artist'
           }else{
             dispatch(updateMessage("Invalid Credentials or In Active Account" ))
           }
