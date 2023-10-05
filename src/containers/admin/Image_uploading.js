@@ -392,7 +392,7 @@ function Image_uploading(props) {
                                 <b className='mb-4'>Copyright Text</b>
                                 <input 
                                     className='textField' 
-                                    value={`© ${props.artistId.firstname.toLowerCase()} ${props.artistId.lastname.toLowerCase()}`} 
+                                    value={copyrightText == "" ? "" : copyrightText} 
                                     type="text"
                                     name= "title"
                                     onChange={(e) => setCopyrightText(e.target.value)}
