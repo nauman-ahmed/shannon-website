@@ -35,7 +35,7 @@ function Image_uploading(props) {
         height: 200,
         aspect: 1 ,
       })
-      const [copyrightText, setCopyrightText] = useState("")
+      const [copyrightText, setCopyrightText] = useState(`© ${props.artistId.firstname.toLowerCase()} ${props.artistId.lastname.toLowerCase()}`)
       const [copyrightColor, setCopyrightColor] = useState("")
       const [maximumLimit, setMaximumLimit] = useState(0)
 
