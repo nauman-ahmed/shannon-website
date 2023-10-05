@@ -74,8 +74,8 @@ function Image_uploading(props) {
                 _id:props.artistId._id,
             })
             
-            let caption = props.images.copyrightText  ? props.images.copyrightText : `© ${props.artistId.lastname.toLowerCase()} ${props.artistId.firstname.toLowerCase()}`
-            //let caption = props.images.copyrightText  ? props.images.copyrightText : ``
+            // let caption = props.images.copyrightText  ? props.images.copyrightText : `© ${props.artistId.lastname.toLowerCase()} ${props.artistId.firstname.toLowerCase()}`
+            let caption = props.images.copyrightText  ? props.images.copyrightText : ``
             setCopyrightColor(props.images.copyrightColor  ? props.images.copyrightColor : "light Gray")
             setCopyrightText(caption)
 
@@ -392,7 +392,7 @@ function Image_uploading(props) {
                                 <b className='mb-4'>Copyright Text</b>
                                 <input 
                                     className='textField' 
-                                    value={copyrightText == "" ? "" : copyrightText} 
+                                    value={copyrightText == "" ? `© ${props.artistId.lastname.toLowerCase()} ${props.artistId.firstname.toLowerCase()}` : copyrightText} 
                                     type="text"
                                     name= "title"
                                     onChange={(e) => setCopyrightText(e.target.value)}
