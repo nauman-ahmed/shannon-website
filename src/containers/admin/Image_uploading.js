@@ -75,9 +75,9 @@ function Image_uploading(props) {
             })
             
             // let caption = props.images.copyrightText  ? props.images.copyrightText : `© ${props.artistId.lastname.toLowerCase()} ${props.artistId.firstname.toLowerCase()}`
-            let caption = props.images.copyrightText  ? props.images.copyrightText : ``
+            //let caption = props.images.copyrightText  ? props.images.copyrightText : ``
             setCopyrightColor(props.images.copyrightColor  ? props.images.copyrightColor : "light Gray")
-            setCopyrightText(caption)
+            //setCopyrightText(caption)
 
             if(keywordList == null){
                 let data = {};
