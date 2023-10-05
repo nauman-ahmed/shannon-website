@@ -394,6 +394,7 @@ function Image_uploading(props) {
                                     className='textField' 
                                     value={copyrightText == "" ? `© ${props.artistId.firstname.toLowerCase()} ${props.artistId.lastname.toLowerCase()}` : copyrightText}
                                     type="text"
+                                    defaultValue={`© ${props.artistId.firstname.toLowerCase()} ${props.artistId.lastname.toLowerCase()}`}
                                     name= "title"
                                     onChange={(e) => setCopyrightText(e.target.value)}
                                 />
