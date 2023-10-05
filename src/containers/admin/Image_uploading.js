@@ -35,7 +35,7 @@ function Image_uploading(props) {
         height: 200,
         aspect: 1 ,
       })
-      const [copyrightText, setCopyrightText] = useState(`© ${props.artistId.firstname.toLowerCase()} ${props.artistId.lastname.toLowerCase()}`)
+      const [copyrightText, setCopyrightText] = useState("")
       const [copyrightColor, setCopyrightColor] = useState("")
       const [maximumLimit, setMaximumLimit] = useState(0)
 
@@ -74,8 +74,8 @@ function Image_uploading(props) {
                 _id:props.artistId._id,
             })
             
-            // let caption = props.images.copyrightText  ? props.images.copyrightText : `© ${props.artistId.lastname.toLowerCase()} ${props.artistId.firstname.toLowerCase()}`
-            let caption = props.images.copyrightText  ? props.images.copyrightText : ``
+            let caption = props.images.copyrightText  ? props.images.copyrightText : `© ${props.artistId.lastname.toLowerCase()} ${props.artistId.firstname.toLowerCase()}`
+            //let caption = props.images.copyrightText  ? props.images.copyrightText : ``
             setCopyrightColor(props.images.copyrightColor  ? props.images.copyrightColor : "light Gray")
             setCopyrightText(caption)
 
