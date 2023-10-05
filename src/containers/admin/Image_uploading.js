@@ -35,7 +35,7 @@ function Image_uploading(props) {
         height: 200,
         aspect: 1 ,
       })
-      const [copyrightText, setCopyrightText] = useState("")
+      const [copyrightText, setCopyrightText] = useState(`© ${props.artistId.firstname.toLowerCase()} ${props.artistId.lastname.toLowerCase()}`)
       const [copyrightColor, setCopyrightColor] = useState("")
       const [maximumLimit, setMaximumLimit] = useState(0)
 
@@ -75,9 +75,9 @@ function Image_uploading(props) {
             })
             
             // let caption = props.images.copyrightText  ? props.images.copyrightText : `© ${props.artistId.lastname.toLowerCase()} ${props.artistId.firstname.toLowerCase()}`
-            let caption = props.images.copyrightText  ? props.images.copyrightText : ``
+            //let caption = props.images.copyrightText  ? props.images.copyrightText : ``
             setCopyrightColor(props.images.copyrightColor  ? props.images.copyrightColor : "light Gray")
-            setCopyrightText(caption)
+            //setCopyrightText(caption)
 
             if(keywordList == null){
                 let data = {};
@@ -392,7 +392,7 @@ function Image_uploading(props) {
                                 <b className='mb-4'>Copyright Text</b>
                                 <input 
                                     className='textField' 
-                                    value={copyrightText == "" ? "" : copyrightText} 
+                                    value={copyrightText}
                                     type="text"
                                     name= "title"
                                     onChange={(e) => setCopyrightText(e.target.value)}
