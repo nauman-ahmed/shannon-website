@@ -35,7 +35,7 @@ function Image_uploading(props) {
         height: 200,
         aspect: 1 ,
       })
-      const [copyrightText, setCopyrightText] = useState("")
+      const [copyrightText, setCopyrightText] = useState(`© ${props.artistId.firstname.toLowerCase()} ${props.artistId.lastname.toLowerCase()}`)
       const [copyrightColor, setCopyrightColor] = useState("")
       const [maximumLimit, setMaximumLimit] = useState(0)
 
@@ -392,9 +392,8 @@ function Image_uploading(props) {
                                 <b className='mb-4'>Copyright Text</b>
                                 <input 
                                     className='textField' 
-                                    value={copyrightText == "" ? `© ${props.artistId.firstname.toLowerCase()} ${props.artistId.lastname.toLowerCase()}` : copyrightText}
+                                    value={copyrightText}
                                     type="text"
-                                    defaultValue={`© ${props.artistId.firstname.toLowerCase()} ${props.artistId.lastname.toLowerCase()}`}
                                     name= "title"
                                     onChange={(e) => setCopyrightText(e.target.value)}
                                 />
