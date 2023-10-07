@@ -63,6 +63,12 @@ function Image_uploading(props) {
         }
     } 
 
+    useEffect(()=>{
+        if(props.images.aspectRatio){
+            setCompletedCrop({...props.images.aspectRatio,unit:"px",aspect:1})
+        }
+    },[])
+
 
     useEffect(()=>{
         try{
@@ -185,7 +191,6 @@ function Image_uploading(props) {
             keywordListTemp.push(val._id)
         })
 
-        console.log("SUBMIT HANDLER",copyrightText)
         const imageCreate = new FormData()
         imageCreate.append('k_id',keywordListTemp)
         imageCreate.append('title',artistImageTemp.title)
@@ -194,9 +199,14 @@ function Image_uploading(props) {
         imageCreate.append('artistImage',originalImage)
         imageCreate.append('caption',copyrightText)
         imageCreate.append('color',copyrightColor)
-        imageCreate.append('svg',svg)
+        // imageCreate.append('svg',svg)
         imageCreate.append('adminPortfolio',true)
         imageCreate.append('_id',props.artistId._id)
+
+        imageCreate.append('croppedDetails_x',completedCrop.x)
+        imageCreate.append('croppedDetails_y',completedCrop.y)
+        imageCreate.append('croppedDetails_width',completedCrop.width)
+        imageCreate.append('croppedDetails_height',completedCrop.height)
 
         setIsPopupShow(true)
         changeArtistImageDetails(imageCreate).then((res)=>{
@@ -330,7 +340,6 @@ function Image_uploading(props) {
          </svg>`)
         setImage(e.currentTarget)
     }
-
 
     return (
         <> 

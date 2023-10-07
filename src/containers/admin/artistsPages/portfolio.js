@@ -444,7 +444,7 @@ function Portfolio(props) {
                         loading="eager"
                       />
                     </div>
-                    <img onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})} alt='' src={item.path} className="image" style={{cursor:"pointer"}} />
+                    <img onClick={()=>props.history.push({pathname:"/admin/artists/"+item._id,state: { selectedArtist: props.selectedArtist,selectedImages:props.selectedImages }})} alt='' src={item.subImage[0].path} className="image" style={{cursor:"pointer"}} />
                   </div>
                 :null)
               )

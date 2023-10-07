@@ -285,8 +285,15 @@ function Image_uploading() {
                 imageCreate.append('artistImage_2',artistImageDetails[1].name)
                 imageCreate.append('artistImage',artistImageDetails[1].img)
                 imageCreate.append('artistImage',originalImage)
-                imageCreate.append('caption',"© " + details.firstname.toLowerCase())
+                imageCreate.append('caption',"© " + details.firstname.toLowerCase() + " " + details.lastname.toLowerCase())
                 imageCreate.append('color',artistReducer.uploadedImage.imageFile.copyrightColor)
+
+
+                imageCreate.append('croppedDetails_x',completedCrop.x)
+                imageCreate.append('croppedDetails_y',completedCrop.y)
+                imageCreate.append('croppedDetails_width',completedCrop.width)
+                imageCreate.append('croppedDetails_height',completedCrop.height)
+
                 imageCreate.append('populateUnderImageReview',true)
                 imageCreate.append('artistPortfolio',true)
 
