@@ -149,7 +149,7 @@ function SearchByArtist(props) {
   const getUserData = async () => {
     let localPrevCate = localStorage.getItem("Category") == "cgi" || localStorage.getItem("Category") == "motion" ? "3D Rendering" : localStorage.getItem("Category")
     localPrevCate = localPrevCate || "none"
-    console.log("getUserData",localPrevCate)
+
     let tempData = await artistImageDetailedSliceData({ "artistId": search, "category": localPrevCate })
 
     dataLocalArtist(
@@ -344,7 +344,7 @@ function SearchByArtist(props) {
               <div className={windowSize.innerWidth < 479 ? "" : "d-flex"} style={windowSize.innerWidth < 479 ? { marginLeft: "8%" } : { justifyContent: "space-between", marginTop: "-10px" ,marginBottom:"10px", width:"98.4%" }} > 
                 <h2 className="h2talent">{data1[search].title}</h2>  
                 {
-                  artistKSOrder !== 100000 ? (<a href={"https://kidshannon.com/#/artists/"+data1[search].id} target="_blank" className="linkToKS">Visit Kid's portfolio</a> ): null
+                  artistKSOrder !== 100000 ? (<a href={"https://kidshannon.com/artists/"+data1[search].id} target="_blank" className="linkToKS">Visit Kid's portfolio</a> ): null
                 }
               </div>
 
