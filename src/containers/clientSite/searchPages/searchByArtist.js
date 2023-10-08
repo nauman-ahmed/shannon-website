@@ -83,10 +83,16 @@ function SearchByArtist(props) {
     return () => {
       window.removeEventListener('resize', handleWindowResize);
       window.removeEventListener('scroll', function(){});
-      localStorage.setItem("Category","none")
     };
 
   }, [data1]);
+
+  useEffect(()=>{
+    return () => {
+      console.log("EXITING")
+      localStorage.setItem("Category","none")
+    };
+  },[])
 
   const addToCartArtist = (id, firstname,getAnEstimate=false) => {
     dispatch(addCart({ key: id, data: { id: id, Name: firstname } }));
@@ -142,7 +148,8 @@ function SearchByArtist(props) {
 
   const getUserData = async () => {
     let localPrevCate = localStorage.getItem("Category") == "cgi" || localStorage.getItem("Category") == "motion" ? "3D Rendering" : localStorage.getItem("Category")
-
+    localPrevCate = localPrevCate || "none"
+    console.log("getUserData",localPrevCate)
     let tempData = await artistImageDetailedSliceData({ "artistId": search, "category": localPrevCate })
 
     dataLocalArtist(
@@ -159,6 +166,7 @@ function SearchByArtist(props) {
     setIsLoading(false)
 
   }
+
 
   useEffect(() => {
 
