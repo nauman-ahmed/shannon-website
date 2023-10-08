@@ -22,7 +22,7 @@ function Login() {
   const [showLoader,setShowLoader] = useState(true);
 
   const history = useHistory()
-  const hash = (window.location.hash).split("/")
+  const hash = (window.location.pathname).split("/")
   const accountType = hash[1]
   const pageType = hash[2]
   const state = stateGetter()
@@ -53,7 +53,6 @@ function Login() {
   useEffect(()=>{
     getAllTheCity()
     let details = decodeToken(localStorage.getItem("authorization"))
-    
     if(details !== null && details.email == "tech@shannonassociates.com"){
       window.location.href = '/admin/artists'
     }
@@ -83,7 +82,7 @@ function Login() {
           dispatch(updateMessage("Successfully Login"))
           localStorage.setItem("authorization",res.token!==undefined?res.token:"")
           setAuthToken(res.token);
-          window.location.href = '/#/admin/artists'
+          window.location.href = '/admin/artists'
         }
       }
       catch(err){
@@ -124,7 +123,7 @@ function Login() {
           setShowLoader(true);
           if(res.payload.token !== undefined){
             dispatch(updateMessage("Successfully Login"))
-            window.location.href = '/#/artist'
+            window.location.href = '/artist'
           }else{
             dispatch(updateMessage("Invalid Credentials or In Active Account" ))
           }
@@ -270,7 +269,7 @@ function Login() {
             </div>
             {showLoader?<button className='myButton my-md-5 mb-5 mt-1' onClick={()=>signInFunc()}>REQUEST ACCOUNT CREATION</button>:<img className="mt-4" alt="loading" src={loading} style={{width:"30px"}}/>}
           </>
-          :pageType === "signin"?
+          :
           <>
             <h5>{accountType === "admin"?"ADMIN LOGIN":"ARTIST PAGE"}</h5>
             <div className='row col-xl-3 col-md-5 col-sm-8'>
@@ -301,7 +300,7 @@ function Login() {
             <Link style={{margin:"10px 0 50px 0"}} to={"/artist/signup"}>Create new account</Link>
             :null}
           </>
-          :null}
+          }
       </div>
       {isPopupShow?
         <MyPopup BackClose CloseBtn onClose={popupCloseHandler}>

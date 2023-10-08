@@ -312,6 +312,7 @@ function Image_uploading() {
 
         }
         catch(e){
+            console.log("ERROR",e.message)
             dispatch(updateOpen(true))
             dispatch(updateMessage("Error Occured"))
             history.push('/artist')

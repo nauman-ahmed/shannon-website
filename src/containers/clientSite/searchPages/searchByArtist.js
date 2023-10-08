@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import {
   SliderShow,
   SliderItems,
@@ -20,8 +20,8 @@ const images = window.location.origin + "/assets/images";
 
 function SearchByArtist(props) {
 
-  const { pages } = useParams()
-  const [keyword, setKeyword] = useState(0);
+  const history = useHistory()
+
   const [tab, setTab] = useState(0);
   const [fullscreen, setFullscreen] = useState({ screen: false, route: null });
   const [fullScreenData, setFullScreenData] = useState({ screen: false, route: null });
@@ -32,18 +32,23 @@ function SearchByArtist(props) {
   const [dataViewed, setDataViewed] = useState({});
   const [similarData, setSimilarData] = useState({});
   const [artistImages, setArtistImages] = useState(8);
-  const [artistSimilar, setArtistSimilar] = useState(8);
-  const [sliderImages, setSliderImages] = useState(null);
-  const [sliderIndex, setSliderIndex] = useState(null);
+  const [sliderIndex, setSliderIndex] = useState(0);
   const [windowSize, setWindowSize] = useState(getWindowSize());
   const [isPopupShow, setIsPopupShow] = useState(false);
   const [isPopupShowWithCheckbox, setIsPopupShowWithCheckbox] = useState(true);
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
   const [msg, setMsg] = useState("");
   const [artistKSOrder, setartistKSOrder] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [sliderTriggerred, setSliderTriggerred] = useState(false);
   
+
   const myStateRef = useRef(0);
   const screenScrolling = useRef(true);
+  const queryParams = new URLSearchParams(history.location.search);
+  const imageIndex = queryParams.get('imageIndex');
+  const fullscreenCond = queryParams.get('fullscreen');
+
 
   function getWindowSize() {
     const { innerWidth, innerHeight } = window
@@ -56,39 +61,32 @@ function SearchByArtist(props) {
 
   useEffect(() => {
     window.addEventListener('resize', handleWindowResize);
-    // window.addEventListener('scroll', function() {
-    //   var myDiv = document.getElementsByClassName('rightside')[0];
-    //   var myDivReference = document.getElementsByClassName('right_content')[0];
 
-    //   if(myDiv){
-    //     var myDivRect = myDiv.getBoundingClientRect();
-    //     var myDivRectReference = myDivReference.getBoundingClientRect();
-  
-    //     var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-    //     console.log('BEFOre',myDivRectReference.top,myDivRect.top);
-    //     if (myDivRect.top <= 5) {
-    //       console.log('Div is hidden');
-    //       screenScrolling.current = myDivRect.top
-    //       myDiv.style.position = 'fixed';
-    //       myDiv.style.top = '5px';
-    //       myDiv.style.width = '-webkit-fill-available';
-    //       myDiv.style.marginRight = '3%';
-    //     } 
-    //     if (myDivRectReference.top > myDivRect.top) {
-    //       console.log('Div is visible');
-    //       screenScrolling.current = myDivRect.top
-    //       myDiv.style.position = 'relative';
-    //       myDiv.style.top = '0rem';
-    //     }
-    //   }
-    // });
+    let imageInd
+
+    if(data1){
+      if(data1[search].slideList.length < parseInt(imageIndex, 10)){
+        imageInd = data1[search].slideList.length - 1
+        history.push("/artists/" + search +"?imageIndex="+imageInd)
+      }else{
+        imageInd = parseInt(imageIndex, 10)
+      }
+      let tempObj = {...fullScreenData}
+      tempObj.screen = fullscreenCond=="true" ? true : false
+      tempObj.route = data1[search].slideList[imageInd]
+      setFullscreen(tempObj)
+    }
+
+    myStateRef.current = imageInd; 
+    setSliderIndex(parseInt(imageInd, 10))
+    
     return () => {
       window.removeEventListener('resize', handleWindowResize);
       window.removeEventListener('scroll', function(){});
       localStorage.setItem("Category","none")
     };
-  }, []);
+
+  }, [data1]);
 
   const addToCartArtist = (id, firstname,getAnEstimate=false) => {
     dispatch(addCart({ key: id, data: { id: id, Name: firstname } }));
@@ -158,43 +156,43 @@ function SearchByArtist(props) {
 
     setSimilarData(tempData.similarArtist);
     setData1(tempData.activeArtist);
+    setIsLoading(false)
 
   }
 
   useEffect(() => {
-    let currentSelectedSlider = document.getElementById("firstSlider0");
-    var prev = document.getElementsByClassName('slick-prev')[0];
-    var next = document.getElementsByClassName('slick-next')[0]
 
-    
-    if(currentSelectedSlider){
-      
-      currentSelectedSlider.style.boxShadow = "0 2px 10px #141c2a"
-      if(prev){
-        prev.addEventListener("click", (e) => {
-          console.log("LEFT BUTTON CLICKED",myStateRef.current ,data1[search].pictureTitle.length)
-          
-          if(myStateRef.current == 0 ){
-            setSliderIndexHandler(data1[search].pictureTitle.length-1,myStateRef.current,true)
-          }else{
-            setSliderIndexHandler(myStateRef.current -1 ,myStateRef.current,true)
-          }
-        })
-      }
-       
-      if(next){
-        next.addEventListener("click", (e) => {
+    if(sliderTriggerred){
+      let currentSelectedSlider = document.getElementById("firstSlider"+imageIndex);
+      var prev = document.getElementsByClassName('slick-prev')[0];
+      var next = document.getElementsByClassName('slick-next')[0]
   
-          if(myStateRef.current !== data1[search].pictureTitle.length-1){
-            setSliderIndexHandler(myStateRef.current+1,myStateRef.current,true)
-          }else{
-            setSliderIndexHandler(0,data1[search].pictureTitle.length - 1,true)
-          }
-        })
+      if(currentSelectedSlider){
+        
+        currentSelectedSlider.style.boxShadow = "0 2px 10px #141c2a"
+        if(prev){
+          prev.addEventListener("click", (e) => {
+            if(myStateRef.current == 0 ){
+              setSliderIndexHandler(data1[search].pictureTitle.length-1,myStateRef.current,true)
+            }else{
+              setSliderIndexHandler(myStateRef.current -1 ,myStateRef.current,true)
+            }
+          })
+        }
+         
+        if(next){
+          next.addEventListener("click", (e) => {
+            if(myStateRef.current !== data1[search].pictureTitle.length-1){
+              setSliderIndexHandler(myStateRef.current+1,myStateRef.current,true)
+            }else{
+              setSliderIndexHandler(0,data1[search].pictureTitle.length - 1,true)
+            }
+          })
+        }
       }
     }
 
-  }, [data1]);
+  }, [sliderTriggerred]);
 
   const setSliderIndexHandler = (keys, oldValue = null, clickedSliderButton = false) => {
     if(clickedSliderButton){
@@ -216,7 +214,7 @@ function SearchByArtist(props) {
       myStateRef.current = keys
       setSliderIndex(keys)
     }
-
+    history.push("/artists/" + search +"?imageIndex="+keys)
   };
 
   useEffect(() => {
@@ -224,7 +222,6 @@ function SearchByArtist(props) {
 
     let artistKSOrderTemp = ArtistDataAPI.artistData.filter(artist=>artist._id === search)[0]?.orderKidArtist || 0;
     setartistKSOrder(artistKSOrderTemp);
-    console.log(artistKSOrder);
 
     function getLocalStorage() {
       if (localStorage.getItem("artistViewed_V2") !== null) {
@@ -249,8 +246,11 @@ function SearchByArtist(props) {
     temp.screen = !temp.screen;
     setFullscreen(temp);
     setFullScreenData(data1[search])
-
-
+    if(temp.screen){
+      history.push("/artists/" + search +"?imageIndex="+imageIndex+"&fullscreen=true")
+    }else{
+      history.push("/artists/" + search +"?imageIndex="+imageIndex)
+    }
   };
 
   const saveCartMessage = (msg) =>{
@@ -281,9 +281,8 @@ function SearchByArtist(props) {
       />)
   }
 
-  if (data1 !== null) {
+  if (isLoading) {
 
-    if (Object.keys(data1).find(element => element == search) == undefined) {
       return (
         <div style={{ position: "absolute", top: "50%", left: "50%" }}>
             <img
@@ -294,7 +293,6 @@ function SearchByArtist(props) {
             />
           </div>
       )
-    }
   }
 
   return (
@@ -435,6 +433,7 @@ function SearchByArtist(props) {
                         <SliderShow
                           changeIndex={changeIndex}
                           sliderIndex={sliderIndex}
+                          setSliderTriggerred={setSliderTriggerred}
                         >
                           {
                             data1[search].slideList.map((item, keys) => (
@@ -488,7 +487,7 @@ function SearchByArtist(props) {
                                   data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                                   className="card_img3"
                                   // style={{ position: "relative" }}
-                                  to={"/artists/" + key}
+                                  to={"/artists/" + key+"?imageIndex=0"}
                                 >
                                   <div className="detail_card6_h">
                                     <img
@@ -532,7 +531,7 @@ function SearchByArtist(props) {
                             data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                             className="card_img3"
                             // style={{ position: "relative" }}
-                            to={"/artists/" + key}
+                            to={"/artists/" + key+"?imageIndex=0"}
                           >
                             <div className="detail_card6_h">
                               <img
@@ -589,7 +588,7 @@ function SearchByArtist(props) {
                             id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                             data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                             className="card_img3"
-                            to={"/artists/" + key}
+                            to={"/artists/" + key+"?imageIndex=0"}
                           >
                             <div className="detail_card6_h">
                               <img
@@ -655,7 +654,7 @@ function SearchByArtist(props) {
                   id="flexSwitchCheckDefault" 
                   style={{cursor:"pointer",accentColor:"#BC6127"}}
                   checked={isCheckboxChecked}
-                  onClick={()=> { setIsCheckboxChecked(!isCheckboxChecked); console.log("CLICKED")}}
+                  onClick={()=> { setIsCheckboxChecked(!isCheckboxChecked); }}
                   />
                 <label class="form-check-label" for="flexSwitchCheckDefault" style={{paddingTop:"5px"}}>Do not show this again</label>
               </div>

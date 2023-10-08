@@ -146,7 +146,7 @@ const images = window.location.origin + "/assets/images";
                                 key={key1}
                                 id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                                 data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                                to={"/artists/" + item1.artistId._id}
+                                to={"/artists/" + item1.artistId._id+"?imageIndex=0"}
                                 className="artistcard w-inline-block"
                                 onClick={()=> localStorage.setItem("Category",item.keyword)}
                               >
@@ -223,7 +223,7 @@ const images = window.location.origin + "/assets/images";
                                 key={key1}
                                 id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                                 data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                                to={"/artists/" + item1.artistId._id}
+                                to={"/artists/" + item1.artistId._id+"?imageIndex=0"}
                                 className="artistcard w-inline-block"
                                 onClick={()=> localStorage.setItem("Category",item.keyword)}
                               >

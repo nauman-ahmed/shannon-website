@@ -257,7 +257,7 @@ function Portfolio(props) {
 
   const goToPortfolioHandler = () =>{
     // window.location.href = '/#/artists/'+props.selectedArtist._id
-    window.open('/#/artists/'+props.selectedArtist._id, '_blank');
+    window.open('/artists/'+props.selectedArtist._id+"?imageIndex=0", '_blank');
   }
 
   if(props.holder){

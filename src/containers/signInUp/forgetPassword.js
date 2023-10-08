@@ -21,7 +21,7 @@ function ForgetPassword() {
   const [msg, setMsg] = useState("")
 
 
-  const hash = (window.location.hash).split("/")
+  const hash = (window.location.pathname).split("/")
   const accountType = hash[1]
 
  
