@@ -333,7 +333,7 @@ function SearchByArtist(props) {
         justifyContent: "space-around",
         margin: "0px"
       }}>
-        {data1 !== null ? (
+        {data1 !== null  && data1[search] ? (
           <>
             <div className="pl-2 left_content">
               {props.children}
