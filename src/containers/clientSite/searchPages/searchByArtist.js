@@ -598,9 +598,10 @@ function SearchByArtist(props) {
                             className="card_img3"
                             to={"/artists/" + key+"?imageIndex=0"}
                           >
+                            {console.log("DATA VIEWED",dataViewed[key])}
                             <div className="detail_card6_h">
                               <img
-                                src={String(dataViewed[key]?.subListData[0])}
+                                src={String(dataViewed[key]?.slideList[0])}
                                 loading="lazy"
                                 alt=""
                                 className="image"
@@ -655,7 +656,7 @@ function SearchByArtist(props) {
           >
             <div className="mx-5 my-4">
               <div>{msg}</div>
-              <div class="form-check form-switch mt-2"> 
+              <div class="form-check form-switch mt-2" style={{ display: "flex" }}> 
                 <input 
                   class="form-check-input" 
                   type="checkbox" 
