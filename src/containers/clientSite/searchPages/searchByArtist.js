@@ -89,8 +89,6 @@ function SearchByArtist(props) {
 
   useEffect(()=>{
     return () => {
-      setData1(null)
-      console.log("EXITING")
       localStorage.setItem("Category","none")
     };
   },[])
@@ -227,6 +225,8 @@ function SearchByArtist(props) {
   };
 
   useEffect(() => {
+    setSliderTriggerred(false)
+    setData1(null)
     getUserData();
 
     let artistKSOrderTemp = ArtistDataAPI.artistData.filter(artist=>artist._id === search)[0]?.orderKidArtist || 0;
@@ -409,6 +409,10 @@ function SearchByArtist(props) {
                                 <div id={"firstSlider"+keys} className="detail_card5_h" style={windowSize.innerWidth <= 991 ? { overflow: "hidden", height:"8vh" } : { overflow: "hidden", height:"14.5vh" }} onClick={() => { setSliderIndexHandler(keys) }}> 
                                   <img src={item} className="w-100 h-100" 
                                   style={{objectFit: "cover"}}
+                                  loading="lazy"
+                                  role="presentation"
+                                  decoding= "async"
+                                  fetchpriority= {keys+1}
                                   ></img>
                                 </div>
                               ))
@@ -632,7 +636,6 @@ function SearchByArtist(props) {
               className="mb-3"
               alt="loading"
               src={loading}
-              style={{ width: "50px" }}
             />
           </div>
         }
