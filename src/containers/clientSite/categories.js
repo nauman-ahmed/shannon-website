@@ -109,7 +109,6 @@ function Categories(props) {
                 className="mb-2"
                 alt="loading"
                 src={loading}
-                style={{ width: "50px" }}
               />
             </div> 
           ) : artistImageKeywordDataSlice.artistKeywordImages !== undefined ? (

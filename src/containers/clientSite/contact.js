@@ -749,7 +749,6 @@ function Contact() {
                         className="mb-3"
                         alt="loading"
                         src={loading}
-                        style={{ width: "50px" }}
                       />
                     </div>
               
@@ -810,7 +809,6 @@ function Contact() {
                     className="mt-1"
                     alt="loading"
                     src={loading}
-                    style={{ width: "30px" }}
                   />
                 ) : (
                   <input

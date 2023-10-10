@@ -341,7 +341,7 @@ function Image_uploading() {
                                 </div>
                                 <div>
                                     {showLoader?
-                                        <img alt="loading" src={loading} style={{width:"30px",marginTop:-20}}/>
+                                        <img alt="loading" src={loading} style={{width:"75%",marginTop:-20}}/>
                                         :
                                         <button className='btn1 dark px-4 align-self-bottom' style={{fontSize: "1.3vw"}} onClick={onSubmit}>Submit</button>
                                     }

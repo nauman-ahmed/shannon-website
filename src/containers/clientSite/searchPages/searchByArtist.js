@@ -89,6 +89,7 @@ function SearchByArtist(props) {
 
   useEffect(()=>{
     return () => {
+      setData1(null)
       console.log("EXITING")
       localStorage.setItem("Category","none")
     };
@@ -147,6 +148,7 @@ function SearchByArtist(props) {
   }
 
   const getUserData = async () => {
+    setIsLoading(true)
     let localPrevCate = localStorage.getItem("Category") == "cgi" || localStorage.getItem("Category") == "motion" ? "3D Rendering" : localStorage.getItem("Category")
     localPrevCate = localPrevCate || "none"
 
@@ -163,7 +165,6 @@ function SearchByArtist(props) {
 
     setSimilarData(tempData.similarArtist);
     setData1(tempData.activeArtist);
-    setIsLoading(false)
 
   }
 
@@ -238,7 +239,7 @@ function SearchByArtist(props) {
     }
     handleWindowResize()
     getLocalStorage();
-    // dataLoader();
+    setIsLoading(false)
   }, [search]);
 
 
