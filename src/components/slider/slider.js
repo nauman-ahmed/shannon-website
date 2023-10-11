@@ -137,7 +137,7 @@ export const SliderItems = (props)=>{
             loading={props.keys === 0 ? "lazy" : ""}
             role="presentation"
             decoding= {props.keys === 0 ? "async" : ""}
-            fetchpriority= {props.keys +1}
+            fetchpriority= {props.keys === 0 ? "high" : "low"}
           />
             <div id='detailBelowSlider' className="hide_detail mb-1 mt-2 pt-3">
                   <h4 className="mb-1" style={{ fontWeight: "500", fontSize: "22px", color:"#fa8e37" }}>{props?props.data1[props.search].title:null}</h4>
