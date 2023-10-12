@@ -412,8 +412,8 @@ function SearchByArtist(props) {
                                   loading="lazy"
                                   role="presentation"
                                   decoding= "async"
-                                  // fetchpriority= {props.keys === 0 ? "high" : "low"}
-                                  fetchpriority= {keys+10}
+                                  fetchpriority= {"low"}
+                                  // fetchpriority= {keys+10}
                                   ></img>
                                 </div>
                               ))
