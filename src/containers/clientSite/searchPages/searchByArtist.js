@@ -403,7 +403,7 @@ function SearchByArtist(props) {
                         </div>
                       </div>
                       : (
-                          <div className="detail_card w-inline-block ">
+                          <div className="detail_card w-inline-block " >
                             {
                               data1[search].subListData.map((item, keys) => (
                                 <div id={"firstSlider"+keys} className="detail_card5_h" style={windowSize.innerWidth <= 991 ? { overflow: "hidden", height:"8vh" } : { overflow: "hidden", height:"14.5vh" }} onClick={() => { setSliderIndexHandler(keys) }}> 
@@ -412,7 +412,7 @@ function SearchByArtist(props) {
                                   loading="lazy"
                                   role="presentation"
                                   decoding= "async"
-                                  fetchpriority= {"low"}
+                                  fetchpriority= {keys < 15 ? "medium" :"low"}
                                   // fetchpriority= {keys+10}
                                   ></img>
                                 </div>
