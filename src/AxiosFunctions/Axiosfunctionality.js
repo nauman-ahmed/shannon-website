@@ -511,6 +511,14 @@ export const LoginAdmin = async (data) => {
     }
 }
  
+export const changeArtistImageDetailsCopyRight = async (data) => {
+    try {
+        const response = await axios.post(BASE_URL + 'artistImage/updateDataCopyRight', data);
+        return response.data;
+    } catch (error) {
+        logouter();
+    }
+}
 
 export const changeArtistImageDetails = async (data) => {
     try {

@@ -4,7 +4,7 @@ import MyPopup from '../../components/myPopup/myPopup'
 import "../artist/artist.css"
 import BackArrow from "../../assets/svgs/backArrow.svg"
 import { useHistory } from 'react-router-dom'
-import { changeArtistImageDetails, IMAGE_ROUTE } from '../../AxiosFunctions/Axiosfunctionality'
+import { changeArtistImageDetails, IMAGE_ROUTE, changeArtistImageDetailsCopyRight } from '../../AxiosFunctions/Axiosfunctionality'
 import { useEffect } from 'react'
 import {  getCategory,getImageBaseURL } from '../../AxiosFunctions/Axiosfunctionality'
 import { useDispatch } from 'react-redux'
@@ -225,6 +225,61 @@ function Image_uploading(props) {
         })
     }
 
+    const copyrightOnSubmitHandler = () => {
+        getCroppedImg()
+
+        let keywordList = []
+
+        let keywordKidsTemp = []
+        keywordKidsTemp = keywordKids.filter(val => val.checked == true)
+
+        let keywordTemp = []
+        keywordTemp = keyword.filter(val => val.checked == true)
+
+        keywordList = keywordKidsTemp.concat(keywordTemp);
+
+        let originalImage = dataURLtoFile(temp,"originalImage.jpg")
+
+        let artistImageTemp = {...artistImage,keyword:keywordList,mainId:props.images._id}
+        let keywordListTemp = []
+        artistImageTemp.keyword.map(val => {
+            keywordListTemp.push(val._id)
+        })
+
+        const imageCreate = new FormData()
+        imageCreate.append('k_id',keywordListTemp)
+        imageCreate.append('title',artistImageTemp.title)
+        imageCreate.append('mainId',props.images._id)
+        imageCreate.append('artistImage',originalImage) // It will causing problem in backend that is why I have to make duplication here 
+        imageCreate.append('artistImage',originalImage)
+        imageCreate.append('caption',copyrightText)
+        imageCreate.append('color',copyrightColor)
+        // imageCreate.append('svg',svg)
+        imageCreate.append('adminPortfolio',true)
+        imageCreate.append('_id',props.artistId._id)
+
+        imageCreate.append('croppedDetails_x',completedCrop.x)
+        imageCreate.append('croppedDetails_y',completedCrop.y)
+        imageCreate.append('croppedDetails_width',completedCrop.width)
+        imageCreate.append('croppedDetails_height',completedCrop.height)
+
+        setIsPopupShow(true)
+        changeArtistImageDetailsCopyRight(imageCreate).then((res)=>{
+            if(res == 'successfully updated'){
+                dispatch(updateOpen(true));
+                dispatch(updateMessage(res));
+            }else{
+                dispatch(updateOpen(true))
+                dispatch(updateMessage("Error Occured"))
+            }
+            history.push({
+                pathname:'/admin/artists',
+                state:{Nauman:2}
+            });
+            setIsPopupShow(false)
+        })
+    }
+
     const getCroppedImg = () => {
         if(image == null){
             return
@@ -376,6 +431,10 @@ function Image_uploading(props) {
                                alt="Crop me"
                                src={temp}
                                onLoad={onImageLoad}
+                               loading="lazy"
+                                role="presentation"
+                                decoding= "async"
+                                fetchpriority= {"high"}
                                />
                            </ReactCrop>
 
@@ -420,7 +479,15 @@ function Image_uploading(props) {
                                     </label>
                                 </div>
                             </div>
-                            <button className='btn1 dark px-4 align-self-bottom' onClick={()=>{setPageNo(pageNo + 1); getCroppedImg();} }>NEXT</button>
+                            {isPopupShow ?
+                               <img alt="loading" src={loading}/>
+                                :
+                                <>
+                                    <button className='btn1 dark px-4 align-self-bottom' onClick={()=>copyrightOnSubmitHandler()}>UPDATE COPYRIGHT</button>
+                                    <button className='btn1 dark px-4 align-self-bottom' onClick={()=>{setPageNo(pageNo + 1); getCroppedImg();} }>NEXT</button>
+                                </>
+
+                            }
                         </div>
                         :null}
                     </div>
@@ -474,15 +541,15 @@ function Image_uploading(props) {
                             </div>
 
                         </div>
-                        <div className='col-12 d-flex justify-content-end'>
+                        <div className='col-12 d-flex justify-content-end py-5'>
                         {isPopupShow?
-                           <img alt="loading" src={loading} style={{width:"30px",marginTop:-20}}/>
+                           <img alt="loading" src={loading} style={{marginTop:-20}}/>
                         :
                         <button 
-                                className='btn1 dark px-4 align-self-bottom' 
-                                style={{marginTop:-20}} 
-                                onClick={()=>onSubmitHandler()}
-                            >Submit</button>
+                            className='btn1 dark px-4 align-self-bottom' 
+                            style={{marginTop:-20}} 
+                            onClick={()=>onSubmitHandler()}
+                        >Submit</button>
                         }
                         </div>
                     </div>
