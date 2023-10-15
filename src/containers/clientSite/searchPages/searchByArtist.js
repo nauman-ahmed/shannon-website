@@ -41,6 +41,7 @@ function SearchByArtist(props) {
   const [artistKSOrder, setartistKSOrder] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [sliderTriggerred, setSliderTriggerred] = useState(false);
+  const [displayedImages, setDisplayedImages] = useState([]);
   
 
   const myStateRef = useRef(0);
@@ -161,6 +162,10 @@ function SearchByArtist(props) {
       tempData.activeArtist[search].subListData
     );
 
+    let tempImage = []
+    tempImage.push(tempData.activeArtist[search].subListData[0])
+
+    setDisplayedImages(tempImage)
     setSimilarData(tempData.similarArtist);
     setData1(tempData.activeArtist);
 
@@ -278,6 +283,14 @@ function SearchByArtist(props) {
       setMsg("You have already added "+ title +" to your list, to view your list visit Contact/My List Page.")
       setIsPopupShow(true)
       setIsPopupShowWithCheckbox(false)
+    }
+  }
+
+  const onImageLoad = (index) => {
+    if(data1[search].subListData[index+1]){
+      let tempImage = [...displayedImages]
+      tempImage.push(data1[search].subListData[index+1])
+      setDisplayedImages(tempImage)
     }
   }
 
@@ -405,18 +418,27 @@ function SearchByArtist(props) {
                       : (
                           <div className="detail_card w-inline-block " >
                             {
-                              data1[search].subListData.map((item, keys) => (
+                              displayedImages.map((item, keys) => (
                                 <div id={"firstSlider"+keys} className="detail_card5_h" style={windowSize.innerWidth <= 991 ? { overflow: "hidden", height:"8vh" } : { overflow: "hidden", height:"14.5vh" }} onClick={() => { setSliderIndexHandler(keys) }}> 
-                                  <img src={item} className="w-100 h-100" 
+                                  <img srcSet={item} className="w-100 h-100" 
                                   style={{objectFit: "cover"}}
                                   loading="lazy"
-                                  role="presentation"
-                                  decoding= "async"
-                                  fetchpriority= {keys < 20 ? "medium" :"low"}
-                                  // fetchpriority= {keys+10}
+                                  fetchpriority = {"high"}
+                                  // onLoad={() => onImageLoad(keys)}
+                                  onLoadCapture={()=> onImageLoad(keys)}
                                   ></img>
                                 </div>
                               ))
+                            }
+                            {data1[search].subListData[displayedImages.length] ?
+                              <div  style={windowSize.innerWidth <= 991 ? { overflow: "hidden", height:"8vh" } : { overflow: "hidden", height:"14.5vh" }}> 
+                                <img
+                                  className="mb-3"
+                                  alt="loading"
+                                  src={loading}
+                                />
+                              </div> 
+                              :null
                             }
                           </div>
                       ) : null}
@@ -603,7 +625,6 @@ function SearchByArtist(props) {
                             className="card_img3"
                             to={"/artists/" + key+"?imageIndex=0"}
                           >
-                            {console.log("DATA VIEWED",dataViewed[key])}
                             <div className="detail_card6_h">
                               <img
                                 src={String(dataViewed[key]?.slideList[0])}
