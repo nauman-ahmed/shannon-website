@@ -124,8 +124,7 @@ function BlackArtist(props) {
               <Link
                 id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                 data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                to={"/artists/" + val.artistData.firstname.toLowerCase().replace(/\s/g, '')+"_"+val.artistData.lastname.replace(/\s/g, '')}
-                onClick={()=>{localStorage.setItem("artistId",val.artistData._id)}}
+                to={"/artists/" + val.artistData.fullName}
                 className="sidebarlink"
               >
                 <div className="sidebarlink">{ val.artistData.firstname.toUpperCase()+ " " + val.artistData.lastname.toUpperCase() }</div>
@@ -163,8 +162,7 @@ function BlackArtist(props) {
               <Link
                 id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                 data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                to={"/artists/" + val.artistData.firstname.toLowerCase().replace(/\s/g, '')+"_"+val.artistData.lastname.replace(/\s/g, '')}
-                onClick={()=>{localStorage.setItem("artistId",val.artistData._id)}}
+                to={"/artists/" + val.artistData.fullName}
                 className="bipocLink"
               >
                 <div className=" card_img2 detail_card3_h" style={{ position: "relative",   overflow:"hidden",}}>

@@ -19,7 +19,9 @@ import { useEffect } from "react";
 
 
 function App() {
-
+  localStorage.removeItem("artistViewed_V1")
+  localStorage.removeItem("artistViewed_V2")
+  localStorage.removeItem("artistViewed_V3")
   return ( 
   <>
     <BrowserRouter>

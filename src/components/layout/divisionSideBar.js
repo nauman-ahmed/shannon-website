@@ -107,10 +107,9 @@ function DivisionSideBar(props) {
             {artistData[item].map((item1,key1)=>(
               <div key={key1}>
                <Link 
-                to={"/artists/" + item1.firstname.toLowerCase().replace(/\s/g, '')+"_"+item1.lastname.replace(/\s/g, '')}
-                onClick={()=>{localStorage.setItem("artistId",item1._id)}}
-                className="sidebarlink" 
-                style={localStorage.getItem("artistId") === item1._id ? {color: "#fa8e37"} : {}}>
+                  to={"/artists/" + item1.fullName}
+                  className="sidebarlink" 
+                  style={search === item1.fullName ? {color: "#fa8e37"} : {}}>
                   {item1.firstname.toUpperCase()} {item1.lastname.toUpperCase()}<br/>
               </Link>
               </div>

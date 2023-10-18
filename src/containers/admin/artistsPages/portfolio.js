@@ -256,9 +256,7 @@ function Portfolio(props) {
   }
 
   const goToPortfolioHandler = () =>{
-    localStorage.setItem("artistId",props.selectedArtist._id)
-    // window.location.href = '/#/artists/'+props.selectedArtist._id
-    window.open('/artists/'+props.selectedArtist.firstname.toLowerCase().replace(/\s/g, '')+"_"+props.selectedArtist.lastname.replace(/\s/g, ''), '_blank');
+    window.open('/artists/'+props.selectedArtist.fullName, '_blank');
   }
 
   if(props.holder){

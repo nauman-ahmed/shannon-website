@@ -121,7 +121,7 @@ function SearchByArtist(props) {
   };
 
   const dataLocalArtist = (key, _id, firstname, bio, listData, subListData) => {
-    let tempData = localStorage.getItem("artistViewed_V3");
+    let tempData = localStorage.getItem("artistViewed_V4");
 
     tempData = JSON.parse(tempData);
     if (tempData === null) {
@@ -132,7 +132,7 @@ function SearchByArtist(props) {
         detail: bio,
         slideList: listData,
       };
-      localStorage.setItem("artistViewed_V3", JSON.stringify(tempData));
+      localStorage.setItem("artistViewed_V4", JSON.stringify(tempData));
     } else {
       tempData[key] = {
         id: _id,
@@ -154,7 +154,7 @@ function SearchByArtist(props) {
           tempDataOnlySix[key] = value
       });
 
-      localStorage.setItem("artistViewed_V3", JSON.stringify(tempDataOnlySix));
+      localStorage.setItem("artistViewed_V4", JSON.stringify(tempDataOnlySix));
     }
   };
 
@@ -169,12 +169,10 @@ function SearchByArtist(props) {
     setIsLoading(true)
     let localPrevCate = localStorage.getItem("Category") == "cgi" || localStorage.getItem("Category") == "motion" ? "3D Rendering" : localStorage.getItem("Category")
     localPrevCate = localPrevCate || "none"
-    let artistId = search.split("_")[1]
-    console.log("ARTIAT",artistId)
-    let tempData = await artistImageDetailedSliceData({ "lastname": artistId, "category": localPrevCate })
+    let tempData = await artistImageDetailedSliceData({ "fullName": search, "category": localPrevCate })
 
     dataLocalArtist(
-      tempData.activeArtist[search].firstname.toLowerCase().replace(/\s/g, '') + "_" + tempData.activeArtist[search].lastname.replace(/\s/g, ''),
+      tempData.activeArtist[search].fullName,
       tempData.activeArtist[search].id,
       tempData.activeArtist[search].firstname + " " + tempData.activeArtist[search].lastname,
       tempData.activeArtist[search].detail,
@@ -258,8 +256,8 @@ function SearchByArtist(props) {
     setartistKSOrder(artistKSOrderTemp);
 
     function getLocalStorage() {
-      if (localStorage.getItem("artistViewed_V3") !== null) {
-        setDataViewed(JSON.parse(localStorage.getItem("artistViewed_V3")));
+      if (localStorage.getItem("artistViewed_V4") !== null) {
+        setDataViewed(JSON.parse(localStorage.getItem("artistViewed_V4")));
       }
     }
     handleWindowResize()

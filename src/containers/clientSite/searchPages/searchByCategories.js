@@ -154,8 +154,7 @@ function Categories(props) {
                               <Link
                                 key={key1}
                                 id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
-                                to={"/artists/" + item1.artistId.firstname.toLowerCase().replace(/\s/g, '')+"_"+item1.artistId.lastname.replace(/\s/g, '')}
-                                onClick={()=>{localStorage.setItem("artistId",item1.artistId._id)}}
+                                to={"/artists/" + item1.artistId.fullName}
                                 className="artistcard w-inline-block"
                                 // style={{ position: "relative", overflow: "hidden", height: "auto" }}
                               >
@@ -216,8 +215,7 @@ function Categories(props) {
                             <Link
                                 key={key1}
                                 id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
-                                to={"/artists/" + item1.artistId.firstname.toLowerCase().replace(/\s/g, '')+"_"+item1.artistId.lastname.replace(/\s/g, '')}
-                                onClick={()=>{localStorage.setItem("artistId",item1.artistId._id)}}
+                                to={"/artists/" + item1.artistId.fullName}
                                 className="artistcard w-inline-block"
                                 // style={{ position: "relative", overflow: "hidden", height: "auto" }}
                               >
