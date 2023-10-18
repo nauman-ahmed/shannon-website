@@ -154,7 +154,7 @@ function Categories(props) {
                               <Link
                                 key={key1}
                                 id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
-                                to={"/artists/" + item1.artistId.fullName}
+                                to={"/artist/" + item1.artistId.fullName}
                                 className="artistcard w-inline-block"
                                 // style={{ position: "relative", overflow: "hidden", height: "auto" }}
                               >
@@ -215,7 +215,7 @@ function Categories(props) {
                             <Link
                                 key={key1}
                                 id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
-                                to={"/artists/" + item1.artistId.fullName}
+                                to={"/artist/" + item1.artistId.fullName}
                                 className="artistcard w-inline-block"
                                 // style={{ position: "relative", overflow: "hidden", height: "auto" }}
                               >

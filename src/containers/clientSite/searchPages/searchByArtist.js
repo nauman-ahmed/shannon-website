@@ -68,7 +68,7 @@ function SearchByArtist(props) {
     if(data1){
       if(data1[search].slideList.length < parseInt(image, 10)){
         imageInd = data1[search].slideList.length - 1
-        history.push("/artists/" + search +"?image="+imageInd)
+        history.push("/artist/" + search +"?image="+imageInd)
       }else{
         imageInd = parseInt(image, 10)
       }
@@ -92,9 +92,9 @@ function SearchByArtist(props) {
     console.log("WORD",image,fullscreenCond)
     if(!fullscreenCond){
       if(!image){
-        history.push("/artists/" + search +"?image=0")
+        history.push("/artist/" + search +"?image=0")
       }else{
-        history.push("/artists/" + search +"?image="+image)
+        history.push("/artist/" + search +"?image="+image)
       }
     }
     
@@ -106,7 +106,7 @@ function SearchByArtist(props) {
 
   useEffect(()=>{
     if(!image){
-      history.push("/artists/" + search +"?image=0")
+      history.push("/artist/" + search +"?image=0")
     }
     return () => {
       localStorage.setItem("Category","none")
@@ -244,7 +244,7 @@ function SearchByArtist(props) {
       myStateRef.current = keys
       setSliderIndex(keys)
     }
-    history.push("/artists/" + search +"?image="+keys)
+    history.push("/artist/" + search +"?image="+keys)
   };
 
   useEffect(() => {
@@ -279,9 +279,9 @@ function SearchByArtist(props) {
     setFullscreen(temp);
     setFullScreenData(data1[search])
     if(temp.screen){
-      history.push("/artists/" + search +"?image="+image+"&fullscreen=true")
+      history.push("/artist/" + search +"?image="+image+"&fullscreen=true")
     }else{
-      history.push("/artists/" + search +"?image="+image)
+      history.push("/artist/" + search +"?image="+image)
     }
   };
 
@@ -540,7 +540,7 @@ function SearchByArtist(props) {
                                   data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                                   className="card_img3"
                                   // style={{ position: "relative" }}
-                                  to={"/artists/" + key+"?image=0"}
+                                  to={"/artist/" + key+"?image=0"}
                                 >
                                   <div className="detail_card6_h">
                                     <img
@@ -584,7 +584,7 @@ function SearchByArtist(props) {
                             data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                             className="card_img3"
                             // style={{ position: "relative" }}
-                            to={"/artists/" + key+"?image=0"}
+                            to={"/artist/" + key+"?image=0"}
                           >
                             <div className="detail_card6_h">
                               <img
@@ -641,7 +641,7 @@ function SearchByArtist(props) {
                             id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                             data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                             className="card_img3"
-                            to={"/artists/" + key+"?image=0"}
+                            to={"/artist/" + key+"?image=0"}
                           >
                             <div className="detail_card6_h">
                               <img

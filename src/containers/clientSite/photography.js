@@ -96,7 +96,7 @@ function Photography(props) {
                       <Link
                         id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                         data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                        to={"/artists/" + val.artistId.fullName}
+                        to={"/artist/" + val.artistId.fullName}
                         className="artistcard  w-inline-block"
                       >
                         <img
@@ -128,7 +128,7 @@ function Photography(props) {
                         <Link
                           id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                           data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                          to={"/artists/" + val.artistId.fullName}
+                          to={"/artist/" + val.artistId.fullName}
                           className="artistcard  w-inline-block"
                         >
                           <img
