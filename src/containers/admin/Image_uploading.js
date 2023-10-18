@@ -191,13 +191,21 @@ function Image_uploading(props) {
             keywordListTemp.push(val._id)
         })
 
+        let copyrightTextWChar = copyrightText
+        // Checking if copyright has a & in it
+        if (copyrightTextWChar.includes("&")) {
+            copyrightTextWChar = copyrightTextWChar.replace(/&/g, '&amp;');
+        } else {
+            console.log("The string does not contain &");
+        }
+
         const imageCreate = new FormData()
         imageCreate.append('k_id',keywordListTemp)
         imageCreate.append('title',artistImageTemp.title)
         imageCreate.append('mainId',props.images._id)
         imageCreate.append('artistImage',artistImageTemp["0"])
         imageCreate.append('artistImage',originalImage)
-        imageCreate.append('caption',copyrightText)
+        imageCreate.append('caption',copyrightTextWChar)
         imageCreate.append('color',copyrightColor)
         // imageCreate.append('svg',svg)
         imageCreate.append('adminPortfolio',true)
@@ -246,13 +254,21 @@ function Image_uploading(props) {
             keywordListTemp.push(val._id)
         })
 
+        let copyrightTextWChar = copyrightText
+        // Checking if copyright has a & in it
+        if (copyrightTextWChar.includes("&")) {
+            copyrightTextWChar = copyrightTextWChar.replace(/&/g, '&amp;');
+        } else {
+            console.log("The string does not contain &");
+        }
+
         const imageCreate = new FormData()
         imageCreate.append('k_id',keywordListTemp)
         imageCreate.append('title',artistImageTemp.title)
         imageCreate.append('mainId',props.images._id)
         imageCreate.append('artistImage',originalImage) // It will causing problem in backend that is why I have to make duplication here 
         imageCreate.append('artistImage',originalImage)
-        imageCreate.append('caption',copyrightText)
+        imageCreate.append('caption',copyrightTextWChar)
         imageCreate.append('color',copyrightColor)
         // imageCreate.append('svg',svg)
         imageCreate.append('adminPortfolio',true)

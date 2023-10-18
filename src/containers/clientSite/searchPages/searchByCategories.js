@@ -75,7 +75,8 @@ function Categories(props) {
   }, [artistImageKeywordDataSlice, props.searchArtist]);
 
   useEffect(() => {
-    dispatch(artistKeyword({ _id: search }));
+    console.log("KEYWORD",localStorage.getItem("Category"))
+    dispatch(artistKeyword({ keyword: localStorage.getItem("Category") }));
   }, [search]);
 
   return (
@@ -153,7 +154,8 @@ function Categories(props) {
                               <Link
                                 key={key1}
                                 id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
-                                to={"/artists/" + item1.artistId._id+"?imageIndex=0"}
+                                to={"/artists/" + item1.artistId.firstname.toLowerCase().replace(/\s/g, '')+"_"+item1.artistId.lastname.replace(/\s/g, '')}
+                                onClick={()=>{localStorage.setItem("artistId",item1.artistId._id)}}
                                 className="artistcard w-inline-block"
                                 // style={{ position: "relative", overflow: "hidden", height: "auto" }}
                               >
@@ -214,7 +216,8 @@ function Categories(props) {
                             <Link
                                 key={key1}
                                 id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
-                                to={"/artists/" + item1.artistId._id+"?imageIndex=0"}
+                                to={"/artists/" + item1.artistId.firstname.toLowerCase().replace(/\s/g, '')+"_"+item1.artistId.lastname.replace(/\s/g, '')}
+                                onClick={()=>{localStorage.setItem("artistId",item1.artistId._id)}}
                                 className="artistcard w-inline-block"
                                 // style={{ position: "relative", overflow: "hidden", height: "auto" }}
                               >

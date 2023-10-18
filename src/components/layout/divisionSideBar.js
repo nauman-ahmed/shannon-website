@@ -64,7 +64,7 @@ function DivisionSideBar(props) {
   },[])
 
   return (
-    <div id="w-node-_783b3b4a-9daa-ecbf-356e-d84dbb36f4cc-bb36f4cc" className="respdivhide">
+    <div id="w-node-_783b3b4a-9daa-ecbf-356e-d84dbb36f4cc-bb36f4cc" className="respdivhide"> 
       <h3 className="homeh3" style={props.activeBtn === "detailedPage" ? {textDecorationLine:"none"} : { color:"#000000", fontFamily: "Montserrat, sans-serif", textUnderlineOffset : "5px", fontWeight: 800 }}>{
         props.activeBtn === "illustration-artists" ? "ILLUSTRATION" 
         : props.activeBtn === "cgi" ? "CGI" 
@@ -78,7 +78,7 @@ function DivisionSideBar(props) {
       {pages == "categories"? 
       keywordReducer?.length > 0 ? keywordReducer?.map((item,key)=>(
         <div key={key}>
-          {item.type === 1?(<Link to={"/categories/"+item._id}  onClick={()=>{localStorage.setItem("Category",item.keyword == '3D Rendering' ? "3D Rendering" : item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1) )}} className={"divisionslink"+(search === item._id?" w--current":"")}><span className="sidebarlink">{item.keyword.toUpperCase()}<br /></span></Link>):""}
+          {item.type === 1?(<Link to={item.keyword.includes("/") ?  "/categories/"+item.keyword.replace(/\//g, '_') : "/categories/"+item.keyword.replace(/\s/g, '_')}  onClick={()=>{localStorage.setItem("Category",item.keyword == '3D Rendering' ? "3D Rendering" : item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1) )}} className={"divisionslink"+(localStorage.getItem("Category") === item.keyword?" w--current":"")}><span className="sidebarlink">{item.keyword.toUpperCase()}<br /></span></Link>):""}
         </div> 
      )):"" 
       : 
@@ -106,7 +106,13 @@ function DivisionSideBar(props) {
             {item}<br/>
             {artistData[item].map((item1,key1)=>(
               <div key={key1}>
-               <Link to={"/artists/"+item1._id+"?imageIndex=0"} className="sidebarlink" style={search === item1._id ? {color: "#fa8e37"} : {}}>{item1.firstname.toUpperCase()} {item1.lastname.toUpperCase()}<br/></Link>
+               <Link 
+                to={"/artists/" + item1.firstname.toLowerCase().replace(/\s/g, '')+"_"+item1.lastname.replace(/\s/g, '')}
+                onClick={()=>{localStorage.setItem("artistId",item1._id)}}
+                className="sidebarlink" 
+                style={localStorage.getItem("artistId") === item1._id ? {color: "#fa8e37"} : {}}>
+                  {item1.firstname.toUpperCase()} {item1.lastname.toUpperCase()}<br/>
+              </Link>
               </div>
             ))}
             <br/>

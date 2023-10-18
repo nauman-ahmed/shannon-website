@@ -145,9 +145,9 @@ const images = window.location.origin + "/assets/images";
                                 key={key1}
                                 id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                                 data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                                to={"/artists/" + item1.artistId._id+"?imageIndex=0"}
+                                to={"/artists/" + item1.artistId.firstname.toLowerCase().replace(/\s/g, '')+"_"+item1.artistId.lastname.replace(/\s/g, '')}
+                                onClick={()=>{localStorage.setItem("artistId",item1.artistId._id); localStorage.setItem("Category",item.keyword)}}
                                 className="artistcard w-inline-block"
-                                onClick={()=> localStorage.setItem("Category",item.keyword)}
                               >
                                 {/* <div className="detail_card4_h" style={{ position: "relative", overflow: "hidden" }}> */}
                                 <img
@@ -222,9 +222,9 @@ const images = window.location.origin + "/assets/images";
                                 key={key1}
                                 id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                                 data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                                to={"/artists/" + item1.artistId._id+"?imageIndex=0"}
+                                to={"/artists/" + item1.artistId.firstname.toLowerCase().replace(/\s/g, '')+"_"+item1.artistId.lastname.replace(/\s/g, '')}
+                                onClick={()=>{localStorage.setItem("artistId",item1.artistId._id); localStorage.setItem("Category",item.keyword)}}
                                 className="artistcard w-inline-block"
-                                onClick={()=> localStorage.setItem("Category",item.keyword)}
                               >
                                 {/* <div className="detail_card4_h" style={{ position: "relative", overflow: "hidden" }}> */}
                                 <img

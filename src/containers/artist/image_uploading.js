@@ -277,6 +277,14 @@ function Image_uploading() {
 
                 let originalImage = dataURLtoFile(temp,"originalImage.jpg")
         
+                let copyrightTextWChar = "© " + details.firstname.toLowerCase() + " " + details.lastname.toLowerCase()
+                // Checking if copyright has a & in it
+                if (copyrightTextWChar.includes("&")) {
+                    copyrightTextWChar = copyrightTextWChar.replace(/&/g, '&amp;');
+                } else {
+                    console.log("The string does not contain &");
+                }
+
                 const imageCreate = new FormData()
                 imageCreate.append('k_id',artistImageDetails[2].keywordList)
                 imageCreate.append('_id',details._id)
@@ -285,7 +293,7 @@ function Image_uploading() {
                 imageCreate.append('artistImage_2',artistImageDetails[1].name)
                 imageCreate.append('artistImage',artistImageDetails[1].img)
                 imageCreate.append('artistImage',originalImage)
-                imageCreate.append('caption',"© " + details.firstname.toLowerCase() + " " + details.lastname.toLowerCase())
+                imageCreate.append('caption',copyrightTextWChar)
                 imageCreate.append('color',artistReducer.uploadedImage.imageFile.copyrightColor)
 
 

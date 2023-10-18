@@ -139,7 +139,7 @@ function App() {
             render={(props) => 
               {
                 if(props.match.params.search){
-                  if (props.match.params.pages === "artists") {
+                  if (props.match.params.pages === "artists" || props.match.params.pages === "bipoc") {
                   return <Index/>
                   }else if (props.match.params.pages === "divisions" || props.match.params.pages === "categories" ){
                     return <Index/>

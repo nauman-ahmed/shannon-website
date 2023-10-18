@@ -88,7 +88,6 @@ function Index(props) {
         setSearchArtist("")
     }, [pages,search])
 
-
     return (
         <>
             <Header aciveBtn={pages} />
@@ -152,18 +151,18 @@ function Index(props) {
                         <About/>
                     :pages === "contact"?
                         <Contact/>
+                    :pages === "bipoc" && search === "black" ?
+                        <BlackArtist/>
+                    :pages === "bipoc" && search === "asianArtist" ? 
+                        <AsianArtist/>
+                    :pages === "bipoc" && search === "latinoArtist" ? 
+                        <LatinoArtist/>
+                    :pages === "bipoc" && search === "centralAsianArtist" ? 
+                        <CentralAsianArtist/>
+                    :pages === "bipoc" && search === "indigenousArtist" ? 
+                        <IndigenousArtist/>
                     :pages === "bipoc"?
                         <Bipoc/>
-                    :pages === "black"?
-                        <BlackArtist/>
-                    :pages === "asianArtist"?
-                        <AsianArtist/>
-                    :pages === "latinoArtist"?
-                        <LatinoArtist/>
-                    :pages === "centralAsianArtist"?
-                        <CentralAsianArtist/>
-                    :pages === "indigenousArtist"?
-                        <IndigenousArtist/>
                     :<Redirect to="/404"/>
                     :<Artists  tempArtist={tempArtist} searchArtist={searchArtist}>
                         <ArtistSideBar activeBtn={pages}/>

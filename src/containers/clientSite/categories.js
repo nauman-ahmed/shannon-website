@@ -126,7 +126,7 @@ function Categories(props) {
                         <Link
                           key={key}
                           id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
-                          to={"categories/" + item.Id}
+                          to={item.keyword.includes("/") ?  "/categories/"+item.keyword.replace(/\//g, '_') : "/categories/"+item.keyword.replace(/\s/g, '_')}
                           className="artistcard w-inline-block"
                           
                         >
@@ -167,7 +167,7 @@ function Categories(props) {
                       <Link
                         key={key}
                         id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
-                        to={"categories/" + item.Id}
+                        to={item.keyword.includes("/") ?  "/categories/"+item.keyword.replace(/\//g, '_') : "/categories/"+item.keyword.replace(/\s/g, '_')}
                         className="artistcard w-inline-block"
                         
                       >

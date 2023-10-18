@@ -80,7 +80,6 @@ function BlackArtist(props) {
 
   return (
     <div>
-      {console.log("NAUMAN",window.innerWidth)}
     <div className="bipoc2cols category w-100 h-100" style={{ position: "relative", marginTop: "10vh" }}>
       <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879ea-4bf2d022"
@@ -125,7 +124,8 @@ function BlackArtist(props) {
               <Link
                 id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                 data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                to={"/artists/" + val.artistData._id+"?imageIndex=0"}
+                to={"/artists/" + val.artistData.firstname.toLowerCase().replace(/\s/g, '')+"_"+val.artistData.lastname.replace(/\s/g, '')}
+                onClick={()=>{localStorage.setItem("artistId",val.artistData._id)}}
                 className="sidebarlink"
               >
                 <div className="sidebarlink">{ val.artistData.firstname.toUpperCase()+ " " + val.artistData.lastname.toUpperCase() }</div>
@@ -163,7 +163,8 @@ function BlackArtist(props) {
               <Link
                 id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                 data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                to={"/artists/" + val.artistData._id+"?imageIndex=0"}
+                to={"/artists/" + val.artistData.firstname.toLowerCase().replace(/\s/g, '')+"_"+val.artistData.lastname.replace(/\s/g, '')}
+                onClick={()=>{localStorage.setItem("artistId",val.artistData._id)}}
                 className="bipocLink"
               >
                 <div className=" card_img2 detail_card3_h" style={{ position: "relative",   overflow:"hidden",}}>

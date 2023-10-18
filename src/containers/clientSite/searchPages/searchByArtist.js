@@ -47,7 +47,7 @@ function SearchByArtist(props) {
   const myStateRef = useRef(0);
   const screenScrolling = useRef(true);
   const queryParams = new URLSearchParams(history.location.search);
-  const imageIndex = queryParams.get('imageIndex');
+  const image = queryParams.get('image');
   const fullscreenCond = queryParams.get('fullscreen');
 
 
@@ -66,11 +66,11 @@ function SearchByArtist(props) {
     let imageInd
 
     if(data1){
-      if(data1[search].slideList.length < parseInt(imageIndex, 10)){
+      if(data1[search].slideList.length < parseInt(image, 10)){
         imageInd = data1[search].slideList.length - 1
-        history.push("/artists/" + search +"?imageIndex="+imageInd)
+        history.push("/artists/" + search +"?image="+imageInd)
       }else{
-        imageInd = parseInt(imageIndex, 10)
+        imageInd = parseInt(image, 10)
       }
       let tempObj = {...fullScreenData}
       tempObj.screen = fullscreenCond=="true" ? true : false
@@ -89,6 +89,25 @@ function SearchByArtist(props) {
   }, [data1]);
 
   useEffect(()=>{
+    console.log("WORD",image,fullscreenCond)
+    if(!fullscreenCond){
+      if(!image){
+        history.push("/artists/" + search +"?image=0")
+      }else{
+        history.push("/artists/" + search +"?image="+image)
+      }
+    }
+    
+    return () => {
+      localStorage.setItem("Category","none")
+    };
+  },[fullscreenCond])
+
+
+  useEffect(()=>{
+    if(!image){
+      history.push("/artists/" + search +"?image=0")
+    }
     return () => {
       localStorage.setItem("Category","none")
     };
@@ -150,8 +169,9 @@ function SearchByArtist(props) {
     setIsLoading(true)
     let localPrevCate = localStorage.getItem("Category") == "cgi" || localStorage.getItem("Category") == "motion" ? "3D Rendering" : localStorage.getItem("Category")
     localPrevCate = localPrevCate || "none"
-
-    let tempData = await artistImageDetailedSliceData({ "artistId": search, "category": localPrevCate })
+    let artistId = search.split("_")[1]
+    console.log("ARTIAT",artistId)
+    let tempData = await artistImageDetailedSliceData({ "lastname": artistId, "category": localPrevCate })
 
     dataLocalArtist(
       tempData.activeArtist[search].id,
@@ -175,7 +195,7 @@ function SearchByArtist(props) {
   useEffect(() => {
 
     if(sliderTriggerred){
-      let currentSelectedSlider = document.getElementById("firstSlider"+imageIndex);
+      let currentSelectedSlider = document.getElementById("firstSlider"+image);
       var prev = document.getElementsByClassName('slick-prev')[0];
       var next = document.getElementsByClassName('slick-next')[0]
   
@@ -226,7 +246,7 @@ function SearchByArtist(props) {
       myStateRef.current = keys
       setSliderIndex(keys)
     }
-    history.push("/artists/" + search +"?imageIndex="+keys)
+    history.push("/artists/" + search +"?image="+keys)
   };
 
   useEffect(() => {
@@ -261,9 +281,9 @@ function SearchByArtist(props) {
     setFullscreen(temp);
     setFullScreenData(data1[search])
     if(temp.screen){
-      history.push("/artists/" + search +"?imageIndex="+imageIndex+"&fullscreen=true")
+      history.push("/artists/" + search +"?image="+image+"&fullscreen=true")
     }else{
-      history.push("/artists/" + search +"?imageIndex="+imageIndex)
+      history.push("/artists/" + search +"?image="+image)
     }
   };
 
@@ -522,7 +542,7 @@ function SearchByArtist(props) {
                                   data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                                   className="card_img3"
                                   // style={{ position: "relative" }}
-                                  to={"/artists/" + key+"?imageIndex=0"}
+                                  to={"/artists/" + key+"?image=0"}
                                 >
                                   <div className="detail_card6_h">
                                     <img
@@ -566,7 +586,7 @@ function SearchByArtist(props) {
                             data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                             className="card_img3"
                             // style={{ position: "relative" }}
-                            to={"/artists/" + key+"?imageIndex=0"}
+                            to={"/artists/" + key+"?image=0"}
                           >
                             <div className="detail_card6_h">
                               <img
@@ -623,7 +643,7 @@ function SearchByArtist(props) {
                             id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                             data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                             className="card_img3"
-                            to={"/artists/" + key+"?imageIndex=0"}
+                            to={"/artists/" + key+"?image=0"}
                           >
                             <div className="detail_card6_h">
                               <img

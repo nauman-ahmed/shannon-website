@@ -353,7 +353,7 @@ function Bipoc() {
       </div>
       <div className="bipoc2cols category w-100" style={{ position: "relative", marginTop: "10vh" }}>
         <div className="categoryinfo">
-          <Link style={{ textDecoration: "none" }} to={"/black"}><h2 className="bipocTitle" >BLACK ARTISTS</h2></Link>
+          <Link style={{ textDecoration: "none" }} to={"/bipoc/black"}><h2 className="bipocTitle" >BLACK ARTISTS</h2></Link>
           <div className="w-dyn-list">
             <div role="list" className="collection-list-4 w-dyn-items">
               {blackArtist ?
@@ -362,7 +362,8 @@ function Bipoc() {
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                    to={"/artists/" + val.artistData._id+"?imageIndex=0"}
+                    to={"/artists/" + val.artistData.firstname.toLowerCase().replace(/\s/g, '')+"_"+val.artistData.lastname.replace(/\s/g, '')}
+                    onClick={()=>{localStorage.setItem("artistId",val.artistData._id)}}
                     className="sidebarlink"
                   >
                     <div className="sidebarlink">{ val.artistData.firstname.toUpperCase()+ " " + val.artistData.lastname.toUpperCase() }</div>
@@ -400,7 +401,8 @@ function Bipoc() {
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                    to={"/artists/" + val.artistData._id+"?imageIndex=0"}
+                    to={"/artists/" + val.artistData.firstname.toLowerCase().replace(/\s/g, '')+"_"+val.artistData.lastname.replace(/\s/g, '')}
+                    onClick={()=>{localStorage.setItem("artistId",val.artistData._id)}}
                     className="bipocLink"
                   >
                     <div className=" card_img2 detail_card3_h" style={{ position: "relative",   overflow:"hidden",}}>
@@ -443,7 +445,7 @@ function Bipoc() {
       {/*  */}
       <div className="bipoc2cols category w-100" style={{ position: "relative" }}>
         <div className="categoryinfo">
-        <Link style={{ textDecoration: "none" }} to={"/asianArtist"}><h2 className="bipocTitle" >ASIAN ARTISTS</h2></Link>
+        <Link style={{ textDecoration: "none" }} to={"/bipoc/asianArtist"}><h2 className="bipocTitle" >ASIAN ARTISTS</h2></Link>
           <div className="w-dyn-list">
             <div role="list" className="collection-list-4 w-dyn-items">
               {asianArtist ?
@@ -452,7 +454,8 @@ function Bipoc() {
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                    to={"/artists/" + val.artistData._id+"?imageIndex=0"}
+                    to={"/artists/" + val.artistData.firstname.toLowerCase().replace(/\s/g, '')+"_"+val.artistData.lastname.replace(/\s/g, '')}
+                    onClick={()=>{localStorage.setItem("artistId",val.artistData._id)}}
                     className="sidebarlink"
                   >
                     <div className="sidebarlink">{ val.artistData.firstname.toUpperCase()  + " " +val.artistData.lastname.toUpperCase()}</div>
@@ -488,7 +491,8 @@ function Bipoc() {
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                    to={"/artists/" + val.artistData._id+"?imageIndex=0"}
+                    to={"/artists/" + val.artistData.firstname.toLowerCase().replace(/\s/g, '')+"_"+val.artistData.lastname.replace(/\s/g, '')}
+                    onClick={()=>{localStorage.setItem("artistId",val.artistData._id)}}
                     className="bipocLink "
                     
                   >
@@ -508,7 +512,7 @@ function Bipoc() {
       {/*  */}
       <div className="bipoc2cols category w-100" style={{ position: "relative" }}>
         <div className="categoryinfo">
-          <Link style={{ textDecoration: "none" }} to={"/latinoArtist"}><h2 className="bipocTitle" >LATINO/LATINA ARTISTS</h2></Link>
+          <Link style={{ textDecoration: "none" }} to={"/bipoc/latinoArtist"}><h2 className="bipocTitle" >LATINO/LATINA ARTISTS</h2></Link>
           <div className="w-dyn-list">
             <div role="list" className="collection-list-4 w-dyn-items">
               {latinoArtist ?
@@ -517,7 +521,8 @@ function Bipoc() {
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                    to={"/artists/" + val.artistData._id+"?imageIndex=0"}
+                    to={"/artists/" + val.artistData.firstname.toLowerCase().replace(/\s/g, '')+"_"+val.artistData.lastname.replace(/\s/g, '')}
+                    onClick={()=>{localStorage.setItem("artistId",val.artistData._id)}}
                     className="sidebarlink"
                   >
                     <div className="sidebarlink">{val.artistData.firstname.toUpperCase()  + " " + val.artistData.lastname.toUpperCase()}</div>
@@ -545,7 +550,8 @@ function Bipoc() {
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                    to={"/artists/" + val.artistData._id+"?imageIndex=0"}
+                    to={"/artists/" + val.artistData.firstname.toLowerCase().replace(/\s/g, '')+"_"+val.artistData.lastname.replace(/\s/g, '')}
+                    onClick={()=>{localStorage.setItem("artistId",val.artistData._id)}}
                     className="bipocLink"
                   >
                     <div className="card_img2 detail_card3_h" style={{ position: "relative",   overflow:"hidden",}}>
@@ -571,7 +577,7 @@ function Bipoc() {
       {/*  */}
       <div className="bipoc2cols category w-100" style={{ position: "relative" }}>
         <div className="categoryinfo">
-          <Link style={{ textDecoration: "none" }} to={"/centralAsianArtist"}><h2 className="bipocTitle" >CENTRAL ASIAN ARTISTS</h2></Link>
+          <Link style={{ textDecoration: "none" }} to={"/bipoc/centralAsianArtist"}><h2 className="bipocTitle" >CENTRAL ASIAN ARTISTS</h2></Link>
           <div className="w-dyn-list">
             <div role="list" className="collection-list-4 w-dyn-items">
               {centralAsianArtist ?
@@ -580,7 +586,8 @@ function Bipoc() {
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                    to={"/artists/" + val.artistData._id+"?imageIndex=0"}
+                    to={"/artists/" + val.artistData.firstname.toLowerCase().replace(/\s/g, '')+"_"+val.artistData.lastname.replace(/\s/g, '')}
+                    onClick={()=>{localStorage.setItem("artistId",val.artistData._id)}}
                     className="sidebarlink"
                   >
                     <div className="sidebarlink">{val.artistData.firstname.toUpperCase()  + " " + val.artistData.lastname.toUpperCase()}</div>
@@ -608,7 +615,8 @@ function Bipoc() {
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                    to={"/artists/" + val.artistData._id+"?imageIndex=0"}
+                    to={"/artists/" + val.artistData.firstname.toLowerCase().replace(/\s/g, '')+"_"+val.artistData.lastname.replace(/\s/g, '')}
+                    onClick={()=>{localStorage.setItem("artistId",val.artistData._id)}}
                     className="bipocLink"
                   >
                     <div className="card_img2 detail_card3_h" style={{ position: "relative",   overflow:"hidden",}}>
@@ -634,7 +642,7 @@ function Bipoc() {
       {/*  */}
       <div className="bipoc2cols category w-100" style={{ position: "relative" }}>
         <div className="categoryinfo">
-          <Link style={{ textDecoration: "none" }} to={"/indigenousArtist"}><h2 className="bipocTitle" >INDIGENOUS ARTISTS</h2></Link>
+          <Link style={{ textDecoration: "none" }} to={"/bipoc/indigenousArtist"}><h2 className="bipocTitle" >INDIGENOUS ARTISTS</h2></Link>
           <div className="w-dyn-list">
             <div role="list" className="collection-list-4 w-dyn-items">
               {indegiousArtist ?
@@ -643,7 +651,8 @@ function Bipoc() {
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                    to={"/artists/" + val.artistData._id+"?imageIndex=0"}
+                    to={"/artists/" + val.artistData.firstname.toLowerCase().replace(/\s/g, '')+"_"+val.artistData.lastname.replace(/\s/g, '')}
+                    onClick={()=>{localStorage.setItem("artistId",val.artistData._id)}}
                     className="sidebarlink"
                   >
                     <div className="sidebarlink">{val.artistData.firstname.toUpperCase()  + " " + val.artistData.lastname.toUpperCase()}</div>
@@ -679,7 +688,8 @@ function Bipoc() {
                   <Link
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                    to={"/artists/" + val.artistData._id+"?imageIndex=0"}
+                    to={"/artists/" + val.artistData.firstname.toLowerCase().replace(/\s/g, '')+"_"+val.artistData.lastname.replace(/\s/g, '')}
+                    onClick={()=>{localStorage.setItem("artistId",val.artistData._id)}}
                     className="bipocLink"
                   >
                     <div className="card_img2 detail_card3_h" style={{ position: "relative",overflow: "hidden" }}>
