@@ -256,7 +256,7 @@ function Portfolio(props) {
   }
 
   const goToPortfolioHandler = () =>{
-    window.open('/artists/'+props.selectedArtist.fullName, '_blank');
+    window.open('/'+props.selectedArtist.fullName, '_blank');
   }
 
   if(props.holder){
