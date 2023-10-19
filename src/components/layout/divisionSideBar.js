@@ -107,7 +107,7 @@ function DivisionSideBar(props) {
             {artistData[item].map((item1,key1)=>(
               <div key={key1}>
                <Link 
-                  to={"/artist/" + item1.fullName}
+                  to={item1.fullName}
                   className="sidebarlink" 
                   style={search === item1.fullName ? {color: "#fa8e37"} : {}}>
                   {item1.firstname.toUpperCase()} {item1.lastname.toUpperCase()}<br/>

@@ -25,7 +25,7 @@ function SearchByArtist(props) {
   const [tab, setTab] = useState(0);
   const [fullscreen, setFullscreen] = useState({ screen: false, route: null });
   const [fullScreenData, setFullScreenData] = useState({ screen: false, route: null });
-  const { search } = useParams();
+  const { pages } = useParams();
   const { artistImageDataSlice, AddToCart, ArtistDataAPI } = useSelector((state) => state);
   const dispatch = useDispatch();
   const [data1, setData1] = useState(null);
@@ -66,15 +66,15 @@ function SearchByArtist(props) {
     let imageInd
 
     if(data1){
-      if(data1[search].slideList.length < parseInt(image, 10)){
-        imageInd = data1[search].slideList.length - 1
-        history.push("/artist/" + search +"?image="+imageInd)
+      if(data1[pages].slideList.length < parseInt(image, 10)){
+        imageInd = data1[pages].slideList.length - 1
+        history.push(pages +"?image="+imageInd)
       }else{
         imageInd = parseInt(image, 10)
       }
       let tempObj = {...fullScreenData}
       tempObj.screen = fullscreenCond=="true" ? true : false
-      tempObj.route = data1[search].slideList[imageInd]
+      tempObj.route = data1[pages].slideList[imageInd]
       setFullscreen(tempObj)
     }
 
@@ -89,12 +89,11 @@ function SearchByArtist(props) {
   }, [data1]);
 
   useEffect(()=>{
-    console.log("WORD",image,fullscreenCond)
     if(!fullscreenCond){
       if(!image){
-        history.push("/artist/" + search +"?image=0")
+        history.push(pages +"?image=0")
       }else{
-        history.push("/artist/" + search +"?image="+image)
+        history.push(pages +"?image="+image)
       }
     }
     
@@ -106,7 +105,7 @@ function SearchByArtist(props) {
 
   useEffect(()=>{
     if(!image){
-      history.push("/artist/" + search +"?image=0")
+      history.push(pages +"?image=0")
     }
     return () => {
       localStorage.setItem("Category","none")
@@ -121,7 +120,7 @@ function SearchByArtist(props) {
   };
 
   const dataLocalArtist = (key, _id, firstname, bio, listData, subListData) => {
-    let tempData = localStorage.getItem("artistViewed_V4");
+    let tempData = localStorage.getItem("artistViewed_V5");
 
     tempData = JSON.parse(tempData);
     if (tempData === null) {
@@ -132,7 +131,7 @@ function SearchByArtist(props) {
         detail: bio,
         slideList: listData,
       };
-      localStorage.setItem("artistViewed_V4", JSON.stringify(tempData));
+      localStorage.setItem("artistViewed_V5", JSON.stringify(tempData));
     } else {
       tempData[key] = {
         id: _id,
@@ -154,7 +153,7 @@ function SearchByArtist(props) {
           tempDataOnlySix[key] = value
       });
 
-      localStorage.setItem("artistViewed_V4", JSON.stringify(tempDataOnlySix));
+      localStorage.setItem("artistViewed_V5", JSON.stringify(tempDataOnlySix));
     }
   };
 
@@ -166,22 +165,23 @@ function SearchByArtist(props) {
   }
 
   const getUserData = async () => {
+    console.log("ROUTES",pages)
     setIsLoading(true)
     let localPrevCate = localStorage.getItem("Category") == "cgi" || localStorage.getItem("Category") == "motion" ? "3D Rendering" : localStorage.getItem("Category")
     localPrevCate = localPrevCate || "none"
-    let tempData = await artistImageDetailedSliceData({ "fullName": search, "category": localPrevCate })
+    let tempData = await artistImageDetailedSliceData({ "fullName": pages, "category": localPrevCate })
 
     dataLocalArtist(
-      tempData.activeArtist[search].fullName,
-      tempData.activeArtist[search].id,
-      tempData.activeArtist[search].firstname + " " + tempData.activeArtist[search].lastname,
-      tempData.activeArtist[search].detail,
-      tempData.activeArtist[search].slideList,
-      tempData.activeArtist[search].subListData
+      tempData.activeArtist[pages].fullName,
+      tempData.activeArtist[pages].id,
+      tempData.activeArtist[pages].firstname + " " + tempData.activeArtist[pages].lastname,
+      tempData.activeArtist[pages].detail,
+      tempData.activeArtist[pages].slideList,
+      tempData.activeArtist[pages].subListData
     );
 
     let tempImage = []
-    tempImage.push(tempData.activeArtist[search].subListData[0])
+    tempImage.push(tempData.activeArtist[pages].subListData[0])
 
     setDisplayedImages(tempImage)
     setSimilarData(tempData.similarArtist);
@@ -203,7 +203,7 @@ function SearchByArtist(props) {
         if(prev){
           prev.addEventListener("click", (e) => {
             if(myStateRef.current == 0 ){
-              setSliderIndexHandler(data1[search].pictureTitle.length-1,myStateRef.current,true)
+              setSliderIndexHandler(data1[pages].pictureTitle.length-1,myStateRef.current,true)
             }else{
               setSliderIndexHandler(myStateRef.current -1 ,myStateRef.current,true)
             }
@@ -212,10 +212,10 @@ function SearchByArtist(props) {
          
         if(next){
           next.addEventListener("click", (e) => {
-            if(myStateRef.current !== data1[search].pictureTitle.length-1){
+            if(myStateRef.current !== data1[pages].pictureTitle.length-1){
               setSliderIndexHandler(myStateRef.current+1,myStateRef.current,true)
             }else{
-              setSliderIndexHandler(0,data1[search].pictureTitle.length - 1,true)
+              setSliderIndexHandler(0,data1[pages].pictureTitle.length - 1,true)
             }
           })
         }
@@ -244,7 +244,7 @@ function SearchByArtist(props) {
       myStateRef.current = keys
       setSliderIndex(keys)
     }
-    history.push("/artist/" + search +"?image="+keys)
+    history.push(pages +"?image="+keys)
   };
 
   useEffect(() => {
@@ -252,18 +252,18 @@ function SearchByArtist(props) {
     setData1(null)
     getUserData();
 
-    let artistKSOrderTemp = ArtistDataAPI.artistData.filter(artist=>artist._id === search)[0]?.orderKidArtist || 0;
+    let artistKSOrderTemp = ArtistDataAPI.artistData.filter(artist=>artist._id === pages)[0]?.orderKidArtist || 0;
     setartistKSOrder(artistKSOrderTemp);
 
     function getLocalStorage() {
-      if (localStorage.getItem("artistViewed_V4") !== null) {
-        setDataViewed(JSON.parse(localStorage.getItem("artistViewed_V4")));
+      if (localStorage.getItem("artistViewed_V5") !== null) {
+        setDataViewed(JSON.parse(localStorage.getItem("artistViewed_V5")));
       }
     }
     handleWindowResize()
     getLocalStorage();
     setIsLoading(false)
-  }, [search]);
+  }, [pages]);
 
 
   const setFullScreenHandler = (route, key) => {
@@ -277,11 +277,11 @@ function SearchByArtist(props) {
     temp.resposive = windowSize.innerWidth < 479 ? true : false
     temp.screen = !temp.screen;
     setFullscreen(temp);
-    setFullScreenData(data1[search])
+    setFullScreenData(data1[pages])
     if(temp.screen){
-      history.push("/artist/" + search +"?image="+image+"&fullscreen=true")
+      history.push(pages +"?image="+image+"&fullscreen=true")
     }else{
-      history.push("/artist/" + search +"?image="+image)
+      history.push(pages +"?image="+image)
     }
   };
 
@@ -305,9 +305,9 @@ function SearchByArtist(props) {
   }
 
   const onImageLoad = (index) => {
-    if(data1[search].subListData[index+1]){
+    if(data1[pages].subListData[index+1]){
       let tempImage = [...displayedImages]
-      tempImage.push(data1[search].subListData[index+1])
+      tempImage.push(data1[pages].subListData[index+1])
       setDisplayedImages(tempImage)
     }
   }
@@ -342,7 +342,7 @@ function SearchByArtist(props) {
                 <Link
                   to="/contact"
                   className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearchDetailed  col-lg-2 col-md-3 mr-1" : "talentbutton mr-3"}
-                  onClick={() => addToCartArtistHandler(data1[search].id, data1[search].title, true)}
+                  onClick={() => addToCartArtistHandler(data1[pages].id, data1[pages].title, true)}
                 >
                   GET ESTIMATE
                 </Link>
@@ -350,7 +350,7 @@ function SearchByArtist(props) {
                   data-w-id="e04f643e-f302-16e2-74ee-4bc7e85391d8"
                   to="#"
                   className={windowSize.innerWidth < 479 ? "talentbuttonArtistSearchDetailed  col-lg-2 col-md-3 mr-1" : "talentbutton mr-3"}
-                  onClick={() => addToCartArtistHandler(data1[search].id, data1[search].title)}
+                  onClick={() => addToCartArtistHandler(data1[pages].id, data1[pages].title)}
                   style={{ marginRight: "0px" }}
                 >
                   ADD TO MY LIST
@@ -364,7 +364,7 @@ function SearchByArtist(props) {
         justifyContent: "space-around",
         margin: "0px"
       }}>
-        {data1 !== null  && data1[search] ? (
+        {data1 !== null  && data1[pages] ? (
           <>
             <div className="pl-2 left_content">
               {props.children}
@@ -373,9 +373,9 @@ function SearchByArtist(props) {
               <div className="pl-2 mid_content">
 
               <div className={windowSize.innerWidth < 479 ? "" : "d-flex"} style={windowSize.innerWidth < 479 ? { marginLeft: "8%" } : { justifyContent: "space-between", marginTop: "-10px" ,marginBottom:"10px", width:"98.4%" }} > 
-                <h2 className="h2talent">{data1[search].title}</h2>  
+                <h2 className="h2talent">{data1[pages].title}</h2>  
                 {
-                  artistKSOrder !== 100000 ? (<a href={"https://kidshannon.com/artists/"+data1[search].id} target="_blank" className="linkToKS">Visit Kid's portfolio</a> ): null
+                  artistKSOrder !== 100000 ? (<a href={"https://kidshannon.com/artists/"+data1[pages].id} target="_blank" className="linkToKS">Visit Kid's portfolio</a> ): null
                 }
               </div>
 
@@ -409,7 +409,7 @@ function SearchByArtist(props) {
                           className="imagecont" 
                           style={{ marginTop: 10 }}
                         >
-                          {data1[search].subListData.map((item, keys) =>
+                          {data1[pages].subListData.map((item, keys) =>
                             keys < artistImages ?
                               <div className="talentthumbslide resp" onClick={() => setFullScreenHandler(item)}>
                                 <img
@@ -448,7 +448,7 @@ function SearchByArtist(props) {
                                 </div>
                               ))
                             }
-                            {data1[search].subListData[displayedImages.length] ?
+                            {data1[pages].subListData[displayedImages.length] ?
                               <div  style={windowSize.innerWidth <= 991 ? { overflow: "hidden", height:"8vh" } : { overflow: "hidden", height:"14.5vh" }}> 
                                 <img
                                   className="mb-3"
@@ -478,7 +478,7 @@ function SearchByArtist(props) {
                     {fullscreen.screen ? (
                       <FullScreenSliderItem
                         onClick={setFullScreenHandler}
-                        currentData={data1[search]}
+                        currentData={data1[pages]}
                         fullscreen={fullscreen}
                       />
                     ) : (
@@ -489,12 +489,12 @@ function SearchByArtist(props) {
                           setSliderTriggerred={setSliderTriggerred}
                         >
                           {
-                            data1[search].slideList.map((item, keys) => (
+                            data1[pages].slideList.map((item, keys) => (
                               <SliderItems
                                 keys={keys}
                                 src={item}
                                 data1={data1}
-                                search={search}
+                                search={pages}
                                 windowSize={windowSize}
                                 onClick={setFullScreenHandler}
                                 addToCartArtistHandler={addToCartArtistHandler}
@@ -540,7 +540,7 @@ function SearchByArtist(props) {
                                   data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                                   className="card_img3"
                                   // style={{ position: "relative" }}
-                                  to={"/artist/" + key+"?image=0"}
+                                  to={key+"?image=0"}
                                 >
                                   <div className="detail_card6_h">
                                     <img
@@ -584,7 +584,7 @@ function SearchByArtist(props) {
                             data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                             className="card_img3"
                             // style={{ position: "relative" }}
-                            to={"/artist/" + key+"?image=0"}
+                            to={key+"?image=0"}
                           >
                             <div className="detail_card6_h">
                               <img
@@ -641,7 +641,7 @@ function SearchByArtist(props) {
                             id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                             data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                             className="card_img3"
-                            to={"/artist/" + key+"?image=0"}
+                            to={key+"?image=0"}
                           >
                             <div className="detail_card6_h">
                               <img

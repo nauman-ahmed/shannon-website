@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Redirect, useParams } from 'react-router-dom'
+import { Redirect, useParams, useHistory } from 'react-router-dom'
 import ArtistSideBar from '../../components/layout/artistSideBar'
 import DivisionSideBar from '../../components/layout/divisionSideBar'
 import Footer from '../../components/layout/footer'
@@ -26,7 +26,7 @@ import AsianArtist from './bipocSubPages/asianArtist'
 import CentralAsianArtist from './bipocSubPages/centralAsianArtist'
 import LatinoArtist from './bipocSubPages/latinoArtist'
 import IndigenousArtist from './bipocSubPages/indigenousArtist'
-
+import { artistIfExist } from "../../AxiosFunctions/Axiosfunctionality"
 
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
@@ -40,6 +40,7 @@ import { RecentlyArtistImageSliceData } from "../../redux/recentlyArtistImageDat
 function Index(props) {
     const { pages } = useParams()
     const { search } = useParams()
+    const history = useHistory()
 
     const dispatch = useDispatch();
     const  {artistImageDataSlice, recentlyArtistImageDataSlice} = useSelector(state=>state);
@@ -75,7 +76,14 @@ function Index(props) {
 
     }
  
-    
+    const artistIfExistHandler = async () => {
+        await artistIfExist({fullName: pages}).then((res) => {
+            if(res.length > 0){
+                return true
+            }
+            history.push("/404")
+        })
+    }
 
     useEffect(() => { 
         dispatch(ArtistDataAPI());
@@ -163,6 +171,10 @@ function Index(props) {
                         <IndigenousArtist/>
                     :pages === "bipoc"?
                         <Bipoc/>
+                    :artistIfExistHandler()?
+                        <SearchByArtist>
+                            <DivisionSideBar activeBtn="detailedPage"/>
+                        </SearchByArtist>
                     :<Redirect to="/404"/>
                     :<Artists  tempArtist={tempArtist} searchArtist={searchArtist}>
                         <ArtistSideBar activeBtn={pages}/>

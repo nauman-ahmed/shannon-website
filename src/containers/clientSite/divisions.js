@@ -145,7 +145,7 @@ const images = window.location.origin + "/assets/images";
                                 key={key1}
                                 id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                                 data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                                to={"/artist/" + item1.artistId.fullName}
+                                to={item1.artistId.fullName}
                                 className="artistcard w-inline-block"
                               >
                                 {/* <div className="detail_card4_h" style={{ position: "relative", overflow: "hidden" }}> */}
@@ -221,7 +221,7 @@ const images = window.location.origin + "/assets/images";
                                 key={key1}
                                 id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                                 data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                                to={"/artist/" + item1.artistId.fullName}
+                                to={item1.artistId.fullName}
                                 className="artistcard w-inline-block"
                               >
                                 {/* <div className="detail_card4_h" style={{ position: "relative", overflow: "hidden" }}> */}
