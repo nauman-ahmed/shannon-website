@@ -42,6 +42,7 @@ function SearchByArtist(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [sliderTriggerred, setSliderTriggerred] = useState(false);
   const [displayedImages, setDisplayedImages] = useState([]);
+  const [imageIndexDisplayed, setImageIndexDisplayed] = useState(true);
   
 
   const myStateRef = useRef(0);
@@ -165,7 +166,6 @@ function SearchByArtist(props) {
   }
 
   const getUserData = async () => {
-    console.log("ROUTES",pages)
     setIsLoading(true)
     let localPrevCate = localStorage.getItem("Category") == "cgi" || localStorage.getItem("Category") == "motion" ? "3D Rendering" : localStorage.getItem("Category")
     localPrevCate = localPrevCate || "none"
@@ -192,7 +192,7 @@ function SearchByArtist(props) {
 
   useEffect(() => {
 
-    if(sliderTriggerred){
+      if(sliderTriggerred){
       let currentSelectedSlider = document.getElementById("firstSlider"+image);
       var prev = document.getElementsByClassName('slick-prev')[0];
       var next = document.getElementsByClassName('slick-next')[0]
@@ -375,7 +375,7 @@ function SearchByArtist(props) {
               <div className={windowSize.innerWidth < 479 ? "" : "d-flex"} style={windowSize.innerWidth < 479 ? { marginLeft: "8%" } : { justifyContent: "space-between", marginTop: "-10px" ,marginBottom:"10px", width:"98.4%" }} > 
                 <h2 className="h2talent">{data1[pages].title}</h2>  
                 {
-                  artistKSOrder !== 100000 ? (<a href={"https://kidshannon.com/artists/"+data1[pages].id} target="_blank" className="linkToKS">Visit Kid's portfolio</a> ): null
+                  artistKSOrder !== 100000 ? (<a href={"https://kidshannon.com/"+data1[pages].fullName} target="_blank" className="linkToKS">Visit Kid's portfolio</a> ): null
                 }
               </div>
 

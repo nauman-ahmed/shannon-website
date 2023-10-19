@@ -75,7 +75,6 @@ function Categories(props) {
   }, [artistImageKeywordDataSlice, props.searchArtist]);
 
   useEffect(() => {
-    console.log("KEYWORD",localStorage.getItem("Category"))
     dispatch(artistKeyword({ keyword: localStorage.getItem("Category") }));
   }, [search]);
 
@@ -154,7 +153,7 @@ function Categories(props) {
                               <Link
                                 key={key1}
                                 id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
-                                to={item1.artistId.fullName}
+                                to={"/"+item1.artistId.fullName}
                                 className="artistcard w-inline-block"
                                 // style={{ position: "relative", overflow: "hidden", height: "auto" }}
                               >
@@ -215,7 +214,7 @@ function Categories(props) {
                             <Link
                                 key={key1}
                                 id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
-                                to={item1.artistId.fullName}
+                                to={"/"+item1.artistId.fullName}
                                 className="artistcard w-inline-block"
                                 // style={{ position: "relative", overflow: "hidden", height: "auto" }}
                               >
