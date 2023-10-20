@@ -105,10 +105,14 @@ function SearchByArtist(props) {
 
 
   useEffect(()=>{
+    window.addEventListener('popstate', ()=>{
+      window.location.href = '/'
+    });
     if(!image){
       history.push(pages +"?image=0")
     }
     return () => {
+      window.removeEventListener('popstate', ()=>{});
       localStorage.setItem("Category","none")
     };
   },[])
@@ -460,17 +464,6 @@ function SearchByArtist(props) {
                             }
                           </div>
                       ) : null}
-                  {/* <div className="detail_card w-inline-block ">
-                    {
-                      data1[search].subListData.map((item, keys) => (
-                        <div id={"firstSlider"+keys} className="detail_card5_h" style={windowSize.innerWidth <= 991 ? { overflow: "hidden", height:"8vh" } : { overflow: "hidden", height:"14.5vh" }} onClick={() => { setSliderIndexHandler(keys) }}> 
-                          <img src={item} className="w-100 h-100" 
-                          style={{objectFit: "cover"}}
-                          ></img>
-                        </div>
-                      ))
-                    }
-                </div> */}
               </div>
               <div className="right_content">
                 <div className="rightside">
