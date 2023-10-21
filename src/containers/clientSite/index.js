@@ -80,8 +80,11 @@ function Index(props) {
         await artistIfExist({fullName: pages}).then((res) => {
             if(res.length > 0){
                 return true
+            }else if(res.length == 0){
+                return false
+            }else{
+                history.push("/404")
             }
-            history.push("/404")
         })
     }
 
@@ -99,8 +102,8 @@ function Index(props) {
     return (
         <>
             <Header aciveBtn={pages} />
-            <div className={(pages === "artists"?"talentsection":"homesection")+" wf-section "+(pages?"divisions":"")}>
-                <div className={"containerhome "+(pages !== "artists"?"home":"")}>
+            <div className={(artistIfExistHandler()?"talentsection":"homesection")+" wf-section "+(pages?"divisions":"")}>
+                <div className={"containerhome "+(artistIfExistHandler()?"":"home")}>
                     <Navbar aciveBtn={pages} searchBar={true}  searchArtist={searchArtist}  updateTempArtist={updateTempArtist} />
                     {pages?
                     pages === "categories"?
