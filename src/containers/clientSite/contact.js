@@ -173,7 +173,7 @@ function Contact() {
         });
       }
     } else {
-      if(purposeOfInquiry === ''){
+      if(purposeOfInquiry === 'Looking for representation'){
         if (email == "" || Name == "") {
           setIsPopupShow(true);
           setMsg("Please Fill Required Fields");
