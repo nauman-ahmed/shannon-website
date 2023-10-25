@@ -240,9 +240,8 @@ function SearchByArtist(props) {
   }, [imageIndexDisplayed]);
 
   const setSliderIndexHandler = (keys, oldValue = null, clickedSliderButton = false) => {
+    
     if(clickedSliderButton){
-      
-
       let previousSelectedSlider = document.getElementById("firstSlider"+oldValue);
       let currentSelectedSlider = document.getElementById("firstSlider"+keys);
 
@@ -323,7 +322,8 @@ function SearchByArtist(props) {
   }
 
   const onImageLoad = (index) => {
-    if(data1[pages].subListData[index+1]){
+    console.log("onImageLoad",data1[pages].subListData.length,index+1,displayedImages.length)
+    if(index+1 == displayedImages.length && data1[pages].subListData.length !== index+1){
       let tempImage = [...displayedImages]
       tempImage.push(data1[pages].subListData[index+1])
       setDisplayedImages(tempImage)
