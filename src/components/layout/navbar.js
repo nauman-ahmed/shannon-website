@@ -6,7 +6,7 @@ function Navbar(props) {
 
   const { AddToCart } = useSelector((state) => state);
 
-  const pageIllustration = ['kidshannon','photography','bipoc','black','medical','motion'];
+  const pageIllustration = ['kidshannon','photography','bipoc','black','medical','motion','categories','newest','recentlyUpdated'];
 
   const localStorageAddToCart = () => {
     let addToCartArray = []
