@@ -276,7 +276,7 @@ function Image_uploading() {
             }else{
 
                 let originalImage = dataURLtoFile(temp,"originalImage.jpg")
-        
+                
                 let copyrightTextWChar = "© " + details.firstname.toLowerCase() + " " + details.lastname.toLowerCase()
                 // Checking if copyright has a & in it
                 if (copyrightTextWChar.includes("&")) {

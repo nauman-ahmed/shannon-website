@@ -46,6 +46,11 @@ function SearchByArtist(props) {
   
 
   const myStateRef = useRef(0);
+  const fullscreenCondRef = useRef({
+    full:false,
+    imageInd:0
+  });
+
   const screenScrolling = useRef(true);
   const queryParams = new URLSearchParams(history.location.search);
   const image = queryParams.get('image');
@@ -77,6 +82,8 @@ function SearchByArtist(props) {
       tempObj.screen = fullscreenCond=="true" ? true : false
       tempObj.route = data1[pages].slideList[imageInd]
       setFullscreen(tempObj)
+      fullscreenCondRef.current.full = tempObj.screen
+      fullscreenCondRef.current.imageInd = parseInt(image, 10)
     }
 
     myStateRef.current = imageInd; 
@@ -105,12 +112,19 @@ function SearchByArtist(props) {
 
 
   useEffect(()=>{
+
     window.addEventListener('popstate', ()=>{
-      window.location.href = '/'
+      if(fullscreenCondRef.current.full){
+        window.location.href = '/'+pages+"?image="+fullscreenCondRef.current.imageInd
+      }else{
+        window.location.href = '/'
+      }
     });
+
     if(!image){
       history.push(pages +"?image=0")
     }
+
     return () => {
       window.removeEventListener('popstate', ()=>{});
       localStorage.setItem("Category","none")
@@ -195,8 +209,6 @@ function SearchByArtist(props) {
 
 
   useEffect(() => {
-
-      if(sliderTriggerred){
       let currentSelectedSlider = document.getElementById("firstSlider"+image);
       var prev = document.getElementsByClassName('slick-prev')[0];
       var next = document.getElementsByClassName('slick-next')[0]
@@ -224,9 +236,8 @@ function SearchByArtist(props) {
           })
         }
       }
-    }
 
-  }, [sliderTriggerred]);
+  }, [imageIndexDisplayed]);
 
   const setSliderIndexHandler = (keys, oldValue = null, clickedSliderButton = false) => {
     if(clickedSliderButton){
@@ -280,11 +291,14 @@ function SearchByArtist(props) {
 
     temp.resposive = windowSize.innerWidth < 479 ? true : false
     temp.screen = !temp.screen;
+    fullscreenCondRef.current.full = temp.screen
+    fullscreenCondRef.current.imageInd = parseInt(image, 10)
     setFullscreen(temp);
     setFullScreenData(data1[pages])
     if(temp.screen){
       history.push(pages +"?image="+image+"&fullscreen=true")
     }else{
+      setImageIndexDisplayed(!imageIndexDisplayed)
       history.push(pages +"?image="+image)
     }
   };
@@ -314,6 +328,11 @@ function SearchByArtist(props) {
       tempImage.push(data1[pages].subListData[index+1])
       setDisplayedImages(tempImage)
     }
+
+    if(displayedImages.length == image+1){
+      setImageIndexDisplayed(!imageIndexDisplayed)
+    }
+
   }
 
   if (fullscreen.screen) {
