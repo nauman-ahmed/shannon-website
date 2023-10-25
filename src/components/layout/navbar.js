@@ -6,6 +6,8 @@ function Navbar(props) {
 
   const { AddToCart } = useSelector((state) => state);
 
+  const pageIllustration = ['kidshannon','photography','bipoc','black','medical','motion',undefined];
+
   const localStorageAddToCart = () => {
     let addToCartArray = []
     Object.keys(AddToCart.cartInfo).map((oneKey, i) => {
@@ -26,7 +28,7 @@ function Navbar(props) {
         <div className="div-block-11 w-100 ">
           <div className='mobileViewNavbar'>
             <div className='w-100 d-flex flex-wrap justify-content-center '>
-              <Link to="/illustration-artists" className={"filterhomelink v2 " + (props.aciveBtn === "illustration-artists" ? "w--current" : "")}>ILLUSTRATION</Link>
+              <Link to="/illustration-artists" className={"filterhomelink v2 " + (!pageIllustration.includes(pros.aciveBtn) ? "w--current" : "")}>ILLUSTRATION</Link>
               <a href="https://kidshannon.com" target="_blank" className={"filterhomelink v2 " + (props.aciveBtn === "kidshannon" ? "w--current" : "")} onClick={()=>localStorageAddToCart()}>KIDSHANNON</a> 
               <Link to="/photography" className={"filterhomelink v2 " + (props.aciveBtn === "photography" ? "w--current" : "")}>PHOTOGRAPHY</Link>
               <Link to="/bipoc" className={"filterhomelink v2 " + (props.aciveBtn === "bipoc" ? "w--current" : "")}>BIPOC</Link>

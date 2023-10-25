@@ -37,6 +37,7 @@ function Contact() {
   const [zip, setZip] = useState("");
   const [state, setState] = useState("");
   const [purposeOfInquiry, setPurposeOfInquiry] = useState("");
+  const [website, setWebsite] = useState("");
   const [findUs, setFindUs] = useState("");
   const [message, setMessage] = useState("");
   const [holder, setHolder] = useState(false);
@@ -103,6 +104,7 @@ function Contact() {
           contactCreate.append('phone',phone)
           contactCreate.append('address',address)
           contactCreate.append('purposeOfInquiry',purposeOfInquiry)
+          contactCreate.append('website',website)
           contactCreate.append('findUs',findUs)
           contactCreate.append('message',message)
           contactCreate.append('artistId',Id)
@@ -118,6 +120,7 @@ function Contact() {
           city: city,
           state: state,
           purposeOfInquiry: purposeOfInquiry,
+          website: website,
           findUs: findUs,
           message: message,
           zip:zip,
@@ -146,6 +149,7 @@ function Contact() {
             setEmail("")
             setPhone("")
             setPurposeOfInquiry("")
+            setWebsite("")
             setFindUs("")
             setMessage("")
             setSelectedFile(null)
@@ -159,6 +163,7 @@ function Contact() {
             setEmail("")
             setPhone("")
             setPurposeOfInquiry("")
+            setWebsite("")
             setFindUs("")
             setMessage("")
             setSelectedFile(null)
@@ -168,10 +173,95 @@ function Contact() {
         });
       }
     } else {
-      setIsPopupShow(true);
-      setMsg("select atleast one artist");
-      // dispatch(updateOpen(true))
-      // dispatch(updateMessage("select atleast one artist"));
+      if(purposeOfInquiry === ''){
+        if (email == "" || Name == "") {
+          setIsPopupShow(true);
+          setMsg("Please Fill Required Fields");
+          // dispatch(updateOpen(true))
+          // dispatch(updateMessage("Please Fill Required Fields"));
+        } else {
+  
+            const contactCreate = new FormData()
+            contactCreate.append('Name',Name)
+            contactCreate.append('company',company)
+            contactCreate.append('email',email)
+            contactCreate.append('phone',phone)
+            contactCreate.append('address',address)
+            contactCreate.append('purposeOfInquiry',purposeOfInquiry)
+            contactCreate.append('website',website)
+            contactCreate.append('findUs',findUs)
+            contactCreate.append('message',message)
+            contactCreate.append('artistId',Id)
+            contactCreate.append('kidShannon',false)
+            contactCreate.append('contactFile',selectedFile)
+  
+          let data = {
+            Name: Name,
+            company: company,
+            email: email,
+            phone: phone,
+            address: address,
+            city: city,
+            state: state,
+            purposeOfInquiry: purposeOfInquiry,
+            website: website,
+            findUs: findUs,
+            message: message,
+            zip:zip,
+            artistId: Id,
+            kidShannon:false
+          };
+          setHolder(true);
+          let tempMsg = <p>
+            Thank you {Name}. <br/>
+            A Shannon Associates representative will be responding to your inquiry as soon as possible.
+          </p>
+          if (purposeOfInquiry) {
+            if (purposeOfInquiry == "Looking for representation") {
+              tempMsg = <p> Hi {Name}, Thank you for your submission. <br></br><br></br> We appreciate your interest in Shannon Associates. Due to the extremely high volume of applicants we receive, we are unfortunately unable to reply to all. <br></br><br></br> Please feel free to try again if you have new samples to present. We hope you understand and wish you the best in all that is ahead.<br></br><br></br> Your Friends at Shannon Associates</p>
+            } 
+          }
+          createContact(contactCreate).then((res) => {
+            if(res == "Email is an Issue"){
+              tempMsg = <p> ERROR IN CONTACT DETAILS SUBMISSION</p>
+              dispatch(emptyCart());
+              setHolder(false);
+              setIsPopupShow(true);
+              setMsg(tempMsg);
+              setName("")
+              setCompany("")
+              setEmail("")
+              setPhone("")
+              setPurposeOfInquiry("")
+              setWebsite("")
+              setFindUs("")
+              setMessage("")
+              setSelectedFile(null)
+            }else{
+              dispatch(emptyCart());
+              setHolder(false);
+              setIsPopupShow(true);
+              setMsg(tempMsg);
+              setName("")
+              setCompany("")
+              setEmail("")
+              setPhone("")
+              setPurposeOfInquiry("")
+              setWebsite("")
+              setFindUs("")
+              setMessage("")
+              setSelectedFile(null)
+            }
+            setReferesh(!referesh)
+  
+          });
+        }
+      }else{
+        setIsPopupShow(true);
+        setMsg("select atleast one artist");
+        // dispatch(updateOpen(true))
+        // dispatch(updateMessage("select atleast one artist"));
+      }
     }
   };
 
@@ -610,6 +700,30 @@ function Contact() {
                         </div>
                       </div>
 
+                      {purposeOfInquiry === 'Looking for representation'?
+                      <div className="row mr-0">
+                        <div className="col-sm-6 mr-0 pr-0">
+                        <label htmlFor="website" className="contactformlabel ">
+                            Website<span className="required">*</span>
+                          </label>
+                          <input
+                            type="text"
+                            className="text-field text_h w-100 w-input"
+                            value={website}
+                            onChange={(e) => {
+                              setWebsite(e.target.value);
+                            }}
+                            maxLength="256"
+                            name="website"
+                            data-name="website"
+                            placeholder=""
+                            id="website"
+                            required
+                            />
+                        </div>
+                      </div>
+                      :null
+                      }
                       <div className=" row mr-0 ">
                         <div className="col-12 mr-0 pr-0">
 
