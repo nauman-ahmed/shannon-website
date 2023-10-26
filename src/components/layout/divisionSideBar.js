@@ -13,7 +13,6 @@ function DivisionSideBar(props) {
   const history = useHistory();
 
   const dispatch = useDispatch();
-  // const  {keywordReducer} = useSelector(state=>state);
   const  [keywordReducer,setKeywordReducer] = useState([]);
   const [artistData, setArtistData]  = useState([])
   const currentArtist = useRef(0);
@@ -108,7 +107,7 @@ function DivisionSideBar(props) {
               <div key={key1}>
                <Link 
                   to={item1.fullName}
-                  className="sidebarlink" 
+                  className={"sidebarlink "+ item1.firstname.toLowerCase()+item1.lastname.toLowerCase() === props.currentArtist? "w--current":"" } 
                   style={search === item1.fullName ? {color: "#fa8e37"} : {}}>
                   {item1.firstname.toUpperCase()} {item1.lastname.toUpperCase()}<br/>
               </Link>
