@@ -176,7 +176,7 @@ function Index(props) {
                         <Bipoc/>
                     :artistIfExistHandler()?
                         <SearchByArtist>
-                            <DivisionSideBar activeBtn="detailedPage"/>
+                            <DivisionSideBar activeBtn="detailedPage" currentArtist={pages} />
                         </SearchByArtist>
                     :<Redirect to="/404"/>
                     :<Artists  tempArtist={tempArtist} searchArtist={searchArtist}>
