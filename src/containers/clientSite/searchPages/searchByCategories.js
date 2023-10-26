@@ -148,40 +148,44 @@ function Categories(props) {
                           // className=" divisions"
                         // style={{ paddingTop: "10px" }}
                         >
-                          {item?.ImageData.map((item1, key1) => (
-                            <>
-                              <Link
-                                key={key1}
-                                id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
-                                to={"/"+item1.artistId.fullName}
-                                className="artistcard w-inline-block"
-                                // style={{ position: "relative", overflow: "hidden", height: "auto" }}
-                              >
-                                {/* <div className="detail_card4_h" style={{ position: "relative", overflow: "hidden" }}> */}
-                                <img
-                                  src={String(
-                                    item1?.mainImage[0]?.subImage[0]?.path
-                                  )}
-                                  loading="lazy"
-                                  alt=""
-                                  className="image"
-                                  // style={{ width: "25.5vh", height: "25.5vh" }}
-
-                                />
-                                <div className="artistnamediv">
-                                      <div className="artistnametext-v3">
-                                      {item1.artistId.firstname}  {item1.artistId.lastname} 
-                                      </div>
-                                    </div>
-                                {/* <p className="card_img_text2 pt-2">
-                                  {item1.artistId.lastname}{" "}
-                                  {item1.artistId.firstname}
-
-                                </p> */}
-                                {/* </div> */}
-                              </Link>
-                            </>
-                          ))}
+                          {item?.ImageData.map((item1, key1) => {
+                            if(item1.artistId.status === 1){
+                              return (
+                                <>
+                                  <Link
+                                    key={key1}
+                                    id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
+                                    to={"/"+item1.artistId.fullName}
+                                    className="artistcard w-inline-block"
+                                    // style={{ position: "relative", overflow: "hidden", height: "auto" }}
+                                  >
+                                    {/* <div className="detail_card4_h" style={{ position: "relative", overflow: "hidden" }}> */}
+                                    <img
+                                      src={String(
+                                        item1?.mainImage[0]?.subImage[0]?.path
+                                      )}
+                                      loading="lazy"
+                                      alt=""
+                                      className="image"
+                                      // style={{ width: "25.5vh", height: "25.5vh" }}
+    
+                                    />
+                                    <div className="artistnamediv">
+                                          <div className="artistnametext-v3">
+                                          {item1.artistId.firstname}  {item1.artistId.lastname} 
+                                          </div>
+                                        </div>
+                                    {/* <p className="card_img_text2 pt-2">
+                                      {item1.artistId.lastname}{" "}
+                                      {item1.artistId.firstname}
+    
+                                    </p> */}
+                                    {/* </div> */}
+                                  </Link>
+                                </>
+                              ) 
+                            }
+                          })}
                         </div>
                         {/* <div className="divisionbuttoncontainer mb-5">
                           <Link
@@ -209,40 +213,44 @@ function Categories(props) {
                         className="detail_card3_bipoc"
                       // style={{ paddingTop: "10px" }}
                       >
-                        {item.ImageData.map((item1, key1) => (
-                          <>
-                            <Link
-                                key={key1}
-                                id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
-                                to={"/"+item1.artistId.fullName}
-                                className="artistcard w-inline-block"
-                                // style={{ position: "relative", overflow: "hidden", height: "auto" }}
-                              >
-                                {/* <div className="detail_card4_h" style={{ position: "relative", overflow: "hidden" }}> */}
-                                <img
-                                  src={String(
-                                    item1?.mainImage[0]?.subImage[0]?.path
-                                  )}
-                                  loading="lazy"
-                                  alt=""
-                                  className="image"
-                                  // style={{ width: "25.5vh", height: "25.5vh" }}
-
-                                />
-                                <div className="artistnamediv">
-                                      <div className="artistnametext-v3">
-                                      {item1.artistId.firstname}  {item1.artistId.lastname} 
-                                      </div>
-                                    </div>
-                                {/* <p className="card_img_text2 pt-2">
-                                  {item1.artistId.lastname}{" "}
-                                  {item1.artistId.firstname}
-
-                                </p> */}
-                                {/* </div> */}
-                              </Link>
-                          </>
-                        ))}
+                        {item.ImageData.map((item1, key1) => {
+                          if(item1.artistId.status === 1){
+                            return (
+                              <>
+                                <Link
+                                    key={key1}
+                                    id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
+                                    to={"/"+item1.artistId.fullName}
+                                    className="artistcard w-inline-block"
+                                    // style={{ position: "relative", overflow: "hidden", height: "auto" }}
+                                  >
+                                    {/* <div className="detail_card4_h" style={{ position: "relative", overflow: "hidden" }}> */}
+                                    <img
+                                      src={String(
+                                        item1?.mainImage[0]?.subImage[0]?.path
+                                      )}
+                                      loading="lazy"
+                                      alt=""
+                                      className="image"
+                                      // style={{ width: "25.5vh", height: "25.5vh" }}
+    
+                                    />
+                                    <div className="artistnamediv">
+                                          <div className="artistnametext-v3">
+                                          {item1.artistId.firstname}  {item1.artistId.lastname} 
+                                          </div>
+                                        </div>
+                                    {/* <p className="card_img_text2 pt-2">
+                                      {item1.artistId.lastname}{" "}
+                                      {item1.artistId.firstname}
+    
+                                    </p> */}
+                                    {/* </div> */}
+                                  </Link>
+                              </>
+                            )
+                          }
+                        })}
                       </div>
                       {/* <div className="divisionbuttoncontainer mb-5">
                         <Link
