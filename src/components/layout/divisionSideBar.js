@@ -13,9 +13,11 @@ function DivisionSideBar(props) {
   const history = useHistory();
 
   const dispatch = useDispatch();
+  const  {ArtistDataAPI} = useSelector(state=>state);
   const  [keywordReducer,setKeywordReducer] = useState([]);
   const [artistData, setArtistData]  = useState([])
   const currentArtist = useRef(0);
+  let currArtist = "";
 
   let alpha = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
   
@@ -60,6 +62,9 @@ function DivisionSideBar(props) {
     }
     getCategoryTypeOne().then(res => { 
       setKeywordReducer(sortAlphaOrderKeyword(res!==undefined?res.length>0?res:[]:[]))})
+
+    currArtist = ArtistDataAPI.artistData.filter(artist=> artist.firstname.toLowerCase() + artist.lastname.toLowerCase() === props.currentArtist);
+
   },[])
 
   return (
@@ -107,7 +112,7 @@ function DivisionSideBar(props) {
               <div key={key1}>
                <Link 
                   to={item1.fullName}
-                  className={"sidebarlink "+ item1.firstname.toLowerCase()+item1.lastname.toLowerCase() === props.currentArtist? "w--current":"" } 
+                  className="sidebarlink " 
                   style={search === item1.fullName ? {color: "#fa8e37"} : {}}>
                   {item1.firstname.toUpperCase()} {item1.lastname.toUpperCase()}<br/>
               </Link>
