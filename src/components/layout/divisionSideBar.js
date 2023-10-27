@@ -29,7 +29,6 @@ function DivisionSideBar(props) {
           )
         }
       )
-      console.log(artistData);
     }
     else if(props.activeBtn === "cgi"){
       getArtistCategoryTypeOne({keyword:"3D Rendering",type:1}).then(res => {
@@ -65,7 +64,7 @@ function DivisionSideBar(props) {
       setKeywordReducer(sortAlphaOrderKeyword(res!==undefined?res.length>0?res:[]:[]))})
 
     currArtist = ArtistDataAPI.artistData.filter(artist=> artist.firstname.toLowerCase() + artist.lastname.toLowerCase() === props.currentArtist);
-
+    console.log(artistData);
   },[])
 
   return (
