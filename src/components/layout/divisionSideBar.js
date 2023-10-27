@@ -29,6 +29,7 @@ function DivisionSideBar(props) {
           )
         }
       )
+      console.log(artistData);
     }
     else if(props.activeBtn === "cgi"){
       getArtistCategoryTypeOne({keyword:"3D Rendering",type:1}).then(res => {
