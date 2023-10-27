@@ -22,7 +22,7 @@ function DivisionSideBar(props) {
   let alpha = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
   
   useEffect(()=>{
-    if(props.activeBtn === "illustration-artists" || props.activeBtn === "divisions" || props.activeBtn === "detailedPage"){
+    if(props.activeBtn === "illustration-artists" || props.activeBtn === "divisions"){ //|| props.activeBtn === "detailedPage"
       getArtistCategoryTypeOne({keyword:"ILLUSTRATION"}).then(res => {
         setArtistData(
           sortAlphaOrder(res!==undefined?res.length>0?res:[]:[])
@@ -107,10 +107,7 @@ function DivisionSideBar(props) {
           {artistData[item] !== undefined ? (
           <div key={key} className="alphabets" >
             {item}<br/>
-            {artistData[item].map((item1,key1)=>{
-              console.log(artistData);
-              console.log(item1);
-              return (
+            {artistData[item].map((item1,key1)=>(
                 <div key={key1}>
                  <Link 
                     to={item1.fullName}
@@ -119,9 +116,7 @@ function DivisionSideBar(props) {
                     {item1.firstname.toUpperCase()} {item1.lastname.toUpperCase()}<br/>
                 </Link>
                 </div>
-              )
-            }
-            )}
+              ))}
             <br/>
           </div>
           ): ""}
