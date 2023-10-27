@@ -60,6 +60,7 @@ function DivisionSideBar(props) {
         }
       )
     }else if(props.activeBtn === "detailedPage"){
+      console.log(prosp.activeBtn);
       setArtistData(sortAlphaOrder(ArtistDataAPI.artistData!==undefined?ArtistDataAPI.artistData.length>0?ArtistDataAPI.artistData:[]:[]))
     }
     getCategoryTypeOne().then(res => { 
