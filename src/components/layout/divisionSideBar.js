@@ -64,7 +64,6 @@ function DivisionSideBar(props) {
       setKeywordReducer(sortAlphaOrderKeyword(res!==undefined?res.length>0?res:[]:[]))})
 
     currArtist = ArtistDataAPI.artistData.filter(artist=> artist.firstname.toLowerCase() + artist.lastname.toLowerCase() === props.currentArtist);
-    console.log(artistData);
   },[])
 
   return (
@@ -108,16 +107,21 @@ function DivisionSideBar(props) {
           {artistData[item] !== undefined ? (
           <div key={key} className="alphabets" >
             {item}<br/>
-            {artistData[item].map((item1,key1)=>(
-              <div key={key1}>
-               <Link 
-                  to={item1.fullName}
-                  className={"sidebarlink " + (item1.firstname.toLowerCase()+item1.lastname.toLowerCase() === props.currentArtist? "currentSidebar":"") } 
-                  style={search === item1.fullName ? {color: "#fa8e37"} : {}}>
-                  {item1.firstname.toUpperCase()} {item1.lastname.toUpperCase()}<br/>
-              </Link>
-              </div>
-            ))}
+            {artistData[item].map((item1,key1)=>{
+              console.log(artistData);
+              console.log(item1);
+              return (
+                <div key={key1}>
+                 <Link 
+                    to={item1.fullName}
+                    className={"sidebarlink " + (item1.firstname.toLowerCase()+item1.lastname.toLowerCase() === props.currentArtist? "currentSidebar":"") } 
+                    style={search === item1.fullName ? {color: "#fa8e37"} : {}}>
+                    {item1.firstname.toUpperCase()} {item1.lastname.toUpperCase()}<br/>
+                </Link>
+                </div>
+              )
+            }
+            )}
             <br/>
           </div>
           ): ""}
