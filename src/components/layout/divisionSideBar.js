@@ -13,15 +13,16 @@ function DivisionSideBar(props) {
   const history = useHistory();
 
   const dispatch = useDispatch();
-  // const  {keywordReducer} = useSelector(state=>state);
+  const  {ArtistDataAPI} = useSelector(state=>state);
   const  [keywordReducer,setKeywordReducer] = useState([]);
   const [artistData, setArtistData]  = useState([])
   const currentArtist = useRef(0);
+  let currArtist = "";
 
   let alpha = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
   
   useEffect(()=>{
-    if(props.activeBtn === "illustration-artists" || props.activeBtn === "divisions" || props.activeBtn === "detailedPage"){
+    if(props.activeBtn === "illustration-artists" || props.activeBtn === "divisions"){ //|| props.activeBtn === "detailedPage"
       getArtistCategoryTypeOne({keyword:"ILLUSTRATION"}).then(res => {
         setArtistData(
           sortAlphaOrder(res!==undefined?res.length>0?res:[]:[])
@@ -58,9 +59,14 @@ function DivisionSideBar(props) {
           )
         }
       )
+    }else if(props.activeBtn === "detailedPage"){
+      console.log(props.activeBtn);
+      setArtistData(sortAlphaOrder(ArtistDataAPI.artistData!==undefined?ArtistDataAPI.artistData.length>0?ArtistDataAPI.artistData:[]:[]))
     }
     getCategoryTypeOne().then(res => { 
       setKeywordReducer(sortAlphaOrderKeyword(res!==undefined?res.length>0?res:[]:[]))})
+
+    currArtist = ArtistDataAPI.artistData.filter(artist=> artist.firstname.toLowerCase() + artist.lastname.toLowerCase() === props.currentArtist);
   },[])
 
   return (
@@ -105,15 +111,15 @@ function DivisionSideBar(props) {
           <div key={key} className="alphabets" >
             {item}<br/>
             {artistData[item].map((item1,key1)=>(
-              <div key={key1}>
-               <Link 
-                  to={item1.fullName}
-                  className="sidebarlink" 
-                  style={search === item1.fullName ? {color: "#fa8e37"} : {}}>
-                  {item1.firstname.toUpperCase()} {item1.lastname.toUpperCase()}<br/>
-              </Link>
-              </div>
-            ))}
+                <div key={key1}>
+                 <Link 
+                    to={item1.fullName}
+                    className={"sidebarlink " + (item1.firstname.toLowerCase()+item1.lastname.toLowerCase() === props.currentArtist? "currentSidebar":"") } 
+                    style={search === item1.fullName ? {color: "#fa8e37"} : {}}>
+                    {item1.firstname.toUpperCase()} {item1.lastname.toUpperCase()}<br/>
+                </Link>
+                </div>
+              ))}
             <br/>
           </div>
           ): ""}

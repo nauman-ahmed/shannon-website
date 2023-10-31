@@ -93,6 +93,14 @@ function CFSViewMore(props) {
                     <span className='py-2' style={{ minWidth: 150 }}>Purpose of inquiry:</span>
                     <input className='textField' value={singleContact.purposeOfInquiry} readOnly/>
                 </label>
+                {
+                    singleContact.purposeOfInquiry === 'Looking for representation'?
+                    <label className='col-md-6 d-flex'>
+                        <span className='py-2' style={{ minWidth: 150 }}>Website:</span>
+                        <input className='textField' value={singleContact.website} readOnly/>
+                    </label>
+                    :null
+                }
                 <label className='col-md-12 d-flex'>
                     <span className='py-2' style={{ minWidth: 70 }}>Message:</span>
                     <textarea className='textField' value={message} onChange={(e)=>setMessage(e.target.value)}></textarea>
