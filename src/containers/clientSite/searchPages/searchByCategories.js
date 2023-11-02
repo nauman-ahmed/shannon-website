@@ -75,13 +75,9 @@ function Categories(props) {
           ) : artistImageKeywordDataSlice.artistKeywordImages !== undefined ? (
             props.searchArtist === "" && filterCond ? (
               artistImageKeywordDataSlice.artistKeywordImages.map(
-                (item, key) =>{
-                  console.log(props.searchArtist);
-                  console.log(filterCond);
-                  console.log(item);
-                  return (
+                (item, key) =>(
                     <>
-                      {item.ImageData.length > 0 ? (
+                      {item.ImageData.length > 0 && item.type === 1 ? (
                         <>
                           <div id="w-node-f734ee66-0b58-4c14-e08b-49ceded015c9-84f2d081" className="detail_card3_bipoc">
                             {item?.ImageData.map((item1, key1) => {
@@ -114,7 +110,6 @@ function Categories(props) {
                       )}
                     </>
                   )
-                } 
               )
             ) : (
               tempArtist.map((item, key) => ( 
