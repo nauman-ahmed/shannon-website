@@ -84,7 +84,7 @@ function Dashboard(props) {
                 </div>
                 <div className='col-md-6 mb-3'>
                     <div onClick={()=>props.setFormNo(3)} className='dash_card color3 p-5 justify-content-center'>
-                        <h5>ADD A NEW ARTIST</h5>
+                        <h5>ADD A NEW ARTIST.</h5>
                     </div>
                 </div>
                 <div className='col-md-6 mb-3'>
