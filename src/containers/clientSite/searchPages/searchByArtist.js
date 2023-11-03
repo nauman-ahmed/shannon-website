@@ -105,31 +105,35 @@ function SearchByArtist(props) {
       }
     }
     
-    return () => {
-      localStorage.setItem("Category","none")
-    };
+    // return () => {
+    //   localStorage.setItem("Category","none")
+    // };
   },[fullscreenCond])
 
 
-  useEffect(()=>{
+  useEffect(() => {
+    const unlisten = history.listen((location, action) => {
+      if(history.action == "POP"){
+        if(fullscreenCondRef.current.full){
+          let temp = { ...fullscreen };
 
-    window.addEventListener('popstate', ()=>{
-      if(fullscreenCondRef.current.full){
-        window.location.href = '/'+pages+"?image="+fullscreenCondRef.current.imageInd
-      }else{
-        window.location.href = '/'
+          temp.resposive = windowSize.innerWidth < 479 ? true : false
+          temp.screen = false;
+          fullscreenCondRef.current.full = false
+          fullscreenCondRef.current.imageInd = parseInt(image, 10)
+          setFullscreen(temp);
+        }else{
+          history.goBack()
+        }
+  
       }
     });
-
-    if(!image){
-      history.push(pages +"?image=0")
-    }
-
+  
+    // Return a cleanup function to remove the listener when the component unmounts.
     return () => {
-      window.removeEventListener('popstate', ()=>{});
-      localStorage.setItem("Category","none")
+      unlisten();
     };
-  },[])
+  }, [history]);
 
   const addToCartArtist = (id, firstname,getAnEstimate=false) => {
     dispatch(addCart({ key: id, data: { id: id, Name: firstname } }));
@@ -283,7 +287,7 @@ function SearchByArtist(props) {
   const setFullScreenHandler = (route, key) => {
     let temp = { ...fullscreen };
 
-    if (!temp.screen) {
+    if (!temp.screen && route) {
       temp.route = route;
       temp.key = key
     } 
@@ -322,7 +326,6 @@ function SearchByArtist(props) {
   }
 
   const onImageLoad = (index) => {
-    console.log("onImageLoad",data1[pages].subListData.length,index+1,displayedImages.length)
     if(index+1 == displayedImages.length && data1[pages].subListData.length !== index+1){
       let tempImage = [...displayedImages]
       tempImage.push(data1[pages].subListData[index+1])
