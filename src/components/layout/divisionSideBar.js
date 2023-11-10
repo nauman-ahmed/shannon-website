@@ -67,6 +67,13 @@ function DivisionSideBar(props) {
       setKeywordReducer(sortAlphaOrderKeyword(res!==undefined?res.length>0?res:[]:[]))})
 
     currArtist = ArtistDataAPI.artistData.filter(artist=> artist.firstname.toLowerCase() + artist.lastname.toLowerCase() === props.currentArtist);
+
+    if(search2){
+    
+      console.log(search2);
+
+    }
+
   },[])
 
   return (
