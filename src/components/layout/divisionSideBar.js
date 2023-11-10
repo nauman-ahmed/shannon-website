@@ -71,21 +71,17 @@ function DivisionSideBar(props) {
   },[])
 
   useEffect(() => {
-    
+
+    if(search2){
       let category = "";
-
       if(search2 === 'Action_Adventure' || search2 === "Children's Books_Products" || search2 === 'Vintage_Retro'){
-        
         category = search2.replace("_",'/');
-
       }else{
         category = search2.replace("_"," ");
       }
-
-      console.log(category);
-
       localStorage.setItem("Category",category);
-    
+    }
+  
   }, [search2])
   
 
