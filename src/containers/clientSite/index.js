@@ -109,10 +109,10 @@ function Index(props) {
                     pages === "categories"?
                         search?
                         <SearchByCategories searchArtist={searchArtist}  searchDivision={searchDivision} updateTempDivision={updateTempDivision} tempDivision={tempDivision}>
-                            <DivisionSideBar activeBtn={pages} search={search}/>
+                            <DivisionSideBar activeBtn={pages}/>
                         </SearchByCategories>
                         :<Categories searchArtist={searchArtist}  searchDivision={searchDivision} updateTempDivision={updateTempDivision} tempDivision={tempDivision}>
-                            <DivisionSideBar activeBtn={pages} />
+                            <DivisionSideBar activeBtn={pages}/>
                         </Categories>
                     :pages === "divisions"?
                     search?

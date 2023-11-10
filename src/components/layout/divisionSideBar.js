@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom'
 
 function DivisionSideBar(props) {
 
-  const { pages } = useParams()
+  const { pages,search:search2 } = useParams()
   const { search } = useParams()
   const history = useHistory();
 
@@ -84,7 +84,7 @@ function DivisionSideBar(props) {
       {pages == "categories"? 
       keywordReducer?.length > 0 ? keywordReducer?.map((item,key)=>(
         <div key={key}>
-          {item.type === 1?(<Link to={item.keyword.includes("/") ?  "/categories/"+item.keyword.replace(/\//g, '_') : "/categories/"+item.keyword.replace(/\s/g, '_')}  onClick={()=>{localStorage.setItem("Category",item.keyword == '3D Rendering' ? "3D Rendering" : item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1) )}} className={"divisionslink"+(localStorage.getItem("Category") === item.keyword?" w--current":"")}><span className="sidebarlink">{item.keyword.toUpperCase()}<br /></span></Link>):""}
+          {item.type === 1?(<Link to={item.keyword.includes("/") ?  "/categories/"+item.keyword.replace(/\//g, '_') : "/categories/"+item.keyword.replace(/\s/g, '_')}  onClick={()=>{localStorage.setItem("Category",item.keyword == '3D Rendering' ? "3D Rendering" : item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1) )}} className={"divisionslink"+(localStorage.getItem("Category") === item.keyword && search2 ?" w--current":"")}><span className="sidebarlink">{item.keyword.toUpperCase()}<br /></span></Link>):""}
         </div> 
      )):"" 
       : 
