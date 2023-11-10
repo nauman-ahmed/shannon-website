@@ -68,8 +68,10 @@ function DivisionSideBar(props) {
 
     currArtist = ArtistDataAPI.artistData.filter(artist=> artist.firstname.toLowerCase() + artist.lastname.toLowerCase() === props.currentArtist);
 
-    if(search2){
-      
+  },[])
+
+  useEffect(() => {
+    
       let category = "";
 
       if(search2 === 'Action_Adventure' || search2 === "Children's Books_Products" || search2 === 'Vintage_Retro'){
@@ -82,10 +84,9 @@ function DivisionSideBar(props) {
 
 
       localStorage.setItem("Category",category);
-
-    }
-
-  },[])
+    
+  }, [search2])
+  
 
   return (
     <div id="w-node-_783b3b4a-9daa-ecbf-356e-d84dbb36f4cc-bb36f4cc" className="respdivhide"> 
