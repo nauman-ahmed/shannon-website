@@ -69,8 +69,19 @@ function DivisionSideBar(props) {
     currArtist = ArtistDataAPI.artistData.filter(artist=> artist.firstname.toLowerCase() + artist.lastname.toLowerCase() === props.currentArtist);
 
     if(search2){
-    
-      console.log(search2);
+      
+      let category = "";
+
+      if(search2 === 'Action_Adventure' || search2 === "Children's Books_Products" || search2 === 'Vintage_Retro'){
+        
+        category = search2.replace("_",'/');
+
+      }else{
+        category = search2.replace("_"," ");
+      }
+
+
+      localStorage.setItem("Category",category);
 
     }
 
