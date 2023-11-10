@@ -82,6 +82,7 @@ function DivisionSideBar(props) {
         category = search2.replace("_"," ");
       }
 
+      console.log(category);
 
       localStorage.setItem("Category",category);
     
