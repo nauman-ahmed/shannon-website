@@ -58,6 +58,23 @@
     border: 2px solid white;
     color: white;
 }
+.textFieldCopyright{
+    border: 2px solid black;
+    background-color: white;
+    border-radius: 5px;
+    padding: 8px 15px;
+    width: 100%;
+    max-width: 250px;
+    color: black;
+}
+.btn1.dark{
+    background-color: #D16A27;
+    border-radius: 10px;
+    color: white;
+    height: 40px;
+    width: 150px;
+    font-size: 2vh;
+}
 .subNavBar{
     border-bottom: 2px solid rgb(230,230,230);
     width: 100%;

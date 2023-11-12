@@ -771,42 +771,7 @@ function Contact() {
           <h2 className="contactLabel hide">MY LIST</h2>
           <p className=" hide">Selected favorites from portfolio pages and/or below</p>
           <div className="" style={{ paddingTop: "5.4vh" }} >
-          {/* {AddToCart.cartInfo && Object.keys(AddToCart.cartInfo).length > 0 &&
-              <div className="detail_card_6 w-inline-block artist_card_h"
-              style={{overflowY:"initial"}}
-              >
-                {
-                  Object.keys(AddToCart.cartInfo).map((oneKey, i) => {
-                    if(oneKey !== "messageShow" && oneKey !== "count" ){
-                      return (
-                       
-                          <Link
-                            to="#"
-                          >
-                             <div className="detail_card_contact"
-                             style={{ position: "relative"}}
-                             >
-                              {console.log(artistImages, artistImages[AddToCart.cartInfo[oneKey].id])}
-                              <div className="cartBadgeContact"
-                                onClick={(e) => {
-                                  handleChangeArtist(e, AddToCart.cartInfo[oneKey].Name, AddToCart.cartInfo[oneKey].id);
-                                }}
-                                >x</div>
-                              <img loading="lazy" src={artistImages[AddToCart.cartInfo[oneKey].id]} className="w-100 h-100" style={{ objectFit: "cover" }}></img>
-                              <div className="artistnamediv">
-                                <div className="artistnametext-v3" style={{ padding: "6px 0px" }}>
-                                {AddToCart.cartInfo[oneKey].Name}
-                                </div>
-                              </div>
-                            </div>
-                          </Link>
-                      );
-                    }
-                  })
-                }                
-             </div>                
-            } */}
-          <Slider className="detail_card_6 w-inline-block" {...{
+            <Slider className="detail_card_6 w-inline-block" {...{
                   dots: false,
                   infinite: false,
                   speed: 500,

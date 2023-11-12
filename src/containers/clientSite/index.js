@@ -53,6 +53,7 @@ function Index(props) {
     const [searchDivision,setSearchDivision] = useState("");
     const [tempDivision,setTempDivision]= useState([]);
 
+    const divisions = ["illustration-artists","cgi","medical","motion","photography"]
 
     const updateTempArtist = (e)=>{
         setSearchArtist(e.target.value);
@@ -97,6 +98,57 @@ function Index(props) {
 
     useEffect(() => {
         setSearchArtist("")
+
+        if(!localStorage.getItem("routePaths")){
+            const route = ["Home"]
+            localStorage.setItem("routePaths",JSON.stringify(route))
+        }
+
+        if(pages == "divisions"){
+            const route = ["Home","Division"]
+            localStorage.setItem("routePaths",JSON.stringify(route))
+        }
+        if(divisions.includes(pages)){
+            if(pages == "illustration-artists"){
+                const route = ["Home","Division","Illustration"]
+                localStorage.setItem("routePaths",JSON.stringify(route))
+            }else{
+                const letter = pages.charAt(0).toUpperCase() + pages.slice(1);
+                const route = ["Home","Division",letter]
+                localStorage.setItem("routePaths",JSON.stringify(route))
+            }
+        }
+
+        if(pages == "categories"){
+            const route = ["Home","Categories"]
+            localStorage.setItem("routePaths",JSON.stringify(route))
+            if(search){
+                const path = localStorage.getItem("Category")
+                const route = ["Home","Categories",path]
+                localStorage.setItem("routePaths",JSON.stringify(route))
+            }
+        }
+
+        if(pages == "bipoc"){
+            const route = ["Home","Bipoc"]
+            localStorage.setItem("routePaths",JSON.stringify(route))
+            if(search){
+                const letter = search.charAt(0).toUpperCase() + search.slice(1);
+                const route = ["Home","Bipoc",letter]
+                localStorage.setItem("routePaths",JSON.stringify(route))
+            }
+        }
+
+        if(pages == "newest"){
+            const route = ["Home","Newest Artists"]
+            localStorage.setItem("routePaths",JSON.stringify(route))
+        }
+
+        if(pages == "recentlyUpdated"){
+            const route = ["Home","Recently Updated Artists"]
+            localStorage.setItem("routePaths",JSON.stringify(route))
+        }
+
     }, [pages,search])
 
     return (
@@ -123,11 +175,12 @@ function Index(props) {
                         <DivisionSideBar activeBtn={pages}/>
                     </Divisions>
                     :pages === "artist"?
-                        search?
-                        <SearchByArtist>
-                            <DivisionSideBar activeBtn="detailedPage"/>
-                        </SearchByArtist>
-                        :<Artists>
+                        // search?
+                        // <SearchByArtist>
+                        //     <DivisionSideBar activeBtn="detailedPage"/>
+                        // </SearchByArtist>
+                        // :
+                        <Artists>
                             <ArtistSideBar/>
                         </Artists>
                     :pages === "illustration-artists"?

@@ -64,8 +64,6 @@ function NewestArtists(props) {
     updateTempArtist(props.searchArtist)
   }, [newestArtistImageDataSlice,props.searchArtist]);
 
-  console.log("NAUMAN",newestArtistImageDataSlice)
-  
   return (
     <>
       <div class="sortingcont right pt-0  me-0 ">
