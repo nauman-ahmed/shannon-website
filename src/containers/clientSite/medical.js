@@ -55,7 +55,6 @@ function MEDICAL(props) {
 }
 
   useEffect(() => {
-    localStorage.setItem("Category","Medical")
     updateTempArtist(props.searchArtist)
   }, [props.searchArtist]);
 

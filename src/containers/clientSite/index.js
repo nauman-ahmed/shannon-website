@@ -99,54 +99,65 @@ function Index(props) {
     useEffect(() => {
         setSearchArtist("")
 
-        if(!localStorage.getItem("routePaths")){
-            const route = ["Home"]
-            localStorage.setItem("routePaths",JSON.stringify(route))
+        if(pages == undefined){
+            localStorage.setItem("Category","none")
+            localStorage.setItem("Bipoc","none")
         }
 
         if(pages == "divisions"){
-            const route = ["Home","Division"]
+            const route = [{val:"Home",link:"./"},{val:"Division",link:"./divisions"}]
+
             localStorage.setItem("routePaths",JSON.stringify(route))
+            localStorage.setItem("Category","none")
+            localStorage.setItem("Bipoc","none")
         }
         if(divisions.includes(pages)){
             if(pages == "illustration-artists"){
-                const route = ["Home","Division","Illustration"]
+                const route = [{val:"Home",link:"./"},{val:"Division",link:"./divisions"},{val:"Illustration",link:"./illustration-artists"}]
                 localStorage.setItem("routePaths",JSON.stringify(route))
+                localStorage.setItem("Category","none")
+                localStorage.setItem("Bipoc","none")
             }else{
+                localStorage.setItem("Category",pages.charAt(0).toUpperCase() + pages.slice(1) )
                 const letter = pages.charAt(0).toUpperCase() + pages.slice(1);
-                const route = ["Home","Division",letter]
+                const route = [{val:"Home",link:"./"},{val:"Division",link:"./divisions"},{val:letter,link:"./"+pages}]
                 localStorage.setItem("routePaths",JSON.stringify(route))
+                localStorage.setItem("Bipoc","none")
             }
         }
 
         if(pages == "categories"){
-            const route = ["Home","Categories"]
+            const route = [{val:"Home",link:"./"},{val:"Categories",link:"./categories"}]
             localStorage.setItem("routePaths",JSON.stringify(route))
+            localStorage.setItem("Bipoc","none")
             if(search){
                 const path = localStorage.getItem("Category")
-                const route = ["Home","Categories",path]
+                const route = [{val:"Home",link:"./"},{val:"Categories",link:"./categories"},{val:path,link:"./categories/"+search}]
                 localStorage.setItem("routePaths",JSON.stringify(route))
+                localStorage.setItem("Bipoc","none")
             }
         }
 
         if(pages == "bipoc"){
-            const route = ["Home","Bipoc"]
-            localStorage.setItem("routePaths",JSON.stringify(route))
             if(search){
                 const letter = search.charAt(0).toUpperCase() + search.slice(1);
-                const route = ["Home","Bipoc",letter]
+                const route = [{val:"Home",link:"./"},{val:"Bipoc",link:"./bipoc"},{val:letter,link:"./bipoc/"+search}]
                 localStorage.setItem("routePaths",JSON.stringify(route))
+                localStorage.setItem("Category","none")
+                localStorage.setItem("Bipoc",letter)
             }
         }
 
         if(pages == "newest"){
-            const route = ["Home","Newest Artists"]
+            const route = [{val:"Home",link:"./"},{val:"Newest Artists",link:"./newest"}]
             localStorage.setItem("routePaths",JSON.stringify(route))
+            localStorage.setItem("Category","none")
         }
 
         if(pages == "recentlyUpdated"){
-            const route = ["Home","Recently Updated Artists"]
+            const route = [{val:"Home",link:"./"},{val:"Recently Updated Artists",link:"./recentlyUpdated"}]
             localStorage.setItem("routePaths",JSON.stringify(route))
+            localStorage.setItem("Category","none")
         }
 
     }, [pages,search])

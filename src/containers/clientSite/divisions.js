@@ -83,7 +83,6 @@ const images = window.location.origin + "/assets/images";
   }, [artistImageDivisionDataSlice,props.searchArtist]);
 
   useEffect(() => { 
-    localStorage.setItem("Category","none")
     dispatch(artistDivision({}));
   }, []);
 

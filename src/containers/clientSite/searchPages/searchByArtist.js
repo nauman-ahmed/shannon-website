@@ -398,13 +398,15 @@ function SearchByArtist(props) {
             </div>
             <div className="row mid_full_content">
               <div className="pl-2 mid_content">
-              <div className={windowSize.innerWidth < 479 ? "" : "d-flex"} style={windowSize.innerWidth < 479 ? { marginLeft: "8%" } : {marginBottom:"10px", width:"98.4%" }} >
                 {
-                  JSON.parse(localStorage.getItem("routePaths")) ?  
-                  JSON.parse(localStorage.getItem("routePaths")).map((val,ind) => <p style={ind == 0 ? { fontWeight: "bold",fontSize:"0.9rem" } : { fontWeight: "bold", marginLeft:"5px",fontSize:"0.9rem" }}>{val} {JSON.parse(localStorage.getItem("routePaths")).length == ind + 1 ? null : ">"}</p>)
-                  : <p style={{ fontWeight: "bold",fontSize:"0.9rem" }}>Home</p>
+                  JSON.parse(localStorage.getItem("routePaths")) ? 
+                  <div className={windowSize.innerWidth < 479 ? "" : "d-flex"} style={windowSize.innerWidth < 479 ? { marginLeft: "8%" } : {marginBottom:"10px", width:"98.4%" }} >
+                    {
+                      JSON.parse(localStorage.getItem("routePaths")).map((obj,ind) => <p className="breadCrumbs" onClick={()=> history.push(obj.link)} style={ind == 0 ? { } : { marginLeft:"5px" }}>{obj.val} {JSON.parse(localStorage.getItem("routePaths")).length == ind + 1 ? null : ">"}</p>)
+                    }
+                    </div>
+                  : null
                 }
-              </div>
               <div className={windowSize.innerWidth < 479 ? "" : "d-flex"} style={windowSize.innerWidth < 479 ? { marginLeft: "8%" } : { justifyContent: "space-between", marginTop: "-10px" ,marginBottom:"10px", width:"98.4%" }} > 
                 <h2 className="h2talent">{data1[pages].title}</h2>  
                 {

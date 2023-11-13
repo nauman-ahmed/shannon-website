@@ -59,6 +59,7 @@ function Categories(props) {
   }, [artistImageKeywordDataSlice, props.searchArtist]);
 
   useEffect(() => {
+    console.log(localStorage.getItem("Category") )
     dispatch(artistKeyword({ keyword: localStorage.getItem("Category") }));
   }, [search]);
 

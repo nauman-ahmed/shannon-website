@@ -201,7 +201,7 @@ function Edit(props) {
             <label className='px-3'>
                 <input className='mr-2' name="Indigenous" type="radio" value={"Indigenous"} checked={bipocType === "Indigenous"}  onClick={(e)=>changeArtistBipocType(e)}/>
                 Indigenous
-            </label>
+            </label> 
             <div className='col-12 d-flex justify-content-end'>
                 {props.holder?<img className='mt-1' alt="loading" src={loading} style={{width:"30px"}}/>:<button className='mx-1 myBtn active sm' onClick={(e) => { props.updateArtist(e,{
                     _id:props.selectedArtist._id,

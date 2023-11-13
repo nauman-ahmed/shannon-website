@@ -60,8 +60,16 @@ function DivisionSideBar(props) {
         }
       )
     }else if(props.activeBtn === "detailedPage"){
-      console.log(props.activeBtn);
-      setArtistData(sortAlphaOrder(ArtistDataAPI.artistData!==undefined?ArtistDataAPI.artistData.length>0?ArtistDataAPI.artistData:[]:[]))
+      let localPrevCate = localStorage.getItem("Category") == "cgi" || localStorage.getItem("Category") == "motion" ? "3D Rendering" : localStorage.getItem("Category") == "none" ? "ILLUSTRATION" : localStorage.getItem("Category") 
+      let bipocCat = localStorage.getItem("Bipoc") == "none" ? null : localStorage.getItem("Bipoc")
+      getArtistCategoryTypeOne(bipocCat ? {keyword:localPrevCate,type:1,bipocCat} : {keyword:localPrevCate,type:1}).then(res => {
+        setArtistData(
+          sortAlphaOrder(res!==undefined?res.length>0?res:[]:[])
+          )
+        }
+      )
+      // console.log(props.activeBtn);
+      // setArtistData(sortAlphaOrder(ArtistDataAPI.artistData!==undefined?ArtistDataAPI.artistData.length>0?ArtistDataAPI.artistData:[]:[]))
     }
     getCategoryTypeOne().then(res => { 
       setKeywordReducer(sortAlphaOrderKeyword(res!==undefined?res.length>0?res:[]:[]))})
@@ -78,7 +86,9 @@ function DivisionSideBar(props) {
         category = search2.replace("_",'/');
       }else{
         category = search2.replace("_"," ");
+        category = category.replace("_"," ");
       }
+      console.log("DIVISION",category,search2)
       localStorage.setItem("Category",category);
     }
   
@@ -101,7 +111,7 @@ function DivisionSideBar(props) {
       {pages == "categories"? 
         keywordReducer?.length > 0 ? keywordReducer?.map((item,key)=>(
           <div key={key}>
-            {item.type === 1?(<Link to={item.keyword.includes("/") ?  "/categories/"+item.keyword.replace(/\//g, '_') : "/categories/"+item.keyword.replace(/\s/g, '_')}  onClick={()=>{localStorage.setItem("Category",item.keyword == '3D Rendering' ? "3D Rendering" : item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1) )}} className={"divisionslink"+(localStorage.getItem("Category") === item.keyword?" w--current":"")}><span className="sidebarlink">{item.keyword.toUpperCase()}<br /></span></Link>):""}
+            {item.type === 1?(<Link to={item.keyword.includes("/") ?  "/categories/"+item.keyword.replace(/\//g, '_') : "/categories/"+item.keyword.replace(/\s/g, '_')}  onClick={()=>{}} className={"divisionslink"+(localStorage.getItem("Category") === item.keyword?" w--current":"")}><span className="sidebarlink">{item.keyword.toUpperCase()}<br /></span></Link>):""}
           </div> 
         )):"" 
         : 

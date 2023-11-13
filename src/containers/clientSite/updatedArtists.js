@@ -65,7 +65,6 @@ function UpdatedArtists(props) {
   }
 
   useEffect(() => {
-    localStorage.setItem("Category","none")
     updateTempArtist(props.searchArtist)
   }, [recentlyArtistImageDataSlice,props.searchArtist]);
 

@@ -57,7 +57,6 @@ function Photography(props) {
   }
 
   useEffect(() => {
-    localStorage.setItem("Category","Photography")
     updateTempArtist(props.searchArtist)
   }, [props.searchArtist]);
 

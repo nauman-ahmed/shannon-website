@@ -256,6 +256,7 @@ function Portfolio(props) {
   }
 
   const goToPortfolioHandler = () =>{
+    localStorage.removeItem("routePaths")
     window.open('/'+props.selectedArtist.fullName, '_blank');
   }
 

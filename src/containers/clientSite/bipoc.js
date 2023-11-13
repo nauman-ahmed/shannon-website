@@ -301,6 +301,14 @@ function Bipoc() {
     }
   }, [window.innerWidth])
 
+  const storeBipocCat = (cat) => {
+    const route = [{val:"Home",link:"./"},{val:"Bipoc",link:"./bipoc"},{val:cat,link:"./bipoc/"+cat}]
+   
+    localStorage.setItem("routePaths",JSON.stringify(route))
+    localStorage.setItem("Category","none")
+    localStorage.setItem("Bipoc",cat)
+  }
+
   return (
     <> 
       <h1 className="newsh2 hide" >BLACK + INDIGENOUS + PEOPLE OF COLOR</h1>
@@ -364,9 +372,9 @@ function Bipoc() {
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                     to={val.artistData.fullName}
                     className="sidebarlink"
+                    onClick={()=>storeBipocCat("Black")}
                   >
                     <div className="sidebarlink">{ val.artistData.firstname.toUpperCase()+ " " + val.artistData.lastname.toUpperCase() }</div>
-                    {/* <div className="text-block-5">{val.artistData.firstname.toUpperCase()  + " " + val.artistData.lastname.toUpperCase()}</div> */}
                     </Link>
                 </div>): null)
                 :
@@ -402,6 +410,7 @@ function Bipoc() {
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                     to={val.artistData.fullName}
                     className="bipocLink"
+                    onClick={()=>storeBipocCat("Black")}
                   >
                     <div className=" card_img2 detail_card3_h" style={{ position: "relative",   overflow:"hidden",}}>
                       <img src={val.ImageData[0].subImage[0].path} val={val} className="h-100 w-100" ></img>
@@ -453,6 +462,7 @@ function Bipoc() {
                     id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                     to={val.artistData.fullName}
+                    onClick={()=>storeBipocCat("Asian")}
                     className="sidebarlink"
                   >
                     <div className="sidebarlink">{ val.artistData.firstname.toUpperCase()  + " " +val.artistData.lastname.toUpperCase()}</div>
@@ -490,7 +500,7 @@ function Bipoc() {
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                     to={val.artistData.fullName}
                     className="bipocLink "
-                    
+                    onClick={()=>storeBipocCat("Asian")}
                   >
                     <div className="card_img2 detail_card3_h" style={{ position: "relative",   overflow:"hidden"}}>
                       <img src={val.ImageData[0].subImage[0].path} val={val} className=" w-100 h-100" ></img>
@@ -519,6 +529,7 @@ function Bipoc() {
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                     to={val.artistData.fullName}
                     className="sidebarlink"
+                    onClick={()=>storeBipocCat("Latino")}
                   >
                     <div className="sidebarlink">{val.artistData.firstname.toUpperCase()  + " " + val.artistData.lastname.toUpperCase()}</div>
                   </Link>
@@ -547,6 +558,7 @@ function Bipoc() {
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                     to={val.artistData.fullName}
                     className="bipocLink"
+                    onClick={()=>storeBipocCat("Latino")}
                   >
                     <div className="card_img2 detail_card3_h" style={{ position: "relative",   overflow:"hidden",}}>
                       <img src={val.ImageData[0].subImage[0].path} val={val} className="w-100 h-100"></img>
@@ -582,6 +594,7 @@ function Bipoc() {
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                     to={val.artistData.fullName}
                     className="sidebarlink"
+                    onClick={()=>storeBipocCat("Central Asia")}
                   >
                     <div className="sidebarlink">{val.artistData.firstname.toUpperCase()  + " " + val.artistData.lastname.toUpperCase()}</div>
                     {/* <div className="text-block-5">{val.artistData.firstname.toUpperCase()  + " " + val.artistData.lastname.toUpperCase()}</div> */}
@@ -610,6 +623,7 @@ function Bipoc() {
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                     to={val.artistData.fullName}
                     className="bipocLink"
+                    onClick={()=>storeBipocCat("Central Asia")}
                   >
                     <div className="card_img2 detail_card3_h" style={{ position: "relative",   overflow:"hidden",}}>
                       <img src={val.ImageData[0].subImage[0].path} val={val} className="w-100 h-100"></img>
@@ -645,6 +659,7 @@ function Bipoc() {
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                     to={val.artistData.fullName}
                     className="sidebarlink"
+                    onClick={()=>storeBipocCat("Indigenous")}
                   >
                     <div className="sidebarlink">{val.artistData.firstname.toUpperCase()  + " " + val.artistData.lastname.toUpperCase()}</div>
                   </Link>
@@ -681,6 +696,7 @@ function Bipoc() {
                     data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                     to={val.artistData.fullName}
                     className="bipocLink"
+                    onClick={()=>storeBipocCat("Indigenous")}
                   >
                     <div className="card_img2 detail_card3_h" style={{ position: "relative",overflow: "hidden" }}>
                       <img src={val.ImageData[0].subImage[0].path} val={val} className="w-100 h-100"></img>
