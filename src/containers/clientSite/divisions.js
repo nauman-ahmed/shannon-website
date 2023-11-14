@@ -86,6 +86,15 @@ const images = window.location.origin + "/assets/images";
     dispatch(artistDivision({}));
   }, []);
 
+  const storeDivCat = (cat,link) => {
+    let order = cat == "Illustration" ? {val:cat,link:"./illustration-artists"} : {val:cat, link:"./"+cat.toLowerCase()}
+    const route = [{val:"Home",link:"./"},{val:"Divisions",link:"./divisions"},order]
+    console.log(order,route)
+   
+    localStorage.setItem("routePaths",JSON.stringify(route))
+    localStorage.setItem("Category","none")
+    localStorage.setItem("Bipoc","none")
+  }
 
   return (<>
       <div class="sortingcont right pt-0  me-0 ">
@@ -146,6 +155,7 @@ const images = window.location.origin + "/assets/images";
                                 data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                                 to={item1.artistId.fullName}
                                 className="artistcard w-inline-block"
+                                onClick={() => storeDivCat(item.keyword,item.keyword)}
                               >
                                 {/* <div className="detail_card4_h" style={{ position: "relative", overflow: "hidden" }}> */}
                                 <img
@@ -222,6 +232,7 @@ const images = window.location.origin + "/assets/images";
                                 data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
                                 to={item1.artistId.fullName}
                                 className="artistcard w-inline-block"
+                                onClick={() => storeDivCat(item.keyword,item.keyword)}
                               >
                                 {/* <div className="detail_card4_h" style={{ position: "relative", overflow: "hidden" }}> */}
                                 <img

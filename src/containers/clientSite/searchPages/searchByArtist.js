@@ -194,6 +194,14 @@ function SearchByArtist(props) {
     localPrevCate = localPrevCate || "none"
     let tempData = await artistImageDetailedSliceData({ "fullName": pages, "category": localPrevCate })
 
+    if(localStorage.getItem("routePaths")){
+      let route = JSON.parse(localStorage.getItem("routePaths"))
+      if(!route.find((obj) => obj.artistExist == true)){
+        route.push({val:tempData.activeArtist[pages].firstname + " " + tempData.activeArtist[pages].lastname,artistExist:true})
+        localStorage.setItem("routePaths",JSON.stringify(route))
+      }
+    }
+    
     dataLocalArtist(
       tempData.activeArtist[pages].fullName,
       tempData.activeArtist[pages].id,
@@ -402,7 +410,7 @@ function SearchByArtist(props) {
                   JSON.parse(localStorage.getItem("routePaths")) ? 
                   <div className={windowSize.innerWidth < 479 ? "" : "d-flex"} style={windowSize.innerWidth < 479 ? { marginLeft: "8%" } : {marginBottom:"10px", width:"98.4%" }} >
                     {
-                      JSON.parse(localStorage.getItem("routePaths")).map((obj,ind) => <p className="breadCrumbs" onClick={()=> history.push(obj.link)} style={ind == 0 ? { } : { marginLeft:"5px" }}>{obj.val} {JSON.parse(localStorage.getItem("routePaths")).length == ind + 1 ? null : ">"}</p>)
+                      JSON.parse(localStorage.getItem("routePaths")).map((obj,ind) => <p className={JSON.parse(localStorage.getItem("routePaths")).length == ind + 1 ? "breadCrumbs" : "breadCrumbsActive" } onClick={JSON.parse(localStorage.getItem("routePaths")).length == ind + 1 ? () => {} : ()=> history.push(obj.link)} style={ind == 0 ? { } : { marginLeft:"5px" }}>{obj.val} {JSON.parse(localStorage.getItem("routePaths")).length == ind + 1 ? null : ">"}</p>)
                     }
                     </div>
                   : null

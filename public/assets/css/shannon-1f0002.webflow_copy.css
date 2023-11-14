@@ -4475,12 +4475,18 @@ column-gap:20px ;
   font-size: 10px;
 }
 
-.breadCrumbs:hover {
+.breadCrumbsActive:hover {
   color: #ffb71b;
   cursor: pointer;
 }
 
 .breadCrumbs { 
+  color: #ffb71b;
+  font-weight: "bold";
+  font-size:"0.9rem";
+};
+
+.breadCrumbsActive { 
   font-weight: "bold";
   font-size:"0.9rem";
 };

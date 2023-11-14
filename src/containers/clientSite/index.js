@@ -104,23 +104,23 @@ function Index(props) {
             localStorage.setItem("Bipoc","none")
         }
 
-        if(pages == "divisions"){
-            const route = [{val:"Home",link:"./"},{val:"Division",link:"./divisions"}]
+        // if(pages == "divisions"){
+        //     const route = [{val:"Home",link:"./"},{val:"Divisions",link:"./divisions"}]
 
-            localStorage.setItem("routePaths",JSON.stringify(route))
-            localStorage.setItem("Category","none")
-            localStorage.setItem("Bipoc","none")
-        }
+        //     localStorage.setItem("routePaths",JSON.stringify(route))
+        //     localStorage.setItem("Category","none")
+        //     localStorage.setItem("Bipoc","none")
+        // }
         if(divisions.includes(pages)){
             if(pages == "illustration-artists"){
-                const route = [{val:"Home",link:"./"},{val:"Division",link:"./divisions"},{val:"Illustration",link:"./illustration-artists"}]
+                const route = [{val:"Home",link:"./"},{val:"Divisions",link:"./divisions"},{val:"Illustration",link:"./illustration-artists"}]
                 localStorage.setItem("routePaths",JSON.stringify(route))
                 localStorage.setItem("Category","none")
                 localStorage.setItem("Bipoc","none")
             }else{
                 localStorage.setItem("Category",pages.charAt(0).toUpperCase() + pages.slice(1) )
                 const letter = pages.charAt(0).toUpperCase() + pages.slice(1);
-                const route = [{val:"Home",link:"./"},{val:"Division",link:"./divisions"},{val:letter,link:"./"+pages}]
+                const route = [{val:"Home",link:"./"},{val:"Divisions",link:"./divisions"},{val:letter,link:"./"+pages}]
                 localStorage.setItem("routePaths",JSON.stringify(route))
                 localStorage.setItem("Bipoc","none")
             }
