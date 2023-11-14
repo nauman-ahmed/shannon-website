@@ -116,7 +116,6 @@ function DivisionSideBar(props) {
         )):"" 
         : 
         <div className="allartist v2">
-          {props.activeBtn === "detailedPage" ? null :
             <div>
               <Link to="/illustration-artists" className={"divisionslink"+(props.activeBtn === "illustration-artists" || localStorage.getItem("Category") == "none"?" w--current":"")}><span className="sidebarlink">ILLUSTRATION<br /></span></Link>
               <Link to="/bipoc" className={"divisionslink"+(props.activeBtn === "bipoc"?" w--current":"")}><span className="sidebarlink">BIPOC<br /></span></Link>
@@ -126,7 +125,7 @@ function DivisionSideBar(props) {
               <Link to="/motion" className={"divisionslink"+(props.activeBtn === "motion" || localStorage.getItem("Category") == "motion" ? " w--current":"")}><span className="sidebarlink">MOTION</span></Link>
               <br /><br /><br /><br />
             </div>
-          }
+          
         {/* {pages == "categories" && keywordReducer?.length > 0 ? keywordReducer?.map((item,key)=>(
             <div key={key}>
             {item.type === 1?(<Link to={"/divisions/"+item.keyword}  className={"divisionslink"+(props.activeBtn === item.keyword?" w--current":"")}><span className="sidebarlink">{item.keyword.toUpperCase()}<br /></span></Link>):""}
