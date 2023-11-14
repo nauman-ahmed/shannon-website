@@ -97,7 +97,6 @@ function DivisionSideBar(props) {
 
   return ( 
     <div id="w-node-_783b3b4a-9daa-ecbf-356e-d84dbb36f4cc-bb36f4cc" className="respdivhide"> 
-      {props.activeBtn === "detailedPage" ? null :
       <h3 className="homeh3" style={props.activeBtn === "detailedPage" ? {textDecorationLine:"none"} : { color:"#000000", fontFamily: "Montserrat, sans-serif", textUnderlineOffset : "5px", fontWeight: 800 }}>{
         props.activeBtn === "illustration-artists" ? "ILLUSTRATION" 
         : props.activeBtn === "cgi" ? "CGI" 
@@ -107,7 +106,7 @@ function DivisionSideBar(props) {
         : props.activeBtn === "categories" ? "CATEGORIES" 
         : props.activeBtn === "detailedPage" ? "SELECT BY CATEGORY" 
         : "DIVISIONS"
-        }</h3>}
+        }</h3>
       {pages == "categories"? 
         keywordReducer?.length > 0 ? keywordReducer?.map((item,key)=>(
           <div key={key}>
