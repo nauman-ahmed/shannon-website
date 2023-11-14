@@ -91,7 +91,18 @@ function DivisionSideBar(props) {
       console.log("DIVISION",category,search2)
       localStorage.setItem("Category",category);
     }
-  
+    
+    return () => {
+      if(localStorage.getItem("routePaths")){
+        let route = JSON.parse(localStorage.getItem("routePaths"))
+        if(route.find((obj) => obj.artistExist == true)){
+          route.pop()
+          // route.push({val:tempData.activeArtist[pages].firstname + " " + tempData.activeArtist[pages].lastname,artistExist:true})
+          localStorage.setItem("routePaths",JSON.stringify(route))
+        }
+      }
+    }
+
   }, [search2])
   
 
