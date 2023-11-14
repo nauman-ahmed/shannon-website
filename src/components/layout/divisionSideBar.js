@@ -117,7 +117,7 @@ function DivisionSideBar(props) {
         : 
         <div className="allartist v2">
             <div>
-              <Link to="/illustration-artists" className={"divisionslink"+(props.activeBtn === "illustration-artists" || localStorage.getItem("Category") == "none"?" w--current":"")}><span className="sidebarlink">ILLUSTRATION<br /></span></Link>
+              <Link to="/illustration-artists" className={"divisionslink"+(props.activeBtn === "illustration-artists" ?" w--current":"")}><span className="sidebarlink">ILLUSTRATION<br /></span></Link>
               <Link to="/bipoc" className={"divisionslink"+(props.activeBtn === "bipoc"?" w--current":"")}><span className="sidebarlink">BIPOC<br /></span></Link>
               <a href="https://kidshannon.com" target="_blank" className="sidebarlink">KIDSHANNON<br /></a>
               <Link to="/photography" className={"divisionslink"+(props.activeBtn === "photography" || localStorage.getItem("Category") == "Photography" ? " w--current":"")}><span className="sidebarlink">PHOTOGRAPHY<br /></span></Link>
