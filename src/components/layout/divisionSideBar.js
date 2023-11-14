@@ -116,11 +116,12 @@ function DivisionSideBar(props) {
         )):"" 
         : 
         <div className="allartist v2">
-          {props.activeBtn === "detailedPage" ? null :
+          {localStorage.getItem("routePaths")[1]?.vals === "Categories" ? null :
             <div>
               <Link to="/illustration-artists" className={"divisionslink"+(props.activeBtn === "illustration-artists" || localStorage.getItem("Category") == "none"?" w--current":"")}><span className="sidebarlink">ILLUSTRATION<br /></span></Link>
               <Link to="/bipoc" className={"divisionslink"+(props.activeBtn === "bipoc"?" w--current":"")}><span className="sidebarlink">BIPOC<br /></span></Link>
               <a href="https://kidshannon.com" target="_blank" className="sidebarlink">KIDSHANNON<br /></a>
+              <Link to="/photography" className={"divisionslink"+(props.activeBtn === "photography" || localStorage.getItem("Category") == "Photography" ? " w--current":"")}><span className="sidebarlink">PHOTOGRAPHY</span></Link>
               <Link to="/medical" className={"divisionslink"+(props.activeBtn === "medical" || localStorage.getItem("Category") == "Medical" ?" w--current":"")}><span className="sidebarlink">MEDICAL<br /></span></Link>
               <Link to="/motion" className={"divisionslink"+(props.activeBtn === "motion" || localStorage.getItem("Category") == "motion" ? " w--current":"")}><span className="sidebarlink">MOTION</span></Link>
               <br /><br /><br /><br />
