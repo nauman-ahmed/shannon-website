@@ -131,7 +131,7 @@ function DivisionSideBar(props) {
             {
               localStorage.getItem("Category") !== "none"? 
               <div>
-                <br /><br /><br /><br />
+                <br /><br />
               </div>
               :
               <div>
