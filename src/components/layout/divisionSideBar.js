@@ -128,46 +128,49 @@ function DivisionSideBar(props) {
         )):"" 
         : 
         <div className="allartist v2">
-            <div>
-              <Link to="/illustration-artists" className={"divisionslink"+(props.activeBtn === "illustration-artists" ?" w--current":"")}><span className="sidebarlink">ILLUSTRATION<br /></span></Link>
-              <Link to="/bipoc" className={"divisionslink"+(props.activeBtn === "bipoc"?" w--current":"")}><span className="sidebarlink">BIPOC<br /></span></Link>
-              <a href="https://kidshannon.com" target="_blank" className="sidebarlink">KIDSHANNON<br /></a>
-              <Link to="/photography" className={"divisionslink"+(props.activeBtn === "photography" || localStorage.getItem("Category") == "Photography" ? " w--current":"")}><span className="sidebarlink">PHOTOGRAPHY<br /></span></Link>
-              <Link to="/medical" className={"divisionslink"+(props.activeBtn === "medical" || localStorage.getItem("Category") == "Medical" ?" w--current":"")}><span className="sidebarlink">MEDICAL<br /></span></Link>
-              <Link to="/motion" className={"divisionslink"+(props.activeBtn === "motion" || localStorage.getItem("Category") == "motion" ? " w--current":"")}><span className="sidebarlink">MOTION</span></Link>
-              <br /><br /><br /><br />
-            </div>
-          
-        {/* {pages == "categories" && keywordReducer?.length > 0 ? keywordReducer?.map((item,key)=>(
-            <div key={key}>
-            {item.type === 1?(<Link to={"/divisions/"+item.keyword}  className={"divisionslink"+(props.activeBtn === item.keyword?" w--current":"")}><span className="sidebarlink">{item.keyword.toUpperCase()}<br /></span></Link>):""}
+            {
+              localStorage.getItem("Category") !== "none"? null:
+              <div>
+                <Link to="/illustration-artists" className={"divisionslink"+(props.activeBtn === "illustration-artists" ?" w--current":"")}><span className="sidebarlink">ILLUSTRATION<br /></span></Link>
+                <Link to="/bipoc" className={"divisionslink"+(props.activeBtn === "bipoc"?" w--current":"")}><span className="sidebarlink">BIPOC<br /></span></Link>
+                <a href="https://kidshannon.com" target="_blank" className="sidebarlink">KIDSHANNON<br /></a>
+                <Link to="/photography" className={"divisionslink"+(props.activeBtn === "photography" || localStorage.getItem("Category") == "Photography" ? " w--current":"")}><span className="sidebarlink">PHOTOGRAPHY<br /></span></Link>
+                <Link to="/medical" className={"divisionslink"+(props.activeBtn === "medical" || localStorage.getItem("Category") == "Medical" ?" w--current":"")}><span className="sidebarlink">MEDICAL<br /></span></Link>
+                <Link to="/motion" className={"divisionslink"+(props.activeBtn === "motion" || localStorage.getItem("Category") == "motion" ? " w--current":"")}><span className="sidebarlink">MOTION</span></Link>
+                <br /><br /><br /><br />
+              </div>
+            }
             
-            </div>
-        )):""} */}
-        <h3 className="homeh3" style={{textDecorationLine:"none"}}>SELECT BY ARTIST</h3>
-          {alpha.map((item,key)=>
-        (
-          <div key={key}>
-            {artistData[item] !== undefined ? (
-            <div key={key} className="alphabets" >
-              {item}<br/>
-              {artistData[item].map((item1,key1)=>(
-                  <div key={key1}>
-                  <Link 
-                      to={item1.fullName}
-                      className={"sidebarlink " + (item1.firstname.toLowerCase()+item1.lastname.toLowerCase() === props.currentArtist? "currentSidebar":"") } 
-                      style={search === item1.fullName ? {color: "#fa8e37"} : {}}>
-                      {item1.firstname.toUpperCase()} {item1.lastname.toUpperCase()}<br/>
-                  </Link>
-                  </div>
-                ))}
-              <br/>
-            </div>
-            ): ""}
-        </div>
-        ) 
-        )}
-          <br />
+          {/* {pages == "categories" && keywordReducer?.length > 0 ? keywordReducer?.map((item,key)=>(
+              <div key={key}>
+              {item.type === 1?(<Link to={"/divisions/"+item.keyword}  className={"divisionslink"+(props.activeBtn === item.keyword?" w--current":"")}><span className="sidebarlink">{item.keyword.toUpperCase()}<br /></span></Link>):""}
+              
+              </div>
+          )):""} */}
+          <h3 className="homeh3" style={{textDecorationLine:"none"}}>SELECT BY ARTIST</h3>
+            {alpha.map((item,key)=>
+          (
+            <div key={key}>
+              {artistData[item] !== undefined ? (
+              <div key={key} className="alphabets" >
+                {item}<br/>
+                {artistData[item].map((item1,key1)=>(
+                    <div key={key1}>
+                    <Link 
+                        to={item1.fullName}
+                        className={"sidebarlink " + (item1.firstname.toLowerCase()+item1.lastname.toLowerCase() === props.currentArtist? "currentSidebar":"") } 
+                        style={search === item1.fullName ? {color: "#fa8e37"} : {}}>
+                        {item1.firstname.toUpperCase()} {item1.lastname.toUpperCase()}<br/>
+                    </Link>
+                    </div>
+                  ))}
+                <br/>
+              </div>
+              ): ""}
+          </div>
+          ) 
+          )}
+            <br />
         </div>
       }
     </div>
