@@ -19,6 +19,8 @@ function DivisionSideBar(props) {
   const currentArtist = useRef(0);
   let currArtist = "";
 
+  const pagesWithSideMenu = ["Illustration-artists","Photography","Medical","Motion"];
+
   let alpha = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
   
   useEffect(()=>{
@@ -129,7 +131,7 @@ function DivisionSideBar(props) {
         : 
         <div className="allartist v2">
             {
-              localStorage.getItem("Category") !== "none" && localStorage.getItem("Category") !== "Illustration-artists"? 
+              localStorage.getItem("Category") !== "none" && !pagesWithSideMenu.includes(localStorage.getItem("Category"))? 
               <div>
                 <br /><br />
               </div>
