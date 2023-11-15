@@ -93,7 +93,6 @@ function Index(props) {
         dispatch(ArtistDataAPI());
         dispatch(keywordDataApi());
         dispatch(RecentlyArtistImageSliceData());
-        localStorage.clear();
     }, [])
 
     useEffect(() => {
@@ -102,6 +101,7 @@ function Index(props) {
         if(pages == undefined){
             localStorage.setItem("Category","none")
             localStorage.setItem("Bipoc","none")
+            localStorage.setItem("routePaths","none");
         }
 
         // if(pages == "divisions"){
