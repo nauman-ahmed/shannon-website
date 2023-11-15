@@ -113,7 +113,7 @@ function Index(props) {
         // }
         if(divisions.includes(pages)){
             if(pages == "illustration-artists" || pages == "divisions"){
-                const route = [{val:"Home",link:"./"},{val:"Divisions",link:"./divisions"},{val:"Illustration",link:"./illustration-artists"}]
+                const route = [{val:"Home",link:"./"},{val:"Divisions",link:"./divisions"}] //,{val:"Illustration",link:"./illustration-artists"}
                 localStorage.setItem("routePaths",JSON.stringify(route))
                 localStorage.setItem("Category","none")
                 localStorage.setItem("Bipoc","none")
