@@ -129,7 +129,7 @@ function DivisionSideBar(props) {
         : 
         <div className="allartist v2">
             {
-              localStorage.getItem("Category") !== "none" || localStorage.getItem("Category") !== "Illustration-artists"? 
+              localStorage.getItem("Category") !== "none" && localStorage.getItem("Category") !== "Illustration-artists"? 
               <div>
                 <br /><br />
               </div>
