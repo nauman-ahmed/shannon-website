@@ -101,7 +101,7 @@ function Index(props) {
         if(pages == undefined){
             localStorage.setItem("Category","none")
             localStorage.setItem("Bipoc","none")
-            localStorage.setItem("routePaths","none");
+            localStorage.clear("routePaths");
         }
 
         // if(pages == "divisions"){
