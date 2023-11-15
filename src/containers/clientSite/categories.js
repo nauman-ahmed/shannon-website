@@ -80,7 +80,7 @@ function Categories(props) {
 
   useEffect(() => {
     dispatch(artistKeyword({type:1}));
-    localStorage.setItem("Categories","");
+    localStorage.setItem("Category","");
   }, []);
 
   return (<>
