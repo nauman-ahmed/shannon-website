@@ -129,7 +129,11 @@ function DivisionSideBar(props) {
         : 
         <div className="allartist v2">
             {
-              localStorage.getItem("Category") !== "none"? null:
+              localStorage.getItem("Category") !== "none"? 
+              <div>
+                <br /><br /><br /><br />
+              </div>
+              :
               <div>
                 <Link to="/illustration-artists" className={"divisionslink"+(props.activeBtn === "illustration-artists" ?" w--current":"")}><span className="sidebarlink">ILLUSTRATION<br /></span></Link>
                 <Link to="/bipoc" className={"divisionslink"+(props.activeBtn === "bipoc"?" w--current":"")}><span className="sidebarlink">BIPOC<br /></span></Link>
