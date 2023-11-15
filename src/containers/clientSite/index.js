@@ -53,7 +53,7 @@ function Index(props) {
     const [searchDivision,setSearchDivision] = useState("");
     const [tempDivision,setTempDivision]= useState([]);
 
-    const divisions = ["illustration-artists","cgi","medical","motion","photography"]
+    const divisions = ["illustration-artists","cgi","medical","motion","photography","divisions"]
 
     const updateTempArtist = (e)=>{
         setSearchArtist(e.target.value);
