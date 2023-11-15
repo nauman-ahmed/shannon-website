@@ -109,7 +109,7 @@ function DivisionSideBar(props) {
   return ( 
     <div id="w-node-_783b3b4a-9daa-ecbf-356e-d84dbb36f4cc-bb36f4cc" className="respdivhide"> 
       
-      <h3 className="homeh3" style={props.activeBtn === "detailedPage" ? {textDecorationLine:"none"} : { color:"#000000", fontFamily: "Montserrat, sans-serif", textUnderlineOffset : "5px", fontWeight: 800 }}>{
+      <h3 className="homeh3" style={props.activeBtn === "detailedPage" && !localStorage.getItem("routePaths") ? {textDecorationLine:"none"} : { color:"#000000", fontFamily: "Montserrat, sans-serif", textUnderlineOffset : "5px", fontWeight: 800 }}>{
         props.activeBtn === "illustration-artists" ? "ILLUSTRATION" 
         : props.activeBtn === "cgi" ? "CGI" 
         : props.activeBtn === "photography" ? "PHOTOGRAPHY" 
