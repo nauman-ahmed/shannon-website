@@ -93,7 +93,7 @@ function Index(props) {
         dispatch(ArtistDataAPI());
         dispatch(keywordDataApi());
         dispatch(RecentlyArtistImageSliceData());
-        localStorage.removeItem("routePaths");
+        localStorage.setItem("routePaths","");
     }, [])
 
     useEffect(() => {
