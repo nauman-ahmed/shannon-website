@@ -190,7 +190,7 @@ function SearchByArtist(props) {
 
   const getUserData = async () => {
     setIsLoading(true)
-    let localPrevCate = localStorage.getItem("Category") == "cgi" || localStorage.getItem("Category") == "motion" ? "3D Rendering" : localStorage.getItem("Category")
+    let localPrevCate = localStorage.getItem("Category") == "Cgi" || localStorage.getItem("Category") == "Motion" ? "3D Rendering" : localStorage.getItem("Category")
     localPrevCate = localPrevCate || "none"
     let tempData = await artistImageDetailedSliceData({ "fullName": pages, "category": localPrevCate })
 
