@@ -53,7 +53,7 @@ function Index(props) {
     const [searchDivision,setSearchDivision] = useState("");
     const [tempDivision,setTempDivision]= useState([]);
 
-    const divisions = ["illustration-artists","cgi","medical","motion","photography"]
+    const divisions = ["illustration-artists","cgi","medical","motion","photography","divisions"]
 
     const updateTempArtist = (e)=>{
         setSearchArtist(e.target.value);
@@ -93,7 +93,6 @@ function Index(props) {
         dispatch(ArtistDataAPI());
         dispatch(keywordDataApi());
         dispatch(RecentlyArtistImageSliceData());
-
     }, [])
 
     useEffect(() => {
@@ -102,6 +101,7 @@ function Index(props) {
         if(pages == undefined){
             localStorage.setItem("Category","none")
             localStorage.setItem("Bipoc","none")
+            localStorage.removeItem("routePaths");
         }
 
         // if(pages == "divisions"){
@@ -112,8 +112,8 @@ function Index(props) {
         //     localStorage.setItem("Bipoc","none")
         // }
         if(divisions.includes(pages)){
-            if(pages == "illustration-artists"){
-                const route = [{val:"Home",link:"./"},{val:"Divisions",link:"./divisions"},{val:"Illustration",link:"./illustration-artists"}]
+            if(pages == "divisions"){
+                const route = [{val:"Home",link:"./"},{val:"Divisions",link:"./divisions"}] //,{val:"Illustration",link:"./illustration-artists"}
                 localStorage.setItem("routePaths",JSON.stringify(route))
                 localStorage.setItem("Category","none")
                 localStorage.setItem("Bipoc","none")

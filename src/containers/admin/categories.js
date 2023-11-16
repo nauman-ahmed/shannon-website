@@ -75,7 +75,7 @@ function Categories() {
     </div>
     <div className='row scrollerOn py-5'>
       <div className='col-lg-6'>
-        <h4 className='mb-4 text-center'>KEYWORD LISTING</h4>
+        <h4 className='mb-4 text-center'>SHANNONASSOCIATES.COM KEYWORD LISTING</h4>
         <div className='column-3'>
         {categories.length >0?categories.map((item,key)=>(
           item.type === 1? <p style={{cursor:"pointer"}} key={key} onClick={()=>{setUpdateKeyword(item);setIsPopupOpenUpdate(true);setIsPopupOpen(true);}}>{item.keyword}</p>:""
@@ -84,7 +84,7 @@ function Categories() {
         <button onClick={()=>{setIsPopupOpen(true);setType(1)}} className='myBtn mt-5 float-right'>ADD KEYWORD</button>
       </div>
       <div className='col-lg-6'>
-        <h4 className='mb-4 text-center'>KEYWORD LISTING KIDS</h4>
+        <h4 className='mb-4 text-center'>KIDSHANNON.COM KEYWORD LISTING</h4>
         <div className='column-2'>
         {categories.length >0?categories.map((item,key)=>(
           item.type === 2? <p  style={{cursor:"pointer"}} key={key} onClick={()=>{setUpdateKeyword(item);setIsPopupOpenUpdate(true);setIsPopupOpen(true);}}>{item.keyword}</p>:""
