@@ -89,7 +89,6 @@ const images = window.location.origin + "/assets/images";
   const storeDivCat = (cat,link) => {
     let order = cat == "Illustration" ? {val:cat,link:"./illustration-artists"} : {val:cat, link:"./"+cat.toLowerCase()}
     const route = [{val:"Home",link:"./"},{val:"Divisions",link:"./divisions"},order]
-    console.log(order,route)
    
     localStorage.setItem("routePaths",JSON.stringify(route))
     localStorage.setItem("Category","none")
