@@ -517,7 +517,7 @@ function Image_uploading(props) {
                         </div>
                         <div className='col-md-6 col-12 px-0 py-5 border-right border-md-0'>
                             <div className='row m-0'>
-                                <h4 className='col-12 mb-5'>KEYWORD LISTING</h4>
+                                <h4 className='col-12 mb-5'>SHANNONASSOCIATES.COM KEYWORD LISTING</h4>
                                 {keyword !== null &&
                                     keyword.map((val,ind)=>
                                     <div className='col-xl-4 col-lg-6 col-sm-12 col-12' key={ind}>
@@ -537,7 +537,7 @@ function Image_uploading(props) {
                         </div>
                         <div className='col-md-6 col-12 px-0 py-5'>
                             <div className='row m-0'>
-                                <h4 className='col-12 mb-5'>KEYWORD LISTING KIDS</h4>
+                                <h4 className='col-12 mb-5'>KIDSHANNON.COM KEYWORD LISTING</h4>
 
                                 {keywordKids !== null &&
                                     keywordKids.map((val,ind)=>

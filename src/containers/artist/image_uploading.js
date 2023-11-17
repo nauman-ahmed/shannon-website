@@ -433,7 +433,7 @@ function Image_uploading() {
                         </div> */}
                         <div className='col-md-6 col-12 px-0 pb-5 pt-2 border-right border-md-0 border-top'>
                             <div className='row m-0'>
-                                <h4 className='col-12 mb-3'>KEYWORD LISTING</h4>
+                                <h4 className='col-12 mb-3'>SHANNONASSOCIATES.COM KEYWORD LISTING</h4>
                                 {keyword !== null &&
                                     keyword.map((val,ind)=>
                                     <div className='col-xl-4 col-lg-6 col-sm-12 col-12' key={ind}>
@@ -448,7 +448,7 @@ function Image_uploading() {
                         </div>
                         <div className='col-md-6 col-12 px-0 px-0 pb-5 pt-2 border-top'>
                             <div className='row m-0'>
-                                <h4 className='col-12 mb-3'>KEYWORD LISTING KIDS</h4>
+                                <h4 className='col-12 mb-3'>KIDSHANNON.COM KEYWORD LISTING</h4>
                                 {keywordKids !== null &&
                                     keywordKids.map((val,ind)=>
                                     <div className='col-xl-4 col-lg-6 col-sm-12 col-12' key={ind}>

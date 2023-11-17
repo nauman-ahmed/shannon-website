@@ -203,7 +203,7 @@ function Image_keywords(props) {
                     </div>
                     <div className='col-xl-6 col-lg-6'>
                         <div className='row m-0'>
-                            <h4 className='col-12 mb-5'>KEYWORD LISTING</h4>
+                            <h4 className='col-12 mb-5'>SHANNONASSOCIATES.COM KEYWORD LISTING</h4>
                             {keyword !== null &&
                                 keyword.map((val,ind)=>
                                 <div className='col-xl-4 col-lg-3 col-sm-12 col-md-6' key={ind}>
@@ -221,7 +221,7 @@ function Image_keywords(props) {
                             }
                         </div>
                         <div className='row mt-5'>
-                            <h4 className='col-12 mb-5'>KEYWORD LISTING KIDS</h4>
+                            <h4 className='col-12 mb-5'>KIDSHANNON.COM KEYWORD LISTING</h4>
                             {keywordKids !== null &&
                                 keywordKids.map((val,ind)=>
                                     <div className='col-xl-4 col-lg-3 col-sm-12 col-md-6' key={ind}>
