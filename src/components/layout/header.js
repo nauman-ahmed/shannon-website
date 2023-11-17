@@ -95,7 +95,7 @@ function Header(props) {
                   to="/divisions"
                   className={
                     "navlink v2 w-nav-link " +
-                    (props.aciveBtn === "divisions" ? "w--current" : "")
+                    (props.aciveBtn === "divisions" || divisonPagesCurrentStyle.includes(localStorage.getItem("Category")) ? "w--current" : "")
                   }
                 >
                   DIVISIONS
@@ -104,7 +104,7 @@ function Header(props) {
                   to="/categories"
                   className={
                     "navlink v2 w-nav-link " +
-                    (props.aciveBtn === "categories" || divisonPagesCurrentStyle.includes(localStorage.getItem("Category")) ? "w--current" : "")
+                    (props.aciveBtn === "categories" ? "w--current" : "")
                   }
                 >
                   CATEGORIES
