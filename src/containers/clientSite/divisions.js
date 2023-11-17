@@ -87,6 +87,11 @@ const images = window.location.origin + "/assets/images";
   }, []);
 
   const storeDivCat = (cat,link) => {
+
+    if( cat === '3D Rendering'){
+      cat = 'Motion'
+    }
+
     let order = cat == "Illustration" ? {val:cat,link:"./illustration-artists"} : {val:cat, link:"./"+cat.toLowerCase()}
     const route = [{val:"Home",link:"./"},{val:"Divisions",link:"./divisions"},order]
    
