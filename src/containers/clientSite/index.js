@@ -121,7 +121,7 @@ function Index(props) {
             if(pages == "illustration-artists"){
                 const route = [{val:"Home",link:"./"},{val:"Divisions",link:"./divisions"},{val:"Illustration",link:"./illustration-artists"}]
                 localStorage.setItem("routePaths",JSON.stringify(route))
-                localStorage.setItem("Category","Illustration")
+                localStorage.setItem("Category","Illustration-artists")
                 localStorage.setItem("Bipoc","none")
             }else{
                 localStorage.setItem("Category",pages.charAt(0).toUpperCase() + pages.slice(1) )
