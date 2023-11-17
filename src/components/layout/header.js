@@ -11,6 +11,7 @@ function Header(props) {
 
   const { AddToCart } = useSelector((state) => state);
   const dispatch = useDispatch();
+  const divisonPagesCurrentStyle = ["Illustration-artists","Photography","Medical","Motion"];
   
   const [shannonContent,setShannonContent] = useState([])
 
@@ -103,7 +104,7 @@ function Header(props) {
                   to="/categories"
                   className={
                     "navlink v2 w-nav-link " +
-                    (props.aciveBtn === "categories" ? "w--current" : "")
+                    (props.aciveBtn === "categories" || divisonPagesCurrentStyle.includes(localStorage.getItem("Category")) ? "w--current" : "")
                   }
                 >
                   CATEGORIES
