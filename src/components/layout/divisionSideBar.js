@@ -133,7 +133,7 @@ function DivisionSideBar(props) {
             {
               localStorage.getItem("Category") !== "none" && !pagesWithSideMenu.includes(localStorage.getItem("Category"))? 
               <div>
-                <Link to={JSON.parse(localStorage.getItem("routePaths"))[2]?.link} className={"divisionslink w--current"}><span className="sidebarlink">{localStorage.getItem("Category")}<br /></span></Link>
+                <Link to={JSON.parse(localStorage.getItem("routePaths"))[2]?.link} className={"divisionslink w--current"}><span className="sidebarlink">{localStorage.getItem("Category").toUpperCase()}<br /></span></Link>
                 <br /><br />
               </div>
               :
