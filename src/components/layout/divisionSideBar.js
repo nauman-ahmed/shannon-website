@@ -119,7 +119,7 @@ function DivisionSideBar(props) {
         : props.activeBtn === "motion" ? "MOTION" 
         : props.activeBtn === "categories" ? "CATEGORIES" 
         : localStorage.getItem("routePaths") && JSON.parse(localStorage.getItem("routePaths"))[1]?.val === "Categories" ? localStorage.getItem("Category").toUpperCase()
-        : props.activeBtn === "detailedPage" ? "SELECT BY CATEGORY"
+        : props.activeBtn === "detailedPage" ? "SELECT BY DIVISION"
         : "DIVISIONS"
         }</h3>
       {pages == "categories"? 
