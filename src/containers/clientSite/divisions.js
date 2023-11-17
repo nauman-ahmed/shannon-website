@@ -129,12 +129,12 @@ const images = window.location.origin + "/assets/images";
               artistImageDivisionDataSlice.artistKeywordImages.map(
                 (item, key) => (
                   <>
-                    {item.ImageData.length > 0 && item.keyword != '3D Rendering' ? (
+                    {item.ImageData.length > 0 ? (
                       <>
                         <div className="d-flex mt-0 mb-2">
                           <h5 className="divisionHeading mt-0">
                             {
-                              item.keyword == '3D Rendering' ? "CGI" 
+                              item.keyword == '3D Rendering' ? "MOTION" 
                             :
                               item.keyword.toUpperCase()
                             } 
@@ -185,7 +185,7 @@ const images = window.location.origin + "/assets/images";
                           <Link
                             to={ 
                               item.keyword == "Illustration" ? "illustration-artists"
-                              : item.keyword == "3D Rendering" ? "cgi"
+                              : item.keyword == "3D Rendering" ? "motion"
                               : item.keyword == "Photography" ? "photography"
                               : item.keyword == "Medical" ? "medical"
                               : null
@@ -206,12 +206,12 @@ const images = window.location.origin + "/assets/images";
             ) : (
               tempArtist.map((item, key) => ( 
                 <>
-                  {item.ImageData.length > 0 && item.keyword != '3D Rendering'? (
+                  {item.ImageData.length > 0 ? (
                     <>
                       <div className="d-flex mt-0 mb-2">
                           <h5 className="divisionHeading mt-0">
                             {
-                              item.keyword == '3D Rendering' ? "CGI" 
+                              item.keyword == '3D Rendering' ? "MOTION" 
                             :
                               item.keyword.toUpperCase()
                             } 
@@ -262,7 +262,7 @@ const images = window.location.origin + "/assets/images";
                         <Link
                           to={ 
                             item.keyword == "Illustration" ? "illustration-artists"
-                            : item.keyword == "3D Rendering" ? "cgi"
+                            : item.keyword == "3D Rendering" ? "motion"
                             : item.keyword == "Photography" ? "photography"
                             : item.keyword == "Medical" ? "medical"
                             : null
