@@ -11,7 +11,7 @@ function Header(props) {
 
   const { AddToCart } = useSelector((state) => state);
   const dispatch = useDispatch();
-  const divisonPagesCurrentStyle = ["Illustration-artists","Photography","Medical","Motion"];
+  const divisonPagesCurrentStyle = ["Illustration-artists","Photography","Medical","Motion","Divisions"];
   
   const [shannonContent,setShannonContent] = useState([])
 
