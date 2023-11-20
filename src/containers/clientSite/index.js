@@ -133,6 +133,7 @@ function Index(props) {
         }
 
         if(pages == "categories"){
+            console.log(localStorage.getItem("Category"))
             const route = [{val:"Home",link:"./"},{val:"Categories",link:"./categories"}]
             localStorage.setItem("routePaths",JSON.stringify(route))
             localStorage.setItem("Bipoc","none")

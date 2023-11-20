@@ -14,12 +14,12 @@ import axios from "axios";
 // export const IMAGE_ROUTE = "http://3.143.107.63:5000/";
 
 
-// export const BASE_URL = "http://localhost:5001/api/"
-// export const IMAGE_ROUTE = "http://localhost:5001/";
+export const BASE_URL = "http://localhost:5001/api/"
+export const IMAGE_ROUTE = "http://localhost:5001/";
 
 
-export const BASE_URL = "https://api.kidshannon.com/api/"
-export const IMAGE_ROUTE = "https://api.kidshannon.com/";
+// export const BASE_URL = "https://api.kidshannon.com/api/"
+// export const IMAGE_ROUTE = "https://api.kidshannon.com/";
 
 // export const BASE_URL = "http://3.143.107.63:5000/api/"
 // export const IMAGE_ROUTE = "http://3.143.107.63:5000/";
@@ -420,6 +420,15 @@ export const artistPortfolioOrder = async (data) => {
 export const artistImageCreate = async (data) => {
     try {
         const response = await axios.post(BASE_URL + 'artistImage/CreateAll', data);
+        return response.data;
+    } catch (error) {
+        logouter();
+    }
+}
+
+export const keywordImageUpdate = async (data) => {
+    try {
+        const response = await axios.post(BASE_URL + 'keyword/updateKeywordThumbnail', data);
         return response.data;
     } catch (error) {
         logouter();

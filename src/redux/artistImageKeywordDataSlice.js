@@ -5,6 +5,7 @@ import { BASE_URL } from '../AxiosFunctions/Axiosfunctionality';
 export const artistKeyword = createAsyncThunk(
     'artist/ArtistKeywordData', 
     async (payload) => {
+        console.log("AXIOS",payload)
         return axios
         .post(BASE_URL+"artistImage/getAllKeyword",payload)
         .then((response) => response.data)

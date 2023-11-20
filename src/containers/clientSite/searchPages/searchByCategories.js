@@ -41,14 +41,16 @@ function Categories(props) {
       const searchvalue = e.toLowerCase();
       let temp = []
       artistImageKeywordDataSlice.artistKeywordImages.map((val, ind) => {
-        let tempImage = val.ImageData.filter(function (element) {
-          let checker = false
-          if (element.artistId.firstname.toLowerCase().includes(searchvalue) || element.artistId.lastname.toLowerCase().includes(searchvalue)) {
-            checker = true
-          }
-          return checker;
-        })
-        temp.push({ ...val, ImageData: tempImage })
+        if(val.ImageData){
+          let tempImage = val.ImageData.filter(function (element) {
+            let checker = false
+            if (element.artistId.firstname.toLowerCase().includes(searchvalue) || element.artistId.lastname.toLowerCase().includes(searchvalue)) {
+              checker = true
+            }
+            return checker;
+          })
+          temp.push({ ...val, ImageData: tempImage })
+        }
       })
       setTempArtist(temp)
     }
@@ -78,7 +80,7 @@ function Categories(props) {
               artistImageKeywordDataSlice.artistKeywordImages.map(
                 (item, key) =>(
                     <>
-                      {item.ImageData.length > 0 && item.type === 1 ? (
+                      {item.ImageData?.length > 0 && item.type === 1 ? (
                         <>
                           <div id="w-node-f734ee66-0b58-4c14-e08b-49ceded015c9-84f2d081" className="detail_card3_bipoc">
                             {item?.ImageData.map((item1, key1) => {
@@ -115,7 +117,7 @@ function Categories(props) {
             ) : (
               tempArtist.map((item, key) => ( 
                 <>
-                  {item.ImageData.length > 0 ? (
+                  {item.ImageData?.length > 0 ? (
                     <>
                       <div id="w-node-f734ee66-0b58-4c14-e08b-49ceded015c9-84f2d081" className="detail_card3_bipoc">
                         {item.ImageData.map((item1, key1) => {
