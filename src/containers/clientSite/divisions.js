@@ -132,81 +132,85 @@ const images = window.location.origin + "/assets/images";
           ) : artistImageDivisionDataSlice.artistKeywordImages !== undefined ? (
             props.searchArtist === "" && filterCond ? (
               artistImageDivisionDataSlice.artistKeywordImages.map(
-                (item, key) => (
-                  <>
-                    {item.ImageData.length > 0 ? (
+                (item, key) =>{
+                  if (key !==2){
+                    return (
                       <>
-                        <div className="d-flex mt-0 mb-2">
-                          <h5 className="divisionHeading mt-0">
-                            {
-                              item.keyword == '3D Rendering' ? "MOTION" 
-                            :
-                              item.keyword.toUpperCase()
-                            } 
-                          </h5> 
-                          {/* <span style={{width:"100%", height:"1px", color:"#ce651e", border:"1px solid #ce651e", marginTop:"5.5px",marginLeft:6}}></span> */}
-                        </div>
-                        <div
-                         id="w-node-a284be2a-4b91-3177-03eb-6614b24879c1-4bf2d022"
-                         className="_4cols-v2div"
-                          // style={{ paddingTop: "10px" }}
-                        >
-                          {item?.ImageData.map((item1, key1) => item1.artistId.status == 1 ?(
-                            <>
+                        {item.ImageData.length > 0 ? (
+                          <>
+                            <div className="d-flex mt-0 mb-2">
+                              <h5 className="divisionHeading mt-0">
+                                {
+                                  item.keyword == '3D Rendering' ? "MOTION" 
+                                :
+                                  item.keyword.toUpperCase()
+                                } 
+                              </h5> 
+                              {/* <span style={{width:"100%", height:"1px", color:"#ce651e", border:"1px solid #ce651e", marginTop:"5.5px",marginLeft:6}}></span> */}
+                            </div>
+                            <div
+                             id="w-node-a284be2a-4b91-3177-03eb-6614b24879c1-4bf2d022"
+                             className="_4cols-v2div"
+                              // style={{ paddingTop: "10px" }}
+                            >
+                              {item?.ImageData.map((item1, key1) => item1.artistId.status == 1 ?(
+                                <>
+                                  <Link
+                                    key={key1}
+                                    id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
+                                    data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
+                                    to={item1.artistId.fullName}
+                                    className="artistcard w-inline-block"
+                                    onClick={() => storeDivCat(item.keyword,item.keyword)}
+                                  >
+                                    {/* <div className="detail_card4_h" style={{ position: "relative", overflow: "hidden" }}> */}
+                                    <img
+                                      src={String(
+                                        item1?.mainImage[0]?.subImage[0]?.path
+                                      )}
+                                      loading="lazy"
+                                      alt=""
+                                      className="image" 
+                                    // style={{ width: "100%", height: "100%" }}
+                                    />
+                                      <div className="artistnamediv">
+                                      <div className="artistnametext-v3">
+                                      {item1.artistId.firstname}  {item1.artistId.lastname} 
+                                      </div>
+                                    </div>
+                                  {/* <p className="card_img_text2 pt-2">
+                                  
+                                        {item1.artistId.firstname}{" "}{item1.artistId.lastname}
+                                        
+                                      </p> */}
+                                      {/* </div> */}
+                                  </Link>
+                                </>
+                              ):null)}
+                            </div>
+                            <div className="divisionbuttoncontainer" style={{ justifyContent: "flex-end" }}>
                               <Link
-                                key={key1}
-                                id="w-node-a284be2a-4b91-3177-03eb-6614b24879c7-4bf2d022"
-                                data-w-id="a284be2a-4b91-3177-03eb-6614b24879c7"
-                                to={item1.artistId.fullName}
-                                className="artistcard w-inline-block"
-                                onClick={() => storeDivCat(item.keyword,item.keyword)}
+                                to={ 
+                                  item.keyword == "Illustration" ? "illustration-artists"
+                                  : item.keyword == "3D Rendering" ? "motion"
+                                  : item.keyword == "Photography" ? "photography"
+                                  : item.keyword == "Medical" ? "medical"
+                                  : null
+                                }
+                                className="talentbuttonSeeMore"
+                                style={{ textDecoration: "none" }}
                               >
-                                {/* <div className="detail_card4_h" style={{ position: "relative", overflow: "hidden" }}> */}
-                                <img
-                                  src={String(
-                                    item1?.mainImage[0]?.subImage[0]?.path
-                                  )}
-                                  loading="lazy"
-                                  alt=""
-                                  className="image" 
-                                // style={{ width: "100%", height: "100%" }}
-                                />
-                                  <div className="artistnamediv">
-                                  <div className="artistnametext-v3">
-                                  {item1.artistId.firstname}  {item1.artistId.lastname} 
-                                  </div>
-                                </div>
-                              {/* <p className="card_img_text2 pt-2">
-                              
-                                    {item1.artistId.firstname}{" "}{item1.artistId.lastname}
-                                    
-                                  </p> */}
-                                  {/* </div> */}
+                                SEE MORE <div className="mx-2"> <img src={images+"/seeMore.svg"} style={{width:"6px"}}/> </div>
                               </Link>
-                            </>
-                          ):null)}
-                        </div>
-                        <div className="divisionbuttoncontainer" style={{ justifyContent: "flex-end" }}>
-                          <Link
-                            to={ 
-                              item.keyword == "Illustration" ? "illustration-artists"
-                              : item.keyword == "3D Rendering" ? "motion"
-                              : item.keyword == "Photography" ? "photography"
-                              : item.keyword == "Medical" ? "medical"
-                              : null
-                            }
-                            className="talentbuttonSeeMore"
-                            style={{ textDecoration: "none" }}
-                          >
-                            SEE MORE <div className="mx-2"> <img src={images+"/seeMore.svg"} style={{width:"6px"}}/> </div>
-                          </Link>
-                        </div>
+                            </div>
+                          </>
+                        ) : (
+                          ""
+                        )}
                       </>
-                    ) : (
-                      ""
-                    )}
-                  </>
-                )
+                    )
+                  }
+                } 
               )
             ) : (
               tempArtist.map((item, key) => ( 
