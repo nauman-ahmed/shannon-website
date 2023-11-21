@@ -133,7 +133,7 @@ const images = window.location.origin + "/assets/images";
             props.searchArtist === "" && filterCond ? (
               artistImageDivisionDataSlice.artistKeywordImages.map(
                 (item, key) =>{
-                  if (key !==2){
+                  if (key !==1){
                     return (
                       <>
                         {item.ImageData.length > 0 ? (
