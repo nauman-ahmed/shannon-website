@@ -84,7 +84,6 @@ const images = window.location.origin + "/assets/images";
 
   useEffect(() => { 
     dispatch(artistDivision({}));
-    artistImageDivisionDataSlice.artistKeywordImages.splice(1,1);
   }, []);
 
   const storeDivCat = (cat,link) => {
