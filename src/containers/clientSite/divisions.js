@@ -96,7 +96,7 @@ const images = window.location.origin + "/assets/images";
     const route = [{val:"Home",link:"./"},{val:"Divisions",link:"./divisions"},order]
    
     localStorage.setItem("routePaths",JSON.stringify(route))
-    localStorage.setItem("Category","none")
+    localStorage.setItem("Category",cat);
     localStorage.setItem("Bipoc","none")
   }
 
