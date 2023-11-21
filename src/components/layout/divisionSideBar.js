@@ -19,7 +19,7 @@ function DivisionSideBar(props) {
   const currentArtist = useRef(0);
   let currArtist = "";
 
-  const pagesWithSideMenu = ["Illustration-artists","Photography","Medical","Motion","Divisions"];
+  const pagesWithSideMenu = ["Illustration-artists","Photography","Medical","Motion","Divisions", "Illustration"];
   const search2List = ['Action_Adventure',"Children's Books_Products",'Vintage_Retro','Sci-fi_Fantasy']
 
   let alpha = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
