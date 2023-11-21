@@ -129,7 +129,7 @@ function Categories(props) {
                           id="w-node-f734ee66-0b58-4c14-e08b-49ceded015ca-84f2d081"
                           to={item.keyword.includes("/") ?  "/categories/"+item.keyword.replace(/\//g, '_') : "/categories/"+item.keyword.replace(/\s/g, '_')}
                           className="artistcard w-inline-block"
-                          onClick={()=>{localStorage.setItem("Category",item.keyword == '3D Rendering' ? "3D Rendering" : item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1) )}}
+                          onClick={()=>{localStorage.setItem("Category",item.keyword == '3D Rendering' ? "3D Rendering" : item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1) ); console.log(item.keyword)}}
                         >
                           <img
                             src={String(

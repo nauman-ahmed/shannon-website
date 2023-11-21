@@ -48,7 +48,7 @@ function Categories(props) {
               checker = true
             }
             return checker;
-          })
+          }) 
           temp.push({ ...val, ImageData: tempImage })
         }
       })

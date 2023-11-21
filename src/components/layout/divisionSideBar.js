@@ -20,6 +20,7 @@ function DivisionSideBar(props) {
   let currArtist = "";
 
   const pagesWithSideMenu = ["Illustration-artists","Photography","Medical","Motion","Divisions"];
+  const search2List = ['Action_Adventure',"Children's Books_Products",'Vintage_Retro','Sci-fi_Fantasy']
 
   let alpha = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
   
@@ -84,7 +85,7 @@ function DivisionSideBar(props) {
 
     if(search2){
       let category = "";
-      if(search2 === 'Action_Adventure' || search2 === "Children's Books_Products" || search2 === 'Vintage_Retro'){
+      if(search2List.includes(search2)){
         category = search2.replace("_",'/');
       }else{
         category = search2.replace("_"," ");
