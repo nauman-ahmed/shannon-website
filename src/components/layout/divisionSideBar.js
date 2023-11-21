@@ -156,7 +156,7 @@ function DivisionSideBar(props) {
               
               </div>
           )):""} */}
-          <h3 className="homeh3" style={{textDecorationLine:"none"}}>SELECT BY ARTIST</h3>
+          <h3 className="homeh3" style={{textDecorationLine:"none"}}> { localStorage.getItem("Category") !== "none" && !pagesWithSideMenu.includes(localStorage.getItem("Category")) ? localStorage.getItem("Category").toUpperCase()+" ARTISTS" :"SELECT BY ARTIST"}</h3>
             {alpha.map((item,key)=>
           (
             <div key={key}>
