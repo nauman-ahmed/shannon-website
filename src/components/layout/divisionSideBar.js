@@ -25,7 +25,7 @@ function DivisionSideBar(props) {
   let alpha = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
   
   useEffect(()=>{
-    if(props.activeBtn === "illustration-artists" || props.activeBtn === "divisions"){ //|| props.activeBtn === "detailedPage"
+    if(props.activeBtn === "illustration-artists" || props.activeBtn === "divisions" ){ //|| props.activeBtn === "detailedPage"
       getArtistCategoryTypeOne({keyword:"ILLUSTRATION"}).then(res => {
         setArtistData(
           sortAlphaOrder(res!==undefined?res.length>0?res:[]:[])
@@ -63,7 +63,7 @@ function DivisionSideBar(props) {
         }
       )
     }else if(props.activeBtn === "detailedPage"){
-      let localPrevCate = localStorage.getItem("Category") == "cgi" || localStorage.getItem("Category") == "Motion" ? "3D Rendering" : localStorage.getItem("Category") == "none" ? "ILLUSTRATION" : localStorage.getItem("Category") 
+      let localPrevCate = localStorage.getItem("Category") == "cgi" || localStorage.getItem("Category") == "Motion" ? "3D Rendering" : localStorage.getItem("Category") == "Illustration" ? "ILLUSTRATION" : localStorage.getItem("Category") 
       let bipocCat = localStorage.getItem("Bipoc") == "none" ? null : localStorage.getItem("Bipoc")
       getArtistCategoryTypeOne(bipocCat ? {keyword:localPrevCate,type:1,bipocCat} : {keyword:localPrevCate,type:1}).then(res => {
         setArtistData(
