@@ -104,7 +104,7 @@ function Header(props) {
                   to="/categories"
                   className={
                     "navlink v2 w-nav-link " +
-                    (props.aciveBtn === "categories" || (!divisonPagesCurrentStyle.includes(localStorage.getItem("Category")) && (localStorage.getItem("Category") !== "" || localStorage.getItem("Category") !== "none" ) )  ? "w--current" : "")
+                    (props.aciveBtn === "categories" || (!divisonPagesCurrentStyle.includes(localStorage.getItem("Category")) && (localStorage.getItem("Category") === "" || localStorage.getItem("Category") === "none" ) )  ? "w--current" : "")
                   }
                 >
                   CATEGORIES
