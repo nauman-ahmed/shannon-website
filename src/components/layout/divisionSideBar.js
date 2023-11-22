@@ -68,7 +68,7 @@ function DivisionSideBar(props) {
       console.log(localPrevCate);
       
       if(localPrevCate === "none"){
-        localPrevCate = "";
+        localPrevCate = "ILLUSTRATION";
       }
       console.log(localPrevCate);
       
