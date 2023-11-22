@@ -43,6 +43,12 @@ function Header(props) {
       })
       localStorage.removeItem("addToCart")
     }
+
+    console.log("1 ",localStorage.getItem("Category"));
+    console.log("2 ",localStorage.getItem("Category") != "");
+    console.log("3",localStorage.getItem("Category" != "none"));
+    console.log("4",!divisonPagesCurrentStyle.includes(localStorage.getItem("Category")));
+
   },[])
 
   useEffect(()=>{
