@@ -134,7 +134,7 @@ function DivisionSideBar(props) {
             {
               localStorage.getItem("Category") !== "none" && !pagesWithSideMenu.includes(localStorage.getItem("Category"))? 
               <div>
-                <Link to={"/categories"}><span className="homeh3" style={{fontFamily: "Montserrat, sans-serif", textUnderlineOffset : "5px", fontWeight: 800}} >CATEGORIES<br /></span></Link>
+                <Link to={"/categories"}><span className="homeh3" style={{color:"#000000",fontFamily: "Montserrat, sans-serif", textUnderlineOffset : "5px", fontWeight: 800}} >CATEGORIES<br /></span></Link>
                 <Link to={JSON.parse(localStorage.getItem("routePaths"))[2]?.link}><span className="homeh3" style={{fontFamily: "Montserrat, sans-serif", textUnderlineOffset : "5px", fontWeight: 800}} >{localStorage.getItem("Category").toUpperCase()}<br /></span></Link>
                 <br /><br />
               </div>
