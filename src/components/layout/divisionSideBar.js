@@ -65,6 +65,8 @@ function DivisionSideBar(props) {
     }else if(props.activeBtn === "detailedPage"){
       let localPrevCate = localStorage.getItem("Category") == "cgi" || localStorage.getItem("Category") == "Motion" ? "3D Rendering" : localStorage.getItem("Category") == "Illustration" ? "ILLUSTRATION" : localStorage.getItem("Category");
 
+      console.log(localPrevCate);
+
       if(localPrevCate === "none"){
         localPrevCate = "";
       }
