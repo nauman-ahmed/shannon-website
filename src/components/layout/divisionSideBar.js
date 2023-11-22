@@ -69,7 +69,7 @@ function DivisionSideBar(props) {
         localPrevCate = "ILLUSTRATION";
       }
       let bipocCat = localStorage.getItem("Bipoc") == "none" ? null : localStorage.getItem("Bipoc")
-      getArtistCategoryTypeOne(bipocCat ? {type:1,bipocCat} : {keyword:localPrevCate,type:1}).then(res => {
+      getArtistCategoryTypeOne(bipocCat ? {keyword:localPrevCate,type:1,bipocCat} : {keyword:localPrevCate,type:1}).then(res => {
         setArtistData(
           sortAlphaOrder(res!==undefined?res.length>0?res:[]:[])
           )
