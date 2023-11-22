@@ -65,7 +65,7 @@ function DivisionSideBar(props) {
     }else if(props.activeBtn === "detailedPage"){
       let localPrevCate = localStorage.getItem("Category") == "cgi" || localStorage.getItem("Category") == "Motion" ? "3D Rendering" : localStorage.getItem("Category") == "Illustration" ? "ILLUSTRATION" : localStorage.getItem("Category") 
       let bipocCat = localStorage.getItem("Bipoc") == "none" ? null : localStorage.getItem("Bipoc")
-      getArtistCategoryTypeOne(bipocCat ? {keyword:localPrevCate,type:1,bipocCat} : {keyword:localPrevCate,type:1}).then(res => {
+      getArtistCategoryTypeOne(bipocCat ? {type:1,bipocCat} : {keyword:localPrevCate,type:1}).then(res => {
         setArtistData(
           sortAlphaOrder(res!==undefined?res.length>0?res:[]:[])
           )
