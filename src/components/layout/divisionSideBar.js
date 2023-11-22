@@ -63,7 +63,7 @@ function DivisionSideBar(props) {
         }
       )
     }else if(props.activeBtn === "detailedPage"){
-      let localPrevCate = localStorage.getItem("Category") == "cgi" || localStorage.getItem("Category") == "Motion" ? "3D Rendering" : localStorage.getItem("Category") == "Illustration" ? "ILLUSTRATION" : localStorage.getItem("Category");
+      let localPrevCate = localStorage.getItem("Category") == "cgi" || localStorage.getItem("Category") == "Motion" ? "3D Rendering" : localStorage.getItem("Category") == "Illustration" || localStorage.getItem("Category") == "Illustration-artists" ? "ILLUSTRATION" : localStorage.getItem("Category");
 
       if(localPrevCate === "none"){
         localPrevCate = "ILLUSTRATION";
