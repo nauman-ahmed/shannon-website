@@ -149,6 +149,7 @@ function Index(props) {
         }
 
         if(pages == "bipoc"){
+            localStorage.setItem("Category","none");
             if(search){
                 const letter = search.charAt(0).toUpperCase() + search.slice(1);
                 const route = [{val:"Home",link:"./"},{val:"Bipoc",link:"./bipoc"},{val:letter,link:"./bipoc/"+search}]
