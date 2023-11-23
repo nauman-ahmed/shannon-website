@@ -174,7 +174,7 @@ function Index(props) {
             <Header aciveBtn={pages} />
             <div className={(artistIfExistHandler()?"talentsection":"homesection")+" wf-section "+(pages?"divisions":"")}>
                 <div className={"containerhome "+(artistIfExistHandler()?"":"home")}>
-                    <Navbar aciveBtn={pages} searchBar={true}  searchArtist={searchArtist}  updateTempArtist={updateTempArtist} curreCate={localStorage.getItem("Category")}/>
+                    <Navbar aciveBtn={pages} searchBar={true}  searchArtist={searchArtist}  updateTempArtist={updateTempArtist} />
                     {pages?
                     pages === "categories"?
                         search?

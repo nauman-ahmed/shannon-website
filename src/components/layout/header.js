@@ -12,6 +12,8 @@ function Header(props) {
   const { AddToCart } = useSelector((state) => state);
   const dispatch = useDispatch();
   const divisonPagesCurrentStyle = ["Illustration-artists","Photography","Medical","Motion","Divisions","Illustration"];
+  const bipocPagesCurrentStyle = ["Black","Asian","Latino","Central Asia","Indigenous"];
+
   
   const [shannonContent,setShannonContent] = useState([])
 
@@ -96,7 +98,7 @@ function Header(props) {
                   to="/divisions"
                   className={
                     "navlink v2 w-nav-link " +
-                    (props.aciveBtn === "divisions" || divisonPagesCurrentStyle.includes(localStorage.getItem("Category")) ? "w--current" : "")
+                    (props.aciveBtn === "divisions" || divisonPagesCurrentStyle.includes(localStorage.getItem("Category")) || bipocPagesCurrentStyle.includes(localStorage.getItem("Bipoc")) ? "w--current" : "")
                   }
                 >
                   DIVISIONS
