@@ -9,6 +9,15 @@ function Navbar(props) {
   const pageIllustration = ['kidshannon','photography','bipoc','black','medical','motion','categories','newest','recentlyUpdated','about','contact'];
   const [localCategory, setLocalCategory] = useState(localStorage.getItem("Category"));
 
+
+  useEffect(() => {
+    
+    setLocalCategory(localStorage.getItem("Category"));
+    
+  }, [])
+  
+
+
   const localStorageAddToCart = () => {
     let addToCartArray = []
     Object.keys(AddToCart.cartInfo).map((oneKey, i) => {
