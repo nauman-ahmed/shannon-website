@@ -20,6 +20,7 @@ function DivisionSideBar(props) {
   let currArtist = "";
 
   const pagesWithSideMenu = ["Illustration-artists","Photography","Medical","Motion","Divisions", "Illustration"];
+  const bipocPagesCurrentStyle = ["Black","Asian","Latino","Central Asia","Indigenous"];
   const search2List = ['Action_Adventure',"Children's Books_Products",'Vintage_Retro','Sci-fi_Fantasy']
 
   let alpha = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
@@ -145,7 +146,7 @@ function DivisionSideBar(props) {
               :
               <div>
                 <Link to="/illustration-artists" className={"divisionslink"+(props.activeBtn === "illustration-artists" || localStorage.getItem("Category") == "Illustration" || localStorage.getItem("Category") == "Illustration-artists" ?" w--current":"")}><span className="sidebarlink">ILLUSTRATION<br /></span></Link>
-                <Link to="/bipoc" className={"divisionslink"+(props.activeBtn === "bipoc"?" w--current":"")}><span className="sidebarlink">BIPOC<br /></span></Link>
+                <Link to="/bipoc" className={"divisionslink"+(props.activeBtn === "bipoc" || bipocPagesCurrentStyle.includes(localStorage.getItem("Bipoc")) ?" w--current":"")}><span className="sidebarlink">BIPOC<br /></span></Link>
                 <a href="https://kidshannon.com" target="_blank" className="sidebarlink">KIDSHANNON<br /></a>
                 <Link to="/photography" className={"divisionslink"+(props.activeBtn === "photography" || localStorage.getItem("Category") == "Photography" ? " w--current":"")}><span className="sidebarlink">PHOTOGRAPHY<br /></span></Link>
                 <Link to="/medical" className={"divisionslink"+(props.activeBtn === "medical" || localStorage.getItem("Category") == "Medical" ?" w--current":"")}><span className="sidebarlink">MEDICAL<br /></span></Link>
