@@ -53,6 +53,9 @@ function Index(props) {
     const [searchDivision,setSearchDivision] = useState("");
     const [tempDivision,setTempDivision]= useState([]);
 
+    const [currentCategory, setCurrentCategory] = useState(localStorage.getItem("Category"));
+    const [currentBipoc, setCurrentBipoc] = useState(localStorage.getItem("Bipoc"));
+
     const divisions = ["illustration-artists","cgi","medical","motion","photography","divisions"]
 
     const updateTempArtist = (e)=>{
@@ -167,6 +170,9 @@ function Index(props) {
             localStorage.setItem("Category","none")
         }
 
+        setCurrentCategory(localStorage.getItem("Category"));
+        setCurrentBipoc(localStorage.getItem("Bipoc"));
+
     }, [pages,search])
 
     return (
@@ -174,7 +180,7 @@ function Index(props) {
             <Header aciveBtn={pages} />
             <div className={(artistIfExistHandler()?"talentsection":"homesection")+" wf-section "+(pages?"divisions":"")}>
                 <div className={"containerhome "+(artistIfExistHandler()?"":"home")}>
-                    <Navbar aciveBtn={pages} searchBar={true}  searchArtist={searchArtist}  updateTempArtist={updateTempArtist} />
+                    <Navbar aciveBtn={pages} searchBar={true}  searchArtist={searchArtist}  updateTempArtist={updateTempArtist} currentCat={currentCategory} currentBi={currentBipoc} />
                     {pages?
                     pages === "categories"?
                         search?
