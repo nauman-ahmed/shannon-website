@@ -12,7 +12,7 @@ function Header(props) {
   const { AddToCart } = useSelector((state) => state);
   const dispatch = useDispatch();
   const divisonPagesCurrentStyle = ["Illustration-artists","Photography","Medical","Motion","Divisions","Illustration"];
-  const bipocPagesCurrentStyle = ["Black","Asian","Latino","Central Asia","Indigenous"];
+  const bipocPagesCurrentStyle = ["Black","Asian","Latino","Central Asia","Indigenous","AsianArtist","LatinoArtist","CentralAsianArtist","IndigenousArtist"];
 
   
   const [shannonContent,setShannonContent] = useState([])
