@@ -7,6 +7,7 @@ function Navbar(props) {
   const { AddToCart } = useSelector((state) => state);
 
   const pageIllustration = ['kidshannon','photography','bipoc','black','medical','motion','categories','newest','recentlyUpdated','about','contact'];
+  const [localCategory, setLocalCategory] = useState(localStorage.getItem("Category"));
 
   const localStorageAddToCart = () => {
     let addToCartArray = []
@@ -51,10 +52,10 @@ function Navbar(props) {
 
       <div className='fullViewNavbar'>
         <div className="filterhomebox v2">
-          <Link to="/illustration-artists" className={"filterhomelink v2 " + (props.aciveBtn === "illustration-artists" || localStorage.getItem("Category") == "Illustration" || localStorage.getItem("Category") == "Illustration-artists" ? "w--current" : "")}>ILLUSTRATION</Link>
+          <Link to="/illustration-artists" className={"filterhomelink v2 " + (props.aciveBtn === "illustration-artists" || localCategory == "Illustration" || localCategory == "Illustration-artists" ? "w--current" : "")}>ILLUSTRATION</Link>
           {/* <a href="http://localhost:3001/" target="_blank" className={"filterhomelink v2 "+(props.aciveBtn === "kidshannon"?"w--current":"")}>KIDSHANNON</a> */}
           <a href="https://kidshannon.com" target="_blank" className={"filterhomelink v2 " + (props.aciveBtn === "kidshannon" ? "w--current" : "")} onClick={()=>localStorageAddToCart()}>KIDSHANNON</a>
-          <Link to="/photography" className={"filterhomelink v2 " + (props.aciveBtn === "photography" || localStorage.getItem("Category") == "Photography" ? "w--current" : "")}>PHOTOGRAPHY</Link>
+          <Link to="/photography" className={"filterhomelink v2 " + (props.aciveBtn === "photography" || localCategory == "Photography" ? "w--current" : "")}>PHOTOGRAPHY</Link>
           <div className='navbarBipocLink'>
             {/* <Link to="/bipoc" className={"filterhomelink v2 d-flex " + (props.aciveBtn === "bipoc" ? "w--current" : "")}>BIPOC <span className='bipocSpan'></span> </Link> */}
             <Link to="/bipoc" className={"filterhomelink v2 d-flex " + (props.aciveBtn === "bipoc" ? "w--current" : "")}>BIPOC </Link>
@@ -66,9 +67,9 @@ function Navbar(props) {
               <Link to="/bipoc/indigenousArtist" className={"filterhomelink v2 mb-1 " + (props.aciveBtn === "indigenousArtist" ? "w--current" : "")}>INDIGENOUS</Link>
             </div>
           </div>
-          <Link to="/medical" className={"filterhomelink v2 " + (props.aciveBtn === "medical" || localStorage.getItem("Category") == "Medical" ? "w--current" : "")}>MEDICAL</Link>
+          <Link to="/medical" className={"filterhomelink v2 " + (props.aciveBtn === "medical" || localCategory == "Medical" ? "w--current" : "")}>MEDICAL</Link>
           {/* <Link to="/cgi" className={"filterhomelink v2 " + (props.aciveBtn === "cgi" ? "w--current" : "")}>CGI</Link> */}
-          <Link to="/motion" className={"filterhomelink v2 " + (props.aciveBtn === "motion" || localStorage.getItem("Category") == "Motion" ? "w--current" : "")}>MOTION</Link>
+          <Link to="/motion" className={"filterhomelink v2 " + (props.aciveBtn === "motion" || localCategory == "Motion" ? "w--current" : "")}>MOTION</Link>
           <Link className= "navbarDot"> · </Link>
           <Link to="/newest" className={"filterhomelink v2 mb-3 " + (props.aciveBtn === "newest" ? " w--current undelinedNavbar" : "")} > NEW </Link>
           <Link to="/recentlyUpdated" className={"filterhomelink v2 mb-3 " + (props.aciveBtn === "recentlyUpdated" ? "w--current" : "")} > UPDATED </Link>
