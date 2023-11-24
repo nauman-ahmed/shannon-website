@@ -160,7 +160,7 @@ function Index(props) {
         }
 
         if(pages == "newest"){
-            const route = [{val:"Home",link:"./"},{val:"Newest Artists",link:"./newest"}]
+            const route = [{val:"Home",link:"./"},{val:"New Artists",link:"./newest"}]
             localStorage.setItem("routePaths",JSON.stringify(route))
             localStorage.setItem("Category","none")
         }
