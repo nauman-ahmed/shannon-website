@@ -166,7 +166,7 @@ function Index(props) {
         }
 
         if(pages == "recentlyUpdated"){
-            const route = [{val:"Home",link:"./"},{val:"Recently Updated Artists",link:"./recentlyUpdated"}]
+            const route = [{val:"Home",link:"./"},{val:"Updated Artists",link:"./recentlyUpdated"}]
             localStorage.setItem("routePaths",JSON.stringify(route))
             localStorage.setItem("Category","none")
         }
