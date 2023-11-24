@@ -59,11 +59,11 @@ function Navbar(props) {
             {/* <Link to="/bipoc" className={"filterhomelink v2 d-flex " + (props.aciveBtn === "bipoc" ? "w--current" : "")}>BIPOC <span className='bipocSpan'></span> </Link> */}
             <Link to="/bipoc" className={"filterhomelink v2 d-flex " + (props.aciveBtn === "bipoc" || props.currentBi !== "none" ? "w--current" : "")}>BIPOC </Link>
             <div className='navbarBipocItemsLink'>
-              <Link to="/bipoc/black" className={"filterhomelink v2 mb-3 " + (props.aciveBtn === "black" ? "w--current" : "")}>BLACK</Link>
-              <Link to="/bipoc/asianArtist" className={"filterhomelink v2 mb-3 " + (props.aciveBtn === "asianArtist" ? "w--current" : "")}>ASIAN</Link>
-              <Link to="/bipoc/latinoArtist" className={"filterhomelink v2 mb-3 " + (props.aciveBtn === "latinoArtist" ? "w--current" : "")}>LATINO/LATINA</Link>
-              <Link to="/bipoc/centralAsianArtist" className={"filterhomelink v2 mb-3 " + (props.aciveBtn === "centralAsianArtist" ? "w--current" : "")}>CENTRAL ASIAN</Link>
-              <Link to="/bipoc/indigenousArtist" className={"filterhomelink v2 mb-1 " + (props.aciveBtn === "indigenousArtist" ? "w--current" : "")}>INDIGENOUS</Link>
+              <Link to="/bipoc/black" className={"filterhomelink v2 mb-3 " + (props.currentBi === "Black" ? "w--current" : "")}>BLACK</Link>
+              <Link to="/bipoc/asianArtist" className={"filterhomelink v2 mb-3 " + (props.currentBi === "AsianArtist" ? "w--current" : "")}>ASIAN</Link>
+              <Link to="/bipoc/latinoArtist" className={"filterhomelink v2 mb-3 " + (props.currentBi === "LatinoArtist" ? "w--current" : "")}>LATINO/LATINA</Link>
+              <Link to="/bipoc/centralAsianArtist" className={"filterhomelink v2 mb-3 " + (props.currentBi === "CentralAsianArtist" ? "w--current" : "")}>CENTRAL ASIAN</Link>
+              <Link to="/bipoc/indigenousArtist" className={"filterhomelink v2 mb-1 " + (props.currentBi === "IndigenousArtist" ? "w--current" : "")}>INDIGENOUS</Link>
             </div>
           </div>
           <Link to="/medical" className={"filterhomelink v2 " + (props.aciveBtn === "medical" || props.currentCat == "Medical" ? "w--current" : "")}>MEDICAL</Link>
