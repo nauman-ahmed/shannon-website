@@ -98,7 +98,7 @@ function Header(props) {
                   to="/divisions"
                   className={
                     "navlink v2 w-nav-link " +
-                    (props.aciveBtn === "divisions" || divisonPagesCurrentStyle.includes(localStorage.getItem("Category")) || bipocPagesCurrentStyle.includes(localStorage.getItem("Bipoc")) ? "w--current" : "")
+                    (props.aciveBtn === "divisions" || props.aciveBtn === "bipoc" || divisonPagesCurrentStyle.includes(localStorage.getItem("Category")) || bipocPagesCurrentStyle.includes(localStorage.getItem("Bipoc")) ? "w--current" : "")
                   }
                 >
                   DIVISIONS
