@@ -108,12 +108,16 @@ function Categories() {
   <div className='px-xl-5 mx-xl-5'>
     <div className='row scrollerOn py-5'>
       <div className='col-lg-12'>
-        <div className='column-5'>
-        {categories.length >0?categories.map((item,key)=>(
-          item.type === 3? <p style={{cursor:"pointer"}} key={key} onClick={()=>{setUpdateKeyword(item);setIsPopupOpenUpdate(true);setIsPopupOpen(true);}}>{item.keyword}</p>:""
-        )):""}
+        <div className='row'>
+          {categories.length >0?categories.map((item,key)=>(
+            item.type === 3? 
+              <div className='col-lg-3'>
+                <p style={{cursor:"pointer"}} key={key} onClick={()=>{setUpdateKeyword(item);setIsPopupOpenUpdate(true);setIsPopupOpen(true);}}>{item.keyword}</p>
+              </div>
+            :""
+          )):""}
+          <button onClick={()=>{setIsPopupOpen(true);setType(3)}} className='myBtn mt-5 float-right'>ADD KEYWORD</button>
         </div>
-        <button onClick={()=>{setIsPopupOpen(true);setType(3)}} className='myBtn mt-5 float-right'>ADD KEYWORD</button>
       </div>
     </div>
     {isPopupOpen?
