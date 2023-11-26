@@ -28,6 +28,7 @@ function Image_uploading() {
     const [keyword,setKeyword] = useState(null)
     const [keywordList,setKeywordList] = useState(null)
     const [keywordKids,setKeywordKids] = useState(null)
+    const [keywordGraphicNovel,setKeywordGraphicNovel] = useState(null)
     const [temp, setTemp] = useState(null)
     const [details, setDetails] = useState(decodeToken(localStorage.getItem("authorization")))
 
@@ -95,11 +96,15 @@ function Image_uploading() {
 
             let keywordTemp = []
             let keywordKidsTemp = []
+            let keywordGraphicNovelTemp = []
 
             keywordReducer.map((val,ind)=>{
                 if(val.type == 1){
                     keywordTemp.push(val)
-                } else{
+                }else if(val.type == 3){
+                    keywordGraphicNovelTemp.push(val)
+                }
+                 else{
                     keywordKidsTemp.push(val)
                 }         
             })     
@@ -107,6 +112,7 @@ function Image_uploading() {
             setKeywordList(keywordReducer)
             setKeyword(keywordTemp)
             setKeywordKids(keywordKidsTemp)
+            setKeywordGraphicNovel(keywordGraphicNovelTemp)
 
         }catch(e){
             history.push("/artist")
@@ -416,7 +422,7 @@ function Image_uploading() {
                            :null                   
                         : null
                         } 
-                        </div>
+                        </div> 
                         {pageNo === 0?
                         <div className='col-xl-3 col-lg-4 mt-lg-0 mt-5'>
                             <button className='btn1 dark px-4 align-self-bottom' onClick={()=>paginationHandler(pageNo + 1)}>NEXT</button>
@@ -425,13 +431,21 @@ function Image_uploading() {
                     </div>
                 :
                     <div className='px-5 row m-0'>
-                        {/* <div className='col-12 border-bottom'>
-                            <p>
-                                Please choose up to 8 keywords in each section (if your work is applicable for both sections).<br/>
-                                Please be sure to keyword for the SPECIFIC IMAGE and not your body of work.
-                            </p>
-                        </div> */}
-                        <div className='col-md-6 col-12 px-0 pb-5 pt-2 border-right border-md-0 border-top'>
+                        <div className='col-xl-6 col-lg-6 my-5' style={{ position: "sticky", top:"2rem" }}>
+                            {artistImageDetails !== null ? 
+                                <img
+                                alt="Crop me"
+                                src={temp}
+                                loading="lazy"
+                                role="presentation"
+                                decoding= "async"
+                                fetchpriority= {"high"}
+                                style={{position: "sticky", top:"2rem"}}
+                            />
+                            : null
+                            } 
+                        </div>
+                        <div className='col-md-6 col-6 px-0 pb-5 pt-2 border-md-0'>
                             <div className='row m-0'>
                                 <h4 className='col-12 mb-3'>SHANNONASSOCIATES.COM KEYWORD LISTING</h4>
                                 {keyword !== null &&
@@ -445,8 +459,38 @@ function Image_uploading() {
                                     )
                                 }
                             </div>
+                            <div className='row m-t'>
+                                <h4 className='col-12 mb-3'>KIDSHANNON.COM KEYWORD LISTING</h4>
+                                {keywordKids !== null &&
+                                    keywordKids.map((val,ind)=>
+                                    <div className='col-xl-4 col-lg-6 col-sm-12 col-12' key={ind}>
+                                        <label className='checkBox'>{val.keyword}
+                                            <input type="checkbox" value= "checking 1" 
+                                            onClick={()=>keywordSetter(val._id)}
+                                            />
+                                            <span className="checkmark"></span>
+                                        </label>
+                                    </div> 
+                                    )
+                                }
+                            </div>
+                            <div className='row m-t'>
+                                <h4 className='col-12 mb-3'>GRAPHIC NOVEL KEYWORD LISTING</h4>
+                                {keywordGraphicNovel !== null &&
+                                    keywordGraphicNovel.map((val,ind)=>
+                                    <div className='col-xl-4 col-lg-6 col-sm-12 col-12' key={ind}>
+                                        <label className='checkBox'>{val.keyword}
+                                            <input type="checkbox" value= "checking 1" 
+                                            onClick={()=>keywordSetter(val._id)}
+                                            />
+                                            <span className="checkmark"></span>
+                                        </label>
+                                    </div> 
+                                    )
+                                }
+                            </div>
                         </div>
-                        <div className='col-md-6 col-12 px-0 px-0 pb-5 pt-2 border-top'>
+                        {/* <div className='col-md-6 col-12 px-0 px-0 pb-5 pt-2 border-top'>
                             <div className='row m-0'>
                                 <h4 className='col-12 mb-3'>KIDSHANNON.COM KEYWORD LISTING</h4>
                                 {keywordKids !== null &&
@@ -462,7 +506,7 @@ function Image_uploading() {
                                     )
                                 }
                             </div>
-                        </div>
+                        </div> */}
                         
                     </div>
                 }

@@ -147,6 +147,7 @@ function DivisionSideBar(props) {
               <div>
                 <Link to="/illustration-artists" className={"divisionslink"+(props.activeBtn === "illustration-artists" || localStorage.getItem("Category") == "Illustration" || localStorage.getItem("Category") == "Illustration-artists" ?" w--current":"")}><span className="sidebarlink">ILLUSTRATION<br /></span></Link>
                 <Link to="/bipoc" className={"divisionslink"+(props.activeBtn === "bipoc" || bipocPagesCurrentStyle.includes(localStorage.getItem("Bipoc")) ?" w--current":"")}><span className="sidebarlink">BIPOC<br /></span></Link>
+                <Link to="/graphicNovel" className={"divisionslink"+(props.activeBtn === "graphicNovel" || localStorage.getItem("graphicNovel") ?" w--current":"")}><span className="sidebarlink">GRAPHIC NOVEL<br /></span></Link>
                 <a href="https://kidshannon.com" target="_blank" className="sidebarlink">KIDSHANNON<br /></a>
                 <Link to="/photography" className={"divisionslink"+(props.activeBtn === "photography" || localStorage.getItem("Category") == "Photography" ? " w--current":"")}><span className="sidebarlink">PHOTOGRAPHY<br /></span></Link>
                 <Link to="/medical" className={"divisionslink"+(props.activeBtn === "medical" || localStorage.getItem("Category") == "Medical" ?" w--current":"")}><span className="sidebarlink">MEDICAL<br /></span></Link>

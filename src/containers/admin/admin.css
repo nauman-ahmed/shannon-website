@@ -136,6 +136,14 @@
     -webkit-column-count: 3;
     -webkit-column-gap: 10px;
 }
+.column-5{
+    column-count: 5;
+    column-gap: 10px;
+    -moz-column-count: 5;
+    -moz-column-gap: 10px;
+    -webkit-column-count: 5;
+    -webkit-column-gap: 10px;
+}
 .quill{
     height: 300px;
 }

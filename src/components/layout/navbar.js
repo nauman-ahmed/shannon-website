@@ -36,6 +36,7 @@ function Navbar(props) {
               {/* <Link to="/cgi" className={"filterhomelink v2 " + (props.aciveBtn === "cgi" ? "w--current" : "")}>CGI</Link> */}
               <Link to="/medical" className={"filterhomelink v2 " + (props.aciveBtn === "medical" ? "w--current" : "")}>MEDICAL</Link>
               <Link to="/motion" className={"filterhomelink v2 " + (props.aciveBtn === "motion" ? "w--current" : "")}>MOTION</Link>
+              <Link to="/graphicNovel" className={"filterhomelink v2 " + (props.aciveBtn === "graphicNovel" || props.currentCat == "GraphicNovel" ? "w--current" : "")}>GRAPHIC NOVEL</Link>
             </div>
 
             {props.searchBar && props.aciveBtn == undefined?
@@ -69,6 +70,7 @@ function Navbar(props) {
           <Link to="/medical" className={"filterhomelink v2 " + (props.aciveBtn === "medical" || props.currentCat == "Medical" ? "w--current" : "")}>MEDICAL</Link>
           {/* <Link to="/cgi" className={"filterhomelink v2 " + (props.aciveBtn === "cgi" ? "w--current" : "")}>CGI</Link> */}
           <Link to="/motion" className={"filterhomelink v2 " + (props.aciveBtn === "motion" || props.currentCat == "Motion" ? "w--current" : "")}>MOTION</Link>
+          <Link to="/graphicNovel" className={"filterhomelink v2 " + (props.aciveBtn === "graphicNovel" || props.currentCat == "GraphicNovel" ? "w--current" : "")}>Graphic Novel</Link>
           <Link className= "navbarDot"> · </Link>
           <Link to="/newest" className={"filterhomelink v2 mb-3 " + (props.aciveBtn === "newest" ? " w--current undelinedNavbar" : "")} > NEW </Link>
           <Link to="/recentlyUpdated" className={"filterhomelink v2 mb-3 " + (props.aciveBtn === "recentlyUpdated" ? "w--current" : "")} > UPDATED </Link>

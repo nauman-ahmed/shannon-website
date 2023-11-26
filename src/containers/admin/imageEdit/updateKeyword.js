@@ -19,14 +19,14 @@ function Image_keywords(props) {
     const history = useHistory()
     const [isPopupShow, setIsPopupShow] = useState(false)
     const [artistImage, setArtistImage] = useState(false)
+    const [artistkeyword, setArtistKeyword] = useState(null)
+    const [temp, setTemp] = useState(null)
+    const [maximumLimit, setMaximumLimit] = useState(0)
+
     const [keywordList, setKeywordList] = useState(null)
     const [keyword, setKeyword] = useState(null)
     const [keywordKids, setKeywordKids] = useState(null)
-    const [artistkeyword, setArtistKeyword] = useState(null)
-    const [temp, setTemp] = useState(null)
-   
-    const [maximumLimit, setMaximumLimit] = useState(0)
-
+    const [keywordGraphicNovel, setKeywordGraphicNovel] = useState(null)
 
 
     const getBase64FromUrl = async (dataurl) => {
@@ -64,6 +64,7 @@ function Image_keywords(props) {
             if(keywordList){
                 let keywordTemp = []
                 let keywordKidsTemp = []
+                let keywordGraphicNovelTemp = []
         
                 keywordList.map((val,ind)=>{
                     if(val.type == 1){
@@ -75,7 +76,16 @@ function Image_keywords(props) {
                             }         
                         }) 
                         keywordTemp.push(val)
-                    } else{
+                    } else if(val.type == 3){
+                        props.images.keywordID.map((val1,ind1)=>{
+                            if(val1.type == 3){
+                                if(val._id == val1._id){
+                                    val.checked = true
+                                } 
+                            }         
+                        }) 
+                        keywordGraphicNovelTemp.push(val)
+                    }else{
                         props.images.keywordID.map((val1,ind1)=>{
                             if(val1.type == 2){
                                 if(val._id == val1._id){
@@ -91,6 +101,7 @@ function Image_keywords(props) {
                 setArtistKeyword(props.images.keywordID)
                 setKeyword(keywordTemp)
                 setKeywordKids(keywordKidsTemp)
+                setKeywordGraphicNovel(keywordGraphicNovelTemp)
         
             }
 
@@ -104,7 +115,7 @@ function Image_keywords(props) {
     },[keywordList,maximumLimit])
     
 
-    const keywordSetter = (val,checked,kids = false) => {
+    const keywordSetter = (val,checked,kids = false,graphicNovel = false) => {
         
         if(kids){
             let keywordKidsTemp = [...keywordKids]
@@ -116,6 +127,17 @@ function Image_keywords(props) {
             })
 
             setKeywordKids(keywordKidsTemp)
+        
+        }else if(graphicNovel){
+            let keywordGraphicNovelTemp = [...keywordGraphicNovel]
+
+            keywordGraphicNovelTemp.map((val1,ind)=>{
+                if(val == val1._id){
+                    keywordGraphicNovelTemp[ind].checked = !checked
+                }
+            })
+
+            setKeywordGraphicNovel(keywordGraphicNovelTemp)
         
         }else{
             let keywordTemp = [...keyword]
@@ -140,7 +162,10 @@ function Image_keywords(props) {
         let keywordTemp = []
         keywordTemp = keyword.filter(val => val.checked == true)
 
-        keywordList = keywordKidsTemp.concat(keywordTemp);
+        let keywordGraphicNovelTemp = []
+        keywordGraphicNovelTemp = keywordGraphicNovel.filter(val => val.checked == true)
+
+        keywordList = keywordKidsTemp.concat(keywordTemp,keywordGraphicNovelTemp);
 
         let artistImageTemp = {...artistImage,keyword:keywordList,mainId:props.images._id}
         let keywordListTemp = []
@@ -231,6 +256,24 @@ function Image_keywords(props) {
                                                 type="checkbox" value= "checking 1" 
                                                 defaultChecked ={val.checked}
                                                 onClick={()=>keywordSetter(val._id,val.checked,true)}
+                                            />
+                                            <span className="checkmark"></span>
+                                        </label>
+                                    </div>
+                                )
+                            }
+                        </div>
+                        <div className='row mt-5'>
+                            <h4 className='col-12 mb-5'>GRAPHIC NOVEL KEYWORD LISTING</h4>
+                            {keywordGraphicNovel !== null &&
+                                keywordGraphicNovel.map((val,ind)=>
+                                    <div className='col-xl-4 col-lg-3 col-sm-12 col-md-6' key={ind}>
+                                        <label className='checkBox'>{val.keyword}
+
+                                            <input 
+                                                type="checkbox" value= "checking 1" 
+                                                defaultChecked ={val.checked}
+                                                onClick={()=>keywordSetter(val._id,val.checked,false,true)}
                                             />
                                             <span className="checkmark"></span>
                                         </label>

@@ -7,6 +7,7 @@ import Main from '../../components/layout2/main'
 import Dashboard from './dashboard'
 import WebsiteAdmin from './websiteAdmin'
 import Artists from './artists'
+import CategoryIndex from './categoryPages/index'
 import ContactFormSubmissions from './contactFormSubmissions'
 import ImgViewer from './imgDetail/imgViewer'
 import Banners from './banners'
@@ -185,7 +186,7 @@ function Admin(props) {
                 :pageName === "content"?
                 <Content history={props.history}/>
                 :pageName === "categories"?
-                <Categories history={props.history}/>
+                <CategoryIndex history={props.history}/>
                 :pageName === "contact"?
                 <ContactFormSubmissions  history={props.history}  
                     contacts = {Contacts !== undefined ? Contacts:[]}

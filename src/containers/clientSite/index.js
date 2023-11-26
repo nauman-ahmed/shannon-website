@@ -10,6 +10,7 @@ import UpdatedArtists from './updatedArtists'
 import About from './about'
 import Artists from './artists'
 import Bipoc from './bipoc'
+import GraphicNovel from './graphicNovel'
 import CGI from './cgi'
 import MEDICAL from './medical'
 import MOTION from './motion'
@@ -105,6 +106,7 @@ function Index(props) {
             localStorage.setItem("Category","none")
             localStorage.setItem("Bipoc","none")
             localStorage.removeItem("routePaths");
+            localStorage.removeItem("graphicNovel")
         }
 
         // if(pages == "divisions"){
@@ -146,6 +148,10 @@ function Index(props) {
                 localStorage.setItem("routePaths",JSON.stringify(route))
                 localStorage.setItem("Bipoc","none")
             }
+        }
+
+        if(pages == "graphicNovel"){
+            localStorage.setItem("Category","none");
         }
 
         if(pages == "bipoc"){
@@ -252,6 +258,10 @@ function Index(props) {
                         <IndigenousArtist/>
                     :pages === "bipoc"?
                         <Bipoc/>
+                    :pages === "graphicNovel"?
+                        <GraphicNovel>
+                            <DivisionSideBar activeBtn="graphicNovel" currentArtist={pages} />
+                        </GraphicNovel>
                     :artistIfExistHandler()?
                         <SearchByArtist>
                             <DivisionSideBar activeBtn="detailedPage" currentArtist={pages} />
