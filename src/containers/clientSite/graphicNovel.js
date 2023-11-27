@@ -140,7 +140,7 @@ function Bipoc() {
           id="w-node-_85a7ddb0-1565-6609-f698-06fa7db97dd9-58f2d07a"
           className="bipocinfo ml-md-5 pl-md-5"
         >
-          <h1 className="newsh2 h">GRAPHICH NOVEL</h1>
+          <h1 className="newsh2 h">GRAPHIC NOVEL</h1>
           <p className="paragraph">
             Welcome to our curated world of graphic novel artists, where imagination knows no bounds! In Shannon Associates, we take pride in representing a diverse and talented array of artists who breathe life into the captivating realm of graphic novels. Our portfolio showcases the brilliance of storytellers who seamlessly blend artistry with narrative, bringing forth compelling tales that transcend traditional boundaries. From intricately detailed character designs to sweeping, cinematic landscapes, our artists wield their pens and brushes to craft visually stunning worlds that invite readers to embark on unforgettable journeys. Whether you're an author seeking the perfect collaborator or a publisher in search of fresh, innovative voices, our illustrator agency is your gateway to a vibrant community of creators pushing the boundaries of graphic storytelling. Join us in celebrating the power of visual narrative as we connect you with the visionary artists shaping the future of the graphic novel landscape.
           </p>
