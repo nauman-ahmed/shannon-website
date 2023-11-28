@@ -171,9 +171,10 @@ function DivisionSideBar(props) {
                 {item}<br/>
                 {artistData[item].map((item1,key1)=>(
                     <div key={key1}>
+                      {console.log(props.currentArtist)} 
                     <Link 
                         to={item1.fullName}
-                        className={"sidebarlink " + (item1.firstname.toLowerCase()+item1.lastname.toLowerCase() === props.currentArtist.toLowerCase()? "currentSidebar":"") } 
+                        className={"sidebarlink " + (item1.firstname.toLowerCase()+item1.lastname.toLowerCase() === props.currentArtist?.toLowerCase()? "currentSidebar":"") } 
                         >
                         {item1.firstname.toUpperCase()} {item1.lastname.toUpperCase()}<br/>
                     </Link>
