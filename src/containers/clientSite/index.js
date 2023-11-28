@@ -118,15 +118,18 @@ function Index(props) {
         // }
         if(divisions.includes(pages)){
             if(pages == "divisions"){
+                console.log("CHALA pages == divisions")
                 const route = [{val:"Home",link:"./"},{val:"Divisions",link:"./divisions"}] //,{val:"Illustration",link:"./illustration-artists"}
                 localStorage.setItem("routePaths",JSON.stringify(route))
-                // localStorage.setItem("Category","none")
+                localStorage.setItem("Category","none")
             }
-            if(pages == "illustration-artists"){
+            else if(pages == "illustration-artists"){
+                console.log("CHALA pages == illustration-artists")
                 const route = [{val:"Home",link:"./"},{val:"Divisions",link:"./divisions"},{val:"Illustration",link:"./illustration-artists"}]
                 localStorage.setItem("routePaths",JSON.stringify(route))
                 localStorage.setItem("Category","Illustration-artists")
             }else{
+                console.log("CHALA pages == ELSE")
                 localStorage.setItem("Category",pages.charAt(0).toUpperCase() + pages.slice(1) )
                 const letter = pages.charAt(0).toUpperCase() + pages.slice(1);
                 const route = [{val:"Home",link:"./"},{val:"Divisions",link:"./divisions"},{val:letter,link:"./"+pages}]
