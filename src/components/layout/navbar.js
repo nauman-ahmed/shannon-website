@@ -49,7 +49,7 @@ function Navbar(props) {
           </div> 
         </div>
       </div >
-
+ 
       <div className='fullViewNavbar'>
         <div className="filterhomebox v2">
           <Link to="/illustration-artists" className={"filterhomelink v2 " + (props.aciveBtn === "illustration-artists" || props.currentCat == "Illustration" || props.currentCat == "Illustration-artists" ? "w--current" : "")}>ILLUSTRATION</Link>
@@ -58,7 +58,7 @@ function Navbar(props) {
           <Link to="/photography" className={"filterhomelink v2 " + (props.aciveBtn === "photography" || props.currentCat == "Photography" ? "w--current" : "")}>PHOTOGRAPHY</Link>
           <div className='navbarBipocLink'>
             {/* <Link to="/bipoc" className={"filterhomelink v2 d-flex " + (props.aciveBtn === "bipoc" ? "w--current" : "")}>BIPOC <span className='bipocSpan'></span> </Link> */}
-            <Link to="/bipoc" className={"filterhomelink v2 d-flex " + (props.aciveBtn === "bipoc" || props.currentBi !== "none" ? "w--current" : "")}>BIPOC </Link>
+            <Link to="/bipoc" className={"filterhomelink v2 d-flex " + (props.aciveBtn === "bipoc" || (props.currentBi !== "none" && props.currentBi !== null) ? "w--current" : "")}>BIPOC </Link>
             <div className='navbarBipocItemsLink'>
               <Link to="/bipoc/black" className={"filterhomelink v2 mb-3 " + (props.currentBi === "Black" ? "w--current" : "")}>BLACK</Link>
               <Link to="/bipoc/asianArtist" className={"filterhomelink v2 mb-3 " + (props.currentBi === "AsianArtist" ? "w--current" : "")}>ASIAN</Link>

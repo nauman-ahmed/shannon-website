@@ -307,6 +307,8 @@ function Bipoc() {
     localStorage.setItem("routePaths",JSON.stringify(route))
     localStorage.setItem("Category","none")
     localStorage.setItem("Bipoc",cat)
+    localStorage.removeItem("graphicNovel")
+
   }
 
   return (

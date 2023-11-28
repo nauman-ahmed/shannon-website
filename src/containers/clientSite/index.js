@@ -121,33 +121,34 @@ function Index(props) {
                 const route = [{val:"Home",link:"./"},{val:"Divisions",link:"./divisions"}] //,{val:"Illustration",link:"./illustration-artists"}
                 localStorage.setItem("routePaths",JSON.stringify(route))
                 // localStorage.setItem("Category","none")
-                localStorage.setItem("Bipoc","none")
             }
             if(pages == "illustration-artists"){
                 const route = [{val:"Home",link:"./"},{val:"Divisions",link:"./divisions"},{val:"Illustration",link:"./illustration-artists"}]
                 localStorage.setItem("routePaths",JSON.stringify(route))
                 localStorage.setItem("Category","Illustration-artists")
-                localStorage.setItem("Bipoc","none")
             }else{
                 localStorage.setItem("Category",pages.charAt(0).toUpperCase() + pages.slice(1) )
                 const letter = pages.charAt(0).toUpperCase() + pages.slice(1);
                 const route = [{val:"Home",link:"./"},{val:"Divisions",link:"./divisions"},{val:letter,link:"./"+pages}]
                 localStorage.setItem("routePaths",JSON.stringify(route))
-                localStorage.setItem("Bipoc","none")
             }
+            localStorage.removeItem("graphicNovel")
+            localStorage.setItem("Bipoc","none")
+
         }
 
         if(pages == "categories"){
             console.log(localStorage.getItem("Category"))
             const route = [{val:"Home",link:"./"},{val:"Categories",link:"./categories"}]
             localStorage.setItem("routePaths",JSON.stringify(route))
-            localStorage.setItem("Bipoc","none")
             if(search){
                 const path = localStorage.getItem("Category")
                 const route = [{val:"Home",link:"./"},{val:"Categories",link:"./categories"},{val:path,link:"./categories/"+search}]
                 localStorage.setItem("routePaths",JSON.stringify(route))
-                localStorage.setItem("Bipoc","none")
             }
+            localStorage.setItem("Bipoc","none")
+            localStorage.removeItem("graphicNovel")
+
         }
 
         if(pages == "graphicNovel"){
@@ -155,26 +156,29 @@ function Index(props) {
         }
 
         if(pages == "bipoc"){
-            localStorage.setItem("Category","none");
             if(search){
                 const letter = search.charAt(0).toUpperCase() + search.slice(1);
                 const route = [{val:"Home",link:"./"},{val:"Bipoc",link:"./bipoc"},{val:letter,link:"./bipoc/"+search}]
                 localStorage.setItem("routePaths",JSON.stringify(route))
-                localStorage.setItem("Category","none")
                 localStorage.setItem("Bipoc",letter)
             }
+            localStorage.removeItem("graphicNovel")
+            localStorage.setItem("Category","none")
+
         }
 
         if(pages == "newest"){
             const route = [{val:"Home",link:"./"},{val:"New Artists",link:"./newest"}]
             localStorage.setItem("routePaths",JSON.stringify(route))
             localStorage.setItem("Category","none")
+            localStorage.removeItem("graphicNovel")
         }
 
         if(pages == "recentlyUpdated"){
             const route = [{val:"Home",link:"./"},{val:"Updated Artists",link:"./recentlyUpdated"}]
             localStorage.setItem("routePaths",JSON.stringify(route))
             localStorage.setItem("Category","none")
+            localStorage.removeItem("graphicNovel")
         }
 
         setCurrentCategory(localStorage.getItem("Category"));

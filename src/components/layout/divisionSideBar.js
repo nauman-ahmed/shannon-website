@@ -70,7 +70,7 @@ function DivisionSideBar(props) {
         localPrevCate = "ILLUSTRATION";
       }
       let bipocCat = localStorage.getItem("Bipoc") == "none" ? null : localStorage.getItem("Bipoc")
-      getArtistCategoryTypeOne(bipocCat ? {keyword:localPrevCate,type:1,bipocCat} : {keyword:localPrevCate,type:1}).then(res => {
+      getArtistCategoryTypeOne(bipocCat ? {keyword:localPrevCate,type: { $ne: 2 },bipocCat} : {keyword:localPrevCate,type: { $ne: 2 }}).then(res => {
         setArtistData(
           sortAlphaOrder(res!==undefined?res.length>0?res:[]:[])
           )
@@ -137,7 +137,7 @@ function DivisionSideBar(props) {
         : 
         <div className="allartist v2">
             {
-              localStorage.getItem("Category") !== "none" && !pagesWithSideMenu.includes(localStorage.getItem("Category"))? 
+              localStorage.getItem("Category") !== "none" && !pagesWithSideMenu.includes(localStorage.getItem("Category")) && !JSON.parse(localStorage.getItem("routePaths"))[1]?.val === "Graphic Novel"? 
               <div>
                 <Link to={"/categories"}><span className="homeh3" style={{color:"#000000",fontFamily: "Montserrat, sans-serif", textUnderlineOffset : "5px", fontWeight: 800}} >CATEGORIES<br /></span></Link>
                 <Link to={JSON.parse(localStorage.getItem("routePaths"))[2]?.link}><span className="homeh3" style={{fontFamily: "Montserrat, sans-serif", textUnderlineOffset : "5px", fontWeight: 800}} >{localStorage.getItem("Category").toUpperCase()}<br /></span></Link>
@@ -173,8 +173,8 @@ function DivisionSideBar(props) {
                     <div key={key1}>
                     <Link 
                         to={item1.fullName}
-                        className={"sidebarlink " + (item1.firstname.toLowerCase()+item1.lastname.toLowerCase() === props.currentArtist? "currentSidebar":"") } 
-                        style={search === item1.fullName ? {color: "#fa8e37"} : {}}>
+                        className={"sidebarlink " + (item1.firstname.toLowerCase()+item1.lastname.toLowerCase() === props.currentArtist.toLowerCase()? "currentSidebar":"") } 
+                        >
                         {item1.firstname.toUpperCase()} {item1.lastname.toUpperCase()}<br/>
                     </Link>
                     </div>

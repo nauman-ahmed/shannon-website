@@ -98,6 +98,7 @@ const images = window.location.origin + "/assets/images";
     localStorage.setItem("routePaths",JSON.stringify(route))
     localStorage.setItem("Category",cat);
     localStorage.setItem("Bipoc","none")
+    localStorage.removeItem("graphicNovel")
   }
 
   return (<>
