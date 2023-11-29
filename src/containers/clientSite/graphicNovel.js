@@ -1,54 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
   getGraphicCovers,
-  getGraphicSequential,
-  getGraphicInking,
-  getGraphicColoring,
-  getGraphicLettering,
-  getBipocAsian,
-  getBipocBlack,
-  getBipocCentralAsia,
-  getBipocIndigenous,
-  getBipocLatino,
 } from "../../AxiosFunctions/Axiosfunctionality";
-import { bannerLoader } from "../../redux/bannerImages";
 
 
 import POSTER_IMAGE from '../../assets/img/1699586657881--originalImage.jpg';
 
-function Bipoc() {
+function GraphicNovel() {
 
-  const dispatch = useDispatch();
-  const { bannerImages } = useSelector((state) => state);
-
-  const [gottenData, setGottenData] = useState(false);
+  const sortingSeq = ["COVERS" , "SEQUENTIAL" , "INKING" , "COLORING" , "LETTERING"]
+  
 
   const [styleSheet, setStyleSheet] = useState({ maxWidth: "100%" });
-  const [blackArtist, setBlackArtist] = useState(null);
-  const [asianArtist, setAsianArtist] = useState(null);
-  const [latinoArtist, setLatinoArtist] = useState(null);
-  const [centralAsianArtist, setCentralAsianArtist] = useState(null);
-  const [indegiousArtist, setIndegiousArtist] = useState(null);
-  const [graphicNovel, setGraphicNovel] = useState(null);
   const [windowSize, setWindowSize] = useState(getWindowSize());
 
+  const [graphicNovel, setGraphicNovel] = useState(null);
+
   const idBlack = "BLACKBIPOC"
-  const idBlackSlider = "BLACKBIPOCSLIDER"
 
-  const idAsian = "ASIANBIPOC"
-  const idAsianSlider = "ASIANBIPOCSLIDER"
-
-  const idLatino = "LATINOBIPOC"
-  const idLatinoSlider = "LATINOBIPOCSLIDER"
-
-  const idCentral = "CENTRALBIPOC"
-  const idCentralSlider = "CENTRALBIPOCSLIDER"
-
-  const idIndegious = "INDEGIOUSBIPOC"
-  const idIndegiousSlider = "INDEGIOUSBIPOCSLIDER"
 
   function getWindowSize() {
     const { innerWidth, innerHeight } = window
@@ -67,11 +39,6 @@ function Bipoc() {
     };
   }, []);
 
-  useEffect(() => {
-    if(bannerImages.bipocBannerData.length == 0){
-      dispatch(bannerLoader());
-    }
-  }, []);
 
   useEffect(() => {
 
@@ -90,10 +57,14 @@ function Bipoc() {
           data:orderedArtist
         })
       }
+
+      temp.sort((a, b) => {
+        return sortingSeq.indexOf(a.cat) - sortingSeq.indexOf(b.cat);
+      });
+
       setGraphicNovel(temp)
     });
 
-    setGottenData(true)
   }, []);
 
   useEffect(() => {
@@ -216,4 +187,4 @@ function Bipoc() {
   );
 }
 
-export default Bipoc;
+export default GraphicNovel;
