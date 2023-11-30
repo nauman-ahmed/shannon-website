@@ -484,7 +484,7 @@ function SearchByArtist(props) {
                                   <img srcSet={item} className="w-100 h-100" 
                                   style={{objectFit: "cover"}}
                                   loading="lazy"
-                                  fetchpriority = {"high"}
+                                  fetchpriority = {keys}
                                   // onLoad={() => onImageLoad(keys)}
                                   onLoadCapture={()=> onImageLoad(keys)}
                                   ></img>
